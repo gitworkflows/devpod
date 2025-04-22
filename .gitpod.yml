@@ -1,0 +1,89 @@
+image: khulnasoft/devpod-environment:main-gha.30393
+workspaceLocation: devpod/devpod-ws.code-workspace
+checkoutLocation: devpod
+ports:
+  - port: 1337
+    onOpen: open-preview
+  - port: 3000
+    onOpen: ignore
+  - port: 3001
+    onOpen: ignore
+  - port: 3306
+    onOpen: ignore
+  - port: 4000
+    onOpen: ignore
+  # VNC
+  - port: 5900
+    onOpen: ignore
+  # noVNC
+  - port: 6080
+    onOpen: ignore
+  # Werft
+  - port: 7777
+    onOpen: ignore
+  - port: 9229
+    onOpen: ignore
+  # Go proxy
+  - port: 9999
+    onOpen: ignore
+  - port: 13001
+    onOpen: ignore
+  # Dev Theia
+  - port: 13444
+  # Used when using port-forwarding to SSH to preview environment VMs
+  - port: 8022
+    onOpen: ignore
+tasks:
+  - name: Remove GCP_ADC_FILE
+    command: |
+      if [[ -n "${GCP_ADC_FILE}" ]]; then
+        echo "$GCP_ADC_FILE" > "/home/devpod/.config/gcloud/application_default_credentials.json"
+        yes | gcloud auth application-default revoke
+        gp env -u GCP_ADC_FILE
+      fi
+      exit 0
+  - name: MCP Servers Setup
+    init: |
+      # Run Git MCP install script with current workspace as repository
+      ./scripts/install-git-mcp-go.sh /workspace/devpod "$GIT_WRITE_ACCESS"
+
+      # Run Linear MCP install script
+      ./scripts/install-linear-mcp-go.sh "$LINEAR_WRITE_ACCESS"
+  - name: Install `devpod` CLI
+    command: |
+      blazedock run components/local-app:install-cli
+      blazedock run components/local-app:cli-completion
+      exit 0
+  # This task takes care of configuring your workspace so it can manage and interact
+  # with preview environments.
+  - name: Preview environment configuration
+    init: blazedock run dev/preview/previewctl:install
+    command: INSTALL_CONTEXT=true blazedock run dev/preview:configure-workspace
+  - name: Installer dependencies
+    init: |
+      (cd install/installer && make deps)
+      exit 0
+  - name: Java
+    command: |
+      if [ -z "$RUN_GRADLE_TASK" ]; then
+        read -r -p "Press enter to continue Java gradle task"
+      fi
+      blazedock exec --package components/supervisor-api/java:lib --package components/devpod-protocol/java:lib -- ./gradlew build
+      blazedock exec --package components/ide/jetbrains/backend-plugin:plugin-latest --package components/ide/jetbrains/gateway-plugin:publish-latest --parallel -- ./gradlew buildPlugin
+  - name: TypeScript
+    init: yarn --network-timeout 100000 && yarn build
+  - name: Install pre-commit hooks
+    init: |
+      pre-commit install --install-hooks
+      exit 0
+  - name: Go
+    init: |
+      ./components/devpod-protocol/go/scripts/generate-config.sh
+      blazedock exec --filter-type go -v -- go mod verify
+vscode:
+  extensions:
+    - ms-azuretools.vscode-docker
+    - esbenp.prettier-vscode
+jetbrains:
+  intellij:
+    vmoptions: -Xmx4g
