@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,11 +8,11 @@ import "reflect-metadata";
 
 import { Duration, PartialMessage, PlainMessage, Timestamp, toPlainMessage } from "@bufbuild/protobuf";
 import { Code, ConnectError } from "@connectrpc/connect";
-import { GitpodServer } from "@devpod/devpod-protocol";
-import { BlockedRepository as ProtocolBlockedRepository } from "@devpod/devpod-protocol/lib/blocked-repositories-protocol";
-import { ContextURL } from "@devpod/devpod-protocol/lib/context-url";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { RoleOrPermission as ProtocolRoleOrPermission } from "@devpod/devpod-protocol/lib/permission";
+import { DevpodServer } from "@khulnasoft/devpod-protocol";
+import { BlockedRepository as ProtocolBlockedRepository } from "@khulnasoft/devpod-protocol/lib/blocked-repositories-protocol";
+import { ContextURL } from "@khulnasoft/devpod-protocol/lib/context-url";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { RoleOrPermission as ProtocolRoleOrPermission } from "@khulnasoft/devpod-protocol/lib/permission";
 import {
     AuthProviderInfo,
     AuthProviderEntry as AuthProviderProtocol,
@@ -39,12 +39,12 @@ import {
     WorkspaceContext,
     WorkspaceInfo,
     WorkspaceSession as WorkspaceSessionProtocol,
-    Configuration as GitpodServerInstallationConfiguration,
+    Configuration as DevpodServerInstallationConfiguration,
     NavigatorContext,
     RefType,
     OrgEnvVar,
-} from "@devpod/devpod-protocol/lib/protocol";
-import { AuditLog as AuditLogProtocol } from "@devpod/devpod-protocol/lib/audit-log";
+} from "@khulnasoft/devpod-protocol/lib/protocol";
+import { AuditLog as AuditLogProtocol } from "@khulnasoft/devpod-protocol/lib/audit-log";
 import {
     OrgMemberInfo,
     OrganizationSettings as OrganizationSettingsProtocol,
@@ -60,11 +60,11 @@ import {
     TimeoutSettings as TimeoutSettingsProtocol,
     OnboardingSettings as OnboardingSettingsProtocol,
     WelcomeMessage as WelcomeMessageProtocol,
-} from "@devpod/devpod-protocol/lib/teams-projects-protocol";
-import type { DeepPartial } from "@devpod/devpod-protocol/lib/util/deep-partial";
-import { parseGoDurationToMs } from "@devpod/devpod-protocol/lib/util/timeutil";
-import { SupportedWorkspaceClass } from "@devpod/devpod-protocol/lib/workspace-class";
-import { isWorkspaceRegion } from "@devpod/devpod-protocol/lib/workspace-cluster";
+} from "@khulnasoft/devpod-protocol/lib/teams-projects-protocol";
+import type { DeepPartial } from "@khulnasoft/devpod-protocol/lib/util/deep-partial";
+import { parseGoDurationToMs } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
+import { SupportedWorkspaceClass } from "@khulnasoft/devpod-protocol/lib/workspace-class";
+import { isWorkspaceRegion } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
 import {
     ConfigurationIdeConfig,
     ImageMetrics,
@@ -77,14 +77,14 @@ import {
     WorkspaceInstancePhase,
     WorkspaceInstancePort,
     WorkspaceInstanceStatus,
-} from "@devpod/devpod-protocol/lib/workspace-instance";
+} from "@khulnasoft/devpod-protocol/lib/workspace-instance";
 import {
     AuthProvider,
     AuthProviderDescription,
     AuthProviderType,
     OAuth2Config,
-} from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
-import { AuditLog } from "@devpod/public-api/lib/devpod/v1/auditlogs_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { AuditLog } from "@khulnasoft/public-api/lib/devpod/v1/auditlogs_pb";
 import {
     BranchMatchingStrategy,
     Configuration,
@@ -92,21 +92,21 @@ import {
     PrebuildSettings,
     WorkspaceSettings,
     PrebuildCloneSettings,
-} from "@devpod/public-api/lib/devpod/v1/configuration_pb";
-import { EditorReference } from "@devpod/public-api/lib/devpod/v1/editor_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
+import { EditorReference } from "@khulnasoft/public-api/lib/devpod/v1/editor_pb";
 import {
     ConfigurationEnvironmentVariable,
     EnvironmentVariable,
     EnvironmentVariableAdmission,
     OrganizationEnvironmentVariable,
     UserEnvironmentVariable,
-} from "@devpod/public-api/lib/devpod/v1/envvar_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
 import {
     CellDisabledError,
     FailedPreconditionDetails,
     ImageBuildLogsNotYetAvailableError,
     InvalidCostCenterError as InvalidCostCenterErrorData,
-    InvalidGitpodYMLError as InvalidGitpodYMLErrorData,
+    InvalidDevpodYMLError as InvalidDevpodYMLErrorData,
     NeedsVerificationError,
     PaymentSpendingLimitReachedError,
     PermissionDeniedDetails,
@@ -114,13 +114,13 @@ import {
     RepositoryUnauthorizedError as RepositoryUnauthorizedErrorData,
     TooManyRunningWorkspacesError,
     UserBlockedError,
-} from "@devpod/public-api/lib/devpod/v1/error_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/error_pb";
 import {
     BlockedEmailDomain,
     BlockedRepository,
     InstallationConfiguration,
     OnboardingState,
-} from "@devpod/public-api/lib/devpod/v1/installation_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/installation_pb";
 import {
     OnboardingSettings,
     OnboardingSettings_WelcomeMessage,
@@ -132,7 +132,7 @@ import {
     RoleRestrictionEntry,
     TimeoutSettings,
     UpdateOrganizationSettingsRequest,
-} from "@devpod/public-api/lib/devpod/v1/organization_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 import {
     Prebuild,
     ListOrganizationPrebuildsRequest_Filter_State as PrebuildFilterState,
@@ -140,10 +140,10 @@ import {
     PrebuildPhase_Phase,
     PrebuildStatus,
     TaskLog,
-} from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
-import { Author, Commit, SCMToken, SuggestedRepository } from "@devpod/public-api/lib/devpod/v1/scm_pb";
-import { Sort, SortOrder } from "@devpod/public-api/lib/devpod/v1/sorting_pb";
-import { SSHPublicKey } from "@devpod/public-api/lib/devpod/v1/ssh_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
+import { Author, Commit, SCMToken, SuggestedRepository } from "@khulnasoft/public-api/lib/devpod/v1/scm_pb";
+import { Sort, SortOrder } from "@khulnasoft/public-api/lib/devpod/v1/sorting_pb";
+import { SSHPublicKey } from "@khulnasoft/public-api/lib/devpod/v1/ssh_pb";
 import {
     Identity,
     RoleOrPermission,
@@ -153,7 +153,7 @@ import {
     User_UserFeatureFlag,
     User_WorkspaceAutostartOption,
     User_WorkspaceTimeoutSettings,
-} from "@devpod/public-api/lib/devpod/v1/user_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
 import {
     AdmissionLevel,
     CreateAndStartWorkspaceRequest,
@@ -189,10 +189,10 @@ import {
     WorkspaceSession_WorkspaceContext_RefType,
     WorkspaceSession_InitializerMetrics,
     WorkspaceSession_InitializerMetric,
-} from "@devpod/public-api/lib/devpod/v1/workspace_pb";
-import { BigIntToJson } from "@devpod/devpod-protocol/lib/util/stringify";
+} from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { BigIntToJson } from "@khulnasoft/devpod-protocol/lib/util/stringify";
 import { getPrebuildLogPath } from "./prebuild-utils";
-import { InvalidGitpodYMLError, RepositoryNotFoundError, UnauthorizedRepositoryAccessError } from "./public-api-errors";
+import { InvalidDevpodYMLError, RepositoryNotFoundError, UnauthorizedRepositoryAccessError } from "./public-api-errors";
 const URL = require("url").URL || window.URL;
 
 export type PartialConfiguration = DeepPartial<Configuration> & Pick<Configuration, "id">;
@@ -624,7 +624,7 @@ export class PublicAPIConverter {
                     reason,
                 );
             }
-            if (reason instanceof InvalidGitpodYMLError) {
+            if (reason instanceof InvalidDevpodYMLError) {
                 return new ConnectError(
                     reason.message,
                     Code.FailedPrecondition,
@@ -632,8 +632,8 @@ export class PublicAPIConverter {
                     [
                         new FailedPreconditionDetails({
                             reason: {
-                                case: "invalidGitpodYml",
-                                value: new InvalidGitpodYMLErrorData(reason.info),
+                                case: "invalidDevpodYml",
+                                value: new InvalidDevpodYMLErrorData(reason.info),
                             },
                         }),
                     ],
@@ -818,10 +818,10 @@ export class PublicAPIConverter {
         if (reason.code === Code.FailedPrecondition) {
             const details = reason.findDetails(FailedPreconditionDetails)[0];
             switch (details?.reason?.case) {
-                case "invalidGitpodYml":
-                    const invalidGitpodYmlInfo = toPlainMessage(details.reason.value);
+                case "invalidDevpodYml":
+                    const invalidDevpodYmlInfo = toPlainMessage(details.reason.value);
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                    return new InvalidGitpodYMLError(invalidGitpodYmlInfo);
+                    return new InvalidDevpodYMLError(invalidDevpodYmlInfo);
                 case "repositoryNotFound":
                     const repositoryNotFoundInfo = toPlainMessage(details.reason.value);
                     return new RepositoryNotFoundError(repositoryNotFoundInfo);
@@ -1950,14 +1950,14 @@ export class PublicAPIConverter {
         });
     }
 
-    toOnboardingState(state: GitpodServer.OnboardingState): OnboardingState {
+    toOnboardingState(state: DevpodServer.OnboardingState): OnboardingState {
         return new OnboardingState({
             completed: state.isCompleted,
             organizationCountTotal: state.organizationCountTotal,
         });
     }
 
-    toInstallationConfiguration(config: GitpodServerInstallationConfiguration): InstallationConfiguration {
+    toInstallationConfiguration(config: DevpodServerInstallationConfiguration): InstallationConfiguration {
         return new InstallationConfiguration({
             isDedicatedInstallation: config.isDedicatedInstallation,
         });

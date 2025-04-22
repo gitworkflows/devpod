@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { Timestamp } from "@bufbuild/protobuf";
-import { Identity, User, User_ProfileDetails } from "@devpod/public-api/lib/devpod/v1/user_pb";
+import { Identity, User, User_ProfileDetails } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
 import * as chai from "chai";
 import { getPrimaryEmail } from "./user-utils";
 

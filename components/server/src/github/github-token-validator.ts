@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,7 +7,7 @@
 import { inject, injectable } from "inversify";
 import { CheckWriteAccessResult, IGitTokenValidator, IGitTokenValidatorParams } from "../workspace/git-token-validator";
 import { GitHubApiError, GitHubGraphQlEndpoint, GitHubRestApi, GitHubResult } from "./api";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 @injectable()
 export class GitHubTokenValidator implements IGitTokenValidator {
@@ -41,9 +41,9 @@ export class GitHubTokenValidator implements IGitTokenValidator {
         const inOrg = gitHubRepo.data.owner?.type === "Organization";
 
         if (inOrg) {
-            // if this repository belongs to an organization and Gitpod is not authorized,
+            // if this repository belongs to an organization and Devpod is not authorized,
             // we're not allowed to list repositories using this a token issues for
-            // Gitpod's OAuth App.
+            // Devpod's OAuth App.
 
             const request = {
                 query: `

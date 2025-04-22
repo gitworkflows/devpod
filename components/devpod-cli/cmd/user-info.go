@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -101,7 +101,7 @@ func connectToAPI(ctx context.Context) (*serverapi.APIoverJSONRPC, error) {
 	}
 
 	clientToken, err := supervisorClient.Token.GetToken(ctx, &supervisorapi.GetTokenRequest{
-		Host: wsinfo.GitpodApi.Host,
+		Host: wsinfo.DevpodApi.Host,
 		Kind: "devpod",
 		Scope: []string{
 			"function:getLoggedInUser",
@@ -112,7 +112,7 @@ func connectToAPI(ctx context.Context) (*serverapi.APIoverJSONRPC, error) {
 	}
 
 	serverLog := log.NewEntry(log.StandardLogger())
-	client, err := serverapi.ConnectToServer(wsinfo.GitpodApi.Endpoint, serverapi.ConnectToServerOpts{
+	client, err := serverapi.ConnectToServer(wsinfo.DevpodApi.Endpoint, serverapi.ConnectToServerOpts{
 		Token:   clientToken.Token,
 		Context: ctx,
 		Log:     serverLog,

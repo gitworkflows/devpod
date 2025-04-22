@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -41,19 +41,19 @@ import java.util.function.Supplier
 import kotlin.math.absoluteValue
 
 @Service
-internal class GitpodAuthService : OAuthServiceBase<Credentials>() {
+internal class DevpodAuthService : OAuthServiceBase<Credentials>() {
     override val name: String
         get() = SERVICE_NAME
 
     fun authorize(devpodHost: String): CompletableFuture<Credentials> {
-        return authorize(GitpodAuthRequest(devpodHost))
+        return authorize(DevpodAuthRequest(devpodHost))
     }
 
     override fun revokeToken(token: String) {
         throw Exception("Not yet implemented")
     }
 
-    private class GitpodAuthRequest : OAuthRequest<Credentials> {
+    private class DevpodAuthRequest : OAuthRequest<Credentials> {
 
         private val port = BuiltInServerManager.getInstance().waitForStart().port
 
@@ -68,7 +68,7 @@ internal class GitpodAuthService : OAuthServiceBase<Credentials>() {
             val codeVerifier = generateCodeVerifier()
             val codeChallenge = generateCodeChallenge(codeVerifier)
             val serviceUrl = newFromEncoded("https://$devpodHost/api/oauth")
-            credentialsAcquirer = GitpodAuthCredentialsAcquirer(
+            credentialsAcquirer = DevpodAuthCredentialsAcquirer(
                 serviceUrl.resolve("token"), mapOf(
                     "grant_type" to "authorization_code",
                     "client_id" to CLIENT_ID,
@@ -111,7 +111,7 @@ internal class GitpodAuthService : OAuthServiceBase<Credentials>() {
         }
     }
 
-    private class GitpodAuthCredentialsAcquirer(
+    private class DevpodAuthCredentialsAcquirer(
         private val tokenUrl: Url,
         private val parameters: Map<String, String>
     ) : OAuthCredentialsAcquirer<Credentials> {
@@ -152,12 +152,12 @@ internal class GitpodAuthService : OAuthServiceBase<Credentials>() {
 
     companion object {
         @Suppress("UnstableApiUsage")
-        val instance: Supplier<GitpodAuthService> = CachedSingletonsRegistry.lazy { service() }
+        val instance: Supplier<DevpodAuthService> = CachedSingletonsRegistry.lazy { service() }
 
         private const val SERVICE_NAME = "devpod/oauth"
         private const val CLIENT_ID = "jetbrains-gateway-devpod-plugin"
         val scopes = arrayOf(
-            "function:getGitpodTokenScopes",
+            "function:getDevpodTokenScopes",
             "function:getIDEOptions",
             "function:getOwnerToken",
             "function:getWorkspace",
@@ -172,7 +172,7 @@ internal class GitpodAuthService : OAuthServiceBase<Credentials>() {
             getAccessToken(devpodHost) != null
 
         fun getAccessToken(devpodHost: String) =
-            System.getenv("GITPOD_TEST_ACCESSTOKEN") ?: PasswordSafe.instance.getPassword(getAccessTokenCredentialAttributes(devpodHost))
+            System.getenv("DEVPOD_TEST_ACCESSTOKEN") ?: PasswordSafe.instance.getPassword(getAccessTokenCredentialAttributes(devpodHost))
 
         fun setAccessToken(devpodHost: String, accessToken: String?) {
             PasswordSafe.instance.setPassword(getAccessTokenCredentialAttributes(devpodHost), accessToken)
@@ -186,7 +186,7 @@ internal class GitpodAuthService : OAuthServiceBase<Credentials>() {
         }
 
         private fun getAccessTokenCredentialAttributes(devpodHost: String) =
-            CredentialAttributes(generateServiceName("Gitpod", devpodHost))
+            CredentialAttributes(generateServiceName("Devpod", devpodHost))
 
         private interface Listener : EventListener {
             fun didChange()

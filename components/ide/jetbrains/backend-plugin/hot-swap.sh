@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2022 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -20,7 +20,7 @@ echo "Pod: $podName"
 workspaceId=$(echo "$workspaceDesc" | jq .metadata.meta_id -r)
 echo "ID: $workspaceId"
 
-clusterHost=$(kubectl exec -it "$podName" -- printenv GITPOD_WORKSPACE_CLUSTER_HOST |sed -e "s/\s//g")
+clusterHost=$(kubectl exec -it "$podName" -- printenv DEVPOD_WORKSPACE_CLUSTER_HOST |sed -e "s/\s//g")
 echo "Cluster Host: $clusterHost"
 
 qualifier=$(kubectl exec -it "$podName" -- printenv JETBRAINS_BACKEND_QUALIFIER |sed -e "s/\s//g")
@@ -41,7 +41,7 @@ echo "    User \"$workspaceId#$ownerToken\"" >> "$sshConfig"
 
 # build
 tarFile="$tarDir/build.tar.gz"
-leeway build -DnoVerifyJBPlugin=true .:"plugin-$qualifier" --save "$tarFile"
+blazedock build -DnoVerifyJBPlugin=true .:"plugin-$qualifier" --save "$tarFile"
 tar -xf "$tarFile" -C "$tarDir"
 
 # upload

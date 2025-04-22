@@ -2,7 +2,7 @@
 
 ## Overview
 
-Workspacekit is a critical component in Gitpod that manages the container setup and namespace isolation for workspaces. It serves as the initialization system for workspace containers, setting up the necessary namespaces, mounts, and security configurations to provide a secure and isolated environment for user code execution.
+Workspacekit is a critical component in Devpod that manages the container setup and namespace isolation for workspaces. It serves as the initialization system for workspace containers, setting up the necessary namespaces, mounts, and security configurations to provide a secure and isolated environment for user code execution.
 
 ## Purpose
 
@@ -101,13 +101,13 @@ The component implements several security measures:
 
 Workspacekit can be configured through environment variables:
 
-- `GITPOD_WORKSPACE_ID`: Workspace identifier
+- `DEVPOD_WORKSPACE_ID`: Workspace identifier
 - `WORKSPACEKIT_FSSHIFT`: Filesystem shift method (e.g., SHIFTFS)
-- `GITPOD_WORKSPACEKIT_BIND_MOUNTS`: Additional bind mounts
+- `DEVPOD_WORKSPACEKIT_BIND_MOUNTS`: Additional bind mounts
 - `WORKSPACEKIT_RING2_ENCLAVE`: Commands to run in the Ring2 namespace
-- `GITPOD_WORKSPACEKIT_SUPERVISOR_PATH`: Path to the supervisor binary
-- `GITPOD_RLIMIT_CORE`: Core dump size limits
-- `GITPOD_WORKSPACEKIT_SLEEP_FOR_DEBUGGING`: Enable debugging sleep
+- `DEVPOD_WORKSPACEKIT_SUPERVISOR_PATH`: Path to the supervisor binary
+- `DEVPOD_RLIMIT_CORE`: Core dump size limits
+- `DEVPOD_WORKSPACEKIT_SLEEP_FOR_DEBUGGING`: Enable debugging sleep
 
 ## Dependencies
 

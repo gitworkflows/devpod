@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import { Container, ContainerModule } from "inversify";
 import "mocha";
 import * as chai from "chai";
 import { PrebuildManager } from "./prebuild-manager";
-import { TracedWorkspaceDB, WebhookEventDB } from "@devpod/devpod-db/lib";
+import { TracedWorkspaceDB, WebhookEventDB } from "@khulnasoft/devpod-db/lib";
 import { WorkspaceService } from "../workspace/workspace-service";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { ConfigProvider } from "../workspace/config-provider";
@@ -17,10 +17,10 @@ import { Config } from "../config";
 import { ProjectsService } from "../projects/projects-service";
 import { IncrementalWorkspaceService } from "./incremental-workspace-service";
 import { EntitlementService } from "../billing/entitlement-service";
-import { CommitContext, Project, ProjectSettings, Repository, WorkspaceConfig } from "@devpod/devpod-protocol";
+import { CommitContext, Project, ProjectSettings, Repository, WorkspaceConfig } from "@khulnasoft/devpod-protocol";
 import { Authorizer } from "../authorization/authorizer";
 import { ContextParser } from "../workspace/context-parser-service";
-import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
+import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
 import { RedisSubscriber } from "../messaging/redis-subscriber";
 
 const expect = chai.expect;

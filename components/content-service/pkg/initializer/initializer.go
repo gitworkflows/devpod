@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -36,11 +36,11 @@ const (
 	// WorkspaceReadyFile is the name of the ready file we're placing in a workspace
 	WorkspaceReadyFile = ".devpod/ready"
 
-	// GitpodUID is the user ID of the devpod user
-	GitpodUID = 33333
+	// DevpodUID is the user ID of the devpod user
+	DevpodUID = 33333
 
-	// GitpodGID is the group ID of the devpod user group
-	GitpodGID = 33333
+	// DevpodGID is the group ID of the devpod user group
+	DevpodGID = 33333
 
 	// otsDownloadAttempts is the number of times we'll attempt to download the one-time secret
 	otsDownloadAttempts = 20
@@ -99,11 +99,11 @@ func (e CompositeInitializer) Run(ctx context.Context, mappings []archive.IDMapp
 
 // NewFromRequestOpts configures the initializer produced from a content init request
 type NewFromRequestOpts struct {
-	// ForceGitpodUserForGit forces devpod:devpod ownership on all files produced by the Git initializer.
+	// ForceDevpodUserForGit forces devpod:devpod ownership on all files produced by the Git initializer.
 	// For FWB workspaces the content init is run from supervisor which runs as UID 0. Using this flag, the
-	// Git content is forced to the Gitpod user. All other content (backup, prebuild, snapshot) will already
+	// Git content is forced to the Devpod user. All other content (backup, prebuild, snapshot) will already
 	// have the correct user.
-	ForceGitpodUserForGit bool
+	ForceDevpodUserForGit bool
 }
 
 // NewFromRequest picks the initializer from the request but does not execute it.
@@ -132,7 +132,7 @@ func NewFromRequest(ctx context.Context, loc string, rs storage.DirectDownloader
 			return nil, status.Error(codes.InvalidArgument, "missing Git initializer spec")
 		}
 
-		initializer, err = newGitInitializer(ctx, loc, ir.Git, opts.ForceGitpodUserForGit)
+		initializer, err = newGitInitializer(ctx, loc, ir.Git, opts.ForceDevpodUserForGit)
 	} else if ir, ok := spec.(*csapi.WorkspaceInitializer_Prebuild); ok {
 		if ir.Prebuild == nil {
 			return nil, status.Error(codes.InvalidArgument, "missing prebuild initializer spec")
@@ -146,7 +146,7 @@ func NewFromRequest(ctx context.Context, loc string, rs storage.DirectDownloader
 		}
 		var gits []*GitInitializer
 		for _, gi := range ir.Prebuild.Git {
-			gitinit, err := newGitInitializer(ctx, loc, gi, opts.ForceGitpodUserForGit)
+			gitinit, err := newGitInitializer(ctx, loc, gi, opts.ForceDevpodUserForGit)
 			if err != nil {
 				return nil, err
 			}
@@ -249,7 +249,7 @@ func (bi *fromBackupInitializer) Run(ctx context.Context, mappings []archive.IDM
 
 // newGitInitializer creates a Git initializer based on the request.
 // Returns gRPC errors.
-func newGitInitializer(ctx context.Context, loc string, req *csapi.GitInitializer, forceGitpodUser bool) (*GitInitializer, error) {
+func newGitInitializer(ctx context.Context, loc string, req *csapi.GitInitializer, forceDevpodUser bool) (*GitInitializer, error) {
 	if req.Config == nil {
 		return nil, status.Error(codes.InvalidArgument, "Git initializer misses config")
 	}
@@ -303,7 +303,7 @@ func newGitInitializer(ctx context.Context, loc string, req *csapi.GitInitialize
 			Config:            req.Config.CustomConfig,
 			AuthMethod:        authMethod,
 			AuthProvider:      authProvider,
-			RunAsGitpodUser:   forceGitpodUser,
+			RunAsDevpodUser:   forceDevpodUser,
 			FullClone:         req.FullClone,
 		},
 		TargetMode:  targetMode,
@@ -426,8 +426,8 @@ func InitializeWorkspace(ctx context.Context, location string, remoteStorage sto
 	cfg := initializeOpts{
 		Initializer: &EmptyInitializer{},
 		CleanSlate:  false,
-		GID:         GitpodGID,
-		UID:         GitpodUID,
+		GID:         DevpodGID,
+		UID:         DevpodUID,
 	}
 	for _, o := range opts {
 		o(&cfg)
@@ -508,7 +508,7 @@ func InitializeWorkspace(ctx context.Context, location string, remoteStorage sto
 // Some workspace content may have a `/dst/.devpod` file or directory. That would break
 // the workspace ready file placement (see https://github.com/khulnasoft/devpod/issues/7694).
 // This function ensures that workspaces do not have a `.devpod` file or directory present.
-func EnsureCleanDotGitpodDirectory(ctx context.Context, wspath string) error {
+func EnsureCleanDotDevpodDirectory(ctx context.Context, wspath string) error {
 	var mv func(src, dst string) error
 	if git.IsWorkingCopy(wspath) {
 		c := &git.Client{
@@ -521,8 +521,8 @@ func EnsureCleanDotGitpodDirectory(ctx context.Context, wspath string) error {
 		mv = os.Rename
 	}
 
-	dotGitpod := filepath.Join(wspath, ".devpod")
-	stat, err := os.Stat(dotGitpod)
+	dotDevpod := filepath.Join(wspath, ".devpod")
+	stat, err := os.Stat(dotDevpod)
 	if errors.Is(err, fs.ErrNotExist) {
 		return nil
 	}
@@ -535,10 +535,10 @@ func EnsureCleanDotGitpodDirectory(ctx context.Context, wspath string) error {
 	if _, err := os.Stat(candidateFN); err == nil {
 		// Our candidate file already exists, hence we cannot just move things.
 		// As fallback we'll delete the .devpod entry.
-		return os.RemoveAll(dotGitpod)
+		return os.RemoveAll(dotDevpod)
 	}
 
-	err = mv(dotGitpod, candidateFN)
+	err = mv(dotDevpod, candidateFN)
 	if err != nil {
 		return err
 	}

@@ -1,7 +1,7 @@
 # IDE Service API
 
 ## Overview
-The IDE Service API defines the gRPC interfaces for the IDE Service, which is responsible for managing IDE configurations and resolving workspace IDE requirements within the Gitpod platform. This API enables the dynamic configuration of IDEs based on user preferences and workspace requirements.
+The IDE Service API defines the gRPC interfaces for the IDE Service, which is responsible for managing IDE configurations and resolving workspace IDE requirements within the Devpod platform. This API enables the dynamic configuration of IDEs based on user preferences and workspace requirements.
 
 ## Purpose
 This API provides a standardized interface for:
@@ -131,7 +131,7 @@ After regenerating the code, you may need to rebuild components that depend on t
    yarn build
    ```
 
-3. Using Leeway (for CI/CD):
+3. Using Blazedock (for CI/CD):
    ```bash
-   leeway build -D components/<component-name>:app
+   blazedock build -D components/<component-name>:app
    ```

@@ -30,7 +30,7 @@ Blobserve operates as an HTTP server that:
 ## Dependencies
 
 ### Internal Dependencies
-- `components/common-go:lib`: Common Go utilities used across Gitpod
+- `components/common-go:lib`: Common Go utilities used across Devpod
 - `components/registry-facade-api/go:lib`: API definitions for registry facade
 - `components/registry-facade:lib`: Library for interacting with container registries
 

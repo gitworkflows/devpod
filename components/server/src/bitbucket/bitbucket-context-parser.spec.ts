@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@devpod/devpod-protocol";
+import { User } from "@khulnasoft/devpod-protocol";
 import * as chai from "chai";
 import { Container, ContainerModule } from "inversify";
 import { suite, test, timeout, skip } from "@testdeck/mocha";
@@ -16,9 +16,9 @@ import { BitbucketApiFactory, BasicAuthBitbucketApiFactory } from "./bitbucket-a
 import { BitbucketContextParser } from "./bitbucket-context-parser";
 import { BitbucketTokenHelper } from "./bitbucket-token-handler";
 const expect = chai.expect;
-import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
+import { ifEnvVarNotSet } from "@khulnasoft/devpod-protocol/lib/util/skip-if";
 
-@suite(timeout(10000), skip(ifEnvVarNotSet("GITPOD_TEST_TOKEN_BITBUCKET")))
+@suite(timeout(10000), skip(ifEnvVarNotSet("DEVPOD_TEST_TOKEN_BITBUCKET")))
 class TestBitbucketContextParser {
     protected parser: BitbucketContextParser;
     protected user: User;
@@ -123,10 +123,10 @@ class TestBitbucketContextParser {
         const result = await this.parser.handle(
             {},
             this.user,
-            "https://bitbucket.org/devpod/integration-tests/src/8fcf6c869d0cdb570bb6f2f9aa5f8ed72c9d953a/?at=Gitpod%2Ftesttxt-created-online-with-bitbucket-1589277871983",
+            "https://bitbucket.org/devpod/integration-tests/src/8fcf6c869d0cdb570bb6f2f9aa5f8ed72c9d953a/?at=Devpod%2Ftesttxt-created-online-with-bitbucket-1589277871983",
         );
         expect(result).to.deep.include({
-            ref: "Gitpod/testtxt-created-online-with-bitbucket-1589277871983",
+            ref: "Devpod/testtxt-created-online-with-bitbucket-1589277871983",
             refType: "branch",
             path: "",
             revision: "8fcf6c869d0cdb570bb6f2f9aa5f8ed72c9d953a",
@@ -140,7 +140,7 @@ class TestBitbucketContextParser {
                 defaultBranch: "master",
                 private: false,
             },
-            title: "devpod/integration-tests - Gitpod/testtxt-created-online-with-bitbucket-1589277871983",
+            title: "devpod/integration-tests - Devpod/testtxt-created-online-with-bitbucket-1589277871983",
         });
     }
 
@@ -463,7 +463,7 @@ class TestBitbucketContextParser {
             "https://bitbucket.org/devpod/integration-tests/pull-requests/3/say-hello-to-devpod/diff",
         );
         expect(result).to.deep.include({
-            title: "Say Hello to Gitpod",
+            title: "Say Hello to Devpod",
             repository: {
                 host: "bitbucket.org",
                 owner: "corneliusltf",

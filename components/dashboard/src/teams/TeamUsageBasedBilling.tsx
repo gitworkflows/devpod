@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { OrgSettingsPage } from "./OrgSettingsPage";
-import { BillingMode } from "@devpod/devpod-protocol/lib/billing-mode";
+import { BillingMode } from "@khulnasoft/devpod-protocol/lib/billing-mode";
 import UsageBasedBillingConfig from "../components/UsageBasedBillingConfig";
 import { useOrgBillingMode } from "../data/billing-mode/org-billing-mode-query";
 import { useIsOwner } from "../data/organizations/members-query";

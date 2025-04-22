@@ -12,7 +12,7 @@ packages:
     config:
       packaging: library
       commands:
-        # leeway executes the build and test step in the wrong order, so we need to call a special script that builds before testing
-        test: ["yarn", "test:leeway"]
+        # blazedock executes the build and test step in the wrong order, so we need to call a special script that builds before testing
+        test: ["yarn", "test:blazedock"]
       yarnLock: ${coreYarnLockBase}/../yarn.lock
       tsconfig: tsconfig.json

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -374,12 +374,12 @@ func (s *IDEServiceServer) ResolveWorkspaceConfig(ctx context.Context, req *api.
 
 	if os.Getenv("CONFIGCAT_SDK_KEY") != "" {
 		resp.Envvars = append(resp.Envvars, &api.EnvironmentVariable{
-			Name:  "GITPOD_CONFIGCAT_ENABLED",
+			Name:  "DEVPOD_CONFIGCAT_ENABLED",
 			Value: "true",
 		})
 	}
 
-	var wsConfig *devpodapi.GitpodConfig
+	var wsConfig *devpodapi.DevpodConfig
 
 	if req.WorkspaceConfig != "" {
 		if err := json.Unmarshal([]byte(req.WorkspaceConfig), &wsConfig); err != nil {
@@ -453,11 +453,11 @@ func (s *IDEServiceServer) ResolveWorkspaceConfig(ctx context.Context, req *api.
 
 		if preferToolbox {
 			preferToolboxEnv := api.EnvironmentVariable{
-				Name:  "GITPOD_PREFER_TOOLBOX",
+				Name:  "DEVPOD_PREFER_TOOLBOX",
 				Value: "true",
 			}
 			debuggingEnv := api.EnvironmentVariable{
-				Name:  "GITPOD_TOOLBOX_DEBUGGING",
+				Name:  "DEVPOD_TOOLBOX_DEBUGGING",
 				Value: s.experimentsClient.GetStringValue(ctx, "enable_experimental_jbtb_debugging", "", experiments.Attributes{UserID: req.User.Id}),
 			}
 			resp.Envvars = append(resp.Envvars, &preferToolboxEnv, &debuggingEnv)
@@ -471,7 +471,7 @@ func (s *IDEServiceServer) ResolveWorkspaceConfig(ctx context.Context, req *api.
 				// user's settings for backward compatibility but in the future
 				// we want to make it represent the actual IDE.
 				ideAlias := api.EnvironmentVariable{
-					Name:  "GITPOD_IDE_ALIAS",
+					Name:  "DEVPOD_IDE_ALIAS",
 					Value: userIdeName,
 				}
 				resp.Envvars = append(resp.Envvars, &ideAlias)
@@ -567,7 +567,7 @@ func (s *IDEServiceServer) ResolveWorkspaceConfig(ctx context.Context, req *api.
 	return
 }
 
-func getPrebuilds(config *devpodapi.GitpodConfig, alias string) *devpodapi.Prebuilds {
+func getPrebuilds(config *devpodapi.DevpodConfig, alias string) *devpodapi.Prebuilds {
 	if config == nil || config.Jetbrains == nil {
 		return nil
 	}
@@ -578,7 +578,7 @@ func getPrebuilds(config *devpodapi.GitpodConfig, alias string) *devpodapi.Prebu
 	return productConfig.Prebuilds
 }
 
-func getProductConfig(config *devpodapi.GitpodConfig, alias string) *devpodapi.JetbrainsProduct {
+func getProductConfig(config *devpodapi.DevpodConfig, alias string) *devpodapi.JetbrainsProduct {
 	defer func() {
 		if err := recover(); err != nil {
 			log.WithField("error", err).WithField("alias", alias).Error("failed to extract JB product config")

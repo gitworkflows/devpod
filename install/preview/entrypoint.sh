@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2022 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -26,18 +26,18 @@ fi
 REQUIRED_MEM_KB=$((6 * 1024 * 1024))
 total_mem_kb=$(awk '/MemTotal:/ {print $2}' /proc/meminfo)
 if [ "${total_mem_kb}" -lt "${REQUIRED_MEM_KB}" ]; then
-    echo "Gitpod local preview requires a system with at least 6GB of memory"
+    echo "Devpod local preview requires a system with at least 6GB of memory"
     exit 1
 fi
 
 REQUIRED_CORES=4
 total_cores=$(nproc)
 if [ "${total_cores}" -lt "${REQUIRED_CORES}" ]; then
-    echo "Gitpod local preview requires a system with at least 4 CPU Cores"
+    echo "Devpod local preview requires a system with at least 4 CPU Cores"
     exit 1
 fi
 
-echo "Gitpod Domain: $DOMAIN"
+echo "Devpod Domain: $DOMAIN"
 
 # With cgroupv2, We need to move the k3s processes into the
 # init group when we override the entrypoint in the container
@@ -239,11 +239,11 @@ rm -rf /var/lib/rancher/k3s/server/manifests/devpod
 echo "manifests generated"
 # waits for devpod pods to be ready, and manually runs the `devpod-telemetry` cronjob
 run_telemetry(){
-  # wait for the k3s cluster to be ready and Gitpod workloads are added
+  # wait for the k3s cluster to be ready and Devpod workloads are added
   sleep 100
-  # indefinitely wait for Gitpod pods to be ready
+  # indefinitely wait for Devpod pods to be ready
   kubectl wait --timeout=-1s --for=condition=ready pod -l app=devpod,component!=migrations
-  echo "Gitpod pods are ready"
+  echo "Devpod pods are ready"
   # honour DO_NOT_TRACK if set
   if [ -n "${DO_NOT_TRACK}" ] && [ "${DO_NOT_TRACK}" -eq 1 ]; then
     # suspend the cronjob
@@ -257,9 +257,9 @@ run_telemetry(){
 run_telemetry 2>&1 &
 
 /bin/k3s server --disable traefik \
-  --node-label devpod.io/workload_meta=true \
-  --node-label devpod.io/workload_ide=true \
-  --node-label devpod.io/workload_workspace_services=true \
-  --node-label devpod.io/workload_services=true \
-  --node-label devpod.io/workload_workspace_regular=true \
-  --node-label devpod.io/workload_workspace_headless=true
+  --node-label devpod.khulnasoft.com/workload_meta=true \
+  --node-label devpod.khulnasoft.com/workload_ide=true \
+  --node-label devpod.khulnasoft.com/workload_workspace_services=true \
+  --node-label devpod.khulnasoft.com/workload_services=true \
+  --node-label devpod.khulnasoft.com/workload_workspace_regular=true \
+  --node-label devpod.khulnasoft.com/workload_workspace_headless=true

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,7 +7,7 @@
 import "mocha";
 import * as chai from "chai";
 import { ConfigInferrer, Context } from "./config-inferrer";
-import { WorkspaceConfig } from "@devpod/devpod-protocol";
+import { WorkspaceConfig } from "@khulnasoft/devpod-protocol";
 
 function context(files: { [path: string]: string }): Context {
     const cache = new Set<string>();

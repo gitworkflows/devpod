@@ -1,28 +1,28 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TypeORM } from "@devpod/devpod-db/lib";
-import { GitpodTokenType, Organization, User } from "@devpod/devpod-protocol";
-import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TypeORM } from "@khulnasoft/devpod-db/lib";
+import { DevpodTokenType, Organization, User } from "@khulnasoft/devpod-protocol";
+import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";
 import { createTestContainer } from "../test/service-testing-container-module";
-import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
+import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
 import { OrganizationService } from "../orgs/organization-service";
 import { UserService } from "./user-service";
 import { expectError } from "../test/expect-utils";
-import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { GitpodTokenService } from "./devpod-token-service";
+import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { DevpodTokenService } from "./devpod-token-service";
 
 const expect = chai.expect;
 
-describe("GitpodTokenService", async () => {
+describe("DevpodTokenService", async () => {
     let container: Container;
-    let gs: GitpodTokenService;
+    let gs: DevpodTokenService;
 
     let member: User;
     let stranger: User;
@@ -53,7 +53,7 @@ describe("GitpodTokenService", async () => {
             },
         });
 
-        gs = container.get(GitpodTokenService);
+        gs = container.get(DevpodTokenService);
     });
 
     afterEach(async () => {
@@ -64,67 +64,67 @@ describe("GitpodTokenService", async () => {
     });
 
     it("should generate a new devpod token", async () => {
-        const resp1 = await gs.getGitpodTokens(member.id, member.id);
+        const resp1 = await gs.getDevpodTokens(member.id, member.id);
         expect(resp1.length).to.equal(0);
 
-        await gs.generateNewGitpodToken(member.id, member.id, { name: "token1", type: GitpodTokenType.API_AUTH_TOKEN });
+        await gs.generateNewDevpodToken(member.id, member.id, { name: "token1", type: DevpodTokenType.API_AUTH_TOKEN });
 
-        const resp2 = await gs.getGitpodTokens(member.id, member.id);
+        const resp2 = await gs.getDevpodTokens(member.id, member.id);
         expect(resp2.length).to.equal(1);
 
-        await expectError(ErrorCodes.NOT_FOUND, gs.getGitpodTokens(stranger.id, member.id));
+        await expectError(ErrorCodes.NOT_FOUND, gs.getDevpodTokens(stranger.id, member.id));
         await expectError(
             ErrorCodes.NOT_FOUND,
-            gs.generateNewGitpodToken(stranger.id, member.id, { name: "token2", type: GitpodTokenType.API_AUTH_TOKEN }),
+            gs.generateNewDevpodToken(stranger.id, member.id, { name: "token2", type: DevpodTokenType.API_AUTH_TOKEN }),
         );
     });
 
     it("should list devpod tokens", async () => {
-        await gs.generateNewGitpodToken(member.id, member.id, { name: "token1", type: GitpodTokenType.API_AUTH_TOKEN });
-        await gs.generateNewGitpodToken(member.id, member.id, { name: "token2", type: GitpodTokenType.API_AUTH_TOKEN });
+        await gs.generateNewDevpodToken(member.id, member.id, { name: "token1", type: DevpodTokenType.API_AUTH_TOKEN });
+        await gs.generateNewDevpodToken(member.id, member.id, { name: "token2", type: DevpodTokenType.API_AUTH_TOKEN });
 
-        const tokens = await gs.getGitpodTokens(member.id, member.id);
+        const tokens = await gs.getDevpodTokens(member.id, member.id);
         expect(tokens.length).to.equal(2);
         expect(tokens.some((t) => t.name === "token1")).to.be.true;
         expect(tokens.some((t) => t.name === "token2")).to.be.true;
 
-        await expectError(ErrorCodes.NOT_FOUND, gs.getGitpodTokens(stranger.id, member.id));
+        await expectError(ErrorCodes.NOT_FOUND, gs.getDevpodTokens(stranger.id, member.id));
     });
 
     it("should return devpod token", async () => {
-        await gs.generateNewGitpodToken(member.id, member.id, {
+        await gs.generateNewDevpodToken(member.id, member.id, {
             name: "token1",
-            type: GitpodTokenType.API_AUTH_TOKEN,
+            type: DevpodTokenType.API_AUTH_TOKEN,
             scopes: ["user:email", "read:user"],
         });
 
-        const tokens = await gs.getGitpodTokens(member.id, member.id);
+        const tokens = await gs.getDevpodTokens(member.id, member.id);
         expect(tokens.length).to.equal(1);
 
-        const token = await gs.findGitpodToken(member.id, member.id, tokens[0].tokenHash);
+        const token = await gs.findDevpodToken(member.id, member.id, tokens[0].tokenHash);
         expect(token).to.not.be.undefined;
 
-        await expectError(ErrorCodes.NOT_FOUND, gs.findGitpodToken(stranger.id, member.id, tokens[0].tokenHash));
+        await expectError(ErrorCodes.NOT_FOUND, gs.findDevpodToken(stranger.id, member.id, tokens[0].tokenHash));
     });
 
     it("should delete devpod tokens", async () => {
-        await gs.generateNewGitpodToken(member.id, member.id, {
+        await gs.generateNewDevpodToken(member.id, member.id, {
             name: "token1",
-            type: GitpodTokenType.API_AUTH_TOKEN,
+            type: DevpodTokenType.API_AUTH_TOKEN,
         });
-        await gs.generateNewGitpodToken(member.id, member.id, {
+        await gs.generateNewDevpodToken(member.id, member.id, {
             name: "token2",
-            type: GitpodTokenType.API_AUTH_TOKEN,
+            type: DevpodTokenType.API_AUTH_TOKEN,
         });
 
-        const tokens = await gs.getGitpodTokens(member.id, member.id);
+        const tokens = await gs.getDevpodTokens(member.id, member.id);
         expect(tokens.length).to.equal(2);
 
-        await gs.deleteGitpodToken(member.id, member.id, tokens[0].tokenHash);
+        await gs.deleteDevpodToken(member.id, member.id, tokens[0].tokenHash);
 
-        const tokens2 = await gs.getGitpodTokens(member.id, member.id);
+        const tokens2 = await gs.getDevpodTokens(member.id, member.id);
         expect(tokens2.length).to.equal(1);
 
-        await expectError(ErrorCodes.NOT_FOUND, gs.deleteGitpodToken(stranger.id, member.id, tokens[1].tokenHash));
+        await expectError(ErrorCodes.NOT_FOUND, gs.deleteDevpodToken(stranger.id, member.id, tokens[1].tokenHash));
     });
 });

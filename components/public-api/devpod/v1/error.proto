@@ -24,7 +24,7 @@ message FailedPreconditionDetails {
     PaymentSpendingLimitReachedError payment_spending_limit_reached = 1;
     InvalidCostCenterError invalid_cost_center = 2;
     TooManyRunningWorkspacesError too_many_running_workspaces = 3;
-    InvalidGitpodYMLError invalid_devpod_yml = 4;
+    InvalidDevpodYMLError invalid_devpod_yml = 4;
     RepositoryNotFoundError repository_not_found = 5;
     RepositoryUnauthorizedError repository_unauthorized = 6;
     ImageBuildLogsNotYetAvailableError image_build_logs_not_yet_available = 7;
@@ -40,7 +40,7 @@ message InvalidCostCenterError {
 
 message TooManyRunningWorkspacesError {}
 
-message InvalidGitpodYMLError {
+message InvalidDevpodYMLError {
   repeated string violations = 1;
 }
 

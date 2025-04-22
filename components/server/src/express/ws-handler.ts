@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -11,10 +11,10 @@ import * as https from "https";
 import * as url from "url";
 import * as net from "net";
 import { WsLayer } from "./ws-layer";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { increaseHttpRequestCounter } from "../prometheus-metrics";
 import { Disposable } from "vscode-ws-jsonrpc";
-import { DisposableCollection } from "@devpod/devpod-protocol";
+import { DisposableCollection } from "@khulnasoft/devpod-protocol";
 
 export type HttpServer = http.Server | https.Server;
 export type RouteMatcher = string | RegExp;

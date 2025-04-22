@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { PrimaryColumn, Column, Entity, Index } from "typeorm";
 import { TypeORM } from "../typeorm";
-import { AuthProviderEntry, OAuth2Config } from "@devpod/devpod-protocol";
+import { AuthProviderEntry, OAuth2Config } from "@khulnasoft/devpod-protocol";
 import { Transformer } from "../transformer";
-import { getGlobalEncryptionService } from "@devpod/devpod-protocol/lib/encryption/encryption-service";
+import { getGlobalEncryptionService } from "@khulnasoft/devpod-protocol/lib/encryption/encryption-service";
 
 @Entity()
 export class DBAuthProviderEntry implements AuthProviderEntry {

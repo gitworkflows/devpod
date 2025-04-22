@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -172,13 +172,13 @@ export function BrowserExtensionBanner() {
                             className="gp-link"
                             rel="noreferrer"
                         >
-                            Install the Gitpod extension
+                            Install the Devpod extension
                         </a>{" "}
                         to launch workspaces from {scmProviderString}.
                     </span>
                 </div>
                 <img
-                    alt="A button that says Gitpod"
+                    alt="A button that says Devpod"
                     src={browserExtensionImages[usedProviders.at(0)!]}
                     className="w-32 h-fit self-end mb-4 mr-8"
                 />

@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TypeORM, WorkspaceDB } from "@devpod/devpod-db/lib";
-import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
+import { TypeORM, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
+import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
 import {
     CommitContext,
     Organization,
@@ -13,9 +13,9 @@ import {
     User,
     WorkspaceConfig,
     WorkspaceInstancePort,
-} from "@devpod/devpod-protocol";
-import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
-import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+} from "@khulnasoft/devpod-protocol";
+import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";

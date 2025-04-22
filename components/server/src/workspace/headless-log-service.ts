@@ -1,40 +1,40 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WorkspaceDB } from "@devpod/devpod-db/lib/workspace-db";
-import { HeadlessLogUrls } from "@devpod/devpod-protocol/lib/headless-workspace-log";
+import { WorkspaceDB } from "@khulnasoft/devpod-db/lib/workspace-db";
+import { HeadlessLogUrls } from "@khulnasoft/devpod-protocol/lib/headless-workspace-log";
 import { inject, injectable } from "inversify";
 import * as url from "url";
-import { Status, StatusServiceClient } from "@devpod/supervisor-api-grpcweb/lib/status_pb_service";
+import { Status, StatusServiceClient } from "@khulnasoft/supervisor-api-grpcweb/lib/status_pb_service";
 import {
     TasksStatusRequest,
     TasksStatusResponse,
     TaskState,
     TaskStatus,
-} from "@devpod/supervisor-api-grpcweb/lib/status_pb";
-import { ResponseStream } from "@devpod/supervisor-api-grpcweb/lib/terminal_pb_service";
-import { ListenToOutputRequest, ListenToOutputResponse } from "@devpod/supervisor-api-grpcweb/lib/task_pb";
-import { TaskServiceClient } from "@devpod/supervisor-api-grpcweb/lib/task_pb_service";
-import { WorkspaceInstance } from "@devpod/devpod-protocol";
+} from "@khulnasoft/supervisor-api-grpcweb/lib/status_pb";
+import { ResponseStream } from "@khulnasoft/supervisor-api-grpcweb/lib/terminal_pb_service";
+import { ListenToOutputRequest, ListenToOutputResponse } from "@khulnasoft/supervisor-api-grpcweb/lib/task_pb";
+import { TaskServiceClient } from "@khulnasoft/supervisor-api-grpcweb/lib/task_pb_service";
+import { WorkspaceInstance } from "@khulnasoft/devpod-protocol";
 import * as grpc from "@grpc/grpc-js";
 import { Config } from "../config";
 import * as browserHeaders from "browser-headers";
-import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
+import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { WebsocketTransport } from "../util/grpc-web-ws-transport";
-import { Deferred } from "@devpod/devpod-protocol/lib/util/deferred";
+import { Deferred } from "@khulnasoft/devpod-protocol/lib/util/deferred";
 import {
     ListLogsRequest,
     ListLogsResponse,
     LogDownloadURLRequest,
     LogDownloadURLResponse,
-} from "@devpod/content-service/lib/headless-log_pb";
+} from "@khulnasoft/content-service/lib/headless-log_pb";
 import { CachingHeadlessLogServiceClientProvider } from "../util/content-service-sugar";
 import { ctxIsAborted, ctxOnAbort } from "../util/request-context";
-import { PREBUILD_LOGS_PATH_PREFIX as PREBUILD_LOGS_PATH_PREFIX_common } from "@devpod/public-api-common/lib/prebuild-utils";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { PREBUILD_LOGS_PATH_PREFIX as PREBUILD_LOGS_PATH_PREFIX_common } from "@khulnasoft/public-api-common/lib/prebuild-utils";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 export const HEADLESS_LOGS_PATH_PREFIX = "/headless-logs";
 export const HEADLESS_LOG_DOWNLOAD_PATH_PREFIX = "/headless-log-download";

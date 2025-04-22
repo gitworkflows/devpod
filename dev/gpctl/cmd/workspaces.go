@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -27,7 +27,7 @@ import (
 // workspacesCmd represents the client command
 var workspacesCmd = &cobra.Command{
 	Use:   "workspaces",
-	Short: "Controls and inspects workspaces in the Gitpod installation",
+	Short: "Controls and inspects workspaces in the Devpod installation",
 	Args:  cobra.ExactArgs(1),
 }
 

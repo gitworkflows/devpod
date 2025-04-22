@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -93,13 +93,13 @@ type Configuration struct {
 	// workspace. Available fields are:
 	// - `ID` which is the workspace ID,
 	// - `Prefix` which is the workspace's service prefix
-	// - `Host` which is the GitpodHostURL
+	// - `Host` which is the DevpodHostURL
 	WorkspaceURLTemplate string `json:"urlTemplate"`
 	// WorkspaceURLTemplate is a Go template which resolves to the external URL of the
 	// workspace port. Available fields are:
 	// - `ID` which is the workspace ID,
 	// - `Prefix` which is the workspace's service prefix
-	// - `Host` which is the GitpodHostURL
+	// - `Host` which is the DevpodHostURL
 	// - `WorkspacePort` which is the workspace port
 	// - `IngressPort` which is the publicly accessile port
 	WorkspacePortURLTemplate string `json:"portUrlTemplate"`
@@ -107,8 +107,8 @@ type Configuration struct {
 	WorkspaceHostPath string `json:"workspaceHostPath"`
 	// HeartbeatInterval is the time in seconds in which Theia sends a heartbeat if the user is active
 	HeartbeatInterval util.Duration `json:"heartbeatInterval"`
-	// Is the URL under which Gitpod is installed (e.g. https://devpod.io)
-	GitpodHostURL string `json:"hostURL"`
+	// Is the URL under which Devpod is installed (e.g. https://devpod.khulnasoft.com)
+	DevpodHostURL string `json:"hostURL"`
 	// EventTraceLog is a path to file where we'll write the monitor event trace log to
 	EventTraceLog string `json:"eventTraceLog,omitempty"`
 	// ReconnectionInterval configures the time we wait until we reconnect to the various other services
@@ -119,7 +119,7 @@ type Configuration struct {
 	WorkspaceDaemon WorkspaceDaemonConfiguration `json:"wsdaemon"`
 	// RegistryFacadeHost is the host (possibly including port) on which the registry facade resolves
 	RegistryFacadeHost string `json:"registryFacadeHost"`
-	// Cluster host under which workspaces are served, e.g. ws-eu11.devpod.io
+	// Cluster host under which workspaces are served, e.g. ws-eu11.devpod.khulnasoft.com
 	WorkspaceClusterHost string `json:"workspaceClusterHost"`
 	// WorkspaceClasses provide different resource classes for workspaces
 	WorkspaceClasses map[string]*WorkspaceClass `json:"workspaceClass"`
@@ -246,7 +246,7 @@ func (c *Configuration) Validate() error {
 		ozzo.Field(&c.WorkspaceURLTemplate, ozzo.Required, validWorkspaceURLTemplate),
 		ozzo.Field(&c.WorkspaceHostPath, ozzo.Required),
 		ozzo.Field(&c.HeartbeatInterval, ozzo.Required),
-		ozzo.Field(&c.GitpodHostURL, ozzo.Required, is.URL),
+		ozzo.Field(&c.DevpodHostURL, ozzo.Required, is.URL),
 		ozzo.Field(&c.ReconnectionInterval, ozzo.Required),
 	)
 	if err != nil {
@@ -294,7 +294,7 @@ var validWorkspaceURLTemplate = ozzo.By(func(o interface{}) error {
 		return xerrors.Errorf("field should be string")
 	}
 
-	wsurl, err := RenderWorkspaceURL(s, "foo", "bar", "devpod.io")
+	wsurl, err := RenderWorkspaceURL(s, "foo", "bar", "devpod.khulnasoft.com")
 	if err != nil {
 		return xerrors.Errorf("cannot render URL: %w", err)
 	}

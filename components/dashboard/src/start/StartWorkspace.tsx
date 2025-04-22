@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { DisposableCollection, RateLimiterError, WorkspaceImageBuild } from "@devpod/devpod-protocol";
-import { IDEOptions } from "@devpod/devpod-protocol/lib/ide-protocol";
-import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { DisposableCollection, RateLimiterError, WorkspaceImageBuild } from "@khulnasoft/devpod-protocol";
+import { IDEOptions } from "@khulnasoft/devpod-protocol/lib/ide-protocol";
+import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import EventEmitter from "events";
 import * as queryString from "query-string";
 import React, { Suspense, useEffect, useMemo } from "react";
@@ -15,7 +15,7 @@ import Arrow from "../components/Arrow";
 import ContextMenu from "../components/ContextMenu";
 import PendingChangesDropdown from "../components/PendingChangesDropdown";
 import PrebuildLogs from "../components/PrebuildLogs";
-import { getGitpodService, devpodHostUrl, getIDEFrontendService, IDEFrontendService } from "../service/service";
+import { getDevpodService, devpodHostUrl, getIDEFrontendService, IDEFrontendService } from "../service/service";
 import { StartPage, StartPhase, StartWorkspaceError } from "./StartPage";
 import ConnectToSSHModal from "../workspaces/ConnectToSSHModal";
 import Alert from "../components/Alert";
@@ -32,7 +32,7 @@ import {
     Workspace,
     WorkspacePhase_Phase,
     WorkspaceSpec_WorkspaceType,
-} from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { PartialMessage } from "@bufbuild/protobuf";
 import { trackEvent } from "../Analytics";
 import { fromWorkspaceName } from "../workspaces/RenameWorkspaceModal";
@@ -125,7 +125,7 @@ export default class StartWorkspace extends React.Component<StartWorkspaceProps,
     private readonly toDispose = new DisposableCollection();
     componentWillMount() {
         if (this.props.runsInIFrame) {
-            this.ideFrontendService = getIDEFrontendService(this.props.workspaceId, sessionId, getGitpodService());
+            this.ideFrontendService = getIDEFrontendService(this.props.workspaceId, sessionId, getDevpodService());
             this.toDispose.push(
                 this.ideFrontendService.onSetState((data) => {
                     if (data.ideFrontendFailureCause) {
@@ -167,7 +167,7 @@ export default class StartWorkspace extends React.Component<StartWorkspaceProps,
             );
             this.toDispose.push(watchDispose);
             this.toDispose.push(
-                getGitpodService().registerClient({
+                getDevpodService().registerClient({
                     notifyDidOpenConnection: () => this.fetchWorkspaceInfo(undefined),
                 }),
             );
@@ -258,7 +258,7 @@ export default class StartWorkspace extends React.Component<StartWorkspaceProps,
     }
 
     /**
-     * TODO(gpl) Ideally this can be pushed into the GitpodService implementation. But to get started we hand-roll it here.
+     * TODO(gpl) Ideally this can be pushed into the DevpodService implementation. But to get started we hand-roll it here.
      * @param workspaceId
      * @param options
      * @returns
@@ -332,7 +332,7 @@ export default class StartWorkspace extends React.Component<StartWorkspaceProps,
      * what support it was started with.
      */
     protected async fetchIDEOptions() {
-        const ideOptions = await getGitpodService().server.getIDEOptions();
+        const ideOptions = await getDevpodService().server.getIDEOptions();
         this.setState({ ideOptions });
     }
 
@@ -821,7 +821,7 @@ function ImageBuildView(props: ImageBuildViewProps) {
             }
             registered = true;
 
-            getGitpodService()
+            getDevpodService()
                 .server.watchWorkspaceImageBuildLogs(props.workspaceId)
                 .catch((err) => {
                     registered = false;
@@ -833,7 +833,7 @@ function ImageBuildView(props: ImageBuildViewProps) {
         };
         watchBuild();
 
-        const toDispose = getGitpodService().registerClient({
+        const toDispose = getDevpodService().registerClient({
             notifyDidOpenConnection: () => {
                 registered = false; // new connection, we're not registered anymore
                 watchBuild();
@@ -868,7 +868,7 @@ function ImageBuildView(props: ImageBuildViewProps) {
                             💡 You can use the <code>gp validate</code> command to validate the workspace configuration
                             from the editor terminal. &nbsp;
                             <a
-                                href="https://www.devpod.io/docs/configure/workspaces#validate-your-devpod-configuration"
+                                href="https://www.devpod.khulnasoft.com/docs/configure/workspaces#validate-your-devpod-configuration"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="gp-link"

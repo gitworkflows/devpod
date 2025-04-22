@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,16 +7,16 @@
 import { inject, injectable, interfaces } from "inversify";
 import { WorkspaceClusterInfo, WorkspaceManagerBridge, WorkspaceManagerBridgeFactory } from "./bridge";
 import { Configuration } from "./config";
-import { WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
-import { WorkspaceManagerClientProviderSource } from "@devpod/ws-manager/lib/client-provider-source";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { TLSConfig, WorkspaceClusterWoTLS } from "@devpod/devpod-protocol/lib/workspace-cluster";
-import { WorkspaceCluster } from "@devpod/devpod-protocol/lib/workspace-cluster";
-import { Queue } from "@devpod/devpod-protocol";
-import { defaultGRPCOptions } from "@devpod/devpod-protocol/lib/util/grpc";
+import { WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
+import { WorkspaceManagerClientProviderSource } from "@khulnasoft/ws-manager/lib/client-provider-source";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { TLSConfig, WorkspaceClusterWoTLS } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+import { WorkspaceCluster } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+import { Queue } from "@khulnasoft/devpod-protocol";
+import { defaultGRPCOptions } from "@khulnasoft/devpod-protocol/lib/util/grpc";
 import * as grpc from "@grpc/grpc-js";
 import { Metrics } from "./metrics";
-import { TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
+import { TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
 
 @injectable()
 export class BridgeController {

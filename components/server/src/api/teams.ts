@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { Code, ConnectError, ServiceImpl } from "@connectrpc/connect";
 import { inject, injectable } from "inversify";
-import { TeamsService as TeamServiceInterface } from "@devpod/public-api/lib/devpod/experimental/v1/teams_connect";
+import { TeamsService as TeamServiceInterface } from "@khulnasoft/public-api/lib/devpod/experimental/v1/teams_connect";
 import {
     CreateTeamRequest,
     CreateTeamResponse,
@@ -32,10 +32,10 @@ import {
     TeamRole,
     UpdateTeamMemberRequest,
     UpdateTeamMemberResponse,
-} from "@devpod/public-api/lib/devpod/experimental/v1/teams_pb";
-import { TeamDB } from "@devpod/devpod-db/lib";
+} from "@khulnasoft/public-api/lib/devpod/experimental/v1/teams_pb";
+import { TeamDB } from "@khulnasoft/devpod-db/lib";
 import { validate } from "uuid";
-import { OrgMemberInfo, Organization, TeamMembershipInvite } from "@devpod/devpod-protocol";
+import { OrgMemberInfo, Organization, TeamMembershipInvite } from "@khulnasoft/devpod-protocol";
 import { Timestamp } from "@bufbuild/protobuf";
 
 @injectable()

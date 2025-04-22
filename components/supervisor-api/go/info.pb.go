@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -132,15 +132,15 @@ type WorkspaceInfoResponse struct {
 	WorkspaceLocation isWorkspaceInfoResponse_WorkspaceLocation `protobuf_oneof:"workspace_location"`
 	// user_home is the path to the user's home.
 	UserHome string `protobuf:"bytes,6,opt,name=user_home,json=userHome,proto3" json:"user_home,omitempty"`
-	// GitpodAPI provides information to reach the Gitpod server API.
-	GitpodApi *WorkspaceInfoResponse_GitpodAPI `protobuf:"bytes,7,opt,name=devpod_api,json=devpodApi,proto3" json:"devpod_api,omitempty"`
-	// devpod_host provides Gitpod host URL.
-	GitpodHost string `protobuf:"bytes,8,opt,name=devpod_host,json=devpodHost,proto3" json:"devpod_host,omitempty"`
+	// DevpodAPI provides information to reach the Devpod server API.
+	DevpodApi *WorkspaceInfoResponse_DevpodAPI `protobuf:"bytes,7,opt,name=devpod_api,json=devpodApi,proto3" json:"devpod_api,omitempty"`
+	// devpod_host provides Devpod host URL.
+	DevpodHost string `protobuf:"bytes,8,opt,name=devpod_host,json=devpodHost,proto3" json:"devpod_host,omitempty"`
 	// workspace_context_url is an URL for which the workspace was created.
 	WorkspaceContextUrl string `protobuf:"bytes,9,opt,name=workspace_context_url,json=workspaceContextUrl,proto3" json:"workspace_context_url,omitempty"`
 	// repository is a repository from which this workspace was created
 	Repository *WorkspaceInfoResponse_Repository `protobuf:"bytes,10,opt,name=repository,proto3" json:"repository,omitempty"`
-	// workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+	// workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
 	WorkspaceClusterHost string `protobuf:"bytes,11,opt,name=workspace_cluster_host,json=workspaceClusterHost,proto3" json:"workspace_cluster_host,omitempty"`
 	// workspace_url is an URL for which the workspace is accessed.
 	WorkspaceUrl string `protobuf:"bytes,12,opt,name=workspace_url,json=workspaceUrl,proto3" json:"workspace_url,omitempty"`
@@ -239,16 +239,16 @@ func (x *WorkspaceInfoResponse) GetUserHome() string {
 	return ""
 }
 
-func (x *WorkspaceInfoResponse) GetGitpodApi() *WorkspaceInfoResponse_GitpodAPI {
+func (x *WorkspaceInfoResponse) GetDevpodApi() *WorkspaceInfoResponse_DevpodAPI {
 	if x != nil {
-		return x.GitpodApi
+		return x.DevpodApi
 	}
 	return nil
 }
 
-func (x *WorkspaceInfoResponse) GetGitpodHost() string {
+func (x *WorkspaceInfoResponse) GetDevpodHost() string {
 	if x != nil {
-		return x.GitpodHost
+		return x.DevpodHost
 	}
 	return ""
 }
@@ -341,19 +341,19 @@ func (*WorkspaceInfoResponse_WorkspaceLocationFile) isWorkspaceInfoResponse_Work
 
 func (*WorkspaceInfoResponse_WorkspaceLocationFolder) isWorkspaceInfoResponse_WorkspaceLocation() {}
 
-type WorkspaceInfoResponse_GitpodAPI struct {
+type WorkspaceInfoResponse_DevpodAPI struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// endpoint is the websocket URL on which the token-accessible Gitpod API is served on
+	// endpoint is the websocket URL on which the token-accessible Devpod API is served on
 	Endpoint string `protobuf:"bytes,1,opt,name=endpoint,proto3" json:"endpoint,omitempty"`
 	// host is the host of the endpoint. Use this host to ask supervisor a token.
 	Host string `protobuf:"bytes,2,opt,name=host,proto3" json:"host,omitempty"`
 }
 
-func (x *WorkspaceInfoResponse_GitpodAPI) Reset() {
-	*x = WorkspaceInfoResponse_GitpodAPI{}
+func (x *WorkspaceInfoResponse_DevpodAPI) Reset() {
+	*x = WorkspaceInfoResponse_DevpodAPI{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_info_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -361,13 +361,13 @@ func (x *WorkspaceInfoResponse_GitpodAPI) Reset() {
 	}
 }
 
-func (x *WorkspaceInfoResponse_GitpodAPI) String() string {
+func (x *WorkspaceInfoResponse_DevpodAPI) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*WorkspaceInfoResponse_GitpodAPI) ProtoMessage() {}
+func (*WorkspaceInfoResponse_DevpodAPI) ProtoMessage() {}
 
-func (x *WorkspaceInfoResponse_GitpodAPI) ProtoReflect() protoreflect.Message {
+func (x *WorkspaceInfoResponse_DevpodAPI) ProtoReflect() protoreflect.Message {
 	mi := &file_info_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -379,19 +379,19 @@ func (x *WorkspaceInfoResponse_GitpodAPI) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use WorkspaceInfoResponse_GitpodAPI.ProtoReflect.Descriptor instead.
-func (*WorkspaceInfoResponse_GitpodAPI) Descriptor() ([]byte, []int) {
+// Deprecated: Use WorkspaceInfoResponse_DevpodAPI.ProtoReflect.Descriptor instead.
+func (*WorkspaceInfoResponse_DevpodAPI) Descriptor() ([]byte, []int) {
 	return file_info_proto_rawDescGZIP(), []int{1, 0}
 }
 
-func (x *WorkspaceInfoResponse_GitpodAPI) GetEndpoint() string {
+func (x *WorkspaceInfoResponse_DevpodAPI) GetEndpoint() string {
 	if x != nil {
 		return x.Endpoint
 	}
 	return ""
 }
 
-func (x *WorkspaceInfoResponse_GitpodAPI) GetHost() string {
+func (x *WorkspaceInfoResponse_DevpodAPI) GetHost() string {
 	if x != nil {
 		return x.Host
 	}
@@ -639,12 +639,12 @@ var file_info_proto_goTypes = []interface{}{
 	(DebugWorkspaceType)(0),                      // 0: supervisor.DebugWorkspaceType
 	(*WorkspaceInfoRequest)(nil),                 // 1: supervisor.WorkspaceInfoRequest
 	(*WorkspaceInfoResponse)(nil),                // 2: supervisor.WorkspaceInfoResponse
-	(*WorkspaceInfoResponse_GitpodAPI)(nil),      // 3: supervisor.WorkspaceInfoResponse.GitpodAPI
+	(*WorkspaceInfoResponse_DevpodAPI)(nil),      // 3: supervisor.WorkspaceInfoResponse.DevpodAPI
 	(*WorkspaceInfoResponse_Repository)(nil),     // 4: supervisor.WorkspaceInfoResponse.Repository
 	(*WorkspaceInfoResponse_WorkspaceClass)(nil), // 5: supervisor.WorkspaceInfoResponse.WorkspaceClass
 }
 var file_info_proto_depIdxs = []int32{
-	3, // 0: supervisor.WorkspaceInfoResponse.devpod_api:type_name -> supervisor.WorkspaceInfoResponse.GitpodAPI
+	3, // 0: supervisor.WorkspaceInfoResponse.devpod_api:type_name -> supervisor.WorkspaceInfoResponse.DevpodAPI
 	4, // 1: supervisor.WorkspaceInfoResponse.repository:type_name -> supervisor.WorkspaceInfoResponse.Repository
 	5, // 2: supervisor.WorkspaceInfoResponse.workspace_class:type_name -> supervisor.WorkspaceInfoResponse.WorkspaceClass
 	0, // 3: supervisor.WorkspaceInfoResponse.debug_workspace_type:type_name -> supervisor.DebugWorkspaceType
@@ -688,7 +688,7 @@ func file_info_proto_init() {
 			}
 		}
 		file_info_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WorkspaceInfoResponse_GitpodAPI); i {
+			switch v := v.(*WorkspaceInfoResponse_DevpodAPI); i {
 			case 0:
 				return &v.state
 			case 1:

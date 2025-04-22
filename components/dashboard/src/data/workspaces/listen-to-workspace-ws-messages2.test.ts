@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Disposable } from "@devpod/devpod-protocol";
+import { Disposable } from "@khulnasoft/devpod-protocol";
 import { WatchWorkspaceStatusCallback, watchWorkspaceStatus } from "./listen-to-workspace-ws-messages";
 import { WatchWorkspaceStatusPriority, watchWorkspaceStatusInOrder } from "./listen-to-workspace-ws-messages2";
 import {
     WatchWorkspaceStatusResponse,
     WorkspacePhase_Phase,
     WorkspaceStatus,
-} from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 
 jest.mock("./listen-to-workspace-ws-messages", () => ({
     watchWorkspaceStatus: jest.fn(),

@@ -1,18 +1,18 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { HandlerContext, ServiceImpl } from "@connectrpc/connect";
-import { AuditLogService as AuditLogServiceInterface } from "@devpod/public-api/lib/devpod/v1/auditlogs_connect";
-import { ListAuditLogsRequest, ListAuditLogsResponse } from "@devpod/public-api/lib/devpod/v1/auditlogs_pb";
+import { AuditLogService as AuditLogServiceInterface } from "@khulnasoft/public-api/lib/devpod/v1/auditlogs_connect";
+import { ListAuditLogsRequest, ListAuditLogsResponse } from "@khulnasoft/public-api/lib/devpod/v1/auditlogs_pb";
 import { inject, injectable } from "inversify";
 import { AuditLogService } from "../audit/AuditLogService";
 import { ctxUserId } from "../util/request-context";
-import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { parsePagination } from "@devpod/public-api-common/lib/public-api-pagination";
+import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { parsePagination } from "@khulnasoft/public-api-common/lib/public-api-pagination";
 import { validate as uuidValidate } from "uuid";
 
 @injectable()

@@ -1,15 +1,15 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { IssueContext, User, PullRequestContext, Repository, Token } from "@devpod/devpod-protocol";
+import { IssueContext, User, PullRequestContext, Repository, Token } from "@khulnasoft/devpod-protocol";
 import {
     GitHubOAuthScopes,
     GitLabOAuthScopes,
     AzureDevOpsOAuthScopes,
-} from "@devpod/public-api-common/lib/auth-providers";
+} from "@khulnasoft/public-api-common/lib/auth-providers";
 import { AzureDevOpsContextParser } from "../azure-devops/azure-context-parser";
 import { AzureDevOpsApi } from "../azure-devops/azure-api";
 import { AuthProviderParams } from "../auth/auth-provider";
@@ -33,13 +33,13 @@ export namespace DevData {
                     authId: "33891423",
                     authName: "somefox",
                     authProviderId: "Public-GitHub",
-                    primaryEmail: "somefox@devpod.io",
+                    primaryEmail: "somefox@khulnasoft.com",
                 },
                 {
                     authId: "3171928",
                     authName: "somefox",
                     authProviderId: "Public-GitLab",
-                    primaryEmail: "somefox@devpod.io",
+                    primaryEmail: "somefox@khulnasoft.com",
                 },
             ],
             additionalData: {
@@ -52,13 +52,13 @@ export namespace DevData {
     }
 
     export function createGitHubTestToken(): Token {
-        if (!process.env.GITPOD_TEST_TOKEN_GITHUB) {
+        if (!process.env.DEVPOD_TEST_TOKEN_GITHUB) {
             console.error(
-                `GITPOD_TEST_TOKEN_GITHUB env var is not set\n\n\t export GITPOD_TEST_TOKEN_GITHUB='{"username": "devpod-test", "value": $GITHUB_TOKEN}'`,
+                `DEVPOD_TEST_TOKEN_GITHUB env var is not set\n\n\t export DEVPOD_TEST_TOKEN_GITHUB='{"username": "devpod-test", "value": $GITHUB_TOKEN}'`,
             );
         }
         return {
-            ...getTokenFromEnv("GITPOD_TEST_TOKEN_GITHUB"),
+            ...getTokenFromEnv("DEVPOD_TEST_TOKEN_GITHUB"),
             scopes: [GitHubOAuthScopes.EMAIL, GitHubOAuthScopes.PUBLIC, GitHubOAuthScopes.PRIVATE],
         };
     }
@@ -78,21 +78,21 @@ export namespace DevData {
 
     export function createGitlabTestToken(): Token {
         return {
-            ...getTokenFromEnv("GITPOD_TEST_TOKEN_GITLAB"),
+            ...getTokenFromEnv("DEVPOD_TEST_TOKEN_GITLAB"),
             scopes: [GitLabOAuthScopes.READ_USER, GitLabOAuthScopes.API],
         };
     }
 
     export function createAzureDevOpsTestToken(): Token {
         return {
-            ...getTokenFromEnv("GITPOD_TEST_TOKEN_AZURE_DEVOPS"),
+            ...getTokenFromEnv("DEVPOD_TEST_TOKEN_AZURE_DEVOPS"),
             scopes: [...AzureDevOpsOAuthScopes.DEFAULT],
         };
     }
 
     export function createBitbucketTestToken(): Token {
         const result = {
-            ...getTokenFromEnv("GITPOD_TEST_TOKEN_BITBUCKET"),
+            ...getTokenFromEnv("DEVPOD_TEST_TOKEN_BITBUCKET"),
             scopes: [],
         };
         return result;
@@ -144,7 +144,7 @@ export namespace DevData {
 }
 
 export namespace DevTestHelper {
-    export const AzureTestEnv = "GITPOD_TEST_TOKEN_AZURE_DEVOPS";
+    export const AzureTestEnv = "DEVPOD_TEST_TOKEN_AZURE_DEVOPS";
     export function echoAzureTestTips() {
         if (!process.env[AzureTestEnv]) {
             console.warn(

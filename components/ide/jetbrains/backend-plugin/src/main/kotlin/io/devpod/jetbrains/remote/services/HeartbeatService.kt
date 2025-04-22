@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -9,7 +9,7 @@ import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.service
 import com.intellij.openapi.diagnostic.thisLogger
 import io.devpod.devpodprotocol.api.entities.SendHeartBeatOptions
-import io.devpod.jetbrains.remote.GitpodManager
+import io.devpod.jetbrains.remote.DevpodManager
 import io.devpod.jetbrains.remote.services.ControllerStatusService.ControllerStatus
 import kotlinx.coroutines.*
 import kotlinx.coroutines.future.await
@@ -18,7 +18,7 @@ import kotlin.random.Random.Default.nextInt
 @Service
 class HeartbeatService : Disposable {
 
-    private val manager = service<GitpodManager>()
+    private val manager = service<DevpodManager>()
 
     private val job = GlobalScope.launch {
         val info = manager.pendingInfo.await()

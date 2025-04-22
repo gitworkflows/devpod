@@ -1,19 +1,19 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { injectable } from "inversify";
 import express from "express";
-import { AuthProviderInfo } from "@devpod/devpod-protocol";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { AuthProviderInfo } from "@khulnasoft/devpod-protocol";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { AuthUserSetup } from "../auth/auth-provider";
 import { Octokit } from "@octokit/rest";
 import { GitHubApiError } from "./api";
 import { GenericAuthProvider } from "../auth/generic-auth-provider";
 import { oauthUrls } from "./github-urls";
-import { GitHubOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
+import { GitHubOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
 
 @injectable()
 export class GitHubAuthProvider extends GenericAuthProvider {
@@ -124,7 +124,7 @@ export class GitHubAuthProvider extends GenericAuthProvider {
                         return result[0].email;
                     }
                 }
-                // otherwise use GitHub's primary email as Gitpod's primary email
+                // otherwise use GitHub's primary email as Devpod's primary email
                 return emails.filter((e) => e.primary)[0].email;
             };
 

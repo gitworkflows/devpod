@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -42,7 +42,7 @@ func getContext(settings Settings) context.Context {
 	signal.Notify(cSignal, os.Interrupt, syscall.SIGTERM)
 	go func() {
 		<-cSignal
-		settings.Write("Release of Gitpod has been cancelled.")
+		settings.Write("Release of Devpod has been cancelled.")
 		cancel()
 	}()
 

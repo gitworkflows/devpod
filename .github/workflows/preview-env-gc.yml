@@ -31,14 +31,14 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Compute matrix
         id: set-matrix
         shell: bash
         run: |
           set -euo pipefail
 
-          leeway run dev/preview/previewctl:install
+          blazedock run dev/preview/previewctl:install
 
           previewctl list stale | jq --null-input --raw-input --compact-output '[inputs | select(length>0)]' > /tmp/stale-json
           echo "names=$(cat /tmp/stale-json)" >> $GITHUB_OUTPUT
@@ -60,7 +60,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Delete preview environment ${{ matrix.name }}
         uses: ./.github/actions/delete-preview
         with:

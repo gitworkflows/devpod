@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Usage, WorkspaceInstanceUsageData } from "@devpod/devpod-protocol/lib/usage";
+import { Usage, WorkspaceInstanceUsageData } from "@khulnasoft/devpod-protocol/lib/usage";
 
 export const transformUsageRecord = (usage: Usage): UsageCSVRow | undefined => {
     if (usage.kind !== "workspaceinstance") {

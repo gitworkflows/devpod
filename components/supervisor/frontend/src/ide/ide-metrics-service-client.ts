@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import { serverUrl, workspaceUrl } from "../shared/urls";
 const commit = require("../../config.json").commit;
 import { v4 } from "uuid";
 
-import { MetricsReporter } from "@devpod/devpod-protocol/lib/metrics";
+import { MetricsReporter } from "@khulnasoft/devpod-protocol/lib/metrics";
 
 export const metricsReporter = new MetricsReporter({
     devpodUrl: serverUrl.toString(),

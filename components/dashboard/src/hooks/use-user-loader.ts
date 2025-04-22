@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import { UserContext } from "../user-context";
 import { trackLocation } from "../Analytics";
 import { useQuery } from "@tanstack/react-query";
 import { noPersistence } from "../data/setup";
-import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { userClient } from "../service/public-api";
 
 export const useUserLoader = () => {

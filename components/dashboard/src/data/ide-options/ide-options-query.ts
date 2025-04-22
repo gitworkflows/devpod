@@ -1,15 +1,15 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { useQuery } from "@tanstack/react-query";
-import { getGitpodService } from "../../service/service";
-import { IDEOption, IDEOptions } from "@devpod/devpod-protocol/lib/ide-protocol";
+import { getDevpodService } from "../../service/service";
+import { IDEOption, IDEOptions } from "@khulnasoft/devpod-protocol/lib/ide-protocol";
 import { DisableScope, Scope } from "../workspaces/workspace-classes-query";
 import { useOrgSettingsQuery } from "../organizations/org-settings-query";
-import { OrganizationSettings } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import { OrganizationSettings } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 import { useMemo } from "react";
 import { useConfiguration } from "../configurations/configuration-queries";
 import { useDeepCompareMemoize } from "use-deep-compare-effect";
@@ -20,7 +20,7 @@ export const useIDEOptions = () => {
     return useQuery(
         ["ide-options"],
         async () => {
-            return await getGitpodService().server.getIDEOptions();
+            return await getDevpodService().server.getIDEOptions();
         },
         {
             staleTime: 1000 * 60 * 60 * 1, // 1h
@@ -38,7 +38,7 @@ export const useIDEVersionsQuery = (pinnableIdeIdList?: string[]) => {
                 return updatedVal;
             }
             const ideVersionsResult = await Promise.all(
-                pinnableIdeIdList.map((ide) => getGitpodService().server.getIDEVersions(ide)),
+                pinnableIdeIdList.map((ide) => getDevpodService().server.getIDEVersions(ide)),
             );
             for (let i = 0; i < pinnableIdeIdList.length; i++) {
                 const versions = ideVersionsResult[i]!;

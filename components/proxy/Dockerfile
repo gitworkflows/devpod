@@ -1,4 +1,4 @@
-# Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2021 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -41,7 +41,7 @@ COPY conf/workspace-handler.* /etc/caddy/workspace-handler/
 ARG __GIT_COMMIT
 ARG VERSION
 
-ENV GITPOD_BUILD_GIT_COMMIT=${__GIT_COMMIT}
-ENV GITPOD_BUILD_VERSION=${VERSION}
+ENV DEVPOD_BUILD_GIT_COMMIT=${__GIT_COMMIT}
+ENV DEVPOD_BUILD_VERSION=${VERSION}
 
 CMD [ "caddy", "run", "--adapter", "inject-ssh-tunnel" , "--watch", "--config", "/etc/caddy/Caddyfile" ]

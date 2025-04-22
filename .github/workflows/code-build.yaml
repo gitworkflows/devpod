@@ -64,7 +64,7 @@ jobs:
               - [ ] WebSockets and workers are properly proxied
                 - [ ] diff editor should be operable
                 - [ ] trigger reconnection with `window.WebSocket.disconnectWorkspace()`, check that old WebSockets are closed and new opened of the same amount
-              - [ ] workspace specific commands should work, i.e. <kbd>F1</kbd> → type <kbd>Gitpod</kbd>
+              - [ ] workspace specific commands should work, i.e. <kbd>F1</kbd> → type <kbd>Devpod</kbd>
               - [ ] that a PR view is preloaded when opening a PR URL
               - [ ] test `gp open` and `gp preview`
               - [ ] test open in VS Code Desktop, check `gp open` and `gp preview` in task/user terminals
@@ -83,8 +83,8 @@ jobs:
           branch: "ide/code-stable"
           labels: "team: IDE,editor: code (browser)"
           token: ${{ secrets.ROBOQUAT_REPO_PAT }}
-          committer: Robo Quat <roboquat@devpod.io>
-          author: Robo Quat <roboquat@devpod.io>
+          committer: Robo Quat <roboquat@khulnasoft.com>
+          author: Robo Quat <roboquat@khulnasoft.com>
           team-reviewers: |
             team-experience
       - name: Get previous job's status

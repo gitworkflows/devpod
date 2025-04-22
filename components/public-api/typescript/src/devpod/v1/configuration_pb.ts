@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -275,7 +275,7 @@ export class WorkspaceSettings extends Message<WorkspaceSettings> {
   restrictedEditorNames: string[] = [];
 
   /**
-   * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+   * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
    *
    * @generated from field: bool enable_dockerd_authentication = 4;
    */
@@ -750,7 +750,7 @@ export class UpdateConfigurationRequest_WorkspaceSettings extends Message<Update
   updateRestrictedEditorNames?: boolean;
 
   /**
-   * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+   * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
    *
    * @generated from field: optional bool enable_dockerd_authentication = 6;
    */

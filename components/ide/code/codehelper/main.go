@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -56,9 +56,9 @@ func main() {
 	}
 	phaseDone()
 
-	url, err := url.Parse(wsInfo.GitpodHost)
+	url, err := url.Parse(wsInfo.DevpodHost)
 	if err != nil {
-		log.WithError(err).Errorf("failed to parse GitpodHost %s", wsInfo.GitpodHost)
+		log.WithError(err).Errorf("failed to parse DevpodHost %s", wsInfo.DevpodHost)
 		return
 	}
 	domain := url.Hostname()
@@ -122,7 +122,7 @@ func main() {
 	args = append(args, os.Args[1:]...)
 	args = append(args, "--do-not-sync")
 	args = append(args, "--start-server")
-	cmdEnv := append(os.Environ(), fmt.Sprintf("GITPOD_CODE_HOST=%s", domain))
+	cmdEnv := append(os.Environ(), fmt.Sprintf("DEVPOD_CODE_HOST=%s", domain))
 	log.WithField("cost", time.Now().Local().Sub(startTime).Milliseconds()).Info("starting server")
 	if err := syscall.Exec(Code, append([]string{"devpod-code"}, args...), cmdEnv); err != nil {
 		log.WithError(err).Error("install ext and start code server failed")
@@ -179,7 +179,7 @@ func getExtensions(repoRoot string) (extensions []Extension, err error) {
 		err = errors.New("read .devpod.yml file failed: " + err.Error())
 		return
 	}
-	var config *devpod.GitpodConfig
+	var config *devpod.DevpodConfig
 	if err = yaml.Unmarshal(data, &config); err != nil {
 		err = errors.New("unmarshal .devpod.yml file failed" + err.Error())
 		return

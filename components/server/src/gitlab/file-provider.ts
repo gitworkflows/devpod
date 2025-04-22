@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,15 +7,15 @@
 import { injectable, inject } from "inversify";
 
 import { FileProvider, MaybeContent, RevisionNotFoundError } from "../repohost/file-provider";
-import { Commit, User, Repository } from "@devpod/devpod-protocol";
+import { Commit, User, Repository } from "@khulnasoft/devpod-protocol";
 import { GitLabApi, GitLab } from "./api";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 @injectable()
 export class GitlabFileProvider implements FileProvider {
     @inject(GitLabApi) protected readonly gitlabApi: GitLabApi;
 
-    public async getGitpodFileContent(commit: Commit, user: User): Promise<MaybeContent> {
+    public async getDevpodFileContent(commit: Commit, user: User): Promise<MaybeContent> {
         const yamlVersion1 = await Promise.all([
             this.getFileContent(commit, user, ".devpod.yml"),
             this.getFileContent(commit, user, ".devpod"),

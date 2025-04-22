@@ -1,19 +1,19 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { injectable, inject } from "inversify";
-import { WorkspaceDB, TeamDB } from "@devpod/devpod-db/lib";
-import { User, Workspace } from "@devpod/devpod-protocol";
+import { WorkspaceDB, TeamDB } from "@khulnasoft/devpod-db/lib";
+import { User, Workspace } from "@khulnasoft/devpod-protocol";
 import { StorageClient } from "../storage/storage-client";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { StopWorkspacePolicy } from "@devpod/ws-manager/lib";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { StopWorkspacePolicy } from "@khulnasoft/ws-manager/lib";
 import { AuthProviderService } from "../auth/auth-provider-service";
 import { WorkspaceService } from "../workspace/workspace-service";
 import { UserService } from "./user-service";
-import { TransactionalContext } from "@devpod/devpod-db/lib/typeorm/transactional-db-impl";
+import { TransactionalContext } from "@khulnasoft/devpod-db/lib/typeorm/transactional-db-impl";
 import { OrganizationService } from "../orgs/organization-service";
 
 @injectable()

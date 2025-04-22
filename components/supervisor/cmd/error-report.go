@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -60,9 +60,9 @@ var errorReportCmd = &cobra.Command{
 		data.InstanceId = wsInfo.InstanceId
 		data.UserId = wsInfo.OwnerId
 
-		parsedUrl, err := url.Parse(wsInfo.GitpodHost)
+		parsedUrl, err := url.Parse(wsInfo.DevpodHost)
 		if err != nil {
-			log.Fatal("cannot parse GitpodHost")
+			log.Fatal("cannot parse DevpodHost")
 			return
 		}
 

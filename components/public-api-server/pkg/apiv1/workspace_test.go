@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -21,9 +21,9 @@ import (
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
 	"github.com/khulnasoft/devpod/components/public-api/go/experimental/v1/v1connect"
 	protocol "github.com/khulnasoft/devpod/devpod-protocol"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/auth"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/jws"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/jws/jwstest"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/auth"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws/jwstest"
 	"github.com/sourcegraph/jsonrpc2"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -651,7 +651,7 @@ var workspaceTestData = []workspaceTestDataEntry{
 		Protocol: protocol.WorkspaceInfo{
 			Workspace: &protocol.Workspace{
 				BaseImageNameResolved: "foo:bar",
-				ID:                    "devpodio-devpod-isq6xj458lj",
+				ID:                    "khulnasoft-devpod-isq6xj458lj",
 				OwnerID:               "fake-owner-id",
 				ContextURL:            "open-prebuild/126ac54a-5922-4a45-9a18-670b057bf540/https://github.com/khulnasoft/devpod/pull/18291",
 				Context: &protocol.WorkspaceContext{
@@ -666,9 +666,9 @@ var workspaceTestData = []workspaceTestDataEntry{
 			},
 			LatestInstance: &protocol.WorkspaceInstance{
 				ID:           "f2effcfd-3ddb-4187-b584-256e88a42442",
-				IdeURL:       "https://devpodio-devpod-isq6xj458lj.ws-eu53.protocol.io/",
+				IdeURL:       "https://khulnasoft-devpod-isq6xj458lj.ws-eu53.protocol.io/",
 				CreationTime: "2022-07-12T10:04:49+0000",
-				WorkspaceID:  "devpodio-devpod-isq6xj458lj",
+				WorkspaceID:  "khulnasoft-devpod-isq6xj458lj",
 				Status: &protocol.WorkspaceInstanceStatus{
 					Conditions: &protocol.WorkspaceInstanceConditions{
 						Failed:            "nope",
@@ -681,13 +681,13 @@ var workspaceTestData = []workspaceTestDataEntry{
 					ExposedPorts: []*protocol.WorkspaceInstancePort{
 						{
 							Port:       9000,
-							URL:        "https://9000-devpodio-devpod-isq6xj458lj.ws-eu53.protocol.io",
+							URL:        "https://9000-khulnasoft-devpod-isq6xj458lj.ws-eu53.protocol.io",
 							Visibility: protocol.PortVisibilityPublic,
 							Protocol:   protocol.PortProtocolHTTP,
 						},
 						{
 							Port:       9001,
-							URL:        "https://9001-devpodio-devpod-isq6xj458lj.ws-eu53.protocol.io",
+							URL:        "https://9001-khulnasoft-devpod-isq6xj458lj.ws-eu53.protocol.io",
 							Visibility: protocol.PortVisibilityPrivate,
 							Protocol:   protocol.PortProtocolHTTPS,
 						},
@@ -696,7 +696,7 @@ var workspaceTestData = []workspaceTestDataEntry{
 			},
 		},
 		API: &v1.Workspace{
-			WorkspaceId: "devpodio-devpod-isq6xj458lj",
+			WorkspaceId: "khulnasoft-devpod-isq6xj458lj",
 			OwnerId:     "fake-owner-id",
 			Context: &v1.WorkspaceContext{
 				ContextUrl: "open-prebuild/126ac54a-5922-4a45-9a18-670b057bf540/https://github.com/khulnasoft/devpod/pull/18291",
@@ -713,7 +713,7 @@ var workspaceTestData = []workspaceTestDataEntry{
 			Status: &v1.WorkspaceStatus{
 				Instance: &v1.WorkspaceInstance{
 					InstanceId:  "f2effcfd-3ddb-4187-b584-256e88a42442",
-					WorkspaceId: "devpodio-devpod-isq6xj458lj",
+					WorkspaceId: "khulnasoft-devpod-isq6xj458lj",
 					CreatedAt:   timestamppb.New(must(time.Parse(time.RFC3339, "2022-07-12T10:04:49Z"))),
 					Status: &v1.WorkspaceInstanceStatus{
 						StatusVersion: 42,
@@ -724,19 +724,19 @@ var workspaceTestData = []workspaceTestDataEntry{
 							FirstUserActivity: timestamppb.New(must(time.Parse(time.RFC3339, "2022-07-12T10:04:49Z"))),
 						},
 						Message:   "has no message",
-						Url:       "https://devpodio-devpod-isq6xj458lj.ws-eu53.protocol.io/",
+						Url:       "https://khulnasoft-devpod-isq6xj458lj.ws-eu53.protocol.io/",
 						Admission: v1.AdmissionLevel_ADMISSION_LEVEL_OWNER_ONLY,
 						Ports: []*v1.Port{
 							{
 								Port:     9000,
 								Policy:   v1.PortPolicy_PORT_POLICY_PUBLIC,
-								Url:      "https://9000-devpodio-devpod-isq6xj458lj.ws-eu53.protocol.io",
+								Url:      "https://9000-khulnasoft-devpod-isq6xj458lj.ws-eu53.protocol.io",
 								Protocol: v1.PortProtocol_PORT_PROTOCOL_HTTP,
 							},
 							{
 								Port:     9001,
 								Policy:   v1.PortPolicy_PORT_POLICY_PRIVATE,
-								Url:      "https://9001-devpodio-devpod-isq6xj458lj.ws-eu53.protocol.io",
+								Url:      "https://9001-khulnasoft-devpod-isq6xj458lj.ws-eu53.protocol.io",
 								Protocol: v1.PortProtocol_PORT_PROTOCOL_HTTPS,
 							},
 						},

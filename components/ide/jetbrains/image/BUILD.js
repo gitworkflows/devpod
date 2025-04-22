@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -61,7 +61,7 @@ const generateIDEBuildPackage = function (ideConfig, qualifier) {
         srcs: ["startup.sh", `supervisor-ide-config_${name}.json`],
         deps: [`:download-${name}`, "components/ide/jetbrains/cli:app"],
         config: {
-            dockerfile: "leeway.Dockerfile",
+            dockerfile: "blazedock.Dockerfile",
             metadata: {
                 "helm-component": `workspace.desktopIdeImages.${helmName}`,
             },

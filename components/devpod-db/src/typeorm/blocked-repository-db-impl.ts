@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import { EntityManager, Repository } from "typeorm";
 import { TypeORM } from "./typeorm";
 import { DBBlockedRepository } from "./entity/db-blocked-repository";
 import { BlockedRepositoryDB } from "../blocked-repository-db";
-import { BlockedRepository } from "@devpod/devpod-protocol/lib/blocked-repositories-protocol";
+import { BlockedRepository } from "@khulnasoft/devpod-protocol/lib/blocked-repositories-protocol";
 
 @injectable()
 export class TypeORMBlockedRepositoryDBImpl implements BlockedRepositoryDB {

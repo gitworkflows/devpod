@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -17,7 +17,7 @@ interface IBackendDiagnosticsService {
     fun getMetric(name: String): com.jetbrains.rd.platform.codeWithMe.unattendedHost.metrics.Metric
 }
 
-abstract class AbstractGitpodMetricControlProvider : MetricControlProvider {
+abstract class AbstractDevpodMetricControlProvider : MetricControlProvider {
     override val id: String = "devpodMetricsControl"
 
     abstract fun setMargin(element: BeControl, left: Int, top: Int, right: Int, bottom: Int): BeControl;

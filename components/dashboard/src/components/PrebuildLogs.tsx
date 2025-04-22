@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -11,13 +11,13 @@ import {
     WorkspaceImageBuild,
     HEADLESS_LOG_STREAM_STATUS_CODE_REGEX,
     Disposable,
-} from "@devpod/devpod-protocol";
-import { getGitpodService } from "../service/service";
+} from "@khulnasoft/devpod-protocol";
+import { getDevpodService } from "../service/service";
 import { PrebuildStatusOld } from "../projects/prebuild-utils";
 import { watchWorkspaceStatus } from "../data/workspaces/listen-to-workspace-ws-messages";
 import { prebuildClient, watchPrebuild, workspaceClient } from "../service/public-api";
-import { GetWorkspaceRequest, WorkspacePhase_Phase } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
-import { Prebuild, PrebuildPhase_Phase } from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
+import { GetWorkspaceRequest, WorkspacePhase_Phase } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { Prebuild, PrebuildPhase_Phase } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
 
 const WorkspaceLogs = React.lazy(() => import("./WorkspaceLogs"));
 
@@ -95,7 +95,7 @@ export default function PrebuildLogs(props: PrebuildLogsProps) {
                 }),
             );
             disposables.push(
-                getGitpodService().registerClient({
+                getDevpodService().registerClient({
                     onWorkspaceImageBuildLogs: (
                         info: WorkspaceImageBuild.StateInfo,
                         content?: WorkspaceImageBuild.LogContent,
@@ -212,7 +212,7 @@ function retryWatchWorkspaceImageBuildLogs(workspaceId: string): Disposable {
                 return;
             }
             try {
-                await getGitpodService().server.watchWorkspaceImageBuildLogs(workspaceId);
+                await getDevpodService().server.watchWorkspaceImageBuildLogs(workspaceId);
             } catch (err) {
                 console.error("watchWorkspaceImageBuildLogs", err);
             }
@@ -260,7 +260,7 @@ function watchHeadlessLogs(
         let response: Response | undefined = undefined;
         let reader: ReadableStreamDefaultReader<Uint8Array> | undefined = undefined;
         try {
-            const logSources = await getGitpodService().server.getHeadlessLog(instanceId);
+            const logSources = await getDevpodService().server.getHeadlessLog(instanceId);
             // TODO(gpl) Only listening on first stream for now
             const streamIds = Object.keys(logSources.streams);
             if (streamIds.length < 1) {

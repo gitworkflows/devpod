@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -25,14 +25,14 @@ import "./index.css";
 import { PaymentContextProvider } from "./payment-context";
 import { ThemeContextProvider } from "./theme-context";
 import { UserContextProvider } from "./user-context";
-import { getURLHash, isGitpodIo, isWebsiteSlug } from "./utils";
+import { getURLHash, isDevpodIo, isWebsiteSlug } from "./utils";
 
 const bootApp = () => {
-    // devpod.io specific boot logic
-    if (isGitpodIo()) {
+    // devpod.khulnasoft.com specific boot logic
+    if (isDevpodIo()) {
         // Redirect to www website for any website slugs
         if (isWebsiteSlug(window.location.pathname)) {
-            window.location.host = "www.devpod.io";
+            window.location.host = "www.devpod.khulnasoft.com";
             return;
         }
     }
@@ -48,7 +48,7 @@ const bootApp = () => {
         );
     }
 
-    const GitpodQueryClientProvider = setupQueryClientProvider();
+    const DevpodQueryClientProvider = setupQueryClientProvider();
 
     // Configure libraries
     dayjs.extend(relativeTime);
@@ -61,8 +61,8 @@ const bootApp = () => {
             <ThemeContextProvider>
                 <ReloadPageErrorBoundary>
                     <BrowserRouter>
-                        <GitpodQueryClientProvider>
-                            {/* This needs to be inside of the GitpodQueryClientProvider so it can reset queries if needed */}
+                        <DevpodQueryClientProvider>
+                            {/* This needs to be inside of the DevpodQueryClientProvider so it can reset queries if needed */}
                             <QueryErrorBoundary>
                                 <ConfettiContextProvider>
                                     <ToastContextProvider>
@@ -74,7 +74,7 @@ const bootApp = () => {
                                     </ToastContextProvider>
                                 </ConfettiContextProvider>
                             </QueryErrorBoundary>
-                        </GitpodQueryClientProvider>
+                        </DevpodQueryClientProvider>
                     </BrowserRouter>
                 </ReloadPageErrorBoundary>
             </ThemeContextProvider>

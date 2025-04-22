@@ -48,7 +48,7 @@
     "startedTime": "2023-11-29T18:55:55.461Z",
     "stoppingTime": "2023-11-29T18:56:12.005Z",
     "stoppedTime": "2023-11-29T18:56:12.986Z",
-    "ideUrl": "https://devpodio-empty-bs8378oes6b.ws.devpod.io",
+    "ideUrl": "https://devpodio-empty-bs8378oes6b.ws.devpod.khulnasoft.com",
     "workspaceImage": "877922613839.dkr.ecr.eu-central-1.amazonaws.com/image-build/workspace-images:cdbae29656d3033ebc3dbc45e5a7ee6e1907ad513af9d41014e2ae113f5dba7b",
     "status": {
       "phase": "stopped",
@@ -89,11 +89,11 @@
       "ideSetup": {
         "envvars": [
           {
-            "name": "GITPOD_CONFIGCAT_ENABLED",
+            "name": "DEVPOD_CONFIGCAT_ENABLED",
             "value": "true"
           },
           {
-            "name": "GITPOD_IDE_ALIAS",
+            "name": "DEVPOD_IDE_ALIAS",
             "value": "code"
           }
         ],

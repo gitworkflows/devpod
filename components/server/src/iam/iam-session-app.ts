@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -10,10 +10,10 @@ import { SessionHandler } from "../session-handler";
 import { Authenticator } from "../auth/authenticator";
 import { UserAuthentication } from "../user/user-authentication";
 import { OIDCCreateSessionPayload } from "./iam-oidc-create-session-payload";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { Identity, User } from "@devpod/devpod-protocol";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { Identity, User } from "@khulnasoft/devpod-protocol";
 import { reportJWTCookieIssued } from "../prometheus-metrics";
-import { ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { OrganizationService } from "../orgs/organization-service";
 import { UserService } from "../user/user-service";
 import { SYSTEM_USER, SYSTEM_USER_ID } from "../authorization/authorizer";

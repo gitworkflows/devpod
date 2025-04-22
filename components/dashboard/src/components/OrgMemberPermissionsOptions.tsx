@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -15,10 +15,10 @@ import { AllowedWorkspaceClass } from "../data/workspaces/workspace-classes-quer
 import { useToast } from "./toasts/Toasts";
 import Modal, { ModalBaseFooter, ModalBody, ModalHeader } from "./Modal";
 import { LoadingState } from "@podkit/loading/LoadingState";
-import { VALID_ORG_MEMBER_ROLES } from "@devpod/devpod-protocol";
-import { OrganizationPermission, RoleRestrictionEntry } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import { VALID_ORG_MEMBER_ROLES } from "@khulnasoft/devpod-protocol";
+import { OrganizationPermission, RoleRestrictionEntry } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 import { PlainMessage } from "@bufbuild/protobuf";
-import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
+import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
 
 const converter = new PublicAPIConverter();
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import { FC, useCallback, useContext, useEffect, useMemo, useState } from "react
 import { useLocation } from "react-router";
 import { Location } from "history";
 import { countries } from "countries-list";
-import { getGitpodService, devpodHostUrl } from "../service/service";
+import { getDevpodService, devpodHostUrl } from "../service/service";
 import { useCurrentUser } from "../user-context";
 import ContextMenu, { ContextMenuEntry } from "../components/ContextMenu";
 import { Separator } from "../components/Separator";
@@ -18,8 +18,8 @@ import FeedbackFormModal from "../feedback-form/FeedbackModal";
 import OrganizationSelector from "./OrganizationSelector";
 import { getAdminTabs } from "../admin/admin.routes";
 import classNames from "classnames";
-import { User, RoleOrPermission } from "@devpod/public-api/lib/devpod/v1/user_pb";
-import { getPrimaryEmail } from "@devpod/public-api-common/lib/user-utils";
+import { User, RoleOrPermission } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
+import { getPrimaryEmail } from "@khulnasoft/public-api-common/lib/user-utils";
 import { ConfigurationsMigrationCoachmark } from "../repositories/coachmarks/MigrationCoachmark";
 import { useInstallationConfiguration } from "../data/installation/installation-config-query";
 
@@ -36,10 +36,10 @@ export default function Menu() {
     const [isFeedbackFormVisible, setFeedbackFormVisible] = useState<boolean>(false);
 
     const { data: installationConfig, isLoading: isInstallationConfigLoading } = useInstallationConfiguration();
-    const isGitpodIo = isInstallationConfigLoading ? false : !installationConfig?.isDedicatedInstallation;
+    const isDevpodIo = isInstallationConfigLoading ? false : !installationConfig?.isDedicatedInstallation;
 
     useEffect(() => {
-        const { server } = getGitpodService();
+        const { server } = getDevpodService();
         server.getClientRegion().then((v) => {
             // @ts-ignore
             setCurrency(countries[v]?.currency === "EUR" ? "EUR" : "USD");
@@ -98,7 +98,7 @@ export default function Menu() {
                                         />
                                     </li>
                                 )}
-                                {isGitpodIo && (
+                                {isDevpodIo && (
                                     <li className="cursor-pointer">
                                         <PillMenuItem name="Feedback" onClick={handleFeedbackFormClick} />
                                     </li>
@@ -167,7 +167,7 @@ type UserMenuProps = {
 };
 const UserMenu: FC<UserMenuProps> = ({ user, className, withAdminLink, withFeedbackLink, onFeedback }) => {
     const { data: installationConfig, isLoading: isInstallationConfigLoading } = useInstallationConfiguration();
-    const isGitpodIo = isInstallationConfigLoading ? false : !installationConfig?.isDedicatedInstallation;
+    const isDevpodIo = isInstallationConfigLoading ? false : !installationConfig?.isDedicatedInstallation;
 
     const extraSection = useMemo(() => {
         const items: ContextMenuEntry[] = [];
@@ -178,7 +178,7 @@ const UserMenu: FC<UserMenuProps> = ({ user, className, withAdminLink, withFeedb
                 link: "/admin",
             });
         }
-        if (withFeedbackLink && isGitpodIo) {
+        if (withFeedbackLink && isDevpodIo) {
             items.push({
                 title: "Feedback",
                 onClick: onFeedback,
@@ -191,7 +191,7 @@ const UserMenu: FC<UserMenuProps> = ({ user, className, withAdminLink, withFeedb
         }
 
         return items;
-    }, [isGitpodIo, onFeedback, user?.rolesOrPermissions, withAdminLink, withFeedbackLink]);
+    }, [isDevpodIo, onFeedback, user?.rolesOrPermissions, withAdminLink, withFeedbackLink]);
 
     const menuEntries = useMemo(() => {
         return [
@@ -206,13 +206,13 @@ const UserMenu: FC<UserMenuProps> = ({ user, className, withAdminLink, withFeedb
             },
             {
                 title: "Docs",
-                href: "https://www.devpod.io/docs/introduction",
+                href: "https://www.devpod.khulnasoft.com/docs/introduction",
                 target: "_blank",
                 rel: "noreferrer",
             },
             {
                 title: "Help",
-                href: "https://www.devpod.io/support/",
+                href: "https://www.devpod.khulnasoft.com/support/",
                 target: "_blank",
                 rel: "noreferrer",
                 separator: true,

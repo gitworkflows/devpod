@@ -1,13 +1,13 @@
-# Gitpod CLI Component
+# Devpod CLI Component
 
 ## Overview
 
-The Gitpod CLI (Command Line Interface) is a utility that comes pre-installed within Gitpod workspaces, providing users with a convenient way to interact with the Gitpod platform and control various aspects of their workspace environment from the terminal.
+The Devpod CLI (Command Line Interface) is a utility that comes pre-installed within Devpod workspaces, providing users with a convenient way to interact with the Devpod platform and control various aspects of their workspace environment from the terminal.
 
 ## Purpose
 
-The primary purposes of the Gitpod CLI are:
-- Provide a command-line interface for interacting with Gitpod workspaces
+The primary purposes of the Devpod CLI are:
+- Provide a command-line interface for interacting with Devpod workspaces
 - Enable users to control workspace features and settings
 - Facilitate IDE integration from the terminal
 - Manage workspace ports and port forwarding
@@ -20,7 +20,7 @@ The primary purposes of the Gitpod CLI are:
 
 ## Architecture
 
-The Gitpod CLI is implemented as a Go application with a command-based structure using the Cobra command framework. It consists of several key components:
+The Devpod CLI is implemented as a Go application with a command-based structure using the Cobra command framework. It consists of several key components:
 
 1. **Command Processor**: Handles command parsing and execution
 2. **Supervisor Client**: Communicates with the workspace supervisor
@@ -35,17 +35,17 @@ The CLI is designed to be lightweight and efficient, providing a simple interfac
 - `main.go`: Entry point that calls the Execute function from the cmd package
 - `cmd/root.go`: Defines the root command and basic CLI configuration
 - `cmd/*.go`: Individual command implementations
-- `pkg/devpod/`: Gitpod-specific functionality
+- `pkg/devpod/`: Devpod-specific functionality
 - `pkg/utils/`: Utility functions
 
 ## Commands
 
-The Gitpod CLI provides a wide range of commands:
+The Devpod CLI provides a wide range of commands:
 
 ### Workspace Management
 - `gp stop`: Stop the current workspace
 - `gp snapshot`: Take a snapshot of the current workspace
-- `gp init`: Create a Gitpod configuration for the current project
+- `gp init`: Create a Devpod configuration for the current project
 - `gp url`: Print the URL of the current workspace
 
 ### IDE Integration
@@ -89,7 +89,7 @@ The Gitpod CLI provides a wide range of commands:
 
 ### Internal Dependencies
 - `components/supervisor-api/go:lib`: Supervisor API definitions
-- `components/devpod-protocol/go:lib`: Gitpod protocol definitions
+- `components/devpod-protocol/go:lib`: Devpod protocol definitions
 - `components/common-go:lib`: Common Go utilities
 - `components/ide-metrics-api/go:lib`: IDE metrics API definitions
 - `components/public-api/go:lib`: Public API definitions
@@ -101,7 +101,7 @@ The Gitpod CLI provides a wide range of commands:
 
 ## Integration Points
 
-The Gitpod CLI integrates with:
+The Devpod CLI integrates with:
 1. **Supervisor**: Communicates with the workspace supervisor for most operations
 2. **Git**: Provides credential helper for Git authentication
 3. **IDE**: Opens files and previews in the IDE
@@ -126,7 +126,7 @@ The CLI includes analytics tracking to help improve the user experience:
 
 ## Common Usage Patterns
 
-The Gitpod CLI is typically used to:
+The Devpod CLI is typically used to:
 1. Open files in the IDE: `gp open file.txt`
 2. Preview URLs: `gp preview https://example.com`
 3. Expose ports: `gp ports expose 8080`

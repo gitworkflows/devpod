@@ -2,15 +2,15 @@
 
 ## Overview
 
-The Local App component in Gitpod provides tools for interacting with Gitpod workspaces from a user's local machine. It consists of two main applications: the Gitpod CLI (`devpod-cli`) and the Local Companion App (`devpod-local-companion`). These tools enable users to connect to their remote Gitpod workspaces, access ports, establish SSH connections, and manage workspaces from their local environment.
+The Local App component in Devpod provides tools for interacting with Devpod workspaces from a user's local machine. It consists of two main applications: the Devpod CLI (`devpod-cli`) and the Local Companion App (`devpod-local-companion`). These tools enable users to connect to their remote Devpod workspaces, access ports, establish SSH connections, and manage workspaces from their local environment.
 
 ## Purpose
 
 The primary purposes of the Local App component are:
-- Provide a command-line interface for interacting with Gitpod
-- Enable SSH access to Gitpod workspaces
+- Provide a command-line interface for interacting with Devpod
+- Enable SSH access to Devpod workspaces
 - Establish secure tunnels to workspace ports
-- Manage authentication and tokens for Gitpod access
+- Manage authentication and tokens for Devpod access
 - Support local development workflows with remote workspaces
 - Enable port forwarding from workspaces to local machine
 - Provide auto-updating capabilities for client tools
@@ -20,7 +20,7 @@ The primary purposes of the Local App component are:
 
 The Local App component consists of several key parts:
 
-1. **Gitpod CLI**: A command-line tool for interacting with Gitpod
+1. **Devpod CLI**: A command-line tool for interacting with Devpod
 2. **Local Companion App**: A background service that maintains connections to workspaces
 3. **Bastion**: Core functionality for establishing and managing tunnels
 4. **Authentication**: Handles secure login and token management
@@ -41,13 +41,13 @@ The component is designed to work across multiple platforms (Linux, macOS, Windo
 
 ## CLI Commands
 
-The Gitpod CLI provides various commands for interacting with Gitpod:
+The Devpod CLI provides various commands for interacting with Devpod:
 
-- `devpod login`: Authenticate with Gitpod
+- `devpod login`: Authenticate with Devpod
 - `devpod workspace`: Manage workspaces
 - `devpod ssh`: SSH into a workspace
 - `devpod port`: Forward ports from a workspace
-- `devpod context`: Manage Gitpod contexts (different Gitpod installations)
+- `devpod context`: Manage Devpod contexts (different Devpod installations)
 - `devpod completion`: Generate shell completion scripts
 
 ## Local Companion App
@@ -91,7 +91,7 @@ The component includes a self-update mechanism that:
 
 ### Internal Dependencies
 - `components/supervisor-api`: For communicating with workspace supervisor
-- `components/devpod-protocol`: For Gitpod API communication
+- `components/devpod-protocol`: For Devpod API communication
 - `components/local-app-api`: API definitions for the Local App
 - `components/public-api`: Public API definitions
 
@@ -104,7 +104,7 @@ The component includes a self-update mechanism that:
 ## Integration Points
 
 The Local App component integrates with:
-1. **Gitpod Server**: For authentication and workspace information
+1. **Devpod Server**: For authentication and workspace information
 2. **Workspace Supervisor**: For port information and terminal access
 3. **IDE Proxy**: For downloading client binaries
 4. **Local System**: For SSH configuration and port forwarding
@@ -133,7 +133,7 @@ The Local App component is typically used to:
 1. Connect to running workspaces via SSH
 2. Forward workspace ports to the local machine
 3. Manage workspaces from the command line
-4. Integrate Gitpod with local development tools
+4. Integrate Devpod with local development tools
 5. Access workspace services from local applications
 
 ## Related Components

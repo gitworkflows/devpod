@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -55,7 +55,7 @@ func TestBuildChildProcEnv(t *testing.T) {
 		},
 		{
 			Name:        "removes blacklisted vars",
-			Input:       []string{"GITPOD_TOKENS=foobar"},
+			Input:       []string{"DEVPOD_TOKENS=foobar"},
 			Expectation: withBaseline(nil),
 		},
 		{
@@ -90,7 +90,7 @@ func TestBuildChildProcEnv(t *testing.T) {
 		{
 			Name:  "ots",
 			Input: []string{},
-			OTS:   `[{"name":"foo","value":"bar"},{"name":"GITPOD_TOKENS","value":"foobar"}]`,
+			OTS:   `[{"name":"foo","value":"bar"},{"name":"DEVPOD_TOKENS","value":"foobar"}]`,
 			Expectation: []string{
 				"HOME=/home/devpod",
 				"BROWSER=/.supervisor/browser.sh",
@@ -146,8 +146,8 @@ func TestIsBlacklistedEnvvar(t *testing.T) {
 		Expectation bool
 	}{
 		{Name: "deprecated theia envvars", Input: "THEIA_SUPERVISOR_FOOBAR", Expectation: true},
-		{Name: "devpod tokens", Input: "GITPOD_TOKENS", Expectation: true},
-		{Name: "devpod tokens child", Input: "GITPOD_TOKENS_GITHUB", Expectation: true},
+		{Name: "devpod tokens", Input: "DEVPOD_TOKENS", Expectation: true},
+		{Name: "devpod tokens child", Input: "DEVPOD_TOKENS_GITHUB", Expectation: true},
 		{Name: "kubernetes services", Input: "KUBERNETES_SERVICE_FOOBAR", Expectation: true},
 		{Name: "kubernetes service ports", Input: "KUBERNETES_PORT_FOOBAR", Expectation: true},
 		{Name: "something with spaces", Input: "   I_DO_NOT_UNDERSTAND", Expectation: true},

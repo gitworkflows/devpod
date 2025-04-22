@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -17,7 +17,7 @@ func newCreateCmd(logger *logrus.Logger) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "create",
 		Aliases: []string{"start"},
-		Short:   "Create a new preview environment. Alias to `leeway run dev:preview`",
+		Short:   "Create a new preview environment. Alias to `blazedock run dev:preview`",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			if err := create(); err != nil {
 				logger.WithError(err).Fatal("Failed to create preview.")
@@ -31,7 +31,7 @@ func newCreateCmd(logger *logrus.Logger) *cobra.Command {
 }
 
 func create() error {
-	cmd := exec.Command("leeway", "run", "dev:preview")
+	cmd := exec.Command("blazedock", "run", "dev:preview")
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr

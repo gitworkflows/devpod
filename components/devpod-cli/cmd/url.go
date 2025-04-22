@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -27,7 +27,7 @@ will print the URL of a service/server exposed on port 8080.`,
 	Args: cobra.MaximumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) == 0 {
-			fmt.Println(os.Getenv("GITPOD_WORKSPACE_URL"))
+			fmt.Println(os.Getenv("DEVPOD_WORKSPACE_URL"))
 			return nil
 		}
 
@@ -46,7 +46,7 @@ func init() {
 }
 
 func GetWorkspaceURL(port int) (url string) {
-	wsurl := os.Getenv("GITPOD_WORKSPACE_URL")
+	wsurl := os.Getenv("DEVPOD_WORKSPACE_URL")
 	if port == 0 {
 		return wsurl
 	}

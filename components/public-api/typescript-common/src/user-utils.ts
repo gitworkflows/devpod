@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
-import { User as UserProtocol } from "@devpod/devpod-protocol/lib/protocol";
+import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
+import { User as UserProtocol } from "@khulnasoft/devpod-protocol/lib/protocol";
 import { Timestamp } from "@bufbuild/protobuf";
 
 /**
@@ -75,7 +75,7 @@ export function isOrganizationOwned(user: User | UserProtocol) {
 }
 
 /**
- * devpod.io: Only installation-level users are allowed to create orgs (installation-level users on devpod.io, and admin user on Dedicated)
+ * devpod.khulnasoft.com: Only installation-level users are allowed to create orgs (installation-level users on devpod.khulnasoft.com, and admin user on Dedicated)
  * Dedicated: Only if multiOrg is enabled, installation-level users can create orgs
  * @param user
  * @param isDedicated
@@ -88,7 +88,7 @@ export function isAllowedToCreateOrganization(
     isMultiOrgEnabled?: boolean,
 ): boolean {
     if (!isDedicated) {
-        // devpod.io case
+        // devpod.khulnasoft.com case
         return !isOrganizationOwned(user);
     }
 

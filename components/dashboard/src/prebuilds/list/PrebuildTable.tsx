@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -13,7 +13,7 @@ import { Subheading } from "@podkit/typography/Headings";
 import { cn } from "@podkit/lib/cn";
 import { LoadingState } from "@podkit/loading/LoadingState";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@podkit/select/Select";
-import { Prebuild } from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
+import { Prebuild } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
 import { Filter, Sort, SortField, StatusOption } from "./PrebuildList";
 import { SortCallback, SortableTableHead, TableSortOrder } from "@podkit/tables/SortableTable";
 import { ConfigurationDropdown } from "../configuration-input/ConfigurationInput";

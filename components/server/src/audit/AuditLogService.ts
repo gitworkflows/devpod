@@ -1,19 +1,19 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { UserDB } from "@devpod/devpod-db/lib";
-import { AuditLogDB } from "@devpod/devpod-db/lib/audit-log-db";
-import { AuditLog } from "@devpod/devpod-protocol/lib/audit-log";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { TrustedValue, scrubber } from "@devpod/devpod-protocol/lib/util/scrubbing";
+import { UserDB } from "@khulnasoft/devpod-db/lib";
+import { AuditLogDB } from "@khulnasoft/devpod-db/lib/audit-log-db";
+import { AuditLog } from "@khulnasoft/devpod-protocol/lib/audit-log";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { TrustedValue, scrubber } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
 import { inject, injectable } from "inversify";
 import { v4 } from "uuid";
 import { Authorizer } from "../authorization/authorizer";
-import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 
 @injectable()
 export class AuditLogService {

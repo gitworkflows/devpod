@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -61,6 +61,6 @@ func SettingsFactory(config *Config, chart string, vals *values.Options) Setting
 }
 
 func (settings *Settings) Write(format string, v ...interface{}) {
-	format = fmt.Sprintf("[Gitpod] %s\n", format)
+	format = fmt.Sprintf("[Devpod] %s\n", format)
 	log.Output(2, fmt.Sprintf(format, v...))
 }

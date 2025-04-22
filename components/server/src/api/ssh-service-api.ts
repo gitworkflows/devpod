@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { HandlerContext, ServiceImpl } from "@connectrpc/connect";
-import { SSHService as SSHServiceInterface } from "@devpod/public-api/lib/devpod/v1/ssh_connect";
+import { SSHService as SSHServiceInterface } from "@khulnasoft/public-api/lib/devpod/v1/ssh_connect";
 import { inject, injectable } from "inversify";
 import { SSHKeyService } from "../user/sshkey-service";
-import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
+import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
 import {
     CreateSSHPublicKeyRequest,
     CreateSSHPublicKeyResponse,
@@ -16,10 +16,10 @@ import {
     DeleteSSHPublicKeyResponse,
     ListSSHPublicKeysRequest,
     ListSSHPublicKeysResponse,
-} from "@devpod/public-api/lib/devpod/v1/ssh_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/ssh_pb";
 import { ctxUserId } from "../util/request-context";
 import { validate as uuidValidate } from "uuid";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 @injectable()
 export class SSHServiceAPI implements ServiceImpl<typeof SSHServiceInterface> {

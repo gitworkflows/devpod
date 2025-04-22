@@ -1,7 +1,7 @@
 # Content Service API
 
 ## Overview
-The Content Service API defines the gRPC interfaces for the Content Service, which is responsible for managing various types of content within the Gitpod platform, including workspace files, blobs, logs, and IDE plugins.
+The Content Service API defines the gRPC interfaces for the Content Service, which is responsible for managing various types of content within the Devpod platform, including workspace files, blobs, logs, and IDE plugins.
 
 ## Purpose
 This API provides a standardized interface for other components to interact with the Content Service, enabling operations such as:
@@ -121,7 +121,7 @@ After regenerating the code, you may need to rebuild components that depend on t
    yarn build
    ```
 
-3. Using Leeway (for CI/CD):
+3. Using Blazedock (for CI/CD):
    ```bash
-   leeway build -D components/<component-name>:app
+   blazedock build -D components/<component-name>:app
    ```

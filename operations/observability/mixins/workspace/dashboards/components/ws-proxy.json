@@ -1258,7 +1258,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / Component / ws-proxy",
+  "title": "Devpod / Component / ws-proxy",
   "uid": "ws-proxy",
   "version": 1
 }

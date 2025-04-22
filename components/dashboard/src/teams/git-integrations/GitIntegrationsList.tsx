@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -11,7 +11,7 @@ import { Item, ItemField, ItemFieldIcon, ItemsList } from "../../components/Item
 import { Heading2, Subheading } from "../../components/typography/headings";
 import { GitIntegrationListItem } from "./GitIntegrationListItem";
 import { GitIntegrationModal } from "./GitIntegrationModal";
-import { AuthProvider } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProvider } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
 
 type Props = {
     providers: AuthProvider[];

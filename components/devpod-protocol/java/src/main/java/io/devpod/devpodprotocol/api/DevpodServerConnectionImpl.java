@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -11,15 +11,15 @@ import java.util.concurrent.CompletableFuture;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GitpodServerConnectionImpl extends CompletableFuture<CloseReason> implements GitpodServerConnection {
+public class DevpodServerConnectionImpl extends CompletableFuture<CloseReason> implements DevpodServerConnection {
 
-    public static final Logger LOG = Logger.getLogger(GitpodServerConnectionImpl.class.getName());
+    public static final Logger LOG = Logger.getLogger(DevpodServerConnectionImpl.class.getName());
 
     private final String devpodHost;
 
     private Session session;
 
-    public GitpodServerConnectionImpl(String devpodHost) {
+    public DevpodServerConnectionImpl(String devpodHost) {
         this.devpodHost = devpodHost;
     }
 

@@ -1,15 +1,15 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Branch, CommitInfo, Repository, RepositoryInfo, User } from "@devpod/devpod-protocol";
+import { Branch, CommitInfo, Repository, RepositoryInfo, User } from "@khulnasoft/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { RepoURL } from "../repohost";
 import { RepositoryProvider } from "../repohost/repository-provider";
 import { BitbucketServer, BitbucketServerApi } from "./bitbucket-server-api";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 @injectable()
 export class BitbucketServerRepositoryProvider implements RepositoryProvider {

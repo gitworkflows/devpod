@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,8 +9,8 @@ import { inject, injectable } from "inversify";
 import websocket from "ws";
 import * as crypto from "crypto";
 
-import { User } from "@devpod/devpod-protocol";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { User } from "@khulnasoft/devpod-protocol";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { AuthJWT } from "./auth/jwt";
 import { Config } from "./config";
 import { WsNextFunction, WsRequestHandler } from "./express/ws-handler";
@@ -247,7 +247,7 @@ export class SessionHandler {
 
         const hostname = req.hostname;
         if (
-            hostname === "devpod.io" ||
+            hostname === "devpod.khulnasoft.com" ||
             hostname === "devpod-staging.com" ||
             hostname.endsWith("devpod-dev.com") ||
             hostname.endsWith("gitpod-io-dev.com")

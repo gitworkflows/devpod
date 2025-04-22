@@ -12,7 +12,7 @@ on:
       version:
         required: false
         type: string
-        description: "The version of Gitpod to install (leave empty to target the latest successful build on main)"
+        description: "The version of Devpod to install (leave empty to target the latest successful build on main)"
       image_repo_base:
         type: choice
         required: false
@@ -38,7 +38,7 @@ on:
       version:
         required: false
         type: string
-        description: "The version of Gitpod to install (leave empty to target the latest successful build on main)"
+        description: "The version of Devpod to install (leave empty to target the latest successful build on main)"
       image_repo_base:
         type: string
         required: false
@@ -138,7 +138,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Create preview environment infrastructure
         id: create
         uses: ./.github/actions/preview-create
@@ -148,7 +148,7 @@ jobs:
           large_vm: true
           preemptible: true
           image_repo_base: ${{ needs.configuration.outputs.image_repo_base }}
-      - name: Deploy Gitpod to the preview environment
+      - name: Deploy Devpod to the preview environment
         if: inputs.skip_deploy != 'true'
         id: deploy-devpod
         uses: ./.github/actions/deploy-devpod
@@ -175,7 +175,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
           integration_test_username: ${{ secrets.WORKSPACE_INTEGRATION_TEST_USERNAME }}
           integration_test_usertoken: ${{ secrets.WORKSPACE_INTEGRATION_TEST_USER_TOKEN }}
 
@@ -191,7 +191,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Delete preview environment
         uses: ./.github/actions/delete-preview
         with:

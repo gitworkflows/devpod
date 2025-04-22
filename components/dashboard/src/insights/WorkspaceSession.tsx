@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WorkspacePhase_Phase, WorkspaceSession } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspacePhase_Phase, WorkspaceSession } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { displayTime } from "./WorkspaceSessionGroup";
 
 type Props = {

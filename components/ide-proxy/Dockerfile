@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2022 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -6,7 +6,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest@sha256:79884062be1fd5f698859ee4044c6d1
 
 RUN apk add brotli gzip curl
 
-# Gitpod CLI and Local App
+# Devpod CLI and Local App
 COPY components-local-app--app-with-manifest/bin/* /bin/
 
 RUN for FILE in `ls /bin/devpod-local-companion*`;do \

@@ -4,7 +4,7 @@ To create a new migration file, run this command in the `devpod-db` component di
 
 ```
 yarn typeorm migration:create -n NameOfYourMigration
-leeway run components:update-license-header
+blazedock run components:update-license-header
 ```
 
 Then, simply populate the `up` and `down` methods in the generated migration file.

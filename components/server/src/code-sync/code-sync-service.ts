@@ -1,18 +1,18 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { status } from "@grpc/grpc-js";
 import fetch from "node-fetch";
-import { User } from "@devpod/devpod-protocol/lib/protocol";
+import { User } from "@khulnasoft/devpod-protocol/lib/protocol";
 import * as util from "util";
 import express from "express";
 import { inject, injectable } from "inversify";
 import { BearerAuth } from "../auth/bearer-authenticator";
 import { WithFunctionAccessGuard } from "../auth/function-access";
-import { CodeSyncResourceDB, ALL_SERVER_RESOURCES, ServerResource, SyncResource } from "@devpod/devpod-db/lib";
+import { CodeSyncResourceDB, ALL_SERVER_RESOURCES, ServerResource, SyncResource } from "@khulnasoft/devpod-db/lib";
 import {
     DeleteRequest,
     DeleteResponse,
@@ -20,8 +20,8 @@ import {
     DownloadUrlResponse,
     UploadUrlRequest,
     UploadUrlResponse,
-} from "@devpod/content-service/lib/blobs_pb";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+} from "@khulnasoft/content-service/lib/blobs_pb";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { v4 as uuidv4 } from "uuid";
 import { accessCodeSyncStorage, UserRateLimiter } from "../auth/rate-limiter";
 import { Config } from "../config";

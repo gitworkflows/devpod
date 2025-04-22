@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { BlockedRepository } from "@devpod/devpod-protocol/lib/blocked-repositories-protocol";
+import { BlockedRepository } from "@khulnasoft/devpod-protocol/lib/blocked-repositories-protocol";
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 import { Transformer } from "../transformer";
 

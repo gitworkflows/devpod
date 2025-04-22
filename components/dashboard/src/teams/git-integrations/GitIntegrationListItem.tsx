@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -13,7 +13,7 @@ import { GitIntegrationModal } from "./GitIntegrationModal";
 import { ModalFooterAlert } from "../../components/Modal";
 import { useToast } from "../../components/toasts/Toasts";
 import { useListOrganizationMembers } from "../../data/organizations/members-query";
-import { AuthProvider } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProvider } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
 import { toAuthProviderLabel } from "../../provider-utils";
 
 type Props = {

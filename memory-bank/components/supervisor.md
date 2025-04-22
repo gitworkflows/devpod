@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Supervisor is a critical component that runs inside each Gitpod workspace container. It serves as the init process (PID 1) for the workspace and manages various aspects of the workspace lifecycle, including terminal management, IDE integration, and process control.
+The Supervisor is a critical component that runs inside each Devpod workspace container. It serves as the init process (PID 1) for the workspace and manages various aspects of the workspace lifecycle, including terminal management, IDE integration, and process control.
 
 ## Purpose
 
@@ -45,7 +45,7 @@ The Supervisor is designed to be lightweight but robust, ensuring proper workspa
 - `components/common-go:lib`: Common Go utilities
 - `components/content-service-api/go:lib`: Content service API definitions
 - `components/content-service:lib`: Content service client
-- `components/devpod-protocol/go:lib`: Gitpod protocol definitions
+- `components/devpod-protocol/go:lib`: Devpod protocol definitions
 - `components/supervisor-api/go:lib`: Supervisor API definitions
 - `components/ws-daemon-api/go:lib`: Workspace daemon API definitions
 - `components/ide-metrics-api/go:lib`: IDE metrics API definitions

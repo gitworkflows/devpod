@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AppInstallation, AppInstallationPlatform, AppInstallationState } from "@devpod/devpod-protocol";
+import { AppInstallation, AppInstallationPlatform, AppInstallationState } from "@khulnasoft/devpod-protocol";
 import { injectable, inject } from "inversify";
 import { TypeORM } from "./typeorm";
 
 import { AppInstallationDB } from "../app-installation-db";
 import { Repository } from "typeorm";
 import { DBAppInstallation } from "./entity/db-app-installation";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 @injectable()
 export class TypeORMAppInstallationDBImpl implements AppInstallationDB {

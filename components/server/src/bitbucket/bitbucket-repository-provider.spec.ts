@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@devpod/devpod-protocol";
+import { User } from "@khulnasoft/devpod-protocol";
 import * as chai from "chai";
 import { Container, ContainerModule } from "inversify";
 import { retries, skip, suite, test, timeout } from "@testdeck/mocha";
@@ -16,9 +16,9 @@ import { BasicAuthBitbucketApiFactory, BitbucketApiFactory } from "./bitbucket-a
 import { BitbucketRepositoryProvider } from "./bitbucket-repository-provider";
 import { BitbucketTokenHelper } from "./bitbucket-token-handler";
 const expect = chai.expect;
-import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
+import { ifEnvVarNotSet } from "@khulnasoft/devpod-protocol/lib/util/skip-if";
 
-@suite(timeout(10000), retries(0), skip(ifEnvVarNotSet("GITPOD_TEST_TOKEN_BITBUCKET")))
+@suite(timeout(10000), retries(0), skip(ifEnvVarNotSet("DEVPOD_TEST_TOKEN_BITBUCKET")))
 class TestBitbucketRepositoryProvider {
     protected repoProvider: BitbucketRepositoryProvider;
     protected user: User;

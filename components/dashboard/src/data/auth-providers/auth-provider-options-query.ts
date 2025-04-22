@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AuthProviderType } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
-import { isGitpodIo } from "../../utils";
+import { AuthProviderType } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { isDevpodIo } from "../../utils";
 import { useMemo } from "react";
 
 const optionsForPAYG = [
@@ -18,12 +18,12 @@ const optionsForPAYG = [
 const optionsForEnterprise = [...optionsForPAYG, { type: AuthProviderType.AZURE_DEVOPS, label: "Azure DevOps" }];
 
 export const isSupportAzureDevOpsIntegration = () => {
-    return isGitpodIo();
+    return isDevpodIo();
 };
 
 export const useAuthProviderOptionsQuery = (isOrgLevel: boolean) => {
     return useMemo(() => {
-        const isPAYG = isGitpodIo();
+        const isPAYG = isDevpodIo();
         // Azure DevOps is not supported for PAYG users and is only available for org-level integrations
         // because auth flow is identified by auth provider's host, which will always be `dev.azure.com`
         //

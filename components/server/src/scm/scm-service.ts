@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,13 +8,13 @@ import { inject, injectable } from "inversify";
 import { Authorizer } from "../authorization/authorizer";
 import { Config } from "../config";
 import { TokenProvider } from "../user/token-provider";
-import { CommitContext, Project, SuggestedRepository, Token, WorkspaceInfo } from "@devpod/devpod-protocol";
+import { CommitContext, Project, SuggestedRepository, Token, WorkspaceInfo } from "@khulnasoft/devpod-protocol";
 import { HostContextProvider } from "../auth/host-context-provider";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { AuthProviderService } from "../auth/auth-provider-service";
 import { UserService } from "../user/user-service";
 import { GitTokenScopeGuesser } from "../workspace/git-token-scope-guesser";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import {
     SuggestedRepositoryWithSorting,
     sortSuggestedRepositories,

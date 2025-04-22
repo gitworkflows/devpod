@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,14 +9,14 @@ import { injectable, inject } from "inversify";
 import { AzureDevOpsApi } from "./azure-api";
 import { IContextParser, AbstractContextParser, URLParts } from "../workspace/context-parser";
 import { AzureDevOpsTokenHelper } from "./azure-token-helper";
-import { NavigatorContext, PullRequestContext, User, WorkspaceContext } from "@devpod/devpod-protocol";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { NavigatorContext, PullRequestContext, User, WorkspaceContext } from "@khulnasoft/devpod-protocol";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { NotFoundError, UnauthorizedError } from "../errors";
 import { getOrgAndProject, normalizeBranchName, toBranch, toRepository } from "./azure-converter";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { AuthProviderParams } from "../auth/auth-provider";
-import { AzureDevOpsOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
+import { AzureDevOpsOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
 import { RepoURL } from "../repohost";
 import { containsScopes } from "../prebuilds/token-scopes-inclusion";
 

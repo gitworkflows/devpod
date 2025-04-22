@@ -2,7 +2,7 @@
     "Resp": {
         "envvars": [
             {
-                "name": "GITPOD_IDE_ALIAS",
+                "name": "DEVPOD_IDE_ALIAS",
                 "value": "code"
             }
         ],

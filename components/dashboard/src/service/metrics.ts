@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { MetricsReporter } from "@devpod/devpod-protocol/lib/metrics";
+import { MetricsReporter } from "@khulnasoft/devpod-protocol/lib/metrics";
 import { getExperimentsClient } from "../experiments/client";
 import { v4 } from "uuid";
 const commit = require("./config.json").commit;

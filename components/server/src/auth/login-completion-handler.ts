@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,13 +7,13 @@
 import { inject, injectable } from "inversify";
 import express from "express";
 import * as crypto from "crypto";
-import { User } from "@devpod/devpod-protocol";
-import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
+import { User } from "@khulnasoft/devpod-protocol";
+import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { Config } from "../config";
 import { HostContextProvider } from "./host-context-provider";
 import { AuthProviderService } from "./auth-provider-service";
 import { reportJWTCookieIssued, reportLoginCompleted } from "../prometheus-metrics";
-import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
+import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
 import { trackLogin } from "../analytics";
 import { SessionHandler } from "../session-handler";
 import { AuthJWT } from "./jwt";
@@ -82,7 +82,7 @@ export class LoginCompletionHandler {
         }
 
         if (!this.isBaseDomain(request)) {
-            // (GitHub edge case) If we got redirected here onto a sub-domain (e.g. api.devpod.io), we need to redirect to the base domain in order to Set-Cookie properly.
+            // (GitHub edge case) If we got redirected here onto a sub-domain (e.g. api.devpod.khulnasoft.com), we need to redirect to the base domain in order to Set-Cookie properly.
             const secret = crypto
                 .createHash("sha256")
                 .update(user.id + this.config.session.secret)
@@ -100,7 +100,7 @@ export class LoginCompletionHandler {
             return;
         }
 
-        // (default case) If we got redirected here onto the base domain of the Gitpod installation, we can just issue the cookie right away.
+        // (default case) If we got redirected here onto the base domain of the Devpod installation, we can just issue the cookie right away.
         const cookie = await this.session.createJWTSessionCookie(user.id);
         response.cookie(cookie.name, cookie.value, cookie.opts);
         this.session.setHashedUserIdCookie(request, response);

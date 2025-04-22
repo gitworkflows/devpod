@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -176,11 +176,11 @@ export function observeHttpRequestDuration(
 
 const devpodVersionInfo = new prometheusClient.Gauge({
     name: "devpod_version_info",
-    help: "Gitpod's version",
+    help: "Devpod's version",
     labelNames: ["devpod_version"],
 });
 
-export function setGitpodVersion(devpod_version: string) {
+export function setDevpodVersion(devpod_version: string) {
     devpodVersionInfo.set({ devpod_version }, 1);
 }
 

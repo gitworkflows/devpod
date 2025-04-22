@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -18,7 +18,7 @@ import { inject, injectable } from "inversify";
 import { EntityManager, Repository } from "typeorm";
 import { DBOAuthAuthCodeEntry } from "./entity/db-oauth-auth-code";
 import { TypeORM } from "./typeorm";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 const expiryInFuture = new DateInterval("5m");
 

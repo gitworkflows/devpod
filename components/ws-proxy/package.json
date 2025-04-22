@@ -1,6 +1,6 @@
 {
     "private": true,
-    "name": "@devpod/ws-proxy",
+    "name": "@khulnasoft/ws-proxy",
     "version": "0.1.5",
     "license": "UNLICENSED",
     "scripts": {

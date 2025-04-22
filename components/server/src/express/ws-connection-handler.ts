@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import express from "express";
 import websocket from "ws";
-import { Disposable, DisposableCollection } from "@devpod/devpod-protocol";
-import { repeat } from "@devpod/devpod-protocol/lib/util/repeat";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { Disposable, DisposableCollection } from "@khulnasoft/devpod-protocol";
+import { repeat } from "@khulnasoft/devpod-protocol/lib/util/repeat";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { WsNextFunction, WsRequestHandler } from "./ws-handler";
 import { ClientMetadata } from "../websocket/websocket-connection-manager";
 

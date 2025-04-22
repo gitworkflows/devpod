@@ -2674,7 +2674,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / Component / registry-facade",
+  "title": "Devpod / Component / registry-facade",
   "uid": "registry-facade",
   "version": 1,
   "weekStart": ""

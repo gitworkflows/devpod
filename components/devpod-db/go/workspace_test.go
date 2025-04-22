@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -40,7 +40,7 @@ func TestListWorkspacesByID(t *testing.T) {
 		},
 		{
 			Name:     "not found id returns emtpy results",
-			QueryIDs: []string{"devpodio-devpod-xxxxxxxxxxx"},
+			QueryIDs: []string{"khulnasoft-devpod-xxxxxxxxxxx"},
 			Expected: 0,
 		},
 		{
@@ -50,7 +50,7 @@ func TestListWorkspacesByID(t *testing.T) {
 		},
 		{
 			Name:     "one matching and one non existent returns one found result",
-			QueryIDs: []string{workspaces[0].ID, "devpodio-devpod-xxxxxxxxxxx"},
+			QueryIDs: []string{workspaces[0].ID, "khulnasoft-devpod-xxxxxxxxxxx"},
 			Expected: 1,
 		},
 		{

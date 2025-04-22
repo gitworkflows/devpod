@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,8 +7,8 @@
 import { inject, injectable } from "inversify";
 
 import { Config } from "../config";
-import { BillingMode } from "@devpod/devpod-protocol/lib/billing-mode";
-import { CostCenter_BillingStrategy } from "@devpod/usage-api/lib/usage/v1/usage.pb";
+import { BillingMode } from "@khulnasoft/devpod-protocol/lib/billing-mode";
+import { CostCenter_BillingStrategy } from "@khulnasoft/usage-api/lib/usage/v1/usage.pb";
 import { UsageService } from "../orgs/usage-service";
 
 /**

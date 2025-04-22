@@ -1,18 +1,18 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { inject, injectable } from "inversify";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
-import { GitpodTableDescriptionProvider, TableDescription } from "./tables";
+import { DevpodTableDescriptionProvider, TableDescription } from "./tables";
 import { TypeORM } from "./typeorm/typeorm";
 
 @injectable()
 export class PeriodicDbDeleter {
-    @inject(GitpodTableDescriptionProvider) protected readonly tableProvider: GitpodTableDescriptionProvider;
+    @inject(DevpodTableDescriptionProvider) protected readonly tableProvider: DevpodTableDescriptionProvider;
     @inject(TypeORM) protected readonly typeORM: TypeORM;
 
     async runOnce(): Promise<number> {

@@ -62,8 +62,8 @@ jobs:
           branch: "ide/code-release"
           labels: "team: IDE,editor: code (browser)"
           token: ${{ secrets.ROBOQUAT_REPO_PAT }}
-          committer: Robo Quat <roboquat@devpod.io>
-          author: Robo Quat <roboquat@devpod.io>
+          committer: Robo Quat <roboquat@khulnasoft.com>
+          author: Robo Quat <roboquat@khulnasoft.com>
           team-reviewers: |
             team-experience
 
@@ -97,8 +97,8 @@ jobs:
           branch: "ide/code-images"
           labels: "team: IDE,editor: code (browser)"
           token: ${{ secrets.ROBOQUAT_REPO_PAT }}
-          committer: Robo Quat <roboquat@devpod.io>
-          author: Robo Quat <roboquat@devpod.io>
+          committer: Robo Quat <roboquat@khulnasoft.com>
+          author: Robo Quat <roboquat@khulnasoft.com>
           team-reviewers: |
             team-experience
       - name: Slack notification (code)

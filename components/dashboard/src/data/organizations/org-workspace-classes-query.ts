@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { organizationClient } from "../../service/public-api";
 import { useCallback } from "react";
 import { useCurrentOrg } from "./orgs-query";
-import { WorkspaceClass } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspaceClass } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { noPersistence } from "../setup";
 
 export function useOrgWorkspaceClassesQueryInvalidator() {

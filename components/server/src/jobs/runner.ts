@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { DisposableCollection } from "@devpod/devpod-protocol";
-import { repeat } from "@devpod/devpod-protocol/lib/util/repeat";
+import { DisposableCollection } from "@khulnasoft/devpod-protocol";
+import { repeat } from "@khulnasoft/devpod-protocol/lib/util/repeat";
 import { inject, injectable } from "inversify";
 import { RedisMutex } from "../redis/mutex";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { jobsDurationSeconds, reportJobCompleted, reportJobStarted } from "../prometheus-metrics";
 import { DatabaseGarbageCollector } from "./database-gc";
 import { OTSGarbageCollector } from "./ots-gc";

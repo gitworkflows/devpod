@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import ContextMenu, { ContextMenuEntry } from "./ContextMenu";
 import CaretDown from "../icons/CaretDown.svg";
-import { WorkspaceGitStatus } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspaceGitStatus } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { cn } from "@podkit/lib/cn";
 
 type Props = {

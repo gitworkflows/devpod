@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -68,5 +68,5 @@ var callServerCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(callServerCmd)
 
-	callServerCmd.Flags().String("workspace-id", os.Getenv("GITPOD_WORKSPACE_ID"), "workspace ID to listen for")
+	callServerCmd.Flags().String("workspace-id", os.Getenv("DEVPOD_WORKSPACE_ID"), "workspace ID to listen for")
 }

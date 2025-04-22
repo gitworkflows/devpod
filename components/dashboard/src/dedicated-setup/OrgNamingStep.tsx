@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -55,7 +55,7 @@ export const OrgNamingStep: FC<Props> = ({ onComplete, progressCurrent, progress
             <div className="mb-10">
                 <Heading1>Name your organization</Heading1>
                 <Subheading>
-                    Your Gitpod organization allows you to manage settings, projects and collaborate with teammates.
+                    Your Devpod organization allows you to manage settings, projects and collaborate with teammates.
                 </Subheading>
             </div>
             {(createOrg.isError || updateOrg.isError) && (

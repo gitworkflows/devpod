@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AuthProviderInfo } from "@devpod/devpod-protocol";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { AuthProviderInfo } from "@khulnasoft/devpod-protocol";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import express from "express";
 import { inject, injectable } from "inversify";
 import { AuthUserSetup } from "../auth/auth-provider";
 import { GenericAuthProvider } from "../auth/generic-auth-provider";
 import { BitbucketServerApi } from "./bitbucket-server-api";
-import { BitbucketServerOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
+import { BitbucketServerOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
 
 @injectable()
 export class BitbucketServerAuthProvider extends GenericAuthProvider {

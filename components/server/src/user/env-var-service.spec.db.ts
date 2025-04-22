@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TypeORM } from "@devpod/devpod-db/lib";
+import { TypeORM } from "@khulnasoft/devpod-db/lib";
 import {
     CommitContext,
     EnvVarWithValue,
@@ -15,17 +15,17 @@ import {
     UserEnvVarValue,
     WithEnvvarsContext,
     WorkspaceConfig,
-} from "@devpod/devpod-protocol";
-import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+} from "@khulnasoft/devpod-protocol";
+import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";
 import { createTestContainer } from "../test/service-testing-container-module";
-import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
+import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
 import { OrganizationService } from "../orgs/organization-service";
 import { UserService } from "./user-service";
 import { expectError } from "../test/expect-utils";
-import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { EnvVarService, ResolvedEnvVars } from "./env-var-service";
 import { ProjectsService } from "../projects/projects-service";
 
@@ -80,7 +80,7 @@ const contextEnvVars = {
 } as WithEnvvarsContext;
 
 const devpodImageAuthOrgEnvVar: OrgEnvVarWithValue = {
-    name: "GITPOD_IMAGE_AUTH",
+    name: "DEVPOD_IMAGE_AUTH",
     value: "some-token",
 };
 
@@ -313,8 +313,8 @@ describe("EnvVarService", async () => {
         await expectError(ErrorCodes.NOT_FOUND, es.addOrgEnvVar(stranger.id, org.id, someOrgEnvVar));
     });
 
-    it("should restrict org env var names to GITPOD_IMAGE_AUTH", async () => {
-        // Owner can create GITPOD_IMAGE_AUTH
+    it("should restrict org env var names to DEVPOD_IMAGE_AUTH", async () => {
+        // Owner can create DEVPOD_IMAGE_AUTH
         await es.addOrgEnvVar(owner.id, org.id, devpodImageAuthOrgEnvVar);
 
         // Owner cannot create other env var names
@@ -331,7 +331,7 @@ describe("EnvVarService", async () => {
 
         const envVars = await es.listOrgEnvVars(owner.id, org.id);
         expect(envVars.length).to.equal(1);
-        expect(envVars[0].name).to.equal("GITPOD_IMAGE_AUTH");
+        expect(envVars[0].name).to.equal("DEVPOD_IMAGE_AUTH");
     });
 
     it("should control org env var read access", async () => {

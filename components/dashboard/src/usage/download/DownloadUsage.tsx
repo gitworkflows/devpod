@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useDownloadUsageCSV } from "./download-usage-csv";
-import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
+import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
 import { Dayjs } from "dayjs";
 import { useToast } from "../../components/toasts/Toasts";
 import { useCurrentOrg } from "../../data/organizations/orgs-query";

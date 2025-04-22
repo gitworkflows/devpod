@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -30,7 +30,7 @@ var usersCmdOpts struct {
 func init() {
 	rootCmd.AddCommand(usersCmd)
 
-	usersCmd.PersistentFlags().StringVar(&usersCmdOpts.address, "address", "wss://devpod.io/api/v1", "Address of the API endpoint. Must be in the form <host>:<port>.")
+	usersCmd.PersistentFlags().StringVar(&usersCmdOpts.address, "address", "wss://devpod.khulnasoft.com/api/v1", "Address of the API endpoint. Must be in the form <host>:<port>.")
 	usersCmd.PersistentFlags().BoolVar(&usersCmdOpts.insecure, "insecure", false, "Disable TLS when making requests against the API. For testing purposes only.")
 	usersCmd.PersistentFlags().StringVar(&usersCmdOpts.token, "token", os.Getenv("GPCTL_API_TOKEN"), "Authentication token to interact with the API")
 }

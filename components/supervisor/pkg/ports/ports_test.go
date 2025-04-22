@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -431,7 +431,7 @@ func TestPortsUpdateState(t *testing.T) {
 			},
 		},
 		{
-			Desc: "port status has the name attribute set as soon as the port gets exposed, if there was a name configured in Gitpod's Workspace",
+			Desc: "port status has the name attribute set as soon as the port gets exposed, if there was a name configured in Devpod's Workspace",
 			Changes: []Change{
 				{
 					Config: &ConfigChange{instance: []*devpod.PortsItems{

@@ -1,6 +1,6 @@
 # Public-API
 
-This component contains the Gitpod (Public) API.
+This component contains the Devpod (Public) API.
 
 :warning: This API is currently in development and may change frequently before it reaches General Availability
 

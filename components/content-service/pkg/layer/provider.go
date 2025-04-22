@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -357,9 +357,9 @@ func (s *Provider) layerFromContentManifest(ctx context.Context, mf *csapi.Works
 
 func contentDescriptorToLayer(cdesc []byte) (*Layer, error) {
 	return layerFromContent(
-		fileInLayer{&tar.Header{Typeflag: tar.TypeDir, Name: "/workspace", Uid: initializer.GitpodUID, Gid: initializer.GitpodGID, Mode: 0755}, nil},
-		fileInLayer{&tar.Header{Typeflag: tar.TypeDir, Name: "/workspace/.devpod", Uid: initializer.GitpodUID, Gid: initializer.GitpodGID, Mode: 0755}, nil},
-		fileInLayer{&tar.Header{Typeflag: tar.TypeReg, Name: "/workspace/.devpod/content.json", Uid: initializer.GitpodUID, Gid: initializer.GitpodGID, Mode: 0755, Size: int64(len(cdesc))}, cdesc},
+		fileInLayer{&tar.Header{Typeflag: tar.TypeDir, Name: "/workspace", Uid: initializer.DevpodUID, Gid: initializer.DevpodGID, Mode: 0755}, nil},
+		fileInLayer{&tar.Header{Typeflag: tar.TypeDir, Name: "/workspace/.devpod", Uid: initializer.DevpodUID, Gid: initializer.DevpodGID, Mode: 0755}, nil},
+		fileInLayer{&tar.Header{Typeflag: tar.TypeReg, Name: "/workspace/.devpod/content.json", Uid: initializer.DevpodUID, Gid: initializer.DevpodGID, Mode: 0755, Size: int64(len(cdesc))}, cdesc},
 	)
 }
 
@@ -373,9 +373,9 @@ func workspaceReadyLayer(src csapi.WorkspaceInitSource) (*Layer, error) {
 	}
 
 	return layerFromContent(
-		fileInLayer{&tar.Header{Typeflag: tar.TypeDir, Name: "/workspace", Uid: initializer.GitpodUID, Gid: initializer.GitpodGID, Mode: 0755}, nil},
-		fileInLayer{&tar.Header{Typeflag: tar.TypeDir, Name: "/workspace/.devpod", Uid: initializer.GitpodUID, Gid: initializer.GitpodGID, Mode: 0755}, nil},
-		fileInLayer{&tar.Header{Typeflag: tar.TypeReg, Name: "/workspace/.devpod/ready", Uid: initializer.GitpodUID, Gid: initializer.GitpodGID, Mode: 0755, Size: int64(len(ctnt))}, []byte(ctnt)},
+		fileInLayer{&tar.Header{Typeflag: tar.TypeDir, Name: "/workspace", Uid: initializer.DevpodUID, Gid: initializer.DevpodGID, Mode: 0755}, nil},
+		fileInLayer{&tar.Header{Typeflag: tar.TypeDir, Name: "/workspace/.devpod", Uid: initializer.DevpodUID, Gid: initializer.DevpodGID, Mode: 0755}, nil},
+		fileInLayer{&tar.Header{Typeflag: tar.TypeReg, Name: "/workspace/.devpod/ready", Uid: initializer.DevpodUID, Gid: initializer.DevpodGID, Mode: 0755, Size: int64(len(ctnt))}, []byte(ctnt)},
 	)
 }
 

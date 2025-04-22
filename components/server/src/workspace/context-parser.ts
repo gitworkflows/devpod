@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WorkspaceContext, User } from "@devpod/devpod-protocol";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { WorkspaceContext, User } from "@khulnasoft/devpod-protocol";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import { inject, injectable } from "inversify";
 import { AuthProviderParams } from "../auth/auth-provider";
 import { URLSearchParams, URL } from "url";

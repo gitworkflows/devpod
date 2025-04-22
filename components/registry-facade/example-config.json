@@ -25,7 +25,7 @@
     "repos": {
       "ghcr.io/devpod-core-dev/build/theia-ide": {
         "prePull": ["master.28"],
-        "workdir": "/theia/node_modules/@devpod/devpod-ide/lib"
+        "workdir": "/theia/node_modules/@khulnasoft/devpod-ide/lib"
       }
     },
     "blobSpace": {

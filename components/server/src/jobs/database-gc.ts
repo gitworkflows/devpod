@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { PeriodicDbDeleter } from "@devpod/devpod-db/lib";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { PeriodicDbDeleter } from "@khulnasoft/devpod-db/lib";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { inject, injectable } from "inversify";
 import { Job } from "./runner";
 import { Config } from "../config";

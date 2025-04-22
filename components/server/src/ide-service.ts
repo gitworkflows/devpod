@@ -1,21 +1,21 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { IDESettings, User, Workspace } from "@devpod/devpod-protocol";
-import { IDEClient, IDEOption, IDEOptions, IDESettingsVersion } from "@devpod/devpod-protocol/lib/ide-protocol";
-import * as IdeServiceApi from "@devpod/ide-service-api/lib/ide.pb";
+import { IDESettings, User, Workspace } from "@khulnasoft/devpod-protocol";
+import { IDEClient, IDEOption, IDEOptions, IDESettingsVersion } from "@khulnasoft/devpod-protocol/lib/ide-protocol";
+import * as IdeServiceApi from "@khulnasoft/ide-service-api/lib/ide.pb";
 import {
     IDEServiceClient,
     IDEServiceDefinition,
     ResolveWorkspaceConfigResponse,
-} from "@devpod/ide-service-api/lib/ide.pb";
-import { getPrimaryEmail } from "@devpod/public-api-common/lib/user-utils";
+} from "@khulnasoft/ide-service-api/lib/ide.pb";
+import { getPrimaryEmail } from "@khulnasoft/public-api-common/lib/user-utils";
 import { inject, injectable } from "inversify";
 import { AuthorizationService } from "./user/authorization-service";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 interface IDEVersion {
     version: string;

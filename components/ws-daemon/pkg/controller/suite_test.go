@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -52,7 +52,7 @@ var _ = BeforeSuite(func() {
 	logf.SetLogger(zap.New(zap.WriteTo(GinkgoWriter), zap.UseDevMode(true)))
 
 	crdPath := filepath.Join("..", "..", "crd")
-	if !util.InLeewayBuild() {
+	if !util.InBlazedockBuild() {
 		crdPath = filepath.Join("..", "..", "..", "ws-manager-mk2", "config", "crd", "bases")
 	}
 

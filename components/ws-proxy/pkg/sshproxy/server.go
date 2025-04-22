@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -162,7 +162,7 @@ func New(signers []ssh.Signer, workspaceInfoProvider common.WorkspaceInfoProvide
 	}
 
 	server.sshConfig = &ssh.ServerConfig{
-		ServerVersion: "SSH-2.0-GITPOD-GATEWAY",
+		ServerVersion: "SSH-2.0-DEVPOD-GATEWAY",
 		NoClientAuth:  true,
 		NoClientAuthCallback: func(conn ssh.ConnMetadata) (*ssh.Permissions, error) {
 			if perm, err := authWithWebsocketTunnel(conn); err == nil {

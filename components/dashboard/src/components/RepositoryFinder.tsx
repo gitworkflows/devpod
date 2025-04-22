@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { Combobox, ComboboxElement, ComboboxSelectedItem } from "./podkit/combobox/Combobox";
 import RepositorySVG from "../icons/Repository.svg";
 import { ReactComponent as RepositoryIcon } from "../icons/RepositoryWithColor.svg";
-import GitpodRepositoryTemplateSVG from "../icons/GitpodRepositoryTemplate.svg";
+import DevpodRepositoryTemplateSVG from "../icons/DevpodRepositoryTemplate.svg";
 import { MiddleDot } from "./typography/MiddleDot";
 import {
     deduplicateAndFilterRepositories,
@@ -17,8 +17,8 @@ import {
 } from "../data/git-providers/unified-repositories-search-query";
 import { useAuthProviderDescriptions } from "../data/auth-providers/auth-provider-descriptions-query";
 import { ReactComponent as Exclamation2 } from "../images/exclamation2.svg";
-import { AuthProviderType } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
-import { SuggestedRepository } from "@devpod/public-api/lib/devpod/v1/scm_pb";
+import { AuthProviderType } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { SuggestedRepository } from "@khulnasoft/public-api/lib/devpod/v1/scm_pb";
 import { PREDEFINED_REPOS, PredefinedRepo } from "../data/git-providers/predefined-repos";
 import { useConfiguration, useListConfigurations } from "../data/configurations/configuration-queries";
 import { useUserLoader } from "../hooks/use-user-loader";
@@ -36,7 +36,7 @@ const isPredefined = (repo: SuggestedRepository | PredefinedRepo): boolean => {
 
 const resolveIcon = (contextUrl?: string): string => {
     if (!contextUrl) return RepositorySVG;
-    return PREDEFINED_REPOS.some((repo) => repo.url === contextUrl) ? GitpodRepositoryTemplateSVG : RepositorySVG;
+    return PREDEFINED_REPOS.some((repo) => repo.url === contextUrl) ? DevpodRepositoryTemplateSVG : RepositorySVG;
 };
 
 type PredefinedRepositoryOptionProps = {

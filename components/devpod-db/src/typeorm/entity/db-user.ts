@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { PrimaryColumn, Entity, Column, OneToMany, JoinColumn, Index } from "typeorm";
-import { User, RoleOrPermission, AdditionalUserData, UserFeatureSettings } from "@devpod/devpod-protocol";
+import { User, RoleOrPermission, AdditionalUserData, UserFeatureSettings } from "@khulnasoft/devpod-protocol";
 import { DBIdentity } from "./db-identity";
 import { TypeORM } from "../typeorm";
 import { Transformer } from "../transformer";

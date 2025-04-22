@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,18 +8,18 @@ import express from "express";
 import { createHmac, timingSafeEqual } from "crypto";
 import { Buffer } from "buffer";
 import { postConstruct, injectable, inject } from "inversify";
-import { TeamDB, WebhookEventDB } from "@devpod/devpod-db/lib";
+import { TeamDB, WebhookEventDB } from "@khulnasoft/devpod-db/lib";
 import { PrebuildManager } from "./prebuild-manager";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import { TokenService } from "../user/token-service";
 import { HostContextProvider } from "../auth/host-context-provider";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { CommitContext, CommitInfo, Project, User, WebhookEvent } from "@devpod/devpod-protocol";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { CommitContext, CommitInfo, Project, User, WebhookEvent } from "@khulnasoft/devpod-protocol";
 import { URL } from "url";
 import { ContextParser } from "../workspace/context-parser-service";
 import { RepoURL } from "../repohost";
 import { UserService } from "../user/user-service";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { ProjectsService } from "../projects/projects-service";
 import { SYSTEM_USER, SYSTEM_USER_ID } from "../authorization/authorizer";
 import { runWithSubjectId } from "../util/request-context";
@@ -109,7 +109,7 @@ export class GitHubEnterpriseApp {
             }
             for (const user of projectOwners.users) {
                 const devpodIdentity = user.identities.find(
-                    (i) => i.authProviderId === TokenService.GITPOD_AUTH_PROVIDER_ID,
+                    (i) => i.authProviderId === TokenService.DEVPOD_AUTH_PROVIDER_ID,
                 );
                 if (!devpodIdentity) {
                     continue;

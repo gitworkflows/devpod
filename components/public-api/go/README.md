@@ -1,5 +1,5 @@
-# Golang bindings for Gitpod API
-This package contains API definitions and client bindings for interacting with Gitpod API.
+# Golang bindings for Devpod API
+This package contains API definitions and client bindings for interacting with Devpod API.
 
 ## Usage
 ```bash

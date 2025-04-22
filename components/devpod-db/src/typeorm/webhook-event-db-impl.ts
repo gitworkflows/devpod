@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 import { TypeORM } from "./typeorm";
 import { WebhookEventDB } from "../webhook-event-db";
 import { DBWebhookEvent } from "./entity/db-webhook-event";
-import { WebhookEvent } from "@devpod/devpod-protocol";
+import { WebhookEvent } from "@khulnasoft/devpod-protocol";
 
 @injectable()
 export class WebhookEventDBImpl implements WebhookEventDB {

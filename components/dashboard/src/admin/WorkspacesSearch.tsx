@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -10,22 +10,22 @@ import {
     ContextURL,
     User,
     WorkspaceAndInstance,
-} from "@devpod/devpod-protocol";
+} from "@khulnasoft/devpod-protocol";
 import {
     matchesInstanceIdOrLegacyWorkspaceIdExactly,
     matchesNewWorkspaceIdExactly,
-} from "@devpod/devpod-protocol/lib/util/parse-workspace-id";
+} from "@khulnasoft/devpod-protocol/lib/util/parse-workspace-id";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import Pagination from "../Pagination/Pagination";
-import { getGitpodService } from "../service/service";
+import { getDevpodService } from "../service/service";
 import { getProjectPath } from "../workspaces/WorkspaceEntry";
 import WorkspaceDetail from "./WorkspaceDetail";
 import { AdminPageHeader } from "./AdminPageHeader";
 import Alert from "../components/Alert";
-import { isGitpodIo } from "../utils";
+import { isDevpodIo } from "../utils";
 import { SpinnerLoader } from "../components/Loader";
 import { WorkspaceStatusIndicator } from "../workspaces/WorkspaceStatusIndicator";
 import searchIcon from "../icons/search.svg";
@@ -60,7 +60,7 @@ export function WorkspaceSearch(props: Props) {
             if (user) {
                 setCurrentWorkspaceState(user);
             } else {
-                getGitpodService()
+                getDevpodService()
                     .server.adminGetWorkspace(workspaceId)
                     .then((ws) => setCurrentWorkspaceState(ws))
                     .catch((e) => console.error(e));
@@ -84,7 +84,7 @@ export function WorkspaceSearch(props: Props) {
 
     const search = async (page: number = 1) => {
         // Disables empty search on the workspace search page
-        if (isGitpodIo() && !props.user && queryTerm.length === 0) {
+        if (isDevpodIo() && !props.user && queryTerm.length === 0) {
             return;
         }
 
@@ -98,11 +98,11 @@ export function WorkspaceSearch(props: Props) {
             } else if (matchesNewWorkspaceIdExactly(queryTerm)) {
                 query.workspaceId = queryTerm;
             }
-            if (isGitpodIo() && !query.ownerId && !query.instanceIdOrWorkspaceId && !query.workspaceId) {
+            if (isDevpodIo() && !query.ownerId && !query.instanceIdOrWorkspaceId && !query.workspaceId) {
                 return;
             }
 
-            const result = await getGitpodService().server.adminGetWorkspaces({
+            const result = await getDevpodService().server.adminGetWorkspaces({
                 limit: pageLength,
                 orderBy: "instanceCreationTime",
                 offset: (page - 1) * pageLength,

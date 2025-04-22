@@ -1,6 +1,6 @@
-# Gitpod Project Intelligence
+# Devpod Project Intelligence
 
-This file captures important patterns, preferences, and project intelligence that help me work more effectively with the Gitpod codebase. It serves as a learning journal that will be updated as I discover new insights.
+This file captures important patterns, preferences, and project intelligence that help me work more effectively with the Devpod codebase. It serves as a learning journal that will be updated as I discover new insights.
 
 ## Project Structure Patterns
 
@@ -8,7 +8,7 @@ This file captures important patterns, preferences, and project intelligence tha
 - **API Definitions**: API definitions are typically in separate packages with `-api` suffix (e.g., `content-service-api`)
 - **Protocol Buffers**: gRPC service definitions use Protocol Buffers (`.proto` files)
 - **Build Configuration**: Each component has a `BUILD.yaml` file defining its build configuration
-- **Docker Configuration**: Components that run as containers have a `leeway.Dockerfile`
+- **Docker Configuration**: Components that run as containers have a `blazedock.Dockerfile`
 
 ## Code Style Preferences
 
@@ -47,10 +47,10 @@ This file captures important patterns, preferences, and project intelligence tha
       - `go test ./...`: Test all packages
       - `go run main.go`: Build and run
 
-  - **Out-of-tree builds** (Leeway, primary for CI):
-    - `leeway build components/component-name:app`: Build a specific component
-    - `leeway build -D components/component-name:app`: Build with dependencies
-    - `leeway exec --package components/component-name:app -- command`: Run a command for a package
+  - **Out-of-tree builds** (Blazedock, primary for CI):
+    - `blazedock build components/component-name:app`: Build a specific component
+    - `blazedock build -D components/component-name:app`: Build with dependencies
+    - `blazedock exec --package components/component-name:app -- command`: Run a command for a package
 
 - **Testing**:
   - Unit tests alongside code
@@ -60,7 +60,7 @@ This file captures important patterns, preferences, and project intelligence tha
   - Go tests use standard `go test` command
 
 - **Local Development**:
-  - Use Gitpod workspaces for development (dogfooding)
+  - Use Devpod workspaces for development (dogfooding)
   - Components can be run individually for testing
   - Preview environments for testing changes
   - Use in-tree builds for rapid iteration during development
@@ -81,7 +81,7 @@ This file captures important patterns, preferences, and project intelligence tha
 
 ## Known Challenges
 
-- **Build System Complexity**: The Leeway build system has a learning curve
+- **Build System Complexity**: The Blazedock build system has a learning curve
 - **Component Dependencies**: Understanding dependencies between components can be challenging
 - **Testing Environment**: Setting up proper testing environments for all components
 
@@ -149,4 +149,4 @@ This information is critical for effective development work, as being able to bu
 
 ---
 
-Note: This file will be continuously updated as I work with the Gitpod codebase and discover new patterns, preferences, and insights.
+Note: This file will be continuously updated as I work with the Devpod codebase and discover new patterns, preferences, and insights.

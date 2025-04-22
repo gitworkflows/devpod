@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -69,7 +69,7 @@ func TestPrebuildWorkspaceTaskSuccess(t *testing.T) {
 							return err
 						}
 						req.Spec.Envvars = append(req.Spec.Envvars, &wsmanapi.EnvironmentVariable{
-							Name:  "GITPOD_TASKS",
+							Name:  "DEVPOD_TASKS",
 							Value: string(tasks),
 						})
 
@@ -132,7 +132,7 @@ func TestPrebuildWorkspaceTaskFail(t *testing.T) {
 			ws, stopWs, err := integration.LaunchWorkspaceDirectly(t, ctx, api, integration.WithRequestModifier(func(req *wsmanapi.StartWorkspaceRequest) error {
 				req.Type = wsmanapi.WorkspaceType_PREBUILD
 				req.Spec.Envvars = append(req.Spec.Envvars, &wsmanapi.EnvironmentVariable{
-					Name:  "GITPOD_TASKS",
+					Name:  "DEVPOD_TASKS",
 					Value: `[{ "init": "echo \"some output\" > someFile; exit 1;" }]`,
 				})
 				return nil
@@ -228,7 +228,7 @@ func TestOpenWorkspaceFromPrebuild(t *testing.T) {
 							integration.WithRequestModifier(func(req *wsmanapi.StartWorkspaceRequest) error {
 								req.Type = wsmanapi.WorkspaceType_PREBUILD
 								req.Spec.Envvars = append(req.Spec.Envvars, &wsmanapi.EnvironmentVariable{
-									Name:  "GITPOD_TASKS",
+									Name:  "DEVPOD_TASKS",
 									Value: fmt.Sprintf(`[{ "init": %q }]`, initTask),
 								})
 								req.Spec.FeatureFlags = test.FF
@@ -459,7 +459,7 @@ func TestOpenWorkspaceFromOutdatedPrebuild(t *testing.T) {
 						integration.WithRequestModifier(func(req *wsmanapi.StartWorkspaceRequest) error {
 							req.Type = wsmanapi.WorkspaceType_PREBUILD
 							req.Spec.Envvars = append(req.Spec.Envvars, &wsmanapi.EnvironmentVariable{
-								Name:  "GITPOD_TASKS",
+								Name:  "DEVPOD_TASKS",
 								Value: `[{ "init": "./init.sh" }]`,
 							})
 							req.Spec.FeatureFlags = test.FF
@@ -502,7 +502,7 @@ func TestOpenWorkspaceFromOutdatedPrebuild(t *testing.T) {
 					// launch the workspace on a later commit using this prebuild
 					ws, stopWs, err := integration.LaunchWorkspaceDirectly(t, ctx, api, integration.WithRequestModifier(func(req *wsmanapi.StartWorkspaceRequest) error {
 						req.Spec.Envvars = append(req.Spec.Envvars, &wsmanapi.EnvironmentVariable{
-							Name:  "GITPOD_TASKS",
+							Name:  "DEVPOD_TASKS",
 							Value: `[{ "init": "./init.sh" }]`,
 						})
 						req.Spec.FeatureFlags = test.FF

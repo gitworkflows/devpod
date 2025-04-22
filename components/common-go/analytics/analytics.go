@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -35,18 +35,18 @@ type TrackMessage struct {
 	Timestamp  time.Time
 }
 
-// NewFromEnvironment creates a new analytics writer based on the GITPOD_ANALYTICS_WRITER
+// NewFromEnvironment creates a new analytics writer based on the DEVPOD_ANALYTICS_WRITER
 // environment variable. This function never returns nil and callers are expected to call
 // Close() on the received writer.
 func NewFromEnvironment() Writer {
-	switch os.Getenv("GITPOD_ANALYTICS_WRITER") {
+	switch os.Getenv("DEVPOD_ANALYTICS_WRITER") {
 	case "log":
 		log.Debug("log analytics")
 		return &logAnalyticsWriter{}
 	case "segment":
 		log.Debug("segment analytics")
-		client, err := segment.NewWithConfig(os.Getenv("GITPOD_ANALYTICS_SEGMENT_KEY"), segment.Config{
-			Endpoint: os.Getenv("GITPOD_ANALYTICS_SEGMENT_ENDPOINT"),
+		client, err := segment.NewWithConfig(os.Getenv("DEVPOD_ANALYTICS_SEGMENT_KEY"), segment.Config{
+			Endpoint: os.Getenv("DEVPOD_ANALYTICS_SEGMENT_ENDPOINT"),
 		})
 		if err != nil {
 			log.WithError(err).Error("cannot create segment client")

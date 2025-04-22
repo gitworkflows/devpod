@@ -2,7 +2,7 @@
 
 ## Overview
 
-The IDE Service is a critical component in Gitpod that manages IDE configurations, resolves workspace IDE requirements, and provides information about available IDEs to other components in the system. It serves as the central authority for IDE-related information and decision-making.
+The IDE Service is a critical component in Devpod that manages IDE configurations, resolves workspace IDE requirements, and provides information about available IDEs to other components in the system. It serves as the central authority for IDE-related information and decision-making.
 
 ## Purpose
 
@@ -38,7 +38,7 @@ The service is designed to be lightweight and stateless, primarily serving confi
 
 ### Internal Dependencies
 - `components/common-go:lib`: Common Go utilities
-- `components/devpod-protocol/go:lib`: Gitpod protocol definitions
+- `components/devpod-protocol/go:lib`: Devpod protocol definitions
 - `components/ide-service-api/go:lib`: IDE service API definitions
 
 ### External Dependencies

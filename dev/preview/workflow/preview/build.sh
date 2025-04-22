@@ -10,7 +10,7 @@ source "$(realpath "${SCRIPT_PATH}/../lib/common.sh")"
 
 import "ensure-gcloud-auth.sh"
 
-leeway run dev/preview:configure-workspace
+blazedock run dev/preview:configure-workspace
 ensure_gcloud_auth
 
 if [[ "${VERSION:-}" == "" ]]; then
@@ -19,7 +19,7 @@ if [[ "${VERSION:-}" == "" ]]; then
     echo "$VERSION" > /tmp/local-dev-version
 fi
 
-leeway build \
+blazedock build \
     -Dversion="${VERSION}" \
     --dont-test \
     dev/preview:deploy-dependencies

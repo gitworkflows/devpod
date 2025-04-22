@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,37 +8,37 @@ import { PartialMessage } from "@bufbuild/protobuf";
 import { MethodKind, ServiceType } from "@bufbuild/protobuf";
 import { CallOptions, Code, ConnectError, PromiseClient, createPromiseClient } from "@connectrpc/connect";
 import { createConnectTransport } from "@connectrpc/connect-web";
-import { Disposable } from "@devpod/devpod-protocol";
-import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
-import { HelloService } from "@devpod/public-api/lib/devpod/experimental/v1/dummy_connect";
-import { OIDCService } from "@devpod/public-api/lib/devpod/experimental/v1/oidc_connect";
-import { TokensService } from "@devpod/public-api/lib/devpod/experimental/v1/tokens_connect";
-import { OrganizationService } from "@devpod/public-api/lib/devpod/v1/organization_connect";
-import { WorkspaceService } from "@devpod/public-api/lib/devpod/v1/workspace_connect";
-import { ConfigurationService } from "@devpod/public-api/lib/devpod/v1/configuration_connect";
-import { PrebuildService } from "@devpod/public-api/lib/devpod/v1/prebuild_connect";
-import { getMetricsInterceptor } from "@devpod/devpod-protocol/lib/metrics";
+import { Disposable } from "@khulnasoft/devpod-protocol";
+import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
+import { HelloService } from "@khulnasoft/public-api/lib/devpod/experimental/v1/dummy_connect";
+import { OIDCService } from "@khulnasoft/public-api/lib/devpod/experimental/v1/oidc_connect";
+import { TokensService } from "@khulnasoft/public-api/lib/devpod/experimental/v1/tokens_connect";
+import { OrganizationService } from "@khulnasoft/public-api/lib/devpod/v1/organization_connect";
+import { WorkspaceService } from "@khulnasoft/public-api/lib/devpod/v1/workspace_connect";
+import { ConfigurationService } from "@khulnasoft/public-api/lib/devpod/v1/configuration_connect";
+import { PrebuildService } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_connect";
+import { getMetricsInterceptor } from "@khulnasoft/devpod-protocol/lib/metrics";
 import { getExperimentsClient } from "../experiments/client";
 import { JsonRpcOrganizationClient } from "./json-rpc-organization-client";
 import { JsonRpcWorkspaceClient } from "./json-rpc-workspace-client";
 import { JsonRpcAuthProviderClient } from "./json-rpc-authprovider-client";
-import { AuthProviderService } from "@devpod/public-api/lib/devpod/v1/authprovider_connect";
-import { EnvironmentVariableService } from "@devpod/public-api/lib/devpod/v1/envvar_connect";
+import { AuthProviderService } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_connect";
+import { EnvironmentVariableService } from "@khulnasoft/public-api/lib/devpod/v1/envvar_connect";
 import { JsonRpcEnvvarClient } from "./json-rpc-envvar-client";
-import { Prebuild, WatchPrebuildRequest, WatchPrebuildResponse } from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
+import { Prebuild, WatchPrebuildRequest, WatchPrebuildResponse } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
 import { JsonRpcPrebuildClient } from "./json-rpc-prebuild-client";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { JsonRpcScmClient } from "./json-rpc-scm-client";
-import { SCMService } from "@devpod/public-api/lib/devpod/v1/scm_connect";
-import { SSHService } from "@devpod/public-api/lib/devpod/v1/ssh_connect";
-import { UserService } from "@devpod/public-api/lib/devpod/v1/user_connect";
+import { SCMService } from "@khulnasoft/public-api/lib/devpod/v1/scm_connect";
+import { SSHService } from "@khulnasoft/public-api/lib/devpod/v1/ssh_connect";
+import { UserService } from "@khulnasoft/public-api/lib/devpod/v1/user_connect";
 import { JsonRpcSSHClient } from "./json-rpc-ssh-client";
 import { JsonRpcVerificationClient } from "./json-rpc-verification-client";
-import { VerificationService } from "@devpod/public-api/lib/devpod/v1/verification_connect";
+import { VerificationService } from "@khulnasoft/public-api/lib/devpod/v1/verification_connect";
 import { JsonRpcInstallationClient } from "./json-rpc-installation-client";
-import { InstallationService } from "@devpod/public-api/lib/devpod/v1/installation_connect";
+import { InstallationService } from "@khulnasoft/public-api/lib/devpod/v1/installation_connect";
 import { JsonRpcUserClient } from "./json-rpc-user-client";
-import { Timeout } from "@devpod/devpod-protocol/lib/util/timeout";
+import { Timeout } from "@khulnasoft/devpod-protocol/lib/util/timeout";
 
 const transport = createConnectTransport({
     baseUrl: `${window.location.protocol}//${window.location.host}/public-api`,

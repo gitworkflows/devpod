@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -27,7 +27,7 @@ import { DownloadIcon } from "lucide-react";
 import { Button } from "@podkit/buttons/Button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@podkit/dropdown/DropDown";
 import { useInstallationConfiguration } from "./data/installation/installation-config-query";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 export const Insights = () => {
     const toDate = useMemo(() => Timestamp.fromDate(new Date()), []);

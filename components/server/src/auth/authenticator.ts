@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TeamDB } from "@devpod/devpod-db/lib";
-import { User } from "@devpod/devpod-protocol";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TeamDB } from "@khulnasoft/devpod-db/lib";
+import { User } from "@khulnasoft/devpod-protocol";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import express from "express";
 import { inject, injectable, postConstruct } from "inversify";
 import passport from "passport";
@@ -295,7 +295,7 @@ export class Authenticator {
                 wantedScopes = this.mergeScopes(authProvider.info.requirements.default, wantedScopes);
             }
         }
-        // authorize Gitpod
+        // authorize Devpod
         log.info(`(doAuthorize) wanted scopes (${override ? "overriding" : "merging"}): ${wantedScopes.join(",")}`);
         const state = await this.signInJWT.sign({ host, returnTo, overrideScopes: override });
         authProvider.authorize(req, res, next, this.deriveAuthState(state), wantedScopes);

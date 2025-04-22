@@ -1,16 +1,16 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { inject, injectable } from "inversify";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import { Job } from "../jobs/runner";
-import { DBWithTracing, TracedWorkspaceDB, UserDB, WorkspaceDB } from "@devpod/devpod-db/lib";
-import { durationLongerThanSeconds } from "@devpod/devpod-protocol/lib/util/timeutil";
+import { DBWithTracing, TracedWorkspaceDB, UserDB, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
+import { durationLongerThanSeconds } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
 import { WorkspaceStarter } from "./workspace-starter";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 @injectable()
 export class WorkspaceStartController implements Job {

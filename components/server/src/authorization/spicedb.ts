@@ -1,16 +1,16 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { v1 } from "@authzed/authzed-node";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import * as grpc from "@grpc/grpc-js";
-import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
-import { TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
-import { createDebugLogInterceptor } from "@devpod/devpod-protocol/lib/util/grpc";
-import { isConnectionAlive } from "@devpod/devpod-protocol/lib/util/grpc";
+import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
+import { createDebugLogInterceptor } from "@khulnasoft/devpod-protocol/lib/util/grpc";
+import { isConnectionAlive } from "@khulnasoft/devpod-protocol/lib/util/grpc";
 
 export interface SpiceDBClientConfig {
     address: string;

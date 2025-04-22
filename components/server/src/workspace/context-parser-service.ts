@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -11,14 +11,14 @@ import {
     GitCheckoutInfo,
     PullRequestContext,
     ExternalImageConfigFile,
-} from "@devpod/devpod-protocol";
+} from "@khulnasoft/devpod-protocol";
 import { injectable, multiInject, inject } from "inversify";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { IPrefixContextParser, IContextParser } from "./context-parser";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import { ConfigProvider } from "./config-provider";
-import { InvalidGitpodYMLError } from "@devpod/public-api-common/lib/public-api-errors";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { InvalidDevpodYMLError } from "@khulnasoft/public-api-common/lib/public-api-errors";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { ImageFileRevisionMissing } from "../repohost";
 
 @injectable()
@@ -141,7 +141,7 @@ export class ContextParser {
                     config.config.mainConfiguration,
                 );
                 if (!CommitContext.is(mainRepoContext)) {
-                    throw new InvalidGitpodYMLError({
+                    throw new InvalidDevpodYMLError({
                         violations: [`Cannot find main repository '${config.config.mainConfiguration}'.`],
                     });
                 }
@@ -159,7 +159,7 @@ export class ContextParser {
                         subRepo.url,
                     )) as CommitContext;
                     if (!CommitContext.is(subContext)) {
-                        throw new InvalidGitpodYMLError({
+                        throw new InvalidDevpodYMLError({
                             violations: [`Cannot find sub-repository '${subRepo.url}'.`],
                         });
                     }

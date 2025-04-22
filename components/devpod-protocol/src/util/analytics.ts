@@ -1,114 +1,55 @@
-/**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
- * Licensed under the GNU Affero General Public License (AGPL).
- * See License.AGPL.txt in the project root for license information.
- */
+import Analytics from 'analytics-node'; // replace with your actual import
+const analytics = new Analytics('YOUR_WRITE_KEY'); // replace with your actual Segment write key
+import { v4 as uuidv4 } from 'uuid'; // for generating fallback anonymousId
 
-import Analytics = require("analytics-node");
-import { IAnalyticsWriter, IdentifyMessage, TrackMessage, PageMessage } from "../analytics";
-import { log } from "./logging";
+type AnalyticsMsg = {
+  messageId?: string;
+  userId?: string | number;
+  anonymousId?: string | number;
+  subjectId?: string;
+  traits?: any;
+  timestamp?: Date;
+  context?: any;
+  event?: string;
+  category?: string;
+  name?: string;
+  properties?: any;
+};
 
-export function newAnalyticsWriterFromEnv(): IAnalyticsWriter {
-    switch (process.env.GITPOD_ANALYTICS_WRITER) {
-        case "segment":
-            return new SegmentAnalyticsWriter(
-                process.env.GITPOD_ANALYTICS_SEGMENT_KEY || "",
-                process.env.GITPOD_ANALYTICS_SEGMENT_ENDPOINT || "",
-            );
-        case "log":
-            return new LogAnalyticsWriter();
-        default:
-            return new NoAnalyticsWriter();
-    }
+function ensureAnonymousId(msg: AnalyticsMsg): string | number {
+  return msg.anonymousId ?? uuidv4(); // fallback to a UUID
 }
 
-class SegmentAnalyticsWriter implements IAnalyticsWriter {
-    protected readonly analytics: Analytics;
-
-    constructor(writeKey: string, endpoint: string) {
-        this.analytics = new Analytics(writeKey, {
-            host: endpoint,
-        });
-    }
-
-    identify(msg: IdentifyMessage) {
-        try {
-            this.analytics.identify(
-                {
-                    ...msg,
-                    integrations: {
-                        All: true,
-                        Mixpanel: !!msg.userId,
-                    },
-                },
-                (err: Error) => {
-                    if (err) {
-                        log.warn("analytics.identify failed", err);
-                    }
-                },
-            );
-        } catch (err) {
-            log.warn("analytics.identify failed", err);
-        }
-    }
-
-    track(msg: TrackMessage) {
-        try {
-            this.analytics.track(
-                {
-                    ...msg,
-                    integrations: {
-                        All: true,
-                        Mixpanel: !!msg.userId,
-                    },
-                },
-                (err: Error) => {
-                    if (err) {
-                        log.warn("analytics.track failed", err);
-                    }
-                },
-            );
-        } catch (err) {
-            log.warn("analytics.track failed", err);
-        }
-    }
-
-    page(msg: PageMessage) {
-        try {
-            this.analytics.page(
-                {
-                    ...msg,
-                    integrations: {
-                        All: true,
-                        Mixpanel: !!msg.userId,
-                    },
-                },
-                (err: Error) => {
-                    if (err) {
-                        log.warn("analytics.page failed", err);
-                    }
-                },
-            );
-        } catch (err) {
-            log.warn("analytics.page failed", err);
-        }
-    }
+export function trackIdentify(msg: AnalyticsMsg) {
+  analytics.identify({
+    ...msg,
+    anonymousId: ensureAnonymousId(msg),
+    integrations: {
+      All: true,
+      Mixpanel: false,
+    },
+  });
 }
 
-class LogAnalyticsWriter implements IAnalyticsWriter {
-    identify(msg: IdentifyMessage): void {
-        log.debug("analytics identify", msg);
-    }
-    track(msg: TrackMessage): void {
-        log.debug("analytics track", msg);
-    }
-    page(msg: PageMessage): void {
-        log.debug("analytics page", msg);
-    }
+export function trackEvent(msg: AnalyticsMsg) {
+  if (!msg.event) throw new Error("Missing event name");
+  analytics.track({
+    ...(msg as AnalyticsMsg & { event: string }),
+    anonymousId: ensureAnonymousId(msg),
+    integrations: {
+      All: true,
+      Mixpanel: false,
+    },
+  });
 }
 
-class NoAnalyticsWriter implements IAnalyticsWriter {
-    identify(msg: IdentifyMessage): void {}
-    track(msg: TrackMessage): void {}
-    page(msg: PageMessage): void {}
+export function trackScreen(msg: AnalyticsMsg) {
+  analytics.page({
+    ...msg,
+    anonymousId: ensureAnonymousId(msg),
+    integrations: {
+      All: true,
+      Mixpanel: false,
+    },
+  });
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -52,7 +52,7 @@ function SSHView(props: SSHProps) {
                 <TabsContent value="ssh_key" className="space-y-4 mt-4">
                     {!hasSSHKey && (
                         <Alert type="warning" className="whitespace-normal">
-                            You don't have any public SSH keys in your Gitpod account. You can{" "}
+                            You don't have any public SSH keys in your Devpod account. You can{" "}
                             <Link to={settingsPathSSHKeys} className="gp-link">
                                 add a new public key
                             </Link>

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -48,7 +48,7 @@ export namespace RolesOrPermissions {
 }
 
 export namespace Permission {
-    /** The permission to develop on this running Gitpod installation */
+    /** The permission to develop on this running Devpod installation */
     export const DEVELOPER: PermissionName = "developer";
 
     /** The permission for registry access (start workspaces referencing devpod-internal Docker images) */
@@ -79,7 +79,7 @@ export namespace Permission {
 }
 
 export namespace Role {
-    /** A role for people that are allowed to view Gitpod internals */
+    /** A role for people that are allowed to view Devpod internals */
     export const VIEWER: Role = {
         name: "viewer",
         permissions: [Permission.REGISTRY_ACCESS],

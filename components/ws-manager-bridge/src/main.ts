@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,15 +7,15 @@
 import { Container } from "inversify";
 import * as express from "express";
 import * as prometheusClient from "prom-client";
-import { log, LogrusLogLevel } from "@devpod/devpod-protocol/lib/util/logging";
-import { installLogCountMetric } from "@devpod/devpod-protocol/lib/util/logging-node";
-import { DebugApp } from "@devpod/devpod-protocol/lib/util/debug-app";
-import { TypeORM } from "@devpod/devpod-db/lib/typeorm/typeorm";
-import { TracingManager } from "@devpod/devpod-protocol/lib/util/tracing";
+import { log, LogrusLogLevel } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { installLogCountMetric } from "@khulnasoft/devpod-protocol/lib/util/logging-node";
+import { DebugApp } from "@khulnasoft/devpod-protocol/lib/util/debug-app";
+import { TypeORM } from "@khulnasoft/devpod-db/lib/typeorm/typeorm";
+import { TracingManager } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import { ClusterServiceServer } from "./cluster-service-server";
 import { BridgeController } from "./bridge-controller";
 import { AppClusterWorkspaceInstancesController } from "./app-cluster-instance-controller";
-import { redisMetricsRegistry } from "@devpod/devpod-db/lib";
+import { redisMetricsRegistry } from "@khulnasoft/devpod-db/lib";
 import { health, startHealthEndpoint } from "./healthz";
 
 log.enableJSONLogging("ws-manager-bridge", undefined, LogrusLogLevel.getFromEnv());

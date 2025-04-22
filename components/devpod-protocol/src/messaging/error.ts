@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -93,7 +93,7 @@ export const ErrorCodes = {
     CONTEXT_PARSE_ERROR: 460 as const,
 
     // 461 Invalid devpod yml (custom status code)
-    INVALID_GITPOD_YML: 461 as const,
+    INVALID_DEVPOD_YML: 461 as const,
 
     // 470 User Blocked (custom status code)
     USER_BLOCKED: 470 as const,

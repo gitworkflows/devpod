@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -19,7 +19,7 @@ export function ProductLogo(props: { className: string }) {
             {isDataOps ? (
                 <img src={isDark ? dataOpsIconDark : dataOpsIconLight} alt="Dataops logo" className={props.className} />
             ) : (
-                <img src={devpodIcon} alt="Gitpod's logo" className={props.className} />
+                <img src={devpodIcon} alt="Devpod's logo" className={props.className} />
             )}
         </>
     );

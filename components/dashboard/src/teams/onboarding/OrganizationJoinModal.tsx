@@ -1,16 +1,16 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { OnboardingSettings_WelcomeMessage } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import { OnboardingSettings_WelcomeMessage } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 import { Button } from "@podkit/buttons/Button";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "../../components/Modal";
 import { storageAvailable } from "../../utils";
 import { WelcomeMessagePreview } from "./WelcomeMessagePreview";
-import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
+import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
 
 type Props = {
     user: User;
@@ -59,7 +59,7 @@ export const OrganizationJoinModal = ({ welcomeMessage, user }: Props) => {
             onClose={dismissOrgOnboarding}
             containerClassName="min-[576px]:max-w-[650px]"
         >
-            <ModalHeader>Welcome to Gitpod</ModalHeader>
+            <ModalHeader>Welcome to Devpod</ModalHeader>
             <ModalBody>
                 <WelcomeMessagePreview hideHeader />
             </ModalBody>

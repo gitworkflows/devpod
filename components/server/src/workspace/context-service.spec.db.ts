@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TypeORM, WorkspaceDB } from "@devpod/devpod-db/lib";
-import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
+import { TypeORM, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
+import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
 import {
     CommitContext,
     Organization,
@@ -24,7 +24,7 @@ import {
     WorkspaceConfig,
     PrebuiltWorkspaceState,
     PrebuiltWorkspace,
-} from "@devpod/devpod-protocol";
+} from "@khulnasoft/devpod-protocol";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";
@@ -36,12 +36,12 @@ import { UserService } from "../user/user-service";
 import { SnapshotService } from "./snapshot-service";
 import { ContextService } from "./context-service";
 import { ContextParser } from "./context-parser-service";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import { ConfigProvider } from "./config-provider";
 import { PrebuildManager } from "../prebuilds/prebuild-manager";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { AuthProvider } from "../auth/auth-provider";
-import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 import { SYSTEM_USER } from "../authorization/authorizer";
 import { RepositoryProvider } from "../repohost";
 
@@ -163,7 +163,7 @@ function head<T>(arr: T[]): T {
     return arr[0];
 }
 
-const SNAPSHOT_BUCKET = "https://devpod.io/none-bucket";
+const SNAPSHOT_BUCKET = "https://devpod.khulnasoft.com/none-bucket";
 
 describe("ContextService", async () => {
     let container: Container;

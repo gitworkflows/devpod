@@ -226,7 +226,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "Gitpod / Node / Swap",
+  "title": "Devpod / Node / Swap",
   "uid": "node-swap",
   "version": 3,
   "weekStart": ""

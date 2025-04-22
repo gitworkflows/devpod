@@ -1,8 +1,8 @@
-# System Patterns: Gitpod
+# System Patterns: Devpod
 
 ## System Architecture
 
-Gitpod follows a microservices architecture composed of several key components that work together to provide the complete development environment platform. The system is designed to be:
+Devpod follows a microservices architecture composed of several key components that work together to provide the complete development environment platform. The system is designed to be:
 
 - **Scalable**: Handles many concurrent users and workspaces
 - **Resilient**: Maintains availability despite component failures
@@ -68,12 +68,12 @@ Gitpod follows a microservices architecture composed of several key components t
 
 3. **Supervisor**: Runs inside each workspace, managing the workspace's internal services.
 
-4. **Public API**: Provides programmatic access to Gitpod functionality.
+4. **Public API**: Provides programmatic access to Devpod functionality.
 
 ## Design Patterns
 
 ### Microservices Pattern
-Gitpod is built as a collection of loosely coupled services, each with a specific responsibility. This enables independent scaling, deployment, and maintenance of components.
+Devpod is built as a collection of loosely coupled services, each with a specific responsibility. This enables independent scaling, deployment, and maintenance of components.
 
 ### Container Orchestration
 Kubernetes is used to manage the deployment, scaling, and operation of application containers across clusters of hosts.
@@ -128,14 +128,14 @@ Workspaces are treated as immutable, with changes to configuration resulting in 
 
 6. **gRPC Communication**: Internal services communicate using gRPC for efficient, typed communication.
 
-7. **Leeway Build System**: Custom build system for managing the complex dependencies between components.
+7. **Blazedock Build System**: Custom build system for managing the complex dependencies between components.
 
 8. **Kubernetes Deployment Configuration**: All code that defines Kubernetes objects for deployable components lives in `install/installer`. This centralized approach ensures consistent deployment patterns across all components.
 
 ## Development Workflows
 
 ### Product Requirements Document (PRD) Workflow
-Gitpod uses a structured PRD workflow for feature development to ensure proper planning, documentation, and implementation:
+Devpod uses a structured PRD workflow for feature development to ensure proper planning, documentation, and implementation:
 
 1. **Requirements Gathering** (Plan Mode): Understand the problem, explore existing components, gather information
 2. **PRD Creation** (Plan Mode): Create a detailed document in `prd/` with standardized sections

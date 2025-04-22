@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -567,8 +567,8 @@ func (n *nodeUtilizationVec) Collect(ch chan<- prometheus.Metric) {
 		nodeTypes       = make(map[string]string)
 	)
 	for _, node := range nodes.Items {
-		isRegular := node.Labels["devpod.io/workload_workspace_regular"] == "true"
-		isHeadless := node.Labels["devpod.io/workload_workspace_headless"] == "true"
+		isRegular := node.Labels["devpod.khulnasoft.com/workload_workspace_regular"] == "true"
+		isHeadless := node.Labels["devpod.khulnasoft.com/workload_workspace_headless"] == "true"
 		if !isRegular && !isHeadless {
 			// Ignore non-workspace nodes.
 			continue

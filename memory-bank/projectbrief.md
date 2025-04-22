@@ -1,7 +1,7 @@
-# Project Brief: Gitpod
+# Project Brief: Devpod
 
 ## Overview
-Gitpod is a developer platform that provides on-demand, pre-configured development environments that automatically integrate with any tool, library, or dependency required for creating software. It enables developers to spin up fresh, automated dev environments for each task, in the cloud, in seconds.
+Devpod is a developer platform that provides on-demand, pre-configured development environments that automatically integrate with any tool, library, or dependency required for creating software. It enables developers to spin up fresh, automated dev environments for each task, in the cloud, in seconds.
 
 ## Core Features
 - **Dev Environments as Code**: Define editor extensions and dependencies in a declarative `.devpod.yml` configuration
@@ -28,7 +28,7 @@ Gitpod is a developer platform that provides on-demand, pre-configured developme
 - Enterprise development organizations
 
 ## Project Scope
-Gitpod encompasses:
+Devpod encompasses:
 - Cloud-based development environment infrastructure
 - IDE integration (VS Code, JetBrains)
 - Git platform integrations
@@ -36,4 +36,4 @@ Gitpod encompasses:
 - Collaboration tools
 - Self-hosted and managed deployment options
 
-This project brief serves as the foundation for all other memory bank documents and defines the core requirements and goals of Gitpod.
+This project brief serves as the foundation for all other memory bank documents and defines the core requirements and goals of Devpod.

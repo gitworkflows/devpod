@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -185,7 +185,7 @@ func Run(options ...RunOption) {
 		log.WithError(err).Fatal("configuration error")
 	}
 	if len(os.Args) < 2 || os.Args[1] != "run" {
-		fmt.Println("supervisor makes sure your workspace/IDE keeps running smoothly.\nYou don't have to call this thing, Gitpod calls it for you.")
+		fmt.Println("supervisor makes sure your workspace/IDE keeps running smoothly.\nYou don't have to call this thing, Devpod calls it for you.")
 		return
 	}
 
@@ -199,14 +199,14 @@ func Run(options ...RunOption) {
 		notificationService = NewNotificationService()
 	)
 
-	endpoint, host, err := cfg.GitpodAPIEndpoint()
+	endpoint, host, err := cfg.DevpodAPIEndpoint()
 	if err != nil {
-		log.WithError(err).Fatal("cannot find Gitpod API endpoint")
+		log.WithError(err).Fatal("cannot find Devpod API endpoint")
 	}
 
 	experimentsClientOpts := []experiments.ClientOpt{}
 	if cfg.ConfigcatEnabled {
-		experimentsClientOpts = append(experimentsClientOpts, experiments.WithGitpodProxy(host))
+		experimentsClientOpts = append(experimentsClientOpts, experiments.WithDevpodProxy(host))
 	}
 	exps := experiments.NewClient(experimentsClientOpts...)
 
@@ -214,9 +214,9 @@ func Run(options ...RunOption) {
 	//         URL, which would fail if we tried another time.
 	childProcEnvvars = buildChildProcEnv(cfg, nil, opts.RunGP)
 
-	err = AddGitpodUserIfNotExists()
+	err = AddDevpodUserIfNotExists()
 	if err != nil {
-		log.WithError(err).Fatal("cannot ensure Gitpod user exists")
+		log.WithError(err).Fatal("cannot ensure Devpod user exists")
 	}
 	symlinkBinaries(cfg)
 
@@ -322,7 +322,7 @@ func Run(options ...RunOption) {
 	supervisorMetrics := metrics.NewMetrics()
 	var metricsReporter *metrics.GrpcMetricsReporter
 	if !opts.RunGP && !cfg.isDebugWorkspace() && !strings.Contains("ephemeral", cfg.WorkspaceClusterHost) {
-		_, devpodHost, err := cfg.GitpodAPIEndpoint()
+		_, devpodHost, err := cfg.DevpodAPIEndpoint()
 		if err != nil {
 			log.WithError(err).Error("grpc metrics: failed to parse devpod host")
 		} else {
@@ -410,7 +410,7 @@ func Run(options ...RunOption) {
 	}
 
 	shouldShutdown, shutdownDuration := getIDENotReadyShutdownDuration(ctx, exps, host)
-	// with value true, supervisor will pass env GITPOD_WAIT_IDE_BACKEND=true when starting IDEs
+	// with value true, supervisor will pass env DEVPOD_WAIT_IDE_BACKEND=true when starting IDEs
 	// works with IDEs:
 	// - JB backend-plugin https://github.com/khulnasoft/devpod/blob/main/components/ide/jetbrains/launcher/main.go#L80
 	shouldWaitBackend := shouldShutdown
@@ -501,7 +501,7 @@ func Run(options ...RunOption) {
 					return
 				}
 
-				cmd := runAsGitpodUser(exec.Command("git", "fetch", "--unshallow", "--tags"))
+				cmd := runAsDevpodUser(exec.Command("git", "fetch", "--unshallow", "--tags"))
 				cmd.Dir = repoRoot
 				cmd.Stdout = os.Stdout
 				cmd.Stderr = os.Stderr
@@ -568,7 +568,7 @@ func getIDENotReadyShutdownDuration(ctx context.Context, exps experiments.Client
 			return false, time.Hour
 		default:
 		}
-		value := exps.GetStringValue(ctx, "supervisor_ide_not_ready_shutdown_duration", "not_found", experiments.Attributes{GitpodHost: devpodHost})
+		value := exps.GetStringValue(ctx, "supervisor_ide_not_ready_shutdown_duration", "not_found", experiments.Attributes{DevpodHost: devpodHost})
 		if value == "not_found" || value == "undefined" {
 			return false, time.Hour
 		}
@@ -583,7 +583,7 @@ func getIDENotReadyShutdownDuration(ctx context.Context, exps experiments.Client
 }
 
 func isShallowRepository(rootDir string) bool {
-	cmd := runAsGitpodUser(exec.Command("git", "rev-parse", "--is-shallow-repository"))
+	cmd := runAsDevpodUser(exec.Command("git", "rev-parse", "--is-shallow-repository"))
 	cmd.Dir = rootDir
 	out, err := cmd.CombinedOutput()
 	if err != nil {
@@ -615,7 +615,7 @@ func installDotfiles(ctx context.Context, cfg *Config, tokenService *InMemoryTok
 	prep := func(cfg *Config, out io.Writer, name string, args ...string) *exec.Cmd {
 		cmd := exec.Command(name, args...)
 		cmd.Dir = "/home/devpod"
-		runAsGitpodUser(cmd)
+		runAsDevpodUser(cmd)
 		cmd.Stdout = out
 		cmd.Stderr = out
 		return cmd
@@ -770,7 +770,7 @@ func createExposedPortsImpl(cfg *Config, devpodService serverapi.APIInterface) p
 		log.Error("auto-port exposure won't work")
 		return &ports.NoopExposedPorts{}
 	}
-	return ports.NewGitpodExposedPorts(cfg.WorkspaceID, cfg.WorkspaceInstanceID, cfg.WorkspaceUrl, devpodService)
+	return ports.NewDevpodExposedPorts(cfg.WorkspaceID, cfg.WorkspaceInstanceID, cfg.WorkspaceUrl, devpodService)
 }
 
 // supervisor ships some binaries we want in the PATH. We could just add some directory to the path, but
@@ -820,7 +820,7 @@ func configureGit(cfg *Config, contentReady <-chan struct{}) {
 
 	for _, s := range settings {
 		cmd := exec.Command("git", append([]string{"config", "--global"}, s...)...)
-		cmd = runAsGitpodUser(cmd)
+		cmd = runAsDevpodUser(cmd)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		err := cmd.Run()
@@ -1024,7 +1024,7 @@ func launchIDE(cfg *Config, ideConfig *IDEConfig, cmd *exec.Cmd, ideStopped chan
 		if shouldWaitBackend && ide == DesktopIDE {
 			// works with IDEs:
 			// - JB backend-plugin https://github.com/khulnasoft/devpod/blob/main/components/ide/jetbrains/launcher/main.go#L80
-			cmd.Env = append(cmd.Env, "GITPOD_WAIT_IDE_BACKEND=true")
+			cmd.Env = append(cmd.Env, "DEVPOD_WAIT_IDE_BACKEND=true")
 		}
 		err := cmd.Start()
 		if err != nil {
@@ -1071,7 +1071,7 @@ func prepareIDELaunch(cfg *Config, ideConfig *IDEConfig) *exec.Cmd {
 
 	// All supervisor children run as devpod user. The environment variables we produce are also
 	// devpod user specific.
-	runAsGitpodUser(cmd)
+	runAsDevpodUser(cmd)
 
 	// We need the child process to run in its own process group, s.t. we can suspend and resume
 	// IDE and its children.
@@ -1174,7 +1174,7 @@ func buildChildProcEnv(cfg *Config, envvars []string, runGP bool) []string {
 	envs["HOME"] = "/home/devpod"
 	envs["USER"] = "devpod"
 
-	if cpuCount, ok := envs["GITPOD_CPU_COUNT"]; ok && cfg.IsSetJavaProcessorCount {
+	if cpuCount, ok := envs["DEVPOD_CPU_COUNT"]; ok && cfg.IsSetJavaProcessorCount {
 		if _, exists := envs["JAVA_TOOL_OPTIONS"]; exists {
 			// check if the JAVA_TOOL_OPTIONS already contains the ActiveProcessorCount flag
 			if !strings.Contains(envs["JAVA_TOOL_OPTIONS"], "-XX:ActiveProcessorCount=") {
@@ -1185,7 +1185,7 @@ func buildChildProcEnv(cfg *Config, envvars []string, runGP bool) []string {
 		}
 	}
 	// Particular Java optimisation: Java pre v10 did not gauge it's available memory correctly, and needed explicitly setting "-Xmx" for all Hotspot/openJDK VMs
-	if mem, ok := envs["GITPOD_MEMORY"]; ok && cfg.IsSetJavaXmx {
+	if mem, ok := envs["DEVPOD_MEMORY"]; ok && cfg.IsSetJavaXmx {
 		envs["JAVA_TOOL_OPTIONS"] += fmt.Sprintf(" -Xmx%sm", mem)
 	}
 
@@ -1328,7 +1328,7 @@ func isBlacklistedEnvvar(name string) bool {
 	// exclude blacklisted
 	prefixBlacklist := []string{
 		"THEIA_SUPERVISOR_",
-		"GITPOD_TOKENS",
+		"DEVPOD_TOKENS",
 		// The following vars are meant to filter out the kubernetes-injected env vars that we do not know how to turn of (yet)
 		"KUBERNETES_SERVICE",
 		"KUBERNETES_PORT",
@@ -1646,7 +1646,7 @@ func stopWhenTasksAreDone(wg *sync.WaitGroup, cfg *Config, shutdown chan Shutdow
 		var msg string
 		if cfg.isImageBuild() {
 			logFromFile, err := os.ReadFile("/workspace/.devpod/bob.log")
-			debugMsg := "Debug this using `gp validate` (visit https://www.devpod.io/docs/configure/workspaces#validate-your-devpod-configuration) to learn more"
+			debugMsg := "Debug this using `gp validate` (visit https://www.devpod.khulnasoft.com/docs/configure/workspaces#validate-your-devpod-configuration) to learn more"
 			if err != nil {
 				log.WithError(err).Error("err while reading bob.log")
 				msg = fmt.Sprintf("image build failed: %s. %s", string(success), debugMsg)
@@ -1979,7 +1979,7 @@ func trackReadiness(ctx context.Context, w analytics.Writer, cfg *Config, cstate
 	}
 }
 
-func runAsGitpodUser(cmd *exec.Cmd) *exec.Cmd {
+func runAsDevpodUser(cmd *exec.Cmd) *exec.Cmd {
 	if cmd.SysProcAttr == nil {
 		cmd.SysProcAttr = &syscall.SysProcAttr{}
 	}

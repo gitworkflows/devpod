@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -31,7 +31,7 @@ import (
 const keychainServiceName = "khulnasoft"
 
 var authScopesLocalCompanion = []string{
-	"function:getGitpodTokenScopes",
+	"function:getDevpodTokenScopes",
 	"function:getWorkspace",
 	"function:getWorkspaces",
 	"function:listenForWorkspaceInstanceUpdates",
@@ -68,11 +68,11 @@ func fetchValidCLIScopes(ctx context.Context, serviceURL string) ([]string, erro
 	return nil, prettyprint.MarkExceptional(errors.New(serviceURL + " did not provide valid scopes"))
 }
 
-type ErrInvalidGitpodToken struct {
+type ErrInvalidDevpodToken struct {
 	cause error
 }
 
-func (e *ErrInvalidGitpodToken) Error() string {
+func (e *ErrInvalidDevpodToken) Error() string {
 	return "invalid devpod token: " + e.cause.Error()
 }
 
@@ -80,12 +80,12 @@ func (e *ErrInvalidGitpodToken) Error() string {
 func ValidateToken(client devpod.APIInterface, tkn string) error {
 	hash := sha256.Sum256([]byte(tkn))
 	tokenHash := hex.EncodeToString(hash[:])
-	tknScopes, err := client.GetGitpodTokenScopes(context.Background(), tokenHash)
+	tknScopes, err := client.GetDevpodTokenScopes(context.Background(), tokenHash)
 	if e, ok := err.(*devpod.ErrBadHandshake); ok && e.Resp.StatusCode == 401 {
-		return &ErrInvalidGitpodToken{err}
+		return &ErrInvalidDevpodToken{err}
 	}
 	if err != nil && strings.Contains(err.Error(), "jsonrpc2: code 403") {
-		return &ErrInvalidGitpodToken{err}
+		return &ErrInvalidDevpodToken{err}
 	}
 	if err != nil {
 		return err
@@ -97,18 +97,18 @@ func ValidateToken(client devpod.APIInterface, tkn string) error {
 	for _, scope := range authScopesLocalCompanion {
 		_, ok := tknScopesMap[scope]
 		if !ok {
-			return &ErrInvalidGitpodToken{fmt.Errorf("%v scope is missing in %v", scope, tknScopes)}
+			return &ErrInvalidDevpodToken{fmt.Errorf("%v scope is missing in %v", scope, tknScopes)}
 		}
 	}
 	return nil
 }
 
-// SetToken returns the persisted Gitpod token
+// SetToken returns the persisted Devpod token
 func SetToken(host, token string) error {
 	return keyring.Set(keychainServiceName, host, token)
 }
 
-// GetToken returns the persisted Gitpod token
+// GetToken returns the persisted Devpod token
 func GetToken(host string) (token string, err error) {
 	tkn, err := keyring.Get(keychainServiceName, host)
 	if errors.Is(err, keyring.ErrNotFound) {
@@ -117,14 +117,14 @@ func GetToken(host string) (token string, err error) {
 	return tkn, err
 }
 
-// DeleteToken deletes the persisted Gitpod token
+// DeleteToken deletes the persisted Devpod token
 func DeleteToken(host string) error {
 	return keyring.Delete(keychainServiceName, host)
 }
 
 // LoginOpts configure the login process
 type LoginOpts struct {
-	GitpodURL   string
+	DevpodURL   string
 	RedirectURL string
 	AuthTimeout time.Duration
 
@@ -141,7 +141,7 @@ const html = `
 				const message = new URLSearchParams(window.location.search).get("message");
 				window.opener.postMessage(message, "https://${window.location.hostname}");
 			} else {
-				console.log("This page was not opened by Gitpod.")
+				console.log("This page was not opened by Devpod.")
 				setTimeout("window.close();", 1000);
 			}
 		</script>
@@ -157,7 +157,7 @@ const (
 	EndingPortNum   = 63120
 )
 
-// Login walks through the login flow for obtaining a Gitpod token
+// Login walks through the login flow for obtaining a Devpod token
 func Login(ctx context.Context, opts LoginOpts) (token string, err error) {
 	// Try a range of ports for local redirect server
 	rl, port, err := findOpenPortInRange(StartingPortNum, EndingPortNum)
@@ -198,9 +198,9 @@ func Login(ctx context.Context, opts LoginOpts) (token string, err error) {
 	}()
 	defer returnServer.Shutdown(ctx)
 
-	baseURL := opts.GitpodURL
+	baseURL := opts.DevpodURL
 	if baseURL == "" {
-		baseURL = "https://devpod.io"
+		baseURL = "https://devpod.khulnasoft.com"
 	}
 	reqURL, err := url.Parse(baseURL)
 	if err != nil {
@@ -220,7 +220,7 @@ func Login(ctx context.Context, opts LoginOpts) (token string, err error) {
 		},
 	}
 	if opts.ExtendScopes {
-		authScopesLocalCompanion, err = fetchValidCLIScopes(ctx, opts.GitpodURL)
+		authScopesLocalCompanion, err = fetchValidCLIScopes(ctx, opts.DevpodURL)
 		if err != nil {
 			return "", err
 		}
@@ -249,7 +249,7 @@ func Login(ctx context.Context, opts LoginOpts) (token string, err error) {
 	err = open.Start(authorizationURL)
 	if err != nil {
 		return "", prettyprint.AddResolution(fmt.Errorf("cannot open browser to URL %s: %s\n", authorizationURL, err),
-			"provide a personal access token using --token or the GITPOD_TOKEN environment variable",
+			"provide a personal access token using --token or the DEVPOD_TOKEN environment variable",
 		)
 	}
 
@@ -280,7 +280,7 @@ func Login(ctx context.Context, opts LoginOpts) (token string, err error) {
 		return "", err
 	}
 
-	// Extract Gitpod token from OAuth token (JWT)
+	// Extract Devpod token from OAuth token (JWT)
 	// NOTE: we do not verify the token as that requires a shared secret
 	//       ... which wouldn't be secret for a publicly accessible app
 	claims := jwt.MapClaims{}

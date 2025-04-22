@@ -260,10 +260,10 @@
               }
             },
             "author": {
-              "raw": "Gitpod <cornelius.ludmann+atlassian-devpod@typefox.io>",
+              "raw": "Devpod <cornelius.ludmann+atlassian-devpod@typefox.io>",
               "type": "author",
               "user": {
-                "display_name": "Gitpod",
+                "display_name": "Devpod",
                 "account_id": "5eb417d896bbcb0b85844b89",
                 "links": {
                   "self": {
@@ -276,7 +276,7 @@
                     "href": "https://secure.gravatar.com/avatar/7b0cf857bd37fd64637b700b29aa8193?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FG-6.png"
                   }
                 },
-                "nickname": "Gitpod",
+                "nickname": "Devpod",
                 "type": "user",
                 "uuid": "{7d3643e3-6182-4191-a1e7-7559658f698b}"
               }

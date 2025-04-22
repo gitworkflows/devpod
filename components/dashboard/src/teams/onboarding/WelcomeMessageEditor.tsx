@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import type { OnboardingSettings_WelcomeMessage } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import type { OnboardingSettings_WelcomeMessage } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 import { Button } from "@podkit/buttons/Button";
 import { LoadingButton } from "@podkit/buttons/LoadingButton";
 import { Textarea } from "@podkit/forms/TextArea";
@@ -68,7 +68,7 @@ export const WelcomeMessageEditorModal = ({
             <ModalHeader>Edit welcome message</ModalHeader>
             <ModalBody>
                 <form id="welcome-message-editor" onSubmit={updateWelcomeMessage} className="space-y-4">
-                    <TextInput readOnly value="Welcome to Gitpod" className="cursor-default"></TextInput>
+                    <TextInput readOnly value="Welcome to Devpod" className="cursor-default"></TextInput>
                     <Textarea value={devpodWelcomeSubheading} readOnly className="cursor-default resize-none" />
                     <div className="w-full flex justify-center">
                         <OrgMemberAvatarInput settings={settings} setFeaturedMemberId={setFeaturedMemberId} />

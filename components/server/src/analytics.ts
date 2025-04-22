@@ -1,15 +1,15 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
-import { User } from "@devpod/devpod-protocol";
+import { User } from "@khulnasoft/devpod-protocol";
 import { Request } from "express";
-import { IAnalyticsWriter, IdentifyMessage, PageMessage, TrackMessage } from "@devpod/devpod-protocol/lib/analytics";
+import { IAnalyticsWriter, IdentifyMessage, PageMessage, TrackMessage } from "@khulnasoft/devpod-protocol/lib/analytics";
 import * as crypto from "crypto";
 import { clientIp } from "./express-util";
 import { ctxTrySubjectId } from "./util/request-context";
-import { getPrimaryEmail } from "@devpod/public-api-common/lib/user-utils";
+import { getPrimaryEmail } from "@khulnasoft/public-api-common/lib/user-utils";
 
 export async function trackLogin(user: User, request: Request, authHost: string, analytics: IAnalyticsWriter) {
     // make new complete identify call for each login

@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { suite, test } from "@testdeck/mocha";
 import * as chai from "chai";
-import { WorkspaceConditions, WorkspaceStatus } from "@devpod/ws-manager/lib";
+import { WorkspaceConditions, WorkspaceStatus } from "@khulnasoft/ws-manager/lib";
 import { hasRelevantDiff } from "./bridge";
 
 const expect = chai.expect;

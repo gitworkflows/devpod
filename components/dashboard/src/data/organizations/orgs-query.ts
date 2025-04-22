@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -10,7 +10,7 @@ import { useLocation } from "react-router";
 import { organizationClient } from "../../service/public-api";
 import { useCurrentUser } from "../../user-context";
 import { noPersistence } from "../setup";
-import { Organization } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import { Organization } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 
 export function useOrganizationsInvalidator() {
     const user = useCurrentUser();

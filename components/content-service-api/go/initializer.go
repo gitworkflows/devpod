@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -143,6 +143,6 @@ func WalkInitializer(path []string, init *WorkspaceInitializer, visitor func(pat
 		return visitor(append(path, "backup"), init)
 
 	default:
-		return fmt.Errorf("unsupported workspace initializer in walkInitializer - this is a bug in Gitpod")
+		return fmt.Errorf("unsupported workspace initializer in walkInitializer - this is a bug in Devpod")
 	}
 }

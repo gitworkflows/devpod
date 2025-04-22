@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { useCallback, useContext, useState } from "react";
-import { getGitpodService } from "../service/service";
+import { getDevpodService } from "../service/service";
 import { UserContext } from "../user-context";
 import { PageWithSettingsSubMenu } from "./PageWithSettingsSubMenu";
 import { ThemeSelector } from "../components/ThemeSelector";
@@ -65,7 +65,7 @@ export default function Preferences() {
 
             // TODO: Convert this to a mutation
             try {
-                await getGitpodService().server.updateWorkspaceTimeoutSetting({
+                await getDevpodService().server.updateWorkspaceTimeoutSetting({
                     workspaceTimeout: workspaceTimeout,
                     disabledClosedTimeout: workspaceTimeout === "" ? false : true,
                 });
@@ -123,7 +123,7 @@ export default function Preferences() {
                     Choose your default editor.{" "}
                     <a
                         className="gp-link"
-                        href="https://www.devpod.io/docs/references/ides-and-editors"
+                        href="https://www.devpod.khulnasoft.com/docs/references/ides-and-editors"
                         target="_blank"
                         rel="noreferrer"
                     >
@@ -145,7 +145,7 @@ export default function Preferences() {
                 <form className="mt-4 max-w-xl" onSubmit={saveDotfileRepo}>
                     <InputField
                         label="Repository URL"
-                        hint="Add a repository URL that includes dotfiles. Gitpod will clone and install your dotfiles for every new workspace."
+                        hint="Add a repository URL that includes dotfiles. Devpod will clone and install your dotfiles for every new workspace."
                     >
                         <div className="flex space-x-2">
                             <div className="flex-grow">

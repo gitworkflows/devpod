@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -183,18 +183,18 @@ func (mr *MockAPIInterfaceMockRecorder) DeleteEnvVar(ctx, variable interface{}) 
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteEnvVar", reflect.TypeOf((*MockAPIInterface)(nil).DeleteEnvVar), ctx, variable)
 }
 
-// DeleteGitpodToken mocks base method.
-func (m *MockAPIInterface) DeleteGitpodToken(ctx context.Context, tokenHash string) error {
+// DeleteDevpodToken mocks base method.
+func (m *MockAPIInterface) DeleteDevpodToken(ctx context.Context, tokenHash string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "DeleteGitpodToken", ctx, tokenHash)
+	ret := m.ctrl.Call(m, "DeleteDevpodToken", ctx, tokenHash)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
-// DeleteGitpodToken indicates an expected call of DeleteGitpodToken.
-func (mr *MockAPIInterfaceMockRecorder) DeleteGitpodToken(ctx, tokenHash interface{}) *gomock.Call {
+// DeleteDevpodToken indicates an expected call of DeleteDevpodToken.
+func (mr *MockAPIInterfaceMockRecorder) DeleteDevpodToken(ctx, tokenHash interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteGitpodToken", reflect.TypeOf((*MockAPIInterface)(nil).DeleteGitpodToken), ctx, tokenHash)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteDevpodToken", reflect.TypeOf((*MockAPIInterface)(nil).DeleteDevpodToken), ctx, tokenHash)
 }
 
 // DeleteOwnAuthProvider mocks base method.
@@ -267,19 +267,19 @@ func (mr *MockAPIInterfaceMockRecorder) DeleteWorkspace(ctx, id interface{}) *go
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DeleteWorkspace", reflect.TypeOf((*MockAPIInterface)(nil).DeleteWorkspace), ctx, id)
 }
 
-// GenerateNewGitpodToken mocks base method.
-func (m *MockAPIInterface) GenerateNewGitpodToken(ctx context.Context, options *GenerateNewGitpodTokenOptions) (string, error) {
+// GenerateNewDevpodToken mocks base method.
+func (m *MockAPIInterface) GenerateNewDevpodToken(ctx context.Context, options *GenerateNewDevpodTokenOptions) (string, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GenerateNewGitpodToken", ctx, options)
+	ret := m.ctrl.Call(m, "GenerateNewDevpodToken", ctx, options)
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GenerateNewGitpodToken indicates an expected call of GenerateNewGitpodToken.
-func (mr *MockAPIInterfaceMockRecorder) GenerateNewGitpodToken(ctx, options interface{}) *gomock.Call {
+// GenerateNewDevpodToken indicates an expected call of GenerateNewDevpodToken.
+func (mr *MockAPIInterfaceMockRecorder) GenerateNewDevpodToken(ctx, options interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateNewGitpodToken", reflect.TypeOf((*MockAPIInterface)(nil).GenerateNewGitpodToken), ctx, options)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateNewDevpodToken", reflect.TypeOf((*MockAPIInterface)(nil).GenerateNewDevpodToken), ctx, options)
 }
 
 // GetAuthProviders mocks base method.
@@ -357,34 +357,34 @@ func (mr *MockAPIInterfaceMockRecorder) GetGenericInvite(ctx, teamID interface{}
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGenericInvite", reflect.TypeOf((*MockAPIInterface)(nil).GetGenericInvite), ctx, teamID)
 }
 
-// GetGitpodTokenScopes mocks base method.
-func (m *MockAPIInterface) GetGitpodTokenScopes(ctx context.Context, tokenHash string) ([]string, error) {
+// GetDevpodTokenScopes mocks base method.
+func (m *MockAPIInterface) GetDevpodTokenScopes(ctx context.Context, tokenHash string) ([]string, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetGitpodTokenScopes", ctx, tokenHash)
+	ret := m.ctrl.Call(m, "GetDevpodTokenScopes", ctx, tokenHash)
 	ret0, _ := ret[0].([]string)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetGitpodTokenScopes indicates an expected call of GetGitpodTokenScopes.
-func (mr *MockAPIInterfaceMockRecorder) GetGitpodTokenScopes(ctx, tokenHash interface{}) *gomock.Call {
+// GetDevpodTokenScopes indicates an expected call of GetDevpodTokenScopes.
+func (mr *MockAPIInterfaceMockRecorder) GetDevpodTokenScopes(ctx, tokenHash interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGitpodTokenScopes", reflect.TypeOf((*MockAPIInterface)(nil).GetGitpodTokenScopes), ctx, tokenHash)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDevpodTokenScopes", reflect.TypeOf((*MockAPIInterface)(nil).GetDevpodTokenScopes), ctx, tokenHash)
 }
 
-// GetGitpodTokens mocks base method.
-func (m *MockAPIInterface) GetGitpodTokens(ctx context.Context) ([]*APIToken, error) {
+// GetDevpodTokens mocks base method.
+func (m *MockAPIInterface) GetDevpodTokens(ctx context.Context) ([]*APIToken, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetGitpodTokens", ctx)
+	ret := m.ctrl.Call(m, "GetDevpodTokens", ctx)
 	ret0, _ := ret[0].([]*APIToken)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetGitpodTokens indicates an expected call of GetGitpodTokens.
-func (mr *MockAPIInterfaceMockRecorder) GetGitpodTokens(ctx interface{}) *gomock.Call {
+// GetDevpodTokens indicates an expected call of GetDevpodTokens.
+func (mr *MockAPIInterfaceMockRecorder) GetDevpodTokens(ctx interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetGitpodTokens", reflect.TypeOf((*MockAPIInterface)(nil).GetGitpodTokens), ctx)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDevpodTokens", reflect.TypeOf((*MockAPIInterface)(nil).GetDevpodTokens), ctx)
 }
 
 // GetIDEOptions mocks base method.

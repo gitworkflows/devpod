@@ -1,6 +1,6 @@
-# Gitpod's Mixin
+# Devpod's Mixin
 
-Gitpod's mixin is based on the [Prometheus Monitoring Mixins project](https://github.com/monitoring-mixins/docs/blob/master/design.pdf). Mixins are jsonnet packages that bundle together [Prometheus Alerts](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/), [Prometheus Recording Rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) and [Grafana Dashboards](https://grafana.com/grafana/).
+Devpod's mixin is based on the [Prometheus Monitoring Mixins project](https://github.com/monitoring-mixins/docs/blob/master/design.pdf). Mixins are jsonnet packages that bundle together [Prometheus Alerts](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/), [Prometheus Recording Rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) and [Grafana Dashboards](https://grafana.com/grafana/).
 
 ## Table of contents
 
@@ -22,7 +22,7 @@ Gitpod's mixin is based on the [Prometheus Monitoring Mixins project](https://gi
 
 ## Folders and Teams
 
-Folders are organized following Gitpod as an organization, while also adding an extra folder for dashboards and alerts that involves multiple teams (Good place for broad overviews and SLOs):
+Folders are organized following Devpod as an organization, while also adding an extra folder for dashboards and alerts that involves multiple teams (Good place for broad overviews and SLOs):
 * Meta
 * Workspace
 * IDE
@@ -310,7 +310,7 @@ The following combination of annotations can be used to deploy monitoring satell
 /werft withObservabilityBranch=<my-branch>
 ```
 
-* Use Gitpod helm charts to deploy a preview, and add the observability annotation
+* Use Devpod helm charts to deploy a preview, and add the observability annotation
 ```
 /werft with-helm=true with-observability=true
 # Just in case your PR requires extra configuration on Prometheus side (and you have a new branch on https://github.com/gitpod-io/observability with such changes)

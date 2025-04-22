@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WorkspaceDB, DBWithTracing, TracedWorkspaceDB } from "@devpod/devpod-db/lib";
+import { WorkspaceDB, DBWithTracing, TracedWorkspaceDB } from "@khulnasoft/devpod-db/lib";
 import {
     CommitContext,
     PrebuiltWorkspace,
@@ -13,16 +13,16 @@ import {
     WorkspaceContext,
     Project,
     SnapshotContext,
-} from "@devpod/devpod-protocol";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+} from "@khulnasoft/devpod-protocol";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { inject, injectable } from "inversify";
 import { ContextParser } from "./context-parser-service";
 import { ConfigProvider } from "./config-provider";
 import { ProjectsService } from "../projects/projects-service";
-import { OpenPrebuildContext, WithDefaultConfig } from "@devpod/devpod-protocol/lib/protocol";
+import { OpenPrebuildContext, WithDefaultConfig } from "@khulnasoft/devpod-protocol/lib/protocol";
 import { IncrementalWorkspaceService } from "../prebuilds/incremental-workspace-service";
 import { Authorizer } from "../authorization/authorizer";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 @injectable()
 export class ContextService {

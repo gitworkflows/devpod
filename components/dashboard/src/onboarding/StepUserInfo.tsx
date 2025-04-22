@@ -1,18 +1,18 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { LinkedInProfile } from "@devpod/devpod-protocol";
+import { LinkedInProfile } from "@khulnasoft/devpod-protocol";
 import { FC, useCallback, useState } from "react";
 import { TextInputField } from "../components/forms/TextInputField";
 import { useUpdateCurrentUserMutation } from "../data/current-user/update-mutation";
 import { useOnBlurError } from "../hooks/use-onblur-error";
 import { OnboardingStep } from "./OnboardingStep";
 import { LinkedInBanner } from "./LinkedInBanner";
-import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
-import { getPrimaryEmail } from "@devpod/public-api-common/lib/user-utils";
+import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
+import { getPrimaryEmail } from "@khulnasoft/public-api-common/lib/user-utils";
 
 type Props = {
     user: User;
@@ -72,7 +72,7 @@ export const StepUserInfo: FC<Props> = ({ user, onComplete }) => {
 
     return (
         <OnboardingStep
-            title="Welcome to Gitpod"
+            title="Welcome to Devpod"
             subtitle="You are one step away from shipping software faster."
             error={updateUser.isError ? "There was a problem updating your profile" : undefined}
             isValid={isValid}

@@ -1,9 +1,9 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
-import { WorkspaceSession } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspaceSession } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { workspaceClient } from "../../service/public-api";
 import { useCurrentOrg } from "../organizations/orgs-query";

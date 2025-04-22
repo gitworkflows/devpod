@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { prebuildClient, stream } from "../../service/public-api";
-import { Prebuild, PrebuildPhase_Phase } from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { Prebuild, PrebuildPhase_Phase } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 export function usePrebuildQuery(prebuildId: string) {
     return useQuery<Prebuild, Error>(

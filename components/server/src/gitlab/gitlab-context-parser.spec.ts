@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import * as chai from "chai";
 const expect = chai.expect;
 
 import { GitlabContextParser } from "./gitlab-context-parser";
-import { User } from "@devpod/devpod-protocol";
+import { User } from "@khulnasoft/devpod-protocol";
 import { ContainerModule, Container } from "inversify";
 import { DevData } from "../dev/dev-data";
 import { GitLabApi, GitLab } from "./api";
@@ -18,9 +18,9 @@ import { NotFoundError } from "../errors";
 import { GitLabTokenHelper } from "./gitlab-token-helper";
 import { TokenProvider } from "../user/token-provider";
 import { HostContextProvider } from "../auth/host-context-provider";
-import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
+import { ifEnvVarNotSet } from "@khulnasoft/devpod-protocol/lib/util/skip-if";
 
-@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("GITPOD_TEST_TOKEN_GITLAB")))
+@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("DEVPOD_TEST_TOKEN_GITLAB")))
 class TestGitlabContextParser {
     protected parser: GitlabContextParser;
     protected user: User;

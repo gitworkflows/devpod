@@ -1,4 +1,4 @@
-# Gitpod Stable API
+# Devpod Stable API
 This package contains definitions for Stable APIs as per our [definition of the package structure](../../README.md).
 
 ## Adding or extending APIs (internally)

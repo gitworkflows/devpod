@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { FC, useCallback, useMemo, useState } from "react";
 import { useListOrganizationMembers } from "../../data/organizations/members-query";
-import type { OnboardingSettings_WelcomeMessage } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import type { OnboardingSettings_WelcomeMessage } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 import { Combobox } from "../../prebuilds/configuration-input/Combobox";
 import { ComboboxSelectedItem } from "../../prebuilds/configuration-input/ComboboxSelectedItem";
 

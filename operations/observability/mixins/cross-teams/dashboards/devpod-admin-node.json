@@ -1707,7 +1707,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "Gitpod / Admin / Node",
+  "title": "Devpod / Admin / Node",
   "uid": "devpod-admin-nodes",
   "version": 1,
   "weekStart": ""

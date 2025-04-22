@@ -126,7 +126,7 @@ replace k8s.io/mount-utils => k8s.io/mount-utils v0.30.9
 
 replace k8s.io/pod-security-admission => k8s.io/pod-security-admission v0.30.9
 
-replace github.com/khulnasoft/devpod/components/scrubber => ../scrubber // leeway
+replace github.com/khulnasoft/devpod/components/scrubber => ../scrubber // blazedock
 
 replace k8s.io/dynamic-resource-allocation => k8s.io/dynamic-resource-allocation v0.30.9
 

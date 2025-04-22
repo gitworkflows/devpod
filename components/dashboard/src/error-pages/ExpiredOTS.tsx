@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -24,7 +24,7 @@ const ExpiredOTS: FC = () => {
             <Heading1>Oops!</Heading1>
             <Subheading className="mt-4">The setup link expired.</Subheading>
 
-            <Subheading className="mt-4">Please contact Gitpod to receive a new link.</Subheading>
+            <Subheading className="mt-4">Please contact Devpod to receive a new link.</Subheading>
         </ErrorPageLayout>
     );
 };

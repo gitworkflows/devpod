@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -153,7 +153,7 @@ type ExcessiveCPUCheck struct {
 	AverageOver int     `json:"averageOverMinutes"`
 }
 
-type GitpodAPI struct {
+type DevpodAPI struct {
 	HostURL  string `json:"hostURL"`
 	APIToken string `json:"apiToken"`
 }
@@ -166,7 +166,7 @@ type Kubernetes struct {
 // Config configures Agent Smith
 type Config struct {
 	WorkspaceManager    WorkspaceManagerConfig `json:"wsman"`
-	GitpodAPI           GitpodAPI              `json:"devpodAPI"`
+	DevpodAPI           DevpodAPI              `json:"devpodAPI"`
 	KubernetesNamespace string                 `json:"namespace"`
 
 	Blocklists *Blocklists `json:"blocklists,omitempty"`

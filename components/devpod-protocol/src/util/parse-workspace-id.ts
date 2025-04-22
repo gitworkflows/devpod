@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -15,9 +15,9 @@ const REGEX_WORKSPACE_ID_LEGACY_FROM_HOSTNAME = new RegExp(`(${REGEX_WORKSPACE_I
 
 /**
  * Hostname may be of the form:
- *  - moccasin-ferret-155799b3.ws-eu01.devpod.io
- *  - 1234-moccasin-ferret-155799b3.ws-eu01.devpod.io
- *  - webview-1234-moccasin-ferret-155799b3.ws-eu01.devpod.io (or any other string replacing webview)
+ *  - moccasin-ferret-155799b3.ws-eu01.devpod.khulnasoft.com
+ *  - 1234-moccasin-ferret-155799b3.ws-eu01.devpod.khulnasoft.com
+ *  - webview-1234-moccasin-ferret-155799b3.ws-eu01.devpod.khulnasoft.com (or any other string replacing webview)
  * @param hostname The hostname the request is headed to
  */
 export const parseWorkspaceIdFromHostname = function (hostname: string) {

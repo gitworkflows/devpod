@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -201,7 +201,7 @@ type InWorkspaceServiceClient interface {
 	io.Closer
 }
 
-// InWorkspaceHandler is the seccomp notification handler that serves a Gitpod workspace
+// InWorkspaceHandler is the seccomp notification handler that serves a Devpod workspace
 type InWorkspaceHandler struct {
 	FD          libseccomp.ScmpFd
 	Daemon      IWSClientProvider

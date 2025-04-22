@@ -1,4 +1,4 @@
-## Gitpod-db
+## Devpod-db
 
 Contains all the database related functionality, implemented using [typeorm](https://typeorm.io/).
 

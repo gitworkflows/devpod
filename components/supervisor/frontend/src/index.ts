@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -47,8 +47,8 @@ window.addEventListener("error", (event) => {
 
 require("../src/shared/index.css");
 
-import { WorkspaceInstancePhase } from "@devpod/devpod-protocol";
-import { DisposableCollection } from "@devpod/devpod-protocol/lib/util/disposable";
+import { WorkspaceInstancePhase } from "@khulnasoft/devpod-protocol";
+import { DisposableCollection } from "@khulnasoft/devpod-protocol/lib/util/disposable";
 import * as heartBeat from "./ide/heart-beat";
 import * as IDEFrontendService from "./ide/ide-frontend-service-impl";
 import * as IDEWorker from "./ide/ide-worker";

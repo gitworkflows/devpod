@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ApplicationError, ErrorCode, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCode, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 /**
  * new entry for the stream prebuild logs, contains logs of imageBuild (if it has) and prebuild tasks(first task only for now) logs

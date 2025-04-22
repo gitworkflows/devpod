@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -10,7 +10,7 @@ import "reflect-metadata";
 import { suite, test } from "@testdeck/mocha";
 import * as chai from "chai";
 import { EnvvarPrefixParser } from "./envvar-prefix-context-parser";
-import { WithEnvvarsContext } from "@devpod/devpod-protocol";
+import { WithEnvvarsContext } from "@khulnasoft/devpod-protocol";
 const expect = chai.expect;
 
 @suite

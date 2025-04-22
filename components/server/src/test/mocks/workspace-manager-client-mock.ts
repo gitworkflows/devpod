@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User, Workspace, WorkspaceInstance } from "@devpod/devpod-protocol";
-import { WorkspaceClusterWoTLS, WorkspaceManagerConnectionInfo } from "@devpod/devpod-protocol/lib/workspace-cluster";
-import { PromisifiedWorkspaceManagerClient } from "@devpod/ws-manager/lib";
-import { IWorkspaceClusterStartSet, WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
+import { User, Workspace, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
+import { WorkspaceClusterWoTLS, WorkspaceManagerConnectionInfo } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+import { PromisifiedWorkspaceManagerClient } from "@khulnasoft/ws-manager/lib";
+import { IWorkspaceClusterStartSet, WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
 import { ChannelCredentials, Client, ClientOptions } from "@grpc/grpc-js";
 
 export class WorkspaceManagerClientProviderMock extends WorkspaceManagerClientProvider {

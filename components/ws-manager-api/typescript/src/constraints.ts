@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { PermissionName, RolesOrPermissions, User, Workspace, WorkspaceInstance } from "@devpod/devpod-protocol";
-import { AdmissionConstraint, WorkspaceClusterWoTLS } from "@devpod/devpod-protocol/lib/workspace-cluster";
+import { PermissionName, RolesOrPermissions, User, Workspace, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
+import { AdmissionConstraint, WorkspaceClusterWoTLS } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
 
 export interface WorkspaceClusterConstraintSet {
     name: string;

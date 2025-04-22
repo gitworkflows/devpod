@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { injectable } from "inversify";
 
-import { RoleOrPermission, PermissionName, RolesOrPermissions } from "@devpod/devpod-protocol/lib/permission";
-import { User } from "@devpod/devpod-protocol";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { RoleOrPermission, PermissionName, RolesOrPermissions } from "@khulnasoft/devpod-protocol/lib/permission";
+import { User } from "@khulnasoft/devpod-protocol";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 export const AuthorizationService = Symbol("AuthorizationService");
 export interface AuthorizationService {

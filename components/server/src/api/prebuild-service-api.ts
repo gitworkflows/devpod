@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { ServiceImpl } from "@connectrpc/connect";
-import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
-import { PrebuildService as PrebuildServiceInterface } from "@devpod/public-api/lib/devpod/v1/prebuild_connect";
+import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
+import { PrebuildService as PrebuildServiceInterface } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_connect";
 import {
     GetPrebuildRequest,
     GetPrebuildResponse,
@@ -20,17 +20,17 @@ import {
     WatchPrebuildResponse,
     ListOrganizationPrebuildsRequest,
     ListOrganizationPrebuildsResponse,
-} from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
 import { inject, injectable } from "inversify";
 import { ProjectsService } from "../projects/projects-service";
 import { PrebuildFilter, PrebuildManager } from "../prebuilds/prebuild-manager";
 import { validate as uuidValidate } from "uuid";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { ctxSignal, ctxUserId } from "../util/request-context";
 import { UserService } from "../user/user-service";
 import { PaginationToken, generatePaginationToken, parsePaginationToken } from "./pagination";
-import { PaginationResponse } from "@devpod/public-api/lib/devpod/v1/pagination_pb";
-import { Sort, SortOrder } from "@devpod/public-api/lib/devpod/v1/sorting_pb";
+import { PaginationResponse } from "@khulnasoft/public-api/lib/devpod/v1/pagination_pb";
+import { Sort, SortOrder } from "@khulnasoft/public-api/lib/devpod/v1/sorting_pb";
 import { Config } from "../config";
 
 @injectable()

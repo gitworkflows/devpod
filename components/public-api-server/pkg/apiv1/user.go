@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -12,7 +12,7 @@ import (
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
 	"github.com/khulnasoft/devpod/components/public-api/go/experimental/v1/v1connect"
 	protocol "github.com/khulnasoft/devpod/devpod-protocol"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/proxy"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/proxy"
 )
 
 func NewUserService(pool proxy.ServerConnectionPool) *UserService {
@@ -97,7 +97,7 @@ func userToAPIResponse(user *protocol.User) *v1.User {
 		Id:        user.ID,
 		Name:      name,
 		AvatarUrl: user.AvatarURL,
-		CreatedAt: parseGitpodTimeStampOrDefault(user.CreationDate),
+		CreatedAt: parseDevpodTimeStampOrDefault(user.CreationDate),
 	}
 }
 
@@ -106,7 +106,7 @@ func sshKeyToAPIResponse(key *protocol.UserSSHPublicKeyValue) *v1.SSHKey {
 		Id:        key.ID,
 		Name:      key.Name,
 		Key:       key.Key,
-		CreatedAt: parseGitpodTimeStampOrDefault(key.CreationTime),
+		CreatedAt: parseDevpodTimeStampOrDefault(key.CreationTime),
 	}
 }
 

@@ -38,7 +38,7 @@ packages:
     config:
       buildArgs:
         VERSION: ${version}
-      dockerfile: leeway.Dockerfile
+      dockerfile: blazedock.Dockerfile
       metadata:
         helm-component: workspace.workspacekit
       image:

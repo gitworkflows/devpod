@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -82,8 +82,8 @@ func attributesToUser(attributes Attributes) *configcat.UserData {
 		custom[vscodeClientIDAttribute] = attributes.VSCodeClientID
 	}
 
-	if attributes.GitpodHost != "" {
-		custom[devpodHost] = attributes.GitpodHost
+	if attributes.DevpodHost != "" {
+		custom[devpodHost] = attributes.DevpodHost
 	}
 
 	if attributes.Component != "" {

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -237,7 +237,7 @@ func LaunchWorkspaceDirectly(t *testing.T, ctx context.Context, api *ComponentAP
 			},
 			Git: &wsmanapi.GitSpec{
 				Username: "integration-test",
-				Email:    "integration-test@devpod.io",
+				Email:    "integration-test@khulnasoft.com",
 			},
 			Admission: wsmanapi.AdmissionLevel_ADMIT_OWNER_ONLY,
 			Envvars: []*wsmanapi.EnvironmentVariable{
@@ -245,7 +245,7 @@ func LaunchWorkspaceDirectly(t *testing.T, ctx context.Context, api *ComponentAP
 				// from ws-manager in these tests we need to set it here ourselves.
 				{
 					Name:  "VSX_REGISTRY_URL",
-					Value: "https://open-vsx.devpod.io/",
+					Value: "https://open-vsx.devpod.khulnasoft.com/",
 				},
 			},
 		},
@@ -315,12 +315,12 @@ func LaunchWorkspaceDirectly(t *testing.T, ctx context.Context, api *ComponentAP
 	}, stopWs, nil
 }
 
-// LaunchWorkspaceFromContextURL force-creates a new workspace using the Gitpod server API,
+// LaunchWorkspaceFromContextURL force-creates a new workspace using the Devpod server API,
 // and waits for the workspace to start. If any step along the way fails, this function will
 // fail the test.
 //
 // When possible, prefer the less complex LaunchWorkspaceDirectly.
-func LaunchWorkspaceFromContextURL(t *testing.T, ctx context.Context, contextURL string, username string, api *ComponentAPI, serverOpts ...GitpodServerOpt) (*protocol.WorkspaceInfo, StopWorkspaceFunc, error) {
+func LaunchWorkspaceFromContextURL(t *testing.T, ctx context.Context, contextURL string, username string, api *ComponentAPI, serverOpts ...DevpodServerOpt) (*protocol.WorkspaceInfo, StopWorkspaceFunc, error) {
 	return LaunchWorkspaceWithOptions(t, ctx, &LaunchWorkspaceOptions{
 		ContextURL: contextURL,
 	}, username, api, serverOpts...)
@@ -332,20 +332,20 @@ type LaunchWorkspaceOptions struct {
 	IDESettings *protocol.IDESettings
 }
 
-// LaunchWorkspaceWithOptions force-creates a new workspace using the Gitpod server API,
+// LaunchWorkspaceWithOptions force-creates a new workspace using the Devpod server API,
 // and waits for the workspace to start. If any step along the way fails, this function will
 // fail the test.
 //
 // When possible, prefer the less complex LaunchWorkspaceDirectly.
-func LaunchWorkspaceWithOptions(t *testing.T, ctx context.Context, opts *LaunchWorkspaceOptions, username string, api *ComponentAPI, serverOpts ...GitpodServerOpt) (*protocol.WorkspaceInfo, StopWorkspaceFunc, error) {
+func LaunchWorkspaceWithOptions(t *testing.T, ctx context.Context, opts *LaunchWorkspaceOptions, username string, api *ComponentAPI, serverOpts ...DevpodServerOpt) (*protocol.WorkspaceInfo, StopWorkspaceFunc, error) {
 	var (
-		defaultServerOpts []GitpodServerOpt
+		defaultServerOpts []DevpodServerOpt
 		stopWs            StopWorkspaceFunc = nil
 		err               error
 	)
 
 	if username != "" {
-		defaultServerOpts = []GitpodServerOpt{WithGitpodUser(username)}
+		defaultServerOpts = []DevpodServerOpt{WithDevpodUser(username)}
 	}
 
 	parallelLimiter <- struct{}{}
@@ -355,7 +355,7 @@ func LaunchWorkspaceWithOptions(t *testing.T, ctx context.Context, opts *LaunchW
 		}
 	}()
 
-	server, err := api.GitpodServer(append(defaultServerOpts, serverOpts...)...)
+	server, err := api.DevpodServer(append(defaultServerOpts, serverOpts...)...)
 	if err != nil {
 		return nil, nil, xerrors.Errorf("cannot start server: %w", err)
 	}
@@ -394,8 +394,8 @@ func LaunchWorkspaceWithOptions(t *testing.T, ctx context.Context, opts *LaunchW
 			if scode == codes.NotFound || scode == codes.Unavailable {
 				t.Log("retry strarting a workspace because cannnot start workspace: %w", err)
 				time.Sleep(1 * time.Second)
-				api.ClearGitpodServerClientCache()
-				server, err = api.GitpodServer(append(defaultServerOpts, serverOpts...)...)
+				api.ClearDevpodServerClientCache()
+				server, err = api.DevpodServer(append(defaultServerOpts, serverOpts...)...)
 				if err != nil {
 					return nil, nil, xerrors.Errorf("cannot start server: %w", err)
 				}

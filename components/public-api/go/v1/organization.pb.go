@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -928,7 +928,7 @@ type UpdateOrganizationSettingsRequest struct {
 	// onboarding_settings are the settings for the organization's onboarding
 	OnboardingSettings *OnboardingSettings `protobuf:"bytes,16,opt,name=onboarding_settings,json=onboardingSettings,proto3,oneof" json:"onboarding_settings,omitempty"`
 	// annotate_git_commits specifies whether to annotate git commits created in
-	// Gitpod workspaces with the devpod host
+	// Devpod workspaces with the devpod host
 	AnnotateGitCommits *bool `protobuf:"varint,17,opt,name=annotate_git_commits,json=annotateGitCommits,proto3,oneof" json:"annotate_git_commits,omitempty"`
 	// update_role_restrictions specifies whether role_restrictions should be
 	// updated

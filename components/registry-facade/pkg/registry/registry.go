@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -350,7 +350,7 @@ func (reg *Registry) Serve() error {
 	mux.Handle("/", handler)
 
 	if addr := os.Getenv("REGFAC_NO_TLS_DEBUG"); addr != "" {
-		// Gitpod port-forwarding also does SSL termination. If we only served the HTTPS service
+		// Devpod port-forwarding also does SSL termination. If we only served the HTTPS service
 		// when using telepresence we could not make any requests to the registry facade directly,
 		// e.g. using curl or another Docker daemon. Using the env var we can enable an additional
 		// HTTP service.

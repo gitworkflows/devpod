@@ -46,7 +46,7 @@ TOTAL_IMAGES=$(cat "$TMP/images.txt" | wc -l)
 echo "=== Found $TOTAL_IMAGES images to scan"
 
 # Scan all images, and push the result to Lacework
-# There, we can see the results in the "Vulnerabilities" tab, by searching for the Gitpod version
+# There, we can see the results in the "Vulnerabilities" tab, by searching for the Devpod version
 # Note: Does not fail on CVEs!
 COUNTER=0
 FAILED=0

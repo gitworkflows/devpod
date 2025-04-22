@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -94,7 +94,7 @@ func (rs *PresignedS3Storage) BackupObject(ownerID string, workspaceID string, n
 func (rs *PresignedS3Storage) DeleteBucket(ctx context.Context, userID, bucket string) error {
 	if bucket != rs.Config.Bucket {
 		log.WithField("requestedBucket", bucket).WithField("configuredBucket", rs.Config.Bucket).Error("can only delete from configured bucket")
-		return xerrors.Errorf("can only delete from configured bucket; this looks like a bug in Gitpod")
+		return xerrors.Errorf("can only delete from configured bucket; this looks like a bug in Devpod")
 	}
 
 	return rs.DeleteObject(ctx, rs.Config.Bucket, &DeleteObjectQuery{Prefix: userID + "/"})

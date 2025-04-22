@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,8 +7,8 @@
 import { useCurrentUser } from "../user-context";
 import { useQueryParams } from "../hooks/use-query-params";
 import { FORCE_ONBOARDING_PARAM, FORCE_ONBOARDING_PARAM_VALUE } from "./UserOnboarding";
-import { isOrganizationOwned } from "@devpod/public-api-common/lib/user-utils";
-import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
+import { isOrganizationOwned } from "@khulnasoft/public-api-common/lib/user-utils";
+import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
 
 export const useShowUserOnboarding = () => {
     const user = useCurrentUser();

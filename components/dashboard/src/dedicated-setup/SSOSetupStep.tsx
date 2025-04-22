@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import { Heading1, Subheading } from "../components/typography/headings";
 import { SetupLayout } from "./SetupLayout";
 import { SSOConfigForm, isValid, ssoConfigReducer, useSaveSSOConfig } from "../teams/sso/SSOConfigForm";
 import Alert from "../components/Alert";
-import { OIDCClientConfig } from "@devpod/public-api/lib/devpod/experimental/v1/oidc_pb";
+import { OIDCClientConfig } from "@khulnasoft/public-api/lib/devpod/experimental/v1/oidc_pb";
 import { openOIDCStartWindow } from "../provider-utils";
 import { LoadingButton } from "@podkit/buttons/LoadingButton";
 
@@ -88,7 +88,7 @@ export const SSOSetupStep: FC<Props> = ({ config, onComplete, progressCurrent, p
                 <Subheading>
                     Enable single sign-on for your organization using the OpenID Connect (OIDC) standard.{" "}
                     <a
-                        href="https://www.devpod.io/docs/enterprise/setup-devpod/configure-sso"
+                        href="https://www.devpod.khulnasoft.com/docs/enterprise/setup-devpod/configure-sso"
                         target="_blank"
                         rel="noreferrer noopener"
                         className="gp-link"

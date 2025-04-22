@@ -1,15 +1,15 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Token, User } from "@devpod/devpod-protocol";
+import { Token, User } from "@khulnasoft/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { AuthProviderParams } from "../auth/auth-provider";
 import { UnauthorizedError } from "../errors";
 import { TokenProvider } from "../user/token-provider";
-import { BitbucketOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
+import { BitbucketOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
 
 @injectable()
 export class BitbucketTokenHelper {

@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { Timestamp } from "@bufbuild/protobuf";
-import { WorkspaceSession, WorkspaceSpec_WorkspaceType } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspaceSession, WorkspaceSpec_WorkspaceType } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { AccordionContent, AccordionItem, AccordionTrigger } from "../components/accordion/Accordion";
 import { ReactComponent as UsageIcon } from "../images/usage-default.svg";
 import { toRemoteURL } from "../projects/render-utils";
@@ -47,7 +47,7 @@ export const WorkspaceSessionGroup = ({ id, sessions }: Props) => {
                         {workspace?.spec?.type === WorkspaceSpec_WorkspaceType.PREBUILD ? (
                             <div className="flex">
                                 <UsageIcon className="my-auto w-4 h-4 mr-1" />
-                                <span className="text-sm">Gitpod</span>
+                                <span className="text-sm">Devpod</span>
                             </div>
                         ) : (
                             <div className="flex">

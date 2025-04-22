@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -8812,7 +8812,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -8822,7 +8822,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -8832,7 +8832,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10001,7 +10001,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10014,7 +10014,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10027,7 +10027,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10599,7 +10599,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10611,7 +10611,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10627,7 +10627,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10648,7 +10648,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10667,7 +10667,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10693,7 +10693,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10711,7 +10711,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10724,7 +10724,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -10740,7 +10740,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 1 [json_name = "metadata"];</code>
@@ -17391,7 +17391,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * Metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -17401,7 +17401,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * Metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -17411,7 +17411,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * Metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -17572,7 +17572,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * Metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -17585,7 +17585,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * Metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -17598,7 +17598,7 @@ public final class WorkspaceOuterClass {
     /**
      * <pre>
      * Metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -18209,7 +18209,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * Metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -18221,7 +18221,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * Metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -18237,7 +18237,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * Metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -18258,7 +18258,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * Metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -18277,7 +18277,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * Metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -18303,7 +18303,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * Metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -18321,7 +18321,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * Metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -18334,7 +18334,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * Metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -18350,7 +18350,7 @@ public final class WorkspaceOuterClass {
       /**
        * <pre>
        * Metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>.devpod.v1.WorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -18749,7 +18749,7 @@ public final class WorkspaceOuterClass {
 
     /**
      * <pre>
-     * owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+     * owner_id is the ID of the Devpod user to whom we'll bill this workspace and
      * who we consider responsible for its content
      * </pre>
      *
@@ -18759,7 +18759,7 @@ public final class WorkspaceOuterClass {
     java.lang.String getOwnerId();
     /**
      * <pre>
-     * owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+     * owner_id is the ID of the Devpod user to whom we'll bill this workspace and
      * who we consider responsible for its content
      * </pre>
      *
@@ -19027,7 +19027,7 @@ java.lang.String defaultValue);
     private volatile java.lang.Object ownerId_ = "";
     /**
      * <pre>
-     * owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+     * owner_id is the ID of the Devpod user to whom we'll bill this workspace and
      * who we consider responsible for its content
      * </pre>
      *
@@ -19049,7 +19049,7 @@ java.lang.String defaultValue);
     }
     /**
      * <pre>
-     * owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+     * owner_id is the ID of the Devpod user to whom we'll bill this workspace and
      * who we consider responsible for its content
      * </pre>
      *
@@ -19950,7 +19950,7 @@ java.lang.String defaultValue) {
       private java.lang.Object ownerId_ = "";
       /**
        * <pre>
-       * owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+       * owner_id is the ID of the Devpod user to whom we'll bill this workspace and
        * who we consider responsible for its content
        * </pre>
        *
@@ -19971,7 +19971,7 @@ java.lang.String defaultValue) {
       }
       /**
        * <pre>
-       * owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+       * owner_id is the ID of the Devpod user to whom we'll bill this workspace and
        * who we consider responsible for its content
        * </pre>
        *
@@ -19993,7 +19993,7 @@ java.lang.String defaultValue) {
       }
       /**
        * <pre>
-       * owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+       * owner_id is the ID of the Devpod user to whom we'll bill this workspace and
        * who we consider responsible for its content
        * </pre>
        *
@@ -20011,7 +20011,7 @@ java.lang.String defaultValue) {
       }
       /**
        * <pre>
-       * owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+       * owner_id is the ID of the Devpod user to whom we'll bill this workspace and
        * who we consider responsible for its content
        * </pre>
        *
@@ -20026,7 +20026,7 @@ java.lang.String defaultValue) {
       }
       /**
        * <pre>
-       * owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+       * owner_id is the ID of the Devpod user to whom we'll bill this workspace and
        * who we consider responsible for its content
        * </pre>
        *
@@ -44966,7 +44966,7 @@ java.lang.String defaultValue) {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -44976,7 +44976,7 @@ java.lang.String defaultValue) {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -44986,7 +44986,7 @@ java.lang.String defaultValue) {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -47908,7 +47908,7 @@ java.lang.String defaultValue) {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -47921,7 +47921,7 @@ java.lang.String defaultValue) {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -47934,7 +47934,7 @@ java.lang.String defaultValue) {
     /**
      * <pre>
      * metadata is data associated with this workspace that's required for other
-     * parts of Gitpod to function
+     * parts of Devpod to function
      * </pre>
      *
      * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -48553,7 +48553,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -48565,7 +48565,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -48581,7 +48581,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -48602,7 +48602,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -48621,7 +48621,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -48647,7 +48647,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -48665,7 +48665,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -48678,7 +48678,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -48694,7 +48694,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * metadata is data associated with this workspace that's required for other
-       * parts of Gitpod to function
+       * parts of Devpod to function
        * </pre>
        *
        * <code>optional .devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2 [json_name = "metadata"];</code>
@@ -62208,7 +62208,7 @@ java.lang.String defaultValue) {
 
       /**
        * <pre>
-       * total_image_size is the total size of the image in bytes (includes Gitpod-specific layers like IDE)
+       * total_image_size is the total size of the image in bytes (includes Devpod-specific layers like IDE)
        * </pre>
        *
        * <code>int64 total_image_size = 2 [json_name = "totalImageSize"];</code>
@@ -62300,7 +62300,7 @@ java.lang.String defaultValue) {
       private long totalImageSize_ = 0L;
       /**
        * <pre>
-       * total_image_size is the total size of the image in bytes (includes Gitpod-specific layers like IDE)
+       * total_image_size is the total size of the image in bytes (includes Devpod-specific layers like IDE)
        * </pre>
        *
        * <code>int64 total_image_size = 2 [json_name = "totalImageSize"];</code>
@@ -62759,7 +62759,7 @@ java.lang.String defaultValue) {
         private long totalImageSize_ ;
         /**
          * <pre>
-         * total_image_size is the total size of the image in bytes (includes Gitpod-specific layers like IDE)
+         * total_image_size is the total size of the image in bytes (includes Devpod-specific layers like IDE)
          * </pre>
          *
          * <code>int64 total_image_size = 2 [json_name = "totalImageSize"];</code>
@@ -62771,7 +62771,7 @@ java.lang.String defaultValue) {
         }
         /**
          * <pre>
-         * total_image_size is the total size of the image in bytes (includes Gitpod-specific layers like IDE)
+         * total_image_size is the total size of the image in bytes (includes Devpod-specific layers like IDE)
          * </pre>
          *
          * <code>int64 total_image_size = 2 [json_name = "totalImageSize"];</code>
@@ -62787,7 +62787,7 @@ java.lang.String defaultValue) {
         }
         /**
          * <pre>
-         * total_image_size is the total size of the image in bytes (includes Gitpod-specific layers like IDE)
+         * total_image_size is the total size of the image in bytes (includes Devpod-specific layers like IDE)
          * </pre>
          *
          * <code>int64 total_image_size = 2 [json_name = "totalImageSize"];</code>

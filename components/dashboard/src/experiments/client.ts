@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import * as configcat from "configcat-js";
-import { ConfigCatClient } from "@devpod/devpod-protocol/lib/experiments/configcat";
-import { Client } from "@devpod/devpod-protocol/lib/experiments/types";
+import { ConfigCatClient } from "@khulnasoft/devpod-protocol/lib/experiments/configcat";
+import { Client } from "@khulnasoft/devpod-protocol/lib/experiments/types";
 import { LogLevel } from "configcat-common";
 
 let client: Client | undefined;

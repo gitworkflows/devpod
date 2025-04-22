@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -10,11 +10,11 @@ import {
     SubscribeResponse,
     GetWorkspacesRequest,
     PromisifiedWorkspaceManagerClient,
-} from "@devpod/ws-manager/lib";
-import { Disposable } from "@devpod/devpod-protocol";
+} from "@khulnasoft/ws-manager/lib";
+import { Disposable } from "@khulnasoft/devpod-protocol";
 import { ClientReadableStream } from "@grpc/grpc-js";
-import { log, LogPayload } from "@devpod/devpod-protocol/lib/util/logging";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { log, LogPayload } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import * as opentracing from "opentracing";
 
 export type ClientProvider = () => Promise<PromisifiedWorkspaceManagerClient>;

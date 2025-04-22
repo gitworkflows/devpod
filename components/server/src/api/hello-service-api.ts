@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { HandlerContext, ServiceImpl } from "@connectrpc/connect";
-import { HelloService } from "@devpod/public-api/lib/devpod/experimental/v1/dummy_connect";
+import { HelloService } from "@khulnasoft/public-api/lib/devpod/experimental/v1/dummy_connect";
 import {
     LotsOfRepliesRequest,
     LotsOfRepliesResponse,
     SayHelloRequest,
     SayHelloResponse,
-} from "@devpod/public-api/lib/devpod/experimental/v1/dummy_pb";
+} from "@khulnasoft/public-api/lib/devpod/experimental/v1/dummy_pb";
 import { injectable } from "inversify";
 import { ctxCheckAborted, ctxTrySubjectId } from "../util/request-context";
 

@@ -1,22 +1,22 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User, Workspace, WorkspaceInstance } from "@devpod/devpod-protocol";
-import { defaultGRPCOptions } from "@devpod/devpod-protocol/lib/util/grpc";
-import { WorkspaceRegion } from "@devpod/devpod-protocol/lib/workspace-cluster";
+import { User, Workspace, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
+import { defaultGRPCOptions } from "@khulnasoft/devpod-protocol/lib/util/grpc";
+import { WorkspaceRegion } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
 import {
     ImageBuilderClient,
     ImageBuilderClientProvider,
     PromisifiedImageBuilderClient,
-} from "@devpod/image-builder/lib";
-import { WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
+} from "@khulnasoft/image-builder/lib";
+import { WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
 import {
     WorkspaceManagerClientProviderCompositeSource,
     WorkspaceManagerClientProviderSource,
-} from "@devpod/ws-manager/lib/client-provider-source";
+} from "@khulnasoft/ws-manager/lib/client-provider-source";
 import { inject, injectable } from "inversify";
 
 @injectable()

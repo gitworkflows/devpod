@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -12,12 +12,12 @@ import { AuthorizeGit, useNeedsGitAuthorization } from "../../components/Authori
 import { LoadingButton } from "@podkit/buttons/LoadingButton";
 import { Button } from "@podkit/buttons/Button";
 import { useTriggerPrebuildMutation } from "../../data/prebuilds/prebuild-queries";
-import { SuggestedRepository } from "@devpod/public-api/lib/devpod/v1/scm_pb";
+import { SuggestedRepository } from "@khulnasoft/public-api/lib/devpod/v1/scm_pb";
 import { useConfiguration } from "../../data/configurations/configuration-queries";
 import { Link } from "react-router-dom";
 import { repositoriesRoutes } from "../../repositories/repositories.routes";
 import { TextInputField } from "../../components/forms/TextInputField";
-import { ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 type Props = {
     defaultRepositoryId?: string;

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -90,7 +90,7 @@ func Nsinsider(instanceID string, targetPid int, mod func(*exec.Cmd), opts ...ns
 	stdioFdCount := 3
 	cmd := exec.Command(filepath.Join(filepath.Dir(base), "nsinsider"))
 	mod(cmd)
-	cmd.Env = append(cmd.Env, "_LIBNSENTER_INIT=1", "GITPOD_INSTANCE_ID="+instanceID)
+	cmd.Env = append(cmd.Env, "_LIBNSENTER_INIT=1", "DEVPOD_INSTANCE_ID="+instanceID)
 	for _, ns := range nss {
 		f, err := os.OpenFile(ns.Source, ns.Flags, 0)
 		if err != nil {

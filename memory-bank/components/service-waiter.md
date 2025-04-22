@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Service-Waiter component in Gitpod is a utility service that waits for other services to become available before proceeding. It's designed to be used in initialization and deployment scenarios where services have dependencies on other services being ready. The component can wait for different types of services, including databases, Redis instances, and Kubernetes components, ensuring that a service doesn't start until its dependencies are fully operational.
+The Service-Waiter component in Devpod is a utility service that waits for other services to become available before proceeding. It's designed to be used in initialization and deployment scenarios where services have dependencies on other services being ready. The component can wait for different types of services, including databases, Redis instances, and Kubernetes components, ensuring that a service doesn't start until its dependencies are fully operational.
 
 ## Purpose
 

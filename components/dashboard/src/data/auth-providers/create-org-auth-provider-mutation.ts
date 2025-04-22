@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { getOrgAuthProvidersQueryKey } from "./org-auth-providers-query";
-import { CreateAuthProviderRequest } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
+import { CreateAuthProviderRequest } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
 import { authProviderClient } from "../../service/public-api";
 
 type CreateAuthProviderArgs = {

@@ -2,14 +2,14 @@
 
 ## Overview
 
-The IDE Proxy is a lightweight component in Gitpod that serves static assets related to IDEs, including IDE logos, binaries, and configuration files. It acts as a centralized service for delivering IDE-related static content to other components of the Gitpod platform, particularly the dashboard and workspaces.
+The IDE Proxy is a lightweight component in Devpod that serves static assets related to IDEs, including IDE logos, binaries, and configuration files. It acts as a centralized service for delivering IDE-related static content to other components of the Devpod platform, particularly the dashboard and workspaces.
 
 ## Purpose
 
 The primary purposes of the IDE Proxy component are:
 - Serve static IDE-related assets (logos, icons, etc.)
 - Provide a centralized location for IDE binaries and downloads
-- Serve the Gitpod Local Companion application binaries
+- Serve the Devpod Local Companion application binaries
 - Proxy requests to the blobserve component for IDE-related content
 - Provide metrics endpoints for IDE usage
 - Implement proper caching and security headers for static content
@@ -30,7 +30,7 @@ The IDE Proxy is built on Caddy, a modern web server with automatic HTTPS capabi
 - `Dockerfile`: Builds the IDE Proxy container image
 - `conf/Caddyfile`: Main configuration file for the Caddy server
 - `static/image/ide-logo/`: Contains SVG logos for various IDEs
-- `static/bin/`: Contains binaries for Gitpod Local Companion (added during build)
+- `static/bin/`: Contains binaries for Devpod Local Companion (added during build)
 - `static/code/`: Contains VS Code marketplace information (added during build)
 
 ## Static Assets
@@ -52,7 +52,7 @@ The component serves SVG logos for various IDEs:
 
 ### Binaries
 The component serves binaries for:
-- Gitpod Local Companion for various platforms:
+- Devpod Local Companion for various platforms:
   - Linux (x86_64)
   - macOS (x86_64)
   - Windows (x86_64)
@@ -90,7 +90,7 @@ The IDE Proxy is configured through the Caddyfile, which includes:
 ### Internal Dependencies
 - `blobserve`: For serving IDE-related blob content
 - `ide-metrics`: For metrics collection
-- `local-app`: For Gitpod Local Companion binaries
+- `local-app`: For Devpod Local Companion binaries
 
 ### External Dependencies
 - Caddy web server
@@ -102,7 +102,7 @@ The IDE Proxy integrates with:
 1. **Dashboard**: Provides IDE logos and information for the UI
 2. **Blobserve**: Proxies requests to blobserve for IDE content
 3. **IDE Metrics**: Routes metrics requests to the metrics service
-4. **Local App**: Serves the Gitpod Local Companion binaries
+4. **Local App**: Serves the Devpod Local Companion binaries
 
 ## Security Considerations
 
@@ -115,7 +115,7 @@ The IDE Proxy integrates with:
 
 The IDE Proxy is typically used to:
 1. Serve IDE logos for the dashboard UI
-2. Provide downloadable binaries for Gitpod Local Companion
+2. Provide downloadable binaries for Devpod Local Companion
 3. Proxy requests to blobserve for IDE-related content
 4. Serve VS Code marketplace extension information
 5. Collect and expose IDE usage metrics

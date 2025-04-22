@@ -1,5 +1,5 @@
 {
-    "name": "@devpod/devpod-protocol",
+    "name": "@khulnasoft/devpod-protocol",
     "version": "0.1.5",
     "license": "UNLICENSED",
     "main": "./lib/index.js",
@@ -42,9 +42,9 @@
         "lint": "yarn eslint src/*.ts src/**/*.ts",
         "lint:fix": "yarn eslint src/*.ts src/**/*.ts --fix",
         "test": "mocha './**/*.spec.js' --exclude './node_modules/**' --exit",
-        "test:leeway": "yarn build && yarn test",
+        "test:blazedock": "yarn build && yarn test",
         "test-debug": "mocha --inspect-brk './**/*.spec.js' --exclude './node_modules/**' --exit",
-        "watch": "leeway exec --package .:lib --transitive-dependencies --filter-type yarn --components --parallel -- tsc -w --preserveWatchOutput"
+        "watch": "blazedock exec --package .:lib --transitive-dependencies --filter-type yarn --components --parallel -- tsc -w --preserveWatchOutput"
     },
     "mocha": {
         "require": [

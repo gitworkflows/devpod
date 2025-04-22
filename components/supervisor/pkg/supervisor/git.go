@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -24,7 +24,7 @@ import (
 )
 
 // GitTokenProvider provides tokens for Git hosting services by asking
-// the Gitpod server.
+// the Devpod server.
 type GitTokenProvider struct {
 	notificationService *NotificationService
 	workspaceConfig     WorkspaceConfig
@@ -91,8 +91,8 @@ func (p *GitTokenProvider) openAccessControl() error {
 	if err != nil {
 		return err
 	}
-	gpCmd := exec.Command(gpPath, "preview", "--external", p.workspaceConfig.GitpodHost+"/access-control")
-	runAsGitpodUser(gpCmd)
+	gpCmd := exec.Command(gpPath, "preview", "--external", p.workspaceConfig.DevpodHost+"/access-control")
+	runAsDevpodUser(gpCmd)
 	if b, err := gpCmd.CombinedOutput(); err != nil {
 		log.WithField("Stdout", string(b)).WithError(err).Error("failed to exec gp preview to open access control")
 		return err

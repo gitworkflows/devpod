@@ -1,14 +1,14 @@
-# Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2022 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
 blockNewUsers:
   enabled: true
   passlist:
-    - devpod.io
+    - devpod.khulnasoft.com
     - domain.com
     - domain2.com
-domain: test.devpod.io
+domain: test.devpod.khulnasoft.com
 httpProxy:
   kind: secret
   name: http-proxy-settings

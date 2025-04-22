@@ -323,104 +323,104 @@ replace github.com/outcaste-io/badger/v3 => github.com/dgraph-io/badger/v3 v3.21
 // Fix to our chosen version of containerd
 replace github.com/containerd/containerd => github.com/containerd/containerd v1.6.36
 
-replace github.com/khulnasoft/devpod/components/spicedb => ../../components/spicedb // leeway
+replace github.com/khulnasoft/devpod/components/spicedb => ../../components/spicedb // blazedock
 
-replace github.com/khulnasoft/devpod/image-builder => ../components/image-builder-mk3 // leeway
+replace github.com/khulnasoft/devpod/image-builder => ../components/image-builder-mk3 // blazedock
 
-replace github.com/khulnasoft/devpod/agent-smith => ../../components/ee/agent-smith // leeway
+replace github.com/khulnasoft/devpod/agent-smith => ../../components/ee/agent-smith // blazedock
 
-replace github.com/khulnasoft/devpod/blobserve => ../../components/blobserve // leeway
+replace github.com/khulnasoft/devpod/blobserve => ../../components/blobserve // blazedock
 
-replace github.com/khulnasoft/devpod/common-go => ../../components/common-go // leeway
+replace github.com/khulnasoft/devpod/common-go => ../../components/common-go // blazedock
 
-replace github.com/khulnasoft/devpod/components/scrubber => ../../components/scrubber // leeway
+replace github.com/khulnasoft/devpod/components/scrubber => ../../components/scrubber // blazedock
 
-replace github.com/khulnasoft/devpod/components/devpod-db/go => ../../components/devpod-db/go // leeway
+replace github.com/khulnasoft/devpod/components/devpod-db/go => ../../components/devpod-db/go // blazedock
 
-replace github.com/khulnasoft/devpod/content-service => ../../components/content-service // leeway
+replace github.com/khulnasoft/devpod/content-service => ../../components/content-service // blazedock
 
-replace github.com/khulnasoft/devpod/content-service/api => ../../components/content-service-api/go // leeway
+replace github.com/khulnasoft/devpod/content-service/api => ../../components/content-service-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/devpod-protocol => ../../components/devpod-protocol/go // leeway
+replace github.com/khulnasoft/devpod/devpod-protocol => ../../components/devpod-protocol/go // blazedock
 
-replace github.com/khulnasoft/devpod/ide-metrics-api => ../../components/ide-metrics-api/go // leeway
+replace github.com/khulnasoft/devpod/ide-metrics-api => ../../components/ide-metrics-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/ide-service-api => ../../components/ide-service-api/go // leeway
+replace github.com/khulnasoft/devpod/ide-service-api => ../../components/ide-service-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/image-builder/api => ../../components/image-builder-api/go // leeway
+replace github.com/khulnasoft/devpod/image-builder/api => ../../components/image-builder-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/openvsx-proxy => ../../components/openvsx-proxy // leeway
+replace github.com/khulnasoft/devpod/openvsx-proxy => ../../components/openvsx-proxy // blazedock
 
-replace github.com/khulnasoft/devpod/components/public-api/go => ../../components/public-api/go // leeway
+replace github.com/khulnasoft/devpod/components/public-api/go => ../../components/public-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/registry-facade => ../../components/registry-facade // leeway
+replace github.com/khulnasoft/devpod/registry-facade => ../../components/registry-facade // blazedock
 
-replace github.com/khulnasoft/devpod/registry-facade/api => ../../components/registry-facade-api/go // leeway
+replace github.com/khulnasoft/devpod/registry-facade/api => ../../components/registry-facade-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/supervisor/api => ../../components/supervisor-api/go // leeway
+replace github.com/khulnasoft/devpod/supervisor/api => ../../components/supervisor-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/usage => ../../components/usage // leeway
+replace github.com/khulnasoft/devpod/usage => ../../components/usage // blazedock
 
-replace github.com/khulnasoft/devpod/usage-api => ../../components/usage-api/go // leeway
+replace github.com/khulnasoft/devpod/usage-api => ../../components/usage-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/ws-daemon => ../../components/ws-daemon // leeway
+replace github.com/khulnasoft/devpod/ws-daemon => ../../components/ws-daemon // blazedock
 
-replace github.com/khulnasoft/devpod/ws-daemon/api => ../../components/ws-daemon-api/go // leeway
+replace github.com/khulnasoft/devpod/ws-daemon/api => ../../components/ws-daemon-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/ws-manager/api => ../../components/ws-manager-api/go // leeway
+replace github.com/khulnasoft/devpod/ws-manager/api => ../../components/ws-manager-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/ws-proxy => ../../components/ws-proxy // leeway
+replace github.com/khulnasoft/devpod/ws-proxy => ../../components/ws-proxy // blazedock
 
-replace github.com/khulnasoft/devpod/node-labeler => ../../components/node-labeler // leeway
+replace github.com/khulnasoft/devpod/node-labeler => ../../components/node-labeler // blazedock
 
-replace github.com/khulnasoft/devpod/server/go => ../../components/server/go // leeway
+replace github.com/khulnasoft/devpod/server/go => ../../components/server/go // blazedock
 
-replace k8s.io/api => k8s.io/api v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/api => k8s.io/api v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/apimachinery => k8s.io/apimachinery v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/apimachinery => k8s.io/apimachinery v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/apiserver => k8s.io/apiserver v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/apiserver => k8s.io/apiserver v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/cli-runtime => k8s.io/cli-runtime v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/cli-runtime => k8s.io/cli-runtime v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/client-go => k8s.io/client-go v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/client-go => k8s.io/client-go v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/cloud-provider => k8s.io/cloud-provider v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/cloud-provider => k8s.io/cloud-provider v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/cluster-bootstrap => k8s.io/cluster-bootstrap v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/cluster-bootstrap => k8s.io/cluster-bootstrap v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/code-generator => k8s.io/code-generator v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/code-generator => k8s.io/code-generator v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/component-base => k8s.io/component-base v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/component-base => k8s.io/component-base v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/cri-api => k8s.io/cri-api v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/cri-api => k8s.io/cri-api v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/csi-translation-lib => k8s.io/csi-translation-lib v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/csi-translation-lib => k8s.io/csi-translation-lib v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/kube-aggregator => k8s.io/kube-aggregator v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/kube-aggregator => k8s.io/kube-aggregator v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/kube-controller-manager => k8s.io/kube-controller-manager v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/kube-controller-manager => k8s.io/kube-controller-manager v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/kube-proxy => k8s.io/kube-proxy v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/kube-proxy => k8s.io/kube-proxy v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/kube-scheduler => k8s.io/kube-scheduler v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/kube-scheduler => k8s.io/kube-scheduler v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/kubelet => k8s.io/kubelet v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/kubelet => k8s.io/kubelet v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/legacy-cloud-providers => k8s.io/legacy-cloud-providers v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/legacy-cloud-providers => k8s.io/legacy-cloud-providers v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/metrics => k8s.io/metrics v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/metrics => k8s.io/metrics v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/component-helpers => k8s.io/component-helpers v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/component-helpers => k8s.io/component-helpers v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/controller-manager => k8s.io/controller-manager v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/controller-manager => k8s.io/controller-manager v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/kubectl => k8s.io/kubectl v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/kubectl => k8s.io/kubectl v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/mount-utils => k8s.io/mount-utils v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/mount-utils => k8s.io/mount-utils v0.30.9 // blazedock indirect from components/common-go:lib
 
-replace k8s.io/pod-security-admission => k8s.io/pod-security-admission v0.30.9 // leeway indirect from components/common-go:lib
+replace k8s.io/pod-security-admission => k8s.io/pod-security-admission v0.30.9 // blazedock indirect from components/common-go:lib

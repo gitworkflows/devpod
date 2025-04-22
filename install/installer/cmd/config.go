@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 /// Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -75,5 +75,5 @@ func init() {
 		log.WithError(err).Fatal("Failed to get working directory")
 	}
 
-	configCmd.PersistentFlags().StringVarP(&configOpts.ConfigFile, "config", "c", getEnvvar("GITPOD_INSTALLER_CONFIG", filepath.Join(dir, "devpod.config.yaml")), "path to the configuration file")
+	configCmd.PersistentFlags().StringVarP(&configOpts.ConfigFile, "config", "c", getEnvvar("DEVPOD_INSTALLER_CONFIG", filepath.Join(dir, "devpod.config.yaml")), "path to the configuration file")
 }

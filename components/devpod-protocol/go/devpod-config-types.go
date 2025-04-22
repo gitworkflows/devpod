@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -31,15 +31,15 @@ type CoreDump struct {
 type Env struct {
 }
 
-// Github Configures Gitpod's GitHub app (deprecated)
+// Github Configures Devpod's GitHub app (deprecated)
 type Github struct {
 
 	// Set to true to enable workspace prebuilds, false to disable them. Defaults to true. (deprecated)
 	Prebuilds interface{} `yaml:"prebuilds,omitempty" json:"prebuilds,omitempty"`
 }
 
-// GitpodConfig
-type GitpodConfig struct {
+// DevpodConfig
+type DevpodConfig struct {
 
 	// List of additional repositories that are part of this project.
 	AdditionalRepositories []*AdditionalRepositoriesItems `yaml:"additionalRepositories,omitempty" json:"additionalRepositories,omitempty"`
@@ -59,7 +59,7 @@ type GitpodConfig struct {
 	// Git config values should be provided in pairs. E.g. `core.autocrlf: input`. See https://git-scm.com/docs/git-config#_values.
 	GitConfig map[string]string `yaml:"gitConfig,omitempty" json:"gitConfig,omitempty"`
 
-	// Configures Gitpod's GitHub app (deprecated)
+	// Configures Devpod's GitHub app (deprecated)
 	Github *Github `yaml:"github,omitempty" json:"github,omitempty"`
 
 	// The Docker image to run your workspace in.
@@ -173,7 +173,7 @@ type Prebuilds struct {
 // Prebuilds_object Set to true to enable workspace prebuilds, false to disable them. Defaults to true. (deprecated)
 type Prebuilds_object struct {
 
-	// Add a Review in Gitpod badge to pull requests. Defaults to true.
+	// Add a Review in Devpod badge to pull requests. Defaults to true.
 	AddBadge bool `yaml:"addBadge,omitempty" json:"addBadge,omitempty"`
 
 	// Add a commit check to pull requests. Set to 'fail-on-error' if you want broken prebuilds to block merging. Defaults to true.

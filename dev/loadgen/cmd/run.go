@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -62,7 +62,7 @@ var runCmd = &cobra.Command{
 				},
 				Admission: api.AdmissionLevel_ADMIT_OWNER_ONLY,
 				Git: &api.GitSpec{
-					Email:    "test@devpod.io",
+					Email:    "test@khulnasoft.com",
 					Username: "foobar",
 				},
 				FeatureFlags: []api.WorkspaceFeatureFlag{},
@@ -85,7 +85,7 @@ var runCmd = &cobra.Command{
 				Envvars: []*api.EnvironmentVariable{
 					{
 						Name:  "THEIA_SUPERVISOR_TOKENS",
-						Value: `[{"token":"foobar","host":"devpod-staging.com","scope":["function:getWorkspace","function:getLoggedInUser","function:getWorkspaceOwner","function:getWorkspaceUsers","function:isWorkspaceOwner","function:controlAdmission","function:setWorkspaceTimeout","function:getWorkspaceTimeout","function:sendHeartBeat","function:getOpenPorts","function:openPort","function:closePort","function:generateNewGitpodToken","function:takeSnapshot","function:stopWorkspace","resource:workspace::fa498dcc-0a84-448f-9666-79f297ad821a::get/update","resource:workspaceInstance::e0a17083-6a78-441a-9b97-ef90d6aff463::get/update/delete","resource:snapshot::*::create/get","resource:devpodToken::*::create","resource:userStorage::*::create/get/update"],"expiryDate":"2020-12-01T07:55:12.501Z","reuse":2}]`,
+						Value: `[{"token":"foobar","host":"devpod-staging.com","scope":["function:getWorkspace","function:getLoggedInUser","function:getWorkspaceOwner","function:getWorkspaceUsers","function:isWorkspaceOwner","function:controlAdmission","function:setWorkspaceTimeout","function:getWorkspaceTimeout","function:sendHeartBeat","function:getOpenPorts","function:openPort","function:closePort","function:generateNewDevpodToken","function:takeSnapshot","function:stopWorkspace","resource:workspace::fa498dcc-0a84-448f-9666-79f297ad821a::get/update","resource:workspaceInstance::e0a17083-6a78-441a-9b97-ef90d6aff463::get/update/delete","resource:snapshot::*::create/get","resource:devpodToken::*::create","resource:userStorage::*::create/get/update"],"expiryDate":"2020-12-01T07:55:12.501Z","reuse":2}]`,
 					},
 				},
 			},

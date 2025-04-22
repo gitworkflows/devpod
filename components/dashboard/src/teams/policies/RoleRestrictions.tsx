@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { OrganizationSettings } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import { OrganizationSettings } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 import { useState } from "react";
 import { Button } from "@podkit/buttons/Button";
 import { ConfigurationSettingsField } from "../../repositories/detail/ConfigurationSettingsField";

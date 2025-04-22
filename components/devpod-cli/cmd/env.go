@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -160,7 +160,7 @@ func connectToServer(ctx context.Context, options *connectToServerOptions) (*con
 	}
 
 	clientToken, err := supervisorClient.Token.GetToken(ctx, &supervisorapi.GetTokenRequest{
-		Host: wsinfo.GitpodApi.Host,
+		Host: wsinfo.DevpodApi.Host,
 		Kind: "devpod",
 		Scope: []string{
 			"function:getWorkspaceEnvVars",
@@ -178,7 +178,7 @@ func connectToServer(ctx context.Context, options *connectToServerOptions) (*con
 	} else {
 		serverLog = log.NewEntry(log.StandardLogger())
 	}
-	client, err := serverapi.ConnectToServer(wsinfo.GitpodApi.Endpoint, serverapi.ConnectToServerOpts{
+	client, err := serverapi.ConnectToServer(wsinfo.DevpodApi.Endpoint, serverapi.ConnectToServerOpts{
 		Token:   clientToken.Token,
 		Context: ctx,
 		Log:     serverLog,
@@ -186,7 +186,7 @@ func connectToServer(ctx context.Context, options *connectToServerOptions) (*con
 	if err != nil {
 		return nil, xerrors.Errorf("failed connecting to server: %w", err)
 	}
-	return &connectToServerResult{repositoryPattern, wsinfo, client, wsinfo.GitpodHost}, nil
+	return &connectToServerResult{repositoryPattern, wsinfo, client, wsinfo.DevpodHost}, nil
 }
 
 func getWorkspaceEnvs(ctx context.Context, options *connectToServerOptions) ([]*serverapi.EnvVar, error) {

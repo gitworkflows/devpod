@@ -1,7 +1,7 @@
 # Local App API
 
 ## Overview
-The Local App API defines the gRPC interfaces for the Local App service, which facilitates communication between a user's local machine and Gitpod workspaces. This API enables port tunneling, SSH connection management, and other local-to-remote interactions.
+The Local App API defines the gRPC interfaces for the Local App service, which facilitates communication between a user's local machine and Devpod workspaces. This API enables port tunneling, SSH connection management, and other local-to-remote interactions.
 
 ## Purpose
 This API provides a standardized interface for:
@@ -92,9 +92,9 @@ After regenerating the code, you may need to rebuild components that depend on t
    go build ./...
    ```
 
-2. Using Leeway (for CI/CD):
+2. Using Blazedock (for CI/CD):
    ```bash
-   leeway build -D components/<component-name>:app
+   blazedock build -D components/<component-name>:app
    ```
 
-The Local App API is primarily used by the local-app component, which is a desktop application that runs on users' machines to facilitate communication with remote Gitpod workspaces.
+The Local App API is primarily used by the local-app component, which is a desktop application that runs on users' machines to facilitate communication with remote Devpod workspaces.

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,16 +7,16 @@
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCurrentOrg } from "../organizations/orgs-query";
 import { configurationClient } from "../../service/public-api";
-import { SortOrder } from "@devpod/public-api/lib/devpod/v1/sorting_pb";
+import { SortOrder } from "@khulnasoft/public-api/lib/devpod/v1/sorting_pb";
 import { TableSortOrder } from "@podkit/tables/SortableTable";
-import type { Configuration, UpdateConfigurationRequest } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
+import type { Configuration, UpdateConfigurationRequest } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
 import type { PartialMessage } from "@bufbuild/protobuf";
 import { envVarClient } from "../../service/public-api";
 import {
     ConfigurationEnvironmentVariable,
     EnvironmentVariableAdmission,
-} from "@devpod/public-api/lib/devpod/v1/envvar_pb";
-import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+} from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
+import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 const BASE_KEY = "configurations";
 

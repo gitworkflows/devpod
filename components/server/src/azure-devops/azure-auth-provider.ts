@@ -1,18 +1,18 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import express from "express";
 import { injectable, inject } from "inversify";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { AuthProviderInfo } from "@devpod/devpod-protocol";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { AuthProviderInfo } from "@khulnasoft/devpod-protocol";
 import { AzureDevOpsApi } from "./azure-api";
 import { GenericAuthProvider } from "../auth/generic-auth-provider";
 import { AuthUserSetup } from "../auth/auth-provider";
 import { oauthUrls } from "./azure-urls";
-import { AzureDevOpsOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
+import { AzureDevOpsOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
 
 @injectable()
 export class AzureDevOpsAuthProvider extends GenericAuthProvider {

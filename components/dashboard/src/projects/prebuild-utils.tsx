@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Prebuild, PrebuildPhase_Phase } from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
+import { Prebuild, PrebuildPhase_Phase } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
 import { PauseCircle, LucideProps, Clock, CheckCircle2, XCircle, Loader2Icon } from "lucide-react";
 import type { ForwardRefExoticComponent } from "react";
 import { cn } from "@podkit/lib/cn";

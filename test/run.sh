@@ -83,8 +83,8 @@ args+=( "-kubeconfig=${KUBECONFIG:-/home/devpod/.kube/config}" )
 args+=( "-namespace=${NAMESPACE:-default}" )
 args+=( "-timeout=120m" )
 
-if [[ "${GITPOD_REPO_ROOT:-}" != "" ]]; then
-  echo "Running in Gitpod workspace. Fetching USER_NAME and USER_TOKEN"
+if [[ "${DEVPOD_REPO_ROOT:-}" != "" ]]; then
+  echo "Running in Devpod workspace. Fetching USER_NAME and USER_TOKEN"
   USER_NAME="$(kubectl --context=dev -n werft get secret integration-test-user -o jsonpath='{.data.username}' | base64 -d)"
   USER_TOKEN="$(kubectl --context=dev -n werft get secret integration-test-user -o jsonpath='{.data.token}' | base64 -d)"
   export USER_NAME

@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { Entity, Column, PrimaryColumn } from "typeorm";
 import { TypeORM } from "../typeorm";
-import { AuditLog } from "@devpod/devpod-protocol/lib/audit-log";
-import { BigIntToJson } from "@devpod/devpod-protocol/lib/util/stringify";
+import { AuditLog } from "@khulnasoft/devpod-protocol/lib/audit-log";
+import { BigIntToJson } from "@khulnasoft/devpod-protocol/lib/util/stringify";
 import { Transformer } from "../transformer";
 
 @Entity()

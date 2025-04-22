@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { RepositoryService } from "../repohost/repo-service";
-import { User } from "@devpod/devpod-protocol";
+import { User } from "@khulnasoft/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { BitbucketServerApi } from "../bitbucket-server/bitbucket-server-api";
 import { BitbucketServerContextParser } from "../bitbucket-server/bitbucket-server-context-parser";
@@ -22,7 +22,7 @@ export class BitbucketServerService extends RepositoryService {
         super();
     }
 
-    public async isGitpodWebhookEnabled(user: User, cloneUrl: string): Promise<boolean> {
+    public async isDevpodWebhookEnabled(user: User, cloneUrl: string): Promise<boolean> {
         try {
             const { owner, repoName, repoKind } = await this.contextParser.parseURL(user, cloneUrl);
             const existing = await this.api.getWebhooks(user, {
@@ -37,7 +37,7 @@ export class BitbucketServerService extends RepositoryService {
 
             return existing.values.some((hook) => hook.url && hook.url.includes(hookUrl));
         } catch (error) {
-            console.error("Failed to check if Gitpod webhook is enabled.", error, { cloneUrl });
+            console.error("Failed to check if Devpod webhook is enabled.", error, { cloneUrl });
 
             return false;
         }

@@ -1,15 +1,15 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User, Token } from "@devpod/devpod-protocol";
+import { User, Token } from "@khulnasoft/devpod-protocol";
 import { UnauthorizedError } from "../errors";
 import { AuthProviderParams } from "../auth/auth-provider";
 import { injectable, inject } from "inversify";
 import { TokenProvider } from "../user/token-provider";
-import { GitLabOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
+import { GitLabOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
 
 @injectable()
 export class GitLabTokenHelper {

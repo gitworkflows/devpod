@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import {
     IDEServiceClient,
     ResolveWorkspaceConfigResponse,
     WorkspaceType,
-} from "@devpod/ide-service-api/lib/ide.pb";
+} from "@khulnasoft/ide-service-api/lib/ide.pb";
 import { injectable } from "inversify";
 import { CallOptions } from "nice-grpc-common";
 

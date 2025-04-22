@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -12,13 +12,13 @@ import {
     WORKSPACE_LIFETIME_LONG,
     MAX_PARALLEL_WORKSPACES_FREE,
     MAX_PARALLEL_WORKSPACES_PAID,
-} from "@devpod/devpod-protocol";
-import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
-import { BillingTier } from "@devpod/devpod-protocol/lib/protocol";
+} from "@khulnasoft/devpod-protocol";
+import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
+import { BillingTier } from "@khulnasoft/devpod-protocol/lib/protocol";
 import { inject, injectable } from "inversify";
 import { BillingModes } from "./billing-mode";
 import { EntitlementServiceUBP, getRunningInstancesCount, LazyOrganizationService } from "./entitlement-service-ubp";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 export interface MayStartWorkspaceResult {
     hitParallelWorkspaceLimit?: HitParallelWorkspaceLimit;

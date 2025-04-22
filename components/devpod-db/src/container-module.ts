@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -12,14 +12,14 @@ import { TypeORMUserDBImpl } from "./typeorm/user-db-impl";
 import { UserDB } from "./user-db";
 import { Config } from "./config";
 import { TypeORM } from "./typeorm/typeorm";
-import { encryptionModule } from "@devpod/devpod-protocol/lib/encryption/container-module";
-import { KeyProviderImpl, KeyProviderConfig } from "@devpod/devpod-protocol/lib/encryption/key-provider";
+import { encryptionModule } from "@khulnasoft/devpod-protocol/lib/encryption/container-module";
+import { KeyProviderImpl, KeyProviderConfig } from "@khulnasoft/devpod-protocol/lib/encryption/key-provider";
 import { DBWithTracing, bindDbWithTracing, TracedWorkspaceDB, TracedUserDB, TracedOneTimeSecretDB } from "./traced-db";
 import { OneTimeSecretDB } from "./one-time-secret-db";
 import { TypeORMAppInstallationDBImpl } from "./typeorm/app-installation-db-impl";
 import { AppInstallationDB } from "./app-installation-db";
 import { TypeORMOneTimeSecretDBImpl } from "./typeorm/one-time-secret-db-impl";
-import { GitpodTableDescriptionProvider, TableDescriptionProvider } from "./tables";
+import { DevpodTableDescriptionProvider, TableDescriptionProvider } from "./tables";
 import { PeriodicDbDeleter } from "./periodic-deleter";
 import { CodeSyncResourceDB } from "./typeorm/code-sync-resource-db";
 
@@ -43,8 +43,8 @@ import { PersonalAccessTokenDBImpl } from "./typeorm/personal-access-token-db-im
 import { LinkedInProfileDBImpl } from "./typeorm/linked-in-profile-db-impl";
 import { LinkedInProfileDB } from "./linked-in-profile-db";
 import { DataCache, DataCacheNoop } from "./data-cache";
-import { TracingManager } from "@devpod/devpod-protocol/lib/util/tracing";
-import { EncryptionService, GlobalEncryptionService } from "@devpod/devpod-protocol/lib/encryption/encryption-service";
+import { TracingManager } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { EncryptionService, GlobalEncryptionService } from "@khulnasoft/devpod-protocol/lib/encryption/encryption-service";
 import { AuditLogDB } from "./audit-log-db";
 import { AuditLogDBImpl } from "./typeorm/audit-log-db-impl";
 
@@ -94,8 +94,8 @@ export const dbContainerModule = (cacheClass = DataCacheNoop) =>
             })
             .inSingletonScope();
 
-        bind(GitpodTableDescriptionProvider).toSelf().inSingletonScope();
-        bind(TableDescriptionProvider).toService(GitpodTableDescriptionProvider);
+        bind(DevpodTableDescriptionProvider).toSelf().inSingletonScope();
+        bind(TableDescriptionProvider).toService(DevpodTableDescriptionProvider);
         bind(PeriodicDbDeleter).toSelf().inSingletonScope();
 
         bind(CodeSyncResourceDB).toSelf().inSingletonScope();

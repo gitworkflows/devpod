@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -28,7 +28,7 @@ func TestGenerateWorkspaceID(t *testing.T) {
 
 func TestValidateWorkspaceID(t *testing.T) {
 	valid := []string{
-		"devpodio-devpod-65k8jqq6up4",
+		"khulnasoft-devpod-65k8jqq6up4",
 		"testeraccountwit-empty-g6024jgir2j",
 		"largetextlargete-largetextlargete-g6024jgir2j",
 	}

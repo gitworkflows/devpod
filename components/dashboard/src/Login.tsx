@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import * as GitpodCookie from "@devpod/devpod-protocol/lib/util/devpod-cookie";
+import * as DevpodCookie from "@khulnasoft/devpod-protocol/lib/util/devpod-cookie";
 import { useContext, useEffect, useState, useMemo, useCallback, FC } from "react";
 import { UserContext } from "./user-context";
-import { getGitpodService } from "./service/service";
+import { getDevpodService } from "./service/service";
 import { iconForAuthProvider, openAuthorizeWindow, simplifyProviderName } from "./provider-utils";
 import exclamation from "./images/exclamation.svg";
 import { getURLHash, isTrustedUrlOrPath } from "./utils";
@@ -17,22 +17,22 @@ import { SSOLoginForm } from "./login/SSOLoginForm";
 import { useAuthProviderDescriptions } from "./data/auth-providers/auth-provider-descriptions-query";
 import { SetupPending } from "./login/SetupPending";
 import { useNeedsSetup } from "./dedicated-setup/use-needs-setup";
-import { AuthProviderDescription } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProviderDescription } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
 import { Button, ButtonProps } from "@podkit/buttons/Button";
 import { cn } from "@podkit/lib/cn";
 import { userClient } from "./service/public-api";
 import { ProductLogo } from "./components/ProductLogo";
 import { useIsDataOps } from "./data/featureflag-query";
-import GitpodClassicCard from "./images/devpod-classic-card.png";
+import DevpodClassicCard from "./images/devpod-classic-card.png";
 import { LoadingState } from "@podkit/loading/LoadingState";
-import { isGitpodIo } from "./utils";
+import { isDevpodIo } from "./utils";
 
 export function markLoggedIn() {
-    document.cookie = GitpodCookie.generateCookie(window.location.hostname);
+    document.cookie = DevpodCookie.generateCookie(window.location.hostname);
 }
 
 export function hasLoggedInBefore() {
-    return GitpodCookie.isPresent(document.cookie);
+    return DevpodCookie.isPresent(document.cookie);
 }
 
 const SEGMENT_SEPARATOR = "/";
@@ -207,13 +207,13 @@ const LoginContent = ({
 }) => {
     const { setUser } = useContext(UserContext);
     const isDataOps = useIsDataOps();
-    const isGitpodIoUser = isGitpodIo();
+    const isDevpodIoUser = isDevpodIo();
 
     const authProviders = useAuthProviderDescriptions();
     const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
 
     const updateUser = useCallback(async () => {
-        await getGitpodService().reconnect();
+        await getDevpodService().reconnect();
         const { user } = await userClient.getAuthenticatedUser({});
         if (user) {
             setUser(user);
@@ -280,11 +280,11 @@ const LoginContent = ({
                         <Heading2>Open a cloud development environment</Heading2>
                         <Subheading>for the repository {repoPathname?.slice(1)}</Subheading>
                     </>
-                ) : !isGitpodIoUser ? (
-                    <Heading1>Log in to Gitpod</Heading1>
+                ) : !isDevpodIoUser ? (
+                    <Heading1>Log in to Devpod</Heading1>
                 ) : (
                     <>
-                        <Heading1>Log in to Gitpod Classic</Heading1>
+                        <Heading1>Log in to Devpod Classic</Heading1>
                         <Subheading>Hosted by us</Subheading>
                     </>
                 )}
@@ -324,14 +324,14 @@ const RightProductDescriptionPanel = () => {
             <div>
                 <div className="justify-center md:justify-start mb-6 md:mb-8">
                     <h2 className="text-2xl font-medium mb-2 dark:text-white inline-flex items-center gap-x-2">
-                        Gitpod Classic
+                        Devpod Classic
                     </h2>
                     <p className="text-pk-content-secondary mb-2">
-                        Automated, standardized development environments hosted by us in Gitpod’s infrastructure. Users
-                        who joined before October 1, 2024 on non-Enterprise plans are considered Gitpod Classic users.
+                        Automated, standardized development environments hosted by us in Devpod’s infrastructure. Users
+                        who joined before October 1, 2024 on non-Enterprise plans are considered Devpod Classic users.
                     </p>
                 </div>
-                <img src={GitpodClassicCard} alt="Gitpod Classic" className="w-full" />
+                <img src={DevpodClassicCard} alt="Devpod Classic" className="w-full" />
             </div>
         </div>
     );
@@ -342,14 +342,14 @@ const TermsOfServiceAndPrivacyPolicy = () => {
         <div className="flex-none mx-auto text-center px-4 pb-4">
             <span className="text-gray-400 dark:text-gray-500 text-sm">
                 By signing in, you agree to our{" "}
-                <a className="gp-link hover:text-gray-600" target="devpod-terms" href="https://www.devpod.io/terms/">
+                <a className="gp-link hover:text-gray-600" target="devpod-terms" href="https://www.devpod.khulnasoft.com/terms/">
                     terms of service
                 </a>{" "}
                 and{" "}
                 <a
                     className="gp-link hover:text-gray-600"
                     target="devpod-privacy"
-                    href="https://www.devpod.io/privacy/"
+                    href="https://www.devpod.khulnasoft.com/privacy/"
                 >
                     privacy policy
                 </a>

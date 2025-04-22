@@ -4,10 +4,10 @@
     // const roots = ['client']; // XXX: patch the `lib` instead?
 
     const replacements = [
-        { from: './content-service-api/initializer_pb.js', to: '@devpod/content-service/lib' },
-        { from: './content-service-api/initializer_pb', to: '@devpod/content-service/lib' },
-        { from: './content-service-api/blobs_pb.js', to: '@devpod/content-service/lib' },
-        { from: './content-service-api/blobs_pb', to: '@devpod/content-service/lib' }
+        { from: './content-service-api/initializer_pb.js', to: '@khulnasoft/content-service/lib' },
+        { from: './content-service-api/initializer_pb', to: '@khulnasoft/content-service/lib' },
+        { from: './content-service-api/blobs_pb.js', to: '@khulnasoft/content-service/lib' },
+        { from: './content-service-api/blobs_pb', to: '@khulnasoft/content-service/lib' }
     ]
 
     for (const sub of replacements) {

@@ -1,20 +1,20 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User, WorkspaceAndInstance, ContextURL, WorkspaceInstance } from "@devpod/devpod-protocol";
-import { GitpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
+import { User, WorkspaceAndInstance, ContextURL, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
+import { DevpodHostUrl } from "@khulnasoft/devpod-protocol/lib/util/devpod-host-url";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Heading2, Subheading } from "../components/typography/headings";
-import { getGitpodService } from "../service/service";
+import { getDevpodService } from "../service/service";
 import { getProjectPath } from "../workspaces/WorkspaceEntry";
 import { WorkspaceStatusIndicator } from "../workspaces/WorkspaceStatusIndicator";
 import Property from "./Property";
-import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
+import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
 import { converter } from "../service/public-api";
 import { Button } from "@podkit/buttons/Button";
 
@@ -24,14 +24,14 @@ export default function WorkspaceDetail(props: { workspace: WorkspaceAndInstance
     const [activity, setActivity] = useState(false);
     const [user, setUser] = useState<User>();
     useEffect(() => {
-        getGitpodService().server.adminGetUser(props.workspace.ownerId).then(setUser);
-        getGitpodService().server.adminGetWorkspaceInstances(props.workspace.workspaceId).then(setWorkspaceInstances);
+        getDevpodService().server.adminGetUser(props.workspace.ownerId).then(setUser);
+        getDevpodService().server.adminGetWorkspaceInstances(props.workspace.workspaceId).then(setWorkspaceInstances);
     }, [props.workspace, workspace.workspaceId]);
 
     const stopWorkspace = async () => {
         try {
             setActivity(true);
-            await getGitpodService().server.adminForceStopWorkspace(workspace.workspaceId);
+            await getDevpodService().server.adminForceStopWorkspace(workspace.workspaceId);
             // let's reload in a sec
             setTimeout(reload, 2000);
         } finally {
@@ -43,8 +43,8 @@ export default function WorkspaceDetail(props: { workspace: WorkspaceAndInstance
         try {
             setActivity(true);
             const [ws, workspaceInstances] = await Promise.all([
-                await getGitpodService().server.adminGetWorkspace(workspace.workspaceId),
-                await getGitpodService().server.adminGetWorkspaceInstances(workspace.workspaceId),
+                await getDevpodService().server.adminGetWorkspace(workspace.workspaceId),
+                await getDevpodService().server.adminGetWorkspaceInstances(workspace.workspaceId),
             ]);
             setWorkspace(ws);
             setWorkspaceInstances(workspaceInstances);
@@ -83,7 +83,7 @@ export default function WorkspaceDetail(props: { workspace: WorkspaceAndInstance
                     variant="secondary"
                     className="ml-3"
                     onClick={() => {
-                        window.location.href = new GitpodHostUrl(window.location.href)
+                        window.location.href = new DevpodHostUrl(window.location.href)
                             .with({
                                 pathname: `/workspace-download/get/${workspace.workspaceId}`,
                             })
@@ -134,7 +134,7 @@ export default function WorkspaceDetail(props: { workspace: WorkspaceAndInstance
                                           {
                                               label: "Restore & Pin",
                                               onClick: async () => {
-                                                  await getGitpodService().server.adminRestoreSoftDeletedWorkspace(
+                                                  await getDevpodService().server.adminRestoreSoftDeletedWorkspace(
                                                       workspace.workspaceId,
                                                   );
                                                   await reload();

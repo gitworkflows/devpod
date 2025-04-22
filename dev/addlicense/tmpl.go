@@ -93,5 +93,5 @@ Licensed under the GNU Affero General Public License (AGPL).
 See License.AGPL.txt in the project root for license information.`
 
 const tmplGPSHF = `Copyright (c) {{.Year}} {{.Holder}}. All rights reserved.
-Licensed under the Gitpod Enterprise Source Code License,
+Licensed under the Devpod Enterprise Source Code License,
 See License.enterprise.txt in the project root folder.`

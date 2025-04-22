@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License-AGPL.txt in the project root for license information.
 
@@ -89,9 +89,9 @@ type WorkspaceReconciler struct {
 	kubeClient kubernetes.Interface
 }
 
-//+kubebuilder:rbac:groups=workspace.devpod.io,resources=workspaces,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=workspace.devpod.io,resources=workspaces/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=workspace.devpod.io,resources=workspaces/finalizers,verbs=update
+//+kubebuilder:rbac:groups=workspace.devpod.khulnasoft.com,resources=workspaces,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=workspace.devpod.khulnasoft.com,resources=workspaces/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=workspace.devpod.khulnasoft.com,resources=workspaces/finalizers,verbs=update
 //+kubebuilder:rbac:groups=core,resources=pod,verbs=get;list;watch;create;update;patch;delete
 //+kubebuilder:rbac:groups=core,resources=pod/status,verbs=get
 
@@ -281,8 +281,8 @@ func (r *WorkspaceReconciler) actOnStatus(ctx context.Context, workspace *worksp
 			}
 
 			// Done stopping workspace - remove finalizer.
-			if controllerutil.ContainsFinalizer(workspace, workspacev1.GitpodFinalizerName) {
-				controllerutil.RemoveFinalizer(workspace, workspacev1.GitpodFinalizerName)
+			if controllerutil.ContainsFinalizer(workspace, workspacev1.DevpodFinalizerName) {
+				controllerutil.RemoveFinalizer(workspace, workspacev1.DevpodFinalizerName)
 				if err := r.Update(ctx, workspace); err != nil {
 					if apierrors.IsNotFound(err) {
 						return ctrl.Result{}, nil
@@ -364,8 +364,8 @@ func (r *WorkspaceReconciler) actOnStatus(ctx context.Context, workspace *worksp
 
 	// we've disposed already - try to remove the finalizer and call it a day
 	case workspace.Status.Phase == workspacev1.WorkspacePhaseStopped:
-		hadFinalizer := controllerutil.ContainsFinalizer(pod, workspacev1.GitpodFinalizerName)
-		controllerutil.RemoveFinalizer(pod, workspacev1.GitpodFinalizerName)
+		hadFinalizer := controllerutil.ContainsFinalizer(pod, workspacev1.DevpodFinalizerName)
+		controllerutil.RemoveFinalizer(pod, workspacev1.DevpodFinalizerName)
 		if err := r.Client.Update(ctx, pod); err != nil {
 			return ctrl.Result{}, fmt.Errorf("failed to remove devpod finalizer from pod: %w", err)
 		}

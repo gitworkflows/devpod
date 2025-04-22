@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { HandlerContext, ServiceImpl } from "@connectrpc/connect";
 import { inject, injectable } from "inversify";
-import { OrganizationService as OrganizationServiceInterface } from "@devpod/public-api/lib/devpod/v1/organization_connect";
+import { OrganizationService as OrganizationServiceInterface } from "@khulnasoft/public-api/lib/devpod/v1/organization_connect";
 import {
     CreateOrganizationRequest,
     CreateOrganizationResponse,
@@ -37,14 +37,14 @@ import {
     ListOrganizationsRequest_Scope,
     ListOrganizationWorkspaceClassesRequest,
     ListOrganizationWorkspaceClassesResponse,
-} from "@devpod/public-api/lib/devpod/v1/organization_pb";
-import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
+} from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
 import { OrganizationService } from "../orgs/organization-service";
-import { OrganizationSettings } from "@devpod/devpod-protocol";
-import { PaginationResponse } from "@devpod/public-api/lib/devpod/v1/pagination_pb";
+import { OrganizationSettings } from "@khulnasoft/devpod-protocol";
+import { PaginationResponse } from "@khulnasoft/public-api/lib/devpod/v1/pagination_pb";
 import { validate as uuidValidate } from "uuid";
 import { ctxUserId } from "../util/request-context";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 @injectable()
 export class OrganizationServiceAPI implements ServiceImpl<typeof OrganizationServiceInterface> {

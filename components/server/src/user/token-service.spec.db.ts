@@ -1,18 +1,18 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 import * as chai from "chai";
 import "mocha";
 import { Container } from "inversify";
 import { createTestContainer } from "../test/service-testing-container-module";
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TypeORM, UserDB } from "@devpod/devpod-db/lib";
-import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TypeORM, UserDB } from "@khulnasoft/devpod-db/lib";
+import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
 import { OrganizationService } from "../orgs/organization-service";
-import { Organization, Token, User } from "@devpod/devpod-protocol";
+import { Organization, Token, User } from "@khulnasoft/devpod-protocol";
 import { TokenService } from "./token-service";
 import { TokenProvider } from "./token-provider";
 import { HostContextProvider } from "../auth/host-context-provider";

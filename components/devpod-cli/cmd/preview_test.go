@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -47,7 +47,7 @@ func TestReplaceLocalhostInURL(t *testing.T) {
 		{"127.0.0.1 param w port/https", "https://something.org?cb=https://127.0.0.1:8080", 8080, "https://8080-workspace-url", "https://something.org?cb=https://8080-workspace-url"},
 	}
 
-	os.Setenv("GITPOD_WORKSPACE_URL", "https://workspace-url")
+	os.Setenv("DEVPOD_WORKSPACE_URL", "https://workspace-url")
 	for _, test := range tests {
 		t.Run(test.Desc, func(t *testing.T) {
 			ctrl := gomock.NewController(t)

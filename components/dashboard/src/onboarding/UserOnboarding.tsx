@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
+import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
 import { FunctionComponent, useCallback, useContext, useState } from "react";
 import devpodIcon from "../icons/devpod.svg";
 import { Separator } from "../components/Separator";
@@ -118,7 +118,7 @@ const UserOnboarding: FunctionComponent<Props> = ({ user }) => {
         <div className="container">
             <div className="app-container">
                 <div className="flex items-center justify-center py-3">
-                    <img src={devpodIcon} className="h-6" alt="Gitpod's logo" />
+                    <img src={devpodIcon} className="h-6" alt="Devpod's logo" />
                 </div>
                 <Separator />
                 <div className="mt-24">

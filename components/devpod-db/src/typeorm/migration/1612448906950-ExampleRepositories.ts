@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -40,7 +40,7 @@ export class ExampleRepositories1612448906950 implements MigrationInterface {
             },
             {
                 url: "https://github.com/theia-ide/theia.git",
-                description: "**Typescript** - Deep dive into Gitpod\\'s open-source IDE, Theia.",
+                description: "**Typescript** - Deep dive into Devpod\\'s open-source IDE, Theia.",
                 priority: 4,
             },
         ];

@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { FunctionComponent, useCallback } from "react";
 import ConfirmationModal from "../../../components/ConfirmationModal";
-import type { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
+import type { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
 import { useDeleteConfiguration } from "../../../data/configurations/configuration-queries";
 
 type Props = {

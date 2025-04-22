@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -35,7 +35,7 @@ var gitTokenValidatorOpts struct {
 
 var gitTokenValidator = &cobra.Command{
 	Use:    "git-token-validator",
-	Short:  "Gitpod's Git token validator",
+	Short:  "Devpod's Git token validator",
 	Long:   "Tries to guess the scopes needed for a git operation and requests an appropriate token.",
 	Args:   cobra.ExactArgs(0),
 	Hidden: true,
@@ -64,7 +64,7 @@ var gitTokenValidator = &cobra.Command{
 			log.WithError(err).Fatal("error getting workspace info from supervisor")
 		}
 		clientToken, err := supervisor.NewTokenServiceClient(supervisorConn).GetToken(ctx, &supervisor.GetTokenRequest{
-			Host: wsinfo.GitpodApi.Host,
+			Host: wsinfo.DevpodApi.Host,
 			Kind: "devpod",
 			Scope: []string{
 				"function:guessGitTokenScopes",
@@ -73,7 +73,7 @@ var gitTokenValidator = &cobra.Command{
 		if err != nil {
 			log.WithError(err).Fatal("error getting token from supervisor")
 		}
-		client, err := serverapi.ConnectToServer(wsinfo.GitpodApi.Endpoint, serverapi.ConnectToServerOpts{
+		client, err := serverapi.ConnectToServer(wsinfo.DevpodApi.Endpoint, serverapi.ConnectToServerOpts{
 			Token:   clientToken.Token,
 			Context: ctx,
 			Log:     log.NewEntry(log.StandardLogger()),
@@ -116,7 +116,7 @@ var gitTokenValidator = &cobra.Command{
 				log.WithError(err).Fatalf("error notifying client: '%s'", message)
 			}
 			if result.Action == "Open Access Control" {
-				cmd := exec.Command("/proc/self/exe", "preview", "--external", wsinfo.GetGitpodHost()+"/access-control")
+				cmd := exec.Command("/proc/self/exe", "preview", "--external", wsinfo.GetDevpodHost()+"/access-control")
 				err := cmd.Run()
 				if err != nil {
 					log.WithError(err).Fatalf("error opening access-control: '%s'", message)

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,14 +9,14 @@ import Modal, { ModalBody, ModalFooter, ModalHeader } from "../components/Modal"
 import Alert from "../components/Alert";
 import { Item, ItemField, ItemFieldContextMenu } from "../components/ItemsList";
 import ConfirmationModal from "../components/ConfirmationModal";
-import { SSHPublicKeyValue } from "@devpod/devpod-protocol";
+import { SSHPublicKeyValue } from "@khulnasoft/devpod-protocol";
 import dayjs from "dayjs";
 import { PageWithSettingsSubMenu } from "./PageWithSettingsSubMenu";
 import { Heading2, Subheading } from "../components/typography/headings";
 import { EmptyMessage } from "../components/EmptyMessage";
 import { Button } from "@podkit/buttons/Button";
 import { sshClient } from "../service/public-api";
-import { SSHPublicKey } from "@devpod/public-api/lib/devpod/v1/ssh_pb";
+import { SSHPublicKey } from "@khulnasoft/public-api/lib/devpod/v1/ssh_pb";
 import { InputField } from "../components/forms/InputField";
 import { TextInputField } from "../components/forms/TextInputField";
 
@@ -77,7 +77,7 @@ export function AddSSHKeyModal(props: AddModalProps) {
                 <Alert type="info" className="mt-2">
                     SSH key are used to connect securely to workspaces.{" "}
                     <a
-                        href="https://www.devpod.io/docs/configure/user-settings/ssh#create-an-ssh-key"
+                        href="https://www.devpod.khulnasoft.com/docs/configure/user-settings/ssh#create-an-ssh-key"
                         target="devpod-create-ssh-key-doc"
                         className="gp-link"
                     >
@@ -185,7 +185,7 @@ export default function SSHKeys() {
                         Create and manage SSH keys.{" "}
                         <a
                             className="gp-link"
-                            href="https://www.devpod.io/docs/configure/user-settings/ssh"
+                            href="https://www.devpod.khulnasoft.com/docs/configure/user-settings/ssh"
                             target="_blank"
                             rel="noreferrer"
                         >

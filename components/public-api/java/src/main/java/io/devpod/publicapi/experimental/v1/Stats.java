@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -390,7 +390,7 @@ public final class Stats {
 
     /**
      * <pre>
-     * All users that have an active Gitpod (not deleted) account at the time of asking.
+     * All users that have an active Devpod (not deleted) account at the time of asking.
      * </pre>
      *
      * <code>uint32 registered_users = 1 [json_name = "registeredUsers"];</code>
@@ -439,7 +439,7 @@ public final class Stats {
     private int registeredUsers_ = 0;
     /**
      * <pre>
-     * All users that have an active Gitpod (not deleted) account at the time of asking.
+     * All users that have an active Devpod (not deleted) account at the time of asking.
      * </pre>
      *
      * <code>uint32 registered_users = 1 [json_name = "registeredUsers"];</code>
@@ -746,7 +746,7 @@ public final class Stats {
       private int registeredUsers_ ;
       /**
        * <pre>
-       * All users that have an active Gitpod (not deleted) account at the time of asking.
+       * All users that have an active Devpod (not deleted) account at the time of asking.
        * </pre>
        *
        * <code>uint32 registered_users = 1 [json_name = "registeredUsers"];</code>
@@ -758,7 +758,7 @@ public final class Stats {
       }
       /**
        * <pre>
-       * All users that have an active Gitpod (not deleted) account at the time of asking.
+       * All users that have an active Devpod (not deleted) account at the time of asking.
        * </pre>
        *
        * <code>uint32 registered_users = 1 [json_name = "registeredUsers"];</code>
@@ -774,7 +774,7 @@ public final class Stats {
       }
       /**
        * <pre>
-       * All users that have an active Gitpod (not deleted) account at the time of asking.
+       * All users that have an active Devpod (not deleted) account at the time of asking.
        * </pre>
        *
        * <code>uint32 registered_users = 1 [json_name = "registeredUsers"];</code>

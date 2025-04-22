@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License-AGPL.txt in the project root for license information.
  */
@@ -8,16 +8,16 @@ import dayjs from "dayjs";
 import { useCallback, useEffect, useState } from "react";
 import Alert, { AlertType } from "./components/Alert";
 import { useUserLoader } from "./hooks/use-user-loader";
-import { isGitpodIo } from "./utils";
+import { isDevpodIo } from "./utils";
 import { trackEvent } from "./Analytics";
 import { useUpdateCurrentUserMutation } from "./data/current-user/update-mutation";
-import { User as UserProtocol } from "@devpod/devpod-protocol";
-import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
+import { User as UserProtocol } from "@khulnasoft/devpod-protocol";
+import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
 import { useCurrentOrg } from "./data/organizations/orgs-query";
-import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
-import { getGitpodService } from "./service/service";
+import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
+import { getDevpodService } from "./service/service";
 import { useOrgBillingMode } from "./data/billing-mode/org-billing-mode-query";
-import { Organization } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import { Organization } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 
 const KEY_APP_DISMISSED_NOTIFICATIONS = "devpod-app-notifications-dismissed";
 const PRIVACY_POLICY_LAST_UPDATED = "2024-12-03";
@@ -55,7 +55,7 @@ const UPDATED_PRIVACY_POLICY = (updateUser: (user: Partial<UserProtocol>) => Pro
         message: (
             <span className="text-md">
                 We've updated our Privacy Policy. You can review it{" "}
-                <a className="gp-link" href="https://www.devpod.io/privacy" target="_blank" rel="noreferrer">
+                <a className="gp-link" href="https://www.devpod.khulnasoft.com/privacy" target="_blank" rel="noreferrer">
                     here
                 </a>
                 .
@@ -64,10 +64,10 @@ const UPDATED_PRIVACY_POLICY = (updateUser: (user: Partial<UserProtocol>) => Pro
     } as Notification;
 };
 
-const GITPOD_FLEX_INTRODUCTION_COACHMARK_KEY = "devpod_flex_introduction";
-const GITPOD_FLEX_INTRODUCTION = (updateUser: (user: Partial<UserProtocol>) => Promise<User>) => {
+const DEVPOD_FLEX_INTRODUCTION_COACHMARK_KEY = "devpod_flex_introduction";
+const DEVPOD_FLEX_INTRODUCTION = (updateUser: (user: Partial<UserProtocol>) => Promise<User>) => {
     return {
-        id: GITPOD_FLEX_INTRODUCTION_COACHMARK_KEY,
+        id: DEVPOD_FLEX_INTRODUCTION_COACHMARK_KEY,
         type: "info",
         preventDismiss: true,
         onClose: async () => {
@@ -77,7 +77,7 @@ const GITPOD_FLEX_INTRODUCTION = (updateUser: (user: Partial<UserProtocol>) => P
                     additionalData: {
                         profile: {
                             coachmarksDismissals: {
-                                [GITPOD_FLEX_INTRODUCTION_COACHMARK_KEY]: new Date().toISOString(),
+                                [DEVPOD_FLEX_INTRODUCTION_COACHMARK_KEY]: new Date().toISOString(),
                             },
                         },
                     },
@@ -94,10 +94,10 @@ const GITPOD_FLEX_INTRODUCTION = (updateUser: (user: Partial<UserProtocol>) => P
         },
         message: (
             <span className="text-md">
-                <b>Introducing Gitpod Flex:</b> self-host for free in 3 min or run locally using Gitpod Desktop |{" "}
+                <b>Introducing Devpod Flex:</b> self-host for free in 3 min or run locally using Devpod Desktop |{" "}
                 <a
                     className="text-kumquat-ripe font-bold"
-                    href="https://app.devpod.io"
+                    href="https://app.devpod.khulnasoft.com"
                     target="_blank"
                     rel="noreferrer"
                 >
@@ -146,22 +146,22 @@ export function AppNotifications() {
             const notifications = [];
             if (!loading) {
                 if (
-                    isGitpodIo() &&
+                    isDevpodIo() &&
                     (!user?.profile?.acceptedPrivacyPolicyDate ||
                         new Date(PRIVACY_POLICY_LAST_UPDATED) > new Date(user.profile.acceptedPrivacyPolicyDate))
                 ) {
                     notifications.push(UPDATED_PRIVACY_POLICY((u: Partial<UserProtocol>) => mutateAsync(u)));
                 }
 
-                if (isGitpodIo() && currentOrg && billingMode?.mode === "usage-based") {
+                if (isDevpodIo() && currentOrg && billingMode?.mode === "usage-based") {
                     const notification = await checkForInvalidBillingAddress(currentOrg);
                     if (notification) {
                         notifications.push(notification);
                     }
                 }
 
-                if (isGitpodIo() && !user?.profile?.coachmarksDismissals[GITPOD_FLEX_INTRODUCTION_COACHMARK_KEY]) {
-                    notifications.push(GITPOD_FLEX_INTRODUCTION((u: Partial<UserProtocol>) => mutateAsync(u)));
+                if (isDevpodIo() && !user?.profile?.coachmarksDismissals[DEVPOD_FLEX_INTRODUCTION_COACHMARK_KEY]) {
+                    notifications.push(DEVPOD_FLEX_INTRODUCTION((u: Partial<UserProtocol>) => mutateAsync(u)));
                 }
             }
 
@@ -220,17 +220,17 @@ async function checkForInvalidBillingAddress(org: Organization): Promise<Notific
     try {
         const attributionId = AttributionId.render(AttributionId.createFromOrganizationId(org.id));
 
-        const subscriptionId = await getGitpodService().server.findStripeSubscriptionId(attributionId);
+        const subscriptionId = await getDevpodService().server.findStripeSubscriptionId(attributionId);
         if (!subscriptionId) {
             return undefined;
         }
 
-        const invalidBillingAddress = await getGitpodService().server.isCustomerBillingAddressInvalid(attributionId);
+        const invalidBillingAddress = await getDevpodService().server.isCustomerBillingAddressInvalid(attributionId);
         if (!invalidBillingAddress) {
             return undefined;
         }
 
-        const stripePortalUrl = await getGitpodService().server.getStripePortalUrl(attributionId);
+        const stripePortalUrl = await getDevpodService().server.getStripePortalUrl(attributionId);
         return INVALID_BILLING_ADDRESS(stripePortalUrl);
     } catch (err) {
         // On error we don't want to block but still would like to report against metrics

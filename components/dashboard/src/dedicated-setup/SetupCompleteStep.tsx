@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -27,7 +27,7 @@ export const SetupCompleteStep: FC<Props> = ({ onComplete }) => {
             .catch((error) => {
                 if (error instanceof DOMException) {
                     setCopyError(
-                        "Gitpod is not allowed to copy to clipboard. Please copy the URL manually or adjust your browser permissions.",
+                        "Devpod is not allowed to copy to clipboard. Please copy the URL manually or adjust your browser permissions.",
                     );
                     return;
                 }
@@ -38,8 +38,8 @@ export const SetupCompleteStep: FC<Props> = ({ onComplete }) => {
 
     return (
         <SetupLayout showOrg noMaxWidth>
-            <Heading1>Welcome to Gitpod</Heading1>
-            <Subheading>Your teammates can now sign in to Gitpod using single sign-on (SSO).</Subheading>
+            <Heading1>Welcome to Devpod</Heading1>
+            <Subheading>Your teammates can now sign in to Devpod using single sign-on (SSO).</Subheading>
 
             <div className="flex flex-row items-center space-x-2 mt-4">
                 <div className="flex flex-row items-center space-x-1 font-mono text-sm text-pk-content-secondary">

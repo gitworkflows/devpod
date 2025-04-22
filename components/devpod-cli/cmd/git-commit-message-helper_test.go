@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -11,7 +11,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestAddGitpodTrailer(t *testing.T) {
+func TestAddDevpodTrailer(t *testing.T) {
 	tests := []struct {
 		Name        string
 		CommitMsg   string
@@ -22,22 +22,22 @@ func TestAddGitpodTrailer(t *testing.T) {
 		{
 			Name:        "adds trailer to simple message",
 			CommitMsg:   "Initial commit",
-			HostName:    "devpod.io",
-			Expected:    "Initial commit\n\nTool: devpod/devpod.io\n",
+			HostName:    "devpod.khulnasoft.com",
+			Expected:    "Initial commit\n\nTool: devpod/devpod.khulnasoft.com\n",
 			ExpectError: false,
 		},
 		{
 			Name:        "doesn't duplicate existing trailer",
-			CommitMsg:   "Initial commit\n\nTool: devpod/devpod.io\n",
-			HostName:    "devpod.io",
-			Expected:    "Initial commit\n\nTool: devpod/devpod.io\n",
+			CommitMsg:   "Initial commit\n\nTool: devpod/devpod.khulnasoft.com\n",
+			HostName:    "devpod.khulnasoft.com",
+			Expected:    "Initial commit\n\nTool: devpod/devpod.khulnasoft.com\n",
 			ExpectError: false,
 		},
 		{
 			Name:        "preserves other trailers",
 			CommitMsg:   "Initial commit\n\nSigned-off-by: Kyle <john@example.com>\n",
-			HostName:    "devpod.io",
-			Expected:    "Initial commit\n\nSigned-off-by: Kyle <john@example.com>\nTool: devpod/devpod.io\n",
+			HostName:    "devpod.khulnasoft.com",
+			Expected:    "Initial commit\n\nSigned-off-by: Kyle <john@example.com>\nTool: devpod/devpod.khulnasoft.com\n",
 			ExpectError: false,
 		},
 	}
@@ -54,9 +54,9 @@ func TestAddGitpodTrailer(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			err = addGitpodTrailer(tmpfile.Name(), tt.HostName)
+			err = addDevpodTrailer(tmpfile.Name(), tt.HostName)
 			if (err != nil) != tt.ExpectError {
-				t.Errorf("addGitpodTrailer() error = %v, wantErr %v", err, tt.ExpectError)
+				t.Errorf("addDevpodTrailer() error = %v, wantErr %v", err, tt.ExpectError)
 				return
 			}
 

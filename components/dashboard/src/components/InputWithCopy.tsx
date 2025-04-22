@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -30,7 +30,7 @@ export const InputWithCopy: FC<Props> = ({ value, tip = "Click to copy", classNa
                 .catch((error) => {
                     if (error instanceof DOMException) {
                         setCopyError(
-                            "Gitpod is not allowed to copy to clipboard. Please copy the URL manually or adjust your browser permissions.",
+                            "Devpod is not allowed to copy to clipboard. Please copy the URL manually or adjust your browser permissions.",
                         );
                         return;
                     }

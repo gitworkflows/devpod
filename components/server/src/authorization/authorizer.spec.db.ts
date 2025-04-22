@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 import { v1 } from "@authzed/authzed-node";
-import { TypeORM } from "@devpod/devpod-db/lib";
-import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
-import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { TypeORM } from "@khulnasoft/devpod-db/lib";
+import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
+import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";
@@ -17,7 +17,7 @@ import { v4 } from "uuid";
 import { Subject, SubjectId } from "../auth/subject-id";
 import { runWithRequestContext } from "../util/request-context";
 import { fail } from "assert";
-import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 const expect = chai.expect;
 

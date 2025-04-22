@@ -24,7 +24,7 @@ packages:
     config:
       metadata:
         helm-component: ideMetrics
-      dockerfile: leeway.Dockerfile
+      dockerfile: blazedock.Dockerfile
       image:
         - ${imageRepoBase}/ide-metrics:${version}
         - ${imageRepoBase}/ide-metrics:commit-${__git_commit}

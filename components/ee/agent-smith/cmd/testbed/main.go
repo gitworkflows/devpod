@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -60,10 +60,10 @@ func run(args []string) error {
 				env[i] += e + ":" + cwd
 			}
 		}
-		env = append(env, "GITPOD_OWNER_ID=owner-id")
-		env = append(env, "GITPOD_WORKSPACE_ID=workspace-id")
-		env = append(env, "GITPOD_INSTANCE_ID=instance-id")
-		env = append(env, "GITPOD_WORKSPACE_CONTEXT_URL=https://github.com/khulnasoft/devpod")
+		env = append(env, "DEVPOD_OWNER_ID=owner-id")
+		env = append(env, "DEVPOD_WORKSPACE_ID=workspace-id")
+		env = append(env, "DEVPOD_INSTANCE_ID=instance-id")
+		env = append(env, "DEVPOD_WORKSPACE_CONTEXT_URL=https://github.com/khulnasoft/devpod")
 
 		cmd := exec.Command("/proc/self/exe", "ring1")
 		cmd.Stdout = os.Stdout

@@ -26,7 +26,7 @@ packages:
             echo java=21.0.3.fx-zulu > .sdkmanrc
             && source "$SDKMAN_DIR/bin/sdkman-init.sh"
             && sdk env install
-            && ./gradlew "-PpluginVersion=0.0.1-${version}" "-PdevpodProtocolProjectPath=components-devpod-protocol-java--lib/" "-PenvironmentName=stable" "-Dgradle.user.home=/workspace/.gradle-stable" "-Dplugin.verifier.home.dir=$HOME/.cache/pluginVerifier-stable" "buildFromLeeway"
+            && ./gradlew "-PpluginVersion=0.0.1-${version}" "-PdevpodProtocolProjectPath=components-devpod-protocol-java--lib/" "-PenvironmentName=stable" "-Dgradle.user.home=/workspace/.gradle-stable" "-Dplugin.verifier.home.dir=$HOME/.cache/pluginVerifier-stable" "buildFromBlazedock"
   - name: publish-latest
     type: generic
     deps:
@@ -54,4 +54,4 @@ packages:
             echo java=21.0.3.fx-zulu > .sdkmanrc
             && source "$SDKMAN_DIR/bin/sdkman-init.sh"
             && sdk env install
-            && ./gradlew "-PpluginVersion=0.0.1-${version}" "-PdevpodProtocolProjectPath=components-devpod-protocol-java--lib/" "-PenvironmentName=latest" "-Dgradle.user.home=/workspace/.gradle-latest" "-Dplugin.verifier.home.dir=$HOME/.cache/pluginVerifier-latest" "buildFromLeeway"
+            && ./gradlew "-PpluginVersion=0.0.1-${version}" "-PdevpodProtocolProjectPath=components-devpod-protocol-java--lib/" "-PenvironmentName=latest" "-Dgradle.user.home=/workspace/.gradle-latest" "-Dplugin.verifier.home.dir=$HOME/.cache/pluginVerifier-latest" "buildFromBlazedock"

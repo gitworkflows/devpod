@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -18,9 +18,9 @@ import (
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
 	"github.com/khulnasoft/devpod/components/public-api/go/experimental/v1/v1connect"
 	protocol "github.com/khulnasoft/devpod/devpod-protocol"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/auth"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/jws"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/jws/jwstest"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/auth"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws/jwstest"
 	"github.com/sourcegraph/jsonrpc2"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -297,7 +297,7 @@ func TestTeamToAPIResponse(t *testing.T) {
 		{
 			UserId:       uuid.New().String(),
 			FullName:     "First Last",
-			PrimaryEmail: "email1@devpod.io",
+			PrimaryEmail: "email1@khulnasoft.com",
 			AvatarUrl:    "https://avatars.com/foo",
 			Role:         protocol.TeamMember_Member,
 			MemberSince:  "2022-09-09T09:09:09.000Z",
@@ -305,7 +305,7 @@ func TestTeamToAPIResponse(t *testing.T) {
 		{
 			UserId:       uuid.New().String(),
 			FullName:     "Second Last",
-			PrimaryEmail: "email2@devpod.io",
+			PrimaryEmail: "email2@khulnasoft.com",
 			AvatarUrl:    "https://avatars.com/bar",
 			Role:         protocol.TeamMember_Owner,
 			MemberSince:  "2022-09-09T09:09:09.000Z",
@@ -317,7 +317,7 @@ func TestTeamToAPIResponse(t *testing.T) {
 		Role:             protocol.TeamMember_Member,
 		CreationTime:     "2022-08-08T08:08:08.000Z",
 		InvalidationTime: "2022-11-11T11:11:11.000Z",
-		InvitedEmail:     "nope@devpod.io",
+		InvitedEmail:     "nope@khulnasoft.com",
 	}
 
 	response := teamToAPIResponse(team, members, invite)
@@ -328,7 +328,7 @@ func TestTeamToAPIResponse(t *testing.T) {
 			{
 				UserId:       members[0].UserId,
 				Role:         teamRoleToAPIResponse(members[0].Role),
-				MemberSince:  parseGitpodTimeStampOrDefault(members[0].MemberSince),
+				MemberSince:  parseDevpodTimeStampOrDefault(members[0].MemberSince),
 				AvatarUrl:    members[0].AvatarUrl,
 				FullName:     members[0].FullName,
 				PrimaryEmail: members[0].PrimaryEmail,
@@ -336,7 +336,7 @@ func TestTeamToAPIResponse(t *testing.T) {
 			{
 				UserId:       members[1].UserId,
 				Role:         teamRoleToAPIResponse(members[1].Role),
-				MemberSince:  parseGitpodTimeStampOrDefault(members[1].MemberSince),
+				MemberSince:  parseDevpodTimeStampOrDefault(members[1].MemberSince),
 				AvatarUrl:    members[1].AvatarUrl,
 				FullName:     members[1].FullName,
 				PrimaryEmail: members[1].PrimaryEmail,
@@ -625,7 +625,7 @@ func newTeamMember(m *protocol.TeamMemberInfo) *protocol.TeamMemberInfo {
 	result := &protocol.TeamMemberInfo{
 		UserId:       uuid.New().String(),
 		FullName:     "First Last",
-		PrimaryEmail: "email@devpod.io",
+		PrimaryEmail: "email@khulnasoft.com",
 		AvatarUrl:    "https://avatars.yolo/first.png",
 		Role:         protocol.TeamMember_Member,
 		MemberSince:  "2022-09-09T09:09:09.000Z",

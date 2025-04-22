@@ -1,4 +1,4 @@
-# Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2025 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -8,9 +8,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.16.5
-  name: snapshots.workspace.devpod.io
+  name: snapshots.workspace.devpod.khulnasoft.com
 spec:
-  group: workspace.devpod.io
+  group: workspace.devpod.khulnasoft.com
   names:
     kind: Snapshot
     listKind: SnapshotList

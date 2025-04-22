@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import Alert from "../components/Alert";
 import { UsageLimitReachedModal } from "../components/UsageLimitReachedModal";
 import { Heading2 } from "../components/typography/headings";
@@ -12,7 +12,7 @@ import { useDocumentTitle } from "../hooks/use-document-title";
 import { devpodHostUrl } from "../service/service";
 import { VerifyModal } from "./VerifyModal";
 import { useWorkspaceDefaultImageQuery } from "../data/workspaces/default-workspace-image-query";
-import { GetWorkspaceDefaultImageResponse_Source } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { GetWorkspaceDefaultImageResponse_Source } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { ProductLogo } from "../components/ProductLogo";
 
 export enum StartPhase {

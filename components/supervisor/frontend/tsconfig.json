@@ -12,7 +12,8 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "useUnknownInCatchVariables": false,
-    "moduleResolution": "Node"
+    "moduleResolution": "Node",
+    "types": ["pino-std-serializers"]
   },
   "include": [
     "src"

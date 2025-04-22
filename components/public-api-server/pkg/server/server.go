@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -28,25 +28,25 @@ import (
 
 	"github.com/khulnasoft/devpod/common-go/baseserver"
 	db "github.com/khulnasoft/devpod/components/devpod-db/go"
-	"github.com/khulnasoft/devpod/public-api-server/middleware"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/apiv1"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/auth"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/billingservice"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/identityprovider"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/jws"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/oidc"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/origin"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/proxy"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/webhooks"
+	"github.com/khulnasoft/khulnasoft/public-api-server/middleware"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/apiv1"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/auth"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/billingservice"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/identityprovider"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/oidc"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/origin"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/proxy"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/webhooks"
 	"github.com/sirupsen/logrus"
 )
 
 func Start(logger *logrus.Entry, version string, cfg *config.Configuration) error {
 	logger.WithField("config", cfg).Info("Starting public-api.")
 
-	devpodAPI, err := url.Parse(cfg.GitpodServiceURL)
+	devpodAPI, err := url.Parse(cfg.DevpodServiceURL)
 	if err != nil {
-		return fmt.Errorf("failed to parse Gitpod API URL: %w", err)
+		return fmt.Errorf("failed to parse Devpod API URL: %w", err)
 	}
 
 	connPool, err := proxy.NewConnectionPool(devpodAPI, 500)

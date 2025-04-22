@@ -1886,7 +1886,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / Component / blobserve",
+  "title": "Devpod / Component / blobserve",
   "uid": "blobserve",
   "version": 1
 }

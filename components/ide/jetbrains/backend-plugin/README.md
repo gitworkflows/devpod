@@ -1,7 +1,7 @@
-# Gitpod Remote
+# Devpod Remote
 
 <!-- Plugin description -->
-Provides integrations within a Gitpod workspace.
+Provides integrations within a Devpod workspace.
 
 <!-- Plugin description end -->
 
@@ -13,9 +13,9 @@ Provides integrations within a Gitpod workspace.
 
 ## Development
 
-The ideal setup to develop this plugin is using IntelliJ in Gitpod.
+The ideal setup to develop this plugin is using IntelliJ in Devpod.
 
-1. Choose IntelliJ as your editor in [devpod.io/preferences](https://devpod.io/preferences)
+1. Choose IntelliJ as your editor in [devpod.khulnasoft.com/preferences](https://devpod.khulnasoft.com/preferences)
 2. Start a workspace for this repository
 
 If you experience any issues with JetBrains remote dev make sure to report issues [here](https://youtrack.jetbrains.com/issues?q=project:%20CWM) under remote development subsystem.
@@ -41,11 +41,11 @@ To use the script, from your devpod's workspace:
   cd components/ide/jetbrains/backend-plugin
   ./launch-dev-server.sh
   ```
-2. Connect the IDE to the test backend instance. Find the `Gitpod gateway link` in the logs and open it, e.g:
+2. Connect the IDE to the test backend instance. Find the `Devpod gateway link` in the logs and open it, e.g:
   ```console
   *********************************************************
 
-  Gitpod gateway link: jetbrains-gateway://connect#devpodHost=ak-jb-backend-debug-flow.staging.devpod-dev.com&workspaceId=devpodio-devpod-rvg0x7havor&backendPort=63343
+  Devpod gateway link: jetbrains-gateway://connect#devpodHost=ak-jb-backend-debug-flow.staging.devpod-dev.com&workspaceId=khulnasoft-devpod-rvg0x7havor&backendPort=63343
 
   *********************************************************
   ```
@@ -92,7 +92,7 @@ install a new version in such workspace and restart the JB backend. Reconnect to
 
 If you need to change the startup endpoint then run to hot swap it too:
 ```bash
-leeway build components/ide/jetbrains/image/status:hot-swap -DworkspaceUrl=<workspaceURL>
+blazedock build components/ide/jetbrains/image/status:hot-swap -DworkspaceUrl=<workspaceURL>
 ```
 
 ### Remote debugging

@@ -28,7 +28,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Delete preview environment
         uses: ./.github/actions/delete-preview
         with:

@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { OrganizationSettings } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import { OrganizationSettings } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 import { FormEvent, useCallback, useEffect, useState } from "react";
 import Alert from "../components/Alert";
 import { CheckboxInputField } from "../components/forms/CheckboxInputField";
@@ -20,7 +20,7 @@ import { useOrgBillingMode } from "../data/billing-mode/org-billing-mode-query";
 import { converter } from "../service/public-api";
 import { useToast } from "../components/toasts/Toasts";
 import type { PlainMessage } from "@bufbuild/protobuf";
-import { WorkspaceTimeoutDuration } from "@devpod/devpod-protocol";
+import { WorkspaceTimeoutDuration } from "@khulnasoft/devpod-protocol";
 import { Link } from "react-router-dom";
 import { InputField } from "../components/forms/InputField";
 import { TextInput } from "../components/forms/TextInputField";

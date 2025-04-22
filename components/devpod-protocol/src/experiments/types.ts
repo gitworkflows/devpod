@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -17,16 +17,16 @@ export interface Attributes {
     // The BillingTier of this particular user
     billingTier?: BillingTier;
 
-    // Currently selected Gitpod Project ID (mapped to "custom.project_id")
+    // Currently selected Devpod Project ID (mapped to "custom.project_id")
     projectId?: string;
 
-    // Currently selected Gitpod Team ID (mapped to "custom.team_id")
+    // Currently selected Devpod Team ID (mapped to "custom.team_id")
     teamId?: string;
 
-    // Currently selected Gitpod Team Name (mapped to "custom.team_name")
+    // Currently selected Devpod Team Name (mapped to "custom.team_name")
     teamName?: string;
 
-    // Host name of the Gitpod installation (mapped to "custom.devpod_host")
+    // Host name of the Devpod installation (mapped to "custom.devpod_host")
     devpodHost?: string;
 }
 

@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Prebuild, PrebuildPhase_Phase, TaskLog } from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
+import { Prebuild, PrebuildPhase_Phase, TaskLog } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
 import { BreadcrumbNav } from "@podkit/breadcrumbs/BreadcrumbNav";
 import { Button } from "@podkit/buttons/Button";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
@@ -24,7 +24,7 @@ import { LoadingState } from "@podkit/loading/LoadingState";
 import Alert from "../../components/Alert";
 import { PrebuildStatus } from "../../projects/prebuild-utils";
 import { LoadingButton } from "@podkit/buttons/LoadingButton";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { Tabs, TabsList, TabsTrigger } from "@podkit/tabs/Tabs";
 import { PrebuildTaskTab } from "./PrebuildTaskTab";
 import type { PlainMessage } from "@bufbuild/protobuf";

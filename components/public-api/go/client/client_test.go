@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -39,11 +39,11 @@ func TestNew(t *testing.T) {
 		require.Error(t, err)
 	})
 
-	t.Run("defaults to https://api.devpod.io", func(t *testing.T) {
+	t.Run("defaults to https://api.devpod.khulnasoft.com", func(t *testing.T) {
 		devpod, err := New(WithCredentials("foo"))
 		require.NoError(t, err)
 
-		require.Equal(t, "https://api.devpod.io", devpod.cfg.url)
+		require.Equal(t, "https://api.devpod.khulnasoft.com", devpod.cfg.url)
 	})
 
 }

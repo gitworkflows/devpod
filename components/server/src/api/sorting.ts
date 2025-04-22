@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { Sort, SortOrder } from "@devpod/public-api/lib/devpod/v1/sorting_pb";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { Sort, SortOrder } from "@khulnasoft/public-api/lib/devpod/v1/sorting_pb";
 
 export type Sorting = {
     orderBy: string;

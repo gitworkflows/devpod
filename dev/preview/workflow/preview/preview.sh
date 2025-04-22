@@ -29,9 +29,9 @@ if ! git:branch-exists-remotely; then
   ask "I've read 👆 and I understand the implications."
 fi
 
-leeway run dev/preview:configure-workspace
+blazedock run dev/preview:configure-workspace
 ensure_gcloud_auth
 
-leeway run dev/preview:create-preview dev/preview:build
+blazedock run dev/preview:create-preview dev/preview:build
 previewctl install-context --timeout 10m
-leeway run dev/preview:deploy-devpod
+blazedock run dev/preview:deploy-devpod

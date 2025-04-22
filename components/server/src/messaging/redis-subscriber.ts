@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -19,15 +19,15 @@ import {
     RedisPrebuildUpdate,
     RedisWorkspaceInstanceUpdate,
     WorkspaceInstanceUpdatesChannel,
-} from "@devpod/devpod-protocol";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+} from "@khulnasoft/devpod-protocol";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import {
     reportRedisUpdateCompleted,
     reportRedisUpdateReceived,
     updateSubscribersRegistered,
 } from "../prometheus-metrics";
 import { Redis } from "ioredis";
-import { WorkspaceDB } from "@devpod/devpod-db/lib";
+import { WorkspaceDB } from "@khulnasoft/devpod-db/lib";
 import { runWithRequestContext } from "../util/request-context";
 import { SYSTEM_USER } from "../authorization/authorizer";
 

@@ -37,13 +37,13 @@
                 {
                     "port": "8080",
                     "admission": "ADMISSION_LEVEL_OWNER_ONLY",
-                    "url": "https://8080-balabala-ws-id.ws-us106.devpod.io",
+                    "url": "https://8080-balabala-ws-id.ws-us106.devpod.khulnasoft.com",
                     "protocol": "PROTOCOL_HTTP"
                 },
                 {
                     "port": "3306",
                     "admission": "ADMISSION_LEVEL_OWNER_ONLY",
-                    "url": "https://3306-balabala-ws-id.ws-us106.devpod.io",
+                    "url": "https://3306-balabala-ws-id.ws-us106.devpod.khulnasoft.com",
                     "protocol": "PROTOCOL_HTTP"
                 }
             ],
@@ -73,7 +73,7 @@
                 "name": "PHASE_STOPPED",
                 "lastTransitionTime": "2023-12-03T06:54:49.619Z"
             },
-            "workspaceUrl": "https://balabala-ws-id.ws-us106.devpod.io",
+            "workspaceUrl": "https://balabala-ws-id.ws-us106.devpod.khulnasoft.com",
             "conditions": {
                 "failed": "",
                 "failedReason": "FAILED_REASON_UNSPECIFIED",

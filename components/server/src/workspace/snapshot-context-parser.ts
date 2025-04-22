@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User, SnapshotContext, ContextURL } from "@devpod/devpod-protocol";
+import { User, SnapshotContext, ContextURL } from "@khulnasoft/devpod-protocol";
 import { injectable, inject } from "inversify";
-import { WorkspaceDB } from "@devpod/devpod-db/lib";
+import { WorkspaceDB } from "@khulnasoft/devpod-db/lib";
 import { IContextParser } from "../workspace/context-parser";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 
 @injectable()
 export class SnapshotContextParser implements IContextParser {

@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WorkspaceType } from "@devpod/devpod-protocol";
-import { Usage, WorkspaceInstanceUsageData } from "@devpod/devpod-protocol/lib/usage";
+import { WorkspaceType } from "@khulnasoft/devpod-protocol";
+import { Usage, WorkspaceInstanceUsageData } from "@khulnasoft/devpod-protocol/lib/usage";
 import { FC } from "react";
 import { useWorkspaceClasses } from "../data/workspaces/workspace-classes-query";
 import { ReactComponent as UsageIcon } from "../images/usage-default.svg";
@@ -66,7 +66,7 @@ export const UsageEntry: FC<Props> = ({ usage }) => {
                 <div className="flex">
                     {metadata.workspaceType === "prebuild" ? <UsageIcon className="my-auto w-4 h-4 mr-1" /> : ""}
                     {metadata.workspaceType === "prebuild" ? (
-                        <span className="text-sm text-gray-400 dark:text-gray-500">Gitpod</span>
+                        <span className="text-sm text-gray-400 dark:text-gray-500">Devpod</span>
                     ) : (
                         <div className="flex">
                             <img

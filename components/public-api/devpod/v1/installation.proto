@@ -11,7 +11,7 @@ option java_package = "io.devpod.publicapi.v1";
 
 service InstallationService {
   // GetInstallationWorkspaceDefaultImage returns the default image for current
-  // Gitpod Installation.
+  // Devpod Installation.
   rpc GetInstallationWorkspaceDefaultImage(GetInstallationWorkspaceDefaultImageRequest) returns (GetInstallationWorkspaceDefaultImageResponse) {}
 
   // ListBlockedRepositories lists blocked repositories.

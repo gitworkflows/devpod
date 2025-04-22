@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -23,7 +23,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/khulnasoft/devpod/common-go/log"
 	db "github.com/khulnasoft/devpod/components/devpod-db/go"
-	"github.com/khulnasoft/devpod/public-api-server/pkg/jws"
+	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws"
 	"golang.org/x/oauth2"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

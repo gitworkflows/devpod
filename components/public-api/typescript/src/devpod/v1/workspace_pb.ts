@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -549,7 +549,7 @@ export class ListWorkspaceSessionsResponse extends Message<ListWorkspaceSessions
 export class CreateAndStartWorkspaceRequest extends Message<CreateAndStartWorkspaceRequest> {
   /**
    * metadata is data associated with this workspace that's required for other
-   * parts of Gitpod to function
+   * parts of Devpod to function
    *
    * @generated from field: devpod.v1.WorkspaceMetadata metadata = 1;
    */
@@ -1148,7 +1148,7 @@ export class Workspace extends Message<Workspace> {
 
   /**
    * Metadata is data associated with this workspace that's required for other
-   * parts of Gitpod to function
+   * parts of Devpod to function
    *
    * @generated from field: devpod.v1.WorkspaceMetadata metadata = 2;
    */
@@ -1208,7 +1208,7 @@ export class Workspace extends Message<Workspace> {
  */
 export class WorkspaceMetadata extends Message<WorkspaceMetadata> {
   /**
-   * owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+   * owner_id is the ID of the Devpod user to whom we'll bill this workspace and
    * who we consider responsible for its content
    *
    * @generated from field: string owner_id = 1;
@@ -2831,7 +2831,7 @@ export class UpdateWorkspaceRequest extends Message<UpdateWorkspaceRequest> {
 
   /**
    * metadata is data associated with this workspace that's required for other
-   * parts of Gitpod to function
+   * parts of Devpod to function
    *
    * @generated from field: optional devpod.v1.UpdateWorkspaceRequest.UpdateWorkspaceMetadata metadata = 2;
    */
@@ -3983,7 +3983,7 @@ export class WorkspaceSession_Metrics extends Message<WorkspaceSession_Metrics> 
   workspaceImageSize = protoInt64.zero;
 
   /**
-   * total_image_size is the total size of the image in bytes (includes Gitpod-specific layers like IDE)
+   * total_image_size is the total size of the image in bytes (includes Devpod-specific layers like IDE)
    *
    * @generated from field: int64 total_image_size = 2;
    */

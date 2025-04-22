@@ -1,4 +1,4 @@
-# this file makes this a leeway workspace
+# this file makes this a blazedock workspace
 defaultTarget: components:all
 defaultArgs:
   imageRepoBase: "ghcr.io/devpod-dev-artifact/build"
@@ -41,7 +41,7 @@ defaultVariant:
     - GOARCH=amd64
     - DOCKER_DEFAULT_PLATFORM=linux/amd64
     - NODE_OPTIONS=--max_old_space_size=8192
-    - LEEWAY_BUILD=true
+    - BLAZEDOCK_BUILD=true
   srcs:
     exclude:
       # Make sure we don't include node_modules/**/*.ts by accident

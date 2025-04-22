@@ -1,12 +1,12 @@
-# Gitpod DB Component
+# Devpod DB Component
 
 ## Overview
 
-The Gitpod DB component is the database layer for the Gitpod platform, providing a structured and type-safe interface for interacting with the underlying database. It implements the data access layer using TypeORM, a popular Object-Relational Mapping (ORM) library for TypeScript and JavaScript.
+The Devpod DB component is the database layer for the Devpod platform, providing a structured and type-safe interface for interacting with the underlying database. It implements the data access layer using TypeORM, a popular Object-Relational Mapping (ORM) library for TypeScript and JavaScript.
 
 ## Purpose
 
-The primary purposes of the Gitpod DB component are:
+The primary purposes of the Devpod DB component are:
 - Provide a structured interface for database operations
 - Define database entities and their relationships
 - Manage database migrations
@@ -19,7 +19,7 @@ The primary purposes of the Gitpod DB component are:
 
 ## Architecture
 
-The Gitpod DB component is built on TypeORM and follows a repository pattern with dependency injection. It consists of several key components:
+The Devpod DB component is built on TypeORM and follows a repository pattern with dependency injection. It consists of several key components:
 
 1. **Entity Definitions**: TypeScript classes that map to database tables
 2. **Repository Implementations**: Classes that implement data access operations
@@ -44,7 +44,7 @@ The component uses Inversify for dependency injection, allowing for flexible con
 
 ## Database Entities
 
-The Gitpod DB component defines numerous entities that map to database tables, including:
+The Devpod DB component defines numerous entities that map to database tables, including:
 
 - **User**: User accounts and profiles
 - **Workspace**: Workspace metadata and configuration
@@ -86,7 +86,7 @@ The component provides implementations for various database operations:
 ## Dependencies
 
 ### Internal Dependencies
-- `@devpod/devpod-protocol`: Shared protocol definitions
+- `@khulnasoft/devpod-protocol`: Shared protocol definitions
 - Encryption services for securing sensitive data
 - Tracing infrastructure for observability
 
@@ -98,7 +98,7 @@ The component provides implementations for various database operations:
 
 ## Configuration
 
-The Gitpod DB component is configured through environment variables and configuration files:
+The Devpod DB component is configured through environment variables and configuration files:
 
 - Database connection settings (host, port, credentials)
 - Connection pool configuration
@@ -118,7 +118,7 @@ The component includes a robust migration system for managing database schema ch
 
 ## Integration Points
 
-The Gitpod DB component integrates with:
+The Devpod DB component integrates with:
 1. **Server Component**: Provides data access for API endpoints
 2. **Workspace Manager**: Stores workspace configuration and state
 3. **Authentication System**: Manages user identities and tokens
@@ -134,7 +134,7 @@ The Gitpod DB component integrates with:
 
 ## Common Usage Patterns
 
-The Gitpod DB component is typically used to:
+The Devpod DB component is typically used to:
 1. Define database entities and their relationships
 2. Implement repository interfaces for data access
 3. Manage database migrations for schema changes
@@ -145,6 +145,6 @@ The Gitpod DB component is typically used to:
 ## Related Components
 
 - **Server**: Uses the DB component for data access
-- **Gitpod Protocol**: Defines shared interfaces and types
+- **Devpod Protocol**: Defines shared interfaces and types
 - **Workspace Manager**: Stores workspace state in the database
 - **Authentication System**: Manages user identities and tokens

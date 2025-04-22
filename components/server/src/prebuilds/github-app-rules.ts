@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { injectable } from "inversify";
-import { WorkspaceConfig, GithubAppConfig } from "@devpod/devpod-protocol";
+import { WorkspaceConfig, GithubAppConfig } from "@khulnasoft/devpod-protocol";
 import deepmerge from "deepmerge";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 const defaultConfig: GithubAppConfig = {
     prebuilds: {

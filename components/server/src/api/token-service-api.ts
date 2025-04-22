@@ -1,24 +1,24 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { ServiceImpl } from "@connectrpc/connect";
 import { HandlerContext } from "@connectrpc/connect/dist/cjs/implementation";
-import { TokenService as TokenServiceInterface } from "@devpod/public-api/lib/devpod/v1/token_connect";
+import { TokenService as TokenServiceInterface } from "@khulnasoft/public-api/lib/devpod/v1/token_connect";
 import {
     CreateTemporaryAccessTokenRequest,
     CreateTemporaryAccessTokenResponse,
-} from "@devpod/public-api/lib/devpod/v1/token_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/token_pb";
 import { inject, injectable } from "inversify";
 import { SessionHandler } from "../session-handler";
 import { ctxUserId } from "../util/request-context";
 import { Authorizer } from "../authorization/authorizer";
 import { validate as uuidValidate } from "uuid";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 @injectable()
 export class TokenServiceAPI implements ServiceImpl<typeof TokenServiceInterface> {

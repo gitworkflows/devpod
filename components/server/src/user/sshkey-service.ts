@@ -1,15 +1,15 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { UserDB, WorkspaceDB } from "@devpod/devpod-db/lib";
-import { SSHPublicKeyValue, UserSSHPublicKeyValue, WorkspaceInstance } from "@devpod/devpod-protocol";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { UserDB, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
+import { SSHPublicKeyValue, UserSSHPublicKeyValue, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { inject, injectable } from "inversify";
-import { UpdateSSHKeyRequest } from "@devpod/ws-manager/lib";
-import { WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
+import { UpdateSSHKeyRequest } from "@khulnasoft/ws-manager/lib";
+import { WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
 import { Authorizer } from "../authorization/authorizer";
 
 @injectable()

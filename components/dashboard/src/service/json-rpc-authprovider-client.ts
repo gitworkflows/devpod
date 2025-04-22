@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { PartialMessage } from "@bufbuild/protobuf";
 import { PromiseClient } from "@connectrpc/connect";
-import { AuthProviderService } from "@devpod/public-api/lib/devpod/v1/authprovider_connect";
+import { AuthProviderService } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_connect";
 import {
     CreateAuthProviderRequest,
     CreateAuthProviderResponse,
@@ -20,10 +20,10 @@ import {
     ListAuthProvidersResponse,
     UpdateAuthProviderRequest,
     UpdateAuthProviderResponse,
-} from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
 import { converter } from "./public-api";
-import { getGitpodService } from "./service";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { getDevpodService } from "./service";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 export class JsonRpcAuthProviderClient implements PromiseClient<typeof AuthProviderService> {
     async createAuthProvider(request: PartialMessage<CreateAuthProviderRequest>): Promise<CreateAuthProviderResponse> {
@@ -41,7 +41,7 @@ export class JsonRpcAuthProviderClient implements PromiseClient<typeof AuthProvi
         }
 
         if (organizationId) {
-            const result = await getGitpodService().server.createOrgAuthProvider({
+            const result = await getDevpodService().server.createOrgAuthProvider({
                 entry: {
                     organizationId,
                     host: request.host,
@@ -53,7 +53,7 @@ export class JsonRpcAuthProviderClient implements PromiseClient<typeof AuthProvi
             return new CreateAuthProviderResponse({ authProvider: converter.toAuthProvider(result) });
         }
         if (ownerId) {
-            const result = await getGitpodService().server.updateOwnAuthProvider({
+            const result = await getDevpodService().server.updateOwnAuthProvider({
                 entry: {
                     host: request.host,
                     ownerId,
@@ -73,7 +73,7 @@ export class JsonRpcAuthProviderClient implements PromiseClient<typeof AuthProvi
             throw new ApplicationError(ErrorCodes.BAD_REQUEST, "authProviderId is required");
         }
 
-        const provider = await getGitpodService().server.getAuthProvider(request.authProviderId);
+        const provider = await getDevpodService().server.getAuthProvider(request.authProviderId);
         return new GetAuthProviderResponse({
             authProvider: converter.toAuthProvider(provider),
         });
@@ -91,10 +91,10 @@ export class JsonRpcAuthProviderClient implements PromiseClient<typeof AuthProvi
         }
 
         const authProviders = !!organizationId
-            ? await getGitpodService().server.getOrgAuthProviders({
+            ? await getDevpodService().server.getOrgAuthProviders({
                   organizationId,
               })
-            : await getGitpodService().server.getOwnAuthProviders();
+            : await getDevpodService().server.getOwnAuthProviders();
         const response = new ListAuthProvidersResponse({
             authProviders: authProviders.map(converter.toAuthProvider.bind(converter)),
         });
@@ -104,7 +104,7 @@ export class JsonRpcAuthProviderClient implements PromiseClient<typeof AuthProvi
     async listAuthProviderDescriptions(
         request: PartialMessage<ListAuthProviderDescriptionsRequest>,
     ): Promise<ListAuthProviderDescriptionsResponse> {
-        const aps = await getGitpodService().server.getAuthProviders();
+        const aps = await getDevpodService().server.getAuthProviders();
         return new ListAuthProviderDescriptionsResponse({
             descriptions: aps.map((ap) => converter.toAuthProviderDescription(ap)),
         });
@@ -120,7 +120,7 @@ export class JsonRpcAuthProviderClient implements PromiseClient<typeof AuthProvi
             throw new ApplicationError(ErrorCodes.BAD_REQUEST, "clientId or clientSecret are required");
         }
 
-        const entry = await getGitpodService().server.updateAuthProvider(request.authProviderId, {
+        const entry = await getDevpodService().server.updateAuthProvider(request.authProviderId, {
             clientId,
             clientSecret,
         });
@@ -133,7 +133,7 @@ export class JsonRpcAuthProviderClient implements PromiseClient<typeof AuthProvi
         if (!request.authProviderId) {
             throw new ApplicationError(ErrorCodes.BAD_REQUEST, "authProviderId is required");
         }
-        await getGitpodService().server.deleteAuthProvider(request.authProviderId);
+        await getDevpodService().server.deleteAuthProvider(request.authProviderId);
         return new DeleteAuthProviderResponse();
     }
 }

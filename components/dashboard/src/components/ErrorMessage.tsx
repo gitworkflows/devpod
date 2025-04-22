@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import FeedbackComponent from "../feedback-form/FeedbackComponent";
-import { isGitpodIo } from "../utils";
+import { isDevpodIo } from "../utils";
 import Alert from "./Alert";
 
 function ErrorMessage(props: { imgSrc: string; imgAlt?: string; message: string }) {
@@ -16,7 +16,7 @@ function ErrorMessage(props: { imgSrc: string; imgAlt?: string; message: string 
                     {props.message}
                 </Alert>
             </div>
-            {isGitpodIo() && (
+            {isDevpodIo() && (
                 <FeedbackComponent
                     message={"Was this error message helpful?"}
                     initialSize={24}

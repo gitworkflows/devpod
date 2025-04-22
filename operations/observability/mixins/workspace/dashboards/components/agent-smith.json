@@ -2626,7 +2626,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / Component / agent-smith",
+  "title": "Devpod / Component / agent-smith",
   "uid": "agent-smith",
   "version": 1
 }

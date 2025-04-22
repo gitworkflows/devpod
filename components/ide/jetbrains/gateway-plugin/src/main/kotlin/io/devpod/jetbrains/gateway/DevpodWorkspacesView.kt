@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -29,8 +29,8 @@ import com.jetbrains.rd.util.lifetime.isNotAlive
 import io.devpod.devpodprotocol.api.entities.GetWorkspacesOptions
 import io.devpod.devpodprotocol.api.entities.WorkspaceInstance
 import io.devpod.devpodprotocol.api.entities.WorkspaceType
-import io.devpod.jetbrains.auth.GitpodAuthService
-import io.devpod.jetbrains.icons.GitpodIcons
+import io.devpod.jetbrains.auth.DevpodAuthService
+import io.devpod.jetbrains.icons.DevpodIcons
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.actor
@@ -44,26 +44,26 @@ import javax.swing.text.StyleConstants
 import javax.swing.text.StyledDocument
 
 @Suppress("UnstableApiUsage")
-class GitpodWorkspacesView(
+class DevpodWorkspacesView(
     val lifetime: Lifetime
 ) {
 
-    private val settings = service<GitpodSettingsState>()
+    private val settings = service<DevpodSettingsState>()
 
     private val loggedIn = object : ComponentPredicate() {
         override fun addListener(listener: (Boolean) -> Unit) {
             val toDispose = CompositeDisposable()
             toDispose.add(settings.addListener { listener(invoke()) })
-            toDispose.add(GitpodAuthService.addListener { listener(invoke()) })
+            toDispose.add(DevpodAuthService.addListener { listener(invoke()) })
             lifetime.onTerminationOrNow { toDispose.dispose() }
         }
 
         override fun invoke(): Boolean {
-            return GitpodAuthService.hasAccessToken(settings.devpodHost)
+            return DevpodAuthService.hasAccessToken(settings.devpodHost)
         }
     }
 
-    private val startWorkspaceView = GitpodStartWorkspaceView(lifetime)
+    private val startWorkspaceView = DevpodStartWorkspaceView(lifetime)
 
     private lateinit var workspacesPane: JBScrollPane
     val component = panel {
@@ -78,7 +78,7 @@ class GitpodWorkspacesView(
                     }
                     row {
                         resizableRow()
-                        icon(GitpodIcons.Logo4x).align(AlignX.CENTER)
+                        icon(DevpodIcons.Logo4x).align(AlignX.CENTER)
                     }
                     row {
                         text(
@@ -96,12 +96,12 @@ class GitpodWorkspacesView(
                         }.align(AlignX.CENTER)
                     }
                     row {
-                        browserLink("Explore Gitpod", "https://www.devpod.io").align(AlignX.CENTER)
+                        browserLink("Explore Devpod", "https://www.devpod.khulnasoft.com").align(AlignX.CENTER)
                     }.bottomGap(BottomGap.MEDIUM)
                     row {
                         button("Connect in Browser") {
                             GlobalScope.launch {
-                                GitpodAuthService.authorize(settings.devpodHost)
+                                DevpodAuthService.authorize(settings.devpodHost)
                             }
                         }.align(AlignX.CENTER)
                     }
@@ -112,8 +112,8 @@ class GitpodWorkspacesView(
             val pluginVersionLabel = if (pluginVersion?.contains("-local") == true) " (${pluginVersion})" else ""
             rowsRange {
                 row {
-                    icon(GitpodIcons.Logo).gap(RightGap.SMALL)
-                    label("Gitpod${pluginVersionLabel}").applyToComponent {
+                    icon(DevpodIcons.Logo).gap(RightGap.SMALL)
+                    label("Devpod${pluginVersionLabel}").applyToComponent {
                         this.font = JBFont.h3().asBold()
                     }
                     label("").resizableColumn().align(AlignX.FILL)
@@ -128,7 +128,7 @@ class GitpodWorkspacesView(
                         }
                     }, object : DumbAwareAction("Documentation", "Documentation", AllIcons.Toolwindows.Documentation) {
                         override fun actionPerformed(e: AnActionEvent) {
-                            BrowserUtil.browse("https://www.devpod.io/docs/integrations/jetbrains-gateway")
+                            BrowserUtil.browse("https://www.devpod.khulnasoft.com/docs/integrations/jetbrains-gateway")
                         }
                     }, object : DumbAwareAction("Feedback", "Feedback", AllIcons.Actions.IntentionBulb) {
                         override fun actionPerformed(e: AnActionEvent) {
@@ -136,11 +136,11 @@ class GitpodWorkspacesView(
                         }
                     }, object : DumbAwareAction("Help", "Help", AllIcons.Actions.Help) {
                         override fun actionPerformed(e: AnActionEvent) {
-                            BrowserUtil.browse("https://www.devpod.io/contact/support?subject=technical%20support")
+                            BrowserUtil.browse("https://www.devpod.khulnasoft.com/contact/support?subject=technical%20support")
                         }
                     }, object : DumbAwareAction("Log Out", "Log out", AllIcons.Actions.Exit) {
                         override fun actionPerformed(e: AnActionEvent) {
-                            GitpodAuthService.setAccessToken(settings.devpodHost, null)
+                            DevpodAuthService.setAccessToken(settings.devpodHost, null)
                         }
                     })
                     cell()
@@ -220,7 +220,7 @@ class GitpodWorkspacesView(
 
     private fun doUpdate(updateLifetime: Lifetime, workspacesPane: JBScrollPane) {
         val devpodHost = settings.devpodHost
-        if (!GitpodAuthService.hasAccessToken(devpodHost)) {
+        if (!DevpodAuthService.hasAccessToken(devpodHost)) {
             ApplicationManager.getApplication().invokeLater {
                 if (updateLifetime.isAlive) {
                     workspacesPane.viewport.view = panel {
@@ -233,7 +233,7 @@ class GitpodWorkspacesView(
             return
         }
         val job = GlobalScope.launch {
-            val client = service<GitpodConnectionService>().obtainClient(devpodHost)
+            val client = service<DevpodConnectionService>().obtainClient(devpodHost)
             val workspaces = client.server.getWorkspaces(GetWorkspacesOptions().apply {
                 this.limit = 20
             }).await()
@@ -267,20 +267,20 @@ class GitpodWorkspacesView(
                                 icon(
                                     if (info.latestInstance.status.phase == "running") {
                                         canConnect = true
-                                        GitpodIcons.Running
+                                        DevpodIcons.Running
                                     } else if (info.latestInstance.status.phase == "stopped") {
                                         if (info.latestInstance.status.conditions.failed.isNullOrBlank()) {
-                                            GitpodIcons.Stopped
+                                            DevpodIcons.Stopped
                                         } else {
-                                            GitpodIcons.Failed
+                                            DevpodIcons.Failed
                                         }
                                     } else if (info.latestInstance.status.phase == "interrupted") {
-                                        GitpodIcons.Failed
+                                        DevpodIcons.Failed
                                     } else if (info.latestInstance.status.phase == "unknown") {
-                                        GitpodIcons.Failed
+                                        DevpodIcons.Failed
                                     } else {
                                         canConnect = true
-                                        GitpodIcons.Starting
+                                        DevpodIcons.Starting
                                     }
                                 ).gap(RightGap.SMALL)
                                 panel {

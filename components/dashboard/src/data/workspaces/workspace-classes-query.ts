@@ -1,18 +1,18 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { useQuery } from "@tanstack/react-query";
 import { workspaceClient } from "../../service/public-api";
-import { WorkspaceClass } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspaceClass } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { useOrgSettingsQuery } from "../organizations/org-settings-query";
-import { Configuration, WorkspaceSettings } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
+import { Configuration, WorkspaceSettings } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
 import { useMemo } from "react";
 import { PlainMessage } from "@bufbuild/protobuf";
 import { useConfiguration } from "../configurations/configuration-queries";
-import { OrganizationSettings } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import { OrganizationSettings } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 import { useDeepCompareMemoize } from "use-deep-compare-effect";
 
 export const DEFAULT_WS_CLASS = "g1-standard";

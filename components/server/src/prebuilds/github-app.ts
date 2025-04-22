@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -18,9 +18,9 @@ import {
     ProjectDB,
     TeamDB,
     WebhookEventDB,
-} from "@devpod/devpod-db/lib";
+} from "@khulnasoft/devpod-db/lib";
 import express from "express";
-import { log, LogContext, LogrusLogLevel } from "@devpod/devpod-protocol/lib/util/logging";
+import { log, LogContext, LogrusLogLevel } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import {
     WorkspaceConfig,
     User,
@@ -28,9 +28,9 @@ import {
     StartPrebuildResult,
     CommitContext,
     CommitInfo,
-} from "@devpod/devpod-protocol";
+} from "@khulnasoft/devpod-protocol";
 import { GithubAppRules } from "./github-app-rules";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import { PrebuildManager } from "./prebuild-manager";
 import { PrebuildStatusMaintainer } from "./prebuilt-status-maintainer";
 import { Options, ApplicationFunctionOptions } from "probot/lib/types";
@@ -38,7 +38,7 @@ import { asyncHandler } from "../express-util";
 import { ContextParser } from "../workspace/context-parser-service";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { RepoURL } from "../repohost";
-import { ApplicationError, ErrorCode } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCode } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { UserService } from "../user/user-service";
 import { ProjectsService } from "../projects/projects-service";
 import { SYSTEM_USER, SYSTEM_USER_ID } from "../authorization/authorizer";
@@ -47,12 +47,12 @@ import { SubjectId } from "../auth/subject-id";
 
 /**
  * GitHub app urls:
- *    User authorization callback URL: https://devpod.io/install-github-app
- *    Setup URL:                       https://devpod.io/install-github-app
- *    Webhook URL:                     https://devpod.io/apps/github
+ *    User authorization callback URL: https://devpod.khulnasoft.com/install-github-app
+ *    Setup URL:                       https://devpod.khulnasoft.com/install-github-app
+ *    Webhook URL:                     https://devpod.khulnasoft.com/apps/github
  *
  * Make sure that the webhook secret you set in GitHub matches what's in your
- * values.yaml file (GITPOD_GITHUB_APP_WEBHOOK_SECRET) - it's not a bad idea to
+ * values.yaml file (DEVPOD_GITHUB_APP_WEBHOOK_SECRET) - it's not a bad idea to
  * look at those values to begin with.
  */
 @injectable()

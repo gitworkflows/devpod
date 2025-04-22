@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,11 +9,11 @@ import { inject, injectable } from "inversify";
 import { GitHubApiError, GitHubRestApi } from "../github/api";
 import { GitHubEnterpriseApp } from "./github-enterprise-app";
 import { GithubContextParser } from "../github/github-context-parser";
-import { User } from "@devpod/devpod-protocol";
+import { User } from "@khulnasoft/devpod-protocol";
 import { Config } from "../config";
 import { RepoURL } from "../repohost";
 import { UnauthorizedError } from "../errors";
-import { GitHubOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
+import { GitHubOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
 
 @injectable()
 export class GitHubService extends RepositoryService {
@@ -25,7 +25,7 @@ export class GitHubService extends RepositoryService {
         super();
     }
 
-    async isGitpodWebhookEnabled(user: User, cloneUrl: string): Promise<boolean> {
+    async isDevpodWebhookEnabled(user: User, cloneUrl: string): Promise<boolean> {
         try {
             const { owner, repoName: repo } = await this.githubContextParser.parseURL(user, cloneUrl);
             const webhooks = (await this.githubApi.run(user, (gh) => gh.repos.listWebhooks({ owner, repo }))).data;

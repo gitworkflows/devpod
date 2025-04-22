@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { PartialProject, Project, ProjectEnvVar, ProjectEnvVarWithValue, ProjectUsage } from "@devpod/devpod-protocol";
+import { PartialProject, Project, ProjectEnvVar, ProjectEnvVarWithValue, ProjectUsage } from "@khulnasoft/devpod-protocol";
 import { TransactionalDB } from "./typeorm/transactional-db-impl";
 
 export const ProjectDB = Symbol("ProjectDB");

@@ -1,39 +1,39 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import {
     Emitter,
-    GitpodClient,
-    GitpodServer,
-    GitpodServerPath,
-    GitpodService,
-    GitpodServiceImpl,
+    DevpodClient,
+    DevpodServer,
+    DevpodServerPath,
+    DevpodService,
+    DevpodServiceImpl,
     Disposable,
-} from "@devpod/devpod-protocol";
-import { WebSocketConnectionProvider } from "@devpod/devpod-protocol/lib/messaging/browser/connection";
-import { GitpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { IDEFrontendDashboardService } from "@devpod/devpod-protocol/lib/frontend-dashboard-service";
-import { RemoteTrackMessage } from "@devpod/devpod-protocol/lib/analytics";
+} from "@khulnasoft/devpod-protocol";
+import { WebSocketConnectionProvider } from "@khulnasoft/devpod-protocol/lib/messaging/browser/connection";
+import { DevpodHostUrl } from "@khulnasoft/devpod-protocol/lib/util/devpod-host-url";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { IDEFrontendDashboardService } from "@khulnasoft/devpod-protocol/lib/frontend-dashboard-service";
+import { RemoteTrackMessage } from "@khulnasoft/devpod-protocol/lib/analytics";
 import { converter, helloService, stream, userClient, workspaceClient } from "./public-api";
 import { getExperimentsClient } from "../experiments/client";
 import { instrumentWebSocket } from "./metrics";
-import { LotsOfRepliesResponse } from "@devpod/public-api/lib/devpod/experimental/v1/dummy_pb";
-import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
+import { LotsOfRepliesResponse } from "@khulnasoft/public-api/lib/devpod/experimental/v1/dummy_pb";
+import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
 import {
     WatchWorkspaceStatusPriority,
     watchWorkspaceStatusInOrder,
 } from "../data/workspaces/listen-to-workspace-ws-messages2";
-import { Workspace, WorkspaceSpec_WorkspaceType, WorkspaceStatus } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { Workspace, WorkspaceSpec_WorkspaceType, WorkspaceStatus } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { sendTrackEvent } from "../Analytics";
 
-export const devpodHostUrl = new GitpodHostUrl(window.location.toString());
+export const devpodHostUrl = new DevpodHostUrl(window.location.toString());
 
-function createGitpodService<C extends GitpodClient, S extends GitpodServer>() {
-    const host = devpodHostUrl.asWebsocket().with({ pathname: GitpodServerPath }).withApi();
+function createDevpodService<C extends DevpodClient, S extends DevpodServer>() {
+    const host = devpodHostUrl.asWebsocket().with({ pathname: DevpodServerPath }).withApi();
 
     const connectionProvider = new WebSocketConnectionProvider();
     instrumentWebSocketConnection(connectionProvider);
@@ -57,7 +57,7 @@ function createGitpodService<C extends GitpodClient, S extends GitpodServer>() {
         },
     });
 
-    return new GitpodServiceImpl<C, S>(proxy, { onReconnect });
+    return new DevpodServiceImpl<C, S>(proxy, { onReconnect });
 }
 
 function instrumentWebSocketConnection(connectionProvider: WebSocketConnectionProvider): void {
@@ -77,12 +77,12 @@ function instrumentWebSocketConnection(connectionProvider: WebSocketConnectionPr
     };
 }
 
-export function getGitpodService(): GitpodService {
+export function getDevpodService(): DevpodService {
     const w = window as any;
     const _gp = w._gp || (w._gp = {});
     let service = _gp.devpodService;
     if (!service) {
-        service = _gp.devpodService = createGitpodService();
+        service = _gp.devpodService = createDevpodService();
         testPublicAPI(service);
     }
     return service;
@@ -157,7 +157,7 @@ function testPublicAPI(service: any): void {
     })();
 }
 let ideFrontendService: IDEFrontendService | undefined;
-export function getIDEFrontendService(workspaceID: string, sessionId: string, service: GitpodService) {
+export function getIDEFrontendService(workspaceID: string, sessionId: string, service: DevpodService) {
     if (!ideFrontendService) {
         ideFrontendService = new IDEFrontendService(workspaceID, sessionId, service, window.parent);
     }
@@ -180,7 +180,7 @@ export class IDEFrontendService implements IDEFrontendDashboardService.IServer {
     constructor(
         private workspaceID: string,
         private sessionId: string,
-        private service: GitpodService,
+        private service: DevpodService,
         private clientWindow: Window,
     ) {
         this.processServerInfo();
@@ -219,7 +219,7 @@ export class IDEFrontendService implements IDEFrontendDashboardService.IServer {
             // send last heartbeat (wasClosed: true)
             const data = { sessionId: this.sessionId };
             const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
-            const devpodHostUrl = new GitpodHostUrl(window.location.toString());
+            const devpodHostUrl = new DevpodHostUrl(window.location.toString());
             const url = devpodHostUrl.withApi({ pathname: `/auth/workspacePageClose/${this.instanceID}` }).toString();
             navigator.sendBeacon(url, blob);
         });

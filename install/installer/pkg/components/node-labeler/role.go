@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -50,7 +50,7 @@ func role(ctx *common.RenderContext) ([]runtime.Object, error) {
 				},
 				// permissions required for the WorkspaceCountController
 				{
-					APIGroups: []string{"workspace.devpod.io"},
+					APIGroups: []string{"workspace.devpod.khulnasoft.com"},
 					Resources: []string{"workspaces"},
 					Verbs: []string{
 						"get",

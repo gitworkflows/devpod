@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -48,7 +48,7 @@ var workspaceUpCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		devpod, err := getGitpodClient(cmd.Context())
+		devpod, err := getDevpodClient(cmd.Context())
 		if err != nil {
 			return err
 		}
@@ -154,7 +154,7 @@ var workspaceUpCmd = &cobra.Command{
 
 		newWorkspace, err := devpod.Workspaces.CreateAndStartWorkspace(ctx, connect.NewRequest(
 			&v1.CreateAndStartWorkspaceRequest{
-				Source:         &v1.CreateAndStartWorkspaceRequest_ContextUrl{ContextUrl: "GITPODCLI_CONTENT_INIT=push/https://github.com/gitpod-io/empty"},
+				Source:         &v1.CreateAndStartWorkspaceRequest_ContextUrl{ContextUrl: "DEVPODCLI_CONTENT_INIT=push/https://github.com/gitpod-io/empty"},
 				OrganizationId: orgId,
 				StartSpec: &v1.StartWorkspaceSpec{
 					IdeSettings: &v1.IDESettings{

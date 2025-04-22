@@ -91,7 +91,7 @@ Contains detailed information about a workspace:
 - Workspace ID and instance ID
 - Checkout and workspace locations
 - User home directory
-- Gitpod API information
+- Devpod API information
 - Repository information
 - IDE configuration
 - Workspace class information
@@ -185,9 +185,9 @@ After regenerating the code, you may need to rebuild components that depend on t
    ./gradlew build
    ```
 
-4. Using Leeway (for CI/CD):
+4. Using Blazedock (for CI/CD):
    ```bash
-   leeway build -D components/<component-name>:app
+   blazedock build -D components/<component-name>:app
    ```
 
-The Supervisor API is a critical component of the Gitpod platform, as it provides the interface through which various components interact with the workspace environment.
+The Supervisor API is a critical component of the Devpod platform, as it provides the interface through which various components interact with the workspace environment.

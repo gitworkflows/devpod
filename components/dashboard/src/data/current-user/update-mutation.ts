@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AdditionalUserData, User as UserProtocol } from "@devpod/devpod-protocol";
+import { AdditionalUserData, User as UserProtocol } from "@khulnasoft/devpod-protocol";
 import { useMutation } from "@tanstack/react-query";
 import { trackEvent } from "../../Analytics";
-import { getGitpodService } from "../../service/service";
+import { getDevpodService } from "../../service/service";
 import { useCurrentUser } from "../../user-context";
 import { converter } from "../../service/public-api";
 import deepmerge from "deepmerge";
@@ -18,7 +18,7 @@ type UpdateCurrentUserArgs = Partial<UserProtocol>;
 export const useUpdateCurrentUserMutation = () => {
     return useMutation({
         mutationFn: async (partialUser: UpdateCurrentUserArgs) => {
-            const current = await getGitpodService().server.getLoggedInUser();
+            const current = await getDevpodService().server.getLoggedInUser();
             const currentAdditionalData = { ...current.additionalData };
             // workspaceAutostartOptions needs to be overriden
             if (partialUser.additionalData?.workspaceAutostartOptions) {
@@ -41,7 +41,7 @@ export const useUpdateCurrentUserMutation = () => {
             if (partialUser.additionalData?.profile?.signupGoals) {
                 update.additionalData!.profile!.signupGoals = uniq(partialUser.additionalData.profile.signupGoals);
             }
-            const user = await getGitpodService().server.updateLoggedInUser(update);
+            const user = await getDevpodService().server.updateLoggedInUser(update);
             return converter.toUser(user);
         },
     });

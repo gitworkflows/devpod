@@ -1257,7 +1257,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / Component / dashboard",
+  "title": "Devpod / Component / dashboard",
   "uid": "dashboard",
   "version": 1
 }

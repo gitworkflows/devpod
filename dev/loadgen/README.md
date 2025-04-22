@@ -1,6 +1,6 @@
 # loadgen
 
-A load generator (framework) for Gitpod.
+A load generator (framework) for Devpod.
 
 **Note:** this is a development tool only - there's no support for this.
 

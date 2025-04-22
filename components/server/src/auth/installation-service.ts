@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,17 +9,17 @@ import {
     AdminGetListResult,
     Configuration,
     EmailDomainFilterEntry,
-    GitpodServer,
-} from "@devpod/devpod-protocol";
+    DevpodServer,
+} from "@khulnasoft/devpod-protocol";
 import { inject, injectable } from "inversify";
-import { EmailDomainFilterDB, TeamDB } from "@devpod/devpod-db/lib";
-import { BlockedRepository } from "@devpod/devpod-protocol/lib/blocked-repositories-protocol";
+import { EmailDomainFilterDB, TeamDB } from "@khulnasoft/devpod-db/lib";
+import { BlockedRepository } from "@khulnasoft/devpod-protocol/lib/blocked-repositories-protocol";
 import { Authorizer } from "../authorization/authorizer";
-import { BlockedRepositoryDB } from "@devpod/devpod-db/lib/blocked-repository-db";
+import { BlockedRepositoryDB } from "@khulnasoft/devpod-db/lib/blocked-repository-db";
 import { Config } from "../config";
-import { SupportedWorkspaceClass } from "@devpod/devpod-protocol/lib/workspace-class";
-import { WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
-import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { SupportedWorkspaceClass } from "@khulnasoft/devpod-protocol/lib/workspace-class";
+import { WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
+import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 
 @injectable()
 export class InstallationService {
@@ -75,8 +75,8 @@ export class InstallationService {
         return this.config.workspaceDefaults.workspaceImage;
     }
 
-    async getOnboardingState(): Promise<GitpodServer.OnboardingState> {
-        // Find useful details about the state of the Gitpod installation.
+    async getOnboardingState(): Promise<DevpodServer.OnboardingState> {
+        // Find useful details about the state of the Devpod installation.
         const { rows } = await this.teamDB.findTeams(
             0 /* offset */,
             undefined /* limit */,

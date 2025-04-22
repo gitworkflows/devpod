@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,7 +7,7 @@
 import { inject, injectable } from "inversify";
 import { TypeORM } from "./typeorm";
 
-import { AuditLog } from "@devpod/devpod-protocol/lib/audit-log";
+import { AuditLog } from "@khulnasoft/devpod-protocol/lib/audit-log";
 import { Between, FindConditions, LessThan, Repository } from "typeorm";
 import { AuditLogDB } from "../audit-log-db";
 import { DBAuditLog } from "./entity/db-audit-log";

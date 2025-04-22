@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -84,7 +84,7 @@ func New(ctx context.Context, opts ConfigLoaderOpts) (*ConfigLoader, error) {
 }
 
 func (k *ConfigLoader) installVMSSHKeys() error {
-	path := filepath.Join(os.Getenv("LEEWAY_WORKSPACE_ROOT"), "dev/preview/ssh-vm.sh")
+	path := filepath.Join(os.Getenv("BLAZEDOCK_WORKSPACE_ROOT"), "dev/preview/ssh-vm.sh")
 	cmd := exec.Command(path, "-c", "echo success", "-v", k.opts.PreviewName)
 	cmd.Env = os.Environ()
 	return cmd.Run()

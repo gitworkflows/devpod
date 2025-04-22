@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { injectable } from "inversify";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { getEnvVarParsed, getEnvVar } from "@devpod/devpod-protocol/lib/env";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { getEnvVarParsed, getEnvVar } from "@khulnasoft/devpod-protocol/lib/env";
 import { ConnectionConfig } from "mysql";
 
 @injectable()

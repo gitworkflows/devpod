@@ -1,11 +1,10 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import parseDuration from "parse-duration";
-
+const parseDuration = require('parse-duration');
 /**
  * Returns the <code>day</code>th of the next month from <code>formDate</code>.
  * If the next month does not have a <code>day</code>th, the last day of that
@@ -117,5 +116,7 @@ export function goDurationToHumanReadable(goDuration: string): string {
 }
 
 export function parseGoDurationToMs(goDuration: string): number {
-    return parseDuration(goDuration);
+    const result = parseDuration(goDuration);
+    if (result == null) throw new Error("Invalid duration");
+    return result;
 }

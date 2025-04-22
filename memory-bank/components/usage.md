@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Usage component in Gitpod is responsible for tracking, calculating, and managing workspace usage and billing. It provides services for monitoring workspace usage, calculating credit consumption, managing billing subscriptions, and integrating with payment providers like Stripe. This component is central to Gitpod's usage-based billing model and ensures accurate tracking of resource consumption.
+The Usage component in Devpod is responsible for tracking, calculating, and managing workspace usage and billing. It provides services for monitoring workspace usage, calculating credit consumption, managing billing subscriptions, and integrating with payment providers like Stripe. This component is central to Devpod's usage-based billing model and ensures accurate tracking of resource consumption.
 
 ## Purpose
 
@@ -102,7 +102,7 @@ The Usage component is configured through a JSON configuration file:
     "address": "redis:6379"
   },
   "serverAddress": "server:3000",
-  "devpodHost": "devpod.io"
+  "devpodHost": "devpod.khulnasoft.com"
 }
 ```
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -95,7 +95,7 @@ type Client struct {
 	UpstreamRemoteURI string
 
 	// if true will run git command as devpod user (should be executed as root that has access to sudo in this case)
-	RunAsGitpodUser bool
+	RunAsDevpodUser bool
 
 	// FullClone indicates whether we should do a full checkout or a shallow clone
 	FullClone bool
@@ -205,7 +205,7 @@ func (c *Client) GitWithOutput(ctx context.Context, ignoreErr *string, subcomman
 	span.LogKV("args", fullArgs)
 
 	cmdName := "git"
-	if c.RunAsGitpodUser {
+	if c.RunAsDevpodUser {
 		cmdName = "sudo"
 		fullArgs = append([]string{"-u", "devpod", "git"}, fullArgs...)
 	}

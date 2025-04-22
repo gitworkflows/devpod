@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -12,8 +12,8 @@ import {
     TeamMemberInfo,
     TeamMemberRole,
     TeamMembershipInvite,
-} from "@devpod/devpod-protocol";
-import { ErrorCodes, ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
+} from "@khulnasoft/devpod-protocol";
+import { ErrorCodes, ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { randomBytes } from "crypto";
 import { inject, injectable, optional } from "inversify";
 import slugify from "slugify";
@@ -27,7 +27,7 @@ import { DBOrgSettings } from "./entity/db-team-settings";
 import { DBUser } from "./entity/db-user";
 import { TransactionalDBImpl } from "./transactional-db-impl";
 import { TypeORM } from "./typeorm";
-import { EncryptionService } from "@devpod/devpod-protocol/lib/encryption/encryption-service";
+import { EncryptionService } from "@khulnasoft/devpod-protocol/lib/encryption/encryption-service";
 import { DBOrgEnvVar } from "./entity/db-org-env-var";
 import { filter } from "../utils";
 

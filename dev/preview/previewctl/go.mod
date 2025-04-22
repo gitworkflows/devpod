@@ -4,7 +4,7 @@ go 1.22.0
 
 toolchain go1.23.3
 
-replace github.com/khulnasoft/devpod/common-go => ../../../components/common-go // leeway
+replace github.com/khulnasoft/devpod/common-go => ../../../components/common-go // blazedock
 
 require (
 	cloud.google.com/go/storage v1.39.1

@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -24,7 +24,7 @@ var gitTrackCommandOpts struct {
 
 var gitTrackCommand = &cobra.Command{
 	Use:    "git-track-command",
-	Short:  "Gitpod's Git command tracker",
+	Short:  "Devpod's Git command tracker",
 	Long:   "Sending anonymous statistics about the executed git commands inside a workspace",
 	Args:   cobra.ExactArgs(0),
 	Hidden: true,

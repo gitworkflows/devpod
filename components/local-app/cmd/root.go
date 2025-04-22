@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -34,12 +34,12 @@ var rootOpts struct {
 
 var rootCmd = &cobra.Command{
 	Use:   "devpod",
-	Short: "Gitpod: Always ready to code.",
+	Short: "Devpod: Always ready to code.",
 	Long: color.Sprint(`
-<fg=ff971d>      .-+*#+           </>      <b>Gitpod: Always ready to code.</>
+<fg=ff971d>      .-+*#+           </>      <b>Devpod: Always ready to code.</>
 <fg=ff971d>   :=*#####*.          </>      Try the following commands to get started:
 <fg=ff971d>  .=*####*+-.    .--:  </>
-<fg=ff971d>  +****=:     :=*####+ </>      devpod login              <lightgray>Login to Gitpod</>
+<fg=ff971d>  +****=:     :=*####+ </>      devpod login              <lightgray>Login to Devpod</>
 <fg=ff971d>  ****:   .-+*########.</>      devpod whoami             <lightgray>Show information about the currently logged in user</>
 <fg=ff971d>  +***:   *****+--####.</>
 <fg=ff971d>  +***:   .-=:.  .#*##.</>      devpod workspace list     <lightgray>List your workspaces</>
@@ -92,7 +92,7 @@ var rootCmd = &cobra.Command{
 		}
 		cmd.SetContext(config.ToContext(context.Background(), cfg))
 
-		host := "https://devpod.io"
+		host := "https://devpod.khulnasoft.com"
 		telemetryEnabled := !telemetry.DoNotTrack()
 		telemetryEnabled = telemetryEnabled && cfg.Telemetry.Enabled
 		gpctx, err := cfg.GetActiveContext()
@@ -135,7 +135,7 @@ func init() {
 	}
 
 	configLocation := config.DEFAULT_LOCATION
-	if fn := os.Getenv("GITPOD_CONFIG"); fn != "" {
+	if fn := os.Getenv("DEVPOD_CONFIG"); fn != "" {
 		configLocation = fn
 	}
 	rootCmd.PersistentFlags().StringVar(&rootOpts.ConfigLocation, "config", configLocation, "Location of the configuration file")
@@ -143,13 +143,13 @@ func init() {
 }
 
 var rootTestingOpts struct {
-	Client    *client.Gitpod
+	Client    *client.Devpod
 	WriterOut io.Writer
 }
 
-var clientCache *client.Gitpod
+var clientCache *client.Devpod
 
-func getGitpodClient(ctx context.Context) (*client.Gitpod, error) {
+func getDevpodClient(ctx context.Context) (*client.Devpod, error) {
 	// There will be only one client in a command context right now
 	if clientCache != nil {
 		return clientCache, nil
@@ -175,7 +175,7 @@ func getGitpodClient(ctx context.Context) (*client.Gitpod, error) {
 
 	token := gpctx.Token
 	if token == "" {
-		token = os.Getenv("GITPOD_TOKEN")
+		token = os.Getenv("DEVPOD_TOKEN")
 	}
 	if token == "" {
 		var err error
@@ -186,7 +186,7 @@ func getGitpodClient(ctx context.Context) (*client.Gitpod, error) {
 	}
 	if token == "" {
 		return nil, prettyprint.AddResolution(fmt.Errorf("no token found for active context"),
-			"provide a token by setting the GITPOD_TOKEN environment variable",
+			"provide a token by setting the DEVPOD_TOKEN environment variable",
 			"login again using `devpod login`",
 			"change to a different context using `devpod config use-context <context>`",
 			"set a token explicitly using `devpod config set-context --current --token <token>`",
@@ -195,7 +195,7 @@ func getGitpodClient(ctx context.Context) (*client.Gitpod, error) {
 
 	var apiHost = *gpctx.Host.URL
 	apiHost.Host = "api." + apiHost.Host
-	slog.Debug("establishing connection to Gitpod", "host", apiHost.String())
+	slog.Debug("establishing connection to Devpod", "host", apiHost.String())
 	res, err := client.New(
 		client.WithCredentials(token),
 		client.WithURL(apiHost.String()),

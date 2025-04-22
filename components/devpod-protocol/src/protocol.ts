@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -39,7 +39,7 @@ export interface User {
      */
     blocked?: boolean;
 
-    /** A map of random settings that alter the behaviour of Gitpod on a per-user basis */
+    /** A map of random settings that alter the behaviour of Devpod on a per-user basis */
     featureFlags?: UserFeatureSettings;
 
     /** The permissions and/or roles the user has */
@@ -147,7 +147,7 @@ export interface ProfileDetails {
     jobRole?: string;
     // freeform entry for job role user works in (when jobRole is "other")
     jobRoleOther?: string;
-    // Reasons user is exploring Gitpod when they signed up
+    // Reasons user is exploring Devpod when they signed up
     explorationReasons?: string[];
     // what user hopes to accomplish when they signed up
     signupGoals?: string[];
@@ -271,24 +271,24 @@ export interface UserEnvVar extends UserEnvVarValue {
 }
 
 export namespace EnvVar {
-    export const GITPOD_IMAGE_AUTH_ENV_VAR_NAME = "GITPOD_IMAGE_AUTH";
+    export const DEVPOD_IMAGE_AUTH_ENV_VAR_NAME = "DEVPOD_IMAGE_AUTH";
     /**
-     * - GITPOD_IMAGE_AUTH is documented https://www.devpod.io/docs/configure/workspaces/workspace-image#use-a-private-docker-image
+     * - DEVPOD_IMAGE_AUTH is documented https://www.devpod.khulnasoft.com/docs/configure/workspaces/workspace-image#use-a-private-docker-image
      */
-    export const WhiteListFromReserved = [GITPOD_IMAGE_AUTH_ENV_VAR_NAME];
+    export const WhiteListFromReserved = [DEVPOD_IMAGE_AUTH_ENV_VAR_NAME];
 
     export function is(data: any): data is EnvVar {
         return data.hasOwnProperty("name") && data.hasOwnProperty("value");
     }
 
     /**
-     * Extracts the "host:credentials" pairs from the GITPOD_IMAGE_AUTH environment variable.
+     * Extracts the "host:credentials" pairs from the DEVPOD_IMAGE_AUTH environment variable.
      * @param envVars
      * @returns A map of host to credentials
      */
-    export function getGitpodImageAuth(envVars: EnvVarWithValue[]): Map<string, string> {
+    export function getDevpodImageAuth(envVars: EnvVarWithValue[]): Map<string, string> {
         const res = new Map<string, string>();
-        const imageAuth = envVars.find((e) => e.name === EnvVar.GITPOD_IMAGE_AUTH_ENV_VAR_NAME);
+        const imageAuth = envVars.find((e) => e.name === EnvVar.DEVPOD_IMAGE_AUTH_ENV_VAR_NAME);
         if (!imageAuth) {
             return res;
         }
@@ -330,8 +330,8 @@ export namespace UserEnvVar {
     export function validate(variable: UserEnvVarValue): string | undefined {
         const name = variable.name;
         const pattern = variable.repositoryPattern;
-        if (!EnvVar.WhiteListFromReserved.includes(name) && name.startsWith("GITPOD_")) {
-            return "Name with prefix 'GITPOD_' is reserved.";
+        if (!EnvVar.WhiteListFromReserved.includes(name) && name.startsWith("DEVPOD_")) {
+            return "Name with prefix 'DEVPOD_' is reserved.";
         }
         if (name.trim() === "") {
             return "Name must not be empty.";
@@ -560,7 +560,7 @@ export namespace SSHPublicKeyValue {
     export const MAXIMUM_KEY_LENGTH = 5;
 }
 
-export interface GitpodToken {
+export interface DevpodToken {
     /** Hash value (SHA256) of the token (primary key). */
     tokenHash: string;
 
@@ -568,7 +568,7 @@ export interface GitpodToken {
     name?: string;
 
     /** Token kind */
-    type: GitpodTokenType;
+    type: DevpodTokenType;
 
     /** The user the token belongs to. */
     userId: string;
@@ -580,7 +580,7 @@ export interface GitpodToken {
     created: string;
 }
 
-export enum GitpodTokenType {
+export enum DevpodTokenType {
     API_AUTH_TOKEN = 0,
     MACHINE_AUTH_TOKEN = 1,
 }
@@ -1028,7 +1028,7 @@ export namespace TaskConfig {
 }
 
 export namespace WorkspaceImageBuild {
-    export type Phase = "BaseImage" | "GitpodLayer" | "Error" | "Done";
+    export type Phase = "BaseImage" | "DevpodLayer" | "Error" | "Done";
     export interface StateInfo {
         phase: Phase;
         currentStep?: number;

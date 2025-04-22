@@ -17,7 +17,7 @@ scripts:
     script: ./workflow/preview/configure-workspace.sh
 
   - name: build
-    description: Build all packages needed to deploy Gitpod to preview environments
+    description: Build all packages needed to deploy Devpod to preview environments
     script: ./workflow/preview/build.sh
 
   - name: create-preview
@@ -38,7 +38,7 @@ scripts:
       ./workflow/preview/deploy-preview.sh
 
   - name: deploy-devpod
-    description: Deploys Gitpod to an existing preview environment
+    description: Deploys Devpod to an existing preview environment
     script: ./workflow/preview/deploy-devpod.sh
 
   - name: deploy-monitoring-satellite

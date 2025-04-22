@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -15,8 +15,8 @@ import com.intellij.util.net.JdkProxyProvider
 import com.intellij.util.net.ssl.CertificateManager
 import com.jetbrains.rd.util.concurrentMapOf
 import com.jetbrains.rd.util.lifetime.Lifetime
-import io.devpod.devpodprotocol.api.GitpodServerLauncher
-import io.devpod.jetbrains.auth.GitpodAuthService
+import io.devpod.devpodprotocol.api.DevpodServerLauncher
+import io.devpod.jetbrains.auth.DevpodAuthService
 import kotlinx.coroutines.*
 import kotlinx.coroutines.future.await
 import org.eclipse.jetty.websocket.api.UpgradeException
@@ -24,20 +24,20 @@ import java.net.URL
 import java.nio.charset.StandardCharsets
 
 @Service
-class GitpodConnectionService {
+class DevpodConnectionService {
 
-    private val clients = concurrentMapOf<String, GatewayGitpodClient>()
+    private val clients = concurrentMapOf<String, GatewayDevpodClient>()
 
-    fun obtainClient(devpodHost: String): GatewayGitpodClient {
+    fun obtainClient(devpodHost: String): GatewayDevpodClient {
         return clients.getOrPut(devpodHost) {
             val lifetime = Lifetime.Eternal.createNested()
-            val client = GatewayGitpodClient(lifetime, devpodHost)
-            val launcher = GitpodServerLauncher.create(client)
+            val client = GatewayDevpodClient(lifetime, devpodHost)
+            val launcher = DevpodServerLauncher.create(client)
             val job = GlobalScope.launch {
-                var accessToken = GitpodAuthService.getAccessToken(devpodHost)
+                var accessToken = DevpodAuthService.getAccessToken(devpodHost)
                 val authorize = suspend {
                     ensureActive()
-                    accessToken = GitpodAuthService.authorize(devpodHost)
+                    accessToken = DevpodAuthService.authorize(devpodHost)
                 }
                 if (accessToken == null) {
                     authorize()
@@ -54,7 +54,7 @@ class GitpodConnectionService {
                         val sslContext = CertificateManager.getInstance().sslContext
 
                         // see https://intellij-support.jetbrains.com/hc/en-us/community/posts/360003146180/comments/360000376240
-                        Thread.currentThread().contextClassLoader = GitpodConnectionProvider::class.java.classLoader
+                        Thread.currentThread().contextClassLoader = DevpodConnectionProvider::class.java.classLoader
 
                         launcher.listen(
                                 "wss://$devpodHost/api/v1",
@@ -75,8 +75,8 @@ class GitpodConnectionService {
                         Thread.currentThread().contextClassLoader = originalClassLoader
                     }
                     val tokenHash = DigestUtil.sha256Hex(accessToken!!.toByteArray(StandardCharsets.UTF_8))
-                    val tokenScopes = client.server.getGitpodTokenScopes(tokenHash).await()
-                    for (scope in GitpodAuthService.scopes) {
+                    val tokenScopes = client.server.getDevpodTokenScopes(tokenHash).await()
+                    for (scope in DevpodAuthService.scopes) {
                         if (!tokenScopes.contains(scope)) {
                             connection.cancel(false)
                             throw InvalidTokenException("$scope scope is not granted")

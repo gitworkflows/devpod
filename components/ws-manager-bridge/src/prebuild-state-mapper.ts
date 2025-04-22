@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { HeadlessWorkspaceEventType, PrebuiltWorkspace } from "@devpod/devpod-protocol";
-import { Client as ExperimentsClient } from "@devpod/devpod-protocol/lib/experiments/types";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
-import { WorkspacePhase, WorkspaceStatus } from "@devpod/ws-manager/lib";
+import { HeadlessWorkspaceEventType, PrebuiltWorkspace } from "@khulnasoft/devpod-protocol";
+import { Client as ExperimentsClient } from "@khulnasoft/devpod-protocol/lib/experiments/types";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
+import { WorkspacePhase, WorkspaceStatus } from "@khulnasoft/ws-manager/lib";
 import { inject, injectable } from "inversify";
 
 export interface PrebuildUpdate {

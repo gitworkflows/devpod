@@ -105,7 +105,7 @@
     "region": "workspace",
     "creationTime": "2023-12-01T04:59:09.080Z",
     "startedTime": "2023-12-01T05:02:04.539Z",
-    "ideUrl": "https://devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.io",
+    "ideUrl": "https://devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.khulnasoft.com",
     "workspaceImage": "877922613839.dkr.ecr.eu-central-1.amazonaws.com/image-build/workspace-images:7ce05944fe76199b43aa67aa398266389d2ab348acb01ce6ccca6585be1c7aac",
     "status": {
       "phase": "running",
@@ -127,7 +127,7 @@
       "ownerToken": "ownerToken111",
       "exposedPorts": [
         {
-          "url": "https://5000-devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.io",
+          "url": "https://5000-devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.khulnasoft.com",
           "port": 5000,
           "protocol": "http",
           "visibility": "private"
@@ -154,11 +154,11 @@
       "ideSetup": {
         "envvars": [
           {
-            "name": "GITPOD_CONFIGCAT_ENABLED",
+            "name": "DEVPOD_CONFIGCAT_ENABLED",
             "value": "true"
           },
           {
-            "name": "GITPOD_IDE_ALIAS",
+            "name": "DEVPOD_IDE_ALIAS",
             "value": "code"
           }
         ],

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -13,7 +13,7 @@ import {
     ListUsageRequest,
     SetCostCenterResponse,
     UsageServiceClient,
-} from "@devpod/usage-api/lib/usage/v1/usage.pb";
+} from "@khulnasoft/usage-api/lib/usage/v1/usage.pb";
 import { injectable } from "inversify";
 
 @injectable()

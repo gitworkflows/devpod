@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TeamDB, testContainer } from "@devpod/devpod-db/lib";
+import { TeamDB, testContainer } from "@khulnasoft/devpod-db/lib";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";
@@ -12,7 +12,7 @@ import { OrganizationService } from "./organization-service";
 import { InstallationService } from "../auth/installation-service";
 import { ProjectsService } from "../projects/projects-service";
 import { Authorizer } from "../authorization/authorizer";
-import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
+import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
 import { DefaultWorkspaceImageValidator } from "./default-workspace-image-validator";
 import { UserService } from "../user/user-service";
 import { Config } from "../config";
@@ -54,7 +54,7 @@ describe("OrganizationService", async () => {
                                 orderKey: "00",
                                 title: "VS Code",
                                 type: "browser",
-                                logo: "https://ide.devpod.io/image/ide-logo/vscode.svg",
+                                logo: "https://ide.devpod.khulnasoft.com/image/ide-logo/vscode.svg",
                                 label: "Browser",
                                 image: "bar",
                                 latestImage: "baz",

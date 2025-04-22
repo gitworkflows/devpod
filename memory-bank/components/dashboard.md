@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Dashboard is the web-based user interface for Gitpod, providing users with access to workspaces, settings, account management, and other platform features. It's a single-page application (SPA) built with modern web technologies.
+The Dashboard is the web-based user interface for Devpod, providing users with access to workspaces, settings, account management, and other platform features. It's a single-page application (SPA) built with modern web technologies.
 
 ## Purpose
 
@@ -11,7 +11,7 @@ The primary purposes of the Dashboard are:
 - Allow users to configure their account settings
 - Enable management of environment variables, Git integrations, and other preferences
 - Display subscription and billing information
-- Offer a consistent and intuitive user experience for the Gitpod platform
+- Offer a consistent and intuitive user experience for the Devpod platform
 
 ## Architecture
 
@@ -33,8 +33,8 @@ The Dashboard is a React-based single-page application with the following archit
 ## Dependencies
 
 ### Internal Dependencies
-- `components/devpod-protocol:lib`: Protocol definitions for communicating with Gitpod services
-- `components/public-api/typescript:lib`: TypeScript client for the Gitpod public API
+- `components/devpod-protocol:lib`: Protocol definitions for communicating with Devpod services
+- `components/public-api/typescript:lib`: TypeScript client for the Devpod public API
 - `components/public-api/typescript-common:lib`: Common TypeScript utilities for the public API
 
 ### External Dependencies
@@ -73,7 +73,7 @@ The Dashboard supports several development workflows:
    - Run `yarn start-local` to start the development server
    - Access the dashboard at the provided URL
 
-2. **Development Against Live Gitpod**:
+2. **Development Against Live Devpod**:
    - For users with developer role, can use X-Frontend-Dev-URL header
    - Allows testing against live data while developing locally
 
@@ -88,7 +88,7 @@ The Dashboard is built using:
 - **Craco**: Configuration layer for Create React App
 - **TypeScript**: For type safety
 - **ESLint**: For code quality
-- **Leeway**: For integration with the Gitpod build system
+- **Blazedock**: For integration with the Devpod build system
 
 The build process includes:
 1. Compiling TypeScript to JavaScript
@@ -99,8 +99,8 @@ The build process includes:
 ## Integration Points
 
 The Dashboard integrates with:
-1. **Gitpod Backend Services**: For workspace and user management
-2. **Public API**: For programmatic access to Gitpod features
+1. **Devpod Backend Services**: For workspace and user management
+2. **Public API**: For programmatic access to Devpod features
 3. **Authentication System**: For user login and session management
 4. **Stripe**: For subscription and payment processing
 5. **Git Providers**: For repository integration

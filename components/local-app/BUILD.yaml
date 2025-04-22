@@ -9,7 +9,7 @@ packages:
     config:
       buildArgs:
         VERSION: ${version}
-      dockerfile: leeway.Dockerfile
+      dockerfile: blazedock.Dockerfile
       image:
         - ${imageRepoBase}/local-app:${version}
         - ${imageRepoBase}/local-app:commit-${__git_commit}
@@ -41,12 +41,12 @@ packages:
         - ["rm", "-rf", "components-local-app--update-manifest", "components-local-app--app"]
 scripts:
   - name: install-cli
-    description: "Install devpod-cli as `devpod` command and add auto-completion. Usage: '. $(leeway run components/local-app:install-cli)'"
+    description: "Install devpod-cli as `devpod` command and add auto-completion. Usage: '. $(blazedock run components/local-app:install-cli)'"
     script: |
       go build -o devpod ./main/devpod-cli
       sudo mv devpod /usr/bin/devpod
       sudo chmod +x /usr/bin/devpod
   - name: cli-completion
-    description: "Add completion of devpod-cli to bash-completion. Usage: '. $(leeway run components/local-app:cli-completion)'"
+    description: "Add completion of devpod-cli to bash-completion. Usage: '. $(blazedock run components/local-app:cli-completion)'"
     script: |
       sudo /usr/bin/devpod completion bash | sudo tee /usr/share/bash-completion/completions/devpod > /dev/null

@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WorkspaceRegion } from "@devpod/devpod-protocol/lib/workspace-cluster";
+import { WorkspaceRegion } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
 import { countries, continents } from "countries-list";
 
 const NorthAmerica: WorkspaceRegion = "north-america";

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,7 +7,7 @@
 import { Repository, EntityManager } from "typeorm";
 import { injectable, inject } from "inversify";
 import { TypeORM } from "./typeorm";
-import { AuthProviderEntry } from "@devpod/devpod-protocol";
+import { AuthProviderEntry } from "@khulnasoft/devpod-protocol";
 import { AuthProviderEntryDB } from "../auth-provider-entry-db";
 import { DBAuthProviderEntry } from "./entity/db-auth-provider-entry";
 import { DBIdentity } from "./entity/db-identity";

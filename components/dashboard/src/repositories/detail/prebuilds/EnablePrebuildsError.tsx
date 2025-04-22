@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { FC, useCallback } from "react";
-import type { RepositoryUnauthorizedError } from "@devpod/public-api/lib/devpod/v1/error_pb";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import type { RepositoryUnauthorizedError } from "@khulnasoft/public-api/lib/devpod/v1/error_pb";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { openAuthorizeWindow } from "../../../provider-utils";
 import { useToast } from "../../../components/toasts/Toasts";
 import { Button } from "@podkit/buttons/Button";

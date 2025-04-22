@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -19,12 +19,12 @@ import { useCurrentUser } from "../user-context";
 import { SpinnerLoader } from "../components/Loader";
 import { InputField } from "../components/forms/InputField";
 import { InputWithCopy } from "../components/InputWithCopy";
-import { OrganizationMember, OrganizationRole } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import { OrganizationMember, OrganizationRole } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 import { useListOrganizationMembers, useOrganizationMembersInvalidator } from "../data/organizations/members-query";
 import { useInvitationId, useInviteInvalidator } from "../data/organizations/invite-query";
 import { Delayed } from "@podkit/loading/Delayed";
 import { Button } from "@podkit/buttons/Button";
-import { isGitpodIo } from "../utils";
+import { isDevpodIo } from "../utils";
 
 function getHumanReadable(role: OrganizationRole): string {
     return OrganizationRole[role].toLowerCase();
@@ -267,16 +267,16 @@ export default function MembersPage() {
                         >
                             <InputWithCopy value={inviteUrl} tip="Copy Invite URL" />
                         </InputField>
-                        {isGitpodIo() && (
+                        {isDevpodIo() && (
                             <div className="text-pk-content-tertiary mt-3">
                                 <span className="text-sm font-bold">Need SSO? </span>
                                 <a
                                     className="text-sm gp-link"
-                                    href="https://www.devpod.io/docs/enterprise"
+                                    href="https://www.devpod.khulnasoft.com/docs/enterprise"
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    Try Gitpod Enterprise
+                                    Try Devpod Enterprise
                                 </a>
                             </div>
                         )}

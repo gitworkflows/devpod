@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -35,14 +35,14 @@ var renderOpts struct {
 // renderCmd represents the render command
 var renderCmd = &cobra.Command{
 	Use:   "render",
-	Short: "Renders the Kubernetes manifests required to install Gitpod",
-	Long: `Renders the Kubernetes manifests required to install Gitpod
+	Short: "Renders the Kubernetes manifests required to install Devpod",
+	Long: `Renders the Kubernetes manifests required to install Devpod
 
 A config file is required which can be generated with the init command.`,
 	Example: `  # Default install.
   devpod-installer render --config config.yaml | kubectl apply -f -
 
-  # Install Gitpod into a non-default namespace.
+  # Install Devpod into a non-default namespace.
   devpod-installer render --config config.yaml --namespace devpod | kubectl apply -f -`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		yaml, err := renderFn()
@@ -261,7 +261,7 @@ func init() {
 		log.WithError(err).Fatal("Failed to get working directory")
 	}
 
-	renderCmd.PersistentFlags().StringVarP(&renderOpts.ConfigFN, "config", "c", getEnvvar("GITPOD_INSTALLER_CONFIG", filepath.Join(dir, "devpod.config.yaml")), "path to the config file, use - for stdin")
+	renderCmd.PersistentFlags().StringVarP(&renderOpts.ConfigFN, "config", "c", getEnvvar("DEVPOD_INSTALLER_CONFIG", filepath.Join(dir, "devpod.config.yaml")), "path to the config file, use - for stdin")
 	renderCmd.PersistentFlags().StringVarP(&renderOpts.Namespace, "namespace", "n", getEnvvar("NAMESPACE", "default"), "namespace to deploy to")
 	renderCmd.Flags().BoolVar(&renderOpts.ValidateConfigDisabled, "no-validation", false, "if set, the config will not be validated before running")
 	renderCmd.Flags().BoolVar(&renderOpts.UseExperimentalConfig, "use-experimental-config", false, "enable the use of experimental config that is prone to be changed")

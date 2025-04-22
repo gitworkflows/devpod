@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -13,8 +13,8 @@ import {
     PrebuildInitializer,
     SnapshotInitializer,
     WorkspaceInitializer,
-} from "@devpod/content-service/lib";
-import { CompositeInitializer, FromBackupInitializer } from "@devpod/content-service/lib/initializer_pb";
+} from "@khulnasoft/content-service/lib";
+import { CompositeInitializer, FromBackupInitializer } from "@khulnasoft/content-service/lib/initializer_pb";
 import {
     DBWithTracing,
     ProjectDB,
@@ -24,8 +24,8 @@ import {
     TracedWorkspaceDB,
     UserDB,
     WorkspaceDB,
-} from "@devpod/devpod-db/lib";
-import { BlockedRepositoryDB } from "@devpod/devpod-db/lib/blocked-repository-db";
+} from "@khulnasoft/devpod-db/lib";
+import { BlockedRepositoryDB } from "@khulnasoft/devpod-db/lib/blocked-repository-db";
 import {
     AdditionalContentContext,
     BillingTier,
@@ -34,9 +34,9 @@ import {
     DisposableCollection,
     EnvVar,
     GitCheckoutInfo,
-    GitpodServer,
-    GitpodToken,
-    GitpodTokenType,
+    DevpodServer,
+    DevpodToken,
+    DevpodTokenType,
     HeadlessWorkspaceEventType,
     IDESettings,
     ImageBuildLogInfo,
@@ -61,14 +61,14 @@ import {
     WorkspaceInstancePhase,
     WorkspaceInstanceStatus,
     WorkspaceTimeoutDuration,
-} from "@devpod/devpod-protocol";
-import { IAnalyticsWriter, TrackMessage } from "@devpod/devpod-protocol/lib/analytics";
-import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
-import { Deferred } from "@devpod/devpod-protocol/lib/util/deferred";
-import { LogContext, log } from "@devpod/devpod-protocol/lib/util/logging";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
-import { WorkspaceRegion } from "@devpod/devpod-protocol/lib/workspace-cluster";
-import * as IdeServiceApi from "@devpod/ide-service-api/lib/ide.pb";
+} from "@khulnasoft/devpod-protocol";
+import { IAnalyticsWriter, TrackMessage } from "@khulnasoft/devpod-protocol/lib/analytics";
+import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
+import { Deferred } from "@khulnasoft/devpod-protocol/lib/util/deferred";
+import { LogContext, log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { WorkspaceRegion } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+import * as IdeServiceApi from "@khulnasoft/ide-service-api/lib/ide.pb";
 import {
     BuildRegistryAuth,
     BuildRegistryAuthSelective,
@@ -81,15 +81,15 @@ import {
     BuildStatus,
     ImageBuilderClientProvider,
     ResolveBaseImageRequest,
-} from "@devpod/image-builder/lib";
+} from "@khulnasoft/image-builder/lib";
 import {
     IDEImage,
     PromisifiedWorkspaceManagerClient,
     StartWorkspaceResponse,
     StartWorkspaceSpec,
     WorkspaceFeatureFlag,
-} from "@devpod/ws-manager/lib";
-import { WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
+} from "@khulnasoft/ws-manager/lib";
+import { WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
 import {
     AdmissionLevel,
     EnvironmentVariable,
@@ -103,7 +103,7 @@ import {
     StopWorkspacePolicy,
     StopWorkspaceRequest,
     DescribeWorkspaceRequest,
-} from "@devpod/ws-manager/lib/core_pb";
+} from "@khulnasoft/ws-manager/lib/core_pb";
 import * as grpc from "@grpc/grpc-js";
 import * as crypto from "crypto";
 import { inject, injectable } from "inversify";
@@ -132,18 +132,18 @@ import { SYSTEM_USER, SYSTEM_USER_ID } from "../authorization/authorizer";
 import { EnvVarService, ResolvedEnvVars } from "../user/env-var-service";
 import { RedlockAbortSignal } from "redlock";
 import { ConfigProvider } from "./config-provider";
-import { isGrpcError } from "@devpod/devpod-protocol/lib/util/grpc";
-import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { isGrpcError } from "@khulnasoft/devpod-protocol/lib/util/grpc";
+import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 import { ctxIsAborted, runWithRequestContext, runWithSubjectId } from "../util/request-context";
 import { SubjectId } from "../auth/subject-id";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { IDESettingsVersion } from "@devpod/devpod-protocol/lib/ide-protocol";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { IDESettingsVersion } from "@khulnasoft/devpod-protocol/lib/ide-protocol";
 import { getFeatureFlagEnableExperimentalJBTB } from "../util/featureflags";
 import { OrganizationService } from "../orgs/organization-service";
 import { ProjectsService } from "../projects/projects-service";
 import { ImageFileRevisionMissing } from "../repohost";
 
-export interface StartWorkspaceOptions extends Omit<GitpodServer.StartWorkspaceOptions, "ideSettings"> {
+export interface StartWorkspaceOptions extends Omit<DevpodServer.StartWorkspaceOptions, "ideSettings"> {
     excludeFeatureFlags?: NamedWorkspaceFeatureFlag[];
     ideSettings?: ExtendedIDESettings;
 }
@@ -521,7 +521,7 @@ export class WorkspaceStarter {
                     },
                     stoppedTime: new Date().toISOString(),
                 });
-                await this.userDB.trace({ span }).deleteGitpodTokensNamedLike(workspace.ownerId, `${instance.id}-%`);
+                await this.userDB.trace({ span }).deleteDevpodTokensNamedLike(workspace.ownerId, `${instance.id}-%`);
                 await this.publisher.publishInstanceUpdate({
                     instanceID: updated.id,
                     ownerID: workspace.ownerId,
@@ -552,12 +552,12 @@ export class WorkspaceStarter {
             if (tier === "free") {
                 throw new ApplicationError(
                     ErrorCodes.PRECONDITION_FAILED,
-                    `${contextURL} requires a paid plan on Gitpod.`,
+                    `${contextURL} requires a paid plan on Devpod.`,
                 );
             }
         }
         if (!blockedRepository.blockFreeUsage) {
-            throw new ApplicationError(ErrorCodes.PRECONDITION_FAILED, `${contextURL} is blocklisted on Gitpod.`);
+            throw new ApplicationError(ErrorCodes.PRECONDITION_FAILED, `${contextURL} is blocklisted on Devpod.`);
         }
     }
 
@@ -1387,33 +1387,33 @@ export class WorkspaceStarter {
         });
 
         const contextUrlEnv = new EnvironmentVariable();
-        contextUrlEnv.setName("GITPOD_WORKSPACE_CONTEXT_URL");
+        contextUrlEnv.setName("DEVPOD_WORKSPACE_CONTEXT_URL");
         // Beware that `workspace.contextURL` is not normalized so it might contain other modifiers
         // making it not a valid URL
         contextUrlEnv.setValue(workspace.context.normalizedContextURL || workspace.contextURL);
         envvars.push(contextUrlEnv);
 
         const contextEnv = new EnvironmentVariable();
-        contextEnv.setName("GITPOD_WORKSPACE_CONTEXT");
+        contextEnv.setName("DEVPOD_WORKSPACE_CONTEXT");
         contextEnv.setValue(JSON.stringify(workspace.context));
         envvars.push(contextEnv);
 
         const info = this.config.workspaceClasses.find((cls) => cls.id === instance.workspaceClass);
         if (!!info) {
             const workspaceClassInfoEnv = new EnvironmentVariable();
-            workspaceClassInfoEnv.setName("GITPOD_WORKSPACE_CLASS_INFO");
+            workspaceClassInfoEnv.setName("DEVPOD_WORKSPACE_CLASS_INFO");
             workspaceClassInfoEnv.setValue(JSON.stringify(info));
             envvars.push(workspaceClassInfoEnv);
         }
 
         log.debug("Workspace config", workspace.config);
 
-        const tasks = resolveGitpodTasks(workspace, instance);
+        const tasks = resolveDevpodTasks(workspace, instance);
         if (tasks.length) {
             // The task config is interpreted by supervisor only, there's little point in transforming it into something
             // wsman understands and back into the very same structure.
             const ev = new EnvironmentVariable();
-            ev.setName("GITPOD_TASKS");
+            ev.setName("DEVPOD_TASKS");
             ev.setValue(JSON.stringify(tasks));
             envvars.push(ev);
         }
@@ -1434,7 +1434,7 @@ export class WorkspaceStarter {
             const defaultLimit: number = 1073741824;
 
             const rLimitCore = new EnvironmentVariable();
-            rLimitCore.setName("GITPOD_RLIMIT_CORE");
+            rLimitCore.setName("DEVPOD_RLIMIT_CORE");
             rLimitCore.setValue(
                 JSON.stringify({
                     softLimit: workspace.config.coreDump?.softLimit || defaultLimit,
@@ -1444,19 +1444,19 @@ export class WorkspaceStarter {
             envvars.push(rLimitCore);
         }
 
-        const createGitpodTokenPromise = (async () => {
-            const scopes = this.createDefaultGitpodAPITokenScopes(workspace, instance);
+        const createDevpodTokenPromise = (async () => {
+            const scopes = this.createDefaultDevpodAPITokenScopes(workspace, instance);
             const token = crypto.randomBytes(30).toString("hex");
             const tokenHash = crypto.createHash("sha256").update(token, "utf8").digest("hex");
-            const dbToken: GitpodToken = {
+            const dbToken: DevpodToken = {
                 tokenHash,
                 name: `${instance.id}-default`,
-                type: GitpodTokenType.MACHINE_AUTH_TOKEN,
+                type: DevpodTokenType.MACHINE_AUTH_TOKEN,
                 userId: user.id,
                 scopes,
                 created: new Date().toISOString(),
             };
-            await this.userDB.trace(traceCtx).storeGitpodToken(dbToken);
+            await this.userDB.trace(traceCtx).storeDevpodToken(dbToken);
 
             const tokenExpirationTime = new Date();
             tokenExpirationTime.setMinutes(tokenExpirationTime.getMinutes() + 24 * 60);
@@ -1550,11 +1550,11 @@ export class WorkspaceStarter {
 
         const organizationSettings = await this.orgService.getSettings(user.id, workspace.organizationId);
         sysEnvvars.push(
-            newEnvVar("GITPOD_COMMIT_ANNOTATION_ENABLED", organizationSettings.annotateGitCommits ? "true" : "false"),
+            newEnvVar("DEVPOD_COMMIT_ANNOTATION_ENABLED", organizationSettings.annotateGitCommits ? "true" : "false"),
         );
 
         const orgIdEnv = new EnvironmentVariable();
-        orgIdEnv.setName("GITPOD_DEFAULT_WORKSPACE_IMAGE");
+        orgIdEnv.setName("DEVPOD_DEFAULT_WORKSPACE_IMAGE");
         orgIdEnv.setValue(await this.configProvider.getDefaultImage(workspace.organizationId));
         sysEnvvars.push(orgIdEnv);
 
@@ -1562,13 +1562,13 @@ export class WorkspaceStarter {
         const [isSetJavaXmx, isSetJavaProcessorCount, disableJetBrainsLocalPortForwarding] = await Promise.all([
             client
                 .getValueAsync("supervisor_set_java_xmx", false, { user })
-                .then((v) => newEnvVar("GITPOD_IS_SET_JAVA_XMX", String(v))),
+                .then((v) => newEnvVar("DEVPOD_IS_SET_JAVA_XMX", String(v))),
             client
                 .getValueAsync("supervisor_set_java_processor_count", false, { user })
-                .then((v) => newEnvVar("GITPOD_IS_SET_JAVA_PROCESSOR_COUNT", String(v))),
+                .then((v) => newEnvVar("DEVPOD_IS_SET_JAVA_PROCESSOR_COUNT", String(v))),
             client
                 .getValueAsync("disable_jetbrains_local_port_forwarding", false, { user })
-                .then((v) => newEnvVar("GITPOD_DISABLE_JETBRAINS_LOCAL_PORT_FORWARDING", String(v))),
+                .then((v) => newEnvVar("DEVPOD_DISABLE_JETBRAINS_LOCAL_PORT_FORWARDING", String(v))),
         ]);
         sysEnvvars.push(isSetJavaXmx);
         sysEnvvars.push(isSetJavaProcessorCount);
@@ -1577,12 +1577,12 @@ export class WorkspaceStarter {
         const workspaceName = Workspace.fromWorkspaceName(workspace.description);
         if (workspaceName && workspaceName.length > 0) {
             const workspaceNameEnv = new EnvironmentVariable();
-            workspaceNameEnv.setName("GITPOD_WORKSPACE_NAME");
+            workspaceNameEnv.setName("DEVPOD_WORKSPACE_NAME");
             workspaceNameEnv.setValue(workspaceName);
             sysEnvvars.push(workspaceNameEnv);
         }
         const spec = new StartWorkspaceSpec();
-        await createGitpodTokenPromise;
+        await createDevpodTokenPromise;
         spec.setEnvvarsList(envvars);
         spec.setSysEnvvarsList(sysEnvvars);
         spec.setGit(this.createGitSpec(workspace, user));
@@ -1644,7 +1644,7 @@ export class WorkspaceStarter {
         return spec;
     }
 
-    private createDefaultGitpodAPITokenScopes(workspace: Workspace, instance: WorkspaceInstance): string[] {
+    private createDefaultDevpodAPITokenScopes(workspace: Workspace, instance: WorkspaceInstance): string[] {
         const scopes = [
             "function:getWorkspace",
             "function:getLoggedInUser",
@@ -1658,12 +1658,12 @@ export class WorkspaceStarter {
             "function:getOpenPorts",
             "function:openPort",
             "function:closePort",
-            "function:generateNewGitpodToken",
+            "function:generateNewDevpodToken",
             "function:takeSnapshot",
             "function:waitForSnapshot",
             "function:stopWorkspace",
             "function:getToken",
-            "function:getGitpodTokenScopes",
+            "function:getDevpodTokenScopes",
             "function:accessCodeSyncStorage",
             "function:guessGitTokenScopes",
             "function:updateGitStatus",
@@ -1673,7 +1673,7 @@ export class WorkspaceStarter {
             "function:getTeams",
             "function:trackEvent",
             "function:getSupportedWorkspaceClasses",
-            // getIDToken is used by Gitpod's OIDC Identity Provider to check for authorisation.
+            // getIDToken is used by Devpod's OIDC Identity Provider to check for authorisation.
             // Without this scope the workspace cannot produce ID tokens.
             "function:getIDToken",
             "function:getDefaultWorkspaceImage",
@@ -2041,7 +2041,7 @@ export class WorkspaceStarter {
         if (organizationId) {
             const envVars = await this.envVarService.listOrgEnvVarsWithValues(user.id, organizationId);
 
-            const additionalAuth = EnvVar.getGitpodImageAuth(envVars);
+            const additionalAuth = EnvVar.getDevpodImageAuth(envVars);
             additionalAuth.forEach((val, key) => auth.getAdditionalMap().set(key, val));
         }
 
@@ -2066,7 +2066,7 @@ export class WorkspaceStarter {
     }
 }
 
-function resolveGitpodTasks(ws: Workspace, instance: WorkspaceInstance): TaskConfig[] {
+function resolveDevpodTasks(ws: Workspace, instance: WorkspaceInstance): TaskConfig[] {
     const tasks: TaskConfig[] = [];
     if (ws.config.tasks) {
         tasks.push(...ws.config.tasks);

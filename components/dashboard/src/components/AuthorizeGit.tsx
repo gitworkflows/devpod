@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -15,7 +15,7 @@ import { Heading2, Heading3, Subheading } from "./typography/headings";
 import classNames from "classnames";
 import { iconForAuthProvider, simplifyProviderName } from "../provider-utils";
 import { useIsOwner } from "../data/organizations/members-query";
-import { AuthProviderDescription } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProviderDescription } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
 
 export function useNeedsGitAuthorization() {
     const { data: authProviders } = useAuthProviderDescriptions();

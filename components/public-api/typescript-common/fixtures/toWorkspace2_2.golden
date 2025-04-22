@@ -1,6 +1,6 @@
 {
     "result": {
-        "id": "devpodio-devpod-ve5gs3cb32j",
+        "id": "khulnasoft-devpod-ve5gs3cb32j",
         "metadata": {
             "ownerId": "b49148ed-6e1f-4eae-927f-1e62a3c9dab9",
             "organizationId": "ce36c2f8-5d43-4b1d-92f2-08cb6f0e0869",
@@ -26,13 +26,13 @@
                 {
                     "port": "3000",
                     "admission": "ADMISSION_LEVEL_OWNER_ONLY",
-                    "url": "https://3000-devpodio-devpod-ve5gs3cb32j.ws.devpod.io",
+                    "url": "https://3000-khulnasoft-devpod-ve5gs3cb32j.ws.devpod.khulnasoft.com",
                     "protocol": "PROTOCOL_HTTP"
                 },
                 {
                     "port": "3306",
                     "admission": "ADMISSION_LEVEL_EVERYONE",
-                    "url": "https://3306-devpodio-devpod-ve5gs3cb32j.ws.devpod.io",
+                    "url": "https://3306-khulnasoft-devpod-ve5gs3cb32j.ws.devpod.khulnasoft.com",
                     "protocol": "PROTOCOL_HTTP"
                 }
             ],
@@ -62,7 +62,7 @@
                 "name": "PHASE_RUNNING",
                 "lastTransitionTime": "2023-12-01T04:53:41.918Z"
             },
-            "workspaceUrl": "https://devpodio-devpod-ve5gs3cb32j.ws.devpod.io",
+            "workspaceUrl": "https://khulnasoft-devpod-ve5gs3cb32j.ws.devpod.khulnasoft.com",
             "conditions": {
                 "failed": "",
                 "failedReason": "FAILED_REASON_UNSPECIFIED",

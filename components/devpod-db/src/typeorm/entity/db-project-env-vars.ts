@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { PrimaryColumn, Entity, Column } from "typeorm";
 import { TypeORM } from "../typeorm";
-import { ProjectEnvVarWithValue } from "@devpod/devpod-protocol";
+import { ProjectEnvVarWithValue } from "@khulnasoft/devpod-protocol";
 import { Transformer } from "../transformer";
-import { getGlobalEncryptionService } from "@devpod/devpod-protocol/lib/encryption/encryption-service";
+import { getGlobalEncryptionService } from "@khulnasoft/devpod-protocol/lib/encryption/encryption-service";
 
 @Entity()
 // on DB but not Typeorm: @Index("ind_lastModified", ["_lastModified"])   // DBSync

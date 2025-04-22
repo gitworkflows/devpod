@@ -1,5 +1,5 @@
 {
-  "name": "@devpod/ide-metrics-api-grpcweb",
+  "name": "@khulnasoft/ide-metrics-api-grpcweb",
   "version": "0.0.1",
   "license": "UNLICENSED",
   "main": "lib/index.js",

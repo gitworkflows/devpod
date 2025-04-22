@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TeamDB, UserDB } from "@devpod/devpod-db/lib";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TeamDB, UserDB } from "@khulnasoft/devpod-db/lib";
 import {
     OrgMemberInfo,
     Organization,
@@ -14,26 +14,26 @@ import {
     WorkspaceTimeoutDuration,
     OrgMemberRole,
     User,
-} from "@devpod/devpod-protocol";
-import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+} from "@khulnasoft/devpod-protocol";
+import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { inject, injectable } from "inversify";
 import { Authorizer, SYSTEM_USER, SYSTEM_USER_ID } from "../authorization/authorizer";
 import { ProjectsService } from "../projects/projects-service";
-import { TransactionalContext } from "@devpod/devpod-db/lib/typeorm/transactional-db-impl";
+import { TransactionalContext } from "@khulnasoft/devpod-db/lib/typeorm/transactional-db-impl";
 import { DefaultWorkspaceImageValidator } from "./default-workspace-image-validator";
-import { getPrimaryEmail } from "@devpod/public-api-common/lib/user-utils";
+import { getPrimaryEmail } from "@khulnasoft/public-api-common/lib/user-utils";
 import { UserService } from "../user/user-service";
-import { SupportedWorkspaceClass } from "@devpod/devpod-protocol/lib/workspace-class";
+import { SupportedWorkspaceClass } from "@khulnasoft/devpod-protocol/lib/workspace-class";
 import { InstallationService } from "../auth/installation-service";
-import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 import { runWithSubjectId } from "../util/request-context";
 import { IDEService } from "../ide-service";
 import { StripeService } from "../billing/stripe-service";
-import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
+import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
 import { UsageService } from "./usage-service";
-import { CostCenter_BillingStrategy } from "@devpod/devpod-protocol/lib/usage";
+import { CostCenter_BillingStrategy } from "@khulnasoft/devpod-protocol/lib/usage";
 import { CreateUserParams, UserAuthentication } from "../user/user-authentication";
 import isURL from "validator/lib/isURL";
 import { merge } from "ts-deepmerge";

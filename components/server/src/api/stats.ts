@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { ServiceImpl } from "@connectrpc/connect";
-import { UserDB } from "@devpod/devpod-db/lib";
-import { StatsService } from "@devpod/public-api/lib/devpod/experimental/v1/stats_connect";
-import { GetUserStatsRequest, GetUserStatsResponse } from "@devpod/public-api/lib/devpod/experimental/v1/stats_pb";
+import { UserDB } from "@khulnasoft/devpod-db/lib";
+import { StatsService } from "@khulnasoft/public-api/lib/devpod/experimental/v1/stats_connect";
+import { GetUserStatsRequest, GetUserStatsResponse } from "@khulnasoft/public-api/lib/devpod/experimental/v1/stats_pb";
 import { inject, injectable } from "inversify";
 
 @injectable()

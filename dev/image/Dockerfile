@@ -1,4 +1,4 @@
-# Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2020 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -44,20 +44,20 @@ RUN cd /usr/bin && curl -fsSL https://github.com/cert-manager/cert-manager/relea
 # gokart
 RUN cd /usr/bin && curl -fsSL https://github.com/praetorian-inc/gokart/releases/download/v0.4.0/gokart_0.4.0_linux_x86_64.tar.gz | tar xzv --no-anchored gokart
 
-# leeway
-ARG LEEWAY_VERSION=0.8.2
-ENV LEEWAY_MAX_PROVENANCE_BUNDLE_SIZE=8388608
-ENV LEEWAY_WORKSPACE_ROOT=/workspace/devpod
-ENV LEEWAY_REMOTE_CACHE_BUCKET=leeway-cache-dev-3ac8ef5
-ENV LEEWAY_CACHE_DIR=/workspace/.leeway/cache
-ENV LEEWAY_BUILD_DIR=/workspace/.leeway/build
-RUN cd /usr/bin && curl -fsSL https://github.com/gitpod-io/leeway/releases/download/v${LEEWAY_VERSION}/leeway_${LEEWAY_VERSION}_Linux_x86_64.tar.gz | tar xz
+# blazedock
+ARG BLAZEDOCK_VERSION=0.8.2
+ENV BLAZEDOCK_MAX_PROVENANCE_BUNDLE_SIZE=8388608
+ENV BLAZEDOCK_WORKSPACE_ROOT=/workspace/devpod
+ENV BLAZEDOCK_REMOTE_CACHE_BUCKET=blazedock-cache-dev-3ac8ef5
+ENV BLAZEDOCK_CACHE_DIR=/workspace/.blazedock/cache
+ENV BLAZEDOCK_BUILD_DIR=/workspace/.blazedock/build
+RUN cd /usr/bin && curl -fsSL https://github.com/khulnasoft/blazedock/releases/download/v${BLAZEDOCK_VERSION}/blazedock_${BLAZEDOCK_VERSION}_Linux_x86_64.tar.gz | tar xz
 
 # evans (gRPC client)
 RUN cd /usr/bin && curl -fsSL https://github.com/ktr0731/evans/releases/download/v0.10.6/evans_linux_amd64.tar.gz | tar xz evans
 
 # dazzle
-RUN cd /usr/bin && curl -fsSL https://github.com/gitpod-io/dazzle/releases/download/v0.1.12/dazzle_0.1.12_Linux_x86_64.tar.gz | tar xz
+RUN cd /usr/bin && curl -fsSL https://github.com/khulnasoft/dazzle/releases/download/v0.1.12/dazzle_0.1.12_Linux_x86_64.tar.gz | tar xz
 
 # werft CLI
 ENV WERFT_CREDENTIAL_HELPER=/workspace/devpod/dev/preview/werft-credential-helper.sh
@@ -124,14 +124,14 @@ RUN install-packages netcat
 USER devpod
 
 # Fix node version we develop against
-ARG GITPOD_NODE_VERSION=18.20.4
+ARG DEVPOD_NODE_VERSION=18.20.4
 RUN bash -c ". .nvm/nvm.sh \
-    && nvm install $GITPOD_NODE_VERSION \
+    && nvm install $DEVPOD_NODE_VERSION \
     && npm install -g typescript yarn"
-ENV PATH=/home/devpod/.nvm/versions/node/v${GITPOD_NODE_VERSION}/bin:$PATH
+ENV PATH=/home/devpod/.nvm/versions/node/v${DEVPOD_NODE_VERSION}/bin:$PATH
 
-## Register leeway autocompletion in bashrc
-RUN bash -c "echo . \<\(leeway bash-completion\) >> ~/.bashrc"
+## Register blazedock autocompletion in bashrc
+RUN bash -c "echo . \<\(blazedock bash-completion\) >> ~/.bashrc"
 
 ### Google Cloud ###
 # not installed via repository as then 'docker-credential-gcr' is not available
@@ -249,10 +249,10 @@ RUN bash -c "echo . \<\(gpctl completion bash\) >> ~/.bashrc"
 ENV PATH=$PATH:/workspace/bin
 
 # Setting the environment variable here so that it will be accessible to all tasks and
-# terminal sessions in Gitpod workspaces.
+# terminal sessions in Devpod workspaces.
 ENV PREVIEW_ENV_DEV_SA_KEY_PATH=/home/devpod/.config/gcloud/preview-environment-dev-sa.json
 
-# So we can parse the report.html output by leeway, and remove the output produced by this image build
+# So we can parse the report.html output by blazedock, and remove the output produced by this image build
 # why? it's too verbose, exceeding the Github Actions summary limit
 RUN go install github.com/ericchiang/pup@v0.4.0
 

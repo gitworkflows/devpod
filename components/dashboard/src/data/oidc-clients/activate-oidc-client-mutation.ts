@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { oidcService } from "../../service/public-api";
 import { useCurrentOrg } from "../organizations/orgs-query";
 import { getOIDCClientsQueryKey } from "./oidc-clients-query";
-import { SetClientConfigActivationResponse } from "@devpod/public-api/lib/devpod/experimental/v1/oidc_pb";
+import { SetClientConfigActivationResponse } from "@khulnasoft/public-api/lib/devpod/experimental/v1/oidc_pb";
 
 type ActivateOIDCClientArgs = {
     id: string;

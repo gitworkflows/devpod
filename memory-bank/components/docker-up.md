@@ -2,12 +2,12 @@
 
 ## Overview
 
-The Docker-Up component in Gitpod is responsible for setting up and managing Docker within workspace containers. It provides a way to run Docker in a rootless mode inside Gitpod workspaces, enabling users to build and run containers without requiring privileged access. The component handles the installation, configuration, and startup of Docker daemon and related tools, ensuring they work correctly within the constraints of a workspace environment.
+The Docker-Up component in Devpod is responsible for setting up and managing Docker within workspace containers. It provides a way to run Docker in a rootless mode inside Devpod workspaces, enabling users to build and run containers without requiring privileged access. The component handles the installation, configuration, and startup of Docker daemon and related tools, ensuring they work correctly within the constraints of a workspace environment.
 
 ## Purpose
 
 The primary purposes of the Docker-Up component are:
-- Enable Docker functionality within Gitpod workspaces
+- Enable Docker functionality within Devpod workspaces
 - Provide rootless Docker execution for security
 - Automatically install Docker and its dependencies when needed
 - Configure Docker daemon with appropriate settings for workspace environments
@@ -27,7 +27,7 @@ The Docker-Up component consists of several key parts:
 3. **Dockerd**: Configuration and argument parsing for the Docker daemon
 4. **Embedded Binaries**: Docker, Docker Compose, and runc binaries embedded in the component
 
-The component is designed to run as a service within a Gitpod workspace, automatically starting when Docker functionality is requested and configuring the environment appropriately.
+The component is designed to run as a service within a Devpod workspace, automatically starting when Docker functionality is requested and configuring the environment appropriately.
 
 ## Key Features
 
@@ -74,13 +74,13 @@ The Docker-Up component can be configured through command-line flags and environ
 - `--auto-install`: Auto-install prerequisites (Docker)
 - `--user-accessible-socket`: Make the Docker socket user accessible
 - `--dont-wrap-netns`: Control network namespace wrapping
-- `--auto-login`: Use content of GITPOD_IMAGE_AUTH to automatically login with the Docker daemon
+- `--auto-login`: Use content of DEVPOD_IMAGE_AUTH to automatically login with the Docker daemon
 
 ### Environment Variables
 - `DOCKERD_ARGS`: JSON-formatted custom arguments for the Docker daemon
 - `LISTEN_FDS`: Used for socket activation
 - `WORKSPACEKIT_WRAP_NETNS`: Controls network namespace wrapping
-- `GITPOD_IMAGE_AUTH`: Docker registry authentication information
+- `DEVPOD_IMAGE_AUTH`: Docker registry authentication information
 
 ## Integration Points
 

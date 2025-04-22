@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -74,7 +74,7 @@ func main() {
 	pflag.BoolVar(&opts.AutoInstall, "auto-install", true, "auto-install prerequisites (docker)")
 	pflag.BoolVar(&opts.UserAccessibleSocket, "user-accessible-socket", true, "chmod the Docker socket to make it user accessible")
 	pflag.BoolVar(&opts.DontWrapNetNS, "dont-wrap-netns", os.Getenv("WORKSPACEKIT_WRAP_NETNS") == "true", "wrap the Docker daemon in a network namespace")
-	pflag.BoolVar(&opts.AutoLogin, "auto-login", false, "use content of GITPOD_IMAGE_AUTH to automatically login with the docker daemon")
+	pflag.BoolVar(&opts.AutoLogin, "auto-login", false, "use content of DEVPOD_IMAGE_AUTH to automatically login with the docker daemon")
 	pflag.Parse()
 
 	logger := logrus.New()
@@ -86,7 +86,7 @@ func main() {
 
 	listenFD := os.Getenv("LISTEN_FDS") != ""
 	if _, err := os.Stat(dockerSocketFN); !listenFD && (err == nil || !os.IsNotExist(err)) {
-		logger.Fatalf("Docker socket already exists at %s.\nIn a Gitpod workspace Docker will start automatically when used.\nIf all else fails, please remove %s and try again.", dockerSocketFN, dockerSocketFN)
+		logger.Fatalf("Docker socket already exists at %s.\nIn a Devpod workspace Docker will start automatically when used.\nIf all else fails, please remove %s and try again.", dockerSocketFN, dockerSocketFN)
 	}
 
 	err = ensurePrerequisites()
@@ -136,7 +136,7 @@ func runWithinNetns() (err error) {
 	// configure docker0 MTU (used as control plane, not related to containers)
 	args = append(args, fmt.Sprintf("--network-control-plane-mtu=%v", netIface.Attrs().MTU))
 
-	// cmp. ENT-324: Required to run dockerd >= 26.1 in a Gitpod workspace
+	// cmp. ENT-324: Required to run dockerd >= 26.1 in a Devpod workspace
 	os.Setenv("DOCKER_ALLOW_IPV6_ON_IPV4_INTERFACE", "1")
 
 	if listenFDs > 0 {

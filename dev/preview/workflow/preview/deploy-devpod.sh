@@ -17,21 +17,21 @@ PREVIEW_K3S_KUBE_CONTEXT="${PREVIEW_K3S_KUBE_CONTEXT:-$PREVIEW_NAME}"
 PREVIEW_NAMESPACE="default"
 PREVIEW_SORUCE_CERT_NAME="certificate-${PREVIEW_NAME}"
 
-GITPOD_AGENT_SMITH_TOKEN="$(openssl rand -hex 30)"
-GITPOD_AGENT_SMITH_TOKEN_HASH="$(echo -n "$GITPOD_AGENT_SMITH_TOKEN" | sha256sum - | tr -d '  -')"
-GITPOD_CONTAINER_REGISTRY_URL="ghcr.io/devpod-dev-artifact/image-build/";
-GITPOD_IMAGE_PULL_SECRET_NAME="image-pull-secret";
-GITPOD_PROXY_SECRET_NAME="proxy-config-certificates";
-GITPOD_ANALYTICS="${GITPOD_ANALYTICS:-}"
-GITPOD_WORKSPACE_FEATURE_FLAGS="${GITPOD_WORKSPACE_FEATURE_FLAGS:-}"
-GITPOD_WITH_DEDICATED_EMU="${GITPOD_WITH_DEDICATED_EMU:-false}"
+DEVPOD_AGENT_SMITH_TOKEN="$(openssl rand -hex 30)"
+DEVPOD_AGENT_SMITH_TOKEN_HASH="$(echo -n "$DEVPOD_AGENT_SMITH_TOKEN" | sha256sum - | tr -d '  -')"
+DEVPOD_CONTAINER_REGISTRY_URL="ghcr.io/devpod-dev-artifact/image-build/";
+DEVPOD_IMAGE_PULL_SECRET_NAME="image-pull-secret";
+DEVPOD_PROXY_SECRET_NAME="proxy-config-certificates";
+DEVPOD_ANALYTICS="${DEVPOD_ANALYTICS:-}"
+DEVPOD_WORKSPACE_FEATURE_FLAGS="${DEVPOD_WORKSPACE_FEATURE_FLAGS:-}"
+DEVPOD_WITH_DEDICATED_EMU="${DEVPOD_WITH_DEDICATED_EMU:-false}"
 PREVIEW_GCP_PROJECT="devpod-dev-preview"
 
 
 if [[ "${VERSION:-}" == "" ]]; then
   if [[ ! -f  /tmp/local-dev-version ]]; then
     log_error "VERSION is not set and no fallback version exists in /tmp/local-dev-version."
-    log_info "Please run leeway run dev/preview:build or set VERSION"
+    log_info "Please run blazedock run dev/preview:build or set VERSION"
     exit 1
   fi
   VERSION="$(cat /tmp/local-dev-version)"
@@ -41,7 +41,7 @@ fi
 INSTALLER_CONFIG_PATH="${INSTALLER_CONFIG_PATH:-$(mktemp "/tmp/XXXXXX.devpod.config.yaml")}"
 INSTALLER_RENDER_PATH="k8s.yaml" # k8s.yaml is hardcoded in post-prcess.sh - we can fix that later.
 
-# 1. Read versions from the file system. We rely on `leeway dev/preview:deploy-dependencies` to create this file for us
+# 1. Read versions from the file system. We rely on `blazedock dev/preview:deploy-dependencies` to create this file for us
 # Or from the docker file if it doesn't exist
 # Or just build it and get it from there
 if ! test -f "/tmp/versions.yaml"; then
@@ -49,7 +49,7 @@ if ! test -f "/tmp/versions.yaml"; then
   docker run --rm "ghcr.io/devpod-dev-artifact/build/versions:$VERSION" cat /versions.yaml > /tmp/versions.yaml || ec=$?
   if [[ ec -ne 0 ]];then
       VERSIONS_TMP_ZIP=$(mktemp "/tmp/XXXXXX.installer.tar.gz")
-      leeway build components:all-docker \
+      blazedock build components:all-docker \
                               --dont-test \
                               -Dversion="${VERSION}" \
                               --save "${VERSIONS_TMP_ZIP}"
@@ -60,13 +60,13 @@ fi
 
 if ! command -v installer;then
     INSTALLER_TMP_ZIP=$(mktemp "/tmp/XXXXXX.installer.tar.gz")
-    leeway build install/installer:raw-app --dont-test --save "${INSTALLER_TMP_ZIP}"
+    blazedock build install/installer:raw-app --dont-test --save "${INSTALLER_TMP_ZIP}"
     tar -xzvf "${INSTALLER_TMP_ZIP}" ./installer && sudo mv ./installer /usr/local/bin/
     rm "${INSTALLER_TMP_ZIP}"
 fi
 
 function copyCachedCertificate {
-  DESTINATION_CERT_NAME="$GITPOD_PROXY_SECRET_NAME"
+  DESTINATION_CERT_NAME="$DEVPOD_PROXY_SECRET_NAME"
 
   secret=$(gcloud secrets versions access latest --secret="${PREVIEW_SORUCE_CERT_NAME}" --project=${PREVIEW_GCP_PROJECT})
   kubectl \
@@ -118,7 +118,7 @@ function installFluentBit {
 waitUntilAllPodsAreReady "${PREVIEW_K3S_KUBE_PATH}" "${PREVIEW_K3S_KUBE_CONTEXT}" "kube-system"
 waitUntilAllPodsAreReady "${PREVIEW_K3S_KUBE_PATH}" "${PREVIEW_K3S_KUBE_CONTEXT}" "cert-manager"
 
-# Note: These should ideally be handled by `leeway run dev/preview:create`
+# Note: These should ideally be handled by `blazedock run dev/preview:create`
 tries=0
 while ! copyCachedCertificate; do
   if [[ ${tries} -gt 30 ]]; then
@@ -150,7 +150,7 @@ cat <<EOF > blockNewUsers.yaml
 blockNewUsers:
   enabled: true
   passlist:
-    - "devpod.io"
+    - "devpod.khulnasoft.com"
 EOF
 yq m -i --overwrite "${INSTALLER_CONFIG_PATH}" "blockNewUsers.yaml"
 rm blockNewUsers.yaml
@@ -168,12 +168,12 @@ rm shortname.yaml
 #
 # configureContainerRegistry
 #
-yq w -i "${INSTALLER_CONFIG_PATH}" certificate.name "${GITPOD_PROXY_SECRET_NAME}"
+yq w -i "${INSTALLER_CONFIG_PATH}" certificate.name "${DEVPOD_PROXY_SECRET_NAME}"
 yq w -i "${INSTALLER_CONFIG_PATH}" containerRegistry.inCluster "false"
 
-yq w -i "${INSTALLER_CONFIG_PATH}" containerRegistry.external.url "${GITPOD_CONTAINER_REGISTRY_URL}"
+yq w -i "${INSTALLER_CONFIG_PATH}" containerRegistry.external.url "${DEVPOD_CONTAINER_REGISTRY_URL}"
 yq w -i "${INSTALLER_CONFIG_PATH}" containerRegistry.external.certificate.kind secret
-yq w -i "${INSTALLER_CONFIG_PATH}" containerRegistry.external.certificate.name "${GITPOD_IMAGE_PULL_SECRET_NAME}"
+yq w -i "${INSTALLER_CONFIG_PATH}" containerRegistry.external.certificate.name "${DEVPOD_IMAGE_PULL_SECRET_NAME}"
 
 #
 # configureDomain
@@ -254,7 +254,7 @@ yq w -i "${INSTALLER_CONFIG_PATH}" experimental.ide.ideMetrics.enabledErrorRepor
 # configureAuthProviders
 #
 
-if [[ "${GITPOD_WITH_DEDICATED_EMU}" != "true" ]]
+if [[ "${DEVPOD_WITH_DEDICATED_EMU}" != "true" ]]
 then
   secret=$(gcloud secrets versions access latest --secret="preview-envs-authproviders" --project=${PREVIEW_GCP_PROJECT})
   for row in $(gcloud secrets versions access latest --secret="preview-envs-authproviders" --project=${PREVIEW_GCP_PROJECT}  | yq r - "authProviders" \
@@ -283,7 +283,7 @@ fi
 #
 # configure dedicated emulation
 #
-if [[ "${GITPOD_WITH_DEDICATED_EMU}" == "true" ]]
+if [[ "${DEVPOD_WITH_DEDICATED_EMU}" == "true" ]]
 then
   yq w -i "${INSTALLER_CONFIG_PATH}" experimental.webapp.server.isDedicatedInstallation "true"
 fi
@@ -291,7 +291,7 @@ fi
 #
 # configureStripeAPIKeys
 #
-if [[ "${GITPOD_WITH_DEDICATED_EMU}" != "true" ]]
+if [[ "${DEVPOD_WITH_DEDICATED_EMU}" != "true" ]]
 then
   secret=$(gcloud secrets versions access latest --secret="stripe-api-keys" --project=${PREVIEW_GCP_PROJECT})
   kubectl \
@@ -307,7 +307,7 @@ fi
 #
 # configureLinkedIn
 #
-if [[ "${GITPOD_WITH_DEDICATED_EMU}" != "true" ]]
+if [[ "${DEVPOD_WITH_DEDICATED_EMU}" != "true" ]]
 then
   secret=$(gcloud secrets versions access latest --secret="linked-in" --project=${PREVIEW_GCP_PROJECT})
   kubectl \
@@ -380,50 +380,50 @@ yq w -i "${INSTALLER_CONFIG_PATH}" experimental.webapp.publicApi.personalAccessT
 # configure workspace template and workspace class template
 #
 yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers[+].name' "workspace"
-yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env[+].name' "GITPOD_PREVENT_METADATA_ACCESS"
-yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env.(name==GITPOD_PREVENT_METADATA_ACCESS).value' "true"
+yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env[+].name' "DEVPOD_PREVENT_METADATA_ACCESS"
+yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env.(name==DEVPOD_PREVENT_METADATA_ACCESS).value' "true"
 
 yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers[+].name' "workspace"
-yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env[+].name' "GITPOD_PREVENT_METADATA_ACCESS"
-yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env.(name==GITPOD_PREVENT_METADATA_ACCESS).value' "true"
+yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env[+].name' "DEVPOD_PREVENT_METADATA_ACCESS"
+yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env.(name==DEVPOD_PREVENT_METADATA_ACCESS).value' "true"
 
 yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers[+].name' "workspace"
-yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env[+].name' "GITPOD_PREVENT_METADATA_ACCESS"
-yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env.(name==GITPOD_PREVENT_METADATA_ACCESS).value' "true"
+yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env[+].name' "DEVPOD_PREVENT_METADATA_ACCESS"
+yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env.(name==DEVPOD_PREVENT_METADATA_ACCESS).value' "true"
 
 #
 # includeAnalytics
 #
-if [[ "${GITPOD_ANALYTICS}" == "segment" ]]; then
-  GITPOD_ANALYTICS_SEGMENT_TOKEN="$(gcloud secrets versions access latest --secret="segment-staging-write-key" --project=${PREVIEW_GCP_PROJECT})"
-  if [[ -z "${GITPOD_ANALYTICS_SEGMENT_TOKEN}" ]]; then
-    echo "GITPOD_ANALYTICS_SEGMENT_TOKEN is empty"
+if [[ "${DEVPOD_ANALYTICS}" == "segment" ]]; then
+  DEVPOD_ANALYTICS_SEGMENT_TOKEN="$(gcloud secrets versions access latest --secret="segment-staging-write-key" --project=${PREVIEW_GCP_PROJECT})"
+  if [[ -z "${DEVPOD_ANALYTICS_SEGMENT_TOKEN}" ]]; then
+    echo "DEVPOD_ANALYTICS_SEGMENT_TOKEN is empty"
     exit 1
   fi
 
   yq w -i "${INSTALLER_CONFIG_PATH}" analytics.writer segment
-  yq w -i "${INSTALLER_CONFIG_PATH}" analytics.segmentKey "${GITPOD_ANALYTICS_SEGMENT_TOKEN}"
+  yq w -i "${INSTALLER_CONFIG_PATH}" analytics.segmentKey "${DEVPOD_ANALYTICS_SEGMENT_TOKEN}"
   yq w -i "${INSTALLER_CONFIG_PATH}" analytics.segmentEndpoint "http://proxy.default.svc.cluster.local:9546/analytics"
   # configure proxy analyitcs plugin
-  yq w -i "${INSTALLER_CONFIG_PATH}" experimental.webapp.proxy.analyticsPlugin.trustedSegmentKey "${GITPOD_ANALYTICS_SEGMENT_TOKEN}"
-  yq w -i "${INSTALLER_CONFIG_PATH}" experimental.webapp.proxy.analyticsPlugin.untrustedSegmentKey "${GITPOD_ANALYTICS_SEGMENT_TOKEN}"
+  yq w -i "${INSTALLER_CONFIG_PATH}" experimental.webapp.proxy.analyticsPlugin.trustedSegmentKey "${DEVPOD_ANALYTICS_SEGMENT_TOKEN}"
+  yq w -i "${INSTALLER_CONFIG_PATH}" experimental.webapp.proxy.analyticsPlugin.untrustedSegmentKey "${DEVPOD_ANALYTICS_SEGMENT_TOKEN}"
 
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env[+].name' "GITPOD_ANALYTICS_WRITER"
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env.(name==GITPOD_ANALYTICS_WRITER).value' "segment"
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env[+].name' "GITPOD_ANALYTICS_SEGMENT_ENDPOINT"
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env.(name==GITPOD_ANALYTICS_SEGMENT_ENDPOINT).value' "https://${DOMAIN}/analytics"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env[+].name' "DEVPOD_ANALYTICS_WRITER"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env.(name==DEVPOD_ANALYTICS_WRITER).value' "segment"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env[+].name' "DEVPOD_ANALYTICS_SEGMENT_ENDPOINT"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'workspace.templates.default.spec.containers.(name==workspace).env.(name==DEVPOD_ANALYTICS_SEGMENT_ENDPOINT).value' "https://${DOMAIN}/analytics"
 
   # add to g1-standard workspace class
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env[+].name' "GITPOD_ANALYTICS_WRITER"
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env.(name==GITPOD_ANALYTICS_WRITER).value' "segment"
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env[+].name' "GITPOD_ANALYTICS_SEGMENT_ENDPOINT"
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env.(name==GITPOD_ANALYTICS_SEGMENT_ENDPOINT).value' "https://${DOMAIN}/analytics"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env[+].name' "DEVPOD_ANALYTICS_WRITER"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env.(name==DEVPOD_ANALYTICS_WRITER).value' "segment"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env[+].name' "DEVPOD_ANALYTICS_SEGMENT_ENDPOINT"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-standard.templates.default.spec.containers.(name==workspace).env.(name==DEVPOD_ANALYTICS_SEGMENT_ENDPOINT).value' "https://${DOMAIN}/analytics"
 
   # add to g1-small workspace class
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env[+].name' "GITPOD_ANALYTICS_WRITER"
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env.(name==GITPOD_ANALYTICS_WRITER).value' "segment"
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env[+].name' "GITPOD_ANALYTICS_SEGMENT_ENDPOINT"
-  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env.(name==GITPOD_ANALYTICS_SEGMENT_ENDPOINT).value' "https://${DOMAIN}/analytics"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env[+].name' "DEVPOD_ANALYTICS_WRITER"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env.(name==DEVPOD_ANALYTICS_WRITER).value' "segment"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env[+].name' "DEVPOD_ANALYTICS_SEGMENT_ENDPOINT"
+  yq w -i "${INSTALLER_CONFIG_PATH}" 'experimental.workspace.classes.g1-small.templates.default.spec.containers.(name==workspace).env.(name==DEVPOD_ANALYTICS_SEGMENT_ENDPOINT).value' "https://${DOMAIN}/analytics"
 else
   yq w -i "${INSTALLER_CONFIG_PATH}" analytics.writer ""
 fi
@@ -494,7 +494,7 @@ log_info "Post-processing"
 # configureWorkspaceFeatureFlags
 #
 touch /tmp/defaultFeatureFlags
-for feature in ${GITPOD_WORKSPACE_FEATURE_FLAGS}; do
+for feature in ${DEVPOD_WORKSPACE_FEATURE_FLAGS}; do
   # post-process.sh looks for /tmp/defaultFeatureFlags
   # each "flag" string gets added to the configmap
   # also watches aout for /tmp/payment
@@ -515,7 +515,7 @@ done
 # Run post-process script
 #
 
-WITH_VM=true "$SCRIPT_PATH/post-process.sh" "${PREVIEW_NAME}" "${GITPOD_AGENT_SMITH_TOKEN}"
+WITH_VM=true "$SCRIPT_PATH/post-process.sh" "${PREVIEW_NAME}" "${DEVPOD_AGENT_SMITH_TOKEN}"
 
 #
 # Cleanup from post-processing
@@ -559,14 +559,14 @@ done
 # =====================
 # Add agent smith token
 # =====================
-leeway run components:add-smith-token \
-  -DTOKEN="${GITPOD_AGENT_SMITH_TOKEN_HASH}" \
+blazedock run components:add-smith-token \
+  -DTOKEN="${DEVPOD_AGENT_SMITH_TOKEN_HASH}" \
   -DPREVIEW_K3S_KUBE_PATH="${PREVIEW_K3S_KUBE_PATH}" \
   -DPREVIEW_K3S_KUBE_CONTEXT="${PREVIEW_K3S_KUBE_CONTEXT}" \
   -DPREVIEW_NAMESPACE="${PREVIEW_NAMESPACE}"
 
 log_success "Installation is happy: https://${DOMAIN}/workspaces"
 
-leeway run dev/preview:deploy-monitoring-satellite
+blazedock run dev/preview:deploy-monitoring-satellite
 
 log_success "Installation is still happy: https://${DOMAIN}/workspaces"

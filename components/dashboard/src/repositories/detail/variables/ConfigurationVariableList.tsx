@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { useState } from "react";
 import { ConfigurationSettingsField } from "../ConfigurationSettingsField";
-import type { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
+import type { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
 import { Button } from "@podkit/buttons/Button";
 import { AddVariableModal } from "./ConfigurationAddVariableModal";
 import { Heading3, Subheading } from "@podkit/typography/Headings";

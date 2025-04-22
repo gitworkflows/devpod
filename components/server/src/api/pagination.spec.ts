@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -13,8 +13,8 @@ import {
     generatePaginationToken,
     parsePaginationToken,
 } from "./pagination";
-import { PaginationRequest } from "@devpod/public-api/lib/devpod/v1/pagination_pb";
-import { ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
+import { PaginationRequest } from "@khulnasoft/public-api/lib/devpod/v1/pagination_pb";
+import { ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 const expect = chai.expect;
 

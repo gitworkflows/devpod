@@ -1,7 +1,7 @@
 # Workspace Daemon API
 
 ## Overview
-The Workspace Daemon API defines the gRPC interfaces for the Workspace Daemon service, which is responsible for managing workspace content, filesystem operations, and low-level container operations within the Gitpod platform. This API enables the initialization, backup, and disposal of workspace content, as well as advanced container operations like user namespace setup and network configuration.
+The Workspace Daemon API defines the gRPC interfaces for the Workspace Daemon service, which is responsible for managing workspace content, filesystem operations, and low-level container operations within the Devpod platform. This API enables the initialization, backup, and disposal of workspace content, as well as advanced container operations like user namespace setup and network configuration.
 
 ## Purpose
 This API provides a standardized interface for:
@@ -148,9 +148,9 @@ After regenerating the code, you may need to rebuild components that depend on t
    yarn build
    ```
 
-3. Using Leeway (for CI/CD):
+3. Using Blazedock (for CI/CD):
    ```bash
-   leeway build -D components/<component-name>:app
+   blazedock build -D components/<component-name>:app
    ```
 
 The Workspace Daemon API is primarily used by the ws-daemon component, which runs on each Kubernetes node and manages workspace content and container operations. It plays a critical role in the workspace lifecycle by handling content initialization, backup, and disposal, as well as advanced container operations.

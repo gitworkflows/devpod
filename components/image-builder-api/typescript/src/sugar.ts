@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { ImageBuilderClient } from "./imgbuilder_grpc_pb";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
-import { Deferred } from "@devpod/devpod-protocol/lib/util/deferred";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { createClientCallMetricsInterceptor, IClientCallMetrics, isConnectionAlive } from "@devpod/devpod-protocol/lib/util/grpc";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { Deferred } from "@khulnasoft/devpod-protocol/lib/util/deferred";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { createClientCallMetricsInterceptor, IClientCallMetrics, isConnectionAlive } from "@khulnasoft/devpod-protocol/lib/util/grpc";
 import * as opentracing from "opentracing";
 import { Metadata } from "@grpc/grpc-js";
 import {
@@ -25,7 +25,7 @@ import {
 import { injectable, inject, optional } from "inversify";
 import * as grpc from "@grpc/grpc-js";
 import { TextDecoder } from "util";
-import { ImageBuildLogInfo, User, Workspace, WorkspaceInstance } from "@devpod/devpod-protocol";
+import { ImageBuildLogInfo, User, Workspace, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
 
 export const ImageBuilderClientProvider = Symbol("ImageBuilderClientProvider");
 

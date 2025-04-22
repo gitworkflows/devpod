@@ -1,15 +1,15 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User, Token } from "@devpod/devpod-protocol";
+import { User, Token } from "@khulnasoft/devpod-protocol";
 import {
     RepositoryNotFoundError,
     UnauthorizedRepositoryAccessError,
-} from "@devpod/public-api-common/lib/public-api-errors";
-import { RepositoryUnauthorizedError } from "@devpod/public-api/lib/devpod/v1/error_pb";
+} from "@khulnasoft/public-api-common/lib/public-api-errors";
+import { RepositoryUnauthorizedError } from "@khulnasoft/public-api/lib/devpod/v1/error_pb";
 
 export namespace NotFoundError {
     export async function create(

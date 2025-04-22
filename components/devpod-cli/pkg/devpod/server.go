@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -42,7 +42,7 @@ func ConnectToServer(ctx context.Context, wsInfo *supervisor.WorkspaceInfoRespon
 	}
 	defer supervisorConn.Close()
 	clientToken, err := supervisor.NewTokenServiceClient(supervisorConn).GetToken(ctx, &supervisor.GetTokenRequest{
-		Host:  wsInfo.GitpodApi.Host,
+		Host:  wsInfo.DevpodApi.Host,
 		Kind:  "devpod",
 		Scope: scope,
 	})
@@ -50,7 +50,7 @@ func ConnectToServer(ctx context.Context, wsInfo *supervisor.WorkspaceInfoRespon
 		return nil, xerrors.Errorf("failed getting token from supervisor: %w", err)
 	}
 
-	client, err := serverapi.ConnectToServer(wsInfo.GitpodApi.Endpoint, serverapi.ConnectToServerOpts{
+	client, err := serverapi.ConnectToServer(wsInfo.DevpodApi.Endpoint, serverapi.ConnectToServerOpts{
 		Token:   clientToken.Token,
 		Context: ctx,
 		Log:     log.NewEntry(log.StandardLogger()),

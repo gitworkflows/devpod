@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -84,7 +84,7 @@ func (ws *GitInitializer) Run(ctx context.Context, mappings []archive.IDMapping)
 
 		// make sure that folder itself is owned by devpod user prior to doing git clone
 		// this is needed as otherwise git clone will fail if the folder is owned by root
-		if ws.RunAsGitpodUser {
+		if ws.RunAsDevpodUser {
 			args := []string{"devpod", ws.Location}
 			cmd := exec.Command("chown", args...)
 			res, cerr := cmd.CombinedOutput()
@@ -104,7 +104,7 @@ func (ws *GitInitializer) Run(ctx context.Context, mappings []archive.IDMapping)
 		if err != nil {
 			if strings.Contains(err.Error(), "Access denied") {
 				err = &backoff.PermanentError{
-					Err: fmt.Errorf("Access denied. Please check that Gitpod was given permission to access the repository"),
+					Err: fmt.Errorf("Access denied. Please check that Devpod was given permission to access the repository"),
 				}
 			}
 

@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { PersonalAccessToken } from "@devpod/public-api/lib/devpod/experimental/v1/tokens_pb";
+import { PersonalAccessToken } from "@khulnasoft/public-api/lib/devpod/experimental/v1/tokens_pb";
 import { useEffect, useMemo, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import Alert from "../components/Alert";
@@ -182,7 +182,7 @@ function PersonalAccessTokenCreateView() {
                         token={modalData.token}
                         title="Regenerate Token"
                         description="Are you sure you want to regenerate this access token?"
-                        descriptionImportant="Any applications using this token will no longer be able to access the Gitpod API."
+                        descriptionImportant="Any applications using this token will no longer be able to access the Devpod API."
                         actionDescription="Regenerate Token"
                         showDateSelector
                         onSave={({ expirationDate }) => handleRegenerate(modalData.token.id, expirationDate)}

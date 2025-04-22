@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -24,7 +24,7 @@ import {
     switchToPAYGPathMain,
     usagePathMain,
 } from "../user-settings/settings.routes";
-import { getURLHash, isGitpodIo } from "../utils";
+import { getURLHash, isDevpodIo } from "../utils";
 import { workspacesPathMain } from "../workspaces/workspaces.routes";
 import { AdminRoute } from "./AdminRoute";
 import { Blocked } from "./Blocked";
@@ -251,8 +251,8 @@ export const AppRoutes = () => {
                                 path="*"
                                 render={(_match) => {
                                     // delegate to our website to handle the request
-                                    if (isGitpodIo()) {
-                                        window.location.host = "www.devpod.io";
+                                    if (isDevpodIo()) {
+                                        window.location.host = "www.devpod.khulnasoft.com";
                                     }
 
                                     return (

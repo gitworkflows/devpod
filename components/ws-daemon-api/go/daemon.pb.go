@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -92,7 +92,7 @@ type InitWorkspaceRequest struct {
 
 	// ID is a unique identifier of this workspace. No other workspace with the same name must exist in the realm of this daemon
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Metadata is data associated with this workspace that's required for other parts of Gitpod to function
+	// Metadata is data associated with this workspace that's required for other parts of Devpod to function
 	Metadata *WorkspaceMetadata `protobuf:"bytes,2,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	// Initializer specifies how the workspace is to be initialized
 	Initializer *api.WorkspaceInitializer `protobuf:"bytes,3,opt,name=initializer,proto3" json:"initializer,omitempty"`
@@ -176,7 +176,7 @@ type WorkspaceMetadata struct {
 	sizeCache     protoimpl.SizeCache     `json:"sizeCache,omitempty"`
 	unknownFields protoimpl.UnknownFields `json:"unknownFields,omitempty"`
 
-	// owner is the ID of the Gitpod user to whom we'll bill this workspace and who we consider responsible for its content
+	// owner is the ID of the Devpod user to whom we'll bill this workspace and who we consider responsible for its content
 	Owner string `protobuf:"bytes,1,opt,name=owner,proto3" json:"owner,omitempty"`
 	// meta_id is the workspace ID of this currently running workspace instance on the "meta pool" side
 	MetaId string `protobuf:"bytes,2,opt,name=meta_id,json=metaId,proto3" json:"metaId,omitempty"`

@@ -2,16 +2,16 @@
 
 ## Overview
 
-The Public API Server is a component in Gitpod that provides a versioned, stable, and managed API for programmatic access to Gitpod functionality. It serves as the gateway for external integrations, automation, and third-party tools to interact with Gitpod's core services. The API is designed to be backward compatible, well-documented, and follows modern API design principles.
+The Public API Server is a component in Devpod that provides a versioned, stable, and managed API for programmatic access to Devpod functionality. It serves as the gateway for external integrations, automation, and third-party tools to interact with Devpod's core services. The API is designed to be backward compatible, well-documented, and follows modern API design principles.
 
 ## Purpose
 
 The primary purposes of the Public API Server component are:
-- Provide a stable, versioned API for programmatic access to Gitpod
+- Provide a stable, versioned API for programmatic access to Devpod
 - Enable third-party integrations and community-built tools
 - Offer a consistent interface for automation and orchestration
 - Support authentication and authorization for API access
-- Serve as the canonical way to access Gitpod functionality programmatically
+- Serve as the canonical way to access Devpod functionality programmatically
 - Enable richer integrations with IDEs and development platforms
 - Provide OpenID Connect (OIDC) authentication capabilities
 - Support identity provider functionality
@@ -22,12 +22,12 @@ The Public API Server is built as a Go service with several key components:
 
 1. **gRPC API**: Core API implementation using gRPC and Connect
 2. **Authentication**: Handles API tokens, session verification, and OIDC flows
-3. **Proxy Layer**: Routes requests to internal Gitpod services
+3. **Proxy Layer**: Routes requests to internal Devpod services
 4. **Metrics & Logging**: Collects and exposes metrics and logs
 5. **Validation**: Ensures request data meets API requirements
 6. **Webhooks**: Handles external service webhooks (e.g., Stripe)
 
-The component is designed to be the primary entry point for all programmatic interactions with Gitpod, abstracting away internal implementation details and providing a stable interface.
+The component is designed to be the primary entry point for all programmatic interactions with Devpod, abstracting away internal implementation details and providing a stable interface.
 
 ## Key Files and Structure
 
@@ -78,8 +78,8 @@ The Public API Server is configured through a JSON configuration file:
     "port": 3000,
     "address": "0.0.0.0"
   },
-  "devpodServiceURL": "https://devpod.io/api",
-  "publicURL": "https://api.devpod.io",
+  "devpodServiceURL": "https://devpod.khulnasoft.com/api",
+  "publicURL": "https://api.devpod.khulnasoft.com",
   "sessionServiceAddress": "session-service:3000",
   "databaseConfigPath": "/etc/devpod/db",
   "redis": {
@@ -107,7 +107,7 @@ The Public API Server is configured through a JSON configuration file:
 - `components/common-go`: Common Go utilities
 - `components/public-api`: API definitions
 - `components/usage-api`: Usage API definitions
-- `components/devpod-protocol`: Gitpod protocol definitions
+- `components/devpod-protocol`: Devpod protocol definitions
 - `components/devpod-db`: Database access
 
 ### External Dependencies
@@ -120,7 +120,7 @@ The Public API Server is configured through a JSON configuration file:
 ## Integration Points
 
 The Public API Server integrates with:
-1. **Gitpod Server**: For core Gitpod functionality
+1. **Devpod Server**: For core Devpod functionality
 2. **Database**: For persistent storage
 3. **Redis**: For caching and session management
 4. **Billing Service**: For billing-related operations
@@ -152,7 +152,7 @@ The component exposes various metrics:
 
 The Public API Server is typically used to:
 1. Create and manage workspaces programmatically
-2. Integrate Gitpod with CI/CD pipelines
+2. Integrate Devpod with CI/CD pipelines
 3. Build custom dashboards and management tools
 4. Automate workspace provisioning
 5. Implement custom authentication flows

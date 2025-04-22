@@ -1,18 +1,18 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { HandlerContext, ServiceImpl } from "@connectrpc/connect";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { VerificationService as VerificationServiceInterface } from "@devpod/public-api/lib/devpod/v1/verification_connect";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { VerificationService as VerificationServiceInterface } from "@khulnasoft/public-api/lib/devpod/v1/verification_connect";
 import {
     SendPhoneNumberVerificationTokenRequest,
     SendPhoneNumberVerificationTokenResponse,
     VerifyPhoneNumberVerificationTokenRequest,
     VerifyPhoneNumberVerificationTokenResponse,
-} from "@devpod/public-api/lib/devpod/v1/verification_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/verification_pb";
 import { inject, injectable } from "inversify";
 import { VerificationService } from "../auth/verification-service";
 import { ctxUserId } from "../util/request-context";

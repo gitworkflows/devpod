@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { PromiseClient } from "@connectrpc/connect";
 import { PartialMessage } from "@bufbuild/protobuf";
-import { SSHService } from "@devpod/public-api/lib/devpod/v1/ssh_connect";
+import { SSHService } from "@khulnasoft/public-api/lib/devpod/v1/ssh_connect";
 import {
     CreateSSHPublicKeyRequest,
     CreateSSHPublicKeyResponse,
@@ -14,15 +14,15 @@ import {
     DeleteSSHPublicKeyResponse,
     ListSSHPublicKeysRequest,
     ListSSHPublicKeysResponse,
-} from "@devpod/public-api/lib/devpod/v1/ssh_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/ssh_pb";
 import { converter } from "./public-api";
-import { getGitpodService } from "./service";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { getDevpodService } from "./service";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 export class JsonRpcSSHClient implements PromiseClient<typeof SSHService> {
     async listSSHPublicKeys(req: PartialMessage<ListSSHPublicKeysRequest>): Promise<ListSSHPublicKeysResponse> {
         const result = new ListSSHPublicKeysResponse();
-        const sshKeys = await getGitpodService().server.getSSHPublicKeys();
+        const sshKeys = await getDevpodService().server.getSSHPublicKeys();
         result.sshKeys = sshKeys.map((i) => converter.toSSHPublicKey(i));
 
         return result;
@@ -35,7 +35,7 @@ export class JsonRpcSSHClient implements PromiseClient<typeof SSHService> {
 
         const response = new CreateSSHPublicKeyResponse();
 
-        const sshKey = await getGitpodService().server.addSSHPublicKey({ name: req.name, key: req.key });
+        const sshKey = await getDevpodService().server.addSSHPublicKey({ name: req.name, key: req.key });
         response.sshKey = converter.toSSHPublicKey(sshKey);
 
         return response;
@@ -46,7 +46,7 @@ export class JsonRpcSSHClient implements PromiseClient<typeof SSHService> {
             throw new ApplicationError(ErrorCodes.BAD_REQUEST, "sshKeyId is required");
         }
 
-        await getGitpodService().server.deleteSSHPublicKey(req.sshKeyId);
+        await getDevpodService().server.deleteSSHPublicKey(req.sshKeyId);
 
         const response = new DeleteSSHPublicKeyResponse();
         return response;

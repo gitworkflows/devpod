@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -14,14 +14,14 @@ import {
     PullRequestContext,
     IssueContext,
     RefType,
-} from "@devpod/devpod-protocol";
+} from "@khulnasoft/devpod-protocol";
 import { GitLabApi, GitLab } from "./api";
 import { UnauthorizedError, NotFoundError } from "../errors";
-import { GitLabOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
+import { GitLabOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
 import { IContextParser, IssueContexts, AbstractContextParser, URLParts } from "../workspace/context-parser";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { GitLabTokenHelper } from "./gitlab-token-helper";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 const path = require("path");
 import { URL } from "url";
 import { RepoURL } from "../repohost";

@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -50,7 +50,7 @@ var loginCmd = &cobra.Command{
 
 		token := loginOpts.Token
 		if token == "" {
-			token = os.Getenv("GITPOD_TOKEN")
+			token = os.Getenv("DEVPOD_TOKEN")
 		}
 		if token == "" {
 			if loginOpts.NonInteractive {
@@ -58,7 +58,7 @@ var loginCmd = &cobra.Command{
 			} else {
 				var err error
 				token, err = auth.Login(context.Background(), auth.LoginOpts{
-					GitpodURL:   loginOpts.Host,
+					DevpodURL:   loginOpts.Host,
 					AuthTimeout: 5 * time.Minute,
 					// Request CLI scopes (extended compared to the local companion app)
 					ExtendScopes: true,
@@ -93,9 +93,9 @@ var loginCmd = &cobra.Command{
 		cfg.ActiveContext = contextName
 
 		if loginOpts.OrganizationID == "" {
-			clnt, err := getGitpodClient(config.ToContext(context.Background(), cfg))
+			clnt, err := getDevpodClient(config.ToContext(context.Background(), cfg))
 			if err != nil {
-				return fmt.Errorf("cannot connect to Gitpod with this context: %w", err)
+				return fmt.Errorf("cannot connect to Devpod with this context: %w", err)
 			}
 			if !loginOpts.NonInteractive {
 				fmt.Println("loading your organizations...")
@@ -176,7 +176,7 @@ var loginCmd = &cobra.Command{
 			return err
 		}
 
-		client, err := getGitpodClient(config.ToContext(cmd.Context(), cfg))
+		client, err := getDevpodClient(config.ToContext(cmd.Context(), cfg))
 		if err != nil {
 			return err
 		}
@@ -194,12 +194,12 @@ var loginCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(loginCmd)
 
-	host := "https://devpod.io"
-	if v := os.Getenv("GITPOD_HOST"); v != "" {
+	host := "https://devpod.khulnasoft.com"
+	if v := os.Getenv("DEVPOD_HOST"); v != "" {
 		host = v
 	}
-	loginCmd.Flags().StringVar(&loginOpts.Host, "host", host, "The Gitpod instance to log in to (defaults to $GITPOD_HOST)")
-	loginCmd.Flags().StringVar(&loginOpts.Token, "token", "", "The token to use for authentication (defaults to $GITPOD_TOKEN)")
+	loginCmd.Flags().StringVar(&loginOpts.Host, "host", host, "The Devpod instance to log in to (defaults to $DEVPOD_HOST)")
+	loginCmd.Flags().StringVar(&loginOpts.Token, "token", "", "The token to use for authentication (defaults to $DEVPOD_TOKEN)")
 	loginCmd.Flags().StringVarP(&loginOpts.ContextName, "context-name", "n", "default", "The name of the context to create")
 	loginCmd.Flags().StringVar(&loginOpts.OrganizationID, "org", "", "The organization ID to use for the context")
 	loginCmd.Flags().BoolVar(&loginOpts.NonInteractive, "non-interactive", false, "Disable opening the browser and prompt to select an organization")

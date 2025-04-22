@@ -1,15 +1,15 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import type { Prebuild } from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
+import type { Prebuild } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
 import { Suspense, memo, useEffect } from "react";
 import { usePrebuildLogsEmitter } from "../../data/prebuilds/prebuild-logs-emitter";
 import React from "react";
 import { useToast } from "../../components/toasts/Toasts";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { TabsContent } from "@podkit/tabs/Tabs";
 import { PrebuildTaskErrorTab } from "./PrebuildTaskErrorTab";
 import type { PlainMessage } from "@bufbuild/protobuf";
@@ -76,7 +76,7 @@ export const PrebuildTaskTab = memo(({ taskId, prebuild }: Props) => {
                 Logs of this prebuild task are inaccessible. Use <code>gp validate --prebuild --headless</code> in a
                 workspace to see logs and debug prebuild issues.{" "}
                 <a
-                    href="https://www.devpod.io/docs/configure/workspaces#validate-your-devpod-configuration"
+                    href="https://www.devpod.khulnasoft.com/docs/configure/workspaces#validate-your-devpod-configuration"
                     target="_blank"
                     rel="noreferrer noopener"
                     className="gp-link"

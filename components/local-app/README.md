@@ -9,7 +9,7 @@ All of the accessible commands can be listed with `devpod --help` .
 1. Download the CLI for your platform and make it executable:
 
 ```bash
-wget -O devpod https://devpod.io/static/bin/devpod-cli-darwin-arm64
+wget -O devpod https://devpod.khulnasoft.com/static/bin/devpod-cli-darwin-arm64
 chmod u+x devpod
 ```
 
@@ -25,25 +25,25 @@ Start by logging in with `devpod login`, which will also create a default contex
 
 ### Development
 
-To develop the CLI with Gitpod, you can run it just like locally, but in Gitpod workspaces, a browser and a keyring are not available. To log in despite these limitations, provide a PAT via the `GITPOD_TOKEN` environment variable, or use the `--token` flag with the login command.
+To develop the CLI with Devpod, you can run it just like locally, but in Devpod workspaces, a browser and a keyring are not available. To log in despite these limitations, provide a PAT via the `DEVPOD_TOKEN` environment variable, or use the `--token` flag with the login command.
 
-#### In a Gitpod workspace
+#### In a Devpod workspace
 
-[![Open in Gitpod](https://www.devpod.io/svg/open-in-devpod.svg)](https://devpod.io/#https://github.com/khulnasoft/devpod)
+[![Open in Devpod](https://www.devpod.khulnasoft.com/svg/open-in-devpod.svg)](https://devpod.khulnasoft.com/#https://github.com/khulnasoft/devpod)
 
 You will have devpod-cli ready as `devpod` on any Workspace based on `https://github.com/khulnasoft/devpod`.
 
 ```
 # Reinstall `devpod`
-leeway run components/local-app:install-cli
+blazedock run components/local-app:install-cli
 
 # Reinstall completion
-leeway run components/local-app:cli-completion
+blazedock run components/local-app:cli-completion
 ```
 
 ### Versioning and Release Management
 
-The CLI is versioned independently of other Gitpod artifacts due to its auto-updating behaviour.
+The CLI is versioned independently of other Devpod artifacts due to its auto-updating behaviour.
 To create a new version that existing clients will consume increment the number in `version.txt`. Make sure to use semantic versioning. The minor version can be greater than 10, e.g. `0.342` is a valid version.
 
 ## local-app
@@ -53,7 +53,7 @@ To create a new version that existing clients will consume increment the number 
 ### How to install
 
 ```
-docker run --rm -it -v /tmp/dest:/out ghcr.io/devpod-core-dev/build/local-app:<version>
+docker run --rm -it -v /tmp/dest:/out ghcr.io/khulnasoft/devpod/build/local-app:<version>
 ```
 
 ### How to run
@@ -62,9 +62,9 @@ docker run --rm -it -v /tmp/dest:/out ghcr.io/devpod-core-dev/build/local-app:<v
 ./local-app
 ```
 
-### How to run in Gitpod against a dev-staging environment
+### How to run in Devpod against a dev-staging environment
 
 ```
 cd components/local-app
-BROWSER= GITPOD_HOST=<URL-of-your-preview-env> go run main.go --mock-keyring run
+BROWSER= DEVPOD_HOST=<URL-of-your-preview-env> go run main.go --mock-keyring run
 ```

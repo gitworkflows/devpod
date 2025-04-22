@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Workspace Proxy (ws-proxy) is a specialized component in Gitpod that handles routing and proxying of HTTP and WebSocket traffic to workspaces. It acts as an intermediary between the main Gitpod proxy and individual workspace pods, providing workspace-specific routing, port forwarding, and SSH gateway functionality.
+The Workspace Proxy (ws-proxy) is a specialized component in Devpod that handles routing and proxying of HTTP and WebSocket traffic to workspaces. It acts as an intermediary between the main Devpod proxy and individual workspace pods, providing workspace-specific routing, port forwarding, and SSH gateway functionality.
 
 ## Purpose
 
@@ -43,7 +43,7 @@ The component is designed to efficiently route traffic to the correct workspace 
 
 ### Internal Dependencies
 - `components/common-go:lib`: Common Go utilities
-- `components/devpod-protocol/go:lib`: Gitpod protocol definitions
+- `components/devpod-protocol/go:lib`: Devpod protocol definitions
 - `components/content-service-api/go:lib`: Content service API definitions
 - `components/content-service:lib`: Content service client
 - `components/registry-facade-api/go:lib`: Registry facade API definitions
@@ -69,7 +69,7 @@ The Workspace Proxy is configured via a JSON configuration file that includes:
 
 ### Proxy Configuration
 - Transport settings (timeouts, connection limits)
-- Gitpod installation details (hostname, workspace domain patterns)
+- Devpod installation details (hostname, workspace domain patterns)
 - Workspace pod configuration (ports for IDE and supervisor)
 - Built-in pages location
 
@@ -105,7 +105,7 @@ The Workspace Proxy includes an SSH gateway that allows direct SSH access to wor
 
 - Listens on port 2200 for SSH connections
 - Uses host keys for server authentication
-- Authenticates users using Gitpod's authentication system
+- Authenticates users using Devpod's authentication system
 - Routes SSH connections to the appropriate workspace
 - Provides heartbeat functionality to monitor workspace connectivity
 
@@ -115,7 +115,7 @@ The Workspace Proxy integrates with:
 1. **Kubernetes API**: Retrieves workspace information from CRDs
 2. **Workspace Manager**: Monitors workspace status
 3. **Workspace Pods**: Routes traffic to workspace containers
-4. **Main Proxy**: Receives traffic from the main Gitpod proxy
+4. **Main Proxy**: Receives traffic from the main Devpod proxy
 
 ## Security Considerations
 
@@ -136,7 +136,7 @@ The Workspace Proxy is typically used to:
 
 ## Related Components
 
-- **Proxy**: Main Gitpod proxy that routes traffic to ws-proxy
+- **Proxy**: Main Devpod proxy that routes traffic to ws-proxy
 - **Workspace Manager**: Manages workspace lifecycle
 - **Supervisor**: Runs inside workspace containers
 - **Server**: Provides API for workspace operations

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -27,20 +27,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
-public class GitpodServerLauncher {
+public class DevpodServerLauncher {
 
     private final MessageConsumer messageReader;
     private final MessageJsonHandler jsonHandler;
     private final MessageIssueHandler remoteEndpoint;
     private final BufferingWebSocketMessageWriter messageWriter;
-    private final GitpodClient client;
+    private final DevpodClient client;
 
-    private GitpodServerLauncher(
+    private DevpodServerLauncher(
             MessageConsumer messageReader,
             MessageJsonHandler jsonHandler,
             MessageIssueHandler remoteEndpoint,
             BufferingWebSocketMessageWriter messageWriter,
-            GitpodClient client
+            DevpodClient client
     ) {
         this.messageReader = messageReader;
         this.jsonHandler = jsonHandler;
@@ -49,7 +49,7 @@ public class GitpodServerLauncher {
         this.client = client;
     }
 
-    public GitpodServerConnection listen(
+    public DevpodServerConnection listen(
             String apiUrl,
             String origin,
             String userAgent,
@@ -70,7 +70,7 @@ public class GitpodServerLauncher {
             }
             SocketAddress proxyAddress = proxy.address();
             if (!(proxyAddress instanceof InetSocketAddress)) {
-                GitpodServerConnectionImpl.LOG.log(Level.WARNING, devpodHost + ": unexpected proxy:", proxy);
+                DevpodServerConnectionImpl.LOG.log(Level.WARNING, devpodHost + ": unexpected proxy:", proxy);
                 continue;
             }
             String hostName = ((InetSocketAddress) proxyAddress).getHostString();
@@ -90,12 +90,12 @@ public class GitpodServerLauncher {
         container.getClient().addManaged(httpClient);
         container.start();
 
-        GitpodServerConnectionImpl connection = new GitpodServerConnectionImpl(devpodHost);
+        DevpodServerConnectionImpl connection = new DevpodServerConnectionImpl(devpodHost);
         connection.whenComplete((input, exception) -> {
             try {
                 container.stop();
             } catch (Throwable t) {
-                GitpodServerConnectionImpl.LOG.log(Level.WARNING, devpodHost + ": failed to stop websocket container:", t);
+                DevpodServerConnectionImpl.LOG.log(Level.WARNING, devpodHost + ": failed to stop websocket container:", t);
             }
         });
 
@@ -114,7 +114,7 @@ public class GitpodServerLauncher {
 
             @Override
             public void onError(Session session, Throwable thr) {
-                GitpodServerConnectionImpl.LOG.log(Level.WARNING, devpodHost + ": connection error:", thr);
+                DevpodServerConnectionImpl.LOG.log(Level.WARNING, devpodHost + ": connection error:", thr);
                 connection.completeExceptionally(thr);
             }
         }, ClientEndpointConfig.Builder.create().configurator(new ClientEndpointConfig.Configurator() {
@@ -129,15 +129,15 @@ public class GitpodServerLauncher {
         return connection;
     }
 
-    public static GitpodServerLauncher create(GitpodClient client) {
+    public static DevpodServerLauncher create(DevpodClient client) {
         return new Builder().create(client);
     }
 
-    private static class Builder extends Launcher.Builder<GitpodServer> {
+    private static class Builder extends Launcher.Builder<DevpodServer> {
 
-        public GitpodServerLauncher create(GitpodClient client) {
+        public DevpodServerLauncher create(DevpodClient client) {
             setLocalService(client);
-            setRemoteInterface(GitpodServer.class);
+            setRemoteInterface(DevpodServer.class);
             MessageJsonHandler jsonHandler = createJsonHandler();
             BufferingWebSocketMessageWriter messageWriter = new BufferingWebSocketMessageWriter(jsonHandler);
             MessageConsumer messageConsumer = wrapMessageConsumer(messageWriter);
@@ -150,7 +150,7 @@ public class GitpodServerLauncher {
             jsonHandler.setMethodProvider(remoteEndpoint);
             MessageConsumer messageReader = wrapMessageConsumer(remoteEndpoint);
             client.connect(createProxy(remoteEndpoint));
-            return new GitpodServerLauncher(
+            return new DevpodServerLauncher(
                     messageReader,
                     jsonHandler,
                     remoteEndpoint,

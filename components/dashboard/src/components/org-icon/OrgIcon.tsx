@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -46,6 +46,6 @@ export const OrgIcon: FunctionComponent<OrgIconProps> = ({ id, name, size = "med
 };
 
 function getOrgInitials(name: string) {
-    // If for some reason there is no name, default to G for Gitpod
+    // If for some reason there is no name, default to G for Devpod
     return (name || "G").charAt(0).toLocaleUpperCase();
 }

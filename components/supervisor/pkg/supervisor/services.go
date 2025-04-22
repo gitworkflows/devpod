@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -652,13 +652,13 @@ func (rt *remoteTokenProvider) GetToken(ctx context.Context, req *api.GetTokenRe
 type InfoService struct {
 	cfg           *Config
 	ContentState  ContentState
-	GitpodService serverapi.APIInterface
+	DevpodService serverapi.APIInterface
 
 	api.UnimplementedInfoServiceServer
 }
 
 func NewInfoService(cfg *Config, cstate ContentState, devpodService serverapi.APIInterface) *InfoService {
-	return &InfoService{cfg: cfg, ContentState: cstate, GitpodService: devpodService}
+	return &InfoService{cfg: cfg, ContentState: cstate, DevpodService: devpodService}
 }
 
 // RegisterGRPC registers the gRPC info service.
@@ -678,7 +678,7 @@ func (is *InfoService) WorkspaceInfo(ctx context.Context, req *api.WorkspaceInfo
 		CheckoutLocation:     is.cfg.RepoRoot,
 		InstanceId:           is.cfg.WorkspaceInstanceID,
 		WorkspaceId:          is.cfg.WorkspaceID,
-		GitpodHost:           is.cfg.GitpodHost,
+		DevpodHost:           is.cfg.DevpodHost,
 		WorkspaceContextUrl:  is.cfg.WorkspaceContextURL,
 		WorkspaceClusterHost: is.cfg.WorkspaceClusterHost,
 		WorkspaceUrl:         is.cfg.WorkspaceUrl,
@@ -718,11 +718,11 @@ func (is *InfoService) WorkspaceInfo(ctx context.Context, req *api.WorkspaceInfo
 
 	resp.UserHome = "/home/devpod"
 
-	endpoint, host, err := is.cfg.GitpodAPIEndpoint()
+	endpoint, host, err := is.cfg.DevpodAPIEndpoint()
 	if err != nil {
 		return nil, status.Error(codes.Internal, err.Error())
 	}
-	resp.GitpodApi = &api.WorkspaceInfoResponse_GitpodAPI{
+	resp.DevpodApi = &api.WorkspaceInfoResponse_DevpodAPI{
 		Endpoint: endpoint,
 		Host:     host,
 	}
@@ -855,21 +855,21 @@ func (c *ControlService) CreateDebugEnv(ctx context.Context, req *api.CreateDebu
 		}
 		parts := strings.SplitN(env, "=", 2)
 		key := parts[0]
-		// TODO all system envs should start with GITPOD_
-		// gp env shoud not allow to set env vars with GITPOD_ prefix
-		if strings.HasPrefix(key, "GITPOD_") || strings.HasPrefix(key, "THEIA_") || key == "VSX_REGISTRY_URL" {
+		// TODO all system envs should start with DEVPOD_
+		// gp env shoud not allow to set env vars with DEVPOD_ prefix
+		if strings.HasPrefix(key, "DEVPOD_") || strings.HasPrefix(key, "THEIA_") || key == "VSX_REGISTRY_URL" {
 			envs = append(envs, env)
 		}
 	}
 	envs = append(envs, fmt.Sprintf("SUPERVISOR_DEBUG_WORKSPACE_TYPE=%d", req.GetWorkspaceType()))
 	envs = append(envs, fmt.Sprintf("SUPERVISOR_DEBUG_WORKSPACE_CONTENT_SOURCE=%d", req.GetContentSource()))
 	envs = append(envs, fmt.Sprintf("LOG_LEVEL=%s", req.GetLogLevel()))
-	envs = append(envs, fmt.Sprintf("GITPOD_TASKS=%s", req.GetTasks()))
-	envs = append(envs, fmt.Sprintf("GITPOD_WORKSPACE_URL=%s", req.GetWorkspaceUrl()))
-	envs = append(envs, fmt.Sprintf("GITPOD_REPO_ROOT=%s", req.GetCheckoutLocation()))
-	envs = append(envs, fmt.Sprintf("GITPOD_REPO_ROOTS=%s", req.GetCheckoutLocation()))
+	envs = append(envs, fmt.Sprintf("DEVPOD_TASKS=%s", req.GetTasks()))
+	envs = append(envs, fmt.Sprintf("DEVPOD_WORKSPACE_URL=%s", req.GetWorkspaceUrl()))
+	envs = append(envs, fmt.Sprintf("DEVPOD_REPO_ROOT=%s", req.GetCheckoutLocation()))
+	envs = append(envs, fmt.Sprintf("DEVPOD_REPO_ROOTS=%s", req.GetCheckoutLocation()))
 	envs = append(envs, fmt.Sprintf("THEIA_WORKSPACE_ROOT=%s", req.GetWorkspaceLocation()))
-	envs = append(envs, fmt.Sprintf("GITPOD_PREVENT_METADATA_ACCESS=%s", "false"))
+	envs = append(envs, fmt.Sprintf("DEVPOD_PREVENT_METADATA_ACCESS=%s", "false"))
 	return &api.CreateDebugEnvResponse{
 		Envs: envs,
 	}, nil

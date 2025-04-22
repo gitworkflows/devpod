@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,9 +9,9 @@ import * as chai from "chai";
 const expect = chai.expect;
 
 import { AzureDevOpsContextParser } from "./azure-context-parser";
-import { User } from "@devpod/devpod-protocol";
+import { User } from "@khulnasoft/devpod-protocol";
 import { DevData, DevTestHelper } from "../dev/dev-data";
-import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
+import { ifEnvVarNotSet } from "@khulnasoft/devpod-protocol/lib/util/skip-if";
 
 DevTestHelper.echoAzureTestTips();
 

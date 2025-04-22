@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -12,7 +12,7 @@ import {
     OrganizationSettings,
     OrgEnvVar,
     OrgEnvVarWithValue,
-} from "@devpod/devpod-protocol";
+} from "@khulnasoft/devpod-protocol";
 import { DBTeamMembership } from "./typeorm/entity/db-team-membership";
 import { TransactionalDB } from "./typeorm/transactional-db-impl";
 

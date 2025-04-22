@@ -1,20 +1,20 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { UserDB, WorkspaceDB, DBWithTracing, TracedWorkspaceDB, TeamDB, DBGitpodToken } from "@devpod/devpod-db/lib";
+import { UserDB, WorkspaceDB, DBWithTracing, TracedWorkspaceDB, TeamDB, DBDevpodToken } from "@khulnasoft/devpod-db/lib";
 import {
     AuthProviderEntry,
     AuthProviderInfo,
     Configuration,
     DisposableCollection,
     GetWorkspaceTimeoutResult,
-    GitpodClient as GitpodApiClient,
-    GitpodServer,
-    GitpodToken,
-    GitpodTokenType,
+    DevpodClient as DevpodApiClient,
+    DevpodServer,
+    DevpodToken,
+    DevpodTokenType,
     PermissionName,
     PrebuiltWorkspace,
     SetWorkspaceTimeoutResult,
@@ -53,8 +53,8 @@ import {
     GetDefaultWorkspaceImageParams,
     GetDefaultWorkspaceImageResult,
     SearchRepositoriesParams,
-} from "@devpod/devpod-protocol";
-import { BlockedRepository } from "@devpod/devpod-protocol/lib/blocked-repositories-protocol";
+} from "@khulnasoft/devpod-protocol";
+import { BlockedRepository } from "@khulnasoft/devpod-protocol/lib/blocked-repositories-protocol";
 import {
     AdminBlockUserRequest,
     AdminGetListRequest,
@@ -63,17 +63,17 @@ import {
     AdminModifyPermanentWorkspaceFeatureFlagRequest,
     AdminModifyRoleOrPermissionRequest,
     WorkspaceAndInstance,
-} from "@devpod/devpod-protocol/lib/admin-protocol";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
+} from "@khulnasoft/devpod-protocol/lib/admin-protocol";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import {
     InterfaceWithTraceContext,
     TraceContext,
     TraceContextWithSpan,
-} from "@devpod/devpod-protocol/lib/util/tracing";
-import { RemoteIdentifyMessage, RemotePageMessage, RemoteTrackMessage } from "@devpod/devpod-protocol/lib/analytics";
-import { SupportedWorkspaceClass } from "@devpod/devpod-protocol/lib/workspace-class";
-import { StopWorkspacePolicy } from "@devpod/ws-manager/lib/core_pb";
+} from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { RemoteIdentifyMessage, RemotePageMessage, RemoteTrackMessage } from "@khulnasoft/devpod-protocol/lib/analytics";
+import { SupportedWorkspaceClass } from "@khulnasoft/devpod-protocol/lib/workspace-class";
+import { StopWorkspacePolicy } from "@khulnasoft/ws-manager/lib/core_pb";
 import { inject, injectable } from "inversify";
 import { v4 as uuidv4, validate as uuidValidate } from "uuid";
 import { Disposable, CancellationToken } from "vscode-jsonrpc";
@@ -84,14 +84,14 @@ import { AuthorizationService } from "../user/authorization-service";
 import { UserAuthentication } from "../user/user-authentication";
 import { ContextParser } from "./context-parser-service";
 import { isClusterMaintenanceError } from "./workspace-starter";
-import { HeadlessLogUrls } from "@devpod/devpod-protocol/lib/headless-workspace-log";
+import { HeadlessLogUrls } from "@khulnasoft/devpod-protocol/lib/headless-workspace-log";
 import { ProjectsService } from "../projects/projects-service";
-import { IDEOption, IDEOptions } from "@devpod/devpod-protocol/lib/ide-protocol";
+import { IDEOption, IDEOptions } from "@khulnasoft/devpod-protocol/lib/ide-protocol";
 import {
     PartialProject,
     OrganizationSettings,
     Organization,
-} from "@devpod/devpod-protocol/lib/teams-projects-protocol";
+} from "@khulnasoft/devpod-protocol/lib/teams-projects-protocol";
 import { ClientMetadata, traceClientMetadata } from "../websocket/websocket-connection-manager";
 import {
     EmailDomainFilterEntry,
@@ -102,16 +102,16 @@ import {
     UserFeatureSettings,
     WorkspaceImageBuild,
     WorkspaceTimeoutSetting,
-} from "@devpod/devpod-protocol/lib/protocol";
-import { ListUsageRequest, ListUsageResponse } from "@devpod/devpod-protocol/lib/usage";
+} from "@khulnasoft/devpod-protocol/lib/protocol";
+import { ListUsageRequest, ListUsageResponse } from "@khulnasoft/devpod-protocol/lib/usage";
 import { VerificationService } from "../auth/verification-service";
 import { InstallationService } from "../auth/installation-service";
-import { BillingMode } from "@devpod/devpod-protocol/lib/billing-mode";
+import { BillingMode } from "@khulnasoft/devpod-protocol/lib/billing-mode";
 import { formatPhoneNumber } from "../user/phone-numbers";
 import { IDEService } from "../ide-service";
-import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
-import { CostCenterJSON } from "@devpod/devpod-protocol/lib/usage";
-import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
+import { CostCenterJSON } from "@khulnasoft/devpod-protocol/lib/usage";
+import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 import { LinkedInService } from "../linkedin-service";
 import { PrebuildManager } from "../prebuilds/prebuild-manager";
 import { StripeService } from "../billing/stripe-service";
@@ -119,7 +119,7 @@ import {
     BillingServiceClient,
     BillingServiceDefinition,
     StripeCustomer,
-} from "@devpod/usage-api/lib/usage/v1/billing.pb";
+} from "@khulnasoft/usage-api/lib/usage/v1/billing.pb";
 import { ClientError } from "nice-grpc-common";
 import { BillingModes } from "../billing/billing-mode";
 import { Authorizer, SYSTEM_USER, SYSTEM_USER_ID } from "../authorization/authorizer";
@@ -129,13 +129,13 @@ import { UsageService } from "../orgs/usage-service";
 import { UserService } from "../user/user-service";
 import { SSHKeyService } from "../user/sshkey-service";
 import { StartWorkspaceOptions, WorkspaceService } from "./workspace-service";
-import { GitpodTokenService } from "../user/devpod-token-service";
+import { DevpodTokenService } from "../user/devpod-token-service";
 import { EnvVarService } from "../user/env-var-service";
 import { ScmService } from "../scm/scm-service";
 import { ContextService } from "./context-service";
 import { runWithRequestContext, runWithSubjectId } from "../util/request-context";
 import { SubjectId } from "../auth/subject-id";
-import { getPrimaryEmail } from "@devpod/public-api-common/lib/user-utils";
+import { getPrimaryEmail } from "@khulnasoft/public-api-common/lib/user-utils";
 import { AnalyticsController } from "../analytics-controller";
 import { ClientHeaderFields } from "../express-util";
 import { filter } from "../util/objects";
@@ -150,10 +150,10 @@ export function censor<T>(obj: T, k: keyof T): T {
     return r;
 }
 
-export type GitpodServerWithTracing = InterfaceWithTraceContext<GitpodServer>;
+export type DevpodServerWithTracing = InterfaceWithTraceContext<DevpodServer>;
 
 @injectable()
-export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
+export class DevpodServerImpl implements DevpodServerWithTracing, Disposable {
     constructor(
         @inject(Config) private readonly config: Config,
         @inject(TracedWorkspaceDB) private readonly workspaceDb: DBWithTracing<WorkspaceDB>,
@@ -167,7 +167,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
         @inject(UserService) private readonly userService: UserService,
         @inject(AuthorizationService) private readonly authorizationService: AuthorizationService,
         @inject(SSHKeyService) private readonly sshKeyservice: SSHKeyService,
-        @inject(GitpodTokenService) private readonly devpodTokenService: GitpodTokenService,
+        @inject(DevpodTokenService) private readonly devpodTokenService: DevpodTokenService,
         @inject(EnvVarService) private readonly envVarService: EnvVarService,
 
         @inject(TeamDB) private readonly teamDB: TeamDB,
@@ -205,7 +205,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
     public readonly clientMetadata: ClientMetadata;
     private clientHeaderFields: ClientHeaderFields;
     private resourceAccessGuard: ResourceAccessGuard;
-    private client: GitpodApiClient | undefined;
+    private client: DevpodApiClient | undefined;
 
     private userID: string | undefined;
 
@@ -216,7 +216,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
     }
 
     initialize(
-        client: GitpodApiClient | undefined,
+        client: DevpodApiClient | undefined,
         userID: string | undefined,
         accessGuard: ResourceAccessGuard,
         clientMetadata: ClientMetadata,
@@ -323,7 +323,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
         }
     }
 
-    setClient(ctx: TraceContext, client: GitpodApiClient | undefined): void {
+    setClient(ctx: TraceContext, client: DevpodApiClient | undefined): void {
         throw new Error("Unsupported operation. Use initialize.");
     }
 
@@ -500,7 +500,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
         };
     }
 
-    public async getToken(ctx: TraceContext, query: GitpodServer.GetTokenSearchOptions): Promise<Token | undefined> {
+    public async getToken(ctx: TraceContext, query: DevpodServer.GetTokenSearchOptions): Promise<Token | undefined> {
         traceAPIParams(ctx, { query });
 
         const user = await this.checkUser("getToken");
@@ -569,7 +569,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
     public async startWorkspace(
         ctx: TraceContext,
         workspaceId: string,
-        options: GitpodServer.StartWorkspaceOptions,
+        options: DevpodServer.StartWorkspaceOptions,
     ): Promise<StartWorkspaceResult> {
         traceAPIParams(ctx, { workspaceId, options });
         traceWI(ctx, { workspaceId });
@@ -739,7 +739,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
 
     public async getWorkspaces(
         ctx: TraceContext,
-        options: GitpodServer.GetWorkspacesOptions,
+        options: DevpodServer.GetWorkspacesOptions,
     ): Promise<WorkspaceInfo[]> {
         traceAPIParams(ctx, { options });
 
@@ -769,7 +769,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
         return user.id == workspace.ownerId;
     }
 
-    public async sendHeartBeat(ctx: TraceContext, options: GitpodServer.SendHeartBeatOptions): Promise<void> {
+    public async sendHeartBeat(ctx: TraceContext, options: DevpodServer.SendHeartBeatOptions): Promise<void> {
         traceAPIParams(ctx, { options });
         const { instanceId } = options;
         traceWI(ctx, { instanceId });
@@ -836,7 +836,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
 
     public async createWorkspace(
         ctx: TraceContext,
-        options: GitpodServer.CreateWorkspaceOptions,
+        options: DevpodServer.CreateWorkspaceOptions,
     ): Promise<WorkspaceCreationResult> {
         traceAPIParams(ctx, { options });
 
@@ -1130,7 +1130,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
 
     async registerGithubApp(ctx: TraceContext, installationId: string): Promise<void> {}
 
-    async takeSnapshot(ctx: TraceContext, options: GitpodServer.TakeSnapshotOptions): Promise<string> {
+    async takeSnapshot(ctx: TraceContext, options: DevpodServer.TakeSnapshotOptions): Promise<string> {
         traceAPIParams(ctx, { options });
         const { workspaceId } = options;
         traceWI(ctx, { workspaceId });
@@ -1702,41 +1702,41 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
         await this.projectsService.updateProject(user, partialProject);
     }
 
-    public async getGitpodTokens(ctx: TraceContext): Promise<GitpodToken[]> {
-        const user = await this.checkAndBlockUser("getGitpodTokens");
-        const devpodTokens = await this.devpodTokenService.getGitpodTokens(user.id, user.id);
+    public async getDevpodTokens(ctx: TraceContext): Promise<DevpodToken[]> {
+        const user = await this.checkAndBlockUser("getDevpodTokens");
+        const devpodTokens = await this.devpodTokenService.getDevpodTokens(user.id, user.id);
         await Promise.all(devpodTokens.map((tkn) => this.guardAccess({ kind: "devpodToken", subject: tkn }, "get")));
         return devpodTokens;
     }
 
-    public async generateNewGitpodToken(
+    public async generateNewDevpodToken(
         ctx: TraceContext,
-        options: { name?: string; type: GitpodTokenType; scopes?: string[] },
+        options: { name?: string; type: DevpodTokenType; scopes?: string[] },
     ): Promise<string> {
         traceAPIParams(ctx, { options });
 
-        const user = await this.checkAndBlockUser("generateNewGitpodToken");
-        return this.devpodTokenService.generateNewGitpodToken(user.id, user.id, options, (dbToken: DBGitpodToken) => {
+        const user = await this.checkAndBlockUser("generateNewDevpodToken");
+        return this.devpodTokenService.generateNewDevpodToken(user.id, user.id, options, (dbToken: DBDevpodToken) => {
             return this.guardAccess({ kind: "devpodToken", subject: dbToken }, "create");
         });
     }
 
-    public async getGitpodTokenScopes(ctx: TraceContext, tokenHash: string): Promise<string[]> {
+    public async getDevpodTokenScopes(ctx: TraceContext, tokenHash: string): Promise<string[]> {
         traceAPIParams(ctx, {}); // do not trace tokenHash
 
-        const user = await this.checkAndBlockUser("getGitpodTokenScopes");
-        const devpodToken = await this.devpodTokenService.findGitpodToken(user.id, user.id, tokenHash);
+        const user = await this.checkAndBlockUser("getDevpodTokenScopes");
+        const devpodToken = await this.devpodTokenService.findDevpodToken(user.id, user.id, tokenHash);
         if (devpodToken) {
             await this.guardAccess({ kind: "devpodToken", subject: devpodToken }, "get");
         }
         return devpodToken?.scopes ?? [];
     }
 
-    public async deleteGitpodToken(ctx: TraceContext, tokenHash: string): Promise<void> {
+    public async deleteDevpodToken(ctx: TraceContext, tokenHash: string): Promise<void> {
         traceAPIParams(ctx, {}); // do not trace tokenHash
 
-        const user = await this.checkAndBlockUser("deleteGitpodToken");
-        return this.devpodTokenService.deleteGitpodToken(user.id, user.id, tokenHash, (token: GitpodToken) => {
+        const user = await this.checkAndBlockUser("deleteDevpodToken");
+        return this.devpodTokenService.deleteDevpodToken(user.id, user.id, tokenHash, (token: DevpodToken) => {
             return this.guardAccess({ kind: "devpodToken", subject: token }, "delete");
         });
     }
@@ -2079,7 +2079,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
 
     async updateOwnAuthProvider(
         ctx: TraceContext,
-        { entry }: GitpodServer.UpdateOwnAuthProviderParams,
+        { entry }: DevpodServer.UpdateOwnAuthProviderParams,
     ): Promise<AuthProviderEntry> {
         traceAPIParams(ctx, {}); // entry contains PII
 
@@ -2107,7 +2107,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
             throw new ApplicationError(ErrorCodes.CONFLICT, message);
         }
     }
-    private redactUpdateOwnAuthProviderParams({ entry }: GitpodServer.UpdateOwnAuthProviderParams) {
+    private redactUpdateOwnAuthProviderParams({ entry }: DevpodServer.UpdateOwnAuthProviderParams) {
         const safeEntry =
             "id" in entry
                 ? <AuthProviderEntry.UpdateEntry>{
@@ -2126,7 +2126,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
         return safeEntry;
     }
 
-    async deleteOwnAuthProvider(ctx: TraceContext, params: GitpodServer.DeleteOwnAuthProviderParams): Promise<void> {
+    async deleteOwnAuthProvider(ctx: TraceContext, params: DevpodServer.DeleteOwnAuthProviderParams): Promise<void> {
         traceAPIParams(ctx, { params });
 
         const user = await this.checkAndBlockUser("deleteOwnAuthProvider");
@@ -2136,7 +2136,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
 
     async createOrgAuthProvider(
         ctx: TraceContext,
-        { entry }: GitpodServer.CreateOrgAuthProviderParams,
+        { entry }: DevpodServer.CreateOrgAuthProviderParams,
     ): Promise<AuthProviderEntry> {
         traceAPIParams(ctx, {}); // entry contains PII
 
@@ -2180,7 +2180,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
 
     async updateOrgAuthProvider(
         ctx: TraceContext,
-        { entry }: GitpodServer.UpdateOrgAuthProviderParams,
+        { entry }: DevpodServer.UpdateOrgAuthProviderParams,
     ): Promise<AuthProviderEntry> {
         traceAPIParams(ctx, {}); // entry contains PII
 
@@ -2216,7 +2216,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
 
     async getOrgAuthProviders(
         ctx: TraceContext,
-        params: GitpodServer.GetOrgAuthProviderParams,
+        params: DevpodServer.GetOrgAuthProviderParams,
     ): Promise<AuthProviderEntry[]> {
         traceAPIParams(ctx, { params });
 
@@ -2238,7 +2238,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
         }
     }
 
-    async deleteOrgAuthProvider(ctx: TraceContext, params: GitpodServer.DeleteOrgAuthProviderParams): Promise<void> {
+    async deleteOrgAuthProvider(ctx: TraceContext, params: DevpodServer.DeleteOrgAuthProviderParams): Promise<void> {
         traceAPIParams(ctx, { params });
 
         const user = await this.checkAndBlockUser("deleteOrgAuthProvider");
@@ -2318,7 +2318,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
         }
     }
 
-    async getOnboardingState(ctx: TraceContext): Promise<GitpodServer.OnboardingState> {
+    async getOnboardingState(ctx: TraceContext): Promise<DevpodServer.OnboardingState> {
         return this.installationService.getOnboardingState();
     }
 
@@ -2382,7 +2382,7 @@ export class GitpodServerImpl implements GitpodServerWithTracing, Disposable {
         return this.workspaceService.getSupportedWorkspaceClasses(user);
     }
 
-    //#region devpod.io concerns
+    //#region devpod.khulnasoft.com concerns
     async getLinkedInClientId(ctx: TraceContextWithSpan): Promise<string> {
         traceAPIParams(ctx, {});
         await this.checkAndBlockUser("getLinkedInClientID");

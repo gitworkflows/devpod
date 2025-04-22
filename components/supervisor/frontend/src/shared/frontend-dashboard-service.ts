@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import * as crypto from "crypto";
-import { IDEFrontendDashboardService } from "@devpod/devpod-protocol/lib/frontend-dashboard-service";
-import { RemoteTrackMessage } from "@devpod/devpod-protocol/lib/analytics";
-import { Emitter } from "@devpod/devpod-protocol/lib/util/event";
+import { IDEFrontendDashboardService } from "@khulnasoft/devpod-protocol/lib/frontend-dashboard-service";
+import { RemoteTrackMessage } from "@khulnasoft/devpod-protocol/lib/analytics";
+import { Emitter } from "@khulnasoft/devpod-protocol/lib/util/event";
 import { workspaceUrl, serverUrl } from "./urls";
 import { metricsReporter } from "../ide/ide-metrics-service-client";
 

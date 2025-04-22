@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import express from "express";
-import { AuthProviderInfo, User, AuthProviderEntry, Token } from "@devpod/devpod-protocol";
+import { AuthProviderInfo, User, AuthProviderEntry, Token } from "@khulnasoft/devpod-protocol";
 
-import { UserEnvVarValue } from "@devpod/devpod-protocol";
+import { UserEnvVarValue } from "@khulnasoft/devpod-protocol";
 
 export const AuthProviderParams = Symbol("AuthProviderParams");
 export interface AuthProviderParams extends AuthProviderEntry {

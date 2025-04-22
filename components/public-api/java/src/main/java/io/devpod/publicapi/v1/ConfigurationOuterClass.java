@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -3603,7 +3603,7 @@ public final class ConfigurationOuterClass {
 
     /**
      * <pre>
-     * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+     * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
      * </pre>
      *
      * <code>bool enable_dockerd_authentication = 4 [json_name = "enableDockerdAuthentication"];</code>
@@ -3770,7 +3770,7 @@ public final class ConfigurationOuterClass {
     private boolean enableDockerdAuthentication_ = false;
     /**
      * <pre>
-     * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+     * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
      * </pre>
      *
      * <code>bool enable_dockerd_authentication = 4 [json_name = "enableDockerdAuthentication"];</code>
@@ -4474,7 +4474,7 @@ public final class ConfigurationOuterClass {
       private boolean enableDockerdAuthentication_ ;
       /**
        * <pre>
-       * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+       * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
        * </pre>
        *
        * <code>bool enable_dockerd_authentication = 4 [json_name = "enableDockerdAuthentication"];</code>
@@ -4486,7 +4486,7 @@ public final class ConfigurationOuterClass {
       }
       /**
        * <pre>
-       * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+       * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
        * </pre>
        *
        * <code>bool enable_dockerd_authentication = 4 [json_name = "enableDockerdAuthentication"];</code>
@@ -4502,7 +4502,7 @@ public final class ConfigurationOuterClass {
       }
       /**
        * <pre>
-       * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+       * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
        * </pre>
        *
        * <code>bool enable_dockerd_authentication = 4 [json_name = "enableDockerdAuthentication"];</code>
@@ -11098,7 +11098,7 @@ public final class ConfigurationOuterClass {
 
       /**
        * <pre>
-       * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+       * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
        * </pre>
        *
        * <code>optional bool enable_dockerd_authentication = 6 [json_name = "enableDockerdAuthentication"];</code>
@@ -11107,7 +11107,7 @@ public final class ConfigurationOuterClass {
       boolean hasEnableDockerdAuthentication();
       /**
        * <pre>
-       * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+       * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
        * </pre>
        *
        * <code>optional bool enable_dockerd_authentication = 6 [json_name = "enableDockerdAuthentication"];</code>
@@ -11385,7 +11385,7 @@ public final class ConfigurationOuterClass {
       private boolean enableDockerdAuthentication_ = false;
       /**
        * <pre>
-       * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+       * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
        * </pre>
        *
        * <code>optional bool enable_dockerd_authentication = 6 [json_name = "enableDockerdAuthentication"];</code>
@@ -11397,7 +11397,7 @@ public final class ConfigurationOuterClass {
       }
       /**
        * <pre>
-       * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+       * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
        * </pre>
        *
        * <code>optional bool enable_dockerd_authentication = 6 [json_name = "enableDockerdAuthentication"];</code>
@@ -12402,7 +12402,7 @@ public final class ConfigurationOuterClass {
         private boolean enableDockerdAuthentication_ ;
         /**
          * <pre>
-         * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+         * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
          * </pre>
          *
          * <code>optional bool enable_dockerd_authentication = 6 [json_name = "enableDockerdAuthentication"];</code>
@@ -12414,7 +12414,7 @@ public final class ConfigurationOuterClass {
         }
         /**
          * <pre>
-         * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+         * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
          * </pre>
          *
          * <code>optional bool enable_dockerd_authentication = 6 [json_name = "enableDockerdAuthentication"];</code>
@@ -12426,7 +12426,7 @@ public final class ConfigurationOuterClass {
         }
         /**
          * <pre>
-         * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+         * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
          * </pre>
          *
          * <code>optional bool enable_dockerd_authentication = 6 [json_name = "enableDockerdAuthentication"];</code>
@@ -12442,7 +12442,7 @@ public final class ConfigurationOuterClass {
         }
         /**
          * <pre>
-         * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+         * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
          * </pre>
          *
          * <code>optional bool enable_dockerd_authentication = 6 [json_name = "enableDockerdAuthentication"];</code>

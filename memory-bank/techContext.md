@@ -1,4 +1,4 @@
-# Technical Context: Gitpod
+# Technical Context: Devpod
 
 ## Technologies Used
 
@@ -14,7 +14,7 @@
 - **Protocol Buffers**: Data serialization
 - **Kubernetes API**: Workspace orchestration
 - **Docker API**: Container management
-- **Leeway**: Custom build system for managing component dependencies
+- **Blazedock**: Custom build system for managing component dependencies
 
 ### Infrastructure
 - **Kubernetes**: Container orchestration platform
@@ -34,16 +34,16 @@
 ## Development Setup
 
 ### Local Development
-The project uses a Gitpod-based development workflow (dogfooding), with the following key aspects:
+The project uses a Devpod-based development workflow (dogfooding), with the following key aspects:
 
-1. **Gitpod Workspace**: Development occurs in Gitpod workspaces defined by `.devpod.yml`
+1. **Devpod Workspace**: Development occurs in Devpod workspaces defined by `.devpod.yml`
 2. **Component-Based**: Each component can be developed and tested independently
-3. **Leeway Build System**: Manages dependencies between components
+3. **Blazedock Build System**: Manages dependencies between components
 4. **Dev Containers**: Development occurs in containers that mirror production
 
 ### Build Process
 
-Gitpod uses two primary approaches for building components:
+Devpod uses two primary approaches for building components:
 
 #### 1. In-tree Builds (Primary for Local Development)
 Components are built directly in the workspace using language-specific tools:
@@ -76,22 +76,22 @@ Components are built directly in the workspace using language-specific tools:
     go test ./...     # Test all packages
     ```
 
-#### 2. Leeway Builds (Out-of-tree, Primary for CI)
-Leeway is a custom build tool that:
+#### 2. Blazedock Builds (Out-of-tree, Primary for CI)
+Blazedock is a custom build tool that:
 - Copies relevant sources into a separate file tree
 - Manages complex dependencies between components
 - Generates build artifacts for CI/CD pipelines
 - Can also be run from inside the workspace
 
-Common Leeway commands:
+Common Blazedock commands:
 ```bash
-leeway build components/server:app    # Build a specific component
-leeway build -D components/server:app # Build with dependencies
-leeway exec --package components/server:app -- yarn test  # Run a command for a package
+blazedock build components/server:app    # Build a specific component
+blazedock build -D components/server:app # Build with dependencies
+blazedock exec --package components/server:app -- yarn test  # Run a command for a package
 ```
 
 #### 3. Component Packaging
-- **Docker Images**: Components are packaged as Docker images using `leeway.Dockerfile` files
+- **Docker Images**: Components are packaged as Docker images using `blazedock.Dockerfile` files
 - **Helm Charts**: Deployment configurations are managed as Helm charts for Kubernetes deployment
 
 ### Testing Strategy

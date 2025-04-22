@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -15,26 +15,26 @@ import { SessionHandler } from "./session-handler";
 import { Authenticator } from "./auth/authenticator";
 import { UserController } from "./user/user-controller";
 import { EventEmitter } from "events";
-import { createWebSocketConnection, toIWebSocket } from "@devpod/devpod-protocol/lib/messaging/node/connection";
+import { createWebSocketConnection, toIWebSocket } from "@khulnasoft/devpod-protocol/lib/messaging/node/connection";
 import { WsExpressHandler, WsRequestHandler } from "./express/ws-handler";
 import { isAllowedWebsocketDomain, bottomErrorHandler, unhandledToError, toHeaders } from "./express-util";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { AddressInfo } from "net";
 import { WorkspaceDownloadService } from "./workspace/workspace-download-service";
 import { MonitoringEndpointsApp } from "./monitoring-endpoints";
 import { WebsocketConnectionManager } from "./websocket/websocket-connection-manager";
-import { TypeORM } from "@devpod/devpod-db/lib";
+import { TypeORM } from "@khulnasoft/devpod-db/lib";
 import { OneTimeSecretServer } from "./one-time-secret-server";
-import { Disposable, DisposableCollection } from "@devpod/devpod-protocol";
+import { Disposable, DisposableCollection } from "@khulnasoft/devpod-protocol";
 import { BearerAuth, isBearerAuthError } from "./auth/bearer-authenticator";
 import { HostContextProvider } from "./auth/host-context-provider";
 import { CodeSyncService } from "./code-sync/code-sync-service";
-import { increaseHttpRequestCounter, observeHttpRequestDuration, setGitpodVersion } from "./prometheus-metrics";
+import { increaseHttpRequestCounter, observeHttpRequestDuration, setDevpodVersion } from "./prometheus-metrics";
 import { OAuthController } from "./oauth-server/oauth-controller";
 import { HeadlessLogController } from "./workspace/headless-log-controller";
 import { NewsletterSubscriptionController } from "./user/newsletter-subscription-controller";
 import { Config } from "./config";
-import { DebugApp } from "@devpod/devpod-protocol/lib/util/debug-app";
+import { DebugApp } from "@khulnasoft/devpod-protocol/lib/util/debug-app";
 import { WsConnectionHandler } from "./express/ws-connection-handler";
 import { IamSessionApp } from "./iam/iam-session-app";
 import { API } from "./api/server";
@@ -111,7 +111,7 @@ export class Server {
         log.info("server initializing...");
 
         // Set version info metric
-        setGitpodVersion(this.config.version);
+        setDevpodVersion(this.config.version);
 
         // ensure DB connection is established to avoid noisy error messages
         await this.typeOrm.connect();
@@ -173,10 +173,10 @@ export class Server {
         const websocketConnectionHandler = this.websocketConnectionHandler;
         this.eventEmitter.on(Server.EVENT_ON_START, (httpServer) => {
             // CSRF protection: check "Origin" header:
-            //  - for cookie/session AND Bearer auth: MUST be hostUrl.hostname (devpod.io)
+            //  - for cookie/session AND Bearer auth: MUST be hostUrl.hostname (devpod.khulnasoft.com)
             //  - edge case: empty "Origin" is always permitted
-            // We rely on the origin header being set correctly (needed by regular clients to use Gitpod:
-            // CORS allows subdomains to access devpod.io)
+            // We rely on the origin header being set correctly (needed by regular clients to use Devpod:
+            // CORS allows subdomains to access devpod.khulnasoft.com)
             const verifyOrigin = (origin: string) => {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 let allowedRequest = isAllowedWebsocketDomain(origin, this.config.hostUrl.url.hostname);

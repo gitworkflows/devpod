@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { injectable, inject } from "inversify";
 import * as opentracing from "opentracing";
-import { DBWithTracing, TracedWorkspaceDB, WorkspaceDB, WebhookEventDB } from "@devpod/devpod-db/lib";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { DBWithTracing, TracedWorkspaceDB, WorkspaceDB, WebhookEventDB } from "@khulnasoft/devpod-db/lib";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { Job } from "./runner";
 
 @injectable()

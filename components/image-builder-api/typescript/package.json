@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@devpod/image-builder",
+  "name": "@khulnasoft/image-builder",
   "version": "0.1.5",
   "license": "UNLICENSED",
   "scripts": {
@@ -11,8 +11,8 @@
     "lib"
   ],
   "dependencies": {
-    "@devpod/content-service": "0.1.5",
-    "@devpod/devpod-protocol": "0.1.5",
+    "@khulnasoft/content-service": "*",
+    "@khulnasoft/devpod-protocol": "*",
     "@grpc/grpc-js": "1.12.6",
     "google-protobuf": "^3.19.1",
     "inversify": "^6.0.1",

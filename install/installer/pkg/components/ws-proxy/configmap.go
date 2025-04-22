@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -60,14 +60,14 @@ func configmap(ctx *common.RenderContext) ([]runtime.Object, error) {
 		if ucfg.Workspace.WSProxy.BlobServeHost != "" {
 			blobServeHost = ucfg.Workspace.WSProxy.BlobServeHost
 		}
-		if ucfg.Workspace.WSProxy.GitpodInstallationHostName != "" {
-			devpodInstallationHostName = ucfg.Workspace.WSProxy.GitpodInstallationHostName
+		if ucfg.Workspace.WSProxy.DevpodInstallationHostName != "" {
+			devpodInstallationHostName = ucfg.Workspace.WSProxy.DevpodInstallationHostName
 		}
-		if ucfg.Workspace.WSProxy.GitpodInstallationWorkspaceHostSuffix != "" {
-			devpodInstallationWorkspaceHostSuffix = ucfg.Workspace.WSProxy.GitpodInstallationWorkspaceHostSuffix
+		if ucfg.Workspace.WSProxy.DevpodInstallationWorkspaceHostSuffix != "" {
+			devpodInstallationWorkspaceHostSuffix = ucfg.Workspace.WSProxy.DevpodInstallationWorkspaceHostSuffix
 		}
-		if ucfg.Workspace.WSProxy.GitpodInstallationWorkspaceHostSuffixRegex != "" {
-			devpodInstallationWorkspaceHostSuffixRegex = ucfg.Workspace.WSProxy.GitpodInstallationWorkspaceHostSuffixRegex
+		if ucfg.Workspace.WSProxy.DevpodInstallationWorkspaceHostSuffixRegex != "" {
+			devpodInstallationWorkspaceHostSuffixRegex = ucfg.Workspace.WSProxy.DevpodInstallationWorkspaceHostSuffixRegex
 		}
 
 		return nil
@@ -100,7 +100,7 @@ func configmap(ctx *common.RenderContext) ([]runtime.Object, error) {
 				Host:       blobServeHost,
 				PathPrefix: "/blobserve",
 			},
-			GitpodInstallation: &proxy.GitpodInstallation{
+			DevpodInstallation: &proxy.DevpodInstallation{
 				Scheme:                   "https",
 				HostName:                 devpodInstallationHostName,
 				WorkspaceHostSuffix:      devpodInstallationWorkspaceHostSuffix,

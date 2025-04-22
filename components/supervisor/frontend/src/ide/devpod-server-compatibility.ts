@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import { serverUrl } from "../shared/urls";
 
 const currentHost = new URL(serverUrl.toString()).hostname;
 
-export const isSaaS = currentHost === "devpod.io";
+export const isSaaS = currentHost === "devpod.khulnasoft.com";
 
 const versionRegex = new RegExp("main.(\\d+)");
 

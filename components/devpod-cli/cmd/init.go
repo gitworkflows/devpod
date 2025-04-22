@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -30,13 +30,13 @@ var (
 // initCmd initializes the workspace's .devpod.yml file
 var initCmd = &cobra.Command{
 	Use:   "init",
-	Short: "Create a Gitpod configuration for this project.",
+	Short: "Create a Devpod configuration for this project.",
 	Long: `
-Create a Gitpod configuration for this project.
+Create a Devpod configuration for this project.
 	`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		ctx := cmd.Context()
-		cfg := devpodlib.GitpodFile{}
+		cfg := devpodlib.DevpodFile{}
 		if interactive {
 			if err := askForDockerImage(ctx, &cfg); err != nil {
 				return err
@@ -69,22 +69,22 @@ Create a Gitpod configuration for this project.
 			}
 			yml := ""
 			if defaultImage != "" {
-				yml = yml + fmt.Sprintf("# Image of workspace. Learn more: https://www.devpod.io/docs/configure/workspaces/workspace-image\nimage: %s\n\n", defaultImage)
+				yml = yml + fmt.Sprintf("# Image of workspace. Learn more: https://www.devpod.khulnasoft.com/docs/configure/workspaces/workspace-image\nimage: %s\n\n", defaultImage)
 			}
-			yml = yml + `# List the start up tasks. Learn more: https://www.devpod.io/docs/configure/workspaces/tasks
+			yml = yml + `# List the start up tasks. Learn more: https://www.devpod.khulnasoft.com/docs/configure/workspaces/tasks
 tasks:
   - name: Script Task
-    init: echo 'init script' # runs during prebuild => https://www.devpod.io/docs/configure/projects/prebuilds
+    init: echo 'init script' # runs during prebuild => https://www.devpod.khulnasoft.com/docs/configure/projects/prebuilds
     command: echo 'start script'
 
-# List the ports to expose. Learn more: https://www.devpod.io/docs/configure/workspaces/ports
+# List the ports to expose. Learn more: https://www.devpod.khulnasoft.com/docs/configure/workspaces/ports
 ports:
   - name: Frontend
     description: Port 3000 for the frontend
     port: 3000
     onOpen: open-preview
 
-# Learn more from ready-to-use templates: https://www.devpod.io/docs/introduction/getting-started/quickstart
+# Learn more from ready-to-use templates: https://www.devpod.khulnasoft.com/docs/introduction/getting-started/quickstart
 `
 			d = []byte(yml)
 		} else {
@@ -107,7 +107,7 @@ ports:
 		}
 
 		// open .devpod.yml and Dockerfile
-		if v, ok := cfg.Image.(devpodlib.GitpodImage); ok {
+		if v, ok := cfg.Image.(devpodlib.DevpodImage); ok {
 			if _, err = os.Stat(v.File); os.IsNotExist(err) {
 				if err = os.WriteFile(v.File, []byte(`FROM devpod/workspace-full
 
@@ -120,7 +120,7 @@ USER devpod
 #     sudo apt-get install -yq bastet && \
 #     sudo rm -rf /var/lib/apt/lists/*
 #
-# More information: https://www.devpod.io/docs/config-docker/
+# More information: https://www.devpod.khulnasoft.com/docs/config-docker/
 `), 0644); err != nil {
 					return err
 				}
@@ -176,7 +176,7 @@ func ask(lbl string, def string, validator promptui.ValidateFunc) (string, error
 	return prompt.Run()
 }
 
-func askForDockerImage(ctx context.Context, cfg *devpodlib.GitpodFile) error {
+func askForDockerImage(ctx context.Context, cfg *devpodlib.DevpodFile) error {
 	prompt := promptui.Select{
 		Label: "Workspace Docker image",
 		Items: []string{"default", "custom image", "docker file"},
@@ -219,7 +219,7 @@ func askForDockerImage(ctx context.Context, cfg *devpodlib.GitpodFile) error {
 	if err != nil {
 		return err
 	}
-	cfg.SetImage(devpodlib.GitpodImage{
+	cfg.SetImage(devpodlib.DevpodImage{
 		File:    dockerFile,
 		Context: ctxtPath,
 	})
@@ -242,7 +242,7 @@ func parsePorts(input string) ([]int32, error) {
 	return rst, nil
 }
 
-func askForPorts(cfg *devpodlib.GitpodFile) error {
+func askForPorts(cfg *devpodlib.DevpodFile) error {
 	input, err := ask("Expose Ports (comma separated)", "", func(input string) error {
 		if _, err := parsePorts(input); err != nil {
 			return err
@@ -264,7 +264,7 @@ func askForPorts(cfg *devpodlib.GitpodFile) error {
 	return nil
 }
 
-func askForTask(cfg *devpodlib.GitpodFile) error {
+func askForTask(cfg *devpodlib.DevpodFile) error {
 	input, err := ask("Startup task (enter to skip)", "", nil)
 	if err != nil {
 		return err

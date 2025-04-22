@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { EmailDomainFilterEntry } from "@devpod/devpod-protocol";
+import { EmailDomainFilterEntry } from "@khulnasoft/devpod-protocol";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Alert from "../components/Alert";
@@ -17,7 +17,7 @@ import { AdminPageHeader } from "./AdminPageHeader";
 import Pagination from "../Pagination/Pagination";
 import { Button } from "@podkit/buttons/Button";
 import { installationClient } from "../service/public-api";
-import { ListBlockedEmailDomainsResponse } from "@devpod/public-api/lib/devpod/v1/installation_pb";
+import { ListBlockedEmailDomainsResponse } from "@khulnasoft/public-api/lib/devpod/v1/installation_pb";
 import { TextInputField } from "../components/forms/TextInputField";
 
 export function BlockedEmailDomains() {

@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -417,7 +417,7 @@ func (o *Orchestrator) Build(req *protocol.BuildRequest, resp protocol.ImageBuil
 					{Name: "BOB_BUILD_BASE", Value: buildBase},
 					{Name: "BOB_DOCKERFILE_PATH", Value: dockerfilePath},
 					{Name: "BOB_CONTEXT_DIR", Value: contextPath},
-					{Name: "GITPOD_TASKS", Value: `[{"name": "build", "init": "sudo -E /app/bob build"}]`},
+					{Name: "DEVPOD_TASKS", Value: `[{"name": "build", "init": "sudo -E /app/bob build"}]`},
 					{Name: "WORKSPACEKIT_RING2_ENCLAVE", Value: "/app/bob proxy"},
 					{Name: "WORKSPACEKIT_BOBPROXY_BASEREF", Value: baseref},
 					{Name: "WORKSPACEKIT_BOBPROXY_TARGETREF", Value: wsrefstr},
@@ -461,7 +461,7 @@ func (o *Orchestrator) Build(req *protocol.BuildRequest, resp protocol.ImageBuil
 
 		// The failed condition of ws-manager is not stable, hence we might wrongly report that the
 		// build was successful when in fact it wasn't. This would break workspace startup with a strange
-		// "cannot pull from reg.devpod.io" error message. Instead the image-build should fail properly.
+		// "cannot pull from reg.devpod.khulnasoft.com" error message. Instead the image-build should fail properly.
 		// To do this, we resolve the built image afterwards to ensure it was actually built.
 		if update.Status == protocol.BuildStatus_done_success {
 			exists, err := o.checkImageExists(ctx, wsrefstr, wsrefAuth)

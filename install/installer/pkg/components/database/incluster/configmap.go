@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -40,8 +40,8 @@ func configmap(ctx *common.RenderContext) ([]runtime.Object, error) {
 
 		fileStr := string(file)
 		// Replace variables in the script
-		fileStr = strings.Replace(fileStr, "__GITPOD_DB_NAME__", Database, -1)
-		fileStr = strings.Replace(fileStr, "__GITPOD_USERNAME__", Username, -1)
+		fileStr = strings.Replace(fileStr, "__DEVPOD_DB_NAME__", Database, -1)
+		fileStr = strings.Replace(fileStr, "__DEVPOD_USERNAME__", Username, -1)
 
 		// Add the file name for debugging purposes
 		initScriptData += fmt.Sprintf("-- %s\n\n%s", script.Name(), fileStr)

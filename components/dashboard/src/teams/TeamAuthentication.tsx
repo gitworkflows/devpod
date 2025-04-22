@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { isGitpodIo } from "../utils";
+import { isDevpodIo } from "../utils";
 import React from "react";
 import { Heading2, Heading3, Subheading } from "../components/typography/headings";
 import { OrgSettingsPage } from "./OrgSettingsPage";
@@ -18,7 +18,7 @@ import PillLabel from "../components/PillLabel";
 export default function TeamPoliciesPage() {
     useDocumentTitle("Organization Settings - Authentication");
 
-    if (!isGitpodIo) {
+    if (!isDevpodIo) {
         return <Redirect to="/settings" />;
     }
 
@@ -59,12 +59,12 @@ const SSOCard = () => {
                 </div>
                 <div className="flex flex-row gap-2 items-center text-pk-content-secondary">
                     <CheckCircle2Icon size={20} className="text-pk-content-primary" />
-                    Instantly revoke access and off-board users from Gitpod
+                    Instantly revoke access and off-board users from Devpod
                 </div>
             </div>
 
             <LinkButton
-                href="https://www.devpod.io/contact/enterprise-self-serve"
+                href="https://www.devpod.khulnasoft.com/contact/enterprise-self-serve"
                 isExternalUrl={true}
                 className="mt-8"
             >
@@ -83,7 +83,7 @@ const PrivateImageRegistryCard = () => {
             <LinkButton
                 variant="secondary"
                 className="mt-8 border border-pk-content-tertiary text-pk-content-primary bg-pk-surface-primary"
-                href="https://www.devpod.io/docs/enterprise/setup-devpod/use-private-ecr-repos-for-workspace-images"
+                href="https://www.devpod.khulnasoft.com/docs/enterprise/setup-devpod/use-private-ecr-repos-for-workspace-images"
                 isExternalUrl={true}
             >
                 Documentation
@@ -103,7 +103,7 @@ const PrivateSourceControlAccess = () => {
             <LinkButton
                 variant="secondary"
                 className="mt-8 border border-pk-content-tertiary text-pk-content-primary bg-pk-surface-primary"
-                href="https://www.devpod.io/docs/enterprise/setup-devpod/scm-integration"
+                href="https://www.devpod.khulnasoft.com/docs/enterprise/setup-devpod/scm-integration"
                 isExternalUrl={true}
             >
                 Documentation

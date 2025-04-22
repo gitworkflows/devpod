@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -16,8 +16,8 @@ import { SpinnerLoader } from "../components/Loader";
 import searchIcon from "../icons/search.svg";
 import { Button } from "@podkit/buttons/Button";
 import { installationClient } from "../service/public-api";
-import { Sort, SortOrder } from "@devpod/public-api/lib/devpod/v1/sorting_pb";
-import { BlockedRepository, ListBlockedRepositoriesResponse } from "@devpod/public-api/lib/devpod/v1/installation_pb";
+import { Sort, SortOrder } from "@khulnasoft/public-api/lib/devpod/v1/sorting_pb";
+import { BlockedRepository, ListBlockedRepositoriesResponse } from "@khulnasoft/public-api/lib/devpod/v1/installation_pb";
 import { TextInputField } from "../components/forms/TextInputField";
 
 export function BlockedRepositories() {

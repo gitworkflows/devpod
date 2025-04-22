@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -66,13 +66,13 @@ func runRebuild(ctx context.Context, supervisorClient *supervisor.SupervisorClie
 		checkoutLocation = wsInfo.CheckoutLocation
 	}
 
-	devpodConfig, err := utils.ParseGitpodConfig(checkoutLocation)
+	devpodConfig, err := utils.ParseDevpodConfig(checkoutLocation)
 	if err != nil {
 		fmt.Println("The .devpod.yml file cannot be parsed: please check the file and try again")
 		fmt.Println("")
 		fmt.Println("For help check out the reference page:")
-		fmt.Println("https://www.devpod.io/docs/references/devpod-yml#devpodyml")
-		return GpError{Err: err, OutCome: utils.Outcome_UserErr, ErrorCode: utils.RebuildErrorCode_MalformedGitpodYaml, Silence: true}
+		fmt.Println("https://www.devpod.khulnasoft.com/docs/references/devpod-yml#devpodyml")
+		return GpError{Err: err, OutCome: utils.Outcome_UserErr, ErrorCode: utils.RebuildErrorCode_MalformedDevpodYaml, Silence: true}
 	}
 
 	if devpodConfig == nil {
@@ -81,8 +81,8 @@ func runRebuild(ctx context.Context, supervisorClient *supervisor.SupervisorClie
 		fmt.Println("For a quick start, try running:\n$ gp init -i")
 		fmt.Println("")
 		fmt.Println("Alternatively, check out the following docs for getting started configuring your project")
-		fmt.Println("https://www.devpod.io/docs/configure#configure-devpod")
-		return GpError{Err: err, OutCome: utils.Outcome_UserErr, ErrorCode: utils.RebuildErrorCode_MissingGitpodYaml, Silence: true}
+		fmt.Println("https://www.devpod.khulnasoft.com/docs/configure#configure-devpod")
+		return GpError{Err: err, OutCome: utils.Outcome_UserErr, ErrorCode: utils.RebuildErrorCode_MissingDevpodYaml, Silence: true}
 	}
 
 	var image string
@@ -120,17 +120,17 @@ func runRebuild(ctx context.Context, supervisorClient *supervisor.SupervisorClie
 			return err
 		}
 		if string(dockerfile) == "" {
-			fmt.Println("Your Gitpod's Dockerfile is empty")
+			fmt.Println("Your Devpod's Dockerfile is empty")
 			fmt.Println("")
 			fmt.Println("To learn how to customize your workspace, check out the following docs:")
-			fmt.Println("https://www.devpod.io/docs/configure/workspaces/workspace-image#use-a-custom-dockerfile")
+			fmt.Println("https://www.devpod.khulnasoft.com/docs/configure/workspaces/workspace-image#use-a-custom-dockerfile")
 			fmt.Println("")
 			fmt.Println("Once you configure your Dockerfile, re-run this command to validate your changes")
 			return GpError{Err: err, OutCome: utils.Outcome_UserErr, Silence: true}
 		}
 	default:
 		fmt.Println("Check your .devpod.yml and make sure the image property is configured correctly")
-		return GpError{Err: err, OutCome: utils.Outcome_UserErr, ErrorCode: utils.RebuildErrorCode_MalformedGitpodYaml, Silence: true}
+		return GpError{Err: err, OutCome: utils.Outcome_UserErr, ErrorCode: utils.RebuildErrorCode_MalformedDevpodYaml, Silence: true}
 	}
 
 	// 2. build image
@@ -249,11 +249,11 @@ func runRebuild(ctx context.Context, supervisorClient *supervisor.SupervisorClie
 	for _, env := range debugEnvs.Envs {
 		envs += env + "\n"
 	}
-	for _, env := range validateOpts.GitpodEnvs {
+	for _, env := range validateOpts.DevpodEnvs {
 		envs += env + "\n"
 	}
 	if validateOpts.Headless {
-		envs += "GITPOD_HEADLESS=true\n"
+		envs += "DEVPOD_HEADLESS=true\n"
 	}
 	for _, env := range workspaceEnvs {
 		envs += fmt.Sprintf("%s=%s\n", env.Name, env.Value)
@@ -395,7 +395,7 @@ func runRebuild(ctx context.Context, supervisorClient *supervisor.SupervisorClie
 Open in Browser at:
 %s
 
-Connect using SSH keys (https://devpod.io/keys):
+Connect using SSH keys (https://devpod.khulnasoft.com/keys):
 %s
 
 %s`, sep, workspaceUrl, ssh, sep)
@@ -655,7 +655,7 @@ var validateOpts struct {
 	Headless        bool
 
 	// internal
-	GitpodEnvs []string
+	DevpodEnvs []string
 }
 
 var validateCmd = &cobra.Command{
@@ -699,7 +699,7 @@ func init() {
 		cmd.PersistentFlags().StringVarP(&validateOpts.LogLevel, "log", "", "error", "Log level to use. Allowed values are 'error', 'warn', 'info', 'debug', 'trace'.")
 
 		// internal
-		cmd.PersistentFlags().StringArrayVarP(&validateOpts.GitpodEnvs, "devpod-env", "", nil, "")
+		cmd.PersistentFlags().StringArrayVarP(&validateOpts.DevpodEnvs, "devpod-env", "", nil, "")
 		cmd.PersistentFlags().StringVarP(&validateOpts.WorkspaceFolder, "workspace-folder", "w", workspaceFolder, "Path to the workspace folder.")
 		cmd.PersistentFlags().StringVarP(&validateOpts.From, "from", "", "", "Starts from 'prebuild' or 'snapshot'.")
 		cmd.PersistentFlags().BoolVarP(&validateOpts.Headless, "headless", "", false, "Starts in headless mode.")

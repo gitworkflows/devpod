@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import { TextInput } from "../../components/forms/TextInputField";
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "@podkit/tables/Table";
 import { RepositoryListItem } from "./RepoListItem";
 import { LoadingButton } from "@podkit/buttons/LoadingButton";
-import { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
+import { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
 import { TextMuted } from "@podkit/typography/TextMuted";
 import { Subheading } from "@podkit/typography/Headings";
 import { cn } from "@podkit/lib/cn";

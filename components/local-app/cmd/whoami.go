@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -26,7 +26,7 @@ var whoamiCmd = &cobra.Command{
 			return err
 		}
 
-		client, err := getGitpodClient(cmd.Context())
+		client, err := getDevpodClient(cmd.Context())
 		if err != nil {
 			return err
 		}
@@ -41,7 +41,7 @@ var whoamiCmd = &cobra.Command{
 }
 
 // whoami returns information about the currently logged in user
-func whoami(ctx context.Context, client *client.Gitpod, gpctx *config.ConnectionContext) ([]whoamiResult, error) {
+func whoami(ctx context.Context, client *client.Devpod, gpctx *config.ConnectionContext) ([]whoamiResult, error) {
 	user, err := client.User.GetAuthenticatedUser(ctx, &connect.Request[v1.GetAuthenticatedUserRequest]{})
 	if err != nil {
 		return nil, err

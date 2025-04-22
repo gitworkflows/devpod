@@ -2,14 +2,14 @@
 
 ## Overview
 
-The Scrubber component in Gitpod is a Go library that provides functionality for removing or masking sensitive information from data. It's designed to protect personally identifiable information (PII) and other sensitive data from being exposed in logs, error messages, and other outputs. The component offers various methods for scrubbing different types of data structures, including strings, key-value pairs, JSON, and Go structs.
+The Scrubber component in Devpod is a Go library that provides functionality for removing or masking sensitive information from data. It's designed to protect personally identifiable information (PII) and other sensitive data from being exposed in logs, error messages, and other outputs. The component offers various methods for scrubbing different types of data structures, including strings, key-value pairs, JSON, and Go structs.
 
 ## Purpose
 
 The primary purposes of the Scrubber component are:
 - Remove or mask personally identifiable information (PII) from data
 - Protect sensitive information such as passwords, tokens, and secrets
-- Provide consistent data sanitization across the Gitpod platform
+- Provide consistent data sanitization across the Devpod platform
 - Support various data formats and structures
 - Enable customizable scrubbing rules
 - Reduce the risk of sensitive data exposure
@@ -26,7 +26,7 @@ The Scrubber component is structured as a Go library with several key parts:
 4. **Configuration**: Defines what fields and patterns should be scrubbed
 5. **Struct Walking**: Uses reflection to traverse and scrub complex data structures
 
-The component is designed to be used by other Gitpod components that need to sanitize data before logging, storing, or transmitting it.
+The component is designed to be used by other Devpod components that need to sanitize data before logging, storing, or transmitting it.
 
 ## Key Features
 
@@ -133,7 +133,7 @@ The Scrubber component integrates with:
 2. **Error Handling**: To sanitize error messages
 3. **API Responses**: To sanitize sensitive data in responses
 4. **Monitoring Systems**: To sanitize metrics and traces
-5. **Other Gitpod Components**: To provide consistent data sanitization
+5. **Other Devpod Components**: To provide consistent data sanitization
 
 ## Dependencies
 

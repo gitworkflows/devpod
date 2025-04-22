@@ -1,0 +1,15 @@
+# Copyright (c) 2023 Devpod GmbH. All rights reserved.
+# Licensed under the GNU Affero General Public License (AGPL).
+# See License.AGPL.txt in the project root for license information.
+
+FROM cgr.dev/chainguard/wolfi-base:latest@sha256:79884062be1fd5f698859ee4044c6d13729fabeb9eb1f34aacfc6120414f8a91
+
+WORKDIR /app
+COPY components-local-app--app-with-manifest/bin/* ./
+
+ARG __GIT_COMMIT
+ARG VERSION
+
+ENV DEVPOD_BUILD_GIT_COMMIT=${__GIT_COMMIT}
+ENV DEVPOD_BUILD_VERSION=${VERSION}
+CMD ["/bin/sh", "-c", "cp /app/* /out"]

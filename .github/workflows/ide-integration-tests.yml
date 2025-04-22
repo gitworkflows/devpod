@@ -12,7 +12,7 @@ on:
         default: "latest"
       version:
         required: true
-        description: "The version of Gitpod to install"
+        description: "The version of Devpod to install"
         default: "latest"
       image_repo_base:
         type: choice
@@ -65,7 +65,7 @@ jobs:
               # others
               RUNID=$(gh run list -R khulnasoft/devpod -b main -w build.yml --limit 1 --json databaseId --jq .[0].databaseId)
               gh run watch "$RUNID" -R khulnasoft/devpod
-              CONCLUSION=$(gh run view "$RUNID" -R khulnasoft/devpod --json jobs --jq '.jobs[] | select(.name == "Build Gitpod") | {name, status, conclusion} | .conclusion')
+              CONCLUSION=$(gh run view "$RUNID" -R khulnasoft/devpod --json jobs --jq '.jobs[] | select(.name == "Build Devpod") | {name, status, conclusion} | .conclusion')
               if [ "$CONCLUSION" != "success" ]; then
                 echo main branch build is failed, see https://github.com/khulnasoft/devpod/actions/runs/"$RUNID" for detail | tee -a $GITHUB_STEP_SUMMARY
                 exit 1
@@ -107,7 +107,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Create preview environment infrastructure
         id: create
         uses: ./.github/actions/preview-create
@@ -117,7 +117,7 @@ jobs:
           large_vm: true
           preemptible: true
           image_repo_base: ${{ needs.configuration.outputs.image_repo_base }}
-      - name: Deploy Gitpod to the preview environment
+      - name: Deploy Devpod to the preview environment
         id: deploy-devpod
         if: github.event.inputs.skip_deploy != 'true'
         uses: ./.github/actions/deploy-devpod
@@ -144,7 +144,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Integration Test
         shell: bash
         env:
@@ -159,9 +159,9 @@ jobs:
         run: |
           set -euo pipefail
 
-          export LEEWAY_WORKSPACE_ROOT="$(pwd)"
+          export BLAZEDOCK_WORKSPACE_ROOT="$(pwd)"
 
-          leeway run dev/preview/previewctl:install
+          blazedock run dev/preview/previewctl:install
 
           previewctl install-context --branch "${PREVIEW_NAME}" --log-level debug --timeout 1m
 
@@ -226,7 +226,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Delete preview environment
         uses: ./.github/actions/delete-preview
         with:

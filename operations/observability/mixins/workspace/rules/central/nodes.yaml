@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2022 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -24,7 +24,7 @@ spec:
                     )
         - name: workspace-nodes-alerts
           rules:
-              - alert: GitpodWorkspaceNodeHighNormalizedLoadAverage
+              - alert: DevpodWorkspaceNodeHighNormalizedLoadAverage
                 labels:
                     severity: warning
                     team: engine
@@ -35,7 +35,7 @@ spec:
                     description: Node {{ $labels.node }} in {{ $labels.cluster }} is reporting {{ printf "%.2f" $value }}% normalized load average. Normalized load average is current load average divided by number of CPU cores of the node.
                 expr: nodepool:node_load1:normalized{nodepool=~".*workspace.*", cluster!~"ephemeral.*"} > 10
 
-              - alert: GitpodHeadlessNodeHighNormalizedLoadAverage
+              - alert: DevpodHeadlessNodeHighNormalizedLoadAverage
                 labels:
                     severity: warning
                     team: engine

@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { GitpodToken, GitpodTokenType } from "@devpod/devpod-protocol";
+import { DevpodToken, DevpodTokenType } from "@khulnasoft/devpod-protocol";
 import { Column, Entity, PrimaryColumn } from "typeorm";
 import { Transformer } from "../transformer";
 import { TypeORM } from "../typeorm";
 
 @Entity()
 // on DB but not Typeorm: @Index("ind_lastModified", ["_lastModified"])   // DBSync
-export class DBGitpodToken implements GitpodToken {
+export class DBDevpodToken implements DevpodToken {
     @PrimaryColumn("varchar")
     tokenHash: string;
 
@@ -22,7 +22,7 @@ export class DBGitpodToken implements GitpodToken {
     name?: string;
 
     @Column({ type: "int" })
-    type: GitpodTokenType;
+    type: DevpodTokenType;
 
     @Column(TypeORM.UUID_COLUMN_TYPE)
     userId: string;

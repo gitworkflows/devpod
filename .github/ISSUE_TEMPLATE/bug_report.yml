@@ -4,7 +4,7 @@ labels: "type: bug"
 body:
 - type: markdown
   attributes:
-    value: Before raising an issue, please search for existing issues to avoid creating duplicates. For questions, please use [Discord](https://www.devpod.io/chat).
+    value: Before raising an issue, please search for existing issues to avoid creating duplicates. For questions, please use [Discord](https://www.devpod.khulnasoft.com/chat).
 - type: textarea
   id: bug-description
   attributes:
@@ -34,7 +34,7 @@ body:
   id: example-repository
   attributes:
     label: Example repository
-    description: If possible, please [share a Gitpod workspace snapshot](https://www.devpod.io/docs/sharing-and-collaboration#sharing-snapshots) or create a [minimal, reproducible example](https://stackoverflow.com/help/minimal-reproducible-example) of the bug and link it here in the bug report.
+    description: If possible, please [share a Devpod workspace snapshot](https://www.devpod.khulnasoft.com/docs/sharing-and-collaboration#sharing-snapshots) or create a [minimal, reproducible example](https://stackoverflow.com/help/minimal-reproducible-example) of the bug and link it here in the bug report.
 - type: textarea
   id: anything-else
   attributes:

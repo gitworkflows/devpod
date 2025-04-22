@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@devpod/ide-service-api",
+  "name": "@khulnasoft/ide-service-api",
   "version": "0.1.5",
   "license": "UNLICENSED",
   "files": [
@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "mkdir -p lib; tsc",
-    "watch": "leeway exec --package .:lib --transitive-dependencies --filter-type yarn --components --parallel -- tsc -w --preserveWatchOutput"
+    "watch": "blazedock exec --package .:lib --transitive-dependencies --filter-type yarn --components --parallel -- tsc -w --preserveWatchOutput"
   },
   "overrides": {
     "long": "4.0.0"

@@ -1,5 +1,5 @@
 id: devpod
-name: Gitpod
+name: Devpod
 description: "Testsuite for testing khulnasoft/devpod."
 testset: []
 case:
@@ -8,7 +8,7 @@ case:
   group: Repositories
   description: Check the C++ dev experience in the ComponentEditor repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/Circuito-io/ComponentEditor in Gitpod
+    - Open https://devpod-staging.com#https://github.com/Circuito-io/ComponentEditor in Devpod
     - Verify that the circuito web app works properly
     - Open a few `*.cpp` component files
     - Check syntax highlighting
@@ -49,7 +49,7 @@ case:
   group: Repositories
   description: Check the JavaScript dev experience in the Ant Design repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/ant-design/ant-design in Gitpod
+    - Open https://devpod-staging.com#https://github.com/ant-design/ant-design in Devpod
     - Verify that the Ant Design web app opens in a preview
     - Open a few `*.js` files
     - Check syntax highlighting
@@ -66,7 +66,7 @@ case:
   group: Repositories
   description: Check the HTML/CSS dev experience in the Vue Router repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/vuejs/vue-router in Gitpod
+    - Open https://devpod-staging.com#https://github.com/vuejs/vue-router in Devpod
     - Open an `*.html` file (e.g. `/examples/index.html`)
     - Add a new paragraph after the heading (`h1`) element
     - Type `<p>` and it should autocomplete itself with a closing tag like `<p></p>`
@@ -106,7 +106,7 @@ case:
   group: Repositories
   description: Check the Ruby dev experience in the dev.to repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/thepracticaldev/dev.to in Gitpod
+    - Open https://devpod-staging.com#https://github.com/thepracticaldev/dev.to in Devpod
     - Verify the web app works properly (requires creating free Algolia credentials, as explained in the Terminal)
     - Open a few `*.rb` files
     - Check syntax highlighting
@@ -189,13 +189,13 @@ case:
   description: ""
   steps: |-
     Test1)
-    - Delete GitpodStaging entry from https://gitlab.com/-/profile/applications if present.
+    - Delete DevpodStaging entry from https://gitlab.com/-/profile/applications if present.
     - open a new private browser
     - open https://devpod-staging.com/#https://gitlab.com/AlexTugarev/gp-test
     - ensure the onboarding flow works nicely.
 
     Test2)
-    - Delete GitpodStaging entry from https://gitlab.com/-/profile/applications if present.
+    - Delete DevpodStaging entry from https://gitlab.com/-/profile/applications if present.
     - open a new private browser
     - login to https://devpod-staging.com/login/ using GitHub Auth
     - open https://devpod-staging.com/#https://gitlab.com/AlexTugarev/gp-test
@@ -210,7 +210,7 @@ case:
     with `/#prebuild/` context.
   steps: |-
     - Create a fresh fork of https://gitlab.com/AlexTugarev/gp-test (or any other project).
-    - open it in Gitpod and add an init task
+    - open it in Devpod and add an init task
     - push and open with https://devpod-staging.com/#prebuild/  context.
     - ensure the prebuild runs through.
     - ensure opening a project on that branch opens a prebuilt snapshot.
@@ -223,7 +223,7 @@ case:
   group: Repositories
   description: Check the Go dev experience in the Go gin app repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/gitpod-io/go-gin-app in Gitpod
+    - Open https://devpod-staging.com#https://github.com/gitpod-io/go-gin-app in Devpod
     - Verify that the gin web app appears in a preview and works properly
     - Open a few `*.go` files
     - Check syntax highlighting
@@ -240,7 +240,7 @@ case:
   group: Repositories
   description: Check the Go dev experience in the go-swagger repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/go-swagger/go-swagger in Gitpod
+    - Open https://devpod-staging.com#https://github.com/go-swagger/go-swagger in Devpod
     - Verify that you can run the `swagger` CLI after the build
     - Open a few `*.go` files
     - Check syntax highlighting
@@ -286,7 +286,7 @@ case:
   group: IDE
   description: Install a VS Code extension
   steps: |
-    - Download TODO.vsix, then install it in a Gitpod workspace
+    - Download TODO.vsix, then install it in a Devpod workspace
     - Verify that the extension works, and that it was added to .devpod.yml
     - push commit to a branch
     - start new workspace and verify that the TODO extension is installed.
@@ -377,7 +377,7 @@ case:
 - id: open-branch
   name: Open a GitHub branch
   group: IDE
-  description: Open Gitpod on a branch, e.g. https://devpod-staging.com/#https://github.com/gitpod-io/website/tree/cloud-tweaks
+  description: Open Devpod on a branch, e.g. https://devpod-staging.com/#https://github.com/gitpod-io/website/tree/cloud-tweaks
   steps: ""
   mustpass: true
   mintestercount: 1
@@ -385,7 +385,7 @@ case:
 - id: open-from-referrer
   name: Open a workspace using /from-referrer/
   group: Dashboard
-  description: Open Gitpod from a GitHub button using https://devpod-staging.com/from-referrer/
+  description: Open Devpod from a GitHub button using https://devpod-staging.com/from-referrer/
   steps: |-
     - Click on the link https://devpod-staging.com/from-referrer/ embeded on a GitHub README. E.g. https://github.com/geropl/devpod-redirect/blob/master/README.md (must be a non-private repo!!!)
     - Should parse the context and open workspace successfully
@@ -395,7 +395,7 @@ case:
 - id: open-issue
   name: Open a GitHub issue
   group: IDE
-  description: Open Gitpod on a issue, e.g. https://devpod-staging.com/#https://github.com/gitpod-io/website/issues/202
+  description: Open Devpod on a issue, e.g. https://devpod-staging.com/#https://github.com/gitpod-io/website/issues/202
   steps: ""
   mustpass: true
   mintestercount: 1
@@ -414,7 +414,7 @@ case:
 - id: open-tag
   name: Open a GitHub tag
   group: IDE
-  description: Open Gitpod on a tag, e.g. https://devpod-staging.com/#https://github.com/JanitorTechnology/selfapi/tree/0.3.3
+  description: Open Devpod on a tag, e.g. https://devpod-staging.com/#https://github.com/JanitorTechnology/selfapi/tree/0.3.3
   steps: ""
   mustpass: true
   mintestercount: 1
@@ -424,7 +424,7 @@ case:
   group: Repositories
   description: Check the Ruby dev experience in the Rails repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/gitpod-io/rails_sample_app in Gitpod
+    - Open https://devpod-staging.com#https://github.com/gitpod-io/rails_sample_app in Devpod
     - Verify that the sample app works properly
     - Open a few `*.rb` files
     - Check syntax highlighting
@@ -447,7 +447,7 @@ case:
 - id: review-a-pull-request
   name: Review a Pull Request
   group: IDE
-  description: Open a Pull Request in Gitpod, then make a few comments and publish
+  description: Open a Pull Request in Devpod, then make a few comments and publish
     a code review
   steps: ""
   mustpass: true
@@ -504,7 +504,7 @@ case:
   group: Repositories
   description: Check the C++ dev experience in the tinyraytracer repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/ssloy/tinyraytracer in Gitpod
+    - Open https://devpod-staging.com#https://github.com/ssloy/tinyraytracer in Devpod
     - Verify that `out.png` gets generated and displayed properly
     - Open `geometry.h` and `tinyraytracer.cpp`
     - Check syntax highlighting
@@ -522,7 +522,7 @@ case:
   group: Repositories
   description: Check the PHP dev experience in the Symfony Demo Application repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/gitpod-io/symfony-demo in Gitpod
+    - Open https://devpod-staging.com#https://github.com/gitpod-io/symfony-demo in Devpod
     - Verify that the demo app works properly
     - Open a few `*.php` files
     - Check syntax highlighting
@@ -539,7 +539,7 @@ case:
   group: Repositories
   description: Check the Python dev experience in the OpenAI Gym repo
   steps: |
-    - Open https://devpod-staging.com/#https://github.com/openai/gym in Gitpod
+    - Open https://devpod-staging.com/#https://github.com/openai/gym in Devpod
     - Verify that the videos are successfully generated (in the preview, click on any .mp4)
     - Open a few `*.py` files
     - Check syntax highlighting

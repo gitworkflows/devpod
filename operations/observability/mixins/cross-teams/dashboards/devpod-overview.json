@@ -113,7 +113,7 @@
           "refId": "A"
         }
       ],
-      "title": "Current Gitpod Version",
+      "title": "Current Devpod Version",
       "transformations": [
         {
           "id": "labelsToFields",
@@ -425,7 +425,7 @@
           "refId": "A"
         }
       ],
-      "title": "Gitpod Version",
+      "title": "Devpod Version",
       "type": "timeseries"
     },
     {
@@ -1733,7 +1733,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "Gitpod / Overview",
+  "title": "Devpod / Overview",
   "uid": "devpod-overview",
   "version": 1,
   "weekStart": ""

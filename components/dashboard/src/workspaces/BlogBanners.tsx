@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -10,23 +10,23 @@ import blogBannerBg from "../images/blog-banner-bg.png";
 const banners = [
     {
         type: "Watch recording",
-        title: "Beyond Kubernetes: A deep-dive into Gitpod Flex with our CTO",
-        link: "https://www.devpod.io/events#watch-on-demand",
+        title: "Beyond Kubernetes: A deep-dive into Devpod Flex with our CTO",
+        link: "https://www.devpod.khulnasoft.com/events#watch-on-demand",
     },
     {
         type: "Blog Post",
-        title: "Gitpod Enterprise:<br/> Self-hosted, not self-managed",
-        link: "https://www.devpod.io/blog/self-hosted-not-self-managed",
+        title: "Devpod Enterprise:<br/> Self-hosted, not self-managed",
+        link: "https://www.devpod.khulnasoft.com/blog/self-hosted-not-self-managed",
     },
     {
         type: "Customer Story",
-        title: "Thousands of hours spent on VM-based development environments reduced to zero using Gitpod",
-        link: "https://www.devpod.io/customers/kingland",
+        title: "Thousands of hours spent on VM-based development environments reduced to zero using Devpod",
+        link: "https://www.devpod.khulnasoft.com/customers/kingland",
     },
     {
         type: "Gartner Report",
         title: `"By 2026, 60% of cloud workloads will be built and deployed using CDE's"`,
-        link: "https://www.devpod.io/blog/gartner-2023-cde-hypecycle",
+        link: "https://www.devpod.khulnasoft.com/blog/gartner-2023-cde-hypecycle",
     },
 ];
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -114,7 +114,7 @@ func TestStruct(t *testing.T) {
 				WorkspaceID  string
 				ContextURL   string
 				LeaveMeAlone string
-			}{Username: "foo", Email: "foo@bar.com", Password: "foobar", WorkspaceID: "devpodio-devpod-uesaddev73c", ContextURL: "https://github.com/khulnasoft/devpod/pull/19402", LeaveMeAlone: "foo"},
+			}{Username: "foo", Email: "foo@bar.com", Password: "foobar", WorkspaceID: "khulnasoft-devpod-uesaddev73c", ContextURL: "https://github.com/khulnasoft/devpod/pull/19402", LeaveMeAlone: "foo"},
 			Expectation: Expectation{
 				Result: &struct {
 					Username     string
@@ -253,7 +253,7 @@ func TestJSON(t *testing.T) {
 	}{
 		{
 			Name:  "basic happy path",
-			Input: `{"ok": true, "email": "foo@bar.com", "workspaceID": "devpodio-devpod-uesaddev73c"}`,
+			Input: `{"ok": true, "email": "foo@bar.com", "workspaceID": "khulnasoft-devpod-uesaddev73c"}`,
 			Expectation: Expectation{
 				Result: `{"email":"[redacted]","ok":true,"workspaceID":"[redacted:md5:a35538939333def8477b5c19ac694b35]"}`,
 			},
@@ -319,7 +319,7 @@ func TestDeepCopyStruct(t *testing.T) {
 				Password     string
 				WorkspaceID  string
 				LeaveMeAlone string
-			}{Username: "foo", Email: "foo@bar.com", Password: "foobar", WorkspaceID: "devpodio-devpod-uesaddev73c", LeaveMeAlone: "foo"},
+			}{Username: "foo", Email: "foo@bar.com", Password: "foobar", WorkspaceID: "khulnasoft-devpod-uesaddev73c", LeaveMeAlone: "foo"},
 			Expectation: Expectation{
 				Result: &struct {
 					Username     string
@@ -338,7 +338,7 @@ func TestDeepCopyStruct(t *testing.T) {
 				Password     string
 				WorkspaceID  string
 				LeaveMeAlone string
-			}{Username: "foo", Email: "foo@bar.com", Password: "foobar", WorkspaceID: "devpodio-devpod-uesaddev73c", LeaveMeAlone: "foo"},
+			}{Username: "foo", Email: "foo@bar.com", Password: "foobar", WorkspaceID: "khulnasoft-devpod-uesaddev73c", LeaveMeAlone: "foo"},
 			Expectation: Expectation{
 				Result: struct {
 					Username     string
@@ -562,7 +562,7 @@ func BenchmarkKeyValue(b *testing.B) {
 // }
 
 func BenchmarkValue(b *testing.B) {
-	const input = "This text contains {\"json\":\"data\"}, a workspace ID devpodio-devpod-uesaddev73c and an email foo@bar.com"
+	const input = "This text contains {\"json\":\"data\"}, a workspace ID khulnasoft-devpod-uesaddev73c and an email foo@bar.com"
 
 	for i := 0; i < b.N; i++ {
 		Default.Value(input)

@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -32780,7 +32780,7 @@ public final class Workspaces {
       IMAGE_SOURCE_UNSPECIFIED(0),
       /**
        * <pre>
-       * IMAGE_SOURCE_INSTALLATION means the image from Gitpod instance install config
+       * IMAGE_SOURCE_INSTALLATION means the image from Devpod instance install config
        * </pre>
        *
        * <code>IMAGE_SOURCE_INSTALLATION = 1;</code>
@@ -32812,7 +32812,7 @@ public final class Workspaces {
       public static final int IMAGE_SOURCE_UNSPECIFIED_VALUE = 0;
       /**
        * <pre>
-       * IMAGE_SOURCE_INSTALLATION means the image from Gitpod instance install config
+       * IMAGE_SOURCE_INSTALLATION means the image from Devpod instance install config
        * </pre>
        *
        * <code>IMAGE_SOURCE_INSTALLATION = 1;</code>

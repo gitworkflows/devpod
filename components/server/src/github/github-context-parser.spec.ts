@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -17,7 +17,7 @@ const expect = chai.expect;
 import { BranchRef, GitHubGraphQlEndpoint } from "./api";
 import { NotFoundError } from "../errors";
 import { GithubContextParser } from "./github-context-parser";
-import { User } from "@devpod/devpod-protocol";
+import { User } from "@khulnasoft/devpod-protocol";
 import { ContainerModule, Container } from "inversify";
 import { Config } from "../config";
 import { DevData } from "../dev/dev-data";
@@ -25,9 +25,9 @@ import { AuthProviderParams } from "../auth/auth-provider";
 import { TokenProvider } from "../user/token-provider";
 import { GitHubTokenHelper } from "./github-token-helper";
 import { HostContextProvider } from "../auth/host-context-provider";
-import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
+import { ifEnvVarNotSet } from "@khulnasoft/devpod-protocol/lib/util/skip-if";
 
-@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("GITPOD_TEST_TOKEN_GITHUB")))
+@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("DEVPOD_TEST_TOKEN_GITHUB")))
 class TestGithubContextParser {
     protected parser: GithubContextParser;
     protected user: User;

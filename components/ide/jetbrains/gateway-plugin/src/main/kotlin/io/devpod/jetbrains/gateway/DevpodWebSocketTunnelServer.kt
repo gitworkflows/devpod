@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -25,7 +25,7 @@ import javax.websocket.*
 import javax.websocket.ClientEndpointConfig.Configurator
 import javax.websocket.MessageHandler.Partial
 
-class GitpodWebSocketTunnelServer(
+class DevpodWebSocketTunnelServer(
     private val url: String,
     private val ownerToken: String,
     private val proxies: List<Proxy>,
@@ -36,7 +36,7 @@ class GitpodWebSocketTunnelServer(
     val port: Int
         get() = serverSocket.localPort
 
-    private val clients = CopyOnWriteArrayList<GitpodWebSocketTunnelClient>()
+    private val clients = CopyOnWriteArrayList<DevpodWebSocketTunnelClient>()
 
     fun start(lifetime: Lifetime) {
         val job = GlobalScope.launch(Dispatchers.IO) {
@@ -71,7 +71,7 @@ class GitpodWebSocketTunnelServer(
     }
 
     private fun handleClientConnection(clientSocket: Socket) {
-        val socketClient = GitpodWebSocketTunnelClient(url, clientSocket)
+        val socketClient = DevpodWebSocketTunnelClient(url, clientSocket)
         try {
             val inputStream = clientSocket.getInputStream()
             val outputStream = clientSocket.getOutputStream()
@@ -104,7 +104,7 @@ class GitpodWebSocketTunnelServer(
         }
     }
 
-    private fun connectToWebSocket(socketClient: GitpodWebSocketTunnelClient) {
+    private fun connectToWebSocket(socketClient: DevpodWebSocketTunnelClient) {
         val ssl: SslContextFactory = SslContextFactory.Client()
         ssl.sslContext = sslContext
         val httpClient = HttpClient(ssl)
@@ -154,7 +154,7 @@ class GitpodWebSocketTunnelServer(
 
 }
 
-class GitpodWebSocketTunnelClient(
+class DevpodWebSocketTunnelClient(
     private val url: String,
     private val tcpSocket: Socket
 ) : Endpoint(), Partial<ByteBuffer> {

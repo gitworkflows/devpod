@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,9 +8,9 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback } from "react";
 import { configurationClient } from "../../service/public-api";
 import { useCurrentOrg } from "./orgs-query";
-import { SuggestedRepository } from "@devpod/public-api/lib/devpod/v1/scm_pb";
+import { SuggestedRepository } from "@khulnasoft/public-api/lib/devpod/v1/scm_pb";
 import { PlainMessage } from "@bufbuild/protobuf";
-import { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
+import { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
 import { useOrgSettingsQuery } from "./org-settings-query";
 
 export function useOrgRepoSuggestionsInvalidator() {

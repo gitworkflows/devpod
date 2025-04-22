@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -24,7 +24,7 @@ func TestVersionUpdateCmd(t *testing.T) {
 			Commandline: []string{"version", "update"},
 			PrepServer: func(mux *http.ServeMux) {
 				newBinary := []byte("#!/bin/bash\necho hello world")
-				mux.HandleFunc(selfupdate.GitpodCLIBasePath+"/manifest.json", func(w http.ResponseWriter, r *http.Request) {
+				mux.HandleFunc(selfupdate.DevpodCLIBasePath+"/manifest.json", func(w http.ResponseWriter, r *http.Request) {
 					mf, err := json.Marshal(selfupdate.Manifest{
 						Version: semver.MustParse("v9999.0"),
 						Binaries: []selfupdate.Binary{
@@ -41,7 +41,7 @@ func TestVersionUpdateCmd(t *testing.T) {
 					}
 					_, _ = w.Write(mf)
 				})
-				mux.HandleFunc(selfupdate.GitpodCLIBasePath+"/devpod", func(w http.ResponseWriter, r *http.Request) {
+				mux.HandleFunc(selfupdate.DevpodCLIBasePath+"/devpod", func(w http.ResponseWriter, r *http.Request) {
 					_, _ = w.Write(newBinary)
 				})
 			},
@@ -51,7 +51,7 @@ func TestVersionUpdateCmd(t *testing.T) {
 			Name:        "no update needed",
 			Commandline: []string{"version", "update"},
 			PrepServer: func(mux *http.ServeMux) {
-				mux.HandleFunc(selfupdate.GitpodCLIBasePath+"/manifest.json", func(w http.ResponseWriter, r *http.Request) {
+				mux.HandleFunc(selfupdate.DevpodCLIBasePath+"/manifest.json", func(w http.ResponseWriter, r *http.Request) {
 					mf, err := json.Marshal(selfupdate.Manifest{
 						Version: constants.Version,
 					})

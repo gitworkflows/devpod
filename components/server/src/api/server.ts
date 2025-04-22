@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,19 +7,19 @@
 import { MethodKind, ServiceType } from "@bufbuild/protobuf";
 import { Code, ConnectError, ConnectRouter, HandlerContext, ServiceImpl } from "@connectrpc/connect";
 import { expressConnectMiddleware } from "@connectrpc/connect-express";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { HelloService } from "@devpod/public-api/lib/devpod/experimental/v1/dummy_connect";
-import { StatsService } from "@devpod/public-api/lib/devpod/experimental/v1/stats_connect";
-import { TeamsService as TeamsServiceDefinition } from "@devpod/public-api/lib/devpod/experimental/v1/teams_connect";
-import { OrganizationService } from "@devpod/public-api/lib/devpod/v1/organization_connect";
-import { WorkspaceService } from "@devpod/public-api/lib/devpod/v1/workspace_connect";
-import { AuditLogService as AuditLogServiceFromAPI } from "@devpod/public-api/lib/devpod/v1/auditlogs_connect";
-import { UserService } from "@devpod/public-api/lib/devpod/v1/user_connect";
-import { ConfigurationService } from "@devpod/public-api/lib/devpod/v1/configuration_connect";
-import { AuthProviderService } from "@devpod/public-api/lib/devpod/v1/authprovider_connect";
-import { EnvironmentVariableService } from "@devpod/public-api/lib/devpod/v1/envvar_connect";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { HelloService } from "@khulnasoft/public-api/lib/devpod/experimental/v1/dummy_connect";
+import { StatsService } from "@khulnasoft/public-api/lib/devpod/experimental/v1/stats_connect";
+import { TeamsService as TeamsServiceDefinition } from "@khulnasoft/public-api/lib/devpod/experimental/v1/teams_connect";
+import { OrganizationService } from "@khulnasoft/public-api/lib/devpod/v1/organization_connect";
+import { WorkspaceService } from "@khulnasoft/public-api/lib/devpod/v1/workspace_connect";
+import { AuditLogService as AuditLogServiceFromAPI } from "@khulnasoft/public-api/lib/devpod/v1/auditlogs_connect";
+import { UserService } from "@khulnasoft/public-api/lib/devpod/v1/user_connect";
+import { ConfigurationService } from "@khulnasoft/public-api/lib/devpod/v1/configuration_connect";
+import { AuthProviderService } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_connect";
+import { EnvironmentVariableService } from "@khulnasoft/public-api/lib/devpod/v1/envvar_connect";
 import express from "express";
 import * as http from "http";
 import { decorate, inject, injectable, interfaces } from "inversify";
@@ -50,22 +50,22 @@ import { Unauthenticated } from "./unauthenticated";
 import { SubjectId } from "../auth/subject-id";
 import { BearerAuth } from "../auth/bearer-authenticator";
 import { ScmServiceAPI } from "./scm-service-api";
-import { SCMService } from "@devpod/public-api/lib/devpod/v1/scm_connect";
-import { SSHService } from "@devpod/public-api/lib/devpod/v1/ssh_connect";
+import { SCMService } from "@khulnasoft/public-api/lib/devpod/v1/scm_connect";
+import { SSHService } from "@khulnasoft/public-api/lib/devpod/v1/ssh_connect";
 import { PrebuildServiceAPI } from "./prebuild-service-api";
-import { PrebuildService } from "@devpod/public-api/lib/devpod/v1/prebuild_connect";
+import { PrebuildService } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_connect";
 import { VerificationServiceAPI } from "./verification-service-api";
-import { VerificationService } from "@devpod/public-api/lib/devpod/v1/verification_connect";
+import { VerificationService } from "@khulnasoft/public-api/lib/devpod/v1/verification_connect";
 import { UserServiceAPI } from "./user-service-api";
 import { UserService as UserServiceInternal } from "../user/user-service";
 import { InstallationServiceAPI } from "./installation-service-api";
-import { InstallationService } from "@devpod/public-api/lib/devpod/v1/installation_connect";
+import { InstallationService } from "@khulnasoft/public-api/lib/devpod/v1/installation_connect";
 import { RateLimitter } from "../rate-limitter";
 import { TokenServiceAPI } from "./token-service-api";
-import { TokenService } from "@devpod/public-api/lib/devpod/v1/token_connect";
+import { TokenService } from "@khulnasoft/public-api/lib/devpod/v1/token_connect";
 import { AuditLogService } from "../audit/AuditLogService";
 import { AuditLogServiceAPI } from "./audit-log-service-api";
-import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 
 decorate(injectable(), PublicAPIConverter);
 

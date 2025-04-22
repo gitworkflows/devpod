@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { v1 } from "@authzed/authzed-node";
 
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID } from "@devpod/devpod-db/lib";
-import { Project, TeamMemberRole } from "@devpod/devpod-protocol";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID } from "@khulnasoft/devpod-db/lib";
+import { Project, TeamMemberRole } from "@khulnasoft/devpod-protocol";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import {
     AllResourceTypes,
     InstallationID,
@@ -23,8 +23,8 @@ import {
     rel,
 } from "./definitions";
 import { SpiceDBAuthorizer } from "./spicedb-authorizer";
-import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { Subject, SubjectId } from "../auth/subject-id";
 import { ctxTrySubjectId } from "../util/request-context";
 import { reportAuthorizerSubjectId } from "../prometheus-metrics";

@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -20,7 +20,7 @@ var gitCommitMessageHelperOpts struct {
 	CommitMessageFile string
 }
 
-func addGitpodTrailer(commitMsgFile string, hostName string) error {
+func addDevpodTrailer(commitMsgFile string, hostName string) error {
 	trailerCmd := exec.Command("git", "interpret-trailers",
 		"--if-exists", "addIfDifferent",
 		"--trailer", fmt.Sprintf("Tool: devpod/%s", hostName),
@@ -41,7 +41,7 @@ func addGitpodTrailer(commitMsgFile string, hostName string) error {
 
 var gitCommitMessageHelper = &cobra.Command{
 	Use:    "git-commit-message-helper",
-	Short:  "Gitpod's Git commit message helper",
+	Short:  "Devpod's Git commit message helper",
 	Long:   "Automatically adds Tool information to Git commit messages",
 	Args:   cobra.ExactArgs(0),
 	Hidden: true,
@@ -55,7 +55,7 @@ var gitCommitMessageHelper = &cobra.Command{
 			return nil // don't block commit
 		}
 
-		if err := addGitpodTrailer(gitCommitMessageHelperOpts.CommitMessageFile, wsInfo.GitpodApi.Host); err != nil {
+		if err := addDevpodTrailer(gitCommitMessageHelperOpts.CommitMessageFile, wsInfo.DevpodApi.Host); err != nil {
 			log.WithError(err).Fatal("failed to add devpod trailer")
 			return nil // don't block commit
 		}

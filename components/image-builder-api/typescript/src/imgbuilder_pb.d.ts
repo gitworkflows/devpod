@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -11,7 +11,7 @@
 /* eslint-disable */
 
 import * as jspb from "google-protobuf";
-import * as content_service_api_initializer_pb from "@devpod/content-service/lib";
+import * as content_service_api_initializer_pb from "@khulnasoft/content-service/lib";
 
 export class BuildSource extends jspb.Message {
 

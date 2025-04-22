@@ -1,16 +1,16 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { inject, injectable } from "inversify";
 import * as grpc from "@grpc/grpc-js";
-import { ProjectDB, RedisPublisher, WorkspaceDB } from "@devpod/devpod-db/lib";
+import { ProjectDB, RedisPublisher, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
 import {
     CommitContext,
     GetWorkspaceTimeoutResult,
-    GitpodServer,
+    DevpodServer,
     HeadlessLogUrls,
     PortProtocol,
     PortVisibility,
@@ -30,11 +30,11 @@ import {
     WorkspaceSession,
     WorkspaceSoftDeletion,
     WorkspaceTimeoutDuration,
-} from "@devpod/devpod-protocol";
-import { ErrorCodes, ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
-import { generateAsyncGenerator } from "@devpod/devpod-protocol/lib/generate-async-generator";
+} from "@khulnasoft/devpod-protocol";
+import { ErrorCodes, ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { generateAsyncGenerator } from "@khulnasoft/devpod-protocol/lib/generate-async-generator";
 import { Authorizer } from "../authorization/authorizer";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import { WorkspaceFactory } from "./workspace-factory";
 import {
     DescribeWorkspaceRequest,
@@ -48,34 +48,34 @@ import {
     AdmissionLevel,
     ControlAdmissionRequest,
     TakeSnapshotRequest,
-} from "@devpod/ws-manager/lib";
+} from "@khulnasoft/ws-manager/lib";
 import {
     WorkspaceStarter,
     StartWorkspaceOptions as StarterStartWorkspaceOptions,
     isClusterMaintenanceError,
     getWorkspaceClassForInstance,
 } from "./workspace-starter";
-import { LogContext, log } from "@devpod/devpod-protocol/lib/util/logging";
+import { LogContext, log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { EntitlementService, MayStartWorkspaceResult } from "../billing/entitlement-service";
 import * as crypto from "crypto";
-import { WorkspaceRegion, isWorkspaceRegion } from "@devpod/devpod-protocol/lib/workspace-cluster";
+import { WorkspaceRegion, isWorkspaceRegion } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
 import { RegionService } from "./region-service";
 import { LazyPrebuildManager, ProjectsService } from "../projects/projects-service";
-import { WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
-import { SupportedWorkspaceClass } from "@devpod/devpod-protocol/lib/workspace-class";
+import { WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
+import { SupportedWorkspaceClass } from "@khulnasoft/devpod-protocol/lib/workspace-class";
 import { Config } from "../config";
-import { goDurationToHumanReadable } from "@devpod/devpod-protocol/lib/util/timeutil";
+import { goDurationToHumanReadable } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
 import { HeadlessLogEndpoint, HeadlessLogService } from "./headless-log-service";
-import { Deferred } from "@devpod/devpod-protocol/lib/util/deferred";
+import { Deferred } from "@khulnasoft/devpod-protocol/lib/util/deferred";
 import { OrganizationService } from "../orgs/organization-service";
-import { isGrpcError } from "@devpod/devpod-protocol/lib/util/grpc";
+import { isGrpcError } from "@khulnasoft/devpod-protocol/lib/util/grpc";
 import { RedisSubscriber } from "../messaging/redis-subscriber";
 import { SnapshotService } from "./snapshot-service";
 import { InstallationService } from "../auth/installation-service";
-import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
-import { WatchWorkspaceStatusResponse } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
+import { WatchWorkspaceStatusResponse } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { ContextParser } from "./context-parser-service";
-import { scrubber, TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
+import { scrubber, TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
 
 export const GIT_STATUS_LENGTH_CAP_BYTES = 4096;
 
@@ -242,7 +242,7 @@ export class WorkspaceService {
         };
     }
 
-    async getWorkspaces(userId: string, options: GitpodServer.GetWorkspacesOptions): Promise<WorkspaceInfo[]> {
+    async getWorkspaces(userId: string, options: DevpodServer.GetWorkspacesOptions): Promise<WorkspaceInfo[]> {
         const res = await this.db.find({
             limit: 20,
             ...options,
@@ -1322,7 +1322,7 @@ export class WorkspaceService {
 
     public async sendHeartBeat(
         userId: string,
-        options: GitpodServer.SendHeartBeatOptions,
+        options: DevpodServer.SendHeartBeatOptions,
         check: (instance: WorkspaceInstance, workspace: Workspace) => Promise<void> = async () => {},
     ): Promise<void> {
         const instanceId = options.instanceId;
@@ -1455,7 +1455,7 @@ export class WorkspaceService {
         };
     }
 
-    public async takeSnapshot(userId: string, options: GitpodServer.TakeSnapshotOptions): Promise<Snapshot> {
+    public async takeSnapshot(userId: string, options: DevpodServer.TakeSnapshotOptions): Promise<Snapshot> {
         const { workspaceId, dontWait } = options;
         await this.auth.checkPermissionOnWorkspace(userId, "create_snapshot", workspaceId);
         const workspace = await this.doGetWorkspace(userId, workspaceId);

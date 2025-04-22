@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TypeORM, WorkspaceDB } from "@devpod/devpod-db/lib";
-import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
+import { TypeORM, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
+import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
 import {
     CommitContext,
     Organization,
@@ -18,8 +18,8 @@ import {
     Workspace,
     WorkspaceConfig,
     WorkspaceImageSource,
-} from "@devpod/devpod-protocol";
-import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+} from "@khulnasoft/devpod-protocol";
+import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 import * as chai from "chai";
 import { Container, injectable } from "inversify";
 import "mocha";
@@ -32,7 +32,7 @@ import { SYSTEM_USER } from "../authorization/authorizer";
 import { WorkspaceFactory } from "./workspace-factory";
 import { IncrementalWorkspaceService } from "../prebuilds/incremental-workspace-service";
 import { ImageSourceProvider } from "./image-source-provider";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 
 const expect = chai.expect;
 

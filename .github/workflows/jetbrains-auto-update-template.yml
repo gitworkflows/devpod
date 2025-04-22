@@ -32,7 +32,7 @@ jobs:
         with:
           identity_provider: ${{ github.ref == 'refs/heads/main' && secrets.CORE_DEV_PROVIDER || secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ github.ref == 'refs/heads/main' && secrets.CORE_DEV_SA || secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Install dependencies
         run: |
           cd ./components/ide/gha-update-image/
@@ -48,30 +48,30 @@ jobs:
           then
             cat /tmp/__gh_output.txt >> $GITHUB_OUTPUT
           fi
-      - name: Leeway build
-        id: leeway-build
+      - name: Blazedock build
+        id: blazedock-build
         if: ${{ steps.find-target.outputs.buildNumber }}
         env:
-          LEEWAY_MAX_PROVENANCE_BUNDLE_SIZE: "8388608"
-          LEEWAY_REMOTE_CACHE_BUCKET: ${{ github.ref == 'refs/heads/main' && 'leeway-cache-main-c514a01' || 'leeway-cache-dev-3ac8ef5' }}
+          BLAZEDOCK_MAX_PROVENANCE_BUNDLE_SIZE: "8388608"
+          BLAZEDOCK_REMOTE_CACHE_BUCKET: ${{ github.ref == 'refs/heads/main' && 'blazedock-cache-main-c514a01' || 'blazedock-cache-dev-3ac8ef5' }}
         run: |
           echo "May upgrade latest ${{ inputs.productId }} image with ${{ steps.find-target.outputs.editorSummary }}"
           imageRepoBase=${{ github.ref == 'refs/heads/main' && 'ghcr.io/devpod-core-dev/build' || 'ghcr.io/devpod-dev-artifact/build' }}
-          output=$(leeway build -Dversion=latest -DimageRepoBase=$imageRepoBase -DbuildNumber=${{ steps.find-target.outputs.buildNumber }} components/ide/jetbrains/image:${{ steps.find-target.outputs.image }}-latest -DjbBackendVersion=${{ steps.find-target.outputs.jbBackendVersion }} --dry-run)
+          output=$(blazedock build -Dversion=latest -DimageRepoBase=$imageRepoBase -DbuildNumber=${{ steps.find-target.outputs.buildNumber }} components/ide/jetbrains/image:${{ steps.find-target.outputs.image }}-latest -DjbBackendVersion=${{ steps.find-target.outputs.jbBackendVersion }} --dry-run)
           if echo "$output" | grep -q "🔧[[:space:]]*build"; then
-            echo "leewayUsingCache=false" >> $GITHUB_OUTPUT
+            echo "blazedockUsingCache=false" >> $GITHUB_OUTPUT
             echo "Needs to build"
             echo "Upgrade latest ${{ inputs.productId }} image with ${{ steps.find-target.outputs.editorSummary }}" >> $GITHUB_STEP_SUMMARY
-            leeway build -Dversion=latest -DimageRepoBase=$imageRepoBase -DbuildNumber=${{ steps.find-target.outputs.buildNumber }} components/ide/jetbrains/image:${{ steps.find-target.outputs.image }}-latest -DjbBackendVersion=${{ steps.find-target.outputs.jbBackendVersion }}
+            blazedock build -Dversion=latest -DimageRepoBase=$imageRepoBase -DbuildNumber=${{ steps.find-target.outputs.buildNumber }} components/ide/jetbrains/image:${{ steps.find-target.outputs.image }}-latest -DjbBackendVersion=${{ steps.find-target.outputs.jbBackendVersion }}
           else
-            echo "leewayUsingCache=true" >> $GITHUB_OUTPUT
+            echo "blazedockUsingCache=true" >> $GITHUB_OUTPUT
             echo "No need to build"
           fi
       - name: Get previous job's status
         id: lastrun
         uses: filiptronicek/get-last-job-status@main
       - name: Slack Notification
-        if: ${{ (success() && steps.find-target.outputs.buildNumber && steps.leeway-build.outputs.leewayUsingCache == 'false') || failure() }}
+        if: ${{ (success() && steps.find-target.outputs.buildNumber && steps.blazedock-build.outputs.blazedockUsingCache == 'false') || failure() }}
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.IDE_SLACK_WEBHOOK }}

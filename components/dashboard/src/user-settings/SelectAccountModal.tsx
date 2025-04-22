@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { SelectAccountPayload } from "@devpod/devpod-protocol/lib/auth";
+import { SelectAccountPayload } from "@khulnasoft/devpod-protocol/lib/auth";
 import { useEffect, useState } from "react";
 import { devpodHostUrl } from "../service/service";
 import InfoBox from "../components/InfoBox";
@@ -51,7 +51,7 @@ export function SelectAccountModal(
             <ModalHeader>Select Account</ModalHeader>
             <ModalBody>
                 <p className="pb-2 text-gray-500 text-base">
-                    You are trying to authorize a provider that is already connected with another account on Gitpod.
+                    You are trying to authorize a provider that is already connected with another account on Devpod.
                 </p>
 
                 <InfoBox className="mt-4 w-full mx-auto">

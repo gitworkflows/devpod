@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -12,7 +12,7 @@ import com.intellij.openapi.vfs.VirtualFileManager
 import com.intellij.util.application
 import org.jetbrains.idea.maven.project.MavenProjectsManager
 
-class GitpodForceUpdateMavenProjectsActivity : StartupActivity.RequiredForSmartMode {
+class DevpodForceUpdateMavenProjectsActivity : StartupActivity.RequiredForSmartMode {
     override fun runActivity(project: Project) {
         if (application.isHeadlessEnvironment  || Registry.get("devpod.forceUpdateMavenProjects.disabled").asBoolean()) {
             return

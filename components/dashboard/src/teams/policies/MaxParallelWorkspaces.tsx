@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { OrganizationSettings } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import { OrganizationSettings } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
 import { FormEvent, useEffect, useState } from "react";
 import { ConfigurationSettingsField } from "../../repositories/detail/ConfigurationSettingsField";
 import { Heading3, Subheading } from "@podkit/typography/Headings";
 import { InputField } from "../../components/forms/InputField";
 import { NumberInput } from "../../components/forms/TextInputField";
 import { LoadingButton } from "@podkit/buttons/LoadingButton";
-import { MAX_PARALLEL_WORKSPACES_FREE, MAX_PARALLEL_WORKSPACES_PAID } from "@devpod/devpod-protocol";
+import { MAX_PARALLEL_WORKSPACES_FREE, MAX_PARALLEL_WORKSPACES_PAID } from "@khulnasoft/devpod-protocol";
 import { PlainMessage } from "@bufbuild/protobuf";
 import { useInstallationConfiguration } from "../../data/installation/installation-config-query";
 

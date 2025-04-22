@@ -38,7 +38,7 @@
 	import static
 	import notstatic
 
-	redir /.well-known/security.txt https://www.devpod.io/.well-known/security.txt permanent
+	redir /.well-known/security.txt https://www.devpod.khulnasoft.com/.well-known/security.txt permanent
 	redir /environment-variables /settings/ permanent
 
 	rewrite /schemas/devpod-schema.json /static/schemas/devpod-schema.json

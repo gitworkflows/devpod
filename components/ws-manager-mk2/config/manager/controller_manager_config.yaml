@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2022 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License-AGPL.txt in the project root for license information.
 
@@ -12,4 +12,4 @@ webhook:
   port: 9443
 leaderElection:
   leaderElect: true
-  resourceName: 0616d21e.devpod.io
+  resourceName: 0616d21e.devpod.khulnasoft.com

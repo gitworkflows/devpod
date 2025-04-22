@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -39,7 +39,7 @@ project(":") {
 
         if (properties("platformType") == "RD") {
             print("Rider: exclude unnecessary files")
-            sourceSets["main"].kotlin.exclude("**/GitpodForceUpdateMavenProjectsActivity.kt")
+            sourceSets["main"].kotlin.exclude("**/DevpodForceUpdateMavenProjectsActivity.kt")
             sourceSets["main"].kotlin.exclude("**/maven.xml")
         }
     }

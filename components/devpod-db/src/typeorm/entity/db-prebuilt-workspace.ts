@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { PrimaryColumn, Column, Entity, Index } from "typeorm";
 
-import { PrebuiltWorkspace, PrebuiltWorkspaceState } from "@devpod/devpod-protocol";
+import { PrebuiltWorkspace, PrebuiltWorkspaceState } from "@khulnasoft/devpod-protocol";
 import { TypeORM } from "../typeorm";
 import { Transformer } from "../transformer";
 import { PrebuildWorkspaceRateLimiterMigration1646739309660 } from "../migration/1646739309660-PrebuildWorskace-rate-limiter-migration";

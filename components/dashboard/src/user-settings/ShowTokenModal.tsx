@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { PersonalAccessToken } from "@devpod/public-api/lib/devpod/experimental/v1/tokens_pb";
+import { PersonalAccessToken } from "@khulnasoft/public-api/lib/devpod/experimental/v1/tokens_pb";
 import { useMemo, useState } from "react";
 import DateSelector from "../components/DateSelector";
 import Modal, { ModalBody, ModalFooter, ModalHeader } from "../components/Modal";

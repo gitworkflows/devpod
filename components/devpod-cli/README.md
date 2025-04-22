@@ -1,6 +1,6 @@
-# Gitpod CLI
+# Devpod CLI
 
-A CLI binary that comes pre-installed within the Gitpod workspace environments.
+A CLI binary that comes pre-installed within the Devpod workspace environments.
 
 ## Description
 
@@ -16,22 +16,22 @@ Here are a few of the things you can do with it:
 - Wait for a process to listen on a port
 - Print the URL of the current workspace
 - Take a snapshot of the current workspace
-- Create a Gitpod configuration for the current project
+- Create a Devpod configuration for the current project
 
-Learn more about it by running `gp —-help` or checking the [documentation](https://www.devpod.io/docs/command-line-interface/).
+Learn more about it by running `gp —-help` or checking the [documentation](https://www.devpod.khulnasoft.com/docs/command-line-interface/).
 
 ## Useful Links
 
-- [Usage Docs](https://www.devpod.io/docs/command-line-interface)
+- [Usage Docs](https://www.devpod.khulnasoft.com/docs/command-line-interface)
 - [GitHub Issues](https://github.com/khulnasoft/devpod/labels/component%3A%20gp%20cli)
 
 ## Contributing
 
-- The Gitpod CLI is written in [Go](https://go.dev/).
+- The Devpod CLI is written in [Go](https://go.dev/).
 - Most of the functionalities that the CLI implements, make use of the [Supervisor API](https://github.com/khulnasoft/devpod/tree/main/components/supervisor-api).
 
 If you would like to contribute to this component, check the [related GitHub issues](https://github.com/khulnasoft/devpod/labels/component%3A%20gp%20cli) or start a discussion in the Discord [#contributing](https://discord.com/channels/816244985187008514/885406100436951080) channel.
 
 ## Ownership
 
-To know which Gitpod Team owns this component, check the [CODEOWNERS](https://github.com/khulnasoft/devpod/blob/main/.github/CODEOWNERS).
+To know which Devpod Team owns this component, check the [CODEOWNERS](https://github.com/khulnasoft/devpod/blob/main/.github/CODEOWNERS).

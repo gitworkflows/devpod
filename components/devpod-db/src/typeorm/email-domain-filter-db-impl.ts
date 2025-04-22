@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,7 +7,7 @@
 import { injectable, inject } from "inversify";
 import { EntityManager, Repository } from "typeorm";
 
-import { EmailDomainFilterEntry } from "@devpod/devpod-protocol";
+import { EmailDomainFilterEntry } from "@khulnasoft/devpod-protocol";
 import { TypeORM } from "../typeorm/typeorm";
 import { EmailDomainFilterDB } from "../email-domain-filter-db";
 import { DBEmailDomainFilterEntry } from "./entity/db-email-domain-filter-entry";

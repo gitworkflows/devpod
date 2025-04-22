@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import {
-    GitpodToken,
-    GitpodTokenType,
+    DevpodToken,
+    DevpodTokenType,
     Identity,
     IdentityLookup,
     SSHPublicKeyValue,
@@ -16,7 +16,7 @@ import {
     UserEnvVar,
     UserEnvVarValue,
     UserSSHPublicKey,
-} from "@devpod/devpod-protocol";
+} from "@khulnasoft/devpod-protocol";
 import { OAuthTokenRepository, OAuthUserRepository } from "@jmondi/oauth2-server";
 import { Repository } from "typeorm";
 import { DBUser } from "./typeorm/entity/db-user";
@@ -137,15 +137,15 @@ export interface UserDB extends OAuthUserRepository, OAuthTokenRepository, Trans
     ): Promise<{ total: number; rows: User[] }>;
     findUserByName(name: string): Promise<User | undefined>;
 
-    findUserByGitpodToken(
+    findUserByDevpodToken(
         tokenHash: string,
-        tokenType?: GitpodTokenType,
-    ): Promise<{ user: User; token: GitpodToken } | undefined>;
-    findGitpodTokensOfUser(userId: string, tokenHash: string): Promise<GitpodToken | undefined>;
-    findAllGitpodTokensOfUser(userId: string): Promise<GitpodToken[]>;
-    storeGitpodToken(token: GitpodToken): Promise<void>;
-    deleteGitpodToken(tokenHash: string): Promise<void>;
-    deleteGitpodTokensNamedLike(userId: string, namePattern: string): Promise<void>;
+        tokenType?: DevpodTokenType,
+    ): Promise<{ user: User; token: DevpodToken } | undefined>;
+    findDevpodTokensOfUser(userId: string, tokenHash: string): Promise<DevpodToken | undefined>;
+    findAllDevpodTokensOfUser(userId: string): Promise<DevpodToken[]>;
+    storeDevpodToken(token: DevpodToken): Promise<void>;
+    deleteDevpodToken(tokenHash: string): Promise<void>;
+    deleteDevpodTokensNamedLike(userId: string, namePattern: string): Promise<void>;
     countUsagesOfPhoneNumber(phoneNumber: string): Promise<number>;
     isBlockedPhoneNumber(phoneNumber: string): Promise<boolean>;
 

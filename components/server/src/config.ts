@@ -1,20 +1,20 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { GitpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
+import { DevpodHostUrl } from "@khulnasoft/devpod-protocol/lib/util/devpod-host-url";
 import { AuthProviderParams, normalizeAuthProviderParams } from "./auth/auth-provider";
 
-import { NamedWorkspaceFeatureFlag } from "@devpod/devpod-protocol";
+import { NamedWorkspaceFeatureFlag } from "@khulnasoft/devpod-protocol";
 
 import { RateLimiterConfig } from "./auth/rate-limiter";
 import { CodeSyncConfig } from "./code-sync/code-sync-service";
 import * as fs from "fs";
 import * as yaml from "js-yaml";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { filePathTelepresenceAware } from "@devpod/devpod-protocol/lib/env";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { filePathTelepresenceAware } from "@khulnasoft/devpod-protocol/lib/env";
 import { WorkspaceClassesConfig } from "./workspace/workspace-classes";
 import { PrebuildRateLimiters } from "./workspace/prebuild-rate-limiter";
 import { IRateLimiterOptions } from "rate-limiter-flexible";
@@ -24,7 +24,7 @@ export type Config = Omit<
     ConfigSerialized,
     "hostUrl" | "stripeSecretsFile" | "stripeConfigFile" | "linkedInSecretsFile" | "patSigningKeyFile" | "auth"
 > & {
-    hostUrl: GitpodHostUrl;
+    hostUrl: DevpodHostUrl;
     workspaceDefaults: WorkspaceDefaults;
     stripeSecrets?: { publishableKey: string; secretKey: string };
     linkedInSecrets?: { clientId: string; clientSecret: string };
@@ -234,7 +234,7 @@ export interface ConfigSerialized {
     prebuildLimiter: PrebuildRateLimiters;
 
     /**
-     * If a numeric value interpreted as days is set, repositories not beeing opened with Gitpod are
+     * If a numeric value interpreted as days is set, repositories not beeing opened with Devpod are
      * considered inactive.
      */
     inactivityPeriodForReposInDays?: number;
@@ -311,7 +311,7 @@ export namespace ConfigFile {
     }
 
     function loadAndCompleteConfig(config: ConfigSerialized): Config {
-        const hostUrl = new GitpodHostUrl(config.hostUrl);
+        const hostUrl = new DevpodHostUrl(config.hostUrl);
         let authProviderConfigs: AuthProviderParams[] = [];
         const rawProviderConfigs = config.authProviderConfigs;
         if (rawProviderConfigs) {

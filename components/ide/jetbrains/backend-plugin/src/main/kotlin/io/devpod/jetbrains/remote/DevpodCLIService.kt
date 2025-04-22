@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -37,9 +37,9 @@ import java.nio.file.Path
 import java.util.*
 
 @Suppress("UnstableApiUsage", "OPT_IN_USAGE")
-class GitpodCLIService : RestService() {
+class DevpodCLIService : RestService() {
 
-    private val manager = service<GitpodManager>()
+    private val manager = service<DevpodManager>()
 
     override fun getServiceName() = SERVICE_NAME
 
@@ -85,7 +85,7 @@ class GitpodCLIService : RestService() {
                 var resolvedUrl = url
                 val uri = URI.create(url)
                 val localHostUriMetadata = LocalHostUri.extractLocalHostUriMetaDataForPortMapping(uri)
-                val devpodPortForwardingService = serviceOrNull<GitpodPortForwardingService>()
+                val devpodPortForwardingService = serviceOrNull<DevpodPortForwardingService>()
 
                 if (localHostUriMetadata.isPresent && devpodPortForwardingService != null) {
                     var localHostUriFromPort = Optional.empty<URI>()

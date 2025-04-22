@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { injectable, inject } from "inversify";
 
-import { User, Repository } from "@devpod/devpod-protocol";
+import { User, Repository } from "@khulnasoft/devpod-protocol";
 import { GitHubGraphQlEndpoint, GitHubRestApi } from "./api";
 import { RepositoryProvider } from "../repohost/repository-provider";
 import { RepoURL } from "../repohost/repo-url";
-import { Branch, CommitInfo, RepositoryInfo } from "@devpod/devpod-protocol/lib/protocol";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { Branch, CommitInfo, RepositoryInfo } from "@khulnasoft/devpod-protocol/lib/protocol";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 
 @injectable()
 export class GithubRepositoryProvider implements RepositoryProvider {

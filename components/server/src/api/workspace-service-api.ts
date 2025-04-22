@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { HandlerContext, ServiceImpl } from "@connectrpc/connect";
-import { WorkspaceService as WorkspaceServiceInterface } from "@devpod/public-api/lib/devpod/v1/workspace_connect";
+import { WorkspaceService as WorkspaceServiceInterface } from "@khulnasoft/public-api/lib/devpod/v1/workspace_connect";
 import {
     CreateAndStartWorkspaceRequest,
     CreateAndStartWorkspaceResponse,
@@ -47,19 +47,19 @@ import {
     ListWorkspaceSessionsRequest,
     ListWorkspaceSessionsResponse,
     WorkspaceSession_Owner,
-} from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { inject, injectable } from "inversify";
 import { WorkspaceService } from "../workspace/workspace-service";
-import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
+import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
 import { ctxClientRegion, ctxSignal, ctxUserId, runWithSubjectId } from "../util/request-context";
-import { parsePagination } from "@devpod/public-api-common/lib/public-api-pagination";
-import { PaginationResponse } from "@devpod/public-api/lib/devpod/v1/pagination_pb";
+import { parsePagination } from "@khulnasoft/public-api-common/lib/public-api-pagination";
+import { PaginationResponse } from "@khulnasoft/public-api/lib/devpod/v1/pagination_pb";
 import { validate as uuidValidate } from "uuid";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { ContextService } from "../workspace/context-service";
 import { UserService } from "../user/user-service";
 import { ContextParser } from "../workspace/context-parser-service";
-import { isWorkspaceId } from "@devpod/devpod-protocol/lib/util/parse-workspace-id";
+import { isWorkspaceId } from "@khulnasoft/devpod-protocol/lib/util/parse-workspace-id";
 import { SYSTEM_USER, SYSTEM_USER_ID } from "../authorization/authorizer";
 
 @injectable()

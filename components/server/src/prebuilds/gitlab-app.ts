@@ -1,21 +1,21 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import express from "express";
 import { postConstruct, injectable, inject } from "inversify";
-import { TeamDB, WebhookEventDB } from "@devpod/devpod-db/lib";
-import { Project, User, CommitContext, CommitInfo, WebhookEvent } from "@devpod/devpod-protocol";
+import { TeamDB, WebhookEventDB } from "@khulnasoft/devpod-db/lib";
+import { Project, User, CommitContext, CommitInfo, WebhookEvent } from "@khulnasoft/devpod-protocol";
 import { PrebuildManager } from "./prebuild-manager";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import { TokenService } from "../user/token-service";
 import { HostContextProvider } from "../auth/host-context-provider";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { ContextParser } from "../workspace/context-parser-service";
 import { RepoURL } from "../repohost";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { UserService } from "../user/user-service";
 import { ProjectsService } from "../projects/projects-service";
 import { runWithSubjectId } from "../util/request-context";
@@ -112,9 +112,9 @@ export class GitLabApp {
             } else if (!!user.blocked) {
                 throw new Error(`Blocked user ${user.id} tried to start prebuild.`);
             }
-            const identity = user.identities.find((i) => i.authProviderId === TokenService.GITPOD_AUTH_PROVIDER_ID);
+            const identity = user.identities.find((i) => i.authProviderId === TokenService.DEVPOD_AUTH_PROVIDER_ID);
             if (!identity) {
-                throw new Error(`User ${user.id} has no identity for '${TokenService.GITPOD_AUTH_PROVIDER_ID}'.`);
+                throw new Error(`User ${user.id} has no identity for '${TokenService.DEVPOD_AUTH_PROVIDER_ID}'.`);
             }
             const tokens = await this.userService.findTokensForIdentity(userid, identity);
             const token = tokens.find((t) => t.token.value === tokenValue);

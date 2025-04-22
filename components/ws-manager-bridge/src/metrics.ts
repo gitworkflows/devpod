@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import * as prom from "prom-client";
 import { injectable } from "inversify";
-import { WorkspaceInstance } from "@devpod/devpod-protocol";
-import { WorkspaceClusterWoTLS } from "@devpod/devpod-protocol/lib/workspace-cluster";
-import { WorkspaceType } from "@devpod/devpod-protocol";
+import { WorkspaceInstance } from "@khulnasoft/devpod-protocol";
+import { WorkspaceClusterWoTLS } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+import { WorkspaceType } from "@khulnasoft/devpod-protocol";
 
 @injectable()
 export class Metrics {

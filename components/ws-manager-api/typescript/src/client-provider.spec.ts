@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -14,8 +14,8 @@ import {
     WorkspaceManagerClientProviderCompositeSource,
     WorkspaceManagerClientProviderSource,
 } from "./client-provider-source";
-import { WorkspaceCluster, WorkspaceClusterWoTLS } from "@devpod/devpod-protocol/lib/workspace-cluster";
-import { User, Workspace, WorkspaceInstance } from "@devpod/devpod-protocol";
+import { WorkspaceCluster, WorkspaceClusterWoTLS } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+import { User, Workspace, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
 import { PromisifiedWorkspaceManagerClient } from ".";
 import { Constraint, ConstraintArgs, constraintHasPermissions, intersect, invert } from "./constraints";
 const expect = chai.expect;

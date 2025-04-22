@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { GitpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
+import { DevpodHostUrl } from "@khulnasoft/devpod-protocol/lib/util/devpod-host-url";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { Item, ItemFieldIcon } from "../components/ItemsList";
 import PendingChangesDropdown from "../components/PendingChangesDropdown";
@@ -12,7 +12,7 @@ import Tooltip from "../components/Tooltip";
 import dayjs from "dayjs";
 import { WorkspaceEntryOverflowMenu } from "./WorkspaceOverflowMenu";
 import { WorkspaceStatusIndicator } from "./WorkspaceStatusIndicator";
-import { Workspace } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { Workspace } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { GitBranchIcon, PinIcon } from "lucide-react";
 import { useUpdateWorkspaceMutation } from "../data/workspaces/update-workspace-mutation";
 import { fromWorkspaceName } from "./RenameWorkspaceModal";
@@ -50,7 +50,7 @@ export const WorkspaceEntry: FunctionComponent<Props> = ({ info, shortVersion })
     // Could this be `/start#${workspace.id}` instead?
     const startUrl = useMemo(
         () =>
-            new GitpodHostUrl(window.location.href)
+            new DevpodHostUrl(window.location.href)
                 .with({
                     pathname: "/start/",
                     hash: "#" + workspace.id,

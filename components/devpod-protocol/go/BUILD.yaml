@@ -13,7 +13,7 @@ packages:
     env:
       - CGO_ENABLED=0
       - GOOS=linux
-      - LEEWAY_BUILD=true
+      - BLAZEDOCK_BUILD=true
     prep:
       - ["./scripts/generate-config.sh"]
     config:

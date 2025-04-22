@@ -105,10 +105,10 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230920204549-e6e6cdab5c13 // indirect
 )
 
-replace github.com/khulnasoft/devpod/devpod-protocol => ../devpod-protocol/go // leeway
+replace github.com/khulnasoft/devpod/devpod-protocol => ../devpod-protocol/go // blazedock
 
-replace github.com/khulnasoft/devpod/local-app/api => ../local-app-api/go // leeway
+replace github.com/khulnasoft/devpod/local-app/api => ../local-app-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/supervisor/api => ../supervisor-api/go // leeway
+replace github.com/khulnasoft/devpod/supervisor/api => ../supervisor-api/go // blazedock
 
-replace github.com/khulnasoft/devpod/components/public-api/go => ../public-api/go // leeway
+replace github.com/khulnasoft/devpod/components/public-api/go => ../public-api/go // blazedock

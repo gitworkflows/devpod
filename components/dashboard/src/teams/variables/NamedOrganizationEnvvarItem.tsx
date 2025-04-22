@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { OrganizationEnvironmentVariable } from "@devpod/public-api/lib/devpod/v1/envvar_pb";
+import { OrganizationEnvironmentVariable } from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
 import { useCallback, useState } from "react";
 import { OrganizationRemoveEnvvarModal } from "./OrganizationRemoveEnvvarModal";
 import { InputField } from "../../components/forms/InputField";

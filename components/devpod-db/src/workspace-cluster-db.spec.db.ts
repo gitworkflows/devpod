@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import * as chai from "chai";
 import { suite, test, timeout } from "@testdeck/mocha";
 import { testContainer } from "./test-container";
 import { TypeORM } from "./typeorm/typeorm";
-import { WorkspaceCluster, WorkspaceClusterDB } from "@devpod/devpod-protocol/lib/workspace-cluster";
+import { WorkspaceCluster, WorkspaceClusterDB } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
 import { DBWorkspaceCluster } from "./typeorm/entity/db-workspace-cluster";
 import { resetDB } from "./test/reset-db";
 const expect = chai.expect;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,12 +9,12 @@ const expect = chai.expect;
 import { suite, test, timeout } from "@testdeck/mocha";
 import { fail } from "assert";
 
-import { WorkspaceInstance, Workspace, PrebuiltWorkspace, CommitContext } from "@devpod/devpod-protocol";
+import { WorkspaceInstance, Workspace, PrebuiltWorkspace, CommitContext } from "@khulnasoft/devpod-protocol";
 import { testContainer } from "./test-container";
 import { TypeORMWorkspaceDBImpl } from "./typeorm/workspace-db-impl";
 import { TypeORM } from "./typeorm/typeorm";
 import { DBPrebuiltWorkspace } from "./typeorm/entity/db-prebuilt-workspace";
-import { secondsBefore } from "@devpod/devpod-protocol/lib/util/timeutil";
+import { secondsBefore } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
 import { resetDB } from "./test/reset-db";
 import { v4 } from "uuid";
 
@@ -144,7 +144,7 @@ class WorkspaceDBSpec {
             revision: "abc",
         },
         contextURL: "https://github.com/khulnasoft/devpod",
-        description: "Gitpod",
+        description: "Devpod",
         ownerId: this.userId,
         organizationId: this.orgidA,
     };

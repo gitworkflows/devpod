@@ -14,7 +14,7 @@ on:
         description: "The name of the preview environment"
       version:
         required: true
-        description: "The version of Gitpod to install"
+        description: "The version of Devpod to install"
       image_repo_base:
         type: choice
         required: false
@@ -75,7 +75,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Create preview environment infrastructure
         id: create
         uses: ./.github/actions/preview-create
@@ -85,7 +85,7 @@ jobs:
           large_vm: false
           preemptible: true
           image_repo_base: ${{ needs.configuration.outputs.image_repo_base }}
-      - name: Deploy Gitpod to the preview environment
+      - name: Deploy Devpod to the preview environment
         id: deploy-devpod
         uses: ./.github/actions/deploy-devpod
         with:
@@ -110,7 +110,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Check
         shell: bash
         env:
@@ -121,10 +121,10 @@ jobs:
         run: |
           set -euo pipefail
 
-          export LEEWAY_WORKSPACE_ROOT="$(pwd)"
+          export BLAZEDOCK_WORKSPACE_ROOT="$(pwd)"
           export HOME="/home/devpod"
 
-          leeway run dev/preview/previewctl:install
+          blazedock run dev/preview/previewctl:install
           previewctl install-context --branch "${PREVIEW_NAME}" --log-level debug --timeout 1m
 
           # start integration test
@@ -182,7 +182,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Delete preview environment
         uses: ./.github/actions/delete-preview
         with:

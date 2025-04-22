@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@devpod/devpod-protocol";
+import { User } from "@khulnasoft/devpod-protocol";
 import * as chai from "chai";
 import { IDEService } from "./ide-service";
-import { IDESettingsVersion } from "@devpod/devpod-protocol/lib/ide-protocol";
+import { IDESettingsVersion } from "@khulnasoft/devpod-protocol/lib/ide-protocol";
 const expect = chai.expect;
 
 describe("ide-service", function () {

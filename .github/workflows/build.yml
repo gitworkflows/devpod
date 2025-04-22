@@ -38,7 +38,7 @@ jobs:
       version: ${{ steps.branches.outputs.sanitized-branch-name }}-gha.${{github.run_number}}
       preview_enable: ${{ contains( steps.pr-details.outputs.pr_body, '[x] /werft with-preview') || (steps.output.outputs.with_integration_tests != '') }}
       preview_name: ${{ github.head_ref || github.ref_name }}
-      build_no_cache: ${{ contains( steps.pr-details.outputs.pr_body, '[x] leeway-no-cache') }}
+      build_no_cache: ${{ contains( steps.pr-details.outputs.pr_body, '[x] blazedock-no-cache') }}
       build_no_test: ${{ contains( steps.pr-details.outputs.pr_body, '[x] /werft no-test') }}
       with_large_vm: ${{ contains( steps.pr-details.outputs.pr_body, '[X] /werft with-large-vm') || (steps.output.outputs.with_integration_tests != '') }}
       publish_to_npm: ${{ contains( steps.pr-details.outputs.pr_body, '[X] /werft publish-to-npm') }}
@@ -52,7 +52,7 @@ jobs:
       with_integration_tests: ${{ steps.output.outputs.with_integration_tests }}
       with_monitoring: ${{ contains( steps.pr-details.outputs.pr_body, '[x] with-monitoring') }}
       latest_ide_version: ${{ contains( steps.pr-details.outputs.pr_body, '[x] latest-ide-version=true') }}
-      leeway_cache_bucket: ${{ steps.output.outputs.leeway_cache_bucket }}
+      blazedock_cache_bucket: ${{ steps.output.outputs.blazedock_cache_bucket }}
       image_repo_base: ${{ steps.output.outputs.image_repo_base }}
       pr_number: ${{ steps.pr-details.outputs.number }}
       pr_body: ${{ steps.pr-details.outputs.pr_body }}
@@ -89,7 +89,7 @@ jobs:
             echo "workspace_feature_flags=$(echo "$PR_DESC" | grep -oiP '(?<=\[x\] workspace-feature-flags=).*?(?=\s*$)')"
             echo "with_integration_tests=$(echo "$PR_DESC" | grep -oiP '(?<=\[x\] with-integration-tests=).*?(?=\s*$)')"
             echo "analytics=$(echo "$PR_DESC" | grep -oiP '(?<=\[x\] analytics=).*?(?=\s*$)')"
-            echo "leeway_cache_bucket=$([[ "$MAIN_BRANCH"  = "true" ]] && echo "leeway-cache-main-c514a01" || echo "leeway-cache-dev-3ac8ef5")"
+            echo "blazedock_cache_bucket=$([[ "$MAIN_BRANCH"  = "true" ]] && echo "blazedock-cache-main-c514a01" || echo "blazedock-cache-dev-3ac8ef5")"
             echo "image_repo_base=$([[ "$MAIN_BRANCH"  = "true" ]] && echo "ghcr.io/devpod-core-dev" || echo "ghcr.io/devpod-dev-artifact")"
           } >> $GITHUB_OUTPUT
 
@@ -112,14 +112,14 @@ jobs:
         with:
           identity_provider: ${{ github.ref == 'refs/heads/main' && secrets.CORE_DEV_PROVIDER || secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ github.ref == 'refs/heads/main' && secrets.CORE_DEV_SA || secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Build previewctl
         id: build
         shell: bash
         env:
-          LEEWAY_REMOTE_CACHE_BUCKET: ${{needs.configuration.outputs.leeway_cache_bucket}}
+          BLAZEDOCK_REMOTE_CACHE_BUCKET: ${{needs.configuration.outputs.blazedock_cache_bucket}}
         run: |
-          leeway build dev/preview/previewctl:cli --cache remote
+          blazedock build dev/preview/previewctl:cli --cache remote
   infrastructure:
     needs: [ configuration, build-previewctl, create-runner ]
     if: |
@@ -137,7 +137,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Create preview environment infrastructure
         id: create
         uses: ./.github/actions/preview-create
@@ -150,7 +150,7 @@ jobs:
           image_repo_base: ${{needs.configuration.outputs.image_repo_base}}/build
 
   build-devpod:
-    name: Build Gitpod
+    name: Build Devpod
     needs: [ configuration, create-runner ]
     runs-on: ${{ needs.create-runner.outputs.label }}
     concurrency:
@@ -184,11 +184,11 @@ jobs:
         with:
           identity_provider: ${{ github.ref == 'refs/heads/main' && secrets.CORE_DEV_PROVIDER || secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ github.ref == 'refs/heads/main' && secrets.CORE_DEV_SA || secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
-      - name: Leeway Vet
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
+      - name: Blazedock Vet
         shell: bash
         run: |
-          leeway vet --ignore-warnings
+          blazedock vet --ignore-warnings
       - name: Pre-Commit Checks
         shell: bash
         run: |
@@ -203,14 +203,14 @@ jobs:
         env:
           JAVA_HOME: /home/devpod/.sdkman/candidates/java/current
           VERSION: ${{needs.configuration.outputs.version}}
-          LEEWAY_REMOTE_CACHE_BUCKET: ${{needs.configuration.outputs.leeway_cache_bucket}}
+          BLAZEDOCK_REMOTE_CACHE_BUCKET: ${{needs.configuration.outputs.blazedock_cache_bucket}}
           IMAGE_REPO_BASE: ${{needs.configuration.outputs.image_repo_base}}/dev
         shell: bash
         run: |
           RESULT=0
           set -x
 
-          leeway build dev:all \
+          blazedock build dev:all \
             --docker-build-options network=host \
             --cache remote \
             -Dversion=$VERSION \
@@ -229,8 +229,8 @@ jobs:
           cat report.html >> $GITHUB_STEP_SUMMARY
 
           exit $RESULT
-      - name: Leeway Build
-        id: leeway
+      - name: Blazedock Build
+        id: blazedock
         shell: bash
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
@@ -243,17 +243,17 @@ jobs:
           JB_MARKETPLACE_PUBLISH_TOKEN: "${{ secrets.JB_MARKETPLACE_PUBLISH_TOKEN }}"
           PUBLISH_TO_JBPM: ${{ needs.configuration.outputs.publish_to_jbmp == 'true'  || needs.configuration.outputs.is_main_branch == 'true' }}
           CODECOV_TOKEN: "${{ secrets.CODECOV_TOKEN }}"
-          LEEWAY_REMOTE_CACHE_BUCKET: ${{needs.configuration.outputs.leeway_cache_bucket}}
+          BLAZEDOCK_REMOTE_CACHE_BUCKET: ${{needs.configuration.outputs.blazedock_cache_bucket}}
           IMAGE_REPO_BASE: ${{needs.configuration.outputs.image_repo_base}}/build
 
           # SCM tokens for integration tests
-          GITPOD_TEST_TOKEN_BITBUCKET: "${{ secrets.GITPOD_TEST_TOKEN_BITBUCKET }}"
-          GITPOD_TEST_TOKEN_BITBUCKET_SERVER: "${{ secrets.GITPOD_TEST_TOKEN_BITBUCKET_SERVER }}"
-          GITPOD_TEST_TOKEN_BITBUCKET_SERVER_WRITE: "${{ secrets.GITPOD_TEST_TOKEN_BITBUCKET_SERVER_WRITE }}"
-          GITPOD_TEST_TOKEN_BITBUCKET_SERVER_READ: "${{ secrets.GITPOD_TEST_TOKEN_BITBUCKET_SERVER_READ }}"
-          GITPOD_TEST_TOKEN_GITHUB: "${{ secrets.GITPOD_TEST_TOKEN_GITHUB }}"
-          GITPOD_TEST_TOKEN_GITLAB: "${{ secrets.GITPOD_TEST_TOKEN_GITLAB }}"
-          GITPOD_TEST_TOKEN_AZURE_DEVOPS: "${{ secrets.GITPOD_TEST_TOKEN_AZURE_DEVOPS }}"
+          DEVPOD_TEST_TOKEN_BITBUCKET: "${{ secrets.DEVPOD_TEST_TOKEN_BITBUCKET }}"
+          DEVPOD_TEST_TOKEN_BITBUCKET_SERVER: "${{ secrets.DEVPOD_TEST_TOKEN_BITBUCKET_SERVER }}"
+          DEVPOD_TEST_TOKEN_BITBUCKET_SERVER_WRITE: "${{ secrets.DEVPOD_TEST_TOKEN_BITBUCKET_SERVER_WRITE }}"
+          DEVPOD_TEST_TOKEN_BITBUCKET_SERVER_READ: "${{ secrets.DEVPOD_TEST_TOKEN_BITBUCKET_SERVER_READ }}"
+          DEVPOD_TEST_TOKEN_GITHUB: "${{ secrets.DEVPOD_TEST_TOKEN_GITHUB }}"
+          DEVPOD_TEST_TOKEN_GITLAB: "${{ secrets.DEVPOD_TEST_TOKEN_GITLAB }}"
+          DEVPOD_TEST_TOKEN_AZURE_DEVOPS: "${{ secrets.DEVPOD_TEST_TOKEN_AZURE_DEVOPS }}"
         run: |
           [[ "$PR_NO_CACHE" = "true" ]] && CACHE="none"       || CACHE="remote"
           [[ "$PR_NO_TEST"  = "true" ]] && TEST="--dont-test" || TEST=""
@@ -262,7 +262,7 @@ jobs:
           RESULT=0
           set -x
           # CI=true is a var set by GHA. Unsetting it for the build, as yarn builds treat warnings as errors if that var is set to true
-          CI= leeway build \
+          CI= blazedock build \
             --cache $CACHE \
             $TEST \
             -Dversion=$VERSION \
@@ -300,7 +300,7 @@ jobs:
           git push origin ${VERSION}
         env:
           GITHUB_USER: roboquat
-          GITHUB_EMAIL: roboquat@devpod.io
+          GITHUB_EMAIL: roboquat@khulnasoft.com
           VERSION: ${{ needs.configuration.outputs.version }}
 
   install-app:
@@ -338,7 +338,7 @@ jobs:
             })
 
   install:
-    name: "Install Gitpod"
+    name: "Install Devpod"
     needs:
       - configuration
       - build-previewctl
@@ -356,8 +356,8 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
-      - name: Deploy Gitpod to the preview environment
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
+      - name: Deploy Devpod to the preview environment
         id: deploy-devpod
         uses: ./.github/actions/deploy-devpod
         with:
@@ -406,7 +406,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Deploy monitoring satellite to the preview environment
         id: deploy-monitoring-satellite
         uses: ./.github/actions/deploy-monitoring-satellite
@@ -446,7 +446,7 @@ jobs:
           test_build_ref: ${{ github.head_ref || github.ref }}
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
           integration_test_username: ${{ secrets.WORKSPACE_INTEGRATION_TEST_USERNAME }}
           integration_test_usertoken: ${{ secrets.WORKSPACE_INTEGRATION_TEST_USER_TOKEN }}
 

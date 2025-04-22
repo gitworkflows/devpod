@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -21,7 +21,7 @@ import (
 // initCmd represents the init command
 var openCmd = &cobra.Command{
 	Use:   "open <filename>",
-	Short: "Opens a file in Gitpod",
+	Short: "Opens a file in Devpod",
 	Args:  cobra.MinimumNArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		// TODO(ak) use NotificationService.NotifyActive supervisor API instead

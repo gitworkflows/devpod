@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AuthProviderType } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProviderType } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
 import bitbucket from "./images/bitbucket.svg";
 import github from "./images/github.svg";
 import gitlab from "./images/gitlab.svg";

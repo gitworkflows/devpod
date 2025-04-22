@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import { inject, injectable } from "inversify";
 import * as path from "path";
 import * as crypto from "crypto";
 
-import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
+import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import {
     User,
     WorkspaceConfig,
@@ -22,24 +22,24 @@ import {
     AdditionalContentContext,
     WithDefaultConfig,
     ProjectConfig,
-} from "@devpod/devpod-protocol";
-import { GitpodFileParser } from "@devpod/devpod-protocol/lib/devpod-file-parser";
+} from "@khulnasoft/devpod-protocol";
+import { DevpodFileParser } from "@khulnasoft/devpod-protocol/lib/devpod-file-parser";
 
 import { ConfigurationService } from "../config/configuration-service";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { AuthorizationService } from "../user/authorization-service";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import { Config } from "../config";
 import { EntitlementService } from "../billing/entitlement-service";
-import { TeamDB } from "@devpod/devpod-db/lib";
-import { InvalidGitpodYMLError } from "@devpod/public-api-common/lib/public-api-errors";
+import { TeamDB } from "@khulnasoft/devpod-db/lib";
+import { InvalidDevpodYMLError } from "@khulnasoft/public-api-common/lib/public-api-errors";
 import { ImageFileRevisionMissing, RevisionNotFoundError } from "../repohost";
 
 const POD_PATH_WORKSPACE_BASE = "/workspace";
 
 @injectable()
 export class ConfigProvider {
-    @inject(GitpodFileParser) protected readonly devpodParser: GitpodFileParser;
+    @inject(DevpodFileParser) protected readonly devpodParser: DevpodFileParser;
     @inject(HostContextProvider) protected readonly hostContextProvider: HostContextProvider;
     @inject(AuthorizationService) protected readonly authService: AuthorizationService;
     @inject(Config) protected readonly config: Config;
@@ -151,7 +151,7 @@ export class ConfigProvider {
                 customConfig = parseResult.config;
                 customConfig._origin = "additional-content";
                 if (parseResult.validationErrors) {
-                    const err = new InvalidGitpodYMLError({
+                    const err = new InvalidDevpodYMLError({
                         violations: parseResult.validationErrors,
                     });
                     // this is not a system error but a user misconfiguration
@@ -171,7 +171,7 @@ export class ConfigProvider {
                     throw new Error(`Cannot fetch config for host: ${host}`);
                 }
                 const services = hostContext.services;
-                const contextRepoConfig = services.fileProvider.getGitpodFileContent(commit, user);
+                const contextRepoConfig = services.fileProvider.getDevpodFileContent(commit, user);
                 customConfigString = await contextRepoConfig;
                 let origin: WorkspaceConfig["_origin"] = "repo";
 
@@ -190,7 +190,7 @@ export class ConfigProvider {
                     const parseResult = this.devpodParser.parse(customConfigString);
                     customConfig = parseResult.config;
                     if (parseResult.validationErrors) {
-                        const err = new InvalidGitpodYMLError({
+                        const err = new InvalidDevpodYMLError({
                             violations: parseResult.validationErrors,
                         });
                         // this is not a system error but a user misconfiguration

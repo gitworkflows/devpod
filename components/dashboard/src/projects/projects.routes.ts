@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Project } from "@devpod/devpod-protocol";
+import { Project } from "@khulnasoft/devpod-protocol";
 import { TabEntry } from "../components/Header";
 
 export const projectsPathMain = "/projects";

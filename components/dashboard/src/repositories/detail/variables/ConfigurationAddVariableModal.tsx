@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import { LoadingButton } from "@podkit/buttons/LoadingButton";
 import Modal, { ModalHeader, ModalBody, ModalFooter, ModalFooterAlert } from "../../../components/Modal";
 import { CheckboxInputField } from "../../../components/forms/CheckboxInputField";
 import { Button } from "@podkit/buttons/Button";
-import { EnvironmentVariableAdmission } from "@devpod/public-api/lib/devpod/v1/envvar_pb";
+import { EnvironmentVariableAdmission } from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
 import { useCreateConfigurationVariable } from "../../../data/configurations/configuration-queries";
 import { useToast } from "../../../components/toasts/Toasts";
 import { TextInputField } from "../../../components/forms/TextInputField";

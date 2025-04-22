@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -92,8 +92,8 @@ image to the "target" repo`,
 func init() {
 	mirrorCmd.AddCommand(mirrorListCmd)
 
-	mirrorListCmd.Flags().BoolVar(&mirrorListOpts.ExcludeThirdParty, "exclude-third-party", false, "exclude non-Gitpod images")
-	mirrorListCmd.Flags().StringVarP(&mirrorListOpts.ConfigFN, "config", "c", os.Getenv("GITPOD_INSTALLER_CONFIG"), "path to the config file")
+	mirrorListCmd.Flags().BoolVar(&mirrorListOpts.ExcludeThirdParty, "exclude-third-party", false, "exclude non-Devpod images")
+	mirrorListCmd.Flags().StringVarP(&mirrorListOpts.ConfigFN, "config", "c", os.Getenv("DEVPOD_INSTALLER_CONFIG"), "path to the config file")
 	mirrorListCmd.Flags().StringVar(&mirrorListOpts.Repository, "repository", "", "overwrite the registry in the config")
 	mirrorListCmd.Flags().StringVar(&mirrorListOpts.Domain, "domain", "", "overwrite the domain in the config")
 }
@@ -194,16 +194,16 @@ func renderAllKubernetesObject(cfgVersion string, cfg *configv1.Config) ([]strin
 }
 
 func generateMirrorList(cfgVersion string, cfg *configv1.Config) ([]mirrorListRepo, error) {
-	// Throw error if set to the default Gitpod repository
-	if cfg.Repository == common.GitpodContainerRegistry {
-		return nil, fmt.Errorf("cannot mirror images to repository %s", common.GitpodContainerRegistry)
+	// Throw error if set to the default Devpod repository
+	if cfg.Repository == common.DevpodContainerRegistry {
+		return nil, fmt.Errorf("cannot mirror images to repository %s", common.DevpodContainerRegistry)
 	}
 
 	// Get the target repository from the config
 	targetRepo := strings.TrimRight(cfg.Repository, "/")
 
-	// Use the default Gitpod registry to pull from
-	cfg.Repository = common.GitpodContainerRegistry
+	// Use the default Devpod registry to pull from
+	cfg.Repository = common.DevpodContainerRegistry
 
 	k8s, err := renderAllKubernetesObject(cfgVersion, cfg)
 	if err != nil {
@@ -222,7 +222,7 @@ func generateMirrorList(cfgVersion string, cfg *configv1.Config) ([]mirrorListRe
 	images := make([]mirrorListRepo, 0)
 	for _, img := range rawImages {
 		// Ignore if the image equals the container registry
-		if img == common.GitpodContainerRegistry {
+		if img == common.DevpodContainerRegistry {
 			continue
 		}
 		// Ignore empty image
@@ -238,7 +238,7 @@ func generateMirrorList(cfgVersion string, cfg *configv1.Config) ([]mirrorListRe
 		// Convert target
 		target := img
 		if strings.Contains(img, cfg.Repository) {
-			// This is the Gitpod registry
+			// This is the Devpod registry
 			target = strings.Replace(target, cfg.Repository, targetRepo, 1)
 		} else if !mirrorListOpts.ExcludeThirdParty {
 			// Amend third-party images - remove the first part
@@ -266,13 +266,13 @@ func generateMirrorList(cfgVersion string, cfg *configv1.Config) ([]mirrorListRe
 	return images, nil
 }
 
-// getGenericImages this is a bit brute force - anything starting "docker.io" or with Gitpod repo is found
+// getGenericImages this is a bit brute force - anything starting "docker.io" or with Devpod repo is found
 // this will be in ConfigMaps and could be anything, so will need cleaning up
 func getGenericImages(k8sObj string) []string {
 	var images []string
 
-	// Search for anything that matches docker.io or the Gitpod repo - docker.io needed for devpod/workspace-full
-	re := regexp.MustCompile(fmt.Sprintf("%s(.*)|%s(.*)", "docker.io", common.GitpodContainerRegistry))
+	// Search for anything that matches docker.io or the Devpod repo - docker.io needed for devpod/workspace-full
+	re := regexp.MustCompile(fmt.Sprintf("%s(.*)|%s(.*)", "docker.io", common.DevpodContainerRegistry))
 	img := re.FindAllString(k8sObj, -1)
 
 	if len(img) > 0 {

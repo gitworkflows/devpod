@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -53,7 +53,7 @@ func job(ctx *common.RenderContext) ([]runtime.Object, error) {
 						Command: []string{
 							"sh",
 							"-c",
-							"cd /app/node_modules/@devpod/devpod-db && yarn run wait-for-db && yarn run typeorm migration:show || true && yarn run typeorm migration:run",
+							"cd /app/node_modules/@khulnasoft/devpod-db && yarn run wait-for-db && yarn run typeorm migration:show || true && yarn run typeorm migration:run",
 						},
 					}},
 					Tolerations: common.WithTolerationWorkspaceComponentNotReady(ctx),

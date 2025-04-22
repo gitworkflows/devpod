@@ -12,7 +12,7 @@ See also [Internal Document](https://www.notion.so/devpod/IDE-Integration-Tests-
 
 - Create a preview env
 ```sh
-TF_VAR_infra_provider=gce TF_VAR_with_large_vm=true leeway run dev:preview
+TF_VAR_infra_provider=gce TF_VAR_with_large_vm=true blazedock run dev:preview
 ```
 - Start tests
 ```sh
@@ -22,9 +22,9 @@ go test -v ./... -kubeconfig=/home/devpod/.kube/config -namespace=default -usern
 
 #### 3. In workspace
 
-- Open with Gitpod
+- Open with Devpod
 - Create a preview env
 ```sh
-TF_VAR_infra_provider=gce TF_VAR_with_large_vm=true leeway run dev:preview
+TF_VAR_infra_provider=gce TF_VAR_with_large_vm=true blazedock run dev:preview
 ```
-- Exec `leeway run test:dev-intellij`
+- Exec `blazedock run test:dev-intellij`

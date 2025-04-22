@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -64,7 +64,7 @@ var lastSignal os.Signal
 var rootCmd = &cobra.Command{
 	Use:           rootCmdName,
 	SilenceErrors: true,
-	Short:         "Command line interface for Gitpod",
+	Short:         "Command line interface for Devpod",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		cmd.SilenceUsage = true
 		cmdName := GetCommandName(cmd.CommandPath())

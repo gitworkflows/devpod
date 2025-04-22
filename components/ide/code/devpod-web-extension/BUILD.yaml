@@ -5,7 +5,7 @@ packages:
       - imageRepoBase
       - codeWebExtensionCommit
     config:
-      dockerfile: leeway.Dockerfile
+      dockerfile: blazedock.Dockerfile
       metadata:
         helm-component: workspace.codeWebExtensionImage
       buildArgs:

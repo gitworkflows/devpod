@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License-AGPL.txt in the project root for license information.
 
@@ -32,7 +32,7 @@ var controllerRules = []rbacv1.PolicyRule{
 		Resources: []string{"pod/status"},
 	},
 	{
-		APIGroups: []string{"workspace.devpod.io"},
+		APIGroups: []string{"workspace.devpod.khulnasoft.com"},
 		Resources: []string{"workspaces"},
 		Verbs: []string{
 			"create",
@@ -46,11 +46,11 @@ var controllerRules = []rbacv1.PolicyRule{
 	},
 	{
 		Verbs:     []string{"update"},
-		APIGroups: []string{"workspace.devpod.io"},
+		APIGroups: []string{"workspace.devpod.khulnasoft.com"},
 		Resources: []string{"workspaces/finalizers"},
 	},
 	{
-		APIGroups: []string{"workspace.devpod.io"},
+		APIGroups: []string{"workspace.devpod.khulnasoft.com"},
 		Resources: []string{"workspaces/status"},
 		Verbs: []string{
 			"get",
@@ -59,7 +59,7 @@ var controllerRules = []rbacv1.PolicyRule{
 		},
 	},
 	{
-		APIGroups: []string{"workspace.devpod.io"},
+		APIGroups: []string{"workspace.devpod.khulnasoft.com"},
 		Resources: []string{"snapshots"},
 		Verbs: []string{
 			"create",
@@ -70,7 +70,7 @@ var controllerRules = []rbacv1.PolicyRule{
 		},
 	},
 	{
-		APIGroups: []string{"workspace.devpod.io"},
+		APIGroups: []string{"workspace.devpod.khulnasoft.com"},
 		Resources: []string{"snapshots/status"},
 		Verbs: []string{
 			"get",

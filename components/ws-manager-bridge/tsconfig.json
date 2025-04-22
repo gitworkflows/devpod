@@ -21,7 +21,8 @@
         "declaration": true,
         "declarationMap": true,
         "skipLibCheck": true,
-        "useUnknownInCatchVariables": false
+        "useUnknownInCatchVariables": false,
+        "types": ["@types/pino-std-serializers"]
     },
     "include": [
         "src"

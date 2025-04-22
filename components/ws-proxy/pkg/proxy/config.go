@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -24,7 +24,7 @@ type Config struct {
 
 	TransportConfig    *TransportConfig    `json:"transportConfig"`
 	BlobServer         *BlobServerConfig   `json:"blobServer"`
-	GitpodInstallation *GitpodInstallation `json:"devpodInstallation"`
+	DevpodInstallation *DevpodInstallation `json:"devpodInstallation"`
 	WorkspacePodConfig *WorkspacePodConfig `json:"workspacePodConfig"`
 
 	BuiltinPages        BuiltinPagesConfig `json:"builtinPages"`
@@ -39,7 +39,7 @@ func (c *Config) Validate() error {
 	for _, v := range []validatable{
 		c.TransportConfig,
 		c.BlobServer,
-		c.GitpodInstallation,
+		c.DevpodInstallation,
 		c.WorkspacePodConfig,
 	} {
 		err := v.Validate()
@@ -104,8 +104,8 @@ func (c *WorkspacePodConfig) Validate() error {
 	return nil
 }
 
-// GitpodInstallation contains config regarding the Gitpod installation.
-type GitpodInstallation struct {
+// DevpodInstallation contains config regarding the Devpod installation.
+type DevpodInstallation struct {
 	Scheme                   string `json:"scheme"`
 	HostName                 string `json:"hostName"`
 	WorkspaceHostSuffix      string `json:"workspaceHostSuffix"`
@@ -113,9 +113,9 @@ type GitpodInstallation struct {
 }
 
 // Validate validates the configuration to catch issues during startup and not at runtime.
-func (c *GitpodInstallation) Validate() error {
+func (c *DevpodInstallation) Validate() error {
 	if c == nil {
-		return xerrors.Errorf("GitpodInstallation not configured")
+		return xerrors.Errorf("DevpodInstallation not configured")
 	}
 
 	return validation.ValidateStruct(c,

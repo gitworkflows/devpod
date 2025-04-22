@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import * as chai from "chai";
 const expect = chai.expect;
 import { suite, test, timeout } from "@testdeck/mocha";
 
-import { GitpodTableDescriptionProvider } from "./tables";
+import { DevpodTableDescriptionProvider } from "./tables";
 
 @suite.only
 class TablesSpec {
@@ -18,7 +18,7 @@ class TablesSpec {
 
     @test(timeout(10000))
     public async createAndFindATeam() {
-        const thing = new GitpodTableDescriptionProvider();
+        const thing = new DevpodTableDescriptionProvider();
         expect(() => thing.getSortedTables()).to.not.throw();
     }
 }

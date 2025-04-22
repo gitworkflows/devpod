@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -11,8 +11,8 @@ import { organizationClient } from "../../service/public-api";
 import {
     OrganizationSettings,
     UpdateOrganizationSettingsRequest,
-} from "@devpod/public-api/lib/devpod/v1/organization_pb";
-import { ErrorCode } from "@devpod/devpod-protocol/lib/messaging/error";
+} from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import { ErrorCode } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { useOrgWorkspaceClassesQueryInvalidator } from "./org-workspace-classes-query";
 import { useOrgRepoSuggestionsInvalidator } from "./suggested-repositories-query";
 import { PartialMessage } from "@bufbuild/protobuf";

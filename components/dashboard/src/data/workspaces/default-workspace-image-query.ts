@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { useQuery } from "@tanstack/react-query";
-import { GetWorkspaceDefaultImageResponse } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { GetWorkspaceDefaultImageResponse } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
 import { workspaceClient } from "../../service/public-api";
 
 export const useWorkspaceDefaultImageQuery = (workspaceId?: string) => {

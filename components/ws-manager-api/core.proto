@@ -55,7 +55,7 @@ service WorkspaceManager {
 // MetadataFilter describes conditions for matching a set of workspaces.
 // The values of the fields have to match exactly, and set values must match.
 message MetadataFilter {
-    // owner is the ID of the Gitpod user to whom we'll bill this workspace and who we consider responsible for its content
+    // owner is the ID of the Devpod user to whom we'll bill this workspace and who we consider responsible for its content
 	string owner = 1;
 
     // meta_id is the workspace ID of this currently running workspace instance on the "meta pool" side
@@ -88,7 +88,7 @@ message StartWorkspaceRequest {
     // If this field is empty the workspace ID becomes the service prefix.
     string service_prefix = 2;
 
-    // Metadata is data associated with this workspace that's required for other parts of Gitpod to function
+    // Metadata is data associated with this workspace that's required for other parts of Devpod to function
     WorkspaceMetadata metadata = 3;
 
     // Spec is the configuration of the workspace that's required for the ws-manager to start the workspace
@@ -297,7 +297,7 @@ message WorkspaceStatus {
     // If a.status_version < b.status_version then a was the status before b.
     uint64 status_version = 10;
 
-    // Metadata is data associated with this workspace that's required for other parts of Gitpod to function
+    // Metadata is data associated with this workspace that's required for other parts of Devpod to function
     WorkspaceMetadata metadata = 2;
 
     // Spec is the workspace spec during runtime
@@ -525,7 +525,7 @@ message WorkspaceMetadata {
         ImageInfo image = 1;
     }
 
-    // owner is the ID of the Gitpod user to whom we'll bill this workspace and who we consider responsible for its content
+    // owner is the ID of the Devpod user to whom we'll bill this workspace and who we consider responsible for its content
     string owner = 1;
 
     // meta_id is the workspace ID of this currently running workspace instance on the "meta pool" side
@@ -719,7 +719,7 @@ enum WorkspaceType {
     // DEPRECATED Ghost workspaces
     reserved 3;
 
-    // Imagebuild workspaces build a workspace, incl. their Gitpod layer. They run headless and have no direct user-interaction.
+    // Imagebuild workspaces build a workspace, incl. their Devpod layer. They run headless and have no direct user-interaction.
     IMAGEBUILD = 4;
 }
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -16,13 +16,13 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-var emptyConfig = &devpod.GitpodConfig{}
+var emptyConfig = &devpod.DevpodConfig{}
 
 type ConfigAnalyzer struct {
 	log    *logrus.Entry
 	report func(field string)
 	delay  time.Duration
-	prev   *devpod.GitpodConfig
+	prev   *devpod.DevpodConfig
 	timer  *time.Timer
 	mu     sync.RWMutex
 }
@@ -31,7 +31,7 @@ func NewConfigAnalyzer(
 	log *logrus.Entry,
 	delay time.Duration,
 	report func(field string),
-	initial *devpod.GitpodConfig,
+	initial *devpod.DevpodConfig,
 ) *ConfigAnalyzer {
 	prev := emptyConfig
 	if initial != nil {
@@ -46,7 +46,7 @@ func NewConfigAnalyzer(
 	}
 }
 
-func (a *ConfigAnalyzer) Analyse(cfg *devpod.GitpodConfig) <-chan struct{} {
+func (a *ConfigAnalyzer) Analyse(cfg *devpod.DevpodConfig) <-chan struct{} {
 	current := emptyConfig
 	if cfg != nil {
 		current = cfg
@@ -72,7 +72,7 @@ func (a *ConfigAnalyzer) Analyse(cfg *devpod.GitpodConfig) <-chan struct{} {
 	return done
 }
 
-func (a *ConfigAnalyzer) process(current *devpod.GitpodConfig) {
+func (a *ConfigAnalyzer) process(current *devpod.DevpodConfig) {
 	a.log.Debug("devpod config analytics: processing")
 
 	fields := a.computeFields(a.prev, current)
@@ -90,7 +90,7 @@ func (a *ConfigAnalyzer) process(current *devpod.GitpodConfig) {
 	a.prev = current
 }
 
-func (a *ConfigAnalyzer) computeFields(configs ...*devpod.GitpodConfig) []string {
+func (a *ConfigAnalyzer) computeFields(configs ...*devpod.DevpodConfig) []string {
 	defer func() {
 		if err := recover(); err != nil {
 			a.log.WithField("error", err).Error("devpod config analytics: failed to compute devpod config fields")
@@ -117,7 +117,7 @@ func (a *ConfigAnalyzer) computeFields(configs ...*devpod.GitpodConfig) []string
 	return fields
 }
 
-func (a *ConfigAnalyzer) valueByField(config *devpod.GitpodConfig, field string) interface{} {
+func (a *ConfigAnalyzer) valueByField(config *devpod.DevpodConfig, field string) interface{} {
 	defer func() {
 		if err := recover(); err != nil {
 			a.log.WithField("error", err).WithField("field", field).Error("devpod config analytics: failed to retrieve value from devpod config")
@@ -142,7 +142,7 @@ func (a *ConfigAnalyzer) computeHash(i interface{}) (string, error) {
 	return fmt.Sprintf("%x", h.Sum(nil)), nil
 }
 
-func (a *ConfigAnalyzer) diffByField(prev *devpod.GitpodConfig, current *devpod.GitpodConfig, field string) bool {
+func (a *ConfigAnalyzer) diffByField(prev *devpod.DevpodConfig, current *devpod.DevpodConfig, field string) bool {
 	defer func() {
 		if err := recover(); err != nil {
 			a.log.WithField("error", err).WithField("field", field).Error("devpod config analytics: failed to compare devpod configs")

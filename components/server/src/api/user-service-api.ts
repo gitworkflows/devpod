@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { HandlerContext, ServiceImpl } from "@connectrpc/connect";
-import { UserService as UserServiceInterface } from "@devpod/public-api/lib/devpod/v1/user_connect";
+import { UserService as UserServiceInterface } from "@khulnasoft/public-api/lib/devpod/v1/user_connect";
 import { inject, injectable } from "inversify";
-import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
+import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
 import {
     UpdateUserRequest,
     UpdateUserResponse,
@@ -27,11 +27,11 @@ import {
     ListUsersResponse,
     SetRolesOrPermissionsRequest,
     SetRolesOrPermissionsResponse,
-} from "@devpod/public-api/lib/devpod/v1/user_pb";
+} from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
 import { UserService } from "../user/user-service";
 import { validate as uuidValidate } from "uuid";
 import { ctxUserId } from "../util/request-context";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 
 @injectable()
 export class UserServiceAPI implements ServiceImpl<typeof UserServiceInterface> {

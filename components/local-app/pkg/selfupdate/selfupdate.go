@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -30,9 +30,9 @@ import (
 )
 
 const (
-	// GitpodCLIBasePath is the path relative to a Gitpod installation where the latest
+	// DevpodCLIBasePath is the path relative to a Devpod installation where the latest
 	// binary and manifest can be found.
-	GitpodCLIBasePath = "/static/bin"
+	DevpodCLIBasePath = "/static/bin"
 )
 
 // Manifest is the manifest of a selfupdate
@@ -109,7 +109,7 @@ func GenerateManifest(version *semver.Version, loc string, filenameParser Filena
 func DownloadManifest(ctx context.Context, baseURL string) (res *Manifest, err error) {
 	defer func() {
 		if err != nil {
-			pth := strings.TrimSuffix(baseURL, "/") + GitpodCLIBasePath
+			pth := strings.TrimSuffix(baseURL, "/") + DevpodCLIBasePath
 			err = prettyprint.AddResolution(fmt.Errorf("cannot download manifest from %s/manifest.json: %w", pth, err),
 				"make sure you are connected to the internet",
 				"make sure you can reach "+baseURL,
@@ -121,7 +121,7 @@ func DownloadManifest(ctx context.Context, baseURL string) (res *Manifest, err e
 	if err != nil {
 		return nil, err
 	}
-	murl.Path = filepath.Join(murl.Path, GitpodCLIBasePath)
+	murl.Path = filepath.Join(murl.Path, DevpodCLIBasePath)
 
 	originalPath := murl.Path
 	murl.Path = filepath.Join(murl.Path, "manifest.json")

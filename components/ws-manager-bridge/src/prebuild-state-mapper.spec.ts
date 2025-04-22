@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,8 +7,8 @@
 import { suite, test } from "@testdeck/mocha";
 import * as chai from "chai";
 import { PrebuildStateMapper } from "./prebuild-state-mapper";
-import { WorkspaceConditionBool, WorkspacePhase, WorkspaceStatus } from "@devpod/ws-manager/lib";
-import { PrebuiltWorkspace } from "@devpod/devpod-protocol";
+import { WorkspaceConditionBool, WorkspacePhase, WorkspaceStatus } from "@khulnasoft/ws-manager/lib";
+import { PrebuiltWorkspace } from "@khulnasoft/devpod-protocol";
 
 const expect = chai.expect;
 

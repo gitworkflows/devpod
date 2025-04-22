@@ -1697,7 +1697,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / Component / proxy",
+  "title": "Devpod / Component / proxy",
   "uid": "proxy",
   "version": 5,
   "weekStart": ""

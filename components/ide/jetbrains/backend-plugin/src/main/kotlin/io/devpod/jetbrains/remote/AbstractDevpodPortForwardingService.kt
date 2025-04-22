@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -25,14 +25,14 @@ import java.util.*
 import java.util.concurrent.CompletableFuture
 
 @Suppress("UnstableApiUsage")
-abstract class AbstractGitpodPortForwardingService : GitpodPortForwardingService {
+abstract class AbstractDevpodPortForwardingService : DevpodPortForwardingService {
     companion object {
-        const val FORWARDED_PORT_LABEL = "ForwardedByGitpod"
-        const val EXPOSED_PORT_LABEL = "ExposedByGitpod"
+        const val FORWARDED_PORT_LABEL = "ForwardedByDevpod"
+        const val EXPOSED_PORT_LABEL = "ExposedByDevpod"
     }
 
     private val perClientPortForwardingManager = service<PerClientPortForwardingManager>()
-    private val ignoredPortsForNotificationService = service<GitpodIgnoredPortsForNotificationService>()
+    private val ignoredPortsForNotificationService = service<DevpodIgnoredPortsForNotificationService>()
     private val lifetime = Lifetime.Eternal.createNested()
 
     init { start() }
@@ -75,7 +75,7 @@ abstract class AbstractGitpodPortForwardingService : GitpodPortForwardingService
     private fun observePortsList(): CompletableFuture<Void> {
         val completableFuture = CompletableFuture<Void>()
 
-        val statusServiceStub = StatusServiceGrpc.newStub(GitpodManager.supervisorChannel)
+        val statusServiceStub = StatusServiceGrpc.newStub(DevpodManager.supervisorChannel)
 
         val portsStatusRequest = Status.PortsStatusRequest.newBuilder().setObserve(true).build()
 
@@ -104,7 +104,7 @@ abstract class AbstractGitpodPortForwardingService : GitpodPortForwardingService
     }
 
     private fun isLocalPortForwardingDisabled(): Boolean {
-        return System.getenv("GITPOD_DISABLE_JETBRAINS_LOCAL_PORT_FORWARDING")?.toBoolean() ?: false
+        return System.getenv("DEVPOD_DISABLE_JETBRAINS_LOCAL_PORT_FORWARDING")?.toBoolean() ?: false
     }
 
     private fun syncPortsListWithClient(response: Status.PortsStatusResponse) {

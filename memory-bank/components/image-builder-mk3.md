@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Image Builder MK3 is a service that runs in Gitpod clusters and is responsible for building custom workspace images based on user-defined configurations. It provides APIs to create and list workspace image builds, resolve workspace Docker image references, and listen to build updates and logs.
+The Image Builder MK3 is a service that runs in Devpod clusters and is responsible for building custom workspace images based on user-defined configurations. It provides APIs to create and list workspace image builds, resolve workspace Docker image references, and listen to build updates and logs.
 
 ## Purpose
 

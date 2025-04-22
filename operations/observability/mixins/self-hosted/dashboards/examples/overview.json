@@ -413,7 +413,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "[Example] Gitpod Self-hosted / Overview",
+  "title": "[Example] Devpod Self-hosted / Overview",
   "uid": "devpod-selfhosted-overview-example",
   "version": 1,
   "weekStart": ""

@@ -1,23 +1,23 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { injectable, inject } from "inversify";
-import { User, Identity, Token, IdentityLookup } from "@devpod/devpod-protocol";
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID, EmailDomainFilterDB, MaybeUser, UserDB } from "@devpod/devpod-db/lib";
+import { User, Identity, Token, IdentityLookup } from "@khulnasoft/devpod-protocol";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID, EmailDomainFilterDB, MaybeUser, UserDB } from "@khulnasoft/devpod-db/lib";
 import { HostContextProvider } from "../auth/host-context-provider";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { Config } from "../config";
 import { AuthUser } from "../auth/auth-provider";
 import { TokenService } from "./token-service";
 import { EmailAddressAlreadyTakenException, SelectAccountException } from "../auth/errors";
-import { SelectAccountPayload } from "@devpod/devpod-protocol/lib/auth";
+import { SelectAccountPayload } from "@khulnasoft/devpod-protocol/lib/auth";
 import { UserService } from "./user-service";
 import { Authorizer } from "../authorization/authorizer";
-import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
-import { isOrganizationOwned, isAllowedToCreateOrganization } from "@devpod/public-api-common/lib/user-utils";
+import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { isOrganizationOwned, isAllowedToCreateOrganization } from "@khulnasoft/public-api-common/lib/user-utils";
 
 export interface CreateUserParams {
     organizationId?: string;
@@ -91,7 +91,7 @@ export class UserAuthentication {
 
     async deauthorize(user: User, authProviderId: string) {
         const externalIdentities = user.identities.filter(
-            (i) => i.authProviderId !== TokenService.GITPOD_AUTH_PROVIDER_ID,
+            (i) => i.authProviderId !== TokenService.DEVPOD_AUTH_PROVIDER_ID,
         );
         const identity = externalIdentities.find((i) => i.authProviderId === authProviderId);
         if (!identity) {
@@ -107,7 +107,7 @@ export class UserAuthentication {
         // Disallow users to deregister the last builtin auth provider's from their user
         if (remainingLoginIdentities.length === 0) {
             throw new Error(
-                "Cannot remove last authentication provider for logging in to Gitpod. Please delete account if you want to leave.",
+                "Cannot remove last authentication provider for logging in to Devpod. Please delete account if you want to leave.",
             );
         }
 
@@ -143,7 +143,7 @@ export class UserAuthentication {
          */
 
         const externalIdentities = currentUser.identities.filter(
-            (i) => i.authProviderId !== TokenService.GITPOD_AUTH_PROVIDER_ID,
+            (i) => i.authProviderId !== TokenService.DEVPOD_AUTH_PROVIDER_ID,
         );
         const loginIdentityOfCurrentUser = externalIdentities[externalIdentities.length - 1];
         const authProviderConfigOfCurrentUser = this.hostContextProvider
@@ -204,7 +204,7 @@ export class UserAuthentication {
     }
 
     /**
-     * devpod.io: Only installation-level users are allowed to create orgs
+     * devpod.khulnasoft.com: Only installation-level users are allowed to create orgs
      * Dedicated: Only if multiOrg is enabled, installation-level users (=admin-user) can create orgs
      * @param user
      * @returns

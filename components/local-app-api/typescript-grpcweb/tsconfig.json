@@ -3,12 +3,14 @@
         "module": "commonjs",
         "target": "es6",
         "lib": [
-            "es6"
+            "es6",
+            "dom"
         ],
         "outDir": "lib",
         "sourceMap": true,
         "declaration": true,
-        "useUnknownInCatchVariables": false
+        "useUnknownInCatchVariables": false,
+        "types": ["pino-std-serializers"]
     },
     "include": [
         "src"

@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AuthProviderInfo, GuessedGitTokenScopes, GuessGitTokenScopesParams } from "@devpod/devpod-protocol";
+import { AuthProviderInfo, GuessedGitTokenScopes, GuessGitTokenScopesParams } from "@khulnasoft/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { RepoURL } from "../repohost";
 import { GitTokenValidator } from "./git-token-validator";

@@ -1,5 +1,5 @@
 {
-  "name": "@devpod/public-api",
+  "name": "@khulnasoft/public-api",
   "version": "0.1.5",
   "license": "AGPL-3.0",
   "main": "./lib/index.js",
@@ -26,6 +26,7 @@
     }
   },
   "scripts": {
+    "clean": "rimraf lib",
     "build": "yarn run build:cjs && yarn run build:esm",
     "build:cjs": "tsc",
     "build:esm": "tsc --module es2015 --outDir ./lib/esm"

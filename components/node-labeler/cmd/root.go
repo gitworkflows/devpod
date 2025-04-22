@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -50,7 +50,7 @@ func Execute() {
 func init() {
 	rootCmd.PersistentFlags().IntVar(&registryFacadePort, "registry-facade-port", 31750, "registry-facade node port")
 	rootCmd.PersistentFlags().IntVar(&wsdaemonPort, "ws-daemon-port", 8080, "ws-daemon service port")
-	rootCmd.PersistentFlags().StringVar(&namespace, "namespace", "default", "Namespace where Gitpod components are running")
+	rootCmd.PersistentFlags().StringVar(&namespace, "namespace", "default", "Namespace where Devpod components are running")
 
 	rootCmd.PersistentFlags().BoolVarP(&jsonLog, "json-log", "j", true, "produce JSON log output on verbose level")
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "Enable verbose JSON logging")

@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Deferred } from "@devpod/devpod-protocol/lib/util/deferred";
+import { Deferred } from "@khulnasoft/devpod-protocol/lib/util/deferred";
 import { injectable, inject, optional } from "inversify";
 
 import { Connection, ConnectionOptions, PrimaryColumnOptions, getConnectionManager, createConnection } from "typeorm";

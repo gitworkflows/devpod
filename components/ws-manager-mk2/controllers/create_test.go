@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -43,17 +43,17 @@ func TestCreateWorkspaceEnvironment(t *testing.T) {
 			},
 			Expectation: Expectation{
 				Vars: []corev1.EnvVar{
-					{Name: "GITPOD_REPO_ROOT", Value: "/workspace"},
-					{Name: "GITPOD_REPO_ROOTS", Value: "/workspace"},
-					{Name: "GITPOD_THEIA_PORT", Value: "0"},
+					{Name: "DEVPOD_REPO_ROOT", Value: "/workspace"},
+					{Name: "DEVPOD_REPO_ROOTS", Value: "/workspace"},
+					{Name: "DEVPOD_THEIA_PORT", Value: "0"},
 					{Name: "THEIA_WORKSPACE_ROOT", Value: "/workspace"},
-					{Name: "GITPOD_WORKSPACE_CLASS", Value: "default"},
+					{Name: "DEVPOD_WORKSPACE_CLASS", Value: "default"},
 					{Name: "THEIA_SUPERVISOR_ENDPOINT", Value: ":0"},
 					{Name: "THEIA_WEBVIEW_EXTERNAL_ENDPOINT", Value: "webview-{{hostname}}"},
 					{Name: "THEIA_MINI_BROWSER_HOST_PATTERN", Value: "browser-{{hostname}}"},
-					{Name: "GITPOD_GIT_USER_NAME", Value: "foobar"},
-					{Name: "GITPOD_GIT_USER_EMAIL", Value: "foo@bar.com"},
-					{Name: "GITPOD_INTERVAL", Value: "0"}, {Name: "GITPOD_MEMORY", Value: "0"}, {Name: "GITPOD_CPU_COUNT", Value: "0"},
+					{Name: "DEVPOD_GIT_USER_NAME", Value: "foobar"},
+					{Name: "DEVPOD_GIT_USER_EMAIL", Value: "foo@bar.com"},
+					{Name: "DEVPOD_INTERVAL", Value: "0"}, {Name: "DEVPOD_MEMORY", Value: "0"}, {Name: "DEVPOD_CPU_COUNT", Value: "0"},
 				},
 			},
 		},
@@ -73,15 +73,15 @@ func TestCreateWorkspaceEnvironment(t *testing.T) {
 			},
 			Expectation: Expectation{
 				Vars: []corev1.EnvVar{
-					{Name: "GITPOD_REPO_ROOT", Value: "/workspace"},
-					{Name: "GITPOD_REPO_ROOTS", Value: "/workspace"},
-					{Name: "GITPOD_THEIA_PORT", Value: "0"},
+					{Name: "DEVPOD_REPO_ROOT", Value: "/workspace"},
+					{Name: "DEVPOD_REPO_ROOTS", Value: "/workspace"},
+					{Name: "DEVPOD_THEIA_PORT", Value: "0"},
 					{Name: "THEIA_WORKSPACE_ROOT", Value: "/workspace"},
-					{Name: "GITPOD_WORKSPACE_CLASS", Value: "default"},
+					{Name: "DEVPOD_WORKSPACE_CLASS", Value: "default"},
 					{Name: "THEIA_SUPERVISOR_ENDPOINT", Value: ":0"},
 					{Name: "THEIA_WEBVIEW_EXTERNAL_ENDPOINT", Value: "webview-{{hostname}}"},
 					{Name: "THEIA_MINI_BROWSER_HOST_PATTERN", Value: "browser-{{hostname}}"},
-					{Name: "GITPOD_INTERVAL", Value: "0"}, {Name: "GITPOD_MEMORY", Value: "0"}, {Name: "GITPOD_CPU_COUNT", Value: "0"},
+					{Name: "DEVPOD_INTERVAL", Value: "0"}, {Name: "DEVPOD_MEMORY", Value: "0"}, {Name: "DEVPOD_CPU_COUNT", Value: "0"},
 				},
 			},
 		},

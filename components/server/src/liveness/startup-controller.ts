@@ -1,14 +1,14 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { injectable, inject } from "inversify";
 import express from "express";
-import { TypeORM } from "@devpod/devpod-db/lib";
+import { TypeORM } from "@khulnasoft/devpod-db/lib";
 import { SpiceDBClientProvider } from "../authorization/spicedb";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { v1 } from "@authzed/authzed-node";
 import { Redis } from "ioredis";
 

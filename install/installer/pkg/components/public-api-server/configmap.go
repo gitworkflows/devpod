@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -57,7 +57,7 @@ func configmap(ctx *common.RenderContext) ([]runtime.Object, error) {
 
 	cfg := config.Configuration{
 		PublicURL:                         publicUrl,
-		GitpodServiceURL:                  common.ClusterURL("ws", server.Component, ctx.Namespace, server.ContainerPort),
+		DevpodServiceURL:                  common.ClusterURL("ws", server.Component, ctx.Namespace, server.ContainerPort),
 		StripeWebhookSigningSecretPath:    stripeSecretPath,
 		PersonalAccessTokenSigningKeyPath: personalAccessTokenSigningKeyPath,
 		BillingServiceAddress:             common.ClusterAddress(usage.Component, ctx.Namespace, usage.GRPCServicePort),

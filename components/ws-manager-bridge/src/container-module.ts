@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -12,30 +12,30 @@ import * as fs from "fs";
 import { WorkspaceManagerBridgeFactory, WorkspaceManagerBridge } from "./bridge";
 import { Metrics } from "./metrics";
 import { BridgeController, WorkspaceManagerClientProviderConfigSource } from "./bridge-controller";
-import { filePathTelepresenceAware } from "@devpod/devpod-protocol/lib/env";
+import { filePathTelepresenceAware } from "@khulnasoft/devpod-protocol/lib/env";
 import {
     WorkspaceManagerClientProvider,
     IWorkspaceManagerClientCallMetrics,
-} from "@devpod/ws-manager/lib/client-provider";
+} from "@khulnasoft/ws-manager/lib/client-provider";
 import {
     WorkspaceManagerClientProviderCompositeSource,
     WorkspaceManagerClientProviderDBSource,
     WorkspaceManagerClientProviderSource,
-} from "@devpod/ws-manager/lib/client-provider-source";
+} from "@khulnasoft/ws-manager/lib/client-provider-source";
 import { ClusterService, ClusterServiceServer } from "./cluster-service-server";
-import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
-import { newAnalyticsWriterFromEnv } from "@devpod/devpod-protocol/lib/util/analytics";
-import { IClientCallMetrics } from "@devpod/devpod-protocol/lib/util/grpc";
-import { PrometheusClientCallMetrics } from "@devpod/devpod-protocol/lib/messaging/client-call-metrics";
+import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
+import { newAnalyticsWriterFromEnv } from "@khulnasoft/devpod-protocol/lib/util/analytics";
+import { IClientCallMetrics } from "@khulnasoft/devpod-protocol/lib/util/grpc";
+import { PrometheusClientCallMetrics } from "@khulnasoft/devpod-protocol/lib/messaging/client-call-metrics";
 import { PrebuildStateMapper } from "./prebuild-state-mapper";
-import { DebugApp } from "@devpod/devpod-protocol/lib/util/debug-app";
-import { Client as ExperimentsClient } from "@devpod/devpod-protocol/lib/experiments/types";
-import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { DebugApp } from "@khulnasoft/devpod-protocol/lib/util/debug-app";
+import { Client as ExperimentsClient } from "@khulnasoft/devpod-protocol/lib/experiments/types";
+import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
 import { WorkspaceInstanceController, WorkspaceInstanceControllerImpl } from "./workspace-instance-controller";
 import { AppClusterWorkspaceInstancesController } from "./app-cluster-instance-controller";
 import { PrebuildUpdater } from "./prebuild-updater";
 import { Redis } from "ioredis";
-import { RedisPublisher, newRedisClient } from "@devpod/devpod-db/lib";
+import { RedisPublisher, newRedisClient } from "@khulnasoft/devpod-db/lib";
 
 export const containerModule = new ContainerModule((bind) => {
     bind(BridgeController).toSelf().inSingletonScope();

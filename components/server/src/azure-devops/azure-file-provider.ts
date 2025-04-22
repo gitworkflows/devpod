@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,16 +7,16 @@
 import { injectable, inject } from "inversify";
 
 import { FileProvider, MaybeContent, RevisionNotFoundError } from "../repohost/file-provider";
-import { Commit, User, Repository } from "@devpod/devpod-protocol";
+import { Commit, User, Repository } from "@khulnasoft/devpod-protocol";
 import { AzureDevOpsApi } from "./azure-api";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
 import { getOrgAndProject } from "./azure-converter";
 
 @injectable()
 export class AzureDevOpsFileProvider implements FileProvider {
     @inject(AzureDevOpsApi) protected readonly azureDevOpsApi: AzureDevOpsApi;
 
-    public async getGitpodFileContent(commit: Commit, user: User): Promise<MaybeContent> {
+    public async getDevpodFileContent(commit: Commit, user: User): Promise<MaybeContent> {
         const [azOrgId, azProject] = getOrgAndProject(commit.repository.owner);
         const repoName = commit.repository.name;
         const yamlVersion1 = await Promise.all([

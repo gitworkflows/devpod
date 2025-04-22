@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AuthProviderEntry as AuthProviderEntry } from "@devpod/devpod-protocol";
+import { AuthProviderEntry as AuthProviderEntry } from "@khulnasoft/devpod-protocol";
 import { createHash } from "crypto";
 
 export const AuthProviderEntryDB = Symbol("AuthProviderEntryDB");

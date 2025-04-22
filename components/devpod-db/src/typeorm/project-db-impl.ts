@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { PartialProject, Project, ProjectEnvVar, ProjectEnvVarWithValue, ProjectUsage } from "@devpod/devpod-protocol";
-import { EncryptionService } from "@devpod/devpod-protocol/lib/encryption/encryption-service";
+import { PartialProject, Project, ProjectEnvVar, ProjectEnvVarWithValue, ProjectUsage } from "@khulnasoft/devpod-protocol";
+import { EncryptionService } from "@khulnasoft/devpod-protocol/lib/encryption/encryption-service";
 import { inject, injectable, optional } from "inversify";
 import { Brackets, EntityManager, FindConditions, Repository } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
@@ -16,7 +16,7 @@ import { DBProjectInfo } from "./entity/db-project-info";
 import { DBProjectUsage } from "./entity/db-project-usage";
 import { TransactionalDBImpl } from "./transactional-db-impl";
 import { TypeORM } from "./typeorm";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
 import { filter } from "../utils";
 
 function toProjectEnvVar(envVarWithValue: DBProjectEnvVar): ProjectEnvVar {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import "reflect-metadata";
 import { suite, test } from "@testdeck/mocha";
 import * as chai from "chai";
 import { IssueContexts } from "./context-parser";
-import { User } from "@devpod/devpod-protocol";
+import { User } from "@khulnasoft/devpod-protocol";
 const expect = chai.expect;
 
 const baseUserInfo: User = {

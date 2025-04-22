@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { v4 as uuidv4 } from "uuid";
-import { DBWithTracing, TracedWorkspaceDB, WorkspaceDB, TeamDB } from "@devpod/devpod-db/lib";
+import { DBWithTracing, TracedWorkspaceDB, WorkspaceDB, TeamDB } from "@khulnasoft/devpod-db/lib";
 import {
     AdditionalContentContext,
     CommitContext,
@@ -22,11 +22,11 @@ import {
     Workspace,
     WorkspaceContext,
     WorkspaceImageSourceDocker,
-} from "@devpod/devpod-protocol";
-import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { generateWorkspaceID } from "@devpod/devpod-protocol/lib/util/generate-workspace-id";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+} from "@khulnasoft/devpod-protocol";
+import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { generateWorkspaceID } from "@khulnasoft/devpod-protocol/lib/util/generate-workspace-id";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 import { inject, injectable } from "inversify";
 import { ImageFileRevisionMissing, RepoURL } from "../repohost";
 import { ConfigProvider } from "./config-provider";

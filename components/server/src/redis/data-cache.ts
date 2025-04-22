@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -10,8 +10,8 @@ import {
     redisCacheGetLatencyHistogram,
     redisCacheSetLatencyHistogram,
 } from "../prometheus-metrics";
-import { log } from "@devpod/devpod-protocol/lib/util/logging";
-import { DataCache } from "@devpod/devpod-db/lib/data-cache";
+import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { DataCache } from "@khulnasoft/devpod-db/lib/data-cache";
 import { Redis } from "ioredis";
 
 const TTL_SEC = 5 * 60; // 5 minutes

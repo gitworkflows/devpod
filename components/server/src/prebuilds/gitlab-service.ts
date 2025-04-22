@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { RepositoryService } from "../repohost/repo-service";
-import { User } from "@devpod/devpod-protocol";
+import { User } from "@khulnasoft/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { GitLabApi, GitLab } from "../gitlab/api";
 import { GitLabApp } from "./gitlab-app";
@@ -13,7 +13,7 @@ import { Config } from "../config";
 import { GitlabContextParser } from "../gitlab/gitlab-context-parser";
 import { RepoURL } from "../repohost";
 import { UnauthorizedError } from "../errors";
-import { GitLabOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
+import { GitLabOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
 
 @injectable()
 export class GitlabService extends RepositoryService {
@@ -25,7 +25,7 @@ export class GitlabService extends RepositoryService {
         super();
     }
 
-    public async isGitpodWebhookEnabled(user: User, cloneUrl: string): Promise<boolean> {
+    public async isDevpodWebhookEnabled(user: User, cloneUrl: string): Promise<boolean> {
         try {
             const { owner, repoName } = await this.gitlabContextParser.parseURL(user, cloneUrl);
             const hooks = (await this.api.run(user, (g) =>

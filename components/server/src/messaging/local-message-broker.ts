@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { HeadlessWorkspaceEvent, PrebuildWithStatus, WorkspaceInstance } from "@devpod/devpod-protocol";
-import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { HeadlessWorkspaceEvent, PrebuildWithStatus, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
+import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
 
 export interface PrebuildUpdateListener {
     (ctx: TraceContext, evt: PrebuildWithStatus): void;
