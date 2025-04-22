@@ -35,7 +35,7 @@
   ],
   "dependencies": {
     "@devpod/devpod-db": "0.1.5",
-    "@devpod/devpod-protocol": "*",
+    "@devpod/devpod-protocol": "0.1.5",
     "@devpod/ws-daemon": "0.1.5",
     "@devpod/ws-manager": "0.1.5",
     "@devpod/ws-manager-bridge-api": "0.1.5",

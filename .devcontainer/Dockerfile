@@ -93,10 +93,18 @@ ENV BLAZEDOCK_MAX_PROVENANCE_BUNDLE_SIZE=8388608 \
     BLAZEDOCK_CACHE_DIR=/workspace/.blazedock/cache \
     BLAZEDOCK_BUILD_DIR=/workspace/.blazedock/build
 
-RUN curl -fsSL https://go.dev/dl/go1.21.4.linux-amd64.tar.gz | tar -C /usr/local -xzf - \
-    && echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile \
-    && echo 'export PATH=$PATH:/usr/local/go/bin' >> /root/.bashrc \
-    && /usr/local/go/bin/go install github.com/khulnasoft/blazedock@v0.1.0
+    RUN arch=$(uname -m); \
+    case $arch in \
+    x86_64) arch=x86_64 ;; \
+    aarch64|arm64) arch=arm64 ;; \
+    *) echo "Unsupported architecture: $arch"; exit 1 ;; \
+    esac; \
+    cd /tmp && \
+    curl -OsSL https://github.com/khulnasoft/blazedock/releases/download/v${BLAZEDOCK_VERSION}/blazedock_Linux_${arch}.tar.gz && \
+    tar -xzf blazedock_Linux_${arch}.tar.gz && \
+    mv blazedock /usr/local/bin/blazedock && \
+    rm blazedock_Linux_${arch}.tar.gz
+
 
 ### cloud_sql_proxy ###
 ARG CLOUD_SQL_PROXY=/usr/local/bin/cloud_sql_proxy
