@@ -5,7 +5,7 @@
  */
 
 import { FC, useCallback, useState } from "react";
-import { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
+import { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
 import { ConfigurationSettingsField } from "./ConfigurationSettingsField";
 import { Heading3, Subheading } from "@podkit/typography/Headings";
 import { SwitchInputField } from "@podkit/switch/Switch";
@@ -61,7 +61,7 @@ export const ConfigurationDetailPrebuilds: FC<Props> = ({ configuration }) => {
                 <Subheading className="max-w-lg">
                     Prebuilds reduce wait time for new workspaces.{" "}
                     <a
-                        href="https://www.devpod.khulnasoft.com/docs/configure/repositories/prebuilds"
+                        href="https://www.devpod.io/docs/configure/repositories/prebuilds"
                         target="_blank"
                         rel="noreferrer"
                         className="gp-link"

@@ -6,7 +6,7 @@
 
 import { Column, Entity, PrimaryColumn } from "typeorm";
 import { TypeORM } from "../typeorm";
-import { LinkedInProfile } from "@khulnasoft/devpod-protocol";
+import { LinkedInProfile } from "@devpod/devpod-protocol";
 
 @Entity()
 // on DB but not Typeorm: @Index("ind_lastModified", ["_lastModified"])   // DBSync

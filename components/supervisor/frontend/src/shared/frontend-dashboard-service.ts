@@ -5,9 +5,9 @@
  */
 
 import * as crypto from "crypto";
-import { IDEFrontendDashboardService } from "@khulnasoft/devpod-protocol/lib/frontend-dashboard-service";
-import { RemoteTrackMessage } from "@khulnasoft/devpod-protocol/lib/analytics";
-import { Emitter } from "@khulnasoft/devpod-protocol/lib/util/event";
+import { IDEFrontendDashboardService } from "@devpod/devpod-protocol/lib/frontend-dashboard-service";
+import { RemoteTrackMessage } from "@devpod/devpod-protocol/lib/analytics";
+import { Emitter } from "@devpod/devpod-protocol/lib/util/event";
 import { workspaceUrl, serverUrl } from "./urls";
 import { metricsReporter } from "../ide/ide-metrics-service-client";
 

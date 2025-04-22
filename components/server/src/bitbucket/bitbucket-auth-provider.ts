@@ -4,14 +4,14 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AuthProviderInfo } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { AuthProviderInfo } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { Bitbucket } from "bitbucket";
 import express from "express";
 import { injectable } from "inversify";
 import { AuthUserSetup } from "../auth/auth-provider";
 import { GenericAuthProvider } from "../auth/generic-auth-provider";
-import { BitbucketOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
+import { BitbucketOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
 
 @injectable()
 export class BitbucketAuthProvider extends GenericAuthProvider {

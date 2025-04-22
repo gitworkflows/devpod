@@ -848,7 +848,7 @@ func updateVMOptions(
 	var devpodVMOptions []string
 	devpodVMOptions = append(devpodVMOptions, "-Dgtw.disable.exit.dialog=true")
 	// temporary disable auto-attach of the async-profiler to prevent JVM crash
-	// see https://youtrack.jetbrains.com/issue/IDEA-326201/SIGSEGV-on-startup-2023.2-IDE-backend-on-devpod.khulnasoft.com?s=SIGSEGV-on-startup-2023.2-IDE-backend-on-devpod.khulnasoft.com
+	// see https://youtrack.jetbrains.com/issue/IDEA-326201/SIGSEGV-on-startup-2023.2-IDE-backend-on-devpod.io?s=SIGSEGV-on-startup-2023.2-IDE-backend-on-devpod.io
 	devpodVMOptions = append(devpodVMOptions, "-Dfreeze.reporter.profiling=false")
 	if alias == "intellij" {
 		devpodVMOptions = append(devpodVMOptions, "-Djdk.configure.existing=true")

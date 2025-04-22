@@ -5,9 +5,9 @@
  */
 
 import { HandlerContext, ServiceImpl } from "@connectrpc/connect";
-import { AuthProviderService as AuthProviderServiceInterface } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_connect";
+import { AuthProviderService as AuthProviderServiceInterface } from "@devpod/public-api/lib/devpod/v1/authprovider_connect";
 import { inject, injectable } from "inversify";
-import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
+import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
 import {
     CreateAuthProviderRequest,
     CreateAuthProviderResponse,
@@ -21,15 +21,15 @@ import {
     UpdateAuthProviderResponse,
     DeleteAuthProviderRequest,
     DeleteAuthProviderResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+} from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
 import { AuthProviderService } from "../auth/auth-provider-service";
-import { AuthProviderEntry, AuthProviderInfo, User } from "@khulnasoft/devpod-protocol";
+import { AuthProviderEntry, AuthProviderInfo, User } from "@devpod/devpod-protocol";
 import { Unauthenticated } from "./unauthenticated";
 import { validate as uuidValidate } from "uuid";
 import { selectPage } from "./pagination";
 import { ctxTrySubjectId, ctxUserId } from "../util/request-context";
 import { UserService } from "../user/user-service";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 
 @injectable()
 export class AuthProviderServiceAPI implements ServiceImpl<typeof AuthProviderServiceInterface> {

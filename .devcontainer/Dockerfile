@@ -90,24 +90,16 @@ ARG TARGETOS
 
 # Install dependencies
 USER root
-ARG BLAZEDOCK_VERSION=0.8.2
+ARG BLAZEDOCK_VERSION=0.1.0
 ENV BLAZEDOCK_MAX_PROVENANCE_BUNDLE_SIZE=8388608
 ENV BLAZEDOCK_WORKSPACE_ROOT=/workspace/devpod
 ENV BLAZEDOCK_REMOTE_CACHE_BUCKET=blazedock-cache-dev-3ac8ef5
 ENV BLAZEDOCK_CACHE_DIR=/workspace/.blazedock/cache
 ENV BLAZEDOCK_BUILD_DIR=/workspace/.blazedock/build
-RUN arch=$(uname -m); \
-    case $arch in \
-    x86_64) arch=x86_64 ;; \
-    aarch64|arm64) arch=arm64 ;; \
-    *) echo "Unsupported architecture: $arch"; exit 1 ;; \
-    esac; \
-    cd /tmp && \
-    curl -OsSL https://github.com/khulnasoft/blazedock/releases/download/v${BLAZEDOCK_VERSION}/blazedock_${BLAZEDOCK_VERSION}_Linux_${arch}.tar.gz && \
-    tar -xzf blazedock_${BLAZEDOCK_VERSION}_Linux_${arch}.tar.gz && \
-    mv blazedock /usr/local/bin/blazedock && \
-    rm blazedock_${BLAZEDOCK_VERSION}_Linux_${arch}.tar.gz
-
+RUN curl -fsSL https://go.dev/dl/go1.21.4.linux-amd64.tar.gz | tar -C /usr/local -xzf - && \
+    echo 'export PATH=$PATH:/usr/local/go/bin' >> /etc/profile && \
+    echo 'export PATH=$PATH:/usr/local/go/bin' >> /root/.bashrc && \
+    /usr/local/go/bin/go install github.com/khulnasoft/blazedock@v0.1.0
 
 ### cloud_sql_proxy ###
 ARG CLOUD_SQL_PROXY=/usr/local/bin/cloud_sql_proxy
@@ -123,7 +115,7 @@ RUN mkdir -p /tmp/helm/ \
     && helm completion bash > /usr/share/bash-completion/completions/helm
 
 ### kubectl ###
-RUN curl -fsSL -o /usr/bin/kubectl "https://dl.k8s.io/release/v1.28.9/bin/linux/${TARGETARCH}/kubectl" && chmod +x /usr/bin/kubectl \
+RUN curl -fsSL -o /usr/bin/kubectl "https://dl.k8s.io/release/v1.31.0/bin/linux/${TARGETARCH}/kubectl" && chmod +x /usr/bin/kubectl \
     && kubectl completion bash > /usr/share/bash-completion/completions/kubectl
 
 RUN curl -fsSL -o /usr/bin/kubectx https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx && chmod +x /usr/bin/kubectx \
@@ -140,13 +132,13 @@ RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key
 RUN cd /usr/bin && curl -fsSL https://github.com/cert-manager/cert-manager/releases/download/v1.13.0/cmctl-linux-amd64.tar.gz | tar xzv --no-anchored cmctl
 
 # gokart
-RUN cd /usr/bin && curl -fsSL https://github.com/praetorian-inc/gokart/releases/download/v0.4.0/gokart_0.4.0_linux_x86_64.tar.gz | tar xzv --no-anchored gokart
+RUN cd /usr/bin && curl -fsSL https://github.com/praetorian-inc/gokart/releases/download/v0.5.1/gokart_0.5.1_linux_x86_64.tar.gz | tar xzv --no-anchored gokart
 
 # evans (gRPC client)
 RUN cd /usr/bin && curl -fsSL https://github.com/ktr0731/evans/releases/download/v0.10.6/evans_linux_${TARGETARCH}.tar.gz | tar xz evans
 
 # dazzle
-RUN cd /usr/bin && curl -fsSL https://github.com/khulnasoft/dazzle/releases/download/v0.1.12/dazzle_0.1.12_Linux_x86_64.tar.gz | tar xz
+RUN cd /usr/bin && curl -fsSL https://github.com/gitpod-io/dazzle/releases/download/v0.1.12/dazzle_0.1.12_Linux_x86_64.tar.gz | tar xz
 
 # yq - jq for YAML files
 # Note: we rely on version 3.x.x in various places, 4.x breaks this!
@@ -188,7 +180,7 @@ RUN curl -sSL "https://awscli.amazonaws.com/awscli-exe-linux-$(arch).zip" -o aws
     ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update && \
     rm -rf awscliv2.zip ./aws
 
-ENV GO_VERSION=1.23.3
+ENV GO_VERSION=1.24.1
 ENV GOPATH=/root/go-packages
 ENV GOROOT=/root/go
 ENV PATH=$GOROOT/bin:$GOPATH/bin:$PATH
@@ -270,7 +262,7 @@ RUN arch=$(uname -m); \
     *) echo "Unsupported architecture: $arch"; exit 1 ;; \
     esac; \
     mkdir -p $GCS_DIR \
-    && curl -fsSL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-472.0.0-linux-${arch}.tar.gz \
+    && curl -fsSL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-515.0.0-linux-${arch}.tar.gz \
     | tar -xzC /opt \
     && /opt/google-cloud-sdk/install.sh --quiet --usage-reporting=false --bash-completion=true \
     --additional-components gke-gcloud-auth-plugin docker-credential-gcr alpha beta \

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@khulnasoft/ws-daemon",
+  "name": "@devpod/ws-daemon",
   "version": "0.1.5",
   "license": "UNLICENSED",
   "scripts": {
@@ -12,7 +12,7 @@
     "lib"
   ],
   "dependencies": {
-    "@khulnasoft/content-service": "*",
+    "@devpod/content-service": "0.1.5",
     "@grpc/grpc-js": "1.12.6",
     "google-protobuf": "^3.19.1",
     "inversify": "^6.0.1",

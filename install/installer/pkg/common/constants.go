@@ -26,7 +26,7 @@ const (
 	InClusterDbSecret           = "mysql"
 	KubeRBACProxyRepo           = "quay.io"
 	KubeRBACProxyImage          = "brancz/kube-rbac-proxy"
-	KubeRBACProxyTag            = "v0.15.0"
+	KubeRBACProxyTag            = "v0.19.0"
 	MinioServiceAPIPort         = 9000
 	MonitoringChart             = "monitoring"
 	ProxyComponent              = "proxy"
@@ -61,7 +61,7 @@ const (
 	DBCaBasePath                = "/db-ssl"
 	DBCaPath                    = DBCaBasePath + "/" + DBCaFileName
 	WorkspaceSecretsNamespace   = "workspace-secrets"
-	AnnotationConfigChecksum    = "devpod.khulnasoft.com/checksum_config"
+	AnnotationConfigChecksum    = "devpod.io/checksum_config"
 	DatabaseConfigMountPath     = "/secrets/database-config"
 	AuthPKISecretName           = "auth-pki"
 	IDEServiceComponent         = "ide-service"

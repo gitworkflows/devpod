@@ -12,7 +12,7 @@ import {
     OrganizationSettings,
     OrgEnvVar,
     OrgEnvVarWithValue,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import { DBTeamMembership } from "./typeorm/entity/db-team-membership";
 import { TransactionalDB } from "./typeorm/transactional-db-impl";
 

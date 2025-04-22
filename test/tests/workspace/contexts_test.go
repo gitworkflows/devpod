@@ -32,7 +32,7 @@ func TestGitHubContexts(t *testing.T) {
 	tests := []ContextTest{
 		{
 			Name:           "open repository",
-			ContextURL:     "github.com/gitpod-io/template-golang-cli",
+			ContextURL:     "github.com/khulnasoft/template-golang-cli",
 			WorkspaceRoot:  "/workspace/template-golang-cli",
 			ExpectedBranch: "main",
 		},
@@ -62,7 +62,7 @@ func TestGitHubContexts(t *testing.T) {
 		},
 		{
 			Name:           "empty repo",
-			ContextURL:     "github.com/gitpod-io/empty",
+			ContextURL:     "github.com/khulnasoft/empty",
 			WorkspaceRoot:  "/workspace/empty",
 			ExpectedBranch: "HEAD",
 			IgnoreError:    true,

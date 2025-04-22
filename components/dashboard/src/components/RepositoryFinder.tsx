@@ -17,8 +17,8 @@ import {
 } from "../data/git-providers/unified-repositories-search-query";
 import { useAuthProviderDescriptions } from "../data/auth-providers/auth-provider-descriptions-query";
 import { ReactComponent as Exclamation2 } from "../images/exclamation2.svg";
-import { AuthProviderType } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
-import { SuggestedRepository } from "@khulnasoft/public-api/lib/devpod/v1/scm_pb";
+import { AuthProviderType } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
+import { SuggestedRepository } from "@devpod/public-api/lib/devpod/v1/scm_pb";
 import { PREDEFINED_REPOS, PredefinedRepo } from "../data/git-providers/predefined-repos";
 import { useConfiguration, useListConfigurations } from "../data/configurations/configuration-queries";
 import { useUserLoader } from "../hooks/use-user-loader";

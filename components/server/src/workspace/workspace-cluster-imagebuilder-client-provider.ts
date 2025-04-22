@@ -4,19 +4,19 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User, Workspace, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
-import { defaultGRPCOptions } from "@khulnasoft/devpod-protocol/lib/util/grpc";
-import { WorkspaceRegion } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+import { User, Workspace, WorkspaceInstance } from "@devpod/devpod-protocol";
+import { defaultGRPCOptions } from "@devpod/devpod-protocol/lib/util/grpc";
+import { WorkspaceRegion } from "@devpod/devpod-protocol/lib/workspace-cluster";
 import {
     ImageBuilderClient,
     ImageBuilderClientProvider,
     PromisifiedImageBuilderClient,
-} from "@khulnasoft/image-builder/lib";
-import { WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
+} from "@devpod/image-builder/lib";
+import { WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
 import {
     WorkspaceManagerClientProviderCompositeSource,
     WorkspaceManagerClientProviderSource,
-} from "@khulnasoft/ws-manager/lib/client-provider-source";
+} from "@devpod/ws-manager/lib/client-provider-source";
 import { inject, injectable } from "inversify";
 
 @injectable()

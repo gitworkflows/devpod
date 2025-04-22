@@ -237,7 +237,7 @@ func LaunchWorkspaceDirectly(t *testing.T, ctx context.Context, api *ComponentAP
 			},
 			Git: &wsmanapi.GitSpec{
 				Username: "integration-test",
-				Email:    "integration-test@khulnasoft.com",
+				Email:    "integration-test@devpod.io",
 			},
 			Admission: wsmanapi.AdmissionLevel_ADMIT_OWNER_ONLY,
 			Envvars: []*wsmanapi.EnvironmentVariable{
@@ -245,7 +245,7 @@ func LaunchWorkspaceDirectly(t *testing.T, ctx context.Context, api *ComponentAP
 				// from ws-manager in these tests we need to set it here ourselves.
 				{
 					Name:  "VSX_REGISTRY_URL",
-					Value: "https://open-vsx.devpod.khulnasoft.com/",
+					Value: "https://open-vsx.devpod.io/",
 				},
 			},
 		},

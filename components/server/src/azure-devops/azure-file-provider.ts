@@ -7,9 +7,9 @@
 import { injectable, inject } from "inversify";
 
 import { FileProvider, MaybeContent, RevisionNotFoundError } from "../repohost/file-provider";
-import { Commit, User, Repository } from "@khulnasoft/devpod-protocol";
+import { Commit, User, Repository } from "@devpod/devpod-protocol";
 import { AzureDevOpsApi } from "./azure-api";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { getOrgAndProject } from "./azure-converter";
 
 @injectable()

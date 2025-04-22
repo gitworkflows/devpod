@@ -39,7 +39,7 @@ var repos = []struct {
 		CheckoutLocation: "devpod",
 	},
 	{
-		RemoteUri:        "https://github.com/gitpod-io/workspace-images",
+		RemoteUri:        "https://github.com/khulnasoft/workspace-images",
 		CloneTarget:      "main",
 		ExpectedBranch:   "main",
 		CheckoutLocation: "workspace-images",
@@ -57,7 +57,7 @@ var repos = []struct {
 		CheckoutLocation: "blazedock",
 	},
 	{
-		RemoteUri:        "https://github.com/gitpod-io/ws-manager-integration-test",
+		RemoteUri:        "https://github.com/khulnasoft/ws-manager-integration-test",
 		CloneTarget:      "master", // default branch is main
 		ExpectedBranch:   "master",
 		CheckoutLocation: "ws-manager-integration-test",

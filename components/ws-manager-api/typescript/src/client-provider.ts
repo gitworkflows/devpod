@@ -4,15 +4,15 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { createClientCallMetricsInterceptor, IClientCallMetrics } from "@khulnasoft/devpod-protocol/lib/util/grpc";
-import { Disposable, User, Workspace, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
-import { defaultGRPCOptions } from "@khulnasoft/devpod-protocol/lib/util/grpc";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { createClientCallMetricsInterceptor, IClientCallMetrics } from "@devpod/devpod-protocol/lib/util/grpc";
+import { Disposable, User, Workspace, WorkspaceInstance } from "@devpod/devpod-protocol";
+import { defaultGRPCOptions } from "@devpod/devpod-protocol/lib/util/grpc";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import {
     WorkspaceClusterWoTLS,
     WorkspaceManagerConnectionInfo,
     WorkspaceRegion,
-} from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+} from "@devpod/devpod-protocol/lib/workspace-cluster";
 import * as grpc from "@grpc/grpc-js";
 import { inject, injectable, optional } from "inversify";
 import {

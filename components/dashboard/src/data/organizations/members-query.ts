@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { OrganizationMember, OrganizationRole } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import { OrganizationMember, OrganizationRole } from "@devpod/public-api/lib/devpod/v1/organization_pb";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useMemo } from "react";
 import { organizationClient } from "../../service/public-api";

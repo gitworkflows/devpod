@@ -4,9 +4,9 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WorkspaceDB } from "@khulnasoft/devpod-db/lib/workspace-db";
-import { Queue } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { WorkspaceDB } from "@devpod/devpod-db/lib/workspace-db";
+import { Queue } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import {
     WorkspaceCluster,
     WorkspaceClusterDB,
@@ -16,7 +16,7 @@ import {
     AdmissionConstraintHasPermission,
     WorkspaceClusterWoTLS,
     WorkspaceClass,
-} from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+} from "@devpod/devpod-protocol/lib/workspace-cluster";
 import {
     ClusterServiceService,
     ClusterState,
@@ -32,19 +32,19 @@ import {
     UpdateRequest,
     UpdateResponse,
     AdmissionConstraint as GRPCAdmissionConstraint,
-} from "@khulnasoft/ws-manager-bridge-api/lib";
-import { WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
+} from "@devpod/ws-manager-bridge-api/lib";
+import { WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
 import {
     WorkspaceManagerClientProviderCompositeSource,
     WorkspaceManagerClientProviderSource,
-} from "@khulnasoft/ws-manager/lib/client-provider-source";
+} from "@devpod/ws-manager/lib/client-provider-source";
 import * as grpc from "@grpc/grpc-js";
 import { inject, injectable } from "inversify";
 import { BridgeController } from "./bridge-controller";
 import { Configuration } from "./config";
 import { GRPCError } from "./rpc";
-import { isWorkspaceRegion } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
-import { DescribeClusterRequest, DescribeClusterResponse, WorkspaceManagerClient } from "@khulnasoft/ws-manager/lib";
+import { isWorkspaceRegion } from "@devpod/devpod-protocol/lib/workspace-cluster";
+import { DescribeClusterRequest, DescribeClusterResponse, WorkspaceManagerClient } from "@devpod/ws-manager/lib";
 
 export interface ClusterServiceServerOptions {
     port: number;

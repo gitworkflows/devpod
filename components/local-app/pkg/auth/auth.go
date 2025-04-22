@@ -20,8 +20,8 @@ import (
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
 	devpod "github.com/khulnasoft/devpod/devpod-protocol"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 	"github.com/skratchdot/open-golang/open"
 	keyring "github.com/zalando/go-keyring"
 	"golang.org/x/oauth2"
@@ -200,7 +200,7 @@ func Login(ctx context.Context, opts LoginOpts) (token string, err error) {
 
 	baseURL := opts.DevpodURL
 	if baseURL == "" {
-		baseURL = "https://devpod.khulnasoft.com"
+		baseURL = "https://devpod.io"
 	}
 	reqURL, err := url.Parse(baseURL)
 	if err != nil {

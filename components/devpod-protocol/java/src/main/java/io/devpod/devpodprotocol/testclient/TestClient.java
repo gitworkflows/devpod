@@ -14,9 +14,9 @@ import java.util.Collections;
 
 public class TestClient {
     public static void main(String[] args) throws Exception {
-        String uri = "wss://devpod.khulnasoft.com/api/v1";
+        String uri = "wss://devpod.io/api/v1";
         String token = "CHANGE-ME";
-        String origin = "https://CHANGE-ME.devpod.khulnasoft.com/";
+        String origin = "https://CHANGE-ME.devpod.io/";
 
         DevpodClient client = new DevpodClient();
         DevpodServerLauncher.create(client).listen(uri, origin, token, "Test", "Test", Collections.emptyList(), null);

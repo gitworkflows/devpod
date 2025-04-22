@@ -21,7 +21,7 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = (function() { return this || window || global || self || Function('return this')(); }).call(null);
 
-var content$service$api_initializer_pb = require('@khulnasoft/content-service/lib');
+var content$service$api_initializer_pb = require('@devpod/content-service/lib');
 goog.object.extend(proto, content$service$api_initializer_pb);
 goog.exportSymbol('proto.wsdaemon.BackupWorkspaceRequest', null, global);
 goog.exportSymbol('proto.wsdaemon.BackupWorkspaceResponse', null, global);

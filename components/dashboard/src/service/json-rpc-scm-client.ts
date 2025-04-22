@@ -6,10 +6,10 @@
 
 import { PartialMessage } from "@bufbuild/protobuf";
 import { PromiseClient } from "@connectrpc/connect";
-import { SCMService } from "@khulnasoft/public-api/lib/devpod/v1/scm_connect";
+import { SCMService } from "@devpod/public-api/lib/devpod/v1/scm_connect";
 import { converter } from "./public-api";
 import { getDevpodService } from "./service";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import {
     SearchSCMTokensRequest,
     SearchSCMTokensResponse,
@@ -19,7 +19,7 @@ import {
     ListSuggestedRepositoriesResponse,
     SearchRepositoriesResponse,
     GuessTokenScopesResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/scm_pb";
+} from "@devpod/public-api/lib/devpod/v1/scm_pb";
 
 export class JsonRpcScmClient implements PromiseClient<typeof SCMService> {
     async searchSCMTokens({ host }: PartialMessage<SearchSCMTokensRequest>): Promise<SearchSCMTokensResponse> {

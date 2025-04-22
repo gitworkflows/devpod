@@ -15,13 +15,13 @@ import {
     BillingTier,
     MAX_PARALLEL_WORKSPACES_PAID,
     MAX_PARALLEL_WORKSPACES_FREE,
-} from "@khulnasoft/devpod-protocol";
-import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
+} from "@devpod/devpod-protocol";
+import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
 import { inject, injectable } from "inversify";
 import { EntitlementService, HitParallelWorkspaceLimit, MayStartWorkspaceResult } from "./entitlement-service";
-import { CostCenter_BillingStrategy } from "@khulnasoft/usage-api/lib/usage/v1/usage.pb";
+import { CostCenter_BillingStrategy } from "@devpod/usage-api/lib/usage/v1/usage.pb";
 import { UsageService } from "../orgs/usage-service";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { VerificationService } from "../auth/verification-service";
 import type { OrganizationService } from "../orgs/organization-service";
 

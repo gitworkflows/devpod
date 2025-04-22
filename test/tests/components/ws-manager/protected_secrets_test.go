@@ -47,7 +47,7 @@ func TestProtectedSecrets(t *testing.T) {
 			req.Spec.Initializer = &csapi.WorkspaceInitializer{
 				Spec: &csapi.WorkspaceInitializer_Git{
 					Git: &csapi.GitInitializer{
-						RemoteUri:        "https://github.com/gitpod-io/empty",
+						RemoteUri:        "https://github.com/khulnasoft/empty",
 						CheckoutLocation: "empty",
 						Config:           &csapi.GitConfig{},
 					},

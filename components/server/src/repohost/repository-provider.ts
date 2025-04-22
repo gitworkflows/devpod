@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Branch, CommitInfo, Repository, RepositoryInfo, User } from "@khulnasoft/devpod-protocol";
+import { Branch, CommitInfo, Repository, RepositoryInfo, User } from "@devpod/devpod-protocol";
 
 export const RepositoryProvider = Symbol("RepositoryProvider");
 export interface RepositoryProvider {

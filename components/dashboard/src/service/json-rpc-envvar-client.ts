@@ -6,7 +6,7 @@
 
 import { PromiseClient } from "@connectrpc/connect";
 import { PartialMessage } from "@bufbuild/protobuf";
-import { EnvironmentVariableService } from "@khulnasoft/public-api/lib/devpod/v1/envvar_connect";
+import { EnvironmentVariableService } from "@devpod/public-api/lib/devpod/v1/envvar_connect";
 import {
     CreateConfigurationEnvironmentVariableRequest,
     CreateConfigurationEnvironmentVariableResponse,
@@ -35,11 +35,11 @@ import {
     UpdateOrganizationEnvironmentVariableResponse,
     UpdateUserEnvironmentVariableRequest,
     UpdateUserEnvironmentVariableResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
+} from "@devpod/public-api/lib/devpod/v1/envvar_pb";
 import { converter } from "./public-api";
 import { getDevpodService } from "./service";
-import { UserEnvVar, UserEnvVarValue } from "@khulnasoft/devpod-protocol";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { UserEnvVar, UserEnvVarValue } from "@devpod/devpod-protocol";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 
 export class JsonRpcEnvvarClient implements PromiseClient<typeof EnvironmentVariableService> {
     async listUserEnvironmentVariables(

@@ -139,7 +139,7 @@ func main() {
 		}),
 		HealthProbeBindAddress:        cfg.Health.Addr,
 		LeaderElection:                true,
-		LeaderElectionID:              "ws-manager-mk2-leader.devpod.khulnasoft.com",
+		LeaderElectionID:              "ws-manager-mk2-leader.devpod.io",
 		LeaderElectionReleaseOnCancel: true,
 		NewClient: func(config *rest.Config, options client.Options) (client.Client, error) {
 			config.QPS = 100

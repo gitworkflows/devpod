@@ -19,7 +19,7 @@ spec:
       labels:
         severity: critical
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/WebsocketConnectionsNotClosing.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/WebsocketConnectionsNotClosing.md
         summary: Open websocket connections are not closing for the last 10 minutes and accumulating in {{ $labels.cluster }}.
         description: We have accumulated {{ printf "%.2f" $value }} open websocket connections.
 
@@ -29,7 +29,7 @@ spec:
       labels:
         severity: critical
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/ServerEventLoopLagTooHigh.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/ServerEventLoopLagTooHigh.md
         summary: Server accumulated too much "event loop lag" on {{ $labels.cluster }}. The webapp will become unresponsive if we don't act here.
         description: Server has accumulated {{ printf "%.2f" $value }}s event loop lag.
 
@@ -40,7 +40,7 @@ spec:
       labels:
         severity: critical
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/InstanceStartFailures.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/InstanceStartFailures.md
         summary: Server tries to start an instance, but cannot for whatever reason. Investigation required.
         description: Server cannot start workspace instances on workspace clusters.
 
@@ -53,7 +53,7 @@ spec:
         team: webapp
         dedicated: included
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/DevpodApiErrorRate.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodApiErrorRate.md
         summary: The error rate of the JSON RPC API is high on {{ $labels.cluster }}. Investigation required.
         description: JSON RPC API error rate high
 
@@ -65,7 +65,7 @@ spec:
         team: webapp
         dedicated: included
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/DevpodV1APIServerErrors.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodV1APIServerErrors.md
         summary: devpod.v1 API is returning higher number of errors on {{ $labels.cluster }}. Investigation required.
         description: devpod.v1 API is returning higher number of errors
 
@@ -79,7 +79,7 @@ spec:
         severity: warning
         team: webapp
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/WebsocketConnectionRateHigh.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/WebsocketConnectionRateHigh.md
         summary: The websocket connection rate is higher than usual. Investigation required.
         description: Websocket connection rate high
 
@@ -92,10 +92,10 @@ spec:
         severity: warning
         team: webapp
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/WebAppServicesHighCPUUsage.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/WebAppServicesHighCPUUsage.md
         summary: Server has excessive CPU usage.
         description: Server is consumming too much CPU. Please investigate.
-        dashboard_url: https://grafana.devpod.khulnasoft.com/d/6581e46e4e5c7ba40a07646395ef7b23/kubernetes-compute-resources-pod?var-cluster={{ $labels.cluster }}&var-namespace=default
+        dashboard_url: https://grafana.devpod.io/d/6581e46e4e5c7ba40a07646395ef7b23/kubernetes-compute-resources-pod?var-cluster={{ $labels.cluster }}&var-namespace=default
 
     - alert: WebAppServicesCrashlooping
       # Reasoning: alert if any pod is stuck in crashlooping more than 5 minute.
@@ -107,7 +107,7 @@ spec:
         team: webapp
         dedicated: included
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/WebAppServicesCrashlooping.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/WebAppServicesCrashlooping.md
         summary: Pod is crash looping in {{ $labels.cluster }}.
         description: Pod {{ $labels.namespace }}/{{ $labels.pod }} ({{ $labels.container }}) is stuck in crashlooping for at least 5 minutes
 
@@ -122,7 +122,7 @@ spec:
         severity: warning
         team: webapp
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/WebAppServicesCrashlooping.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/WebAppServicesCrashlooping.md
         summary: Pod is crash looping in {{ $labels.cluster }}.
         description: "FINE TUNE: Pod {{ $labels.namespace }}/{{ $labels.pod }} ({{ $labels.container }}) is stuck in crashlooping for at least 1 minute"
 
@@ -133,6 +133,6 @@ spec:
         severity: critical
         team: webapp
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/StartWorkspace_InternalErrors.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/StartWorkspace_InternalErrors.md
         summary: Failing to start workspaces in {{ $labels.cluster }}.
         description: Server is failed to start {{ printf "%.2f" $value }} workspaces in {{ $labels.cluster }} in the last 5 minutes

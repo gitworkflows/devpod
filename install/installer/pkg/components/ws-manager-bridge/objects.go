@@ -36,7 +36,7 @@ func WSManagerList(ctx *common.RenderContext) []WorkspaceCluster {
 	})
 
 	// Registering a local cluster ws-manager only makes sense when we actually deploy one,
-	// (ie when we are doing a full self hosted installation rather than a SaaS install to devpod.khulnasoft.com).
+	// (ie when we are doing a full self hosted installation rather than a SaaS install to devpod.io).
 	if skipSelf {
 		return []WorkspaceCluster{}
 	}

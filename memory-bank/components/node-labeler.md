@@ -79,8 +79,8 @@ The Node-Labeler component integrates with:
 
 ### Node Label Management
 The component adds the following labels to nodes:
-- `devpod.khulnasoft.com/registry-facade_ready_ns_<namespace>`: Indicates registry-facade is ready
-- `devpod.khulnasoft.com/ws-daemon_ready_ns_<namespace>`: Indicates ws-daemon is ready
+- `devpod.io/registry-facade_ready_ns_<namespace>`: Indicates registry-facade is ready
+- `devpod.io/ws-daemon_ready_ns_<namespace>`: Indicates ws-daemon is ready
 
 These labels are used by the workspace scheduler to ensure workspaces are only scheduled on nodes with the required services.
 

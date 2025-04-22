@@ -5,7 +5,7 @@
 package main
 
 import (
-	"github.com/gitpod-io/local-app/cmd"
+	"github.com/khulnasoft/local-app/cmd"
 )
 
 func main() {

@@ -5,7 +5,7 @@
  */
 
 import { Link } from "react-router-dom";
-import { Project } from "@khulnasoft/devpod-protocol";
+import { Project } from "@devpod/devpod-protocol";
 import Property from "./Property";
 import dayjs from "dayjs";
 import { PrebuildsList } from "../prebuilds/list/PrebuildList";

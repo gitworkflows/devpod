@@ -9,8 +9,8 @@ import { inject, injectable } from "inversify";
 import websocket from "ws";
 import * as crypto from "crypto";
 
-import { User } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { User } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { AuthJWT } from "./auth/jwt";
 import { Config } from "./config";
 import { WsNextFunction, WsRequestHandler } from "./express/ws-handler";
@@ -247,10 +247,10 @@ export class SessionHandler {
 
         const hostname = req.hostname;
         if (
-            hostname === "devpod.khulnasoft.com" ||
+            hostname === "devpod.io" ||
             hostname === "devpod-staging.com" ||
             hostname.endsWith("devpod-dev.com") ||
-            hostname.endsWith("gitpod-io-dev.com")
+            hostname.endsWith("khulnasoft-dev.com")
         ) {
             const existingHashedId = req.cookies["devpod_hashed_user_id"];
             if (!existingHashedId) {

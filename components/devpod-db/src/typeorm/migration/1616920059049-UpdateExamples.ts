@@ -10,12 +10,12 @@ export class UpdateExamples1616920059049 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<any> {
         const newEntries = [
             {
-                url: "https://github.com/gitpod-io/sveltejs-template",
+                url: "https://github.com/khulnasoft/sveltejs-template",
                 description: "A project template for Svelte applications",
                 priority: 90,
             },
             {
-                url: "https://github.com/gitpod-io/spring-petclinic",
+                url: "https://github.com/khulnasoft/spring-petclinic",
                 description: "A Spring sample web application",
                 priority: 70,
             },
@@ -25,12 +25,12 @@ export class UpdateExamples1616920059049 implements MigrationInterface {
                 priority: 40,
             },
             {
-                url: "https://github.com/gitpod-io/ruby-on-rails",
+                url: "https://github.com/khulnasoft/ruby-on-rails",
                 description: "A Rails example with PostgreSQL database",
                 priority: 30,
             },
             {
-                url: "https://github.com/gitpod-io/dotnetcore",
+                url: "https://github.com/khulnasoft/dotnetcore",
                 description: "A simple .NET Core application example",
                 priority: 20,
             },

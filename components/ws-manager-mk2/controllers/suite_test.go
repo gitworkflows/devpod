@@ -138,7 +138,7 @@ var _ = BeforeSuite(func() {
 
 func newTestConfig() config.Configuration {
 	return config.Configuration{
-		DevpodHostURL:     "devpod.khulnasoft.com",
+		DevpodHostURL:     "devpod.io",
 		HeartbeatInterval: util.Duration(30 * time.Second),
 		Namespace:         "default",
 		SecretsNamespace:  secretsNamespace,

@@ -415,7 +415,7 @@ func (s *scrubberImpl) DeepCopyStruct(val any) any {
 }
 
 func (s *scrubberImpl) scrubJsonObject(val map[string]interface{}) error {
-	// fix https://github.com/gitpod-io/security/issues/64
+	// fix https://github.com/khulnasoft/security/issues/64
 	name, _ := val["name"].(string)
 	value, _ := val["value"].(string)
 	if name != "" && value != "" {
@@ -539,7 +539,7 @@ func (s *structScrubber) StructField(field reflect.StructField, val reflect.Valu
 
 // Map implements reflectwalk.MapWalker
 func (s *structScrubber) Map(m reflect.Value) error {
-	// fix https://github.com/gitpod-io/security/issues/64
+	// fix https://github.com/khulnasoft/security/issues/64
 	var (
 		nameV  reflect.Value
 		valueK reflect.Value

@@ -96,7 +96,7 @@ class DevpodWorkspacesView(
                         }.align(AlignX.CENTER)
                     }
                     row {
-                        browserLink("Explore Devpod", "https://www.devpod.khulnasoft.com").align(AlignX.CENTER)
+                        browserLink("Explore Devpod", "https://www.devpod.io").align(AlignX.CENTER)
                     }.bottomGap(BottomGap.MEDIUM)
                     row {
                         button("Connect in Browser") {
@@ -128,7 +128,7 @@ class DevpodWorkspacesView(
                         }
                     }, object : DumbAwareAction("Documentation", "Documentation", AllIcons.Toolwindows.Documentation) {
                         override fun actionPerformed(e: AnActionEvent) {
-                            BrowserUtil.browse("https://www.devpod.khulnasoft.com/docs/integrations/jetbrains-gateway")
+                            BrowserUtil.browse("https://www.devpod.io/docs/integrations/jetbrains-gateway")
                         }
                     }, object : DumbAwareAction("Feedback", "Feedback", AllIcons.Actions.IntentionBulb) {
                         override fun actionPerformed(e: AnActionEvent) {
@@ -136,7 +136,7 @@ class DevpodWorkspacesView(
                         }
                     }, object : DumbAwareAction("Help", "Help", AllIcons.Actions.Help) {
                         override fun actionPerformed(e: AnActionEvent) {
-                            BrowserUtil.browse("https://www.devpod.khulnasoft.com/contact/support?subject=technical%20support")
+                            BrowserUtil.browse("https://www.devpod.io/contact/support?subject=technical%20support")
                         }
                     }, object : DumbAwareAction("Log Out", "Log out", AllIcons.Actions.Exit) {
                         override fun actionPerformed(e: AnActionEvent) {

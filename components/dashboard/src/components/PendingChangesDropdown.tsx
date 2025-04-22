@@ -6,7 +6,7 @@
 
 import ContextMenu, { ContextMenuEntry } from "./ContextMenu";
 import CaretDown from "../icons/CaretDown.svg";
-import { WorkspaceGitStatus } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspaceGitStatus } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { cn } from "@podkit/lib/cn";
 
 type Props = {

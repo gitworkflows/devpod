@@ -9,7 +9,7 @@ metadata:
   name: workspace-viewer-role
 rules:
 - apiGroups:
-  - workspace.devpod.khulnasoft.com
+  - workspace.devpod.io
   resources:
   - workspaces
   verbs:
@@ -17,7 +17,7 @@ rules:
   - list
   - watch
 - apiGroups:
-  - workspace.devpod.khulnasoft.com
+  - workspace.devpod.io
   resources:
   - workspaces/status
   verbs:

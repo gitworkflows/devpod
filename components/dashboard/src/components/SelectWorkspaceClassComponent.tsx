@@ -7,7 +7,7 @@
 import { FC, useCallback, useEffect, useMemo } from "react";
 import WorkspaceClassIcon from "../icons/WorkspaceClass.svg";
 import { Combobox, ComboboxElement, ComboboxSelectedItem } from "./podkit/combobox/Combobox";
-import { WorkspaceClass } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspaceClass } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { useAllowedWorkspaceClassesMemo } from "../data/workspaces/workspace-classes-query";
 import { PlainMessage } from "@bufbuild/protobuf";
 import { Link } from "react-router-dom";
@@ -52,7 +52,7 @@ export default function SelectWorkspaceClassComponent({
                         <span>Need more classes? </span>
                         <a
                             className="text-sm gp-link"
-                            href="https://www.devpod.khulnasoft.com/docs/enterprise"
+                            href="https://www.devpod.io/docs/enterprise"
                             target="_blank"
                             rel="noreferrer"
                         >

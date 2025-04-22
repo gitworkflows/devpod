@@ -3,7 +3,7 @@
 # See License.AGPL.txt in the project root for license information.
 
 envvars:
-  DOMAIN: devpod.khulnasoft.com
+  DOMAIN: devpod.io
   HAS_LOCAL_REGISTRY: "1"
   IMAGE_PULL_SECRET_NAME: local-registry-pull-secret
   LOCAL_REGISTRY_ADDRESS: local-registry-address.com

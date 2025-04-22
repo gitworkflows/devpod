@@ -8,7 +8,7 @@ import { serverUrl } from "../shared/urls";
 
 const currentHost = new URL(serverUrl.toString()).hostname;
 
-export const isSaaS = currentHost === "devpod.khulnasoft.com";
+export const isSaaS = currentHost === "devpod.io";
 
 const versionRegex = new RegExp("main.(\\d+)");
 

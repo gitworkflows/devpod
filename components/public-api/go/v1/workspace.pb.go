@@ -2031,7 +2031,7 @@ type WorkspaceSpec struct {
 	// subassembly_references is a list of workspace IDs that this workspace
 	// depends on. For example:
 	//
-	//	index.docker.io/gitpod-io/subassmeblies/code:latest
+	//	index.docker.io/khulnasoft/subassmeblies/code:latest
 	SubassemblyReferences []string `protobuf:"bytes,10,rep,name=subassembly_references,json=subassemblyReferences,proto3" json:"subassembly_references,omitempty"`
 	// last_user_activity is the time when the user last interacted with the
 	// workspace

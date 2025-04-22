@@ -43,7 +43,7 @@ func TestProcessPriority(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			nfo, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "https://github.com/gitpod-io/empty", username, api, integration.WithDevpodUser(username))
+			nfo, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "https://github.com/khulnasoft/empty", username, api, integration.WithDevpodUser(username))
 			if err != nil {
 				t.Fatal(err)
 			}

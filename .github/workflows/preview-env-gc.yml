@@ -8,7 +8,7 @@ on:
     - cron: "0 */4 * * *"
 jobs:
   create-runner:
-    uses: gitpod-io/gce-github-runner/.github/workflows/create-vm.yml@main
+    uses: khulnasoft/gce-github-runner/.github/workflows/create-vm.yml@main
     secrets:
       runner_token: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_TOKEN }}
       gcp_credentials: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_GCP_CREDENTIALS }}
@@ -18,7 +18,7 @@ jobs:
     runs-on: ${{ needs.create-runner.outputs.label }}
     needs: [create-runner]
     container:
-      image: docker.io/khulnasoft/devpod-environment:latest
+      image: khulnasoft/devpod-environment:main-gha.30393
     outputs:
       names: ${{ steps.set-matrix.outputs.names }}
       count: ${{ steps.set-matrix.outputs.count }}
@@ -72,7 +72,7 @@ jobs:
       - create-runner
       - stale
       - delete
-    uses: gitpod-io/gce-github-runner/.github/workflows/delete-vm.yml@main
+    uses: khulnasoft/gce-github-runner/.github/workflows/delete-vm.yml@main
     secrets:
       gcp_credentials: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_GCP_CREDENTIALS }}
     with:

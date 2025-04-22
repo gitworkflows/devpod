@@ -31,7 +31,7 @@ var rootCmd = &cobra.Command{
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		log.Init(ServiceName, Version, jsonLog, verbose)
 
-		// configure containerd log with gitpod-io configuration
+		// configure containerd log with khulnasoft configuration
 		containerd_log.WithLogger(context.Background(), log.Log)
 	},
 }

@@ -32,7 +32,7 @@ deps:
 
 versionManifest:
 	@echo "Downloading version manifest for ${VERSION}"
-	docker run -it --rm ghcr.io/khulnasoft/devpod/build/versions:${VERSION} cat versions.yaml > ${VERSION_MANIFEST}
+	docker run -it --rm khulnasoft/devpod-environment/build/versions:${VERSION} cat versions.yaml > ${VERSION_MANIFEST}
 .PHONY: versionManifest
 
 config-doc:

@@ -7,7 +7,7 @@
 import { FC } from "react";
 import { ConfigurationNameForm } from "./general/ConfigurationName";
 import { RemoveConfiguration } from "./general/RemoveConfiguration";
-import { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
+import { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
 import { ManageRepoSuggestion } from "./general/ManageRepoSuggestion";
 
 type Props = {

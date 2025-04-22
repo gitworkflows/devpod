@@ -16,7 +16,7 @@ metadata:
   name: snapshot-editor-role
 rules:
 - apiGroups:
-  - workspace.devpod.khulnasoft.com
+  - workspace.devpod.io
   resources:
   - snapshots
   verbs:
@@ -28,7 +28,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - workspace.devpod.khulnasoft.com
+  - workspace.devpod.io
   resources:
   - snapshots/status
   verbs:

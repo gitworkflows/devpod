@@ -1,21 +1,21 @@
 {
   "organizationId": "organizationId",
   "ownerId": "ownerId",
-  "contextURL": "https://github.com/gitpod-io/empty",
+  "contextURL": "https://github.com/khulnasoft/empty",
   "projectId": null,
   "description": "empty",
   "context": {
     "isFile": false,
     "path": "",
-    "title": "gitpod-io/empty - master",
+    "title": "khulnasoft/empty - master",
     "ref": "master",
     "refType": "branch",
     "revision": "revision",
     "repository": {
-      "cloneUrl": "https://github.com/gitpod-io/empty.git",
+      "cloneUrl": "https://github.com/khulnasoft/empty.git",
       "host": "github.com",
       "name": "empty",
-      "owner": "devpod.khulnasoft.com",
+      "owner": "devpod.io",
       "private": false
     }
   },
@@ -71,7 +71,7 @@
   "startedTime": "2019-12-12T18:38:38.625Z",
   "deployedTime": "2019-12-12T18:38:21.501Z",
   "stoppedTime": "2019-12-12T19:20:11.821Z",
-  "ideUrl": "https://longlong-650a-413a-b5ed-aaaaa.ws-us02.devpod.khulnasoft.com",
+  "ideUrl": "https://longlong-650a-413a-b5ed-aaaaa.ws-us02.devpod.io",
   "workspaceImage": "devpod/workspace-base",
   "status": {
     "repo": {

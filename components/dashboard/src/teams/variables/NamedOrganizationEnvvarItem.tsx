@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { OrganizationEnvironmentVariable } from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
+import { OrganizationEnvironmentVariable } from "@devpod/public-api/lib/devpod/v1/envvar_pb";
 import { useCallback, useState } from "react";
 import { OrganizationRemoveEnvvarModal } from "./OrganizationRemoveEnvvarModal";
 import { InputField } from "../../components/forms/InputField";

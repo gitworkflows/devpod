@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { LinkedInProfile } from "@khulnasoft/devpod-protocol";
+import { LinkedInProfile } from "@devpod/devpod-protocol";
 
 export const LinkedInProfileDB = Symbol("LinkedInProfileDB");
 export interface LinkedInProfileDB {

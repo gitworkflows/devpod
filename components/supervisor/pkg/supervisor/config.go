@@ -321,7 +321,7 @@ type WorkspaceConfig struct {
 	// WorkspaceContext is a context for this workspace
 	WorkspaceContext string `env:"DEVPOD_WORKSPACE_CONTEXT"`
 
-	// WorkspaceClusterHost is a host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+	// WorkspaceClusterHost is a host under which this workspace is served, e.g. ws-eu11.devpod.io
 	WorkspaceClusterHost string `env:"DEVPOD_WORKSPACE_CLUSTER_HOST"`
 
 	// DotfileRepo is a user-configurable repository which contains their dotfiles to customize

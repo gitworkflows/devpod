@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { hoursBefore, isDateSmallerOrEqual } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
-import { Workspace, WorkspacePhase_Phase } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { hoursBefore, isDateSmallerOrEqual } from "@devpod/devpod-protocol/lib/util/timeutil";
+import { Workspace, WorkspacePhase_Phase } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { Button } from "@podkit/buttons/Button";
 import { cn } from "@podkit/lib/cn";
 import { Subheading } from "@podkit/typography/Headings";
@@ -253,7 +253,7 @@ const WorkspacesPage: FunctionComponent = () => {
                                     </Card>
                                 )}
 
-                                <Card href="https://www.devpod.khulnasoft.com/docs/introduction" isLinkExternal>
+                                <Card href="https://www.devpod.io/docs/introduction" isLinkExternal>
                                     <Book className="flex-shrink-0" size={24} />
                                     <div className="min-w-0">
                                         <CardTitle>Visit the docs</CardTitle>
@@ -394,7 +394,7 @@ const WorkspacesPage: FunctionComponent = () => {
                                                             target="_blank"
                                                             rel="noreferrer"
                                                             className="gp-link"
-                                                            href="https://www.devpod.khulnasoft.com/docs/configure/workspaces/workspace-lifecycle#workspace-deletion"
+                                                            href="https://www.devpod.io/docs/configure/workspaces/workspace-lifecycle#workspace-deletion"
                                                             onClick={(evt) => evt.stopPropagation()}
                                                         >
                                                             Learn more
@@ -437,7 +437,7 @@ const WorkspacesPage: FunctionComponent = () => {
                                         <h3 className="text-lg font-semibold text-pk-content-primary">Documentation</h3>
                                         <div className="flex flex-col gap-1 w-fit">
                                             <a
-                                                href="https://www.devpod.khulnasoft.com/docs/introduction"
+                                                href="https://www.devpod.io/docs/introduction"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="text-sm text-pk-content-primary items-center gap-x-2 flex flex-row"
@@ -448,7 +448,7 @@ const WorkspacesPage: FunctionComponent = () => {
                                                 </span>
                                             </a>
                                             <a
-                                                href="https://www.devpod.khulnasoft.com/docs/configure/workspaces"
+                                                href="https://www.devpod.io/docs/configure/workspaces"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="text-sm text-pk-content-primary items-center gap-x-2 flex flex-row"
@@ -459,7 +459,7 @@ const WorkspacesPage: FunctionComponent = () => {
                                                 </span>
                                             </a>
                                             <a
-                                                href="https://www.devpod.khulnasoft.com/docs/references/devpod-yml"
+                                                href="https://www.devpod.io/docs/references/devpod-yml"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="text-sm text-pk-content-primary items-center gap-x-2 flex flex-row"

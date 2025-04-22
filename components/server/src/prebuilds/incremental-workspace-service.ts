@@ -13,15 +13,15 @@ import {
     Workspace,
     WorkspaceConfig,
     WorkspaceImageSource,
-} from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { PrebuiltWorkspaceState, WithCommitHistory } from "@khulnasoft/devpod-protocol/lib/protocol";
-import { PrebuildWithWorkspace, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
+} from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { PrebuiltWorkspaceState, WithCommitHistory } from "@devpod/devpod-protocol/lib/protocol";
+import { PrebuildWithWorkspace, WorkspaceDB } from "@devpod/devpod-db/lib";
 import { Config } from "../config";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { ImageSourceProvider } from "../workspace/image-source-provider";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
 
 const MAX_HISTORY_DEPTH = 100;
 

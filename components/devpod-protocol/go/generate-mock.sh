@@ -10,7 +10,7 @@ go install github.com/golang/mock/mockgen@v1.6.0
 mockgen \
     -package=protocol \
     -self_package=github.com/khulnasoft/devpod/devpod-protocol \
-    -source=devpod-service.go > mock.go_tmp > mock.go_tmp
+    -source=devpod-service.go > mock.go_tmp
 
 mv mock.go_tmp mock.go
 

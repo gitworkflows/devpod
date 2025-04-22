@@ -10,10 +10,10 @@ import (
 	"time"
 
 	"github.com/bufbuild/connect-go"
-	"github.com/gitpod-io/local-app/pkg/config"
-	"github.com/gitpod-io/local-app/pkg/helper"
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
+	"github.com/khulnasoft/local-app/pkg/config"
+	"github.com/khulnasoft/local-app/pkg/helper"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 	"github.com/sagikazarmark/slog-shim"
 	"github.com/spf13/cobra"
 )

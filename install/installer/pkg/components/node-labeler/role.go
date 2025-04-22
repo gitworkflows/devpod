@@ -50,7 +50,7 @@ func role(ctx *common.RenderContext) ([]runtime.Object, error) {
 				},
 				// permissions required for the WorkspaceCountController
 				{
-					APIGroups: []string{"workspace.devpod.khulnasoft.com"},
+					APIGroups: []string{"workspace.devpod.io"},
 					Resources: []string{"workspaces"},
 					Verbs: []string{
 						"get",

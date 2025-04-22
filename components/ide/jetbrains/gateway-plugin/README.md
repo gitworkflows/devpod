@@ -31,12 +31,12 @@ If you want to open a real workspace in the dev build, follow these steps:
     curl http://localhost:24000/gatewayLink
 
     # This will output something like:
-    # jetbrains-gateway://connect#devpodHost=devpod.khulnasoft.com&workspaceId=andreafalze-devpodexper-4xasfqb42zr&backendPort=63342
+    # jetbrains-gateway://connect#devpodHost=devpod.io&workspaceId=andreafalze-devpodexper-4xasfqb42zr&backendPort=63342
     ```
 3. Copy the output value
 4. Go to your local terminal and run:
     ```console
-    ./gradlew runIde --args="jetbrains-gateway://connect#devpodHost=devpod.khulnasoft.com&workspaceId=andreafalze-devpodexper-4xasfqb42zr&backendPort=63342"
+    ./gradlew runIde --args="jetbrains-gateway://connect#devpodHost=devpod.io&workspaceId=andreafalze-devpodexper-4xasfqb42zr&backendPort=63342"
     ```
 
 For executing the tests and the static analysis validations, run:

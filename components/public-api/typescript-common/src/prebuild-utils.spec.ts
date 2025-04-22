@@ -5,7 +5,7 @@
  */
 
 import { expect } from "chai";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { getPrebuildErrorMessage, matchPrebuildError } from "./prebuild-utils";
 
 describe("PrebuildUtils", () => {

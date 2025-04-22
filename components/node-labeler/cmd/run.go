@@ -44,18 +44,18 @@ import (
 )
 
 const (
-	registryFacadeLabel = "devpod.khulnasoft.com/registry-facade_ready_ns_%v"
-	wsdaemonLabel       = "devpod.khulnasoft.com/ws-daemon_ready_ns_%v"
+	registryFacadeLabel = "devpod.io/registry-facade_ready_ns_%v"
+	wsdaemonLabel       = "devpod.io/ws-daemon_ready_ns_%v"
 
 	registryFacade = "registry-facade"
 	wsDaemon       = "ws-daemon"
 
 	// Taint keys for different components
-	registryFacadeTaintKey = "devpod.khulnasoft.com/registry-facade-not-ready"
-	wsDaemonTaintKey       = "devpod.khulnasoft.com/ws-daemon-not-ready"
+	registryFacadeTaintKey = "devpod.io/registry-facade-not-ready"
+	wsDaemonTaintKey       = "devpod.io/ws-daemon-not-ready"
 
-	workspacesRegularLabel  = "devpod.khulnasoft.com/workload_workspace_regular"
-	workspacesHeadlessLabel = "devpod.khulnasoft.com/workload_workspace_headless"
+	workspacesRegularLabel  = "devpod.io/workload_workspace_regular"
+	workspacesHeadlessLabel = "devpod.io/workload_workspace_headless"
 )
 
 var defaultRequeueTime = time.Second * 10
@@ -84,7 +84,7 @@ var runCmd = &cobra.Command{
 				Port: 9443,
 			}),
 			LeaderElection:   true,
-			LeaderElectionID: "node-labeler.devpod.khulnasoft.com",
+			LeaderElectionID: "node-labeler.devpod.io",
 		})
 		if err != nil {
 			log.WithError(err).Fatal("unable to start node-labeler")

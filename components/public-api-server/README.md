@@ -20,5 +20,5 @@ The public API will initially be offered as a gRPC service. Clients for various 
 
 
 ## Architecture
-* The API will be exposed on `api.devpod.khulnasoft.com` or `api.<domain>` for Dedicated installations.
+* The API will be exposed on `api.devpod.io` or `api.<domain>` for Dedicated installations.
 * The API is structured into services with definitions available in [components/public-api/devpod/](../public-api/devpod) as protobuf definitions.

@@ -4,11 +4,11 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { DisposableCollection } from "@khulnasoft/devpod-protocol";
-import { repeat } from "@khulnasoft/devpod-protocol/lib/util/repeat";
+import { DisposableCollection } from "@devpod/devpod-protocol";
+import { repeat } from "@devpod/devpod-protocol/lib/util/repeat";
 import { inject, injectable } from "inversify";
 import { RedisMutex } from "../redis/mutex";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { jobsDurationSeconds, reportJobCompleted, reportJobStarted } from "../prometheus-metrics";
 import { DatabaseGarbageCollector } from "./database-gc";
 import { OTSGarbageCollector } from "./ots-gc";

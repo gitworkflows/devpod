@@ -6,11 +6,11 @@
 
 import { Entity, Column, PrimaryColumn, Index } from "typeorm";
 
-import { TokenEntry, Token } from "@khulnasoft/devpod-protocol";
+import { TokenEntry, Token } from "@devpod/devpod-protocol";
 
 import { Transformer } from "../transformer";
 import { TypeORM } from "../typeorm";
-import { getGlobalEncryptionService } from "@khulnasoft/devpod-protocol/lib/encryption/encryption-service";
+import { getGlobalEncryptionService } from "@devpod/devpod-protocol/lib/encryption/encryption-service";
 
 @Entity()
 // on DB but not Typeorm: @Index("ind_lastModified", ["_lastModified"])   // DBSync

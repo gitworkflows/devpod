@@ -8,11 +8,11 @@ import "reflect-metadata";
 
 import { Duration, PartialMessage, PlainMessage, Timestamp, toPlainMessage } from "@bufbuild/protobuf";
 import { Code, ConnectError } from "@connectrpc/connect";
-import { DevpodServer } from "@khulnasoft/devpod-protocol";
-import { BlockedRepository as ProtocolBlockedRepository } from "@khulnasoft/devpod-protocol/lib/blocked-repositories-protocol";
-import { ContextURL } from "@khulnasoft/devpod-protocol/lib/context-url";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { RoleOrPermission as ProtocolRoleOrPermission } from "@khulnasoft/devpod-protocol/lib/permission";
+import { DevpodServer } from "@devpod/devpod-protocol";
+import { BlockedRepository as ProtocolBlockedRepository } from "@devpod/devpod-protocol/lib/blocked-repositories-protocol";
+import { ContextURL } from "@devpod/devpod-protocol/lib/context-url";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { RoleOrPermission as ProtocolRoleOrPermission } from "@devpod/devpod-protocol/lib/permission";
 import {
     AuthProviderInfo,
     AuthProviderEntry as AuthProviderProtocol,
@@ -43,8 +43,8 @@ import {
     NavigatorContext,
     RefType,
     OrgEnvVar,
-} from "@khulnasoft/devpod-protocol/lib/protocol";
-import { AuditLog as AuditLogProtocol } from "@khulnasoft/devpod-protocol/lib/audit-log";
+} from "@devpod/devpod-protocol/lib/protocol";
+import { AuditLog as AuditLogProtocol } from "@devpod/devpod-protocol/lib/audit-log";
 import {
     OrgMemberInfo,
     OrganizationSettings as OrganizationSettingsProtocol,
@@ -60,11 +60,11 @@ import {
     TimeoutSettings as TimeoutSettingsProtocol,
     OnboardingSettings as OnboardingSettingsProtocol,
     WelcomeMessage as WelcomeMessageProtocol,
-} from "@khulnasoft/devpod-protocol/lib/teams-projects-protocol";
-import type { DeepPartial } from "@khulnasoft/devpod-protocol/lib/util/deep-partial";
-import { parseGoDurationToMs } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
-import { SupportedWorkspaceClass } from "@khulnasoft/devpod-protocol/lib/workspace-class";
-import { isWorkspaceRegion } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+} from "@devpod/devpod-protocol/lib/teams-projects-protocol";
+import type { DeepPartial } from "@devpod/devpod-protocol/lib/util/deep-partial";
+import { parseGoDurationToMs } from "@devpod/devpod-protocol/lib/util/timeutil";
+import { SupportedWorkspaceClass } from "@devpod/devpod-protocol/lib/workspace-class";
+import { isWorkspaceRegion } from "@devpod/devpod-protocol/lib/workspace-cluster";
 import {
     ConfigurationIdeConfig,
     ImageMetrics,
@@ -77,14 +77,14 @@ import {
     WorkspaceInstancePhase,
     WorkspaceInstancePort,
     WorkspaceInstanceStatus,
-} from "@khulnasoft/devpod-protocol/lib/workspace-instance";
+} from "@devpod/devpod-protocol/lib/workspace-instance";
 import {
     AuthProvider,
     AuthProviderDescription,
     AuthProviderType,
     OAuth2Config,
-} from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
-import { AuditLog } from "@khulnasoft/public-api/lib/devpod/v1/auditlogs_pb";
+} from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
+import { AuditLog } from "@devpod/public-api/lib/devpod/v1/auditlogs_pb";
 import {
     BranchMatchingStrategy,
     Configuration,
@@ -92,15 +92,15 @@ import {
     PrebuildSettings,
     WorkspaceSettings,
     PrebuildCloneSettings,
-} from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
-import { EditorReference } from "@khulnasoft/public-api/lib/devpod/v1/editor_pb";
+} from "@devpod/public-api/lib/devpod/v1/configuration_pb";
+import { EditorReference } from "@devpod/public-api/lib/devpod/v1/editor_pb";
 import {
     ConfigurationEnvironmentVariable,
     EnvironmentVariable,
     EnvironmentVariableAdmission,
     OrganizationEnvironmentVariable,
     UserEnvironmentVariable,
-} from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
+} from "@devpod/public-api/lib/devpod/v1/envvar_pb";
 import {
     CellDisabledError,
     FailedPreconditionDetails,
@@ -114,13 +114,13 @@ import {
     RepositoryUnauthorizedError as RepositoryUnauthorizedErrorData,
     TooManyRunningWorkspacesError,
     UserBlockedError,
-} from "@khulnasoft/public-api/lib/devpod/v1/error_pb";
+} from "@devpod/public-api/lib/devpod/v1/error_pb";
 import {
     BlockedEmailDomain,
     BlockedRepository,
     InstallationConfiguration,
     OnboardingState,
-} from "@khulnasoft/public-api/lib/devpod/v1/installation_pb";
+} from "@devpod/public-api/lib/devpod/v1/installation_pb";
 import {
     OnboardingSettings,
     OnboardingSettings_WelcomeMessage,
@@ -132,7 +132,7 @@ import {
     RoleRestrictionEntry,
     TimeoutSettings,
     UpdateOrganizationSettingsRequest,
-} from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+} from "@devpod/public-api/lib/devpod/v1/organization_pb";
 import {
     Prebuild,
     ListOrganizationPrebuildsRequest_Filter_State as PrebuildFilterState,
@@ -140,10 +140,10 @@ import {
     PrebuildPhase_Phase,
     PrebuildStatus,
     TaskLog,
-} from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
-import { Author, Commit, SCMToken, SuggestedRepository } from "@khulnasoft/public-api/lib/devpod/v1/scm_pb";
-import { Sort, SortOrder } from "@khulnasoft/public-api/lib/devpod/v1/sorting_pb";
-import { SSHPublicKey } from "@khulnasoft/public-api/lib/devpod/v1/ssh_pb";
+} from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
+import { Author, Commit, SCMToken, SuggestedRepository } from "@devpod/public-api/lib/devpod/v1/scm_pb";
+import { Sort, SortOrder } from "@devpod/public-api/lib/devpod/v1/sorting_pb";
+import { SSHPublicKey } from "@devpod/public-api/lib/devpod/v1/ssh_pb";
 import {
     Identity,
     RoleOrPermission,
@@ -153,7 +153,7 @@ import {
     User_UserFeatureFlag,
     User_WorkspaceAutostartOption,
     User_WorkspaceTimeoutSettings,
-} from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
+} from "@devpod/public-api/lib/devpod/v1/user_pb";
 import {
     AdmissionLevel,
     CreateAndStartWorkspaceRequest,
@@ -189,8 +189,8 @@ import {
     WorkspaceSession_WorkspaceContext_RefType,
     WorkspaceSession_InitializerMetrics,
     WorkspaceSession_InitializerMetric,
-} from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
-import { BigIntToJson } from "@khulnasoft/devpod-protocol/lib/util/stringify";
+} from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { BigIntToJson } from "@devpod/devpod-protocol/lib/util/stringify";
 import { getPrebuildLogPath } from "./prebuild-utils";
 import { InvalidDevpodYMLError, RepositoryNotFoundError, UnauthorizedRepositoryAccessError } from "./public-api-errors";
 const URL = require("url").URL || window.URL;

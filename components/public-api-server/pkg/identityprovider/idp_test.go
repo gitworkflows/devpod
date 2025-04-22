@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	issuerBaseURL = "https://api.devpod.khulnasoft.com/idp"
+	issuerBaseURL = "https://api.devpod.io/idp"
 )
 
 func TestRouter(t *testing.T) {
@@ -39,7 +39,7 @@ func TestRouter(t *testing.T) {
 			Name: "OIDC discovery",
 			Path: oidc.DiscoveryEndpoint,
 			Expectation: Expectation{
-				Response: `{"issuer":"https://api.devpod.khulnasoft.com/idp","authorization_endpoint":"https://api.devpod.khulnasoft.com/idp/not-supported","token_endpoint":"https://api.devpod.khulnasoft.com/idp/not-supported","introspection_endpoint":"https://api.devpod.khulnasoft.com/idp/not-supported","userinfo_endpoint":"https://api.devpod.khulnasoft.com/idp/not-supported","revocation_endpoint":"https://api.devpod.khulnasoft.com/idp/not-supported","end_session_endpoint":"https://api.devpod.khulnasoft.com/idp/not-supported","jwks_uri":"https://api.devpod.khulnasoft.com/idp/keys","scopes_supported":["openid","profile","email","phone","address","offline_access"],"response_types_supported":["code","id_token","id_token token"],"grant_types_supported":["authorization_code","implicit"],"subject_types_supported":["public"],"id_token_signing_alg_values_supported":["RS256"],"revocation_endpoint_auth_methods_supported":["none"],"introspection_endpoint_auth_methods_supported":["none"],"introspection_endpoint_auth_signing_alg_values_supported":["RS256"],"claims_supported":["sub","aud","exp","iat","iss","auth_time","nonce","acr","amr","c_hash","at_hash","act","scopes","client_id","azp","preferred_username","name","family_name","given_name","locale","email"],"request_uri_parameter_supported":false}` + "\n",
+				Response: `{"issuer":"https://api.devpod.io/idp","authorization_endpoint":"https://api.devpod.io/idp/not-supported","token_endpoint":"https://api.devpod.io/idp/not-supported","introspection_endpoint":"https://api.devpod.io/idp/not-supported","userinfo_endpoint":"https://api.devpod.io/idp/not-supported","revocation_endpoint":"https://api.devpod.io/idp/not-supported","end_session_endpoint":"https://api.devpod.io/idp/not-supported","jwks_uri":"https://api.devpod.io/idp/keys","scopes_supported":["openid","profile","email","phone","address","offline_access"],"response_types_supported":["code","id_token","id_token token"],"grant_types_supported":["authorization_code","implicit"],"subject_types_supported":["public"],"id_token_signing_alg_values_supported":["RS256"],"revocation_endpoint_auth_methods_supported":["none"],"introspection_endpoint_auth_methods_supported":["none"],"introspection_endpoint_auth_signing_alg_values_supported":["RS256"],"claims_supported":["sub","aud","exp","iat","iss","auth_time","nonce","acr","amr","c_hash","at_hash","act","scopes","client_id","azp","preferred_username","name","family_name","given_name","locale","email"],"request_uri_parameter_supported":false}` + "\n",
 			},
 			ExpectedHeaders: map[string]string{
 				"Content-Type": "application/json",
@@ -138,7 +138,7 @@ func TestIDToken(t *testing.T) {
 					Claims: jwt.MapClaims{
 						"aud":  []any{string("some.audience.com")},
 						"azp":  string("some.audience.com"),
-						"iss":  string("https://api.devpod.khulnasoft.com/idp"),
+						"iss":  string("https://api.devpod.io/idp"),
 						"name": "foo",
 						"sub":  "bar",
 					},
@@ -161,7 +161,7 @@ func TestIDToken(t *testing.T) {
 					Claims: jwt.MapClaims{
 						"aud":   []any{string("some.audience.com")},
 						"azp":   string("some.audience.com"),
-						"iss":   string("https://api.devpod.khulnasoft.com/idp"),
+						"iss":   string("https://api.devpod.io/idp"),
 						"scope": "foobar",
 					},
 					Valid: true,

@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.devpod.khulnasoft.com">
+  <a href="https://www.devpod.io">
     <img src="https://raw.githubusercontent.com/khulnasoft/devpod/master/components/dashboard/src/icons/devpod.svg" height="60">
     <h3 align="center">Devpod</h3>
   </a>
@@ -8,7 +8,7 @@
 
 # Installer
 
-The best way to get started with Devpod is by using our recommended & default installation method [described in our documentation](https://www.devpod.khulnasoft.com/docs/self-hosted/latest/getting-started). In fact, our default installation method actually wraps this installer into a UI that helps you manage, update and configure Devpod in a streamlined way. This document describes how to use the installer directly.
+The best way to get started with Devpod is by using our recommended & default installation method [described in our documentation](https://www.devpod.io/docs/self-hosted/latest/getting-started). In fact, our default installation method actually wraps this installer into a UI that helps you manage, update and configure Devpod in a streamlined way. This document describes how to use the installer directly.
 
 > The installer is an internal tool and as such not expected to be used by those external to Devpod.
 
@@ -18,10 +18,10 @@ The best way to get started with Devpod is by using our recommended & default in
 - A machine running Linux
     - MacOS and Windows are not currently supported, but may be in future
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed
-- A [Kubernetes cluster configured](https://www.devpod.khulnasoft.com/docs/self-hosted/latest)
+- A [Kubernetes cluster configured](https://www.devpod.io/docs/self-hosted/latest)
 - A [TLS certificate](#tls-certificates)
 
-Or, [open a Devpod workspace](https://devpod.khulnasoft.com/from-referrer/)
+Or, [open a Devpod workspace](https://devpod.io/from-referrer/)
 
 The process to install Devpod is:
 1. generate a base config
@@ -409,11 +409,11 @@ have a containerd runtime.
 ## Affinity Labels
 
 Your Kubernetes nodes must have the following labels applied to them:
-- `devpod.khulnasoft.com/workload_meta`
-- `devpod.khulnasoft.com/workload_ide`
-- `devpod.khulnasoft.com/workload_services`
-- `devpod.khulnasoft.com/workload_workspace_regular`
-- `devpod.khulnasoft.com/workload_workspace_headless`
+- `devpod.io/workload_meta`
+- `devpod.io/workload_ide`
+- `devpod.io/workload_services`
+- `devpod.io/workload_workspace_regular`
+- `devpod.io/workload_workspace_headless`
 
 It is recommended to have a minimum of two node pools, grouping the `meta`
 and `ide` nodes together and the `workspace` nodes together.

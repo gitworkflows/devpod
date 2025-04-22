@@ -14,7 +14,7 @@ import {
     ImageBuildInfo,
     WorkspaceInstanceRepoStatus,
     WorkspaceInstanceMetrics,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import { TypeORM } from "../typeorm";
 import { Transformer } from "../transformer";
 

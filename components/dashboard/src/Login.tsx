@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import * as DevpodCookie from "@khulnasoft/devpod-protocol/lib/util/devpod-cookie";
+import * as DevpodCookie from "@devpod/devpod-protocol/lib/util/devpod-cookie";
 import { useContext, useEffect, useState, useMemo, useCallback, FC } from "react";
 import { UserContext } from "./user-context";
 import { getDevpodService } from "./service/service";
@@ -17,7 +17,7 @@ import { SSOLoginForm } from "./login/SSOLoginForm";
 import { useAuthProviderDescriptions } from "./data/auth-providers/auth-provider-descriptions-query";
 import { SetupPending } from "./login/SetupPending";
 import { useNeedsSetup } from "./dedicated-setup/use-needs-setup";
-import { AuthProviderDescription } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProviderDescription } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
 import { Button, ButtonProps } from "@podkit/buttons/Button";
 import { cn } from "@podkit/lib/cn";
 import { userClient } from "./service/public-api";
@@ -330,6 +330,14 @@ const RightProductDescriptionPanel = () => {
                         Automated, standardized development environments hosted by us in Devpod’s infrastructure. Users
                         who joined before October 1, 2024 on non-Enterprise plans are considered Devpod Classic users.
                     </p>
+
+                    <p className="text-pk-content-secondary mb-2">
+                        Devpod Classic is sunsetting fall 2025.{" "}
+                        <a className="gp-link font-bold" href="https://app.devpod.io" target="_blank" rel="noreferrer">
+                            Try the new Devpod
+                        </a>{" "}
+                        now (hosted compute coming soon).
+                    </p>
                 </div>
                 <img src={DevpodClassicCard} alt="Devpod Classic" className="w-full" />
             </div>
@@ -342,14 +350,14 @@ const TermsOfServiceAndPrivacyPolicy = () => {
         <div className="flex-none mx-auto text-center px-4 pb-4">
             <span className="text-gray-400 dark:text-gray-500 text-sm">
                 By signing in, you agree to our{" "}
-                <a className="gp-link hover:text-gray-600" target="devpod-terms" href="https://www.devpod.khulnasoft.com/terms/">
+                <a className="gp-link hover:text-gray-600" target="devpod-terms" href="https://www.devpod.io/terms/">
                     terms of service
                 </a>{" "}
                 and{" "}
                 <a
                     className="gp-link hover:text-gray-600"
                     target="devpod-privacy"
-                    href="https://www.devpod.khulnasoft.com/privacy/"
+                    href="https://www.devpod.io/privacy/"
                 >
                     privacy policy
                 </a>

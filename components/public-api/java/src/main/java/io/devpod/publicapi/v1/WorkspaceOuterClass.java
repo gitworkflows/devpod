@@ -21102,7 +21102,7 @@ java.lang.String defaultValue) {
      * <pre>
      * subassembly_references is a list of workspace IDs that this workspace
      * depends on. For example:
-     * index.docker.io/gitpod-io/subassmeblies/code:latest
+     * index.docker.io/khulnasoft/subassmeblies/code:latest
      * </pre>
      *
      * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -21114,7 +21114,7 @@ java.lang.String defaultValue) {
      * <pre>
      * subassembly_references is a list of workspace IDs that this workspace
      * depends on. For example:
-     * index.docker.io/gitpod-io/subassmeblies/code:latest
+     * index.docker.io/khulnasoft/subassmeblies/code:latest
      * </pre>
      *
      * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -21125,7 +21125,7 @@ java.lang.String defaultValue) {
      * <pre>
      * subassembly_references is a list of workspace IDs that this workspace
      * depends on. For example:
-     * index.docker.io/gitpod-io/subassmeblies/code:latest
+     * index.docker.io/khulnasoft/subassmeblies/code:latest
      * </pre>
      *
      * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -21137,7 +21137,7 @@ java.lang.String defaultValue) {
      * <pre>
      * subassembly_references is a list of workspace IDs that this workspace
      * depends on. For example:
-     * index.docker.io/gitpod-io/subassmeblies/code:latest
+     * index.docker.io/khulnasoft/subassmeblies/code:latest
      * </pre>
      *
      * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -23745,7 +23745,7 @@ java.lang.String defaultValue) {
      * <pre>
      * subassembly_references is a list of workspace IDs that this workspace
      * depends on. For example:
-     * index.docker.io/gitpod-io/subassmeblies/code:latest
+     * index.docker.io/khulnasoft/subassmeblies/code:latest
      * </pre>
      *
      * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -23759,7 +23759,7 @@ java.lang.String defaultValue) {
      * <pre>
      * subassembly_references is a list of workspace IDs that this workspace
      * depends on. For example:
-     * index.docker.io/gitpod-io/subassmeblies/code:latest
+     * index.docker.io/khulnasoft/subassmeblies/code:latest
      * </pre>
      *
      * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -23772,7 +23772,7 @@ java.lang.String defaultValue) {
      * <pre>
      * subassembly_references is a list of workspace IDs that this workspace
      * depends on. For example:
-     * index.docker.io/gitpod-io/subassmeblies/code:latest
+     * index.docker.io/khulnasoft/subassmeblies/code:latest
      * </pre>
      *
      * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -23786,7 +23786,7 @@ java.lang.String defaultValue) {
      * <pre>
      * subassembly_references is a list of workspace IDs that this workspace
      * depends on. For example:
-     * index.docker.io/gitpod-io/subassmeblies/code:latest
+     * index.docker.io/khulnasoft/subassmeblies/code:latest
      * </pre>
      *
      * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -26208,7 +26208,7 @@ java.lang.String defaultValue) {
        * <pre>
        * subassembly_references is a list of workspace IDs that this workspace
        * depends on. For example:
-       * index.docker.io/gitpod-io/subassmeblies/code:latest
+       * index.docker.io/khulnasoft/subassmeblies/code:latest
        * </pre>
        *
        * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -26223,7 +26223,7 @@ java.lang.String defaultValue) {
        * <pre>
        * subassembly_references is a list of workspace IDs that this workspace
        * depends on. For example:
-       * index.docker.io/gitpod-io/subassmeblies/code:latest
+       * index.docker.io/khulnasoft/subassmeblies/code:latest
        * </pre>
        *
        * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -26236,7 +26236,7 @@ java.lang.String defaultValue) {
        * <pre>
        * subassembly_references is a list of workspace IDs that this workspace
        * depends on. For example:
-       * index.docker.io/gitpod-io/subassmeblies/code:latest
+       * index.docker.io/khulnasoft/subassmeblies/code:latest
        * </pre>
        *
        * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -26250,7 +26250,7 @@ java.lang.String defaultValue) {
        * <pre>
        * subassembly_references is a list of workspace IDs that this workspace
        * depends on. For example:
-       * index.docker.io/gitpod-io/subassmeblies/code:latest
+       * index.docker.io/khulnasoft/subassmeblies/code:latest
        * </pre>
        *
        * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -26265,7 +26265,7 @@ java.lang.String defaultValue) {
        * <pre>
        * subassembly_references is a list of workspace IDs that this workspace
        * depends on. For example:
-       * index.docker.io/gitpod-io/subassmeblies/code:latest
+       * index.docker.io/khulnasoft/subassmeblies/code:latest
        * </pre>
        *
        * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -26286,7 +26286,7 @@ java.lang.String defaultValue) {
        * <pre>
        * subassembly_references is a list of workspace IDs that this workspace
        * depends on. For example:
-       * index.docker.io/gitpod-io/subassmeblies/code:latest
+       * index.docker.io/khulnasoft/subassmeblies/code:latest
        * </pre>
        *
        * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -26306,7 +26306,7 @@ java.lang.String defaultValue) {
        * <pre>
        * subassembly_references is a list of workspace IDs that this workspace
        * depends on. For example:
-       * index.docker.io/gitpod-io/subassmeblies/code:latest
+       * index.docker.io/khulnasoft/subassmeblies/code:latest
        * </pre>
        *
        * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -26326,7 +26326,7 @@ java.lang.String defaultValue) {
        * <pre>
        * subassembly_references is a list of workspace IDs that this workspace
        * depends on. For example:
-       * index.docker.io/gitpod-io/subassmeblies/code:latest
+       * index.docker.io/khulnasoft/subassmeblies/code:latest
        * </pre>
        *
        * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>
@@ -26343,7 +26343,7 @@ java.lang.String defaultValue) {
        * <pre>
        * subassembly_references is a list of workspace IDs that this workspace
        * depends on. For example:
-       * index.docker.io/gitpod-io/subassmeblies/code:latest
+       * index.docker.io/khulnasoft/subassmeblies/code:latest
        * </pre>
        *
        * <code>repeated string subassembly_references = 10 [json_name = "subassemblyReferences"];</code>

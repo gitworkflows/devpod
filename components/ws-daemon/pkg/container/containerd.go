@@ -238,7 +238,7 @@ func (s *Containerd) handleNewContainer(c containers.Container) {
 		} else {
 			// this is a ws-manager-mk2 workspace
 			info = &containerInfo{
-				InstanceID:  c.Labels["devpod.khulnasoft.com/instanceID"],
+				InstanceID:  c.Labels["devpod.io/instanceID"],
 				OwnerID:     c.Labels[wsk8s.OwnerLabel],
 				WorkspaceID: c.Labels[wsk8s.WorkspaceIDLabel],
 				PodName:     podName,

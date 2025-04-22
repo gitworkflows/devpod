@@ -4,9 +4,9 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { UserDB, PersonalAccessTokenDB } from "@khulnasoft/devpod-db/lib";
-import { DevpodTokenType, User } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { UserDB, PersonalAccessTokenDB } from "@devpod/devpod-db/lib";
+import { DevpodTokenType, User } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import * as crypto from "crypto";
 import express from "express";
 import { inject, injectable } from "inversify";

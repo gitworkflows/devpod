@@ -359,7 +359,7 @@ func BenchmarkParseDevpodEnvironP1(b *testing.B) {
 func BenchmarkParseDevpodEnvironP2(b *testing.B) {
 	benchmarkParseDevpodEnviron("DEVPOD_INSTANCE_ID=foobar\000DEVPOD_INSTANCE_ID=foobar\000", b)
 }
-func BenchmarkParseGitPodEnvironP4(b *testing.B) {
+func BenchmarkParseDevPodEnvironP4(b *testing.B) {
 	benchmarkParseDevpodEnviron("DEVPOD_INSTANCE_ID=foobar\000DEVPOD_INSTANCE_ID=foobar\000DEVPOD_INSTANCE_ID=foobar\000DEVPOD_INSTANCE_ID=foobar\000", b)
 }
 func BenchmarkParseDevpodEnvironP8(b *testing.B) {

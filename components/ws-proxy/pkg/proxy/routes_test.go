@@ -21,8 +21,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gitpod-io/golang-crypto/ssh"
 	"github.com/google/go-cmp/cmp"
+	"github.com/khulnasoft/golang-crypto/ssh"
 	"github.com/sirupsen/logrus"
 
 	"github.com/khulnasoft/devpod/common-go/log"
@@ -43,8 +43,8 @@ var (
 	debugWorkspaceURL = "https://debug-amaranth-smelt-9ba20cc1.test-domain.com/"
 	workspaces        = []common.WorkspaceInfo{
 		{
-			IDEImage:        "gitpod-io/ide:latest",
-			SupervisorImage: "gitpod-io/supervisor:latest",
+			IDEImage:        "khulnasoft/ide:latest",
+			SupervisorImage: "khulnasoft/supervisor:latest",
 			Auth: &api.WorkspaceAuthentication{
 				Admission:  api.AdmissionLevel_ADMIT_OWNER_ONLY,
 				OwnerToken: "owner-token",
@@ -238,11 +238,11 @@ func TestRoutes(t *testing.T) {
 				Header: http.Header{
 					"Content-Type": {"text/html; charset=utf-8"},
 					"Location": {
-						"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/favicon.ico",
+						"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/favicon.ico",
 					},
 					"Vary": {"Accept-Encoding"},
 				},
-				Body: "<a href=\"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/favicon.ico\">See Other</a>.\n\n",
+				Body: "<a href=\"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/favicon.ico\">See Other</a>.\n\n",
 			},
 		},
 		{
@@ -266,10 +266,10 @@ func TestRoutes(t *testing.T) {
 				Status: http.StatusSeeOther,
 				Header: http.Header{
 					"Content-Type": {"text/html; charset=utf-8"},
-					"Location":     {"https://ide.test-domain.com/blobserve/gitpod-io/ide:latest/__files__/"},
+					"Location":     {"https://ide.test-domain.com/blobserve/khulnasoft/ide:latest/__files__/"},
 					"Vary":         {"Accept-Encoding"},
 				},
-				Body: "<a href=\"https://ide.test-domain.com/blobserve/gitpod-io/ide:latest/__files__/\">See Other</a>.\n\n",
+				Body: "<a href=\"https://ide.test-domain.com/blobserve/khulnasoft/ide:latest/__files__/\">See Other</a>.\n\n",
 			},
 		},
 		{
@@ -286,7 +286,7 @@ func TestRoutes(t *testing.T) {
 					"Content-Type":   {"text/plain; charset=utf-8"},
 					"Vary":           {"Accept-Encoding"},
 				},
-				Body: "blobserve hit: /gitpod-io/ide:latest/\nhost: localhost:20003\ninlineVars: {\"ide\":\"https://ide.test-domain.com/blobserve/gitpod-io/ide:latest/__files__\",\"supervisor\":\"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__\"}\n",
+				Body: "blobserve hit: /khulnasoft/ide:latest/\nhost: localhost:20003\ninlineVars: {\"ide\":\"https://ide.test-domain.com/blobserve/khulnasoft/ide:latest/__files__\",\"supervisor\":\"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__\"}\n",
 			},
 		},
 		{
@@ -303,7 +303,7 @@ func TestRoutes(t *testing.T) {
 					"Content-Type":   {"text/plain; charset=utf-8"},
 					"Vary":           {"Accept-Encoding"},
 				},
-				Body: "blobserve hit: /gitpod-io/ide:latest/\nhost: localhost:20003\ninlineVars: {\"ide\":\"https://ide.test-domain.com/blobserve/gitpod-io/ide:latest/__files__\",\"supervisor\":\"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__\"}\n",
+				Body: "blobserve hit: /khulnasoft/ide:latest/\nhost: localhost:20003\ninlineVars: {\"ide\":\"https://ide.test-domain.com/blobserve/khulnasoft/ide:latest/__files__\",\"supervisor\":\"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__\"}\n",
 			},
 		},
 		{
@@ -565,7 +565,7 @@ func TestRoutes(t *testing.T) {
 					"Content-Type":   {"text/plain; charset=utf-8"},
 					"Vary":           {"Accept-Encoding"},
 				},
-				Body: "blobserve hit: /gitpod-io/supervisor:latest/worker-proxy.js\nhost: localhost:20003\n",
+				Body: "blobserve hit: /khulnasoft/supervisor:latest/worker-proxy.js\nhost: localhost:20003\n",
 			},
 		},
 		{
@@ -578,10 +578,10 @@ func TestRoutes(t *testing.T) {
 				Status: http.StatusSeeOther,
 				Header: http.Header{
 					"Content-Type": {"text/html; charset=utf-8"},
-					"Location":     {"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/main.js"},
+					"Location":     {"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/main.js"},
 					"Vary":         {"Accept-Encoding"},
 				},
-				Body: "<a href=\"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/main.js\">See Other</a>.\n\n",
+				Body: "<a href=\"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/main.js\">See Other</a>.\n\n",
 			},
 		},
 		{
@@ -604,10 +604,10 @@ func TestRoutes(t *testing.T) {
 				Status: http.StatusSeeOther,
 				Header: http.Header{
 					"Content-Type": {"text/html; charset=utf-8"},
-					"Location":     {"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/main.js"},
+					"Location":     {"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/main.js"},
 					"Vary":         {"Accept-Encoding"},
 				},
-				Body: "<a href=\"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/main.js\">See Other</a>.\n\n",
+				Body: "<a href=\"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/main.js\">See Other</a>.\n\n",
 			},
 		},
 		{

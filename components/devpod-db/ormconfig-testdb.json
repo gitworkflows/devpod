@@ -1,7 +1,7 @@
 {
     "type": "mysql",
     "database": "devpod",
-    "host": "devpod.khulnasoft.com-local",
+    "host": "devpod.io-local",
     "username": "devpod",
     "password": "test",
     "synchronize": false,

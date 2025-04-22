@@ -5,7 +5,7 @@
  */
 
 import { Column, PrimaryColumn, Entity, Index } from "typeorm";
-import { AppInstallation, AppInstallationPlatform, AppInstallationState } from "@khulnasoft/devpod-protocol";
+import { AppInstallation, AppInstallationPlatform, AppInstallationState } from "@devpod/devpod-protocol";
 import { TypeORM } from "../typeorm";
 import { Transformer } from "../transformer";
 

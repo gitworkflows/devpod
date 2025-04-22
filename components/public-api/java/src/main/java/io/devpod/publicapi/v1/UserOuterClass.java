@@ -31199,7 +31199,7 @@ java.lang.String defaultValue) {
       "SetRolesOrPermissions\022\'.devpod.v1.SetRol" +
       "esOrPermissionsRequest\032(.devpod.v1.SetRo" +
       "lesOrPermissionsResponse\"\000BQ\n\026io.devpod." +
-      "publicapi.v1Z7github.com/gitpod-io/gitpo" +
+      "publicapi.v1Z7github.com/khulnasoft/gitpo" +
       "d/components/public-api/go/v1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

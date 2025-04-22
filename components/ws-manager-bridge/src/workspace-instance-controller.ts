@@ -4,22 +4,22 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
-import { GetWorkspacesRequest } from "@khulnasoft/ws-manager/lib";
-import { Disposable, DisposableCollection, RunningWorkspaceInfo, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { GetWorkspacesRequest } from "@devpod/ws-manager/lib";
+import { Disposable, DisposableCollection, RunningWorkspaceInfo, WorkspaceInstance } from "@devpod/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { Configuration } from "./config";
-import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
 import { Metrics } from "./metrics";
-import { WorkspaceDB } from "@khulnasoft/devpod-db/lib/workspace-db";
-import { DBWithTracing, TracedUserDB, TracedWorkspaceDB } from "@khulnasoft/devpod-db/lib/traced-db";
-import { UserDB } from "@khulnasoft/devpod-db/lib/user-db";
-import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
+import { WorkspaceDB } from "@devpod/devpod-db/lib/workspace-db";
+import { DBWithTracing, TracedUserDB, TracedWorkspaceDB } from "@devpod/devpod-db/lib/traced-db";
+import { UserDB } from "@devpod/devpod-db/lib/user-db";
+import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
 import { ClientProvider } from "./wsman-subscriber";
-import { repeat } from "@khulnasoft/devpod-protocol/lib/util/repeat";
+import { repeat } from "@devpod/devpod-protocol/lib/util/repeat";
 import { PrebuildUpdater } from "./prebuild-updater";
-import { RedisPublisher } from "@khulnasoft/devpod-db/lib";
-import { durationLongerThanSeconds } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
+import { RedisPublisher } from "@devpod/devpod-db/lib";
+import { durationLongerThanSeconds } from "@devpod/devpod-protocol/lib/util/timeutil";
 
 export const WorkspaceInstanceController = Symbol("WorkspaceInstanceController");
 

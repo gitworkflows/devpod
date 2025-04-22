@@ -16,8 +16,8 @@ import (
 
 	"github.com/golang/mock/gomock"
 	"github.com/khulnasoft/devpod/common-go/baseserver"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/billingservice"
-	mockbillingservice "github.com/khulnasoft/khulnasoft/public-api-server/pkg/billingservice/mock_billingservice"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/billingservice"
+	mockbillingservice "github.com/khulnasoft/devpod/public-api-server/pkg/billingservice/mock_billingservice"
 	"github.com/stretchr/testify/require"
 )
 

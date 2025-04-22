@@ -6614,7 +6614,7 @@ java.lang.String defaultValue);
       "rtError\022#.ide_metrics_api.ReportErrorReq" +
       "uest\032$.ide_metrics_api.ReportErrorRespon" +
       "se\"\027\202\323\344\223\002\021\"\014/reportError:\001*BG\n\030io.devpod" +
-      ".idemetrics.apiZ+github.com/gitpod-io/gi" +
+      ".idemetrics.apiZ+github.com/khulnasoft/gi" +
       "tpod/ide-metrics/apib\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

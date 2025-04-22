@@ -5,12 +5,12 @@
  */
 
 import { PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import {
     InvalidDevpodYMLError as InvalidDevpodYMLErrorData,
     RepositoryNotFoundError as RepositoryNotFoundErrorData,
     RepositoryUnauthorizedError as RepositoryUnauthorizedErrorData,
-} from "@khulnasoft/public-api/lib/devpod/v1/error_pb";
+} from "@devpod/public-api/lib/devpod/v1/error_pb";
 
 export class RepositoryNotFoundError extends ApplicationError {
     constructor(readonly info: PlainMessage<RepositoryNotFoundErrorData>) {

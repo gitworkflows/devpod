@@ -5,7 +5,7 @@
  */
 
 import { Timestamp } from "@bufbuild/protobuf";
-import { WorkspaceSession, WorkspaceSpec_WorkspaceType } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspaceSession, WorkspaceSpec_WorkspaceType } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { AccordionContent, AccordionItem, AccordionTrigger } from "../components/accordion/Accordion";
 import { ReactComponent as UsageIcon } from "../images/usage-default.svg";
 import { toRemoteURL } from "../projects/render-utils";

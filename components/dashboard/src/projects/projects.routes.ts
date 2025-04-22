@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Project } from "@khulnasoft/devpod-protocol";
+import { Project } from "@devpod/devpod-protocol";
 import { TabEntry } from "../components/Header";
 
 export const projectsPathMain = "/projects";

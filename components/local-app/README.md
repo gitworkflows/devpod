@@ -9,7 +9,7 @@ All of the accessible commands can be listed with `devpod --help` .
 1. Download the CLI for your platform and make it executable:
 
 ```bash
-wget -O devpod https://devpod.khulnasoft.com/static/bin/devpod-cli-darwin-arm64
+wget -O devpod https://devpod.io/static/bin/devpod-cli-darwin-arm64
 chmod u+x devpod
 ```
 
@@ -29,7 +29,7 @@ To develop the CLI with Devpod, you can run it just like locally, but in Devpod 
 
 #### In a Devpod workspace
 
-[![Open in Devpod](https://www.devpod.khulnasoft.com/svg/open-in-devpod.svg)](https://devpod.khulnasoft.com/#https://github.com/khulnasoft/devpod)
+[![Open in Devpod](https://www.devpod.io/svg/open-in-devpod.svg)](https://devpod.io/#https://github.com/khulnasoft/devpod)
 
 You will have devpod-cli ready as `devpod` on any Workspace based on `https://github.com/khulnasoft/devpod`.
 
@@ -53,7 +53,7 @@ To create a new version that existing clients will consume increment the number 
 ### How to install
 
 ```
-docker run --rm -it -v /tmp/dest:/out ghcr.io/khulnasoft/devpod/build/local-app:<version>
+docker run --rm -it -v /tmp/dest:/out khulnasoft/devpod-environment/build/local-app:<version>
 ```
 
 ### How to run

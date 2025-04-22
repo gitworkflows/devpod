@@ -3,6 +3,6 @@
 # See License.AGPL.txt in the project root for license information.
 
 envvars:
-  DOMAIN: devpod.khulnasoft.com
+  DOMAIN: devpod.io
   REGISTRY_DOCKER_CONFIG_ENABLED: "1"
   REGISTRY_DOCKER_CONFIG_JSON: '{ "auths": { "host1": "", "host2": "", "host3": "" } }'

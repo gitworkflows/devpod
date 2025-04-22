@@ -27,7 +27,7 @@ import { DownloadIcon } from "lucide-react";
 import { Button } from "@podkit/buttons/Button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@podkit/dropdown/DropDown";
 import { useInstallationConfiguration } from "./data/installation/installation-config-query";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 
 export const Insights = () => {
     const toDate = useMemo(() => Timestamp.fromDate(new Date()), []);

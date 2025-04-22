@@ -19,10 +19,10 @@ import request from "supertest";
 
 import * as chai from "chai";
 import { OIDCCreateSessionPayload } from "./iam-oidc-create-session-payload";
-import { TeamMemberInfo, User } from "@khulnasoft/devpod-protocol";
+import { TeamMemberInfo, User } from "@devpod/devpod-protocol";
 import { OrganizationService } from "../orgs/organization-service";
 import { UserService } from "../user/user-service";
-import { TeamDB, UserDB } from "@khulnasoft/devpod-db/lib";
+import { TeamDB, UserDB } from "@devpod/devpod-db/lib";
 const expect = chai.expect;
 
 @suite(timeout(10000))

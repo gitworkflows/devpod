@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { DBWithTracing, TracedWorkspaceDB, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
+import { DBWithTracing, TracedWorkspaceDB, WorkspaceDB } from "@devpod/devpod-db/lib";
 import {
     CommitContext,
     CommitInfo,
@@ -19,27 +19,27 @@ import {
     Workspace,
     WorkspaceConfig,
     WorkspaceInstance,
-} from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+} from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import { getCommitInfo, HostContextProvider } from "../auth/host-context-provider";
 import { ConfigProvider } from "../workspace/config-provider";
 import { Config } from "../config";
 import { ProjectsService } from "../projects/projects-service";
-import { secondsBefore } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
+import { secondsBefore } from "@devpod/devpod-protocol/lib/util/timeutil";
 
 import { inject, injectable } from "inversify";
 import * as opentracing from "opentracing";
 import { IncrementalWorkspaceService } from "./incremental-workspace-service";
 import { PrebuildRateLimiterConfig } from "../workspace/prebuild-rate-limiter";
-import { ErrorCodes, ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ErrorCodes, ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
 import { EntitlementService, MayStartWorkspaceResult } from "../billing/entitlement-service";
 import { WorkspaceService } from "../workspace/workspace-service";
 import { minimatch as globMatch } from "minimatch";
 import { Authorizer } from "../authorization/authorizer";
 import { ContextParser } from "../workspace/context-parser-service";
-import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
-import { generateAsyncGenerator } from "@khulnasoft/devpod-protocol/lib/generate-async-generator";
+import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
+import { generateAsyncGenerator } from "@devpod/devpod-protocol/lib/generate-async-generator";
 import { RedisSubscriber } from "../messaging/redis-subscriber";
 
 export interface StartPrebuildParams {

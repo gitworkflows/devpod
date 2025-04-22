@@ -7,7 +7,7 @@
 import { useCallback } from "react";
 import dayjs from "dayjs";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { ListUsageRequest } from "@khulnasoft/devpod-protocol/lib/usage";
+import { ListUsageRequest } from "@devpod/devpod-protocol/lib/usage";
 import { getAllUsageRecords } from "./get-usage-records";
 import { transformUsageRecord, UsageCSVRow } from "./transform-usage-record";
 import { noPersistence } from "../../data/setup";

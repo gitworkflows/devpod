@@ -5,13 +5,13 @@
  */
 
 import { injectable, inject } from "inversify";
-import { Token, Identity, User, TokenEntry } from "@khulnasoft/devpod-protocol";
+import { Token, Identity, User, TokenEntry } from "@devpod/devpod-protocol";
 import { HostContextProvider } from "../auth/host-context-provider";
-import { UserDB } from "@khulnasoft/devpod-db/lib";
+import { UserDB } from "@devpod/devpod-db/lib";
 import { v4 as uuidv4 } from "uuid";
 import { TokenProvider } from "./token-provider";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { RedisMutex } from "../redis/mutex";
 import {
     OpportunisticRefresh,

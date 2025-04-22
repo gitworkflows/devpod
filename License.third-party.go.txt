@@ -65,7 +65,7 @@ github.com/evanphx/json-patch                                                BSD
 github.com/facebookgo/atomicfile                                             BSD 3-Clause "New" or "Revised" License
 github.com/felixge/httpsnoop                                                 MIT License
 github.com/fsnotify/fsnotify                                                 BSD 3-Clause "New" or "Revised" License
-github.com/gitpod-io/golang-crypto                                           BSD 3-Clause "New" or "Revised" License
+github.com/khulnasoft/golang-crypto                                           BSD 3-Clause "New" or "Revised" License
 github.com/go-chi/chi                                                        MIT License
 github.com/godbus/dbus                                                       BSD 2-Clause "Simplified" License
 github.com/go-errors/errors                                                  MIT License

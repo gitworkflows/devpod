@@ -11,22 +11,22 @@ const banners = [
     {
         type: "Watch recording",
         title: "Beyond Kubernetes: A deep-dive into Devpod Flex with our CTO",
-        link: "https://www.devpod.khulnasoft.com/events#watch-on-demand",
+        link: "https://www.devpod.io/events#watch-on-demand",
     },
     {
         type: "Blog Post",
         title: "Devpod Enterprise:<br/> Self-hosted, not self-managed",
-        link: "https://www.devpod.khulnasoft.com/blog/self-hosted-not-self-managed",
+        link: "https://www.devpod.io/blog/self-hosted-not-self-managed",
     },
     {
         type: "Customer Story",
         title: "Thousands of hours spent on VM-based development environments reduced to zero using Devpod",
-        link: "https://www.devpod.khulnasoft.com/customers/kingland",
+        link: "https://www.devpod.io/customers/kingland",
     },
     {
         type: "Gartner Report",
         title: `"By 2026, 60% of cloud workloads will be built and deployed using CDE's"`,
-        link: "https://www.devpod.khulnasoft.com/blog/gartner-2023-cde-hypecycle",
+        link: "https://www.devpod.io/blog/gartner-2023-cde-hypecycle",
     },
 ];
 

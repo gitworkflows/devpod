@@ -8,9 +8,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/gitpod-io/local-app/pkg/constants"
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
-	"github.com/gitpod-io/local-app/pkg/selfupdate"
+	"github.com/khulnasoft/local-app/pkg/constants"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
+	"github.com/khulnasoft/local-app/pkg/selfupdate"
 	"github.com/sagikazarmark/slog-shim"
 	"github.com/spf13/cobra"
 )

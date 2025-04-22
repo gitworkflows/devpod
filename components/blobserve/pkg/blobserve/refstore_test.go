@@ -24,7 +24,7 @@ import (
 
 func TestBlobFor(t *testing.T) {
 	const (
-		refDescriptor = "devpod.khulnasoft.com/test:tag"
+		refDescriptor = "devpod.io/test:tag"
 		hashManifest  = "5de870aced7e6c182a10e032e94de15893c95edd80d9cc20348b0f1627826d93"
 		hashLayer     = "4970405cb2a3a461cc00fd755712beded51919d7e69270d7d10d0dcf5e209714"
 	)

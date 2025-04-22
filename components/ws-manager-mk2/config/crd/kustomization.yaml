@@ -6,8 +6,8 @@
 # since it depends on service name and namespace that are out of this kustomize package.
 # It should be run by config/default
 resources:
-- bases/workspace.devpod.khulnasoft.com_workspaces.yaml
-- bases/workspace.devpod.khulnasoft.com_snapshots.yaml
+- bases/workspace.devpod.io_workspaces.yaml
+- bases/workspace.devpod.io_snapshots.yaml
 #+kubebuilder:scaffold:crdkustomizeresource
 
 patchesStrategicMerge:

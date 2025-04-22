@@ -9,7 +9,7 @@ metadata:
   name: workspace-editor-role
 rules:
 - apiGroups:
-  - workspace.devpod.khulnasoft.com
+  - workspace.devpod.io
   resources:
   - workspaces
   verbs:
@@ -21,7 +21,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - workspace.devpod.khulnasoft.com
+  - workspace.devpod.io
   resources:
   - workspaces/status
   verbs:

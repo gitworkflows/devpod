@@ -10,11 +10,11 @@ import {
     ContextURL,
     User,
     WorkspaceAndInstance,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import {
     matchesInstanceIdOrLegacyWorkspaceIdExactly,
     matchesNewWorkspaceIdExactly,
-} from "@khulnasoft/devpod-protocol/lib/util/parse-workspace-id";
+} from "@devpod/devpod-protocol/lib/util/parse-workspace-id";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";

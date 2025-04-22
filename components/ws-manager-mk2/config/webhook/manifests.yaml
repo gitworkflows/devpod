@@ -14,12 +14,12 @@ webhooks:
     service:
       name: webhook-service
       namespace: system
-      path: /mutate-workspace-gitpod-io-v1-workspace
+      path: /mutate-workspace-khulnasoft-v1-workspace
   failurePolicy: Fail
   name: mworkspace.kb.io
   rules:
   - apiGroups:
-    - workspace.devpod.khulnasoft.com
+    - workspace.devpod.io
     apiVersions:
     - v1
     operations:
@@ -40,12 +40,12 @@ webhooks:
     service:
       name: webhook-service
       namespace: system
-      path: /validate-workspace-gitpod-io-v1-workspace
+      path: /validate-workspace-khulnasoft-v1-workspace
   failurePolicy: Fail
   name: vworkspace.kb.io
   rules:
   - apiGroups:
-    - workspace.devpod.khulnasoft.com
+    - workspace.devpod.io
     apiVersions:
     - v1
     operations:

@@ -78,8 +78,8 @@ The Public API Server is configured through a JSON configuration file:
     "port": 3000,
     "address": "0.0.0.0"
   },
-  "devpodServiceURL": "https://devpod.khulnasoft.com/api",
-  "publicURL": "https://api.devpod.khulnasoft.com",
+  "devpodServiceURL": "https://devpod.io/api",
+  "publicURL": "https://api.devpod.io",
   "sessionServiceAddress": "session-service:3000",
   "databaseConfigPath": "/etc/devpod/db",
   "redis": {

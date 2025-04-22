@@ -33,11 +33,11 @@ import {
     DescribeClusterRequest,
     DescribeClusterResponse,
 } from "./core_pb";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import * as opentracing from "opentracing";
 import * as grpc from "@grpc/grpc-js";
-import { Disposable } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { Disposable } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 
 export function withTracing(ctx: TraceContext) {
     const metadata = new grpc.Metadata();

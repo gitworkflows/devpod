@@ -6,7 +6,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { authProviderClient } from "../../service/public-api";
-import { AuthProvider, ListAuthProvidersRequest } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProvider, ListAuthProvidersRequest } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
 import { useCurrentUser } from "../../user-context";
 
 export type OrgAuthProvidersQueryResult = AuthProvider[];

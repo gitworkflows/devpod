@@ -7,12 +7,12 @@ toolchain go1.23.3
 require (
 	github.com/alecthomas/jsonschema v0.0.0-20210413112511-5c9c23bdc720
 	github.com/cespare/xxhash/v2 v2.2.0
-	github.com/google/go-cmp v0.6.0
-	github.com/h2non/filetype v1.0.8
-	github.com/hashicorp/golang-lru v1.0.2
 	github.com/khulnasoft/devpod/common-go v0.0.0-00010101000000-000000000000
 	github.com/khulnasoft/devpod/devpod-protocol v0.0.0-00010101000000-000000000000
 	github.com/khulnasoft/devpod/ws-manager/api v0.0.0-00010101000000-000000000000
+	github.com/google/go-cmp v0.6.0
+	github.com/h2non/filetype v1.0.8
+	github.com/hashicorp/golang-lru v1.0.2
 	github.com/prometheus/client_golang v1.19.0
 	github.com/prometheus/procfs v0.12.0
 	github.com/sirupsen/logrus v1.9.3
@@ -30,6 +30,8 @@ require (
 	github.com/cenkalti/backoff/v4 v4.2.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/emicklei/go-restful/v3 v3.11.0 // indirect
+	github.com/khulnasoft/devpod/components/scrubber v0.0.0-00010101000000-000000000000 // indirect
+	github.com/khulnasoft/devpod/content-service/api v0.0.0-00010101000000-000000000000 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-openapi/jsonpointer v0.19.6 // indirect
 	github.com/go-openapi/jsonreference v0.20.2 // indirect
@@ -48,8 +50,6 @@ require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
-	github.com/khulnasoft/devpod/components/scrubber v0.0.0-00010101000000-000000000000 // indirect
-	github.com/khulnasoft/devpod/content-service/api v0.0.0-00010101000000-000000000000 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect

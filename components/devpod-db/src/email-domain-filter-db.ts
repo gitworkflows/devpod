@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { EmailDomainFilterEntry } from "@khulnasoft/devpod-protocol";
+import { EmailDomainFilterEntry } from "@devpod/devpod-protocol";
 
 export const EmailDomainFilterDB = Symbol("EmailDomainFilterDB");
 export interface EmailDomainFilterDB {

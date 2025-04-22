@@ -14,14 +14,14 @@ import (
 	"os"
 	"time"
 
-	"github.com/gitpod-io/local-app/pkg/auth"
-	"github.com/gitpod-io/local-app/pkg/config"
-	"github.com/gitpod-io/local-app/pkg/constants"
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
-	"github.com/gitpod-io/local-app/pkg/selfupdate"
-	"github.com/gitpod-io/local-app/pkg/telemetry"
 	"github.com/gookit/color"
 	"github.com/khulnasoft/devpod/components/public-api/go/client"
+	"github.com/khulnasoft/local-app/pkg/auth"
+	"github.com/khulnasoft/local-app/pkg/config"
+	"github.com/khulnasoft/local-app/pkg/constants"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
+	"github.com/khulnasoft/local-app/pkg/selfupdate"
+	"github.com/khulnasoft/local-app/pkg/telemetry"
 	"github.com/lmittmann/tint"
 	"github.com/mattn/go-isatty"
 	"github.com/spf13/cobra"
@@ -92,7 +92,7 @@ var rootCmd = &cobra.Command{
 		}
 		cmd.SetContext(config.ToContext(context.Background(), cfg))
 
-		host := "https://devpod.khulnasoft.com"
+		host := "https://devpod.io"
 		telemetryEnabled := !telemetry.DoNotTrack()
 		telemetryEnabled = telemetryEnabled && cfg.Telemetry.Enabled
 		gpctx, err := cfg.GetActiveContext()

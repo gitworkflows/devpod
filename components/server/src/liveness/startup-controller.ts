@@ -6,9 +6,9 @@
 
 import { injectable, inject } from "inversify";
 import express from "express";
-import { TypeORM } from "@khulnasoft/devpod-db/lib";
+import { TypeORM } from "@devpod/devpod-db/lib";
 import { SpiceDBClientProvider } from "../authorization/spicedb";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { v1 } from "@authzed/authzed-node";
 import { Redis } from "ioredis";
 

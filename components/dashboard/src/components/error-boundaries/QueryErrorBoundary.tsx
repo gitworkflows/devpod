@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { QueryErrorResetBoundary, useQueryClient } from "@tanstack/react-query";
 import { FC } from "react";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
@@ -78,7 +78,7 @@ const ExpectedQueryErrorsFallback: FC<FallbackProps> = ({ error, resetErrorBound
         if (isDevpodIo() && window.location.pathname === "/" && window.location.hash === "") {
             // If there's no gp cookie, bounce to www site
             if (!hasLoggedInBefore()) {
-                window.location.href = `https://www.devpod.khulnasoft.com`;
+                window.location.href = `https://www.devpod.io`;
                 return <div></div>;
             }
         }

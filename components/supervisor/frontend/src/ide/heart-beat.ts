@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { DisposableCollection, Disposable } from "@khulnasoft/devpod-protocol/lib/util/disposable";
+import { DisposableCollection, Disposable } from "@devpod/devpod-protocol/lib/util/disposable";
 import { FrontendDashboardServiceClient } from "../shared/frontend-dashboard-service";
 
 let lastActivity = 0;

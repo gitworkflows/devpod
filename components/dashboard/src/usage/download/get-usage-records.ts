@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ListUsageRequest, Ordering, Usage } from "@khulnasoft/devpod-protocol/lib/usage";
+import { ListUsageRequest, Ordering, Usage } from "@devpod/devpod-protocol/lib/usage";
 import { getDevpodService } from "../../service/service";
 
 type GetAllUsageRecordsArgs = Pick<ListUsageRequest, "attributionId" | "from" | "to"> & {

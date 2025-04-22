@@ -4,18 +4,18 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
 import * as chai from "chai";
 import "mocha";
 import { Container } from "inversify";
 import { createTestContainer } from "../test/service-testing-container-module";
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TypeORM } from "@khulnasoft/devpod-db/lib";
-import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TypeORM } from "@devpod/devpod-db/lib";
+import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
 import { OrganizationService } from "../orgs/organization-service";
 import { Authorizer } from "../authorization/authorizer";
 import { UserService } from "./user-service";
-import { Organization, User } from "@khulnasoft/devpod-protocol";
-import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { Organization, User } from "@devpod/devpod-protocol";
+import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { expectError } from "../test/expect-utils";
 
 const expect = chai.expect;

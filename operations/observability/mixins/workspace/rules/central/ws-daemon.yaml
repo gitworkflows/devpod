@@ -17,7 +17,7 @@ spec:
       labels:
         severity: warning
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/DevpodWsDaemonCrashLooping.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodWsDaemonCrashLooping.md
         summary: Ws-daemon is crashlooping in cluster {{ $labels.cluster }}.
         description: Pod {{ $labels.namespace }}/{{ $labels.pod }} ({{ $labels.container }}) is restarting {{ printf "%.2f" $value }} times / 10 minutes.
       expr: |
@@ -27,7 +27,7 @@ spec:
       labels:
         severity: warning
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/DevpodWsDaemonExcessiveGC.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodWsDaemonExcessiveGC.md
         summary: Pod {{ $labels.pod }} in cluster {{ $labels.cluster }} is doing excessive garbage collection.
         description: Ws-daemon has excessive garbage collection time. Collecting garbage for more than 1 second.
       expr: |

@@ -162,7 +162,7 @@ func TestMatchWorkspaceHostHeader(t *testing.T) {
 		PortVars         map[string]string
 	}
 
-	wsHostSuffix := ".devpod.khulnasoft.com"
+	wsHostSuffix := ".devpod.io"
 	tests := []struct {
 		Name       string
 		HostHeader string
@@ -180,12 +180,12 @@ func TestMatchWorkspaceHostHeader(t *testing.T) {
 		{
 			Name:       "no match 2",
 			HostHeader: "0d9rkrj560blqb5s07q431ru9mhg19k1k4bqgd1dbprtgmt7vuhk" + wsHostSuffix,
-			Path:       "ghcr.io/devpod-core-dev/build/ide/code:nightly@sha256:41aeea688aa0943bd746cb70c4ed378910f7c7ecf56f5f53ccb2b76c6b68e1a7/__files__/index.html",
+			Path:       "khulnasoft/devpod-environment/build/ide/code:nightly@sha256:41aeea688aa0943bd746cb70c4ed378910f7c7ecf56f5f53ccb2b76c6b68e1a7/__files__/index.html",
 		},
 		{
 			Name:       "no match 3",
 			HostHeader: "v--0d9rkrj560blqb5s07q431ru9mhg19k1k4bqgd1dbprtgmt7vuhk" + wsHostSuffix,
-			Path:       "ghcr.io/devpod-core-dev/build/ide/code:nightly@sha256:41aeea688aa0943bd746cb70c4ed378910f7c7ecf56f5f53ccb2b76c6b68e1a7/__files__/index.html",
+			Path:       "khulnasoft/devpod-environment/build/ide/code:nightly@sha256:41aeea688aa0943bd746cb70c4ed378910f7c7ecf56f5f53ccb2b76c6b68e1a7/__files__/index.html",
 		},
 		{
 			Name:       "workspace match",

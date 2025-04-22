@@ -12,7 +12,7 @@ import Alert from "../components/Alert";
 import { Button } from "@podkit/buttons/Button";
 import SignInWithLinkedIn from "../images/sign-in-with-linkedin.svg";
 import { getDevpodService } from "../service/service";
-import { LinkedInProfile } from "@khulnasoft/devpod-protocol";
+import { LinkedInProfile } from "@devpod/devpod-protocol";
 import { useToast } from "../components/toasts/Toasts";
 
 type Props = {

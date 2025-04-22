@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TraceContext, TracingManager } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { TraceContext, TracingManager } from "@devpod/devpod-protocol/lib/util/tracing";
 import { interfaces } from "inversify";
 import * as opentracing from "opentracing";
 

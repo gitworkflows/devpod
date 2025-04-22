@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Project } from "@khulnasoft/devpod-protocol";
+import { Project } from "@devpod/devpod-protocol";
 import { suite, test } from "@testdeck/mocha";
 import * as chai from "chai";
 import { testContainer } from "./test-container";

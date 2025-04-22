@@ -7,7 +7,7 @@
 import { inject, injectable } from "inversify";
 import { TypeORM } from "./typeorm";
 
-import { AuditLog } from "@khulnasoft/devpod-protocol/lib/audit-log";
+import { AuditLog } from "@devpod/devpod-protocol/lib/audit-log";
 import { Between, FindConditions, LessThan, Repository } from "typeorm";
 import { AuditLogDB } from "../audit-log-db";
 import { DBAuditLog } from "./entity/db-audit-log";

@@ -313,7 +313,7 @@ func configureSSHMessageOfTheDay() {
 	gp stop               Stop current workspace
 	gp help               To learn about the gp CLI commands
 
-For more information, see the Devpod documentation: https://devpod.khulnasoft.com/docs
+For more information, see the Devpod documentation: https://devpod.io/docs
 `)
 
 	if err := ioutil.WriteFile("/etc/motd", msg, 0o644); err != nil {

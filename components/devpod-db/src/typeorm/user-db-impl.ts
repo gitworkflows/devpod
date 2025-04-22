@@ -17,8 +17,8 @@ import {
     UserEnvVar,
     UserEnvVarValue,
     UserSSHPublicKey,
-} from "@khulnasoft/devpod-protocol";
-import { EncryptionService } from "@khulnasoft/devpod-protocol/lib/encryption/encryption-service";
+} from "@devpod/devpod-protocol";
+import { EncryptionService } from "@devpod/devpod-protocol/lib/encryption/encryption-service";
 import {
     DateInterval,
     ExtraAccessTokenFields,
@@ -46,11 +46,11 @@ import { DBTokenEntry } from "./entity/db-token-entry";
 import { DBUser } from "./entity/db-user";
 import { DBUserEnvVar } from "./entity/db-user-env-vars";
 import { DBUserSshPublicKey } from "./entity/db-user-ssh-public-key";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { DataCache } from "../data-cache";
 import { TransactionalDBImpl } from "./transactional-db-impl";
 import { TypeORM } from "./typeorm";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { filter } from "../utils";
 
 // OAuth token expiry

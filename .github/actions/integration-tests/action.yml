@@ -69,7 +69,7 @@ runs:
       name: configure docker
       shell: bash
       run: |
-        gcloud auth configure-docker ghcr.io --quiet
+        gcloud auth configure-docker eu.gcr.io --quiet
     - name: Setup
       shell: bash
       env:

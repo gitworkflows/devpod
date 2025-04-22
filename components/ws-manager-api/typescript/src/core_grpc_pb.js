@@ -9,7 +9,7 @@
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var core_pb = require('./core_pb.js');
-var content$service$api_initializer_pb = require('@khulnasoft/content-service/lib');
+var content$service$api_initializer_pb = require('@devpod/content-service/lib');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 var google_protobuf_duration_pb = require('google-protobuf/google/protobuf/duration_pb.js');
 

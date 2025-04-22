@@ -7,8 +7,8 @@ package cmd
 import (
 	"log/slog"
 
-	"github.com/gitpod-io/local-app/pkg/auth"
-	"github.com/gitpod-io/local-app/pkg/config"
+	"github.com/khulnasoft/local-app/pkg/auth"
+	"github.com/khulnasoft/local-app/pkg/config"
 	"github.com/spf13/cobra"
 )
 

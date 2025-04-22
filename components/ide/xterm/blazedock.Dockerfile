@@ -11,7 +11,7 @@ RUN apt update -y \
 RUN mkdir /build \
     && cd /build \
     && git init \
-    && git remote add origin https://github.com/gitpod-io/xterm-web-ide \
+    && git remote add origin https://github.com/khulnasoft/xterm-web-ide \
     && git fetch origin $XTERM_COMMIT --depth=1 \
     && git reset --hard FETCH_HEAD
 WORKDIR /build

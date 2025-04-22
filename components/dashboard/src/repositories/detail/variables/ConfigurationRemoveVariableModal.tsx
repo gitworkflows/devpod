@@ -8,7 +8,7 @@ import { FunctionComponent, useCallback } from "react";
 import { useToast } from "../../../components/toasts/Toasts";
 import ConfirmationModal from "../../../components/ConfirmationModal";
 import { useDeleteConfigurationVariable } from "../../../data/configurations/configuration-queries";
-import type { ConfigurationEnvironmentVariable } from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
+import type { ConfigurationEnvironmentVariable } from "@devpod/public-api/lib/devpod/v1/envvar_pb";
 
 type Props = {
     variable: ConfigurationEnvironmentVariable;

@@ -22,7 +22,7 @@ const generatePackage = function (goos, goarch, binaryName, mainFile) {
                 "sh",
                 "-c",
                 // We need to set GOARCH explicitly here because the `defaultVariant` in `WORKSPACE.yaml` overrides it for the workspace
-                `GOARCH=${goarch} go build -trimpath -ldflags "-X github.com/gitpod-io/local-app/pkg/constants.GitCommit=\${__git_commit} -X github.com/gitpod-io/local-app/pkg/constants.BuildTime=\$(date +%s)" -o ${binaryName} ${mainFile}`,
+                `GOARCH=${goarch} go build -trimpath -ldflags "-X github.com/khulnasoft/local-app/pkg/constants.GitCommit=\${__git_commit} -X github.com/khulnasoft/local-app/pkg/constants.BuildTime=\$(date +%s)" -o ${binaryName} ${mainFile}`,
             ],
         },
         binaryName,

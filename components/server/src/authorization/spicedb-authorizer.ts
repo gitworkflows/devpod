@@ -5,17 +5,17 @@
  */
 
 import { v1 } from "@authzed/authzed-node";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
 
 import { incSpiceDBRequestsCheckTotal, observeSpicedbClientLatency, spicedbClientLatency } from "../prometheus-metrics";
 import { SpiceDBClientProvider } from "./spicedb";
 import * as grpc from "@grpc/grpc-js";
 import { base64decode } from "@jmondi/oauth2-server";
-import { DecodedZedToken } from "@khulnasoft/spicedb-impl/lib/impl/v1/impl.pb";
+import { DecodedZedToken } from "@devpod/spicedb-impl/lib/impl/v1/impl.pb";
 import { ctxTryGetCache, ctxTrySetCache } from "../util/request-context";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { isGrpcError } from "@khulnasoft/devpod-protocol/lib/util/grpc";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { isGrpcError } from "@devpod/devpod-protocol/lib/util/grpc";
 
 export function createSpiceDBAuthorizer(clientProvider: SpiceDBClientProvider): SpiceDBAuthorizer {
     return new SpiceDBAuthorizer(clientProvider, new RequestLocalZedTokenCache());

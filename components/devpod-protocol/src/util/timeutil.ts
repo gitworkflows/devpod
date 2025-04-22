@@ -4,7 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-const parseDuration = require('parse-duration');
+import parseDuration from "parse-duration";
+
 /**
  * Returns the <code>day</code>th of the next month from <code>formDate</code>.
  * If the next month does not have a <code>day</code>th, the last day of that
@@ -116,7 +117,5 @@ export function goDurationToHumanReadable(goDuration: string): string {
 }
 
 export function parseGoDurationToMs(goDuration: string): number {
-    const result = parseDuration(goDuration);
-    if (result == null) throw new Error("Invalid duration");
-    return result;
+    return parseDuration(goDuration);
 }

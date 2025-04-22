@@ -17,14 +17,14 @@ import {
     UserEnvVar,
     Workspace,
     WorkspaceInstance,
-} from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+} from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { UnauthorizedError } from "../errors";
 import { RepoURL } from "../repohost";
 import { HostContextProvider } from "./host-context-provider";
 import { reportGuardAccessCheck } from "../prometheus-metrics";
 import { FunctionAccessGuard } from "./function-access";
-import { getRequiredScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
+import { getRequiredScopes } from "@devpod/public-api-common/lib/auth-providers";
 
 declare let resourceInstance: GuardedResource;
 export type GuardedResourceKind = typeof resourceInstance.kind;

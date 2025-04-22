@@ -6,7 +6,7 @@
 
 import { CallOptions, PromiseClient } from "@connectrpc/connect";
 import { PartialMessage } from "@bufbuild/protobuf";
-import { InstallationService } from "@khulnasoft/public-api/lib/devpod/v1/installation_connect";
+import { InstallationService } from "@devpod/public-api/lib/devpod/v1/installation_connect";
 import {
     ListBlockedRepositoriesRequest,
     ListBlockedRepositoriesResponse,
@@ -24,11 +24,11 @@ import {
     GetOnboardingStateResponse,
     GetInstallationConfigurationRequest,
     GetInstallationConfigurationResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/installation_pb";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+} from "@devpod/public-api/lib/devpod/v1/installation_pb";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { getDevpodService } from "./service";
 import { converter } from "./public-api";
-import { PaginationResponse } from "@khulnasoft/public-api/lib/devpod/v1/pagination_pb";
+import { PaginationResponse } from "@devpod/public-api/lib/devpod/v1/pagination_pb";
 
 export class JsonRpcInstallationClient implements PromiseClient<typeof InstallationService> {
     async getInstallationWorkspaceDefaultImage(

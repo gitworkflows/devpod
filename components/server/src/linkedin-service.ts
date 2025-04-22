@@ -4,10 +4,10 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ErrorCodes, ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { LinkedInProfile, User } from "@khulnasoft/devpod-protocol/lib/protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { LinkedInProfileDB } from "@khulnasoft/devpod-db/lib";
+import { ErrorCodes, ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
+import { LinkedInProfile, User } from "@devpod/devpod-protocol/lib/protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { LinkedInProfileDB } from "@devpod/devpod-db/lib";
 import { inject, injectable } from "inversify";
 import fetch from "node-fetch";
 import { Config } from "./config";

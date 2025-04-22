@@ -9,7 +9,7 @@ import (
 )
 
 // URL of the Devpod documentation
-const DocsUrl = "https://www.devpod.khulnasoft.com/docs/introduction"
+const DocsUrl = "https://www.devpod.io/docs/introduction"
 
 var docsCmd = &cobra.Command{
 	Use:   "docs",

@@ -19,7 +19,7 @@ spec:
     - alert: NodeFilesystemAlmostOutOfSpace
       annotations:
         description: Filesystem on {{ $labels.device }} at {{ $labels.instance }} has only {{ printf "%.2f" $value }}% available space left.
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/NodeFilesystemAlmostOutOfSpace.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/NodeFilesystemAlmostOutOfSpace.md
         summary: Filesystem has less than 3% space left.
       expr: |
         (
@@ -34,7 +34,7 @@ spec:
     - alert: NodeFilesystemAlmostOutOfFiles
       annotations:
         description: Filesystem on {{ $labels.device }} at {{ $labels.instance }} has only {{ printf "%.2f" $value }}% available inodes left.
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/NodeFilesystemAlmostOutOfFiles.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/NodeFilesystemAlmostOutOfFiles.md
         summary: Filesystem has less than 3% inodes left.
       expr: |
         (

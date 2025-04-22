@@ -5,9 +5,9 @@
  */
 
 import * as crypto from "crypto";
-import { DBDevpodToken, UserDB } from "@khulnasoft/devpod-db/lib";
-import { DevpodToken, DevpodTokenType } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { DBDevpodToken, UserDB } from "@devpod/devpod-db/lib";
+import { DevpodToken, DevpodTokenType } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { inject, injectable } from "inversify";
 import { Authorizer } from "../authorization/authorizer";
 

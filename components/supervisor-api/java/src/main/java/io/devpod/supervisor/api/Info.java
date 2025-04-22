@@ -793,7 +793,7 @@ public final class Info {
 
     /**
      * <pre>
-     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
      * </pre>
      *
      * <code>string workspace_cluster_host = 11;</code>
@@ -802,7 +802,7 @@ public final class Info {
     java.lang.String getWorkspaceClusterHost();
     /**
      * <pre>
-     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
      * </pre>
      *
      * <code>string workspace_cluster_host = 11;</code>
@@ -4243,7 +4243,7 @@ public final class Info {
     private volatile java.lang.Object workspaceClusterHost_;
     /**
      * <pre>
-     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
      * </pre>
      *
      * <code>string workspace_cluster_host = 11;</code>
@@ -4264,7 +4264,7 @@ public final class Info {
     }
     /**
      * <pre>
-     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
      * </pre>
      *
      * <code>string workspace_cluster_host = 11;</code>
@@ -6323,7 +6323,7 @@ public final class Info {
       private java.lang.Object workspaceClusterHost_ = "";
       /**
        * <pre>
-       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
        * </pre>
        *
        * <code>string workspace_cluster_host = 11;</code>
@@ -6343,7 +6343,7 @@ public final class Info {
       }
       /**
        * <pre>
-       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
        * </pre>
        *
        * <code>string workspace_cluster_host = 11;</code>
@@ -6364,7 +6364,7 @@ public final class Info {
       }
       /**
        * <pre>
-       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
        * </pre>
        *
        * <code>string workspace_cluster_host = 11;</code>
@@ -6383,7 +6383,7 @@ public final class Info {
       }
       /**
        * <pre>
-       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
        * </pre>
        *
        * <code>string workspace_cluster_host = 11;</code>
@@ -6397,7 +6397,7 @@ public final class Info {
       }
       /**
        * <pre>
-       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
        * </pre>
        *
        * <code>string workspace_cluster_host = 11;</code>

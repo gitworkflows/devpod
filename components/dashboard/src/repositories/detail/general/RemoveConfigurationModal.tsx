@@ -6,7 +6,7 @@
 
 import { FunctionComponent, useCallback } from "react";
 import ConfirmationModal from "../../../components/ConfirmationModal";
-import type { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
+import type { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
 import { useDeleteConfiguration } from "../../../data/configurations/configuration-queries";
 
 type Props = {

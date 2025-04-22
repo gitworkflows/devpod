@@ -45,7 +45,7 @@ func main() {
 Welcome to the local preview of Devpod. Please note the following limitations:
   - Performance is limited by the capabilities of your machine - a minimum of 4 cores and 6GB of RAM are required
   - ARM CPUs including Macs with Apple Silicon (e.g. M1) are currently not supported
-For more information about these limitation, please visit the local preview documentation: https://www.devpod.khulnasoft.com/docs/self-hosted/latest/local-preview`)
+For more information about these limitation, please visit the local preview documentation: https://www.devpod.io/docs/self-hosted/latest/local-preview`)
 
 	result, _ := pterm.DefaultInteractiveConfirm.WithDefaultText("Continue?").WithDefaultValue(true).Show()
 	if !result {

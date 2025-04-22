@@ -12,8 +12,8 @@ import {
     TeamMemberInfo,
     TeamMemberRole,
     TeamMembershipInvite,
-} from "@khulnasoft/devpod-protocol";
-import { ErrorCodes, ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+} from "@devpod/devpod-protocol";
+import { ErrorCodes, ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
 import { randomBytes } from "crypto";
 import { inject, injectable, optional } from "inversify";
 import slugify from "slugify";
@@ -27,7 +27,7 @@ import { DBOrgSettings } from "./entity/db-team-settings";
 import { DBUser } from "./entity/db-user";
 import { TransactionalDBImpl } from "./transactional-db-impl";
 import { TypeORM } from "./typeorm";
-import { EncryptionService } from "@khulnasoft/devpod-protocol/lib/encryption/encryption-service";
+import { EncryptionService } from "@devpod/devpod-protocol/lib/encryption/encryption-service";
 import { DBOrgEnvVar } from "./entity/db-org-env-var";
 import { filter } from "../utils";
 

@@ -4,10 +4,10 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { SuggestedRepository } from "@khulnasoft/public-api/lib/devpod/v1/scm_pb";
-import { SelectAccountPayload } from "@khulnasoft/devpod-protocol/lib/auth";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { Deferred } from "@khulnasoft/devpod-protocol/lib/util/deferred";
+import { SuggestedRepository } from "@devpod/public-api/lib/devpod/v1/scm_pb";
+import { SelectAccountPayload } from "@devpod/devpod-protocol/lib/auth";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { Deferred } from "@devpod/devpod-protocol/lib/util/deferred";
 import { FC, FunctionComponent, useCallback, useContext, useEffect, useMemo, useState, ReactNode } from "react";
 import { useHistory, useLocation } from "react-router";
 import Alert from "../components/Alert";
@@ -36,17 +36,17 @@ import { SelectAccountModal } from "../user-settings/SelectAccountModal";
 import { settingsPathIntegrations } from "../user-settings/settings.routes";
 import { BrowserExtensionBanner } from "./BrowserExtensionBanner";
 import { WorkspaceEntry } from "./WorkspaceEntry";
-import { AuthProviderType } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProviderType } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
 import {
     CreateAndStartWorkspaceRequest_ContextURL,
     WorkspacePhase_Phase,
-} from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+} from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { Button } from "@podkit/buttons/Button";
 import { LoadingButton } from "@podkit/buttons/LoadingButton";
-import { CreateAndStartWorkspaceRequest } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { CreateAndStartWorkspaceRequest } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { PartialMessage } from "@bufbuild/protobuf";
-import { User_WorkspaceAutostartOption } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
-import { EditorReference } from "@khulnasoft/public-api/lib/devpod/v1/editor_pb";
+import { User_WorkspaceAutostartOption } from "@devpod/public-api/lib/devpod/v1/user_pb";
+import { EditorReference } from "@devpod/public-api/lib/devpod/v1/editor_pb";
 import { converter } from "../service/public-api";
 import { useUpdateCurrentUserMutation } from "../data/current-user/update-mutation";
 import { useAllowedWorkspaceClassesMemo } from "../data/workspaces/workspace-classes-query";
@@ -56,9 +56,9 @@ import { useAllowedWorkspaceEditorsMemo } from "../data/ide-options/ide-options-
 import { isDevpodIo } from "../utils";
 import { useListConfigurations } from "../data/configurations/configuration-queries";
 import { flattenPagedConfigurations } from "../data/git-providers/unified-repositories-search-query";
-import { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
+import { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
 import { useMemberRole } from "../data/organizations/members-query";
-import { OrganizationPermission } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import { OrganizationPermission } from "@devpod/public-api/lib/devpod/v1/organization_pb";
 import { useInstallationConfiguration } from "../data/installation/installation-config-query";
 
 type NextLoadOption = "searchParams" | "autoStart" | "allDone";

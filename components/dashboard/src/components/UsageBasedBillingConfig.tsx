@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
+import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
 import dayjs from "dayjs";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router";
@@ -189,7 +189,7 @@ export default function UsageBasedBillingConfig({ hideSubheading = false }: Prop
                 setErrorMessage(
                     `Could not subscribe: ${
                         error?.message || String(error)
-                    } Contact support@khulnasoft.com if you believe this is a system error.`,
+                    } Contact support@devpod.io if you believe this is a system error.`,
                 );
             }
         },

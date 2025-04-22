@@ -17,17 +17,17 @@ const expect = chai.expect;
 @suite
 export class ParseWorkspaceIdTest {
     @test public parseWorkspaceIdFromHostname_fromWorkspaceLocation() {
-        const actual = parseWorkspaceIdFromHostname("moccasin-ferret-155799b3.ws-eu01.devpod.khulnasoft.com");
+        const actual = parseWorkspaceIdFromHostname("moccasin-ferret-155799b3.ws-eu01.devpod.io");
         expect(actual).to.equal("moccasin-ferret-155799b3");
     }
 
     @test public parseWorkspaceIdFromHostname_fromWorkspacePortLocation() {
-        const actual = parseWorkspaceIdFromHostname("3000-moccasin-ferret-155799b3.ws-eu01.devpod.khulnasoft.com");
+        const actual = parseWorkspaceIdFromHostname("3000-moccasin-ferret-155799b3.ws-eu01.devpod.io");
         expect(actual).to.equal("moccasin-ferret-155799b3");
     }
 
     @test public parseWorkspaceIdFromHostname_fromWorkspacePortLocationWithWebviewPrefix() {
-        const actual = parseWorkspaceIdFromHostname("webview-3000-moccasin-ferret-155799b3.ws-eu01.devpod.khulnasoft.com");
+        const actual = parseWorkspaceIdFromHostname("webview-3000-moccasin-ferret-155799b3.ws-eu01.devpod.io");
         expect(actual).to.equal("moccasin-ferret-155799b3");
     }
 
@@ -40,18 +40,18 @@ export class ParseWorkspaceIdTest {
 
     // legacy mode
     @test public parseLegacyWorkspaceIdFromHostname_fromWorkspaceLocation() {
-        const actual = parseWorkspaceIdFromHostname("b7e0eaf8-ec73-44ec-81ea-04859263b656.ws-eu01.devpod.khulnasoft.com");
+        const actual = parseWorkspaceIdFromHostname("b7e0eaf8-ec73-44ec-81ea-04859263b656.ws-eu01.devpod.io");
         expect(actual).to.equal("b7e0eaf8-ec73-44ec-81ea-04859263b656");
     }
 
     @test public parseLegacyWorkspaceIdFromHostname_fromWorkspacePortLocation() {
-        const actual = parseWorkspaceIdFromHostname("3000-b7e0eaf8-ec73-44ec-81ea-04859263b656.ws-eu01.devpod.khulnasoft.com");
+        const actual = parseWorkspaceIdFromHostname("3000-b7e0eaf8-ec73-44ec-81ea-04859263b656.ws-eu01.devpod.io");
         expect(actual).to.equal("b7e0eaf8-ec73-44ec-81ea-04859263b656");
     }
 
     @test public parseLegacyWorkspaceIdFromHostname_fromWorkspacePortLocationWithWebviewPrefix() {
         const actual = parseWorkspaceIdFromHostname(
-            "webview-3000-b7e0eaf8-ec73-44ec-81ea-04859263b656.ws-eu01.devpod.khulnasoft.com",
+            "webview-3000-b7e0eaf8-ec73-44ec-81ea-04859263b656.ws-eu01.devpod.io",
         );
         expect(actual).to.equal("b7e0eaf8-ec73-44ec-81ea-04859263b656");
     }

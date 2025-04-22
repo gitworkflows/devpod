@@ -5,9 +5,9 @@
  */
 
 import express from "express";
-import { AuthProviderInfo, User, AuthProviderEntry, Token } from "@khulnasoft/devpod-protocol";
+import { AuthProviderInfo, User, AuthProviderEntry, Token } from "@devpod/devpod-protocol";
 
-import { UserEnvVarValue } from "@khulnasoft/devpod-protocol";
+import { UserEnvVarValue } from "@devpod/devpod-protocol";
 
 export const AuthProviderParams = Symbol("AuthProviderParams");
 export interface AuthProviderParams extends AuthProviderEntry {

@@ -2,7 +2,7 @@
 ##    loadgen benchmark prod-benchmark.yaml
 
 workspaces: 100
-ideImage: ghcr.io/khulnasoft/devpod/build/ide/code:commit-ff263e14024f00d0ed78386b4417dfa6bcd4ae2f
+ideImage: khulnasoft/devpod-environment/build/ide/code:commit-ff263e14024f00d0ed78386b4417dfa6bcd4ae2f
 # wait 30s longer than the CPU and memory timeouts
 waitForRunning: "630s"
 # wait 30s longer than the CPU and memory timeouts
@@ -18,7 +18,7 @@ featureFlags:
 # from core.proto: WORKSPACE_CONNECTION_LIMITING = 10;
   - 10
 repos:
-  - cloneURL: https://github.com/gitpod-io/workspace-stress
+  - cloneURL: https://github.com/khulnasoft/workspace-stress
     cloneTarget: main
     score: 20
     workspaceImage: registry.hub.docker.com/devpod/workspace-full:latest
@@ -97,7 +97,7 @@ repos:
     environment:
     - name: "DEVPOD_TASKS"
       value: "[{\"name\":\"Open port 1\",\"command\":\"gp ports visibility 6879:private\"},{\"name\":\"Open port 2\",\"command\":\"gp ports visibility 7869:private\"}]"
-  - cloneURL: https://github.com/gitpod-io/non-devpodified-repo
+  - cloneURL: https://github.com/khulnasoft/non-devpodified-repo
     score: 20
     cloneTarget: main
     workspaceImage: registry.hub.docker.com/devpod/workspace-full:latest

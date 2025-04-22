@@ -8,7 +8,7 @@
 import { toPlainMessage, Duration } from "@bufbuild/protobuf";
 import { expect } from "chai";
 import { PublicAPIConverter } from "./public-api-converter";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { InvalidDevpodYMLError, RepositoryNotFoundError, UnauthorizedRepositoryAccessError } from "./public-api-errors";
 import { Code, ConnectError } from "@connectrpc/connect";
 import {
@@ -23,13 +23,13 @@ import {
     InvalidCostCenterError,
     ImageBuildLogsNotYetAvailableError,
     TooManyRunningWorkspacesError,
-} from "@khulnasoft/public-api/lib/devpod/v1/error_pb";
+} from "@devpod/public-api/lib/devpod/v1/error_pb";
 import { startFixtureTest } from "./fixtures.spec";
-import { OrganizationRole } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
-import { BranchMatchingStrategy } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
-import { AuthProviderType } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
-import { Workspace, WorkspacePhase_Phase, WorkspaceSession_Owner } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
-import { WorkspaceAndInstance } from "@khulnasoft/devpod-protocol";
+import { OrganizationRole } from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import { BranchMatchingStrategy } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
+import { AuthProviderType } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
+import { Workspace, WorkspacePhase_Phase, WorkspaceSession_Owner } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspaceAndInstance } from "@devpod/devpod-protocol";
 
 describe("PublicAPIConverter", () => {
     const converter = new PublicAPIConverter();

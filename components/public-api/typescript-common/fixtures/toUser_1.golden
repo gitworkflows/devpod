@@ -10,7 +10,7 @@
                 "authProviderId": "Public-GitHub",
                 "authId": "37021919",
                 "authName": "DevpodTester",
-                "primaryEmail": "tester@khulnasoft.com"
+                "primaryEmail": "tester@devpod.io"
             }
         ],
         "blocked": false,
@@ -36,7 +36,7 @@
             "lastUpdatedDetailsNudge": "2023-12-04T08:54:34.831Z",
             "acceptedPrivacyPolicyDate": "2023-12-04T08:54:31.700Z",
             "companyName": "",
-            "emailAddress": "tester@khulnasoft.com",
+            "emailAddress": "tester@devpod.io",
             "jobRole": "other",
             "jobRoleOther": "",
             "explorationReasons": [

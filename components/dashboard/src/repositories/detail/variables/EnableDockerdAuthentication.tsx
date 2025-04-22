@@ -11,7 +11,7 @@ import { InputField } from "../../../components/forms/InputField";
 import { useToast } from "../../../components/toasts/Toasts";
 import { useId } from "../../../hooks/useId";
 import { ConfigurationSettingsField } from "../ConfigurationSettingsField";
-import { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
+import { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
 import { SquareArrowOutUpRight } from "lucide-react";
 import { useConfiguration, useConfigurationMutation } from "../../../data/configurations/configuration-queries";
 import Alert from "../../../components/Alert";
@@ -61,7 +61,7 @@ export const EnableDockerdAuthentication: FC<Props> = ({ configuration }) => {
                 </Alert>
                 <a
                     className="gp-link flex flex-row items-center gap-1"
-                    href="https://www.devpod.khulnasoft.com/docs/configure/repositories/environment-variables#docker-registry-authentication"
+                    href="https://www.devpod.io/docs/configure/repositories/environment-variables#docker-registry-authentication"
                     target="_blank"
                     rel="noreferrer"
                 >

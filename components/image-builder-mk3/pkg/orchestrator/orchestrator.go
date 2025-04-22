@@ -461,7 +461,7 @@ func (o *Orchestrator) Build(req *protocol.BuildRequest, resp protocol.ImageBuil
 
 		// The failed condition of ws-manager is not stable, hence we might wrongly report that the
 		// build was successful when in fact it wasn't. This would break workspace startup with a strange
-		// "cannot pull from reg.devpod.khulnasoft.com" error message. Instead the image-build should fail properly.
+		// "cannot pull from reg.devpod.io" error message. Instead the image-build should fail properly.
 		// To do this, we resolve the built image afterwards to ensure it was actually built.
 		if update.Status == protocol.BuildStatus_done_success {
 			exists, err := o.checkImageExists(ctx, wsrefstr, wsrefAuth)

@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WebhookEvent } from "@khulnasoft/devpod-protocol";
+import { WebhookEvent } from "@devpod/devpod-protocol";
 
 export const WebhookEventDB = Symbol("WebhookEventDB");
 export interface WebhookEventDB {

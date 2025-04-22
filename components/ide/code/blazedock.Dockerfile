@@ -10,7 +10,7 @@ ARG CODE_COMMIT
 RUN mkdir /gp-code \
     && cd /gp-code \
     && git init \
-    && git remote add origin https://github.com/gitpod-io/openvscode-server \
+    && git remote add origin https://github.com/khulnasoft/openvscode-server \
     && git fetch origin $CODE_COMMIT --depth=1 \
     && git reset --hard FETCH_HEAD
 WORKDIR /gp-code/remote
@@ -83,7 +83,7 @@ RUN apt-get update && apt-get install -y nodejs
 RUN mkdir /gp-code \
     && cd /gp-code \
     && git init \
-    && git remote add origin https://github.com/gitpod-io/openvscode-server \
+    && git remote add origin https://github.com/khulnasoft/openvscode-server \
     && git fetch origin $CODE_COMMIT --depth=1 \
     && git reset --hard FETCH_HEAD
 WORKDIR /gp-code
@@ -125,7 +125,7 @@ RUN nameShort=$(jq --raw-output '.nameShort' product.json) && \
     mv product.json.tmp product.json && \
     jq '{quality,nameLong,nameShort}' product.json
 
-RUN npm run gulp compile-build
+RUN npm run gulp compile-build-pr
 RUN npm run gulp extensions-ci
 RUN npm run gulp minify-vscode-reh
 RUN npm run gulp vscode-web-min-ci

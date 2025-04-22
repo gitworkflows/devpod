@@ -13,7 +13,7 @@ import express from "express";
 import { Server } from "../server";
 import { Container } from "inversify";
 import { productionContainerModule } from "../container-module";
-import { dbContainerModule } from "@khulnasoft/devpod-db/lib/container-module";
+import { dbContainerModule } from "@devpod/devpod-db/lib/container-module";
 
 const expect = chai.expect;
 

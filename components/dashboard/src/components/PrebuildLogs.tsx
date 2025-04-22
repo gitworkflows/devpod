@@ -11,13 +11,13 @@ import {
     WorkspaceImageBuild,
     HEADLESS_LOG_STREAM_STATUS_CODE_REGEX,
     Disposable,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import { getDevpodService } from "../service/service";
 import { PrebuildStatusOld } from "../projects/prebuild-utils";
 import { watchWorkspaceStatus } from "../data/workspaces/listen-to-workspace-ws-messages";
 import { prebuildClient, watchPrebuild, workspaceClient } from "../service/public-api";
-import { GetWorkspaceRequest, WorkspacePhase_Phase } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
-import { Prebuild, PrebuildPhase_Phase } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
+import { GetWorkspaceRequest, WorkspacePhase_Phase } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import { Prebuild, PrebuildPhase_Phase } from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
 
 const WorkspaceLogs = React.lazy(() => import("./WorkspaceLogs"));
 

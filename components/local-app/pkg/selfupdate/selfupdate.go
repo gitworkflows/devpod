@@ -22,10 +22,10 @@ import (
 	"time"
 
 	"github.com/Masterminds/semver/v3"
-	"github.com/gitpod-io/local-app/pkg/config"
-	"github.com/gitpod-io/local-app/pkg/constants"
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
 	"github.com/inconshreveable/go-update"
+	"github.com/khulnasoft/local-app/pkg/config"
+	"github.com/khulnasoft/local-app/pkg/constants"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 	"github.com/opencontainers/go-digest"
 )
 

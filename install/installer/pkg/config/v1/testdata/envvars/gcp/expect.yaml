@@ -16,7 +16,7 @@ database:
     serviceAccount:
       kind: secret
       name: gcp-db-service-account
-domain: devpod.khulnasoft.com
+domain: devpod.io
 metadata:
   region: gcp-region
 objectStorage:

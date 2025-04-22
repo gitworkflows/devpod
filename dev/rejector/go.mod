@@ -1,4 +1,4 @@
-module devpod.khulnasoft.com/rejector/v2
+module devpod.io/rejector/v2
 
 go 1.22.2
 

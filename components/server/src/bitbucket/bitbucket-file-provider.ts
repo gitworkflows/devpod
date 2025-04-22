@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Commit, Repository, User } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { Commit, Repository, User } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { inject, injectable } from "inversify";
 import { FileProvider, MaybeContent, RevisionNotFoundError } from "../repohost/file-provider";
 import { BitbucketApiFactory } from "./bitbucket-api-factory";

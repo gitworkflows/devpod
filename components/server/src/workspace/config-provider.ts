@@ -8,7 +8,7 @@ import { inject, injectable } from "inversify";
 import * as path from "path";
 import * as crypto from "crypto";
 
-import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
 import {
     User,
     WorkspaceConfig,
@@ -22,17 +22,17 @@ import {
     AdditionalContentContext,
     WithDefaultConfig,
     ProjectConfig,
-} from "@khulnasoft/devpod-protocol";
-import { DevpodFileParser } from "@khulnasoft/devpod-protocol/lib/devpod-file-parser";
+} from "@devpod/devpod-protocol";
+import { DevpodFileParser } from "@devpod/devpod-protocol/lib/devpod-file-parser";
 
 import { ConfigurationService } from "../config/configuration-service";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { AuthorizationService } from "../user/authorization-service";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import { Config } from "../config";
 import { EntitlementService } from "../billing/entitlement-service";
-import { TeamDB } from "@khulnasoft/devpod-db/lib";
-import { InvalidDevpodYMLError } from "@khulnasoft/public-api-common/lib/public-api-errors";
+import { TeamDB } from "@devpod/devpod-db/lib";
+import { InvalidDevpodYMLError } from "@devpod/public-api-common/lib/public-api-errors";
 import { ImageFileRevisionMissing, RevisionNotFoundError } from "../repohost";
 
 const POD_PATH_WORKSPACE_BASE = "/workspace";

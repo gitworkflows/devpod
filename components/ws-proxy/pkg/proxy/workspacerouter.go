@@ -99,14 +99,14 @@ func matchWorkspaceHostHeader(wsHostSuffix string, headerProvider hostHeaderProv
 			if len(matches) < 4 {
 				return false
 			}
-			// https://3000-debug-coral-dragon-ilr0r6eq.ws-eu10.devpod.khulnasoft.com/index.html
+			// https://3000-debug-coral-dragon-ilr0r6eq.ws-eu10.devpod.io/index.html
 			// debugWorkspace: true
 			// workspaceID: coral-dragon-ilr0r6eq
 			// workspacePort: 3000
 			if matches[2] != "" {
 				debugWorkspace = "true"
 			}
-			// https://3000-coral-dragon-ilr0r6eq.ws-eu10.devpod.khulnasoft.com/index.html
+			// https://3000-coral-dragon-ilr0r6eq.ws-eu10.devpod.io/index.html
 			// debugWorkspace:
 			// workspaceID: coral-dragon-ilr0r6eq
 			// workspacePort: 3000
@@ -116,7 +116,7 @@ func matchWorkspaceHostHeader(wsHostSuffix string, headerProvider hostHeaderProv
 			if len(matches) < 3 {
 				return false
 			}
-			// https://debug-coral-dragon-ilr0r6eq.ws-eu10.devpod.khulnasoft.com/index.html
+			// https://debug-coral-dragon-ilr0r6eq.ws-eu10.devpod.io/index.html
 			// debugWorkspace: true
 			// workspaceID: coral-dragon-ilr0r6eq
 			// workspacePort:
@@ -124,7 +124,7 @@ func matchWorkspaceHostHeader(wsHostSuffix string, headerProvider hostHeaderProv
 				debugWorkspace = "true"
 			}
 
-			// https://coral-dragon-ilr0r6eq.ws-eu10.devpod.khulnasoft.com/index.html
+			// https://coral-dragon-ilr0r6eq.ws-eu10.devpod.io/index.html
 			// debugWorkspace:
 			// workspaceID: coral-dragon-ilr0r6eq
 			// workspacePort:

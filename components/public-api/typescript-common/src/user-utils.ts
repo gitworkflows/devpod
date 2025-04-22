@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
-import { User as UserProtocol } from "@khulnasoft/devpod-protocol/lib/protocol";
+import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
+import { User as UserProtocol } from "@devpod/devpod-protocol/lib/protocol";
 import { Timestamp } from "@bufbuild/protobuf";
 
 /**
@@ -75,7 +75,7 @@ export function isOrganizationOwned(user: User | UserProtocol) {
 }
 
 /**
- * devpod.khulnasoft.com: Only installation-level users are allowed to create orgs (installation-level users on devpod.khulnasoft.com, and admin user on Dedicated)
+ * devpod.io: Only installation-level users are allowed to create orgs (installation-level users on devpod.io, and admin user on Dedicated)
  * Dedicated: Only if multiOrg is enabled, installation-level users can create orgs
  * @param user
  * @param isDedicated
@@ -88,7 +88,7 @@ export function isAllowedToCreateOrganization(
     isMultiOrgEnabled?: boolean,
 ): boolean {
     if (!isDedicated) {
-        // devpod.khulnasoft.com case
+        // devpod.io case
         return !isOrganizationOwned(user);
     }
 

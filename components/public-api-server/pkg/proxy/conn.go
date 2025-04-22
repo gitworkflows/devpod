@@ -14,8 +14,8 @@ import (
 	"github.com/grpc-ecosystem/go-grpc-middleware/logging/logrus/ctxlogrus"
 	"github.com/khulnasoft/devpod/common-go/log"
 	devpod "github.com/khulnasoft/devpod/devpod-protocol"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/auth"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/origin"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/auth"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/origin"
 
 	lru "github.com/hashicorp/golang-lru"
 )

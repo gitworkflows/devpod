@@ -34,7 +34,7 @@ Global state is passed through `React.Context`.
 After creating a new component, run the following to update the license header:
 `blazedock run components:update-license-header`
 
-## How to develop in devpod.khulnasoft.com
+## How to develop in devpod.io
 
 ### Against any* Devpod installation
 
@@ -57,7 +57,7 @@ All the commands in this section are meant to be executed from the `components/d
 
 #### 1. Environment variables
 
-Set the following 2 [environment variables](https://www.devpod.khulnasoft.com/docs/environment-variables) either [via your account settings](https://devpod.khulnasoft.com/variables) or [via the command line](https://www.devpod.khulnasoft.com/docs/environment-variables#using-the-command-line-gp-env).
+Set the following 2 [environment variables](https://www.devpod.io/docs/environment-variables) either [via your account settings](https://devpod.io/variables) or [via the command line](https://www.devpod.io/docs/environment-variables#using-the-command-line-gp-env).
 
 You are not expected to update the values of these variables for a long time after you first set them.
 
@@ -66,8 +66,8 @@ You are not expected to update the values of these variables for a long time aft
 You can always go to your account settings and edit the scope for each variable to something like `*/devpod`.
 
 ```bash
-# Use "devpod.khulnasoft.com" for the SaaS version of Devpod, or specify the host of your self-hosted devpod
-GP_DEV_HOST=devpod.khulnasoft.com
+# Use "devpod.io" for the SaaS version of Devpod, or specify the host of your self-hosted devpod
+GP_DEV_HOST=devpod.io
 
 # Notice the cookie name (_devpod_io_v2_) may be different if self-hosted.
 # Read below for how to get the actual value to use instead of "AUTHENTICATION_COOKIE_VALUE"

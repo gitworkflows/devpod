@@ -9,7 +9,7 @@ import {
     GitInitializer,
     GitInitializer_CloneTargetMode,
     ParseContextURLResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+} from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { workspaceClient } from "../../service/public-api";
 
 export function useWorkspaceContext(contextUrl?: string) {

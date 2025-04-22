@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@khulnasoft/content-service",
+  "name": "@devpod/content-service",
   "version": "0.1.5",
   "license": "UNLICENSED",
   "scripts": {

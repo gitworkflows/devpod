@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { OIDCClientConfig } from "@khulnasoft/public-api/lib/devpod/experimental/v1/oidc_pb";
+import { OIDCClientConfig } from "@devpod/public-api/lib/devpod/experimental/v1/oidc_pb";
 import { FC, useCallback, useState } from "react";
 import { Button } from "@podkit/buttons/Button";
 import { EmptyMessage } from "../../components/EmptyMessage";

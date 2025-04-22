@@ -12,8 +12,8 @@ import { useCurrentOrg, useOrganizations } from "../data/organizations/orgs-quer
 import { useLocation } from "react-router";
 import { useOrgBillingMode } from "../data/billing-mode/org-billing-mode-query";
 import { useIsOwner, useListOrganizationMembers, useHasRolePermission } from "../data/organizations/members-query";
-import { isAllowedToCreateOrganization } from "@khulnasoft/public-api-common/lib/user-utils";
-import { OrganizationRole } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import { isAllowedToCreateOrganization } from "@devpod/public-api-common/lib/user-utils";
+import { OrganizationRole } from "@devpod/public-api/lib/devpod/v1/organization_pb";
 import { useFeatureFlag } from "../data/featureflag-query";
 import { PlusIcon } from "lucide-react";
 import { useInstallationConfiguration } from "../data/installation/installation-config-query";

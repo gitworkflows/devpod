@@ -86,7 +86,7 @@ The component provides implementations for various database operations:
 ## Dependencies
 
 ### Internal Dependencies
-- `@khulnasoft/devpod-protocol`: Shared protocol definitions
+- `@devpod/devpod-protocol`: Shared protocol definitions
 - Encryption services for securing sensitive data
 - Tracing infrastructure for observability
 

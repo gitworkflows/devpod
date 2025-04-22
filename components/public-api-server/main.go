@@ -5,7 +5,7 @@
 package main
 
 import (
-	"github.com/khulnasoft/khulnasoft/public-api-server/cmd"
+	"github.com/khulnasoft/devpod/public-api-server/cmd"
 )
 
 func main() {

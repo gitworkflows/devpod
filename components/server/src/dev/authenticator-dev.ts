@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AuthProviderInfo } from "@khulnasoft/devpod-protocol";
+import { AuthProviderInfo } from "@devpod/devpod-protocol";
 import express from "express";
 import { injectable } from "inversify";
 import { Strategy as DummyStrategy } from "passport-dummy";

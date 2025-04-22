@@ -9,7 +9,7 @@ jaeger:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
           - matchExpressions:
-              - key: devpod.khulnasoft.com/workload_meta
+              - key: devpod.io/workload_meta
                 operator: In
                 values:
                   - 'true'

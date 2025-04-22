@@ -1,6 +1,6 @@
 {
   "workspace": {
-    "id": "khulnasoft-devpod-ve5gs3cb32j",
+    "id": "devpodio-devpod-ve5gs3cb32j",
     "creationTime": "2023-12-01T04:53:27.228Z",
     "organizationId": "ce36c2f8-5d43-4b1d-92f2-08cb6f0e0869",
     "ownerId": "b49148ed-6e1f-4eae-927f-1e62a3c9dab9",
@@ -30,7 +30,7 @@
     },
     "cloneUrl": "https://github.com/khulnasoft/devpod.git",
     "config": {
-      "image": "ghcr.io/devpod-core-dev/dev/dev-environment:aledbf-go-122-gha.23879",
+      "image": "khulnasoft/devpod-environment/dev/dev-environment:aledbf-go-122-gha.23879",
       "workspaceLocation": "devpod/devpod-ws.code-workspace",
       "checkoutLocation": "devpod",
       "ports": [
@@ -77,10 +77,10 @@
       "ideCredentials": "ideCredentials"
     },
     "imageSource": {
-      "baseImageResolved": "ghcr.io/devpod-core-dev/dev/dev-environment:aledbf-go-122-gha.23879"
+      "baseImageResolved": "khulnasoft/devpod-environment/dev/dev-environment:aledbf-go-122-gha.23879"
     },
     "imageNameResolved": "877922613839.dkr.ecr.eu-central-1.amazonaws.com/image-build/workspace-images:adb73357f7e48abcb1210a0fad039618a8156bb5de667a2ae7acb98ff5244b5e",
-    "baseImageNameResolved": "ghcr.io/devpod-core-dev/dev/dev-environment@sha256:1107ae38187802fd784467529d9cc0b98e720f0980e3ec2fcbcecb4d7916da5e",
+    "baseImageNameResolved": "khulnasoft/devpod-environment/dev/dev-environment@sha256:1107ae38187802fd784467529d9cc0b98e720f0980e3ec2fcbcecb4d7916da5e",
     "shareable": true,
     "type": "regular",
     "softDeleted": null,
@@ -90,11 +90,11 @@
   },
   "latestInstance": {
     "id": "4b1ef455-e04c-43d3-bf5d-0d67f168c9f3",
-    "workspaceId": "khulnasoft-devpod-ve5gs3cb32j",
+    "workspaceId": "devpodio-devpod-ve5gs3cb32j",
     "region": "workspace",
     "creationTime": "2023-12-01T04:53:27.295Z",
     "startedTime": "2023-12-01T04:53:41.918Z",
-    "ideUrl": "https://khulnasoft-devpod-ve5gs3cb32j.ws.devpod.khulnasoft.com",
+    "ideUrl": "https://devpodio-devpod-ve5gs3cb32j.ws.devpod.io",
     "workspaceImage": "877922613839.dkr.ecr.eu-central-1.amazonaws.com/image-build/workspace-images:adb73357f7e48abcb1210a0fad039618a8156bb5de667a2ae7acb98ff5244b5e",
     "status": {
       "phase": "running",
@@ -116,13 +116,13 @@
       "ownerToken": "ownerToken22",
       "exposedPorts": [
         {
-          "url": "https://3000-khulnasoft-devpod-ve5gs3cb32j.ws.devpod.khulnasoft.com",
+          "url": "https://3000-devpodio-devpod-ve5gs3cb32j.ws.devpod.io",
           "port": 3000,
           "protocol": "http",
           "visibility": "private"
         },
         {
-          "url": "https://3306-khulnasoft-devpod-ve5gs3cb32j.ws.devpod.khulnasoft.com",
+          "url": "https://3306-devpodio-devpod-ve5gs3cb32j.ws.devpod.io",
           "port": 3306,
           "protocol": "http",
           "visibility": "public"

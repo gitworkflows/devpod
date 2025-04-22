@@ -5,8 +5,8 @@
  */
 
 import { HandlerContext, ServiceImpl } from "@connectrpc/connect";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { InstallationService as InstallationServiceInterface } from "@khulnasoft/public-api/lib/devpod/v1/installation_connect";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { InstallationService as InstallationServiceInterface } from "@devpod/public-api/lib/devpod/v1/installation_connect";
 import {
     CreateBlockedEmailDomainRequest,
     CreateBlockedEmailDomainResponse,
@@ -24,14 +24,14 @@ import {
     ListBlockedEmailDomainsResponse,
     ListBlockedRepositoriesRequest,
     ListBlockedRepositoriesResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/installation_pb";
+} from "@devpod/public-api/lib/devpod/v1/installation_pb";
 import { inject, injectable } from "inversify";
 import { InstallationService } from "../auth/installation-service";
 import { ctxUserId } from "../util/request-context";
 import { PaginationToken, generatePaginationToken, parsePaginationToken } from "./pagination";
 import { parseSorting } from "./sorting";
-import { PaginationResponse } from "@khulnasoft/public-api/lib/devpod/v1/pagination_pb";
-import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
+import { PaginationResponse } from "@devpod/public-api/lib/devpod/v1/pagination_pb";
+import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
 import { Unauthenticated } from "./unauthenticated";
 
 @injectable()

@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { DevpodToken, DevpodTokenType } from "@khulnasoft/devpod-protocol";
+import { DevpodToken, DevpodTokenType } from "@devpod/devpod-protocol";
 import { Column, Entity, PrimaryColumn } from "typeorm";
 import { Transformer } from "../transformer";
 import { TypeORM } from "../typeorm";

@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { OrganizationEnvironmentVariable } from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
+import { OrganizationEnvironmentVariable } from "@devpod/public-api/lib/devpod/v1/envvar_pb";
 import { envVarClient } from "../../service/public-api";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 

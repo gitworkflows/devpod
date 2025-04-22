@@ -61,5 +61,3 @@ components/server/*.log
 
 # Local redis dump files
 dump.rdb
-.qodo
-.docker_temp_2433091945

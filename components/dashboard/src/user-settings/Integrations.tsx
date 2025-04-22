@@ -9,8 +9,8 @@ import {
     getRequiredScopes,
     getScopeNameForScope,
     getScopesForAuthProviderType,
-} from "@khulnasoft/public-api-common/lib/auth-providers";
-import { SelectAccountPayload } from "@khulnasoft/devpod-protocol/lib/auth";
+} from "@devpod/public-api-common/lib/auth-providers";
+import { SelectAccountPayload } from "@devpod/devpod-protocol/lib/auth";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import Alert from "../components/Alert";
@@ -38,13 +38,13 @@ import {
     AuthProvider,
     AuthProviderDescription,
     AuthProviderType,
-} from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+} from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
 import { authProviderClient, scmClient, userClient } from "../service/public-api";
 import { useCreateUserAuthProviderMutation } from "../data/auth-providers/create-user-auth-provider-mutation";
 import { useUpdateUserAuthProviderMutation } from "../data/auth-providers/update-user-auth-provider-mutation";
 import { useDeleteUserAuthProviderMutation } from "../data/auth-providers/delete-user-auth-provider-mutation";
 import { Button } from "@podkit/buttons/Button";
-import { isOrganizationOwned } from "@khulnasoft/public-api-common/lib/user-utils";
+import { isOrganizationOwned } from "@devpod/public-api-common/lib/user-utils";
 import { InputWithCopy } from "../components/InputWithCopy";
 import { useAuthProviderOptionsQuery } from "../data/auth-providers/auth-provider-options-query";
 
@@ -371,7 +371,7 @@ function GitProviders() {
                 Manage your permissions to the available Git provider integrations.{" "}
                 <a
                     className="gp-link"
-                    href="https://www.devpod.khulnasoft.com/docs/configure/authentication"
+                    href="https://www.devpod.io/docs/configure/authentication"
                     target="_blank"
                     rel="noreferrer"
                 >
@@ -742,7 +742,7 @@ export function GitIntegrationModal(
                 <span>
                     Use this redirect URI to update the OAuth application and set it up.&nbsp;
                     <a
-                        href="https://www.devpod.khulnasoft.com/docs/azure-devops-integration/#oauth-application"
+                        href="https://www.devpod.io/docs/azure-devops-integration/#oauth-application"
                         target="_blank"
                         rel="noreferrer noopener"
                         className="gp-link"
@@ -777,10 +777,10 @@ export function GitIntegrationModal(
         let docsUrl = ``;
         switch (type) {
             case AuthProviderType.GITHUB:
-                docsUrl = `https://www.devpod.khulnasoft.com/docs/github-integration/#oauth-application`;
+                docsUrl = `https://www.devpod.io/docs/github-integration/#oauth-application`;
                 break;
             case AuthProviderType.GITLAB:
-                docsUrl = `https://www.devpod.khulnasoft.com/docs/gitlab-integration/#oauth-application`;
+                docsUrl = `https://www.devpod.io/docs/gitlab-integration/#oauth-application`;
                 break;
             default:
                 return undefined;

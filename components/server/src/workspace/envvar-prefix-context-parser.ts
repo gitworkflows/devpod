@@ -5,9 +5,9 @@
  */
 
 import { IPrefixContextParser } from "./context-parser";
-import { User, WorkspaceContext, WithEnvvarsContext } from "@khulnasoft/devpod-protocol";
+import { User, WorkspaceContext, WithEnvvarsContext } from "@devpod/devpod-protocol";
 import { injectable } from "inversify";
-import { EnvVarWithValue } from "@khulnasoft/devpod-protocol/lib/protocol";
+import { EnvVarWithValue } from "@devpod/devpod-protocol/lib/protocol";
 
 @injectable()
 export class EnvvarPrefixParser implements IPrefixContextParser {

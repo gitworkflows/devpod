@@ -7,7 +7,7 @@ envvars:
   DB_CLOUDSQL_SERVICE_ACCOUNT_NAME: gcp-db-service-account
   DB_CLOUDSQL_INSTANCE: gcp-db-instance
   DB_CLOUDSQL_ENABLED: "1"
-  DOMAIN: devpod.khulnasoft.com
+  DOMAIN: devpod.io
   REGISTRY_INCLUSTER_ENABLED: "0"
   REGISTRY_EXTERNAL_CERTIFICATE_NAME: gcp-reg-secret
   REGISTRY_URL: gcp-reg-url

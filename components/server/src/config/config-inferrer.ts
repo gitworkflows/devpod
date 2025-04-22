@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WorkspaceConfig } from "@khulnasoft/devpod-protocol";
+import { WorkspaceConfig } from "@devpod/devpod-protocol";
 
 export interface Context {
     config: WorkspaceConfig;

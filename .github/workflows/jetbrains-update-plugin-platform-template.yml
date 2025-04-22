@@ -99,8 +99,8 @@ jobs:
                   team-reviewers: |
                     team-experience
                   token: ${{ secrets.roboquatRepoPat }}
-                  committer: Robo Quat <roboquat@khulnasoft.com>
-                  author: Robo Quat <roboquat@khulnasoft.com>
+                  committer: Robo Quat <roboquat@devpod.io>
+                  author: Robo Quat <roboquat@devpod.io>
             - name: Create Pull Request for Backend Plugin
               id: create-backend-pr
               if: ${{ steps.changes.outputs.dirty && inputs.isBackendPlugin }}
@@ -143,8 +143,8 @@ jobs:
                   team-reviewers: |
                     team-experience
                   token: ${{ secrets.roboquatRepoPat }}
-                  committer: Robo Quat <roboquat@khulnasoft.com>
-                  author: Robo Quat <roboquat@khulnasoft.com>
+                  committer: Robo Quat <roboquat@devpod.io>
+                  author: Robo Quat <roboquat@devpod.io>
             - name: Get previous job's status
               id: lastrun
               uses: filiptronicek/get-last-job-status@main

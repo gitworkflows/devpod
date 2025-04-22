@@ -6,14 +6,14 @@
 
 import { CallOptions, PromiseClient } from "@connectrpc/connect";
 import { PartialMessage } from "@bufbuild/protobuf";
-import { VerificationService } from "@khulnasoft/public-api/lib/devpod/v1/verification_connect";
+import { VerificationService } from "@devpod/public-api/lib/devpod/v1/verification_connect";
 import {
     SendPhoneNumberVerificationTokenRequest,
     SendPhoneNumberVerificationTokenResponse,
     VerifyPhoneNumberVerificationTokenRequest,
     VerifyPhoneNumberVerificationTokenResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/verification_pb";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+} from "@devpod/public-api/lib/devpod/v1/verification_pb";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { getDevpodService } from "./service";
 import { validate as uuidValidate } from "uuid";
 

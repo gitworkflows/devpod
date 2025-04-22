@@ -11,7 +11,7 @@ export class UpdateFlask1617617125217 implements MigrationInterface {
         const toDelete = ["https://github.com/breatheco-de/python-flask-api-tutorial"];
         const newEntries = [
             {
-                url: "https://github.com/gitpod-io/python-flask-example",
+                url: "https://github.com/khulnasoft/python-flask-example",
                 description: "The official example from Flask",
                 priority: 40,
             },

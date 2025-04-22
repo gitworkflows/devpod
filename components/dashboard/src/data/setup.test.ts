@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Organization } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import { Organization } from "@devpod/public-api/lib/devpod/v1/organization_pb";
 import { Timestamp } from "@bufbuild/protobuf";
 import { hydrate, dehydrate } from "./setup";
 

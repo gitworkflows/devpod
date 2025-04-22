@@ -1,5 +1,5 @@
 {
-  "name": "@khulnasoft/supervisor-api-grpcweb",
+  "name": "@devpod/supervisor-api-grpcweb",
   "version": "0.1.5",
   "license": "UNLICENSED",
   "scripts": {

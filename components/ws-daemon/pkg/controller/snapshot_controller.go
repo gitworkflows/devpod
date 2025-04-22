@@ -69,9 +69,9 @@ func snapshotEventFilter(nodeName string) predicate.Predicate {
 	}
 }
 
-//+kubebuilder:rbac:groups=workspace.devpod.khulnasoft.com,resources=snapshots,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=workspace.devpod.khulnasoft.com,resources=snapshots/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=workspace.devpod.khulnasoft.com,resources=snapshots/finalizers,verbs=update
+//+kubebuilder:rbac:groups=workspace.devpod.io,resources=snapshots,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=workspace.devpod.io,resources=snapshots/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=workspace.devpod.io,resources=snapshots/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.

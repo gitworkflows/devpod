@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { BillingMode } from "@khulnasoft/devpod-protocol/lib/billing-mode";
+import { BillingMode } from "@devpod/devpod-protocol/lib/billing-mode";
 import { useQuery } from "@tanstack/react-query";
 import { getDevpodService } from "../../service/service";
 import { useCurrentOrg } from "../organizations/orgs-query";

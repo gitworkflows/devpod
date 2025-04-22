@@ -6,14 +6,14 @@
 
 import express from "express";
 import { injectable } from "inversify";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { AuthProviderInfo } from "@khulnasoft/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { AuthProviderInfo } from "@devpod/devpod-protocol";
 import { UnconfirmedUserException } from "../auth/errors";
 import { GitLab } from "./api";
 import { GenericAuthProvider } from "../auth/generic-auth-provider";
 import { AuthUserSetup } from "../auth/auth-provider";
 import { oauthUrls } from "./gitlab-urls";
-import { GitLabOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
+import { GitLabOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
 
 @injectable()
 export class GitLabAuthProvider extends GenericAuthProvider {

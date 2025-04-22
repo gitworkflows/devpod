@@ -31,14 +31,14 @@ func TestDiskActions(t *testing.T) {
 	tests := []DiskTest{
 		{
 			Name:            "xfs-quota-is_exceeded",
-			ContextURL:      "github.com/gitpod-io/empty",
+			ContextURL:      "github.com/khulnasoft/empty",
 			SpaceToAllocate: "55G",
 			TestFilePath:    "/workspace/is-exceeded",
 			ExpectError:     true,
 		},
 		{
 			Name:            "xfs-quota-is_OK",
-			ContextURL:      "github.com/gitpod-io/empty",
+			ContextURL:      "github.com/khulnasoft/empty",
 			SpaceToAllocate: "4G",
 			TestFilePath:    "/workspace/is-OK",
 			ExpectError:     false,

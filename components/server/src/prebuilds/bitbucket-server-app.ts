@@ -6,17 +6,17 @@
 
 import express from "express";
 import { postConstruct, injectable, inject } from "inversify";
-import { TeamDB, WebhookEventDB } from "@khulnasoft/devpod-db/lib";
+import { TeamDB, WebhookEventDB } from "@devpod/devpod-db/lib";
 import { PrebuildManager } from "./prebuild-manager";
 import { TokenService } from "../user/token-service";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
-import { CommitContext, CommitInfo, Project, User, WebhookEvent } from "@khulnasoft/devpod-protocol";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { CommitContext, CommitInfo, Project, User, WebhookEvent } from "@devpod/devpod-protocol";
 import { RepoURL } from "../repohost";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { ContextParser } from "../workspace/context-parser-service";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { UserService } from "../user/user-service";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { URL } from "url";
 import { ProjectsService } from "../projects/projects-service";
 import { SubjectId } from "../auth/subject-id";

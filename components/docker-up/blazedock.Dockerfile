@@ -4,7 +4,7 @@
 
 FROM scratch
 
-LABEL skip-n.registry-facade.devpod.khulnasoft.com="2"
+LABEL skip-n.registry-facade.devpod.io="2"
 # the next two layers (WORKDIR) will be removed by registry-facade
 # this avoids the replacement of the content of the existing directories
 WORKDIR /usr/local/bin

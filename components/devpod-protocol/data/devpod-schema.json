@@ -1,5 +1,5 @@
 {
-    "$id": "https://devpod.khulnasoft.com/schemas/devpod-schema.json",
+    "$id": "https://devpod.io/schemas/devpod-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Devpod Config",
     "type": "object",
@@ -78,7 +78,7 @@
                     "prebuild": {
                         "type": "string",
                         "description": "A shell command to run after `before`. This command is executed only on during workspace prebuilds. This command is expected to terminate. If it fails, the workspace build fails.",
-                        "deprecationMessage": "Deprecated. Please use `init` task instead. See https://www.devpod.khulnasoft.com/docs/config-start-tasks."
+                        "deprecationMessage": "Deprecated. Please use `init` task instead. See https://www.devpod.io/docs/config-start-tasks."
                     },
                     "command": {
                         "type": "string",

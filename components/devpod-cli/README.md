@@ -18,11 +18,11 @@ Here are a few of the things you can do with it:
 - Take a snapshot of the current workspace
 - Create a Devpod configuration for the current project
 
-Learn more about it by running `gp —-help` or checking the [documentation](https://www.devpod.khulnasoft.com/docs/command-line-interface/).
+Learn more about it by running `gp —-help` or checking the [documentation](https://www.devpod.io/docs/command-line-interface/).
 
 ## Useful Links
 
-- [Usage Docs](https://www.devpod.khulnasoft.com/docs/command-line-interface)
+- [Usage Docs](https://www.devpod.io/docs/command-line-interface)
 - [GitHub Issues](https://github.com/khulnasoft/devpod/labels/component%3A%20gp%20cli)
 
 ## Contributing

@@ -29,7 +29,7 @@ runs:
       name: configure env variables
       shell: bash
       run: |
-        gcloud auth configure-docker ghcr.io --quiet
+        gcloud auth configure-docker eu.gcr.io --quiet
 
         {
             echo "BLAZEDOCK_SEGMENT_KEY=${{ inputs.blazedock_segment_key }}"

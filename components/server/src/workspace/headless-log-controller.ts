@@ -13,8 +13,8 @@ import {
     User,
     Workspace,
     WorkspaceInstance,
-} from "@khulnasoft/devpod-protocol";
-import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
+} from "@devpod/devpod-protocol";
+import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
 import {
     CompositeResourceAccessGuard,
     OwnerResourceGuard,
@@ -23,9 +23,9 @@ import {
     FGAResourceAccessGuard,
     ResourceAccessGuard,
 } from "../auth/resource-access";
-import { DBWithTracing, TracedWorkspaceDB } from "@khulnasoft/devpod-db/lib/traced-db";
-import { WorkspaceDB } from "@khulnasoft/devpod-db/lib/workspace-db";
-import { TeamDB } from "@khulnasoft/devpod-db/lib/team-db";
+import { DBWithTracing, TracedWorkspaceDB } from "@devpod/devpod-db/lib/traced-db";
+import { WorkspaceDB } from "@devpod/devpod-db/lib/workspace-db";
+import { TeamDB } from "@devpod/devpod-db/lib/team-db";
 import {
     HEADLESS_LOGS_PATH_PREFIX,
     HEADLESS_LOG_DOWNLOAD_PATH_PREFIX,
@@ -38,15 +38,15 @@ import { accessHeadlessLogs } from "../auth/rate-limiter";
 import { BearerAuth } from "../auth/bearer-authenticator";
 import { ProjectsService } from "../projects/projects-service";
 import { HostContextProvider } from "../auth/host-context-provider";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { WorkspaceService } from "./workspace-service";
 import { ctxIsAborted, ctxOnAbort, ctxTrySubjectId, runWithSubSignal, runWithSubjectId } from "../util/request-context";
 import { SubjectId } from "../auth/subject-id";
 import { PrebuildManager } from "../prebuilds/prebuild-manager";
 import { validate as uuidValidate } from "uuid";
-import { getPrebuildErrorMessage } from "@khulnasoft/public-api-common/lib/prebuild-utils";
-import { Deferred } from "@khulnasoft/devpod-protocol/lib/util/deferred";
+import { getPrebuildErrorMessage } from "@devpod/public-api-common/lib/prebuild-utils";
+import { Deferred } from "@devpod/devpod-protocol/lib/util/deferred";
 
 @injectable()
 export class HeadlessLogController {

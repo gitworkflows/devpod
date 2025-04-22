@@ -6,8 +6,8 @@
 
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { prebuildClient, stream } from "../../service/public-api";
-import { Prebuild, PrebuildPhase_Phase } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { Prebuild, PrebuildPhase_Phase } from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 
 export function usePrebuildQuery(prebuildId: string) {
     return useQuery<Prebuild, Error>(

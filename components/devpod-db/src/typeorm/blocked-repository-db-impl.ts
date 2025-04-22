@@ -9,7 +9,7 @@ import { EntityManager, Repository } from "typeorm";
 import { TypeORM } from "./typeorm";
 import { DBBlockedRepository } from "./entity/db-blocked-repository";
 import { BlockedRepositoryDB } from "../blocked-repository-db";
-import { BlockedRepository } from "@khulnasoft/devpod-protocol/lib/blocked-repositories-protocol";
+import { BlockedRepository } from "@devpod/devpod-protocol/lib/blocked-repositories-protocol";
 
 @injectable()
 export class TypeORMBlockedRepositoryDBImpl implements BlockedRepositoryDB {

@@ -4,9 +4,9 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { IDEFrontendService, IDEFrontendState } from "@khulnasoft/devpod-protocol/lib/ide-frontend-service";
-import { Disposable, DisposableCollection } from "@khulnasoft/devpod-protocol/lib/util/disposable";
-import { Emitter } from "@khulnasoft/devpod-protocol/lib/util/event";
+import { IDEFrontendService, IDEFrontendState } from "@devpod/devpod-protocol/lib/ide-frontend-service";
+import { Disposable, DisposableCollection } from "@devpod/devpod-protocol/lib/util/disposable";
+import { Emitter } from "@devpod/devpod-protocol/lib/util/event";
 
 interface IDEFrontendCapabilities {
     /**

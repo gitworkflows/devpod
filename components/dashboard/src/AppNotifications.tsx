@@ -11,13 +11,13 @@ import { useUserLoader } from "./hooks/use-user-loader";
 import { isDevpodIo } from "./utils";
 import { trackEvent } from "./Analytics";
 import { useUpdateCurrentUserMutation } from "./data/current-user/update-mutation";
-import { User as UserProtocol } from "@khulnasoft/devpod-protocol";
-import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
+import { User as UserProtocol } from "@devpod/devpod-protocol";
+import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
 import { useCurrentOrg } from "./data/organizations/orgs-query";
-import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
+import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
 import { getDevpodService } from "./service/service";
 import { useOrgBillingMode } from "./data/billing-mode/org-billing-mode-query";
-import { Organization } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import { Organization } from "@devpod/public-api/lib/devpod/v1/organization_pb";
 
 const KEY_APP_DISMISSED_NOTIFICATIONS = "devpod-app-notifications-dismissed";
 const PRIVACY_POLICY_LAST_UPDATED = "2024-12-03";
@@ -55,7 +55,7 @@ const UPDATED_PRIVACY_POLICY = (updateUser: (user: Partial<UserProtocol>) => Pro
         message: (
             <span className="text-md">
                 We've updated our Privacy Policy. You can review it{" "}
-                <a className="gp-link" href="https://www.devpod.khulnasoft.com/privacy" target="_blank" rel="noreferrer">
+                <a className="gp-link" href="https://www.devpod.io/privacy" target="_blank" rel="noreferrer">
                     here
                 </a>
                 .
@@ -97,7 +97,7 @@ const DEVPOD_FLEX_INTRODUCTION = (updateUser: (user: Partial<UserProtocol>) => P
                 <b>Introducing Devpod Flex:</b> self-host for free in 3 min or run locally using Devpod Desktop |{" "}
                 <a
                     className="text-kumquat-ripe font-bold"
-                    href="https://app.devpod.khulnasoft.com"
+                    href="https://app.devpod.io"
                     target="_blank"
                     rel="noreferrer"
                 >
@@ -131,6 +131,21 @@ const INVALID_BILLING_ADDRESS = (stripePortalUrl: string | undefined) => {
     } as Notification;
 };
 
+const DEVPOD_CLASSIC_SUNSET = {
+    id: "devpod-classic-sunset",
+    type: "info" as AlertType,
+    preventDismiss: true, // This makes it so users can't dismiss the notification
+    message: (
+        <span className="text-md">
+            <b>Devpod Classic is sunsetting fall 2025.</b>{" "}
+            <a className="text-kumquat-base font-bold" href="https://app.devpod.io" target="_blank" rel="noreferrer">
+                Try the new Devpod
+            </a>{" "}
+            now (hosted compute coming soon)
+        </span>
+    ),
+} as Notification;
+
 export function AppNotifications() {
     const [topNotification, setTopNotification] = useState<Notification | undefined>(undefined);
     const { user, loading } = useUserLoader();
@@ -145,6 +160,10 @@ export function AppNotifications() {
         const updateNotifications = async () => {
             const notifications = [];
             if (!loading) {
+                if (isDevpodIo()) {
+                    notifications.push(DEVPOD_CLASSIC_SUNSET);
+                }
+
                 if (
                     isDevpodIo() &&
                     (!user?.profile?.acceptedPrivacyPolicyDate ||
@@ -197,7 +216,7 @@ export function AppNotifications() {
         <div className="app-container pt-2">
             <Alert
                 type={topNotification.type}
-                closable={true}
+                closable={topNotification.id !== "devpod-classic-sunset"} // Only show close button if it's not the sunset notification
                 onClose={() => {
                     if (!topNotification.preventDismiss) {
                         dismissNotification();

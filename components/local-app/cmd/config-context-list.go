@@ -5,8 +5,8 @@
 package cmd
 
 import (
-	"github.com/gitpod-io/local-app/pkg/config"
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
+	"github.com/khulnasoft/local-app/pkg/config"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 	"github.com/spf13/cobra"
 )
 

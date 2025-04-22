@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { MetricsReporter } from "@khulnasoft/devpod-protocol/lib/metrics";
+import { MetricsReporter } from "@devpod/devpod-protocol/lib/metrics";
 import { getExperimentsClient } from "../experiments/client";
 import { v4 } from "uuid";
 const commit = require("./config.json").commit;

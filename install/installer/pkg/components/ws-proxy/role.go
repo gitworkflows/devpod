@@ -24,7 +24,7 @@ func role(ctx *common.RenderContext) ([]runtime.Object, error) {
 			},
 		},
 		{
-			APIGroups: []string{"workspace.devpod.khulnasoft.com"},
+			APIGroups: []string{"workspace.devpod.io"},
 			Resources: []string{"workspaces"},
 			Verbs: []string{
 				"get",

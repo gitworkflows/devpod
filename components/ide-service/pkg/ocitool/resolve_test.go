@@ -24,7 +24,7 @@ func TestResolveIDEVersion(t *testing.T) {
 		{
 			name: "happy path",
 			args: args{
-				ref: "ghcr.io/devpod-core-dev/build/ide/goland:latest@sha256:06bf4d6fb7a55427f5e83e46ed9a2561930981ec044cf914276c0a92b45f5d30",
+				ref: "khulnasoft/devpod-environment/build/ide/goland:latest@sha256:06bf4d6fb7a55427f5e83e46ed9a2561930981ec044cf914276c0a92b45f5d30",
 			},
 			want:    "2022.3",
 			wantErr: false,
@@ -32,7 +32,7 @@ func TestResolveIDEVersion(t *testing.T) {
 		{
 			name: "image for vscode desktop version not found",
 			args: args{
-				ref: "ghcr.io/devpod-core-dev/build/ide/code-desktop:commit-00c77a9d85e85f210b0e564119f7e9889d75317e",
+				ref: "khulnasoft/devpod-environment/build/ide/code-desktop:commit-00c77a9d85e85f210b0e564119f7e9889d75317e",
 			},
 			want:    "",
 			wantErr: false,

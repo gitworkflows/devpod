@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Branch, CommitInfo, Repository } from "@khulnasoft/devpod-protocol";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { Branch, CommitInfo, Repository } from "@devpod/devpod-protocol";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { GitBranchStats, GitCommitRef } from "azure-devops-node-api/interfaces/GitInterfaces";
 import { GitRepository } from "azure-devops-node-api/interfaces/TfvcInterfaces";
 

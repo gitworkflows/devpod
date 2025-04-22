@@ -29,7 +29,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	metricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 
-	"github.com/gitpod-io/golang-crypto/ssh"
 	common_grpc "github.com/khulnasoft/devpod/common-go/grpc"
 	"github.com/khulnasoft/devpod/common-go/log"
 	"github.com/khulnasoft/devpod/common-go/pprof"
@@ -38,6 +37,7 @@ import (
 	"github.com/khulnasoft/devpod/ws-proxy/pkg/config"
 	"github.com/khulnasoft/devpod/ws-proxy/pkg/proxy"
 	"github.com/khulnasoft/devpod/ws-proxy/pkg/sshproxy"
+	"github.com/khulnasoft/golang-crypto/ssh"
 )
 
 var (

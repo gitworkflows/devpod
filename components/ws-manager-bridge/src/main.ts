@@ -7,15 +7,15 @@
 import { Container } from "inversify";
 import * as express from "express";
 import * as prometheusClient from "prom-client";
-import { log, LogrusLogLevel } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { installLogCountMetric } from "@khulnasoft/devpod-protocol/lib/util/logging-node";
-import { DebugApp } from "@khulnasoft/devpod-protocol/lib/util/debug-app";
-import { TypeORM } from "@khulnasoft/devpod-db/lib/typeorm/typeorm";
-import { TracingManager } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { log, LogrusLogLevel } from "@devpod/devpod-protocol/lib/util/logging";
+import { installLogCountMetric } from "@devpod/devpod-protocol/lib/util/logging-node";
+import { DebugApp } from "@devpod/devpod-protocol/lib/util/debug-app";
+import { TypeORM } from "@devpod/devpod-db/lib/typeorm/typeorm";
+import { TracingManager } from "@devpod/devpod-protocol/lib/util/tracing";
 import { ClusterServiceServer } from "./cluster-service-server";
 import { BridgeController } from "./bridge-controller";
 import { AppClusterWorkspaceInstancesController } from "./app-cluster-instance-controller";
-import { redisMetricsRegistry } from "@khulnasoft/devpod-db/lib";
+import { redisMetricsRegistry } from "@devpod/devpod-db/lib";
 import { health, startHealthEndpoint } from "./healthz";
 
 log.enableJSONLogging("ws-manager-bridge", undefined, LogrusLogLevel.getFromEnv());
@@ -48,8 +48,8 @@ export const start = async (container: Container) => {
             res.send(await mergedRegistry.metrics());
         });
         const metricsPort = 9500;
-        const metricsHttpServer = metricsApp.listen(metricsPort, "localhost", () => {
-            log.info(`prometheus metrics server running on: localhost:${metricsPort}`);
+        const metricsHttpServer = metricsApp.listen(metricsPort, "127.0.0.1", () => {
+            log.info(`prometheus metrics server running on: 127.0.0.1:${metricsPort}`);
         });
 
         const debugApp = container.get<DebugApp>(DebugApp);

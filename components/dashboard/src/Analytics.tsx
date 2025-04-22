@@ -4,11 +4,11 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import Cookies from "js-cookie";
 import { v4 } from "uuid";
 import { StartWorkspaceError } from "./start/StartPage";
-import { RemoteTrackMessage } from "@khulnasoft/devpod-protocol/lib/analytics";
+import { RemoteTrackMessage } from "@devpod/devpod-protocol/lib/analytics";
 
 export type Event =
     | "invite_url_requested"

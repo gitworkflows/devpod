@@ -48,8 +48,8 @@ packages:
       - imageRepoBase
     prep:
       - ["sh", "-c", "ls -d third_party/charts/*/ | while read f; do echo \"cd $f && helm dep up && cd -\"; done | sh"]
-      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.khulnasoft.com_workspaces.yaml", "pkg/components/ws-manager-mk2/crd.yaml"]
-      - ["sh", "-c", "cat _deps/components-ws-manager-mk2--crd/workspace.devpod.khulnasoft.com_snapshots.yaml >> pkg/components/ws-manager-mk2/crd.yaml"]
+      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.io_workspaces.yaml", "pkg/components/ws-manager-mk2/crd.yaml"]
+      - ["sh", "-c", "cat _deps/components-ws-manager-mk2--crd/workspace.devpod.io_snapshots.yaml >> pkg/components/ws-manager-mk2/crd.yaml"]
     config:
       packaging: app
       buildCommand: ["go", "build", "-trimpath", "-ldflags", "-buildid= -w -s -X 'github.com/khulnasoft/devpod/installer/cmd.Version=commit-${__git_commit}' -X 'github.com/khulnasoft/devpod/installer/pkg/config.DevpodContainerRegistry=${imageRepoBase}'"]

@@ -9,7 +9,7 @@ import "reflect-metadata";
 import { suite, test } from "@testdeck/mocha";
 import * as chai from "chai";
 import { IssueContexts } from "./context-parser";
-import { User } from "@khulnasoft/devpod-protocol";
+import { User } from "@devpod/devpod-protocol";
 const expect = chai.expect;
 
 const baseUserInfo: User = {

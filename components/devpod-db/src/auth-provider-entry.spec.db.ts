@@ -7,7 +7,7 @@
 import { testContainer } from "./test-container";
 import { TypeORM } from "./typeorm/typeorm";
 import { DBAuthProviderEntry } from "./typeorm/entity/db-auth-provider-entry";
-import { DeepPartial } from "@khulnasoft/devpod-protocol/lib/util/deep-partial";
+import { DeepPartial } from "@devpod/devpod-protocol/lib/util/deep-partial";
 import { resetDB } from "./test/reset-db";
 import { AuthProviderEntryDB } from "./auth-provider-entry-db";
 import { expect } from "chai";

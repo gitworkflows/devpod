@@ -2,11 +2,11 @@
 
 ## Overview
 
-This package serves as a bridge for code conversion between two distinct Devpod packages: @khulnasoft/devpod-protocol and @khulnasoft/public-api. Its primary responsibility is to ensure seamless translation of application data structures from the devpod-protocol format to the public-api gRPC format, and vice versa.
+This package serves as a bridge for code conversion between two distinct Devpod packages: @devpod/devpod-protocol and @devpod/public-api. Its primary responsibility is to ensure seamless translation of application data structures from the devpod-protocol format to the public-api gRPC format, and vice versa.
 
 ## Allowed Usage
 
-Use this package exclusively for tasks that require data structure from @khulnasoft/devpod-protocol and @khulnasoft/public-api. It's important not to introduce dependencies on this package from devpod-protocol or public-api to ensure changes in one package don't trigger rebuilds of unrelated components such as ws-manager-bridge and supervisor-frontend.
+Use this package exclusively for tasks that require data structure from @devpod/devpod-protocol and @devpod/public-api. It's important not to introduce dependencies on this package from devpod-protocol or public-api to ensure changes in one package don't trigger rebuilds of unrelated components such as ws-manager-bridge and supervisor-frontend.
 
 ## Golden tests
 

@@ -3,10 +3,10 @@
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
-import { TypeORM } from "@khulnasoft/devpod-db/lib";
-import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
-import { CommitContext, Organization, Project, User, WorkspaceConfig } from "@khulnasoft/devpod-protocol";
-import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { TypeORM } from "@devpod/devpod-db/lib";
+import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
+import { CommitContext, Organization, Project, User, WorkspaceConfig } from "@devpod/devpod-protocol";
+import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";

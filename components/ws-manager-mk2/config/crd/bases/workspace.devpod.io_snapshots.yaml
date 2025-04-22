@@ -8,9 +8,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.16.5
-  name: snapshots.workspace.devpod.khulnasoft.com
+  name: snapshots.workspace.devpod.io
 spec:
-  group: workspace.devpod.khulnasoft.com
+  group: workspace.devpod.io
   names:
     kind: Snapshot
     listKind: SnapshotList

@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User as DevpodUser } from "@khulnasoft/devpod-protocol";
+import { User as DevpodUser } from "@devpod/devpod-protocol";
 import { AuthFlow } from "../../auth/auth-provider";
 
 // use declaration merging (https://www.typescriptlang.org/docs/handbook/declaration-merging.html) to augment the standard passport/express definitions

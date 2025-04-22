@@ -18,9 +18,9 @@ on:
         required: false
         description: "The base repo of image"
         options:
-          - "ghcr.io/devpod-core-dev/build"
-          - "ghcr.io/devpod-dev-artifact/build"
-        default: "ghcr.io/devpod-core-dev/build"
+          - "khulnasoft/devpod-environment/build"
+          - "eu.gcr.io/devpod-dev-artifact/build"
+        default: "khulnasoft/devpod-environment/build"
       skip_deploy:
         required: false
         type: boolean
@@ -43,13 +43,13 @@ on:
         type: string
         required: false
         description: "The base repo of image"
-        default: "ghcr.io/devpod-core-dev/build"
+        default: "khulnasoft/devpod-environment/build"
   schedule:
     - cron: "0 3,12 * * *"
 
 jobs:
   create-runner:
-    uses: gitpod-io/gce-github-runner/.github/workflows/create-vm.yml@main
+    uses: khulnasoft/gce-github-runner/.github/workflows/create-vm.yml@main
     secrets:
       runner_token: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_TOKEN }}
       gcp_credentials: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_GCP_CREDENTIALS }}
@@ -61,7 +61,7 @@ jobs:
     runs-on: ${{ needs.create-runner.outputs.label }}
     needs: [create-runner]
     container:
-      image: docker.io/khulnasoft/devpod-environment:latest
+      image: khulnasoft/devpod-environment:main-gha.30393
     outputs:
       name: ${{ steps.configuration.outputs.name }}
       version: ${{ steps.configuration.outputs.version }}
@@ -89,10 +89,10 @@ jobs:
                   echo "version=${{ inputs.version }}"
               } >> $GITHUB_OUTPUT
           else
-              # Search the last 10 builds regardless of status (success and failed)
-              RUNID=$(gh run list --repo khulnasoft/devpod --branch main --workflow build.yml --limit 10 --json createdAt,conclusion,databaseId --jq 'map(select(.conclusion == "success")) | sort_by(.createdAt) | .[-1] | .databaseId')
+              # Search the last 10 completed builds (any conclusion except null/in-progress)
+              RUNID=$(gh run list --repo khulnasoft/devpod --branch main --workflow build.yml --limit 10 --json createdAt,conclusion,databaseId --jq 'map(select(.conclusion != null)) | sort_by(.createdAt) | .[-1] | .databaseId')
               if [ "$RUNID" == "" ]; then
-                echo no successful build found on main branch in the last 10 commits, see https://github.com/khulnasoft/devpod/actions/workflows/build.yml for details | tee -a $GITHUB_STEP_SUMMARY
+                echo no completed build found on main branch in the last 10 commits, see https://github.com/khulnasoft/devpod/actions/workflows/build.yml for details | tee -a $GITHUB_STEP_SUMMARY
                 # if we got here, it means in the last 10 builds on main, there wasn't a success, and then we'll keep getting this message
                 # to fix, manually trigger the tests with the latest main-gha asset till we get a success
                 # you might have to fix or disable flakey tests to do this
@@ -102,8 +102,12 @@ jobs:
                 exit 1
               fi
 
+              echo "Using RUNID $RUNID" | tee -a $GITHUB_STEP_SUMMARY
+              MAIN_VERSION=$(gh run view "$RUNID" --log -R khulnasoft/devpod | grep "blazedock build --cache remote -Dversion=" | grep 'main-gha.[0-9]*' -o | head -n 1)
+              echo "Using version $MAIN_VERSION" | tee -a $GITHUB_STEP_SUMMARY
+
               {
-                  echo "version=$(gh run view "$RUNID" --log -R khulnasoft/devpod | grep 'main-gha.[0-9]*' -o | head -n 1)"
+                  echo "version=$MAIN_VERSION"
               } >> $GITHUB_OUTPUT
           fi
           if [[ '${{ inputs.image_repo_base }}' != '' ]]; then
@@ -112,7 +116,7 @@ jobs:
               } >> $GITHUB_OUTPUT
           else
               {
-                  echo "image_repo_base=ghcr.io/devpod-core-dev/build"
+                  echo "image_repo_base=khulnasoft/devpod-environment/build"
               } >> $GITHUB_OUTPUT
           fi
       - name: Slack Notification
@@ -162,7 +166,7 @@ jobs:
     needs: [configuration, infrastructure, create-runner]
     runs-on: ${{ needs.create-runner.outputs.label }}
     container:
-      image: docker.io/khulnasoft/devpod-environment:latest
+      image: khulnasoft/devpod-environment:main-gha.30393
     steps:
       - uses: actions/checkout@v4
       - name: Integration Test
@@ -205,7 +209,7 @@ jobs:
       - infrastructure
       - check
       - delete
-    uses: gitpod-io/gce-github-runner/.github/workflows/delete-vm.yml@main
+    uses: khulnasoft/gce-github-runner/.github/workflows/delete-vm.yml@main
     secrets:
       gcp_credentials: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_GCP_CREDENTIALS }}
     with:

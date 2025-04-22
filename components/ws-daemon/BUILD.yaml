@@ -19,7 +19,7 @@ packages:
       - CGO_ENABLED=0
       - GOOS=linux
     prep:
-      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.khulnasoft.com_workspaces.yaml", "crd/workspace.devpod.khulnasoft.com_workspaces.yaml"]
+      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.io_workspaces.yaml", "crd/workspace.devpod.io_workspaces.yaml"]
     config:
       packaging: app
       buildCommand: ["go", "build", "-trimpath", "-ldflags=-buildid= -X 'github.com/khulnasoft/devpod/ws-daemon/cmd.Version=commit-${__git_commit}'"]
@@ -43,7 +43,7 @@ packages:
       - CGO_ENABLED=0
       - GOOS=linux
     prep:
-      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.khulnasoft.com_workspaces.yaml", "crd/workspace.devpod.khulnasoft.com_workspaces.yaml"]
+      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.io_workspaces.yaml", "crd/workspace.devpod.io_workspaces.yaml"]
     config:
       packaging: library
   - name: content-initializer

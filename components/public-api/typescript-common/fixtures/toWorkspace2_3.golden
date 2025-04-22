@@ -6,9 +6,9 @@
             "organizationId": "ce36c2f8-5d43-4b1d-92f2-08cb6f0e0869",
             "configurationId": "",
             "annotations": {},
-            "name": "gitpod-io/empty ",
+            "name": "khulnasoft/empty ",
             "pinned": false,
-            "originalContextUrl": "https://github.com/gitpod-io/empty",
+            "originalContextUrl": "https://github.com/khulnasoft/empty",
             "warnings": []
         },
         "spec": {
@@ -16,7 +16,7 @@
                 "specs": [
                     {
                         "git": {
-                            "remoteUri": "https://github.com/gitpod-io/empty.git",
+                            "remoteUri": "https://github.com/khulnasoft/empty.git",
                             "upstreamRemoteUri": "",
                             "targetMode": "CLONE_TARGET_MODE_REMOTE_COMMIT",
                             "cloneTarget": "",
@@ -60,14 +60,14 @@
                 "name": "PHASE_STOPPED",
                 "lastTransitionTime": "2023-11-29T18:56:12.986Z"
             },
-            "workspaceUrl": "https://devpodio-empty-bs8378oes6b.ws.devpod.khulnasoft.com",
+            "workspaceUrl": "https://devpodio-empty-bs8378oes6b.ws.devpod.io",
             "conditions": {
                 "failed": "",
                 "failedReason": "FAILED_REASON_UNSPECIFIED",
                 "timeout": ""
             },
             "gitStatus": {
-                "cloneUrl": "https://github.com/gitpod-io/empty.git",
+                "cloneUrl": "https://github.com/khulnasoft/empty.git",
                 "branch": "main",
                 "latestCommit": "",
                 "uncommitedFiles": [],

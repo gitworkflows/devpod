@@ -41,7 +41,7 @@ func clusterrole(ctx *common.RenderContext) ([]runtime.Object, error) {
 					Verbs:     []string{"delete", "update", "patch"},
 				},
 				{
-					APIGroups: []string{"workspace.devpod.khulnasoft.com"},
+					APIGroups: []string{"workspace.devpod.io"},
 					Resources: []string{"workspaces"},
 					Verbs: []string{
 						"get",
@@ -50,7 +50,7 @@ func clusterrole(ctx *common.RenderContext) ([]runtime.Object, error) {
 					},
 				},
 				{
-					APIGroups: []string{"workspace.devpod.khulnasoft.com"},
+					APIGroups: []string{"workspace.devpod.io"},
 					Resources: []string{"workspaces/status"},
 					Verbs: []string{
 						"get",
@@ -59,7 +59,7 @@ func clusterrole(ctx *common.RenderContext) ([]runtime.Object, error) {
 					},
 				},
 				{
-					APIGroups: []string{"workspace.devpod.khulnasoft.com"},
+					APIGroups: []string{"workspace.devpod.io"},
 					Resources: []string{"snapshots"},
 					Verbs: []string{
 						"get",
@@ -68,7 +68,7 @@ func clusterrole(ctx *common.RenderContext) ([]runtime.Object, error) {
 					},
 				},
 				{
-					APIGroups: []string{"workspace.devpod.khulnasoft.com"},
+					APIGroups: []string{"workspace.devpod.io"},
 					Resources: []string{"snapshots/status"},
 					Verbs: []string{
 						"get",

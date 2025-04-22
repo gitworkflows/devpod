@@ -7,10 +7,10 @@
 import { FunctionComponent, useCallback, useState } from "react";
 import Modal, { ModalBody, ModalFooter, ModalHeader } from "../components/Modal";
 import { Button } from "@podkit/buttons/Button";
-import { Workspace } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { Workspace } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { useUpdateWorkspaceMutation } from "../data/workspaces/update-workspace-mutation";
 import { LoadingButton } from "@podkit/buttons/LoadingButton";
-import { Workspace as WorkspaceProtocol } from "@khulnasoft/devpod-protocol";
+import { Workspace as WorkspaceProtocol } from "@devpod/devpod-protocol";
 
 export function toWorkspaceName(name: string): string {
     return WorkspaceProtocol.toWorkspaceName(name);

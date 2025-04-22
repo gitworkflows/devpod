@@ -4,12 +4,12 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User, Token } from "@khulnasoft/devpod-protocol";
+import { User, Token } from "@devpod/devpod-protocol";
 import { UnauthorizedError } from "../errors";
 import { AuthProviderParams } from "../auth/auth-provider";
 import { injectable, inject } from "inversify";
 import { TokenProvider } from "../user/token-provider";
-import { GitLabOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
+import { GitLabOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
 
 @injectable()
 export class GitLabTokenHelper {

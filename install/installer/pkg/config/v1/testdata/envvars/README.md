@@ -11,13 +11,13 @@ configuration file.
 
 ```yaml
 envvars:
-    DOMAIN: devpod.khulnasoft.com
+    DOMAIN: devpod.io
 ```
 
 ## Example expect.yaml
 
 ```yaml
-domain: devpod.khulnasoft.com
+domain: devpod.io
 ```
 
 This does not require the factory/default values that will be generated automatically

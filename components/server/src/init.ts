@@ -54,10 +54,10 @@ if (typeof (Symbol as any).asyncIterator === "undefined") {
 import express from "express";
 import { Container } from "inversify";
 import { Server } from "./server";
-import { log, LogrusLogLevel } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { installLogCountMetric } from "@khulnasoft/devpod-protocol/lib/util/logging-node";
-import { TracingManager } from "@khulnasoft/devpod-protocol/lib/util/tracing";
-import { TypeORM } from "@khulnasoft/devpod-db/lib";
+import { log, LogrusLogLevel } from "@devpod/devpod-protocol/lib/util/logging";
+import { installLogCountMetric } from "@devpod/devpod-protocol/lib/util/logging-node";
+import { TracingManager } from "@devpod/devpod-protocol/lib/util/tracing";
+import { TypeORM } from "@devpod/devpod-db/lib";
 import { dbConnectionsEnqueued, dbConnectionsFree, dbConnectionsTotal } from "./prometheus-metrics";
 import { installCtxLogAugmenter } from "./util/log-context";
 if (process.env.NODE_ENV === "development") {
@@ -69,27 +69,6 @@ installCtxLogAugmenter();
 installLogCountMetric();
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
-(async () => {
-    if (process.env.GOOGLE_CLOUD_PROFILER?.toLocaleLowerCase() !== "true") {
-        console.log("skipping cloud profiler, not enabled");
-        return;
-    }
-    console.log("starting cloud profiler");
-
-    try {
-        const profiler = await import("@google-cloud/profiler");
-        // there is no way to stop it: https://github.com/googleapis/cloud-profiler-nodejs/issues/876
-        // disable google_cloud_profiler and cycle servers
-        await profiler.start({
-            serviceContext: {
-                service: "server",
-                version: process.env.VERSION,
-            },
-        });
-    } catch (err) {
-        console.error("failed to start cloud profiler", err);
-    }
-})();
 
 export async function start(container: Container) {
     const server = container.get(Server);

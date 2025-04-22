@@ -5,9 +5,9 @@
  */
 
 import { ServiceImpl } from "@connectrpc/connect";
-import { UserDB } from "@khulnasoft/devpod-db/lib";
-import { StatsService } from "@khulnasoft/public-api/lib/devpod/experimental/v1/stats_connect";
-import { GetUserStatsRequest, GetUserStatsResponse } from "@khulnasoft/public-api/lib/devpod/experimental/v1/stats_pb";
+import { UserDB } from "@devpod/devpod-db/lib";
+import { StatsService } from "@devpod/public-api/lib/devpod/experimental/v1/stats_connect";
+import { GetUserStatsRequest, GetUserStatsResponse } from "@devpod/public-api/lib/devpod/experimental/v1/stats_pb";
 import { inject, injectable } from "inversify";
 
 @injectable()

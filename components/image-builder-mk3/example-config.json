@@ -10,9 +10,9 @@
             }
         },
         "pullSecret": "gcp-sa-registry-auth",
-        "baseImageRepository": "ghcr.io/devpod-core-dev/build/base-images",
-        "workspaceImageRepository": "ghcr.io/devpod-core-dev/build/workspace-images",
-        "builderImage": "ghcr.io/devpod-core-dev/build/image-builder-mk3/bob:4d9d04b1bf94218d47294f83b11eba652455a790"
+        "baseImageRepository": "khulnasoft/devpod-environment/build/base-images",
+        "workspaceImageRepository": "khulnasoft/devpod-environment/build/workspace-images",
+        "builderImage": "khulnasoft/devpod-environment/build/image-builder-mk3/bob:4d9d04b1bf94218d47294f83b11eba652455a790"
     },
     "refCache": {
         "interval": "6h0m0s",

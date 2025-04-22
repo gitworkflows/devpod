@@ -16,12 +16,12 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/gitpod-io/local-app/pkg/auth"
-	"github.com/gitpod-io/local-app/pkg/bastion"
-	"github.com/gitpod-io/local-app/pkg/constants"
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
 	devpod "github.com/khulnasoft/devpod/devpod-protocol"
 	appapi "github.com/khulnasoft/devpod/local-app/api"
+	"github.com/khulnasoft/local-app/pkg/auth"
+	"github.com/khulnasoft/local-app/pkg/bastion"
+	"github.com/khulnasoft/local-app/pkg/constants"
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
 	"github.com/zalando/go-keyring"
@@ -48,7 +48,7 @@ func main() {
 				EnvVars: []string{
 					"DEVPOD_HOST",
 				},
-				Value: "https://devpod.khulnasoft.com",
+				Value: "https://devpod.io",
 			},
 			&cli.BoolFlag{
 				Name:  "mock-keyring",

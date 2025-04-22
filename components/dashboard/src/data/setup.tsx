@@ -17,19 +17,19 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { FunctionComponent } from "react";
 import debounce from "lodash/debounce";
 // Need to import all the protobuf classes we want to support for hydration
-import * as OrganizationClasses from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
-import * as WorkspaceClasses from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
-import * as PaginationClasses from "@khulnasoft/public-api/lib/devpod/v1/pagination_pb";
-import * as ConfigurationClasses from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
-import * as AuthProviderClasses from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
-import * as EnvVarClasses from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
-import * as PrebuildClasses from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
-import * as VerificationClasses from "@khulnasoft/public-api/lib/devpod/v1/verification_pb";
-import * as InstallationClasses from "@khulnasoft/public-api/lib/devpod/v1/installation_pb";
-import * as SCMClasses from "@khulnasoft/public-api/lib/devpod/v1/scm_pb";
-import * as SSHClasses from "@khulnasoft/public-api/lib/devpod/v1/ssh_pb";
-import * as UserClasses from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
-import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import * as OrganizationClasses from "@devpod/public-api/lib/devpod/v1/organization_pb";
+import * as WorkspaceClasses from "@devpod/public-api/lib/devpod/v1/workspace_pb";
+import * as PaginationClasses from "@devpod/public-api/lib/devpod/v1/pagination_pb";
+import * as ConfigurationClasses from "@devpod/public-api/lib/devpod/v1/configuration_pb";
+import * as AuthProviderClasses from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
+import * as EnvVarClasses from "@devpod/public-api/lib/devpod/v1/envvar_pb";
+import * as PrebuildClasses from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
+import * as VerificationClasses from "@devpod/public-api/lib/devpod/v1/verification_pb";
+import * as InstallationClasses from "@devpod/public-api/lib/devpod/v1/installation_pb";
+import * as SCMClasses from "@devpod/public-api/lib/devpod/v1/scm_pb";
+import * as SSHClasses from "@devpod/public-api/lib/devpod/v1/ssh_pb";
+import * as UserClasses from "@devpod/public-api/lib/devpod/v1/user_pb";
+import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 
 // This is used to version the cache
 // If data we cache changes in a non-backwards compatible way, increment this version

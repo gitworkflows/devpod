@@ -14,7 +14,7 @@ packages:
       - CGO_ENABLED=0
       - GOOS=linux
     prep:
-      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.khulnasoft.com_workspaces.yaml", "crd/workspace.devpod.khulnasoft.com_workspaces.yaml"]
+      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.io_workspaces.yaml", "crd/workspace.devpod.io_workspaces.yaml"]
     config:
       packaging: app
       buildCommand: ["go", "build", "-trimpath", "-ldflags", "-buildid= -w -s -X 'github.com/khulnasoft/devpod/node-labeler/cmd.Version=commit-${__git_commit}'"]
@@ -45,4 +45,4 @@ packages:
       - components/ws-manager-api/go:lib
       - components/ws-manager-mk2:crd
     prep:
-      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.khulnasoft.com_workspaces.yaml", "crd/workspace.devpod.khulnasoft.com_workspaces.yaml"]
+      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.io_workspaces.yaml", "crd/workspace.devpod.io_workspaces.yaml"]

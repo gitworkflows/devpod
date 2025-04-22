@@ -140,7 +140,7 @@ type WorkspaceInfoResponse struct {
 	WorkspaceContextUrl string `protobuf:"bytes,9,opt,name=workspace_context_url,json=workspaceContextUrl,proto3" json:"workspace_context_url,omitempty"`
 	// repository is a repository from which this workspace was created
 	Repository *WorkspaceInfoResponse_Repository `protobuf:"bytes,10,opt,name=repository,proto3" json:"repository,omitempty"`
-	// workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+	// workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
 	WorkspaceClusterHost string `protobuf:"bytes,11,opt,name=workspace_cluster_host,json=workspaceClusterHost,proto3" json:"workspace_cluster_host,omitempty"`
 	// workspace_url is an URL for which the workspace is accessed.
 	WorkspaceUrl string `protobuf:"bytes,12,opt,name=workspace_url,json=workspaceUrl,proto3" json:"workspace_url,omitempty"`

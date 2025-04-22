@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { SuggestedRepository } from "@khulnasoft/devpod-protocol";
+import { SuggestedRepository } from "@devpod/devpod-protocol";
 
 const PRIORITY_LOW = 1;
 const PRIORITY_MEDIUM = 2;

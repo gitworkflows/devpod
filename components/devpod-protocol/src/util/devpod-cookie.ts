@@ -7,7 +7,7 @@ import * as cookie from "cookie";
 
 /**
  * This cookie indicates whether the connected client is a Devpod user (= "has logged in within the last year") or not.
- * This is used by "devpod.khulnasoft.com" and "www.devpod.khulnasoft.com" to display different content/buttons.
+ * This is used by "devpod.io" and "www.devpod.io" to display different content/buttons.
  */
 export const NAME = "devpod-user";
 export const VALUE = "true";
@@ -23,8 +23,8 @@ export function options(domain: string): cookie.CookieSerializeOptions {
         httpOnly: false,
         secure: false,
         maxAge: 60 * 60 * 24 * 365, // 1 year
-        sameSite: "lax", // default: true. "Lax" needed to ensure we see cookies from users that navigate to devpod.khulnasoft.com from external sites
-        domain: `.${domain}`, // explicitly include subdomains to not only cover "devpod.khulnasoft.com", but also "www.devpod.khulnasoft.com" or workspaces
+        sameSite: "lax", // default: true. "Lax" needed to ensure we see cookies from users that navigate to devpod.io from external sites
+        domain: `.${domain}`, // explicitly include subdomains to not only cover "devpod.io", but also "www.devpod.io" or workspaces
     };
 }
 

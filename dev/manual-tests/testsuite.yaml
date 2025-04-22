@@ -124,7 +124,7 @@ case:
   description: Set an env var in the dashboard, pass as context and manipulate using gp
   steps: |
     1. On the dashboard go to "Environment Variables" in the menu
-    2. Click the `+` button and use `testvar` as name, `foobar` as value and `gitpod-io/*` as repo pattern
+    2. Click the `+` button and use `testvar` as name, `foobar` as value and `khulnasoft/*` as repo pattern
     3. Click the `+` button and use `notpresent` as name, `foobar` as value and `doesnotexist/*` as repo pattern
     4. Start a workspace with https://devpod-staging.com/#passedin=test%20value/https://github.com/khulnasoft/devpod-test-repo
     5. In the workspace run:
@@ -137,7 +137,7 @@ case:
         - `gp env -u another && gp env | grep another` to verify that unsetting env vars works
     6. In the dashboard's "environment variables" section delete `testvar`
     7. In the workspace run `gp env | grep testvar` to verify that the variable was deleted
-    8. In the dashboard's "environment variables" section add a new variable and use `testvar` as name, `newvalue` as value and `gitpod-io/*` as repo pattern
+    8. In the dashboard's "environment variables" section add a new variable and use `testvar` as name, `newvalue` as value and `khulnasoft/*` as repo pattern
     9. In the workspace run `gp env | grep testvar` to verify that the new version of `testvar` was created
     10. Stop the workspace, wait until it is stopped and re-start that very same workspace
     11. In the restarted workspace run:
@@ -219,11 +219,11 @@ case:
   mintestercount: 1
   annotations: {}
 - id: go-gin-app
-  name: gitpod-io/go-gin-app (Go)
+  name: khulnasoft/go-gin-app (Go)
   group: Repositories
   description: Check the Go dev experience in the Go gin app repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/gitpod-io/go-gin-app in Devpod
+    - Open https://devpod-staging.com#https://github.com/khulnasoft/go-gin-app in Devpod
     - Verify that the gin web app appears in a preview and works properly
     - Open a few `*.go` files
     - Check syntax highlighting
@@ -254,7 +254,7 @@ case:
   mintestercount: 1
   annotations: {}
 - id: gs-spring-boot
-  name: gitpod-io/spring-petclinic (Java)
+  name: khulnasoft/spring-petclinic (Java)
   group: Repositories
   description: Check the Java dev experience in the Spring Pet Clinic Example
   steps: |
@@ -377,7 +377,7 @@ case:
 - id: open-branch
   name: Open a GitHub branch
   group: IDE
-  description: Open Devpod on a branch, e.g. https://devpod-staging.com/#https://github.com/gitpod-io/website/tree/cloud-tweaks
+  description: Open Devpod on a branch, e.g. https://devpod-staging.com/#https://github.com/khulnasoft/website/tree/cloud-tweaks
   steps: ""
   mustpass: true
   mintestercount: 1
@@ -395,7 +395,7 @@ case:
 - id: open-issue
   name: Open a GitHub issue
   group: IDE
-  description: Open Devpod on a issue, e.g. https://devpod-staging.com/#https://github.com/gitpod-io/website/issues/202
+  description: Open Devpod on a issue, e.g. https://devpod-staging.com/#https://github.com/khulnasoft/website/issues/202
   steps: ""
   mustpass: true
   mintestercount: 1
@@ -420,11 +420,11 @@ case:
   mintestercount: 1
   annotations: {}
 - id: rails_sample_app
-  name: gitpod-io/rails_sample_app (Ruby)
+  name: khulnasoft/rails_sample_app (Ruby)
   group: Repositories
   description: Check the Ruby dev experience in the Rails repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/gitpod-io/rails_sample_app in Devpod
+    - Open https://devpod-staging.com#https://github.com/khulnasoft/rails_sample_app in Devpod
     - Verify that the sample app works properly
     - Open a few `*.rb` files
     - Check syntax highlighting
@@ -518,11 +518,11 @@ case:
   mintestercount: 1
   annotations: {}
 - id: symfony-demo
-  name: gitpod-io/symfony-demo (PHP)
+  name: khulnasoft/symfony-demo (PHP)
   group: Repositories
   description: Check the PHP dev experience in the Symfony Demo Application repo
   steps: |
-    - Open https://devpod-staging.com#https://github.com/gitpod-io/symfony-demo in Devpod
+    - Open https://devpod-staging.com#https://github.com/khulnasoft/symfony-demo in Devpod
     - Verify that the demo app works properly
     - Open a few `*.php` files
     - Check syntax highlighting

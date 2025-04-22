@@ -4,5 +4,5 @@
 
 envvars:
   ADVANCED_MODE_ENABLED: "1"
-  CONFIG_PATCH: "domain: override.devpod.khulnasoft.com"
-  DOMAIN: devpod.khulnasoft.com
+  CONFIG_PATCH: "domain: override.devpod.io"
+  DOMAIN: devpod.io

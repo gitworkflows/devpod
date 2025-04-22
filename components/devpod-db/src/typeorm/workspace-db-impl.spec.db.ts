@@ -11,7 +11,7 @@ import * as chai from "chai";
 import { resetDB } from "../test/reset-db";
 import { WorkspaceDB } from "../workspace-db";
 import { randomUUID } from "crypto";
-import { PrebuiltWorkspaceState } from "@khulnasoft/devpod-protocol";
+import { PrebuiltWorkspaceState } from "@devpod/devpod-protocol";
 import { ProjectDB } from "../project-db";
 const expect = chai.expect;
 

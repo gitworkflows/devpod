@@ -6,7 +6,7 @@ package apiv1
 
 import (
 	"github.com/khulnasoft/devpod/components/public-api/go/experimental/v1/v1connect"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/proxy"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/proxy"
 )
 
 func NewSCMService(pool proxy.ServerConnectionPool) *SCMService {

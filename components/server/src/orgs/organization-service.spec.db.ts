@@ -4,16 +4,16 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TypeORM, UserDB } from "@khulnasoft/devpod-db/lib";
-import { Organization, OrganizationSettings, TeamMemberRole, User } from "@khulnasoft/devpod-protocol";
-import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
-import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TypeORM, UserDB } from "@devpod/devpod-db/lib";
+import { Organization, OrganizationSettings, TeamMemberRole, User } from "@devpod/devpod-protocol";
+import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";
 import { createTestContainer, withTestCtx } from "../test/service-testing-container-module";
 import { OrganizationService } from "./organization-service";
-import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
+import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
 import { expectError } from "../test/expect-utils";
 import { UserService } from "../user/user-service";
 import { DefaultWorkspaceImageValidator } from "./default-workspace-image-validator";
@@ -58,7 +58,7 @@ describe("OrganizationService", async () => {
                             orderKey: "00",
                             title: "VS Code",
                             type: "browser",
-                            logo: "https://ide.devpod.khulnasoft.com/image/ide-logo/vscode.svg",
+                            logo: "https://ide.devpod.io/image/ide-logo/vscode.svg",
                             label: "Browser",
                             image: "bar",
                             latestImage: "baz",
@@ -68,7 +68,7 @@ describe("OrganizationService", async () => {
                             orderKey: "01",
                             title: "Intellij",
                             type: "desktop",
-                            logo: "https://ide.devpod.khulnasoft.com/image/ide-logo/intellij.svg",
+                            logo: "https://ide.devpod.io/image/ide-logo/intellij.svg",
                             label: "Desktop",
                             image: "bar",
                             latestImage: "baz",

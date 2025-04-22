@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { PersonalAccessToken } from "@khulnasoft/public-api/lib/devpod/experimental/v1/tokens_pb";
+import { PersonalAccessToken } from "@devpod/public-api/lib/devpod/experimental/v1/tokens_pb";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { personalAccessTokensService } from "../service/public-api";
@@ -167,7 +167,7 @@ function ListAccessTokensView() {
                         Create or regenerate access tokens.{" "}
                         <a
                             className="gp-link"
-                            href="https://www.devpod.khulnasoft.com/docs/configure/user-settings/access-tokens"
+                            href="https://www.devpod.io/docs/configure/user-settings/access-tokens"
                             target="_blank"
                             rel="noreferrer"
                         >

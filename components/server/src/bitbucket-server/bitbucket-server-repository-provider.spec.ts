@@ -4,12 +4,12 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@khulnasoft/devpod-protocol";
-import { ifEnvVarNotSet } from "@khulnasoft/devpod-protocol/lib/util/skip-if";
+import { User } from "@devpod/devpod-protocol";
+import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
 import { Container, ContainerModule } from "inversify";
 import { retries, skip, suite, test, timeout } from "@testdeck/mocha";
 import { expect } from "chai";
-import { DevpodHostUrl } from "@khulnasoft/devpod-protocol/lib/util/devpod-host-url";
+import { DevpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
 import { AuthProviderParams } from "../auth/auth-provider";
 import { BitbucketServerContextParser } from "./bitbucket-server-context-parser";
 import { BitbucketServerTokenHelper } from "./bitbucket-server-token-handler";
@@ -55,7 +55,7 @@ class TestBitbucketServerRepositoryProvider {
                     createDevpodToken: async () => ({ token: { value: "foobar123-token" } }),
                 } as any);
                 bind(Config).toConstantValue({
-                    hostUrl: new DevpodHostUrl("https://devpod.khulnasoft.com"),
+                    hostUrl: new DevpodHostUrl("https://devpod.io"),
                 });
                 bind(TokenProvider).toConstantValue(<TokenProvider>{
                     getTokenForHost: async () => {

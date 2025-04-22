@@ -4,6 +4,7 @@ permissions:
   contents: write # This is required for actions/checkout and create release
   pull-requests: write
   actions: write  # This is required for trigger another action which is used by JetBrains integrateion tests
+  packages: read
 on:
   pull_request:
     types: [ opened, edited ]
@@ -18,7 +19,7 @@ on:
 
 jobs:
   create-runner:
-    uses: gitpod-io/gce-github-runner/.github/workflows/create-vm.yml@main
+    uses: khulnasoft/gce-github-runner/.github/workflows/create-vm.yml@main
     secrets:
       runner_token: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_TOKEN }}
       gcp_credentials: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_GCP_CREDENTIALS }}
@@ -90,7 +91,7 @@ jobs:
             echo "with_integration_tests=$(echo "$PR_DESC" | grep -oiP '(?<=\[x\] with-integration-tests=).*?(?=\s*$)')"
             echo "analytics=$(echo "$PR_DESC" | grep -oiP '(?<=\[x\] analytics=).*?(?=\s*$)')"
             echo "blazedock_cache_bucket=$([[ "$MAIN_BRANCH"  = "true" ]] && echo "blazedock-cache-main-c514a01" || echo "blazedock-cache-dev-3ac8ef5")"
-            echo "image_repo_base=$([[ "$MAIN_BRANCH"  = "true" ]] && echo "ghcr.io/devpod-core-dev" || echo "ghcr.io/devpod-dev-artifact")"
+            echo "image_repo_base=$([[ "$MAIN_BRANCH"  = "true" ]] && echo "khulnasoft/devpod-environment" || echo "eu.gcr.io/devpod-dev-artifact")"
           } >> $GITHUB_OUTPUT
 
   build-previewctl:
@@ -104,7 +105,7 @@ jobs:
       cancel-in-progress: ${{ needs.configuration.outputs.is_main_branch == 'false' }}
     runs-on: ${{ needs.create-runner.outputs.label }}
     container:
-      image: docker.io/khulnasoft/devpod-environment:latest
+      image: khulnasoft/devpod-environment:main-gha.30393
     steps:
       - uses: actions/checkout@v4
       - name: Setup Environment
@@ -171,7 +172,7 @@ jobs:
         ports:
           - 6379:6379
     container:
-      image: docker.io/khulnasoft/devpod-environment:latest
+      image: khulnasoft/devpod-environment:main-gha.30393
       env:
         DB_HOST: "mysql"
         DB_PORT: "23306"
@@ -229,6 +230,12 @@ jobs:
           cat report.html >> $GITHUB_STEP_SUMMARY
 
           exit $RESULT
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Blazedock Build
         id: blazedock
         shell: bash
@@ -300,19 +307,44 @@ jobs:
           git push origin ${VERSION}
         env:
           GITHUB_USER: roboquat
-          GITHUB_EMAIL: roboquat@khulnasoft.com
+          GITHUB_EMAIL: roboquat@devpod.io
           VERSION: ${{ needs.configuration.outputs.version }}
+
+  trivy-scan:
+    name: "Scan Images for Vulnerabilities"
+    needs:
+      - configuration
+      - build-devpod
+      - create-runner
+    runs-on: ${{ needs.create-runner.outputs.label }}
+    container:
+      image: khulnasoft/devpod-environment:main-gha.30393
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Environment
+        uses: ./.github/actions/setup-environment
+        with:
+          identity_provider: ${{ github.ref == 'refs/heads/main' && secrets.CORE_DEV_PROVIDER || secrets.DEV_PREVIEW_PROVIDER }}
+          service_account: ${{ github.ref == 'refs/heads/main' && secrets.CORE_DEV_SA || secrets.DEV_PREVIEW_SA }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
+      - name: Scan Images for Vulnerabilities
+        shell: bash
+        env:
+          INSTALLER_IMAGE_BASE_REPO: ${{needs.configuration.outputs.image_repo_base}}
+        run: |
+          ./scripts/trivy/trivy-scan-images.sh ${{ needs.configuration.outputs.version }} CRITICAL
+          exit $?
 
   install-app:
     runs-on: ${{ needs.create-runner.outputs.label }}
-    needs: [ configuration, build-devpod, create-runner ]
+    needs: [ configuration, build-devpod, trivy-scan, create-runner ]
     if: ${{ needs.configuration.outputs.is_main_branch == 'true' }}
     strategy:
       fail-fast: false
       matrix:
         env: [ staging, production ]
     steps:
-      - uses: gitpod-io/gh-app-auth@v0.1
+      - uses: khulnasoft/gh-app-auth@v0.1
         id: auth
         with:
           private-key: ${{ secrets.ACTIONS_APP_PKEY }}
@@ -343,6 +375,7 @@ jobs:
       - configuration
       - build-previewctl
       - build-devpod
+      - trivy-scan
       - infrastructure
       - create-runner
     runs-on: ${{ needs.create-runner.outputs.label }}
@@ -425,7 +458,7 @@ jobs:
       - create-runner
     runs-on: ${{ needs.create-runner.outputs.label }}
     container:
-      image: docker.io/khulnasoft/devpod-environment:latest
+      image: khulnasoft/devpod-environment:main-gha.30393
     if: needs.configuration.outputs.with_integration_tests != ''
     concurrency:
       group: ${{ needs.configuration.outputs.preview_name }}-integration-test
@@ -490,11 +523,12 @@ jobs:
       - build-previewctl
       - infrastructure
       - build-devpod
+      - trivy-scan
       - install-app
       - install
       - monitoring
       - integration-test
-    uses: gitpod-io/gce-github-runner/.github/workflows/delete-vm.yml@main
+    uses: khulnasoft/gce-github-runner/.github/workflows/delete-vm.yml@main
     secrets:
       gcp_credentials: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_GCP_CREDENTIALS }}
     with:

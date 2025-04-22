@@ -5,9 +5,9 @@
  */
 
 import { injectable, inject } from "inversify";
-import { AuthProviderEntry as AuthProviderEntry, AuthProviderInfo, OAuth2Config, User } from "@khulnasoft/devpod-protocol";
+import { AuthProviderEntry as AuthProviderEntry, AuthProviderInfo, OAuth2Config, User } from "@devpod/devpod-protocol";
 import { AuthProviderParams } from "./auth-provider";
-import { AuthProviderEntryDB, TeamDB } from "@khulnasoft/devpod-db/lib";
+import { AuthProviderEntryDB, TeamDB } from "@devpod/devpod-db/lib";
 import { Config } from "../config";
 import { v4 as uuidv4 } from "uuid";
 import { oauthUrls as githubUrls } from "../github/github-urls";
@@ -15,13 +15,13 @@ import { oauthUrls as gitlabUrls } from "../gitlab/gitlab-urls";
 import { oauthUrls as bbsUrls } from "../bitbucket-server/bitbucket-server-urls";
 import { oauthUrls as bbUrls } from "../bitbucket/bitbucket-urls";
 import { oauthUrls as azureUrls } from "../azure-devops/azure-urls";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import fetch from "node-fetch";
 import { Authorizer } from "../authorization/authorizer";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { getRequiredScopes, getScopesForAuthProviderType } from "@khulnasoft/public-api-common/lib/auth-providers";
-import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
-import { AuthProviderType } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { getRequiredScopes, getScopesForAuthProviderType } from "@devpod/public-api-common/lib/auth-providers";
+import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
+import { AuthProviderType } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
 
 @injectable()
 export class AuthProviderService {
@@ -368,7 +368,7 @@ export class AuthProviderService {
                 break;
             case "AzureDevOps":
                 // We don't support Azure DevOps for PAYG users yet because our auth flow is based on provider's host
-                if (this.config.hostUrl.url.host === "devpod.khulnasoft.com") {
+                if (this.config.hostUrl.url.host === "devpod.io") {
                     throw new ApplicationError(ErrorCodes.BAD_REQUEST, "Unexpected service type.");
                 }
                 const { authorizationUrl, tokenUrl } = newEntry;

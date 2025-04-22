@@ -11,10 +11,10 @@ import {
     TypeORM,
     UserDB,
     WorkspaceDB,
-} from "@khulnasoft/devpod-db/lib";
-import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
-import { User, Workspace } from "@khulnasoft/devpod-protocol";
-import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+} from "@devpod/devpod-db/lib";
+import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
+import { User, Workspace } from "@devpod/devpod-protocol";
+import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";

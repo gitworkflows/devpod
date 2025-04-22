@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { DBWithTracing, OneTimeSecretDB, TracedOneTimeSecretDB } from "@khulnasoft/devpod-db/lib";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { DBWithTracing, OneTimeSecretDB, TracedOneTimeSecretDB } from "@devpod/devpod-db/lib";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { inject, injectable } from "inversify";
 import { Job } from "./runner";
 

@@ -18,7 +18,7 @@ func networkpolicy(ctx *common.RenderContext) ([]runtime.Object, error) {
 	labels := common.DefaultLabels(Component)
 	var ingressRules []networkingv1.NetworkPolicyPeer
 	// Allow all ingress in workspace clusters
-	// until https://github.com/gitpod-io/ops/issues/6905 is fixed.
+	// until https://github.com/khulnasoft/ops/issues/6905 is fixed.
 	if ctx.Config.Kind != config.InstallationWorkspace {
 		ingressRules = []networkingv1.NetworkPolicyPeer{
 			{

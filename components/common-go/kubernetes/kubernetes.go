@@ -43,10 +43,10 @@ const (
 	ServiceTypeLabel = "serviceType"
 
 	// WorkspaceManaged indicates which component is responsible for managing the workspace
-	WorkspaceManagedByLabel = "devpod.khulnasoft.com/managed-by"
+	WorkspaceManagedByLabel = "devpod.io/managed-by"
 
 	// CPULimitAnnotation enforces a strict CPU limit on a workspace by virtue of ws-daemon
-	CPULimitAnnotation = "devpod.khulnasoft.com/cpuLimit"
+	CPULimitAnnotation = "devpod.io/cpuLimit"
 
 	// WorkspaceURLAnnotation is the annotation on the WS pod which contains the public workspace URL.
 	WorkspaceURLAnnotation = "devpod/url"
@@ -65,22 +65,22 @@ const (
 	WorkspaceExposedPorts = "devpod/exposedPorts"
 
 	// WorkspaceSSHPublicKeys contains all authorized ssh public keys that can be connected to the workspace
-	WorkspaceSSHPublicKeys = "devpod.khulnasoft.com/sshPublicKeys"
+	WorkspaceSSHPublicKeys = "devpod.io/sshPublicKeys"
 
 	// workspaceCpuMinLimitAnnotation denotes the minimum cpu limit of a workspace i.e. the minimum amount of resources it is guaranteed to get
-	WorkspaceCpuMinLimitAnnotation = "devpod.khulnasoft.com/cpuMinLimit"
+	WorkspaceCpuMinLimitAnnotation = "devpod.io/cpuMinLimit"
 
 	// workspaceCpuBurstLimit denotes the cpu burst limit of a workspace
-	WorkspaceCpuBurstLimitAnnotation = "devpod.khulnasoft.com/cpuBurstLimit"
+	WorkspaceCpuBurstLimitAnnotation = "devpod.io/cpuBurstLimit"
 
 	// workspaceNetConnLimit denotes the maximum number of connections a workspace can make per minute
-	WorkspaceNetConnLimitAnnotation = "devpod.khulnasoft.com/netConnLimitPerMinute"
+	WorkspaceNetConnLimitAnnotation = "devpod.io/netConnLimitPerMinute"
 
 	// workspacePressureStallInfo indicates if pressure stall information should be retrieved for the workspace
-	WorkspacePressureStallInfoAnnotation = "devpod.khulnasoft.com/psi"
+	WorkspacePressureStallInfoAnnotation = "devpod.io/psi"
 
 	// ImageNameAnnotation indicates the original format of the main image of the pod
-	ImageNameAnnotation = "devpod.khulnasoft.com/image_name"
+	ImageNameAnnotation = "devpod.io/image_name"
 )
 
 // GetOWIFromObject finds the owner, workspace and instance information on a Kubernetes object using labels

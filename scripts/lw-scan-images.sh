@@ -32,7 +32,7 @@ fi
 
 echo "=== Gathering list of _all_ images for $VERSION"
 INSTALLER="$TMP/installer"
-"$OCI_TOOL" fetch file -o "$INSTALLER" --platform=linux-amd64 "ghcr.io/devpod-core-dev/build/installer:${VERSION}" app/installer
+"$OCI_TOOL" fetch file -o "$INSTALLER" --platform=linux-amd64 "khulnasoft/devpod-environment/build/installer:${VERSION}" app/installer
 echo ""
 chmod +x "$INSTALLER"
 # Extract list of images

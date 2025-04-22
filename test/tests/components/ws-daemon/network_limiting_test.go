@@ -41,7 +41,7 @@ func TestNetworkLimiting(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			ws, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "https://github.com/gitpod-io/empty", username, api, integration.WithDevpodUser(username))
+			ws, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "https://github.com/khulnasoft/empty", username, api, integration.WithDevpodUser(username))
 			if err != nil {
 				t.Fatal(err)
 			}

@@ -5,13 +5,13 @@
  */
 
 import { HandlerContext, ServiceImpl } from "@connectrpc/connect";
-import { HelloService } from "@khulnasoft/public-api/lib/devpod/experimental/v1/dummy_connect";
+import { HelloService } from "@devpod/public-api/lib/devpod/experimental/v1/dummy_connect";
 import {
     LotsOfRepliesRequest,
     LotsOfRepliesResponse,
     SayHelloRequest,
     SayHelloResponse,
-} from "@khulnasoft/public-api/lib/devpod/experimental/v1/dummy_pb";
+} from "@devpod/public-api/lib/devpod/experimental/v1/dummy_pb";
 import { injectable } from "inversify";
 import { ctxCheckAborted, ctxTrySubjectId } from "../util/request-context";
 

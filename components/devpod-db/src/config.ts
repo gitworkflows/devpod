@@ -5,8 +5,8 @@
  */
 
 import { injectable } from "inversify";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { getEnvVarParsed, getEnvVar } from "@khulnasoft/devpod-protocol/lib/env";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { getEnvVarParsed, getEnvVar } from "@devpod/devpod-protocol/lib/env";
 import { ConnectionConfig } from "mysql";
 
 @injectable()

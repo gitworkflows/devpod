@@ -117,10 +117,10 @@ func TestScrubFormatter(t *testing.T) {
 	logger.WithTime(logTime).WithField("info", info).WithField("workspaceID", workspaceID).
 		WithError(fmt.Errorf("some test error")).
 		WithFields(ServiceContext("test", "1.0.0")).
-		Info("email: anton@khulnasoft.com")
+		Info("email: anton@devpod.io")
 
 	expectation := fmt.Sprintf(
-		`{"error":"some test error","info":"[redacted:nested]","level":"info","message":"email: anton@khulnasoft.com","serviceContext":{"service":"test","version":"1.0.0"},"severity":"INFO","time":"%s","workspaceID":"[redacted:md5:e807f1fcf82d132f9bb018ca6738a19f]"}`,
+		`{"error":"some test error","info":"[redacted:nested]","level":"info","message":"email: anton@devpod.io","serviceContext":{"service":"test","version":"1.0.0"},"severity":"INFO","time":"%s","workspaceID":"[redacted:md5:e807f1fcf82d132f9bb018ca6738a19f]"}`,
 		logTime.Format(time.RFC3339Nano),
 	)
 	actual := strings.TrimSpace(buffer.String())
@@ -189,7 +189,7 @@ func BenchmarkSimpleScrubFormatter(b *testing.B) {
 	logger.SetOutput(io.Discard)
 
 	run := func() {
-		logger.WithField("workspaceID", "1234567890").Info("email: anton@khulnasoft.com")
+		logger.WithField("workspaceID", "1234567890").Info("email: anton@devpod.io")
 	}
 
 	logger.SetFormatter(newGcpFormatter(true))

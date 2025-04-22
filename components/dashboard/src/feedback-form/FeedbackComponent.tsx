@@ -123,7 +123,7 @@ function FeedbackComponent(props: {
                         <p className="mt-2 text-pk-content-secondary">
                             {" "}
                             By submitting this form you acknowledge that you have read and understood our{" "}
-                            <a className="gp-link" target="devpod-privacy" href="https://www.devpod.khulnasoft.com/privacy/">
+                            <a className="gp-link" target="devpod-privacy" href="https://www.devpod.io/privacy/">
                                 privacy policy
                             </a>
                             .

@@ -23,7 +23,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/khulnasoft/devpod/common-go/log"
 	db "github.com/khulnasoft/devpod/components/devpod-db/go"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/jws"
 	"golang.org/x/oauth2"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

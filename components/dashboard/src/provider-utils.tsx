@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AuthProviderType } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProviderType } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
 import bitbucket from "./images/bitbucket.svg";
 import github from "./images/github.svg";
 import gitlab from "./images/gitlab.svg";

@@ -9,7 +9,7 @@
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var daemon_pb = require('./daemon_pb.js');
-var content$service$api_initializer_pb = require('@khulnasoft/content-service/lib');
+var content$service$api_initializer_pb = require('@devpod/content-service/lib');
 
 function serialize_wsdaemon_BackupWorkspaceRequest(arg) {
   if (!(arg instanceof daemon_pb.BackupWorkspaceRequest)) {

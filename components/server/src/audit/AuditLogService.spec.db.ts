@@ -4,9 +4,9 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TypeORM, UserDB, resetDB } from "@khulnasoft/devpod-db/lib";
-import { AuditLogDB } from "@khulnasoft/devpod-db/lib/audit-log-db";
-import { Organization, User } from "@khulnasoft/devpod-protocol";
+import { TypeORM, UserDB, resetDB } from "@devpod/devpod-db/lib";
+import { AuditLogDB } from "@devpod/devpod-db/lib/audit-log-db";
+import { Organization, User } from "@devpod/devpod-protocol";
 import { expect } from "chai";
 import { Container } from "inversify";
 import { v4 } from "uuid";
@@ -14,7 +14,7 @@ import { OrganizationService } from "../orgs/organization-service";
 import { createTestContainer } from "../test/service-testing-container-module";
 import { UserService } from "../user/user-service";
 import { AuditLogService } from "./AuditLogService";
-import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
 import { Timestamp } from "@bufbuild/protobuf";
 
 describe("AuditLogService", () => {

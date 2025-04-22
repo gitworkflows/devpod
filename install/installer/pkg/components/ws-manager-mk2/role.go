@@ -32,7 +32,7 @@ var controllerRules = []rbacv1.PolicyRule{
 		Resources: []string{"pod/status"},
 	},
 	{
-		APIGroups: []string{"workspace.devpod.khulnasoft.com"},
+		APIGroups: []string{"workspace.devpod.io"},
 		Resources: []string{"workspaces"},
 		Verbs: []string{
 			"create",
@@ -46,11 +46,11 @@ var controllerRules = []rbacv1.PolicyRule{
 	},
 	{
 		Verbs:     []string{"update"},
-		APIGroups: []string{"workspace.devpod.khulnasoft.com"},
+		APIGroups: []string{"workspace.devpod.io"},
 		Resources: []string{"workspaces/finalizers"},
 	},
 	{
-		APIGroups: []string{"workspace.devpod.khulnasoft.com"},
+		APIGroups: []string{"workspace.devpod.io"},
 		Resources: []string{"workspaces/status"},
 		Verbs: []string{
 			"get",
@@ -59,7 +59,7 @@ var controllerRules = []rbacv1.PolicyRule{
 		},
 	},
 	{
-		APIGroups: []string{"workspace.devpod.khulnasoft.com"},
+		APIGroups: []string{"workspace.devpod.io"},
 		Resources: []string{"snapshots"},
 		Verbs: []string{
 			"create",
@@ -70,7 +70,7 @@ var controllerRules = []rbacv1.PolicyRule{
 		},
 	},
 	{
-		APIGroups: []string{"workspace.devpod.khulnasoft.com"},
+		APIGroups: []string{"workspace.devpod.io"},
 		Resources: []string{"snapshots/status"},
 		Verbs: []string{
 			"get",

@@ -24,7 +24,7 @@ export const WorkspaceClassesEnterpriseCallout = () => {
                 <LinkButton
                     variant="secondary"
                     className="border border-pk-content-tertiary text-pk-content-primary bg-pk-surface-primary"
-                    href="https://www.devpod.khulnasoft.com/docs/configure/workspaces/workspace-classes#enterprise"
+                    href="https://www.devpod.io/docs/configure/workspaces/workspace-classes#enterprise"
                     isExternalUrl={true}
                 >
                     Documentation
@@ -32,7 +32,7 @@ export const WorkspaceClassesEnterpriseCallout = () => {
                 <LinkButton
                     variant="secondary"
                     className="border border-pk-content-tertiary text-pk-content-primary bg-pk-surface-primary"
-                    href="https://www.devpod.khulnasoft.com/docs/enterprise"
+                    href="https://www.devpod.io/docs/enterprise"
                     isExternalUrl={true}
                 >
                     Learn more about Enterprise

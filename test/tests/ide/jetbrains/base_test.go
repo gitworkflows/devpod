@@ -34,7 +34,7 @@ var testBaseConfig = map[string]struct{ ProductCode, Repo string }{
 	"pycharm":  {"PY", "https://github.com/devpod-samples/template-python-django"},
 	// TODO: open comment after https://github.com/khulnasoft/devpod/issues/16302 resolved
 	// "rubymine":  {"RM", "https://github.com/devpod-samples/template-ruby-on-rails-postgres"},
-	"rubymine":  {"RM", "https://github.com/gitpod-io/Devpod-Ruby-On-Rails"},
+	"rubymine":  {"RM", "https://github.com/khulnasoft/Devpod-Ruby-On-Rails"},
 	"webstorm":  {"WS", "https://github.com/devpod-samples/template-typescript-react"},
 	"rider":     {"RD", "https://github.com/devpod-samples/template-dotnet-core-cli-csharp"},
 	"clion":     {"CL", "https://github.com/devpod-samples/template-cpp"},
