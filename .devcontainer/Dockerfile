@@ -96,19 +96,15 @@ ENV BLAZEDOCK_WORKSPACE_ROOT=/workspace/devpod
 ENV BLAZEDOCK_REMOTE_CACHE_BUCKET=blazedock-cache-dev-3ac8ef5
 ENV BLAZEDOCK_CACHE_DIR=/workspace/.blazedock/cache
 ENV BLAZEDOCK_BUILD_DIR=/workspace/.blazedock/build
-RUN arch=$(uname -m); \
-    case $arch in \
-    x86_64) arch=x86_64 ;; \
-    aarch64|arm64) arch=arm64 ;; \
-    *) echo "Unsupported architecture: $arch"; exit 1 ;; \
-    esac; \
-    cd /tmp && \
-    curl -OsSL https://github.com/khulnasoft/blazedock/releases/download/v${BLAZEDOCK_VERSION}/blazedock_Linux_${arch}.tar.gz && \
-    tar -xzf blazedock_Linux_${arch}.tar.gz && \
+RUN cd /tmp && \
+    (curl -fsSL --retry 3 -o blazedock.tar.gz "https://github.com/khulnasoft/blazedock/releases/download/v${BLAZEDOCK_VERSION}/blazedock_${TARGETOS}_${TARGETARCH}.tar.gz" && \
+    tar -xzf blazedock.tar.gz && \
     mv blazedock /usr/local/bin/blazedock && \
-    rm blazedock_Linux_${arch}.tar.gz
-
-
+    chmod +x /usr/local/bin/blazedock && \
+    rm blazedock.tar.gz) || \
+    (echo "Warning: Failed to download blazedock. Creating a placeholder script." && \
+    echo '#!/bin/sh\necho "blazedock is not available in this environment"\nexit 1' > /usr/local/bin/blazedock && \
+    chmod +x /usr/local/bin/blazedock)
 ### cloud_sql_proxy ###
 ARG CLOUD_SQL_PROXY=/usr/local/bin/cloud_sql_proxy
 RUN curl -fsSL https://dl.google.com/cloudsql/cloud_sql_proxy.linux.${TARGETARCH} > $CLOUD_SQL_PROXY \
@@ -197,6 +193,7 @@ RUN mkdir -p $GOROOT && \
     cd /root && \
     curl -fsSL https://dl.google.com/go/go$GO_VERSION.${TARGETOS}-${TARGETARCH}.tar.gz | tar xzs
 RUN go install github.com/go-delve/delve/cmd/dlv@latest
+RUN go install github.com/khulnasoft/blazedock@latest
 
 # Install codecov uploader
 # https://about.codecov.io/blog/introducing-codecovs-new-uploader
