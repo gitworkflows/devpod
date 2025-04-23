@@ -567,8 +567,8 @@ func (n *nodeUtilizationVec) Collect(ch chan<- prometheus.Metric) {
 		nodeTypes       = make(map[string]string)
 	)
 	for _, node := range nodes.Items {
-		isRegular := node.Labels["devpod.io/workload_workspace_regular"] == "true"
-		isHeadless := node.Labels["devpod.io/workload_workspace_headless"] == "true"
+		isRegular := node.Labels["devpod.khulnasoft.com/workload_workspace_regular"] == "true"
+		isHeadless := node.Labels["devpod.khulnasoft.com/workload_workspace_headless"] == "true"
 		if !isRegular && !isHeadless {
 			// Ignore non-workspace nodes.
 			continue

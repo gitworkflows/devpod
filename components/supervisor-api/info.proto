@@ -67,7 +67,7 @@ message WorkspaceInfoResponse {
     // repository is a repository from which this workspace was created
     Repository repository = 10;
 
-    // workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+    // workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
     string workspace_cluster_host = 11;
 
     // workspace_url is an URL for which the workspace is accessed.

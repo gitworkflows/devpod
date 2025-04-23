@@ -75,7 +75,7 @@ export function isOrganizationOwned(user: User | UserProtocol) {
 }
 
 /**
- * devpod.io: Only installation-level users are allowed to create orgs (installation-level users on devpod.io, and admin user on Dedicated)
+ * devpod.khulnasoft.com: Only installation-level users are allowed to create orgs (installation-level users on devpod.khulnasoft.com, and admin user on Dedicated)
  * Dedicated: Only if multiOrg is enabled, installation-level users can create orgs
  * @param user
  * @param isDedicated
@@ -88,7 +88,7 @@ export function isAllowedToCreateOrganization(
     isMultiOrgEnabled?: boolean,
 ): boolean {
     if (!isDedicated) {
-        // devpod.io case
+        // devpod.khulnasoft.com case
         return !isOrganizationOwned(user);
     }
 

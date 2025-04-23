@@ -200,7 +200,7 @@ func Login(ctx context.Context, opts LoginOpts) (token string, err error) {
 
 	baseURL := opts.DevpodURL
 	if baseURL == "" {
-		baseURL = "https://devpod.io"
+		baseURL = "https://devpod.khulnasoft.com"
 	}
 	reqURL, err := url.Parse(baseURL)
 	if err != nil {

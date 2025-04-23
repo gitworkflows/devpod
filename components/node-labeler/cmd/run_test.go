@@ -203,7 +203,7 @@ func newWorkspace(name, namespace, nodeName string, phase workspacev1.WorkspaceP
 			Conditions: []metav1.Condition{},
 		},
 		TypeMeta: metav1.TypeMeta{
-			APIVersion: "workspace.devpod.io/v1",
+			APIVersion: "workspace.devpod.khulnasoft.com/v1",
 			Kind:       "Workspace",
 		},
 		ObjectMeta: metav1.ObjectMeta{

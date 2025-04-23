@@ -581,7 +581,7 @@ export class UserController {
 
         // If the context URL contains a known auth host, just use this
         if (returnToURL) {
-            // returnToURL -> https://devpod.io/#https://github.com/theia-ide/theia"
+            // returnToURL -> https://devpod.khulnasoft.com/#https://github.com/theia-ide/theia"
             const hash = decodeURIComponent(new URL(decodeURIComponent(returnToURL)).hash);
             const value = hash.substr(1); // to remove the leading #
             let contextUrlHost: string | undefined;
@@ -622,7 +622,7 @@ export class UserController {
 
         if (
             this.urlStartsWith(returnToURL, this.config.hostUrl.toString()) ||
-            this.urlStartsWith(returnToURL, "https://www.devpod.io")
+            this.urlStartsWith(returnToURL, "https://www.devpod.khulnasoft.com")
         ) {
             return returnToURL;
         }

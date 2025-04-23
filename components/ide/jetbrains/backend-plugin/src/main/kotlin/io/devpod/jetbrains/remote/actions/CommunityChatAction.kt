@@ -13,6 +13,6 @@ class CommunityChatAction : AnAction() {
     private val manager = service<DevpodManager>()
 
     override fun actionPerformed(event: AnActionEvent) {
-        manager.openUrlFromAction("https://www.devpod.io/chat")
+        manager.openUrlFromAction("https://www.devpod.khulnasoft.com/chat")
     }
 }

@@ -82,7 +82,7 @@ export class LoginCompletionHandler {
         }
 
         if (!this.isBaseDomain(request)) {
-            // (GitHub edge case) If we got redirected here onto a sub-domain (e.g. api.devpod.io), we need to redirect to the base domain in order to Set-Cookie properly.
+            // (GitHub edge case) If we got redirected here onto a sub-domain (e.g. api.devpod.khulnasoft.com), we need to redirect to the base domain in order to Set-Cookie properly.
             const secret = crypto
                 .createHash("sha256")
                 .update(user.id + this.config.session.secret)

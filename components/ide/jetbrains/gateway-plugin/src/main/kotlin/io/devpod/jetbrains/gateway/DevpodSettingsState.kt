@@ -19,7 +19,7 @@ import java.util.*
 )
 class DevpodSettingsState : PersistentStateComponent<DevpodSettingsState> {
 
-    var devpodHost: String = "devpod.io"
+    var devpodHost: String = "devpod.khulnasoft.com"
         set(value) {
             if (value.isNullOrBlank()) {
                 return

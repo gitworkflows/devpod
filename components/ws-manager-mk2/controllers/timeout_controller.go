@@ -61,8 +61,8 @@ type TimeoutReconciler struct {
 	maintenance       maintenance.Maintenance
 }
 
-//+kubebuilder:rbac:groups=workspace.devpod.io,resources=workspaces,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=workspace.devpod.io,resources=workspaces/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=workspace.devpod.khulnasoft.com,resources=workspaces,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=workspace.devpod.khulnasoft.com,resources=workspaces/status,verbs=get;update;patch
 
 // Reconcile will check the given workspace for timing out. When done, a new event gets
 // requeued automatically to ensure the workspace gets reconciled at least every reconcileInterval.

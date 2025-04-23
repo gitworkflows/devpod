@@ -252,7 +252,7 @@ export const AppRoutes = () => {
                                 render={(_match) => {
                                     // delegate to our website to handle the request
                                     if (isDevpodIo()) {
-                                        window.location.host = "www.devpod.io";
+                                        window.location.host = "www.devpod.khulnasoft.com";
                                     }
 
                                     return (

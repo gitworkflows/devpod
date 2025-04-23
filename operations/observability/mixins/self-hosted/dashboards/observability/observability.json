@@ -36,7 +36,7 @@
       "title": "Victoria Metrics In-Depth Dashboard",
       "tooltip": "",
       "type": "link",
-      "url": "https://grafana.devpod.io/d/wNf0q_kZk/victoriametrics"
+      "url": "https://grafana.devpod.khulnasoft.com/d/wNf0q_kZk/victoriametrics"
     },
     {
       "asDropdown": false,
@@ -48,7 +48,7 @@
       "title": "Prometheus In-Depth Dashboard",
       "tooltip": "",
       "type": "link",
-      "url": "https://grafana.devpod.io/d/vP1eW8S4z/prometheus-overview"
+      "url": "https://grafana.devpod.khulnasoft.com/d/vP1eW8S4z/prometheus-overview"
     },
     {
       "asDropdown": false,
@@ -60,7 +60,7 @@
       "title": "Alertmanager In-Depth Dashbaord",
       "tooltip": "",
       "type": "link",
-      "url": "https://grafana.devpod.io/d/alertmanager-overview/alertmanager-overview"
+      "url": "https://grafana.devpod.khulnasoft.com/d/alertmanager-overview/alertmanager-overview"
     }
   ],
   "liveNow": false,

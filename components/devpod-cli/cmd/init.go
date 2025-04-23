@@ -69,22 +69,22 @@ Create a Devpod configuration for this project.
 			}
 			yml := ""
 			if defaultImage != "" {
-				yml = yml + fmt.Sprintf("# Image of workspace. Learn more: https://www.devpod.io/docs/configure/workspaces/workspace-image\nimage: %s\n\n", defaultImage)
+				yml = yml + fmt.Sprintf("# Image of workspace. Learn more: https://www.devpod.khulnasoft.com/docs/configure/workspaces/workspace-image\nimage: %s\n\n", defaultImage)
 			}
-			yml = yml + `# List the start up tasks. Learn more: https://www.devpod.io/docs/configure/workspaces/tasks
+			yml = yml + `# List the start up tasks. Learn more: https://www.devpod.khulnasoft.com/docs/configure/workspaces/tasks
 tasks:
   - name: Script Task
-    init: echo 'init script' # runs during prebuild => https://www.devpod.io/docs/configure/projects/prebuilds
+    init: echo 'init script' # runs during prebuild => https://www.devpod.khulnasoft.com/docs/configure/projects/prebuilds
     command: echo 'start script'
 
-# List the ports to expose. Learn more: https://www.devpod.io/docs/configure/workspaces/ports
+# List the ports to expose. Learn more: https://www.devpod.khulnasoft.com/docs/configure/workspaces/ports
 ports:
   - name: Frontend
     description: Port 3000 for the frontend
     port: 3000
     onOpen: open-preview
 
-# Learn more from ready-to-use templates: https://www.devpod.io/docs/introduction/getting-started/quickstart
+# Learn more from ready-to-use templates: https://www.devpod.khulnasoft.com/docs/introduction/getting-started/quickstart
 `
 			d = []byte(yml)
 		} else {
@@ -120,7 +120,7 @@ USER devpod
 #     sudo apt-get install -yq bastet && \
 #     sudo rm -rf /var/lib/apt/lists/*
 #
-# More information: https://www.devpod.io/docs/config-docker/
+# More information: https://www.devpod.khulnasoft.com/docs/config-docker/
 `), 0644); err != nil {
 					return err
 				}

@@ -137,7 +137,7 @@ const mockApplyingContainerModule = new ContainerModule((bind, unbound, isbound,
             {
                 name: "eu-central-1",
                 region: "europe",
-                url: "https://ws.devpod.io",
+                url: "https://ws.devpod.khulnasoft.com",
                 state: "available",
                 maxScore: 100,
                 score: 100,
@@ -160,7 +160,7 @@ const mockApplyingContainerModule = new ContainerModule((bind, unbound, isbound,
             {
                 name: "eu-central-1-nextgen",
                 region: "europe",
-                url: "https://ws.devpod.io",
+                url: "https://ws.devpod.khulnasoft.com",
                 state: "available",
                 maxScore: 100,
                 score: 100,
@@ -225,7 +225,7 @@ const mockApplyingContainerModule = new ContainerModule((bind, unbound, isbound,
                                 response.setRef("my-test-build-ref");
                                 const buildInfo = new BuildInfo();
                                 const logInfo = new LogInfo();
-                                logInfo.setUrl("https://ws.devpod.io/my-test-image-build/logs");
+                                logInfo.setUrl("https://ws.devpod.khulnasoft.com/my-test-image-build/logs");
                                 buildInfo.setLogInfo(logInfo);
                                 response.setInfo(buildInfo);
                                 listeners.get("data")!(response);
@@ -240,7 +240,7 @@ const mockApplyingContainerModule = new ContainerModule((bind, unbound, isbound,
                         startWorkspace(request, metadata, options, callback) {
                             const workspaceId = request.getServicePrefix();
                             const response = new StartWorkspaceResponse();
-                            response.setUrl(`https://${workspaceId}.ws.devpod.io`);
+                            response.setUrl(`https://${workspaceId}.ws.devpod.khulnasoft.com`);
                             callback(null, response);
                         },
                     },
@@ -265,7 +265,7 @@ const mockApplyingContainerModule = new ContainerModule((bind, unbound, isbound,
     );
 
     rebind<Partial<Config>>(Config).toConstantValue({
-        hostUrl: new DevpodHostUrl("https://devpod.io"),
+        hostUrl: new DevpodHostUrl("https://devpod.khulnasoft.com"),
         blockNewUsers: {
             enabled: false,
             passlist: [],

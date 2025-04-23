@@ -10,8 +10,8 @@ import (
 )
 
 const (
-	RegistryFacadeTaintKey = "devpod.io/registry-facade-not-ready"
-	WsDaemonTaintKey       = "devpod.io/ws-daemon-not-ready"
+	RegistryFacadeTaintKey = "devpod.khulnasoft.com/registry-facade-not-ready"
+	WsDaemonTaintKey       = "devpod.khulnasoft.com/ws-daemon-not-ready"
 )
 
 func WithTolerationWorkspaceComponentNotReady(ctx *RenderContext) []corev1.Toleration {

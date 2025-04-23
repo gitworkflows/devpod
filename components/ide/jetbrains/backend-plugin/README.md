@@ -15,7 +15,7 @@ Provides integrations within a Devpod workspace.
 
 The ideal setup to develop this plugin is using IntelliJ in Devpod.
 
-1. Choose IntelliJ as your editor in [devpod.io/preferences](https://devpod.io/preferences)
+1. Choose IntelliJ as your editor in [devpod.khulnasoft.com/preferences](https://devpod.khulnasoft.com/preferences)
 2. Start a workspace for this repository
 
 If you experience any issues with JetBrains remote dev make sure to report issues [here](https://youtrack.jetbrains.com/issues?q=project:%20CWM) under remote development subsystem.

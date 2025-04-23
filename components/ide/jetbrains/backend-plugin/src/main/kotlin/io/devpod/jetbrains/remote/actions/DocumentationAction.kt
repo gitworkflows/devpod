@@ -13,6 +13,6 @@ class DocumentationAction : AnAction() {
     private val manager = service<DevpodManager>()
 
     override fun actionPerformed(event: AnActionEvent) {
-        manager.openUrlFromAction("https://www.devpod.io/docs")
+        manager.openUrlFromAction("https://www.devpod.khulnasoft.com/docs")
     }
 }

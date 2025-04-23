@@ -26,7 +26,7 @@ func TestInMemoryTokenServiceGetToken(t *testing.T) {
 	var (
 		defaultToken = "foobar"
 		defaultKind  = "myprovider"
-		defaultHost  = "devpod.io"
+		defaultHost  = "devpod.khulnasoft.com"
 
 		errNoToken = status.Error(codes.NotFound, "no token available").Error()
 	)
@@ -265,7 +265,7 @@ func TestInMemoryTokenServiceGetToken(t *testing.T) {
 
 func TestInMemoryTokenServiceSetToken(t *testing.T) {
 	var (
-		defaultHost  = "devpod.io"
+		defaultHost  = "devpod.khulnasoft.com"
 		defaultToken = "foobar"
 	)
 

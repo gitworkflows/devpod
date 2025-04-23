@@ -131,7 +131,7 @@ By nesting new config values, it may limit the generalised nature of the config 
 
 #### New config values should be generic, rather than specific
 
-> For an in-depth discussion on the reasons for replacing Helm, please see [our blog post](https://www.devpod.io/blog/devpod-installer) or the talk [Why We Chose To Ditch Helm To Gain Open Source Sanity](https://www.youtube.com/watch?v=W1-cZUXh4zM&ab_channel=CloudNativeRejekts)
+> For an in-depth discussion on the reasons for replacing Helm, please see [our blog post](https://www.devpod.khulnasoft.com/blog/devpod-installer) or the talk [Why We Chose To Ditch Helm To Gain Open Source Sanity](https://www.youtube.com/watch?v=W1-cZUXh4zM&ab_channel=CloudNativeRejekts)
 
 The Installer is a replacement for our old Helm charts. One of the fundamental issues with our `values.yaml` file was the length of it and the number of duplicated config items. For instance, the specification of the database password required changes made in a couple of different places. Therefore, the Installer was designed to be able to infer parameters from the config given.
 
@@ -167,8 +167,8 @@ The configuration has a required `kind` parameter, which is used to generate dif
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Full      | For single-cluster deployments, such as preview or self-hosted                                                                                                           |
 | Meta      | This is the `WebApp` and `IDE` components combined. This exists for historical reasons and should be considered deprecated. Used for multi-cluster deployments.          |
-| WebApp    | Components deployed to nodes with the `devpod.io/workload_meta` label.                                                                                                   |
-| IDE       | Components deployed to nodes with the `devpod.io/workload_ide` label.                                                                                                    |
-| Workspace | Components deployed to nodes with the `devpod.io/workload_workspace_headless`, `devpod.io/workload_workspace_regular` or `devpod.io/workload_services` labels. |
+| WebApp    | Components deployed to nodes with the `devpod.khulnasoft.com/workload_meta` label.                                                                                                   |
+| IDE       | Components deployed to nodes with the `devpod.khulnasoft.com/workload_ide` label.                                                                                                    |
+| Workspace | Components deployed to nodes with the `devpod.khulnasoft.com/workload_workspace_headless`, `devpod.khulnasoft.com/workload_workspace_regular` or `devpod.khulnasoft.com/workload_services` labels. |
 
 ---

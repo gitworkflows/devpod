@@ -89,9 +89,9 @@ type WorkspaceReconciler struct {
 	kubeClient kubernetes.Interface
 }
 
-//+kubebuilder:rbac:groups=workspace.devpod.io,resources=workspaces,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=workspace.devpod.io,resources=workspaces/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=workspace.devpod.io,resources=workspaces/finalizers,verbs=update
+//+kubebuilder:rbac:groups=workspace.devpod.khulnasoft.com,resources=workspaces,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=workspace.devpod.khulnasoft.com,resources=workspaces/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=workspace.devpod.khulnasoft.com,resources=workspaces/finalizers,verbs=update
 //+kubebuilder:rbac:groups=core,resources=pod,verbs=get;list;watch;create;update;patch;delete
 //+kubebuilder:rbac:groups=core,resources=pod/status,verbs=get
 

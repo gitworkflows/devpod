@@ -92,7 +92,7 @@ var rootCmd = &cobra.Command{
 		}
 		cmd.SetContext(config.ToContext(context.Background(), cfg))
 
-		host := "https://devpod.io"
+		host := "https://devpod.khulnasoft.com"
 		telemetryEnabled := !telemetry.DoNotTrack()
 		telemetryEnabled = telemetryEnabled && cfg.Telemetry.Enabled
 		gpctx, err := cfg.GetActiveContext()

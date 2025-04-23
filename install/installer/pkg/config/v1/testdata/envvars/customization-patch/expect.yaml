@@ -13,4 +13,4 @@ customization:
       labels:
         appliedToAll: value
         hello: world
-domain: devpod.io
+domain: devpod.khulnasoft.com

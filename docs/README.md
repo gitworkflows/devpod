@@ -1,6 +1,6 @@
 # Devpod documentation
 
-The most up-to-date documentation can be found at https://www.devpod.io/docs.
+The most up-to-date documentation can be found at https://www.devpod.khulnasoft.com/docs.
 
 ## Source
 

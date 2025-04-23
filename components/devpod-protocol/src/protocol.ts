@@ -273,7 +273,7 @@ export interface UserEnvVar extends UserEnvVarValue {
 export namespace EnvVar {
     export const DEVPOD_IMAGE_AUTH_ENV_VAR_NAME = "DEVPOD_IMAGE_AUTH";
     /**
-     * - DEVPOD_IMAGE_AUTH is documented https://www.devpod.io/docs/configure/workspaces/workspace-image#use-a-private-docker-image
+     * - DEVPOD_IMAGE_AUTH is documented https://www.devpod.khulnasoft.com/docs/configure/workspaces/workspace-image#use-a-private-docker-image
      */
     export const WhiteListFromReserved = [DEVPOD_IMAGE_AUTH_ENV_VAR_NAME];
 

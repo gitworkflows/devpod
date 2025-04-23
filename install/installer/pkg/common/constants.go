@@ -61,7 +61,7 @@ const (
 	DBCaBasePath                = "/db-ssl"
 	DBCaPath                    = DBCaBasePath + "/" + DBCaFileName
 	WorkspaceSecretsNamespace   = "workspace-secrets"
-	AnnotationConfigChecksum    = "devpod.io/checksum_config"
+	AnnotationConfigChecksum    = "devpod.khulnasoft.com/checksum_config"
 	DatabaseConfigMountPath     = "/secrets/database-config"
 	AuthPKISecretName           = "auth-pki"
 	IDEServiceComponent         = "ide-service"

@@ -208,13 +208,13 @@ const UserMenu: FC<UserMenuProps> = ({ user, className, withAdminLink, onFeedbac
             },
             {
                 title: "Docs",
-                href: "https://www.devpod.io/docs/introduction",
+                href: "https://www.devpod.khulnasoft.com/docs/introduction",
                 target: "_blank",
                 rel: "noreferrer",
             },
             {
                 title: "Help",
-                href: "https://www.devpod.io/support/",
+                href: "https://www.devpod.khulnasoft.com/support/",
                 target: "_blank",
                 rel: "noreferrer",
                 separator: !isDevpodIo,

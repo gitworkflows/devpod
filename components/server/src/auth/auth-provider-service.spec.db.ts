@@ -45,7 +45,7 @@ describe("AuthProviderService", async () => {
             host: "github.com",
             oauth: {
                 authorizationUrl: "https://github.com/login/oauth/authorize",
-                callBackUrl: "https://devpod.io/auth/callback",
+                callBackUrl: "https://devpod.khulnasoft.com/auth/callback",
                 clientId: "123",
                 clientSecret: "redacted",
                 tokenUrl: "https://github.com/login/oauth/access_token",
@@ -78,7 +78,7 @@ describe("AuthProviderService", async () => {
             host: "github.com",
             oauth: {
                 authorizationUrl: "https://github.com/login/oauth/authorize",
-                callBackUrl: "https://devpod.io/auth/callback",
+                callBackUrl: "https://devpod.khulnasoft.com/auth/callback",
                 clientId: "123",
                 clientSecret: "redacted",
                 tokenUrl: "https://github.com/login/oauth/access_token",

@@ -22,6 +22,6 @@ spec:
         runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/SSHGatewayFailingToConnect.md
         summary: SSH connectivity issues
         description: SSH Gateway is failing to connect to SSH servers in Devpod workspaces
-        dashboard_url: https://grafana.devpod.io/d/3oan1Zr7k/ssh-gateway-overview?orgId=1&refresh=30s&from=now-2d&to=now
+        dashboard_url: https://grafana.devpod.khulnasoft.com/d/3oan1Zr7k/ssh-gateway-overview?orgId=1&refresh=30s&from=now-2d&to=now
       expr: |
           sum by (error_type) (rate(devpod_ws_proxy_ssh_attempt_total{error_type="CONN_FAILED",status="failed"}[5m])) / sum(rate(devpod_ws_proxy_ssh_attempt_total{error_type!~"WS_ID_INVALID|OTHERS"}[5m])) > 0.01

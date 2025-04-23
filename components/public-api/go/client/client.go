@@ -87,7 +87,7 @@ type options struct {
 
 func defaultOptions() *options {
 	return &options{
-		url:    "https://api.devpod.io",
+		url:    "https://api.devpod.khulnasoft.com",
 		client: http.DefaultClient,
 	}
 }

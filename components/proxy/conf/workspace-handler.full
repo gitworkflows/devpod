@@ -1,8 +1,8 @@
 # foreign content route used by vscode to serve webview and webworker resources of the form
 # https://{{hash_base_32}}.<cluster>.<devpod_domain> or https://v--{{hash_base_32}}.<cluster>.<devpod_domain>
 # e.g:
-# https://0d9rkrj560blqb5s07q431ru9mhg19k1k4bqgd1dbprtgmt7vuhk.ws-us34xl.devpod.io (for webviews)
-# https://v--0d9rkrj560blqb5s07q431ru9mhg19k1k4bqgd1dbprtgmt7vuhk.ws-us34xl.devpod.io (for webworker)
+# https://0d9rkrj560blqb5s07q431ru9mhg19k1k4bqgd1dbprtgmt7vuhk.ws-us34xl.devpod.khulnasoft.com (for webviews)
+# https://v--0d9rkrj560blqb5s07q431ru9mhg19k1k4bqgd1dbprtgmt7vuhk.ws-us34xl.devpod.khulnasoft.com (for webworker)
 @foreign_content2 header_regexp host Host ^(?:v--)?[0-9a-v]+.ws(-[a-z0-9]+)?.{$DEVPOD_DOMAIN}
 handle @foreign_content2 {
 	reverse_proxy https://ws-proxy.{$KUBE_NAMESPACE}.{$KUBE_DOMAIN}:9090 {

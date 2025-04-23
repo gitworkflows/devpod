@@ -55,7 +55,7 @@ class TestBitbucketServerFileProvider {
                     createDevpodToken: async () => ({ token: { value: "foobar123-token" } }),
                 } as any);
                 bind(Config).toConstantValue({
-                    hostUrl: new DevpodHostUrl("https://devpod.io"),
+                    hostUrl: new DevpodHostUrl("https://devpod.khulnasoft.com"),
                 });
                 bind(TokenProvider).toConstantValue(<TokenProvider>{
                     getTokenForHost: async () => {

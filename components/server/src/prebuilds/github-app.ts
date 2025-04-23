@@ -47,9 +47,9 @@ import { SubjectId } from "../auth/subject-id";
 
 /**
  * GitHub app urls:
- *    User authorization callback URL: https://devpod.io/install-github-app
- *    Setup URL:                       https://devpod.io/install-github-app
- *    Webhook URL:                     https://devpod.io/apps/github
+ *    User authorization callback URL: https://devpod.khulnasoft.com/install-github-app
+ *    Setup URL:                       https://devpod.khulnasoft.com/install-github-app
+ *    Webhook URL:                     https://devpod.khulnasoft.com/apps/github
  *
  * Make sure that the webhook secret you set in GitHub matches what's in your
  * values.yaml file (DEVPOD_GITHUB_APP_WEBHOOK_SECRET) - it's not a bad idea to

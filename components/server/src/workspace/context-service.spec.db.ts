@@ -163,7 +163,7 @@ function head<T>(arr: T[]): T {
     return arr[0];
 }
 
-const SNAPSHOT_BUCKET = "https://devpod.io/none-bucket";
+const SNAPSHOT_BUCKET = "https://devpod.khulnasoft.com/none-bucket";
 
 describe("ContextService", async () => {
     let container: Container;

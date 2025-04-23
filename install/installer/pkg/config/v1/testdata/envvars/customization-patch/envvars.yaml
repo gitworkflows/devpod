@@ -5,4 +5,4 @@
 envvars:
   ADVANCED_MODE_ENABLED: "1"
   CUSTOMIZATION_PATCH: "customization:\n  - apiVersion: \"*\"\n    kind: \"*\"\n    metadata:\n      name: \"*\"\n      annotations:\n        appliedToAll: value\n        hello: world\n      labels:\n        appliedToAll: value\n        hello: world"
-  DOMAIN: devpod.io
+  DOMAIN: devpod.khulnasoft.com

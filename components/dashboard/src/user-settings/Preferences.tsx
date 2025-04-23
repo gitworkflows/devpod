@@ -123,7 +123,7 @@ export default function Preferences() {
                     Choose your default editor.{" "}
                     <a
                         className="gp-link"
-                        href="https://www.devpod.io/docs/references/ides-and-editors"
+                        href="https://www.devpod.khulnasoft.com/docs/references/ides-and-editors"
                         target="_blank"
                         rel="noreferrer"
                     >

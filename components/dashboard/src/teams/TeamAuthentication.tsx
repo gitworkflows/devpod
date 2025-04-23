@@ -64,7 +64,7 @@ const SSOCard = () => {
             </div>
 
             <LinkButton
-                href="https://www.devpod.io/contact/enterprise-self-serve"
+                href="https://www.devpod.khulnasoft.com/contact/enterprise-self-serve"
                 isExternalUrl={true}
                 className="mt-8"
             >
@@ -83,7 +83,7 @@ const PrivateImageRegistryCard = () => {
             <LinkButton
                 variant="secondary"
                 className="mt-8 border border-pk-content-tertiary text-pk-content-primary bg-pk-surface-primary"
-                href="https://www.devpod.io/docs/enterprise/setup-devpod/use-private-ecr-repos-for-workspace-images"
+                href="https://www.devpod.khulnasoft.com/docs/enterprise/setup-devpod/use-private-ecr-repos-for-workspace-images"
                 isExternalUrl={true}
             >
                 Documentation
@@ -103,7 +103,7 @@ const PrivateSourceControlAccess = () => {
             <LinkButton
                 variant="secondary"
                 className="mt-8 border border-pk-content-tertiary text-pk-content-primary bg-pk-surface-primary"
-                href="https://www.devpod.io/docs/enterprise/setup-devpod/scm-integration"
+                href="https://www.devpod.khulnasoft.com/docs/enterprise/setup-devpod/scm-integration"
                 isExternalUrl={true}
             >
                 Documentation

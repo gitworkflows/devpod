@@ -78,7 +78,7 @@ func TestServerComponentWaiterContainer(t *testing.T) {
 
 func TestConfigcatEnvOutOfCluster(t *testing.T) {
 	ctx, err := common.NewRenderContext(config.Config{
-		Domain: "devpod.io",
+		Domain: "devpod.khulnasoft.com",
 		Experimental: &experimental.Config{
 			WebApp: &experimental.WebAppConfig{
 				ConfigcatKey: "foo",
@@ -89,5 +89,5 @@ func TestConfigcatEnvOutOfCluster(t *testing.T) {
 
 	envVars := common.ConfigcatEnvOutOfCluster(ctx)
 	require.Equal(t, len(envVars), 2)
-	require.Equal(t, envVars, []v1.EnvVar([]v1.EnvVar{{Name: "CONFIGCAT_SDK_KEY", Value: "devpod"}, {Name: "CONFIGCAT_BASE_URL", Value: "https://devpod.io/configcat"}}))
+	require.Equal(t, envVars, []v1.EnvVar([]v1.EnvVar{{Name: "CONFIGCAT_SDK_KEY", Value: "devpod"}, {Name: "CONFIGCAT_BASE_URL", Value: "https://devpod.khulnasoft.com/configcat"}}))
 }

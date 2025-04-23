@@ -23,7 +23,7 @@ func networkpolicy(ctx *common.RenderContext) ([]runtime.Object, error) {
 	podSelectorLabels := map[string]string{
 		"app":                     "devpod",
 		"component":               Component,
-		"devpod.io/networkpolicy": "default",
+		"devpod.khulnasoft.com/networkpolicy": "default",
 	}
 
 	return []runtime.Object{&networkingv1.NetworkPolicy{

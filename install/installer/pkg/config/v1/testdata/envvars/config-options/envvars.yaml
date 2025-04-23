@@ -3,7 +3,7 @@
 # See License.AGPL.txt in the project root for license information.
 
 envvars:
-  DOMAIN: test.devpod.io
+  DOMAIN: test.devpod.khulnasoft.com
   DISTRIBUTION: distribution-name
   HTTP_PROXY_NAME: http-proxy-settings
   LOCAL_REGISTRY_ADDRESS: mylocalregistry.com
@@ -12,4 +12,4 @@ envvars:
   SSH_GATEWAY: "1"
   SSH_GATEWAY_HOST_KEY_NAME: ssh-gateway-secret
   USER_MANAGEMENT_BLOCK_ENABLED: "1"
-  USER_MANAGEMENT_BLOCK_PASSLIST: devpod.io domain.com domain2.com
+  USER_MANAGEMENT_BLOCK_PASSLIST: devpod.khulnasoft.com domain.com domain2.com

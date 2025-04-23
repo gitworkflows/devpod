@@ -40,11 +40,11 @@ const (
 	workspaceDir = "/workspace"
 
 	// headlessLabel marks a workspace as headless
-	headlessLabel = "devpod.io/headless"
+	headlessLabel = "devpod.khulnasoft.com/headless"
 
 	// instanceIDLabel is added for the container dispatch mechanism in ws-daemon to work
 	// TODO(furisto): remove this label once we have moved ws-daemon to a controller setup
-	instanceIDLabel = "devpod.io/instanceID"
+	instanceIDLabel = "devpod.khulnasoft.com/instanceID"
 
 	// Grace time until the process in the workspace is properly completed
 	// e.g. dockerd in the workspace may take some time to clean up the overlay directory.
@@ -261,7 +261,7 @@ func createDefiniteWorkspacePod(sctx *startWorkspaceContext) (*corev1.Pod, error
 	}
 
 	labels := make(map[string]string)
-	labels["devpod.io/networkpolicy"] = "default"
+	labels["devpod.khulnasoft.com/networkpolicy"] = "default"
 	for k, v := range sctx.Labels {
 		labels[k] = v
 	}
@@ -336,15 +336,15 @@ func createDefiniteWorkspacePod(sctx *startWorkspaceContext) (*corev1.Pod, error
 
 	matchExpressions := []corev1.NodeSelectorRequirement{
 		{
-			Key:      "devpod.io/workload_workspace_" + workloadType,
+			Key:      "devpod.khulnasoft.com/workload_workspace_" + workloadType,
 			Operator: corev1.NodeSelectorOpExists,
 		},
 		{
-			Key:      "devpod.io/ws-daemon_ready_ns_" + sctx.Config.Namespace,
+			Key:      "devpod.khulnasoft.com/ws-daemon_ready_ns_" + sctx.Config.Namespace,
 			Operator: corev1.NodeSelectorOpExists,
 		},
 		{
-			Key:      "devpod.io/registry-facade_ready_ns_" + sctx.Config.Namespace,
+			Key:      "devpod.khulnasoft.com/registry-facade_ready_ns_" + sctx.Config.Namespace,
 			Operator: corev1.NodeSelectorOpExists,
 		},
 	}

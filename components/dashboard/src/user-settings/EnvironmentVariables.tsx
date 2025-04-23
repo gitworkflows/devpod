@@ -232,7 +232,7 @@ export default function EnvVars() {
                         Variables are used to store information like passwords.{" "}
                         <a
                             className="gp-link"
-                            href="https://www.devpod.io/docs/configure/projects/environment-variables#environment-variables"
+                            href="https://www.devpod.khulnasoft.com/docs/configure/projects/environment-variables#environment-variables"
                             target="_blank"
                             rel="noreferrer"
                         >

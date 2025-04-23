@@ -19,7 +19,7 @@ class DevpodConnector : GatewayConnector {
 
     override fun getDescription() = "Connect to Devpod workspaces"
 
-    override fun getDocumentationAction() = GatewayConnectorDocumentationPage("https://www.devpod.io/docs/ides-and-editors/jetbrains-gateway")
+    override fun getDocumentationAction() = GatewayConnectorDocumentationPage("https://www.devpod.khulnasoft.com/docs/ides-and-editors/jetbrains-gateway")
 
     override fun getConnectorId() = "devpod.connector"
 

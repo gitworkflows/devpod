@@ -72,7 +72,7 @@ while [ "$documentIndex" -le "$DOCS" ]; do
    WORKSPACE_COMPONENTS=("image-builder" "image-builder-mk3 blobserve registry-facade" "ws-daemon" "agent-smith")
    # shellcheck disable=SC2076
    if [[ " ${WORKSPACE_COMPONENTS[*]} " =~ " ${NAME} " ]] && { [[ "$KIND" == "Deployment" ]] || [[ "$KIND" == "DaemonSet" ]]; }; then
-      LABEL="devpod.io/workspace_$NODE_POOL_INDEX"
+      LABEL="devpod.khulnasoft.com/workspace_$NODE_POOL_INDEX"
       echo "setting $LABEL for $NAME"
       touch /tmp/"$NAME"pool.yaml
       # create a matching expression
@@ -81,7 +81,7 @@ while [ "$documentIndex" -le "$DOCS" ]; do
       # append it
       yq m --arrays=overwrite -i k8s.yaml -d "$documentIndex" /tmp/"$NAME"pool.yaml
    elif [[ "$KIND" == "DaemonSet" ]] || [[ "$KIND" == "Deployment" ]] || [[ "$KIND" == "StatefulSet" ]] || [[ "$KIND" == "Job" ]]; then
-      LABEL="devpod.io/workload_meta"
+      LABEL="devpod.khulnasoft.com/workload_meta"
       echo "setting $LABEL for $NAME"
       touch /tmp/"$NAME"pool.yaml
       # create a matching expression
@@ -185,7 +185,7 @@ while [ "$documentIndex" -le "$DOCS" ]; do
       yq r k8s.yaml -d "$documentIndex" 'data.[default.yaml]' > /tmp/"$NAME"overrides.yaml
 
       # add the proper affinity
-      LABEL="devpod.io/workspace_$NODE_POOL_INDEX"
+      LABEL="devpod.khulnasoft.com/workspace_$NODE_POOL_INDEX"
       yq w -i /tmp/"$NAME"overrides.yaml spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].key "$LABEL"
       yq w -i /tmp/"$NAME"overrides.yaml spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].operator Exists
 

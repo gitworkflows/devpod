@@ -92,7 +92,7 @@
             {
               "targetBlank": true,
               "title": "See user in 'Devpod Admin'",
-              "url": "https://devpod.io/admin/users/${__field.labels.owner}"
+              "url": "https://devpod.khulnasoft.com/admin/users/${__field.labels.owner}"
             }
           ],
           "mappings": [],
@@ -153,7 +153,7 @@
             {
               "targetBlank": true,
               "title": "See workspace in 'Devpod Admin'",
-              "url": "https://devpod.io/admin/workspaces/${__field.labels.metaID}"
+              "url": "https://devpod.khulnasoft.com/admin/workspaces/${__field.labels.metaID}"
             }
           ],
           "mappings": [],

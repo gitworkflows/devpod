@@ -35,10 +35,10 @@ github.com/evanphx/json-patch/v5 v5.9.0/go.mod h1:VNkHZ/282BpEyt/tObQO8s5CMPmYYq
 github.com/felixge/httpsnoop v1.0.1/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
 github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2Wg=
 github.com/felixge/httpsnoop v1.0.4/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
+github.com/forkwork/golang-crypto v0.0.0-20250423010739-5f5888ad5e2a h1:Tw7wSjTxHCCcuuZ5yisp6WmUgtfPoNAN2yo8fcff5Ys=
+github.com/forkwork/golang-crypto v0.0.0-20250423010739-5f5888ad5e2a/go.mod h1:N2NOYKwY5q60j2qFtUNdxW35JX+mzr+7P5r0Fqi2cwc=
 github.com/fsnotify/fsnotify v1.7.0 h1:8JEhPFa5W2WU7YfeZzPNqzMP6Lwt7L2715Ggo0nosvA=
 github.com/fsnotify/fsnotify v1.7.0/go.mod h1:40Bi/Hjc2AVfZrqy+aj+yEI+/bRxZnMJyTJwOpGvigM=
-github.com/khulnasoft/golang-crypto v0.0.0-20250106140126-78f5e04b38b9 h1:VWz6zIj4S9aD+OiqQwn65jC//JDVHKFPlOlL/5cv4Po=
-github.com/khulnasoft/golang-crypto v0.0.0-20250106140126-78f5e04b38b9/go.mod h1:kSOu3l2SuXOf9SuBx2czttVOi1w3o/VupgPZGuVbyF8=
 github.com/go-kit/kit v0.9.0/go.mod h1:xBxKIO96dXMWWy0MnWVtmwkA9/13aqxPnvrjFYMA2as=
 github.com/go-logfmt/logfmt v0.4.0/go.mod h1:3RMwSq7FuexP4Kalkev3ejPJsZTpXXBr9+V4qmtdjCk=
 github.com/go-logr/logr v1.0.0/go.mod h1:jdQByPbusPIv2/zmleS9BjJVeZ6kBagPoEUsqbVz/1A=

@@ -16,12 +16,12 @@ export const Blocked: FunctionComponent = () => {
             <Heading1 className="mt-12">Your account has been blocked.</Heading1>
             <Subheading className="mt-4 mb-8 w-96 mx-auto">
                 Please contact support if you think this is an error. See also{" "}
-                <a className="gp-link" href="https://www.devpod.io/terms/">
+                <a className="gp-link" href="https://www.devpod.khulnasoft.com/terms/">
                     terms of service
                 </a>
                 .
             </Subheading>
-            <a className="mx-auto" href="mailto:support@devpod.io?Subject=Blocked">
+            <a className="mx-auto" href="mailto:support@devpod.khulnasoft.com?Subject=Blocked">
                 <Button variant="secondary">Contact Support</Button>
             </a>
         </div>

@@ -938,7 +938,7 @@ func servePortNotFoundPage(config *Config) (http.Handler, error) {
 	if err != nil {
 		return nil, err
 	}
-	page = bytes.ReplaceAll(page, []byte("https://devpod.io"), []byte(fmt.Sprintf("%s://%s", config.DevpodInstallation.Scheme, config.DevpodInstallation.HostName)))
+	page = bytes.ReplaceAll(page, []byte("https://devpod.khulnasoft.com"), []byte(fmt.Sprintf("%s://%s", config.DevpodInstallation.Scheme, config.DevpodInstallation.HostName)))
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNotFound)

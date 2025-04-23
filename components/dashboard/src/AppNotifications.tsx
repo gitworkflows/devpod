@@ -55,7 +55,7 @@ const UPDATED_PRIVACY_POLICY = (updateUser: (user: Partial<UserProtocol>) => Pro
         message: (
             <span className="text-md">
                 We've updated our Privacy Policy. You can review it{" "}
-                <a className="gp-link" href="https://www.devpod.io/privacy" target="_blank" rel="noreferrer">
+                <a className="gp-link" href="https://www.devpod.khulnasoft.com/privacy" target="_blank" rel="noreferrer">
                     here
                 </a>
                 .
@@ -97,7 +97,7 @@ const DEVPOD_FLEX_INTRODUCTION = (updateUser: (user: Partial<UserProtocol>) => P
                 <b>Introducing Devpod Flex:</b> self-host for free in 3 min or run locally using Devpod Desktop |{" "}
                 <a
                     className="text-kumquat-ripe font-bold"
-                    href="https://app.devpod.io"
+                    href="https://app.devpod.khulnasoft.com"
                     target="_blank"
                     rel="noreferrer"
                 >
@@ -138,7 +138,7 @@ const DEVPOD_CLASSIC_SUNSET = {
     message: (
         <span className="text-md">
             <b>Devpod Classic is sunsetting fall 2025.</b>{" "}
-            <a className="text-kumquat-base font-bold" href="https://app.devpod.io" target="_blank" rel="noreferrer">
+            <a className="text-kumquat-base font-bold" href="https://app.devpod.khulnasoft.com" target="_blank" rel="noreferrer">
                 Try the new Devpod
             </a>{" "}
             now (hosted compute coming soon)

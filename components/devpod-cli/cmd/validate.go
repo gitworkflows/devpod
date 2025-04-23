@@ -71,7 +71,7 @@ func runRebuild(ctx context.Context, supervisorClient *supervisor.SupervisorClie
 		fmt.Println("The .devpod.yml file cannot be parsed: please check the file and try again")
 		fmt.Println("")
 		fmt.Println("For help check out the reference page:")
-		fmt.Println("https://www.devpod.io/docs/references/devpod-yml#devpodyml")
+		fmt.Println("https://www.devpod.khulnasoft.com/docs/references/devpod-yml#devpodyml")
 		return GpError{Err: err, OutCome: utils.Outcome_UserErr, ErrorCode: utils.RebuildErrorCode_MalformedDevpodYaml, Silence: true}
 	}
 
@@ -81,7 +81,7 @@ func runRebuild(ctx context.Context, supervisorClient *supervisor.SupervisorClie
 		fmt.Println("For a quick start, try running:\n$ gp init -i")
 		fmt.Println("")
 		fmt.Println("Alternatively, check out the following docs for getting started configuring your project")
-		fmt.Println("https://www.devpod.io/docs/configure#configure-devpod")
+		fmt.Println("https://www.devpod.khulnasoft.com/docs/configure#configure-devpod")
 		return GpError{Err: err, OutCome: utils.Outcome_UserErr, ErrorCode: utils.RebuildErrorCode_MissingDevpodYaml, Silence: true}
 	}
 
@@ -123,7 +123,7 @@ func runRebuild(ctx context.Context, supervisorClient *supervisor.SupervisorClie
 			fmt.Println("Your Devpod's Dockerfile is empty")
 			fmt.Println("")
 			fmt.Println("To learn how to customize your workspace, check out the following docs:")
-			fmt.Println("https://www.devpod.io/docs/configure/workspaces/workspace-image#use-a-custom-dockerfile")
+			fmt.Println("https://www.devpod.khulnasoft.com/docs/configure/workspaces/workspace-image#use-a-custom-dockerfile")
 			fmt.Println("")
 			fmt.Println("Once you configure your Dockerfile, re-run this command to validate your changes")
 			return GpError{Err: err, OutCome: utils.Outcome_UserErr, Silence: true}
@@ -395,7 +395,7 @@ func runRebuild(ctx context.Context, supervisorClient *supervisor.SupervisorClie
 Open in Browser at:
 %s
 
-Connect using SSH keys (https://devpod.io/keys):
+Connect using SSH keys (https://devpod.khulnasoft.com/keys):
 %s
 
 %s`, sep, workspaceUrl, ssh, sep)

@@ -2382,7 +2382,7 @@ export class DevpodServerImpl implements DevpodServerWithTracing, Disposable {
         return this.workspaceService.getSupportedWorkspaceClasses(user);
     }
 
-    //#region devpod.io concerns
+    //#region devpod.khulnasoft.com concerns
     async getLinkedInClientId(ctx: TraceContextWithSpan): Promise<string> {
         traceAPIParams(ctx, {});
         await this.checkAndBlockUser("getLinkedInClientID");

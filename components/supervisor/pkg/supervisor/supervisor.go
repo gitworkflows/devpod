@@ -1646,7 +1646,7 @@ func stopWhenTasksAreDone(wg *sync.WaitGroup, cfg *Config, shutdown chan Shutdow
 		var msg string
 		if cfg.isImageBuild() {
 			logFromFile, err := os.ReadFile("/workspace/.devpod/bob.log")
-			debugMsg := "Debug this using `gp validate` (visit https://www.devpod.io/docs/configure/workspaces#validate-your-devpod-configuration) to learn more"
+			debugMsg := "Debug this using `gp validate` (visit https://www.devpod.khulnasoft.com/docs/configure/workspaces#validate-your-devpod-configuration) to learn more"
 			if err != nil {
 				log.WithError(err).Error("err while reading bob.log")
 				msg = fmt.Sprintf("image build failed: %s. %s", string(success), debugMsg)

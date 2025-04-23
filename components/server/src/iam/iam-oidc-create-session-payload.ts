@@ -80,7 +80,7 @@ export interface OIDCCreateSessionPayload {
         email_verified: true;
         family_name: string;
         given_name: string;
-        hd?: string; // accepted domain, e.g. "devpod.io"
+        hd?: string; // accepted domain, e.g. "devpod.khulnasoft.com"
         iss: string; // "https://accounts.google.com"
         locale: string; // e.g. "de"
         /**

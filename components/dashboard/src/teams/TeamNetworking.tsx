@@ -64,7 +64,7 @@ const SelfHostedCalloutCard = () => {
             </div>
 
             <LinkButton
-                href="https://www.devpod.io/contact/enterprise-self-serve"
+                href="https://www.devpod.khulnasoft.com/contact/enterprise-self-serve"
                 isExternalUrl={true}
                 className="mt-8"
             >
@@ -96,7 +96,7 @@ const DeployedRegionCard = () => {
             <LinkButton
                 variant="secondary"
                 className="mt-8 border border-pk-content-tertiary text-pk-content-primary bg-pk-surface-primary"
-                href="https://www.devpod.io/docs/enterprise/overview#aws-support-and-regions"
+                href="https://www.devpod.khulnasoft.com/docs/enterprise/overview#aws-support-and-regions"
                 isExternalUrl={true}
             >
                 Documentation
@@ -116,7 +116,7 @@ const VPNCard = () => {
             <LinkButton
                 variant="secondary"
                 className="mt-8 border border-pk-content-tertiary text-pk-content-primary bg-pk-surface-primary"
-                href="https://www.devpod.io/docs/enterprise/getting-started/networking#private-networking-configuration-highly-restrictive"
+                href="https://www.devpod.khulnasoft.com/docs/enterprise/getting-started/networking#private-networking-configuration-highly-restrictive"
                 isExternalUrl={true}
             >
                 Documentation

@@ -83,8 +83,8 @@ jobs:
           branch: "ide/code-stable"
           labels: "team: IDE,editor: code (browser)"
           token: ${{ secrets.ROBOQUAT_REPO_PAT }}
-          committer: Robo Quat <roboquat@devpod.io>
-          author: Robo Quat <roboquat@devpod.io>
+          committer: Robo Quat <roboquat@devpod.khulnasoft.com>
+          author: Robo Quat <roboquat@devpod.khulnasoft.com>
           team-reviewers: |
             team-experience
       - name: Get previous job's status

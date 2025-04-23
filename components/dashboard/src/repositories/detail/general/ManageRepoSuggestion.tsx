@@ -66,7 +66,7 @@ export const ManageRepoSuggestion: FC<Props> = ({ configuration }) => {
                 easier to find and start working on key projects in Devpod.
                 <a
                     className="gp-link flex flex-row items-center gap-1"
-                    href="https://www.devpod.io/docs/configure/orgs/onboarding#suggested-repositories"
+                    href="https://www.devpod.khulnasoft.com/docs/configure/orgs/onboarding#suggested-repositories"
                     target="_blank"
                     rel="noreferrer"
                 >

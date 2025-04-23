@@ -33,13 +33,13 @@ export namespace DevData {
                     authId: "33891423",
                     authName: "somefox",
                     authProviderId: "Public-GitHub",
-                    primaryEmail: "somefox@devpod.io",
+                    primaryEmail: "somefox@devpod.khulnasoft.com",
                 },
                 {
                     authId: "3171928",
                     authName: "somefox",
                     authProviderId: "Public-GitLab",
-                    primaryEmail: "somefox@devpod.io",
+                    primaryEmail: "somefox@devpod.khulnasoft.com",
                 },
             ],
             additionalData: {

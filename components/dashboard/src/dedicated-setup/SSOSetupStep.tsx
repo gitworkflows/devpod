@@ -88,7 +88,7 @@ export const SSOSetupStep: FC<Props> = ({ config, onComplete, progressCurrent, p
                 <Subheading>
                     Enable single sign-on for your organization using the OpenID Connect (OIDC) standard.{" "}
                     <a
-                        href="https://www.devpod.io/docs/enterprise/setup-devpod/configure-sso"
+                        href="https://www.devpod.khulnasoft.com/docs/enterprise/setup-devpod/configure-sso"
                         target="_blank"
                         rel="noreferrer noopener"
                         className="gp-link"

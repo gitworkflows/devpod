@@ -22,7 +22,7 @@ jobs:
           git config --global user.email $GITHUB_EMAIL
         env:
           GITHUB_USER: roboquat
-          GITHUB_EMAIL: roboquat@devpod.io
+          GITHUB_EMAIL: roboquat@devpod.khulnasoft.com
 
       - uses: imjasonh/setup-crane@v0.1
 

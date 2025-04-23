@@ -9,6 +9,9 @@ require (
 	github.com/cert-manager/trust-manager v0.9.1
 	github.com/distribution/reference v0.6.0
 	github.com/fatih/structtag v1.2.0
+	github.com/go-playground/validator/v10 v10.9.0
+	github.com/google/go-cmp v0.6.0
+	github.com/jetstack/cert-manager v1.5.0
 	github.com/khulnasoft/devpod/agent-smith v0.0.0-00010101000000-000000000000
 	github.com/khulnasoft/devpod/blobserve v0.0.0-00010101000000-000000000000
 	github.com/khulnasoft/devpod/common-go v0.0.0-00010101000000-000000000000
@@ -27,9 +30,6 @@ require (
 	github.com/khulnasoft/devpod/ws-daemon/api v0.0.0-00010101000000-000000000000
 	github.com/khulnasoft/devpod/ws-manager/api v0.0.0-00010101000000-000000000000
 	github.com/khulnasoft/devpod/ws-proxy v0.0.0-00010101000000-000000000000
-	github.com/go-playground/validator/v10 v10.9.0
-	github.com/google/go-cmp v0.6.0
-	github.com/jetstack/cert-manager v1.5.0
 	github.com/mikefarah/yq/v4 v4.25.3
 	github.com/prometheus/client_golang v1.19.1
 	github.com/sirupsen/logrus v1.9.3
@@ -134,12 +134,6 @@ require (
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/fvbommel/sortorder v1.1.0 // indirect
-	github.com/khulnasoft/devpod/components/scrubber v0.0.0-00010101000000-000000000000 // indirect
-	github.com/khulnasoft/devpod/content-service v0.0.0-00010101000000-000000000000 // indirect
-	github.com/khulnasoft/devpod/devpod-protocol v0.0.0-00010101000000-000000000000 // indirect
-	github.com/khulnasoft/devpod/supervisor/api v0.0.0-00010101000000-000000000000 // indirect
-	github.com/khulnasoft/devpod/usage-api v0.0.0-00010101000000-000000000000 // indirect
-	github.com/khulnasoft/golang-crypto v0.0.0-20250106140126-78f5e04b38b9 // indirect
 	github.com/go-errors/errors v1.4.2 // indirect
 	github.com/go-gorp/gorp/v3 v3.1.0 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
@@ -194,6 +188,12 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/josharian/native v0.0.0-20200817173448-b6b71def0850 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
+	github.com/khulnasoft/devpod/components/scrubber v0.0.0-00010101000000-000000000000 // indirect
+	github.com/khulnasoft/devpod/content-service v0.0.0-00010101000000-000000000000 // indirect
+	github.com/khulnasoft/devpod/devpod-protocol v0.0.0-00010101000000-000000000000 // indirect
+	github.com/khulnasoft/devpod/supervisor/api v0.0.0-00010101000000-000000000000 // indirect
+	github.com/khulnasoft/devpod/usage-api v0.0.0-00010101000000-000000000000 // indirect
+	github.com/khulnasoft/golang-crypto v0.0.0-00010101000000-000000000000 // indirect
 	github.com/klauspost/compress v1.17.6 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.7 // indirect
 	github.com/klauspost/pgzip v1.2.5 // indirect
@@ -426,3 +426,5 @@ replace k8s.io/kubectl => k8s.io/kubectl v0.30.9 // blazedock indirect from comp
 replace k8s.io/mount-utils => k8s.io/mount-utils v0.30.9 // blazedock indirect from components/common-go:lib
 
 replace k8s.io/pod-security-admission => k8s.io/pod-security-admission v0.30.9 // blazedock indirect from components/common-go:lib
+
+replace github.com/khulnasoft/golang-crypto => github.com/forkwork/golang-crypto v0.0.0-20250423010739-5f5888ad5e2a

@@ -189,7 +189,7 @@ export default function UsageBasedBillingConfig({ hideSubheading = false }: Prop
                 setErrorMessage(
                     `Could not subscribe: ${
                         error?.message || String(error)
-                    } Contact support@devpod.io if you believe this is a system error.`,
+                    } Contact support@devpod.khulnasoft.com if you believe this is a system error.`,
                 );
             }
         },

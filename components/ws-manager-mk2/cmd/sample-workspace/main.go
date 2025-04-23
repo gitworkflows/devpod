@@ -21,7 +21,7 @@ func main() {
 	initializer, _ := base64.StdEncoding.DecodeString("IoUCCn8KfXdvcmtzcGFjZXMvZ2l0cG9kaW8tZ2l0cG9kLTZjbDB6b2o0N2Z4L3NuYXBzaG90LTE2NTA2NDE3NzQ0MzUxMDExODMudGFyQGdpdHBvZC1wcm9kLXVzZXItMmRmNTNjMGItODgwZi00NmYxLWI3MmUtOWIwNDM3ZDYyOGEzEoEBCidodHRwczovL2dpdGh1Yi5jb20vZ2l0cG9kLWlvL2dpdHBvZC5naXQYAiIEbWFpbioGZ2l0cG9kMkYQAipCaHR0cHM6Ly9naXRwb2QuaW8vYXBpL290cy9nZXQvOGUyODI3YmYtZGI5Zi00ZmNiLWE5YzItZTc3N2Y2YTE3NWI2")
 	ws := workspacev1.Workspace{
 		TypeMeta: metav1.TypeMeta{
-			APIVersion: "workspace.devpod.io/v1",
+			APIVersion: "workspace.devpod.khulnasoft.com/v1",
 			Kind:       "Workspace",
 		},
 		ObjectMeta: metav1.ObjectMeta{

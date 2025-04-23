@@ -78,7 +78,7 @@ const ExpectedQueryErrorsFallback: FC<FallbackProps> = ({ error, resetErrorBound
         if (isDevpodIo() && window.location.pathname === "/" && window.location.hash === "") {
             // If there's no gp cookie, bounce to www site
             if (!hasLoggedInBefore()) {
-                window.location.href = `https://www.devpod.io`;
+                window.location.href = `https://www.devpod.khulnasoft.com`;
                 return <div></div>;
             }
         }

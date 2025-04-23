@@ -57,7 +57,7 @@ export const poll = async <T>(
 
 export function isDevpodIo() {
     return (
-        window.location.hostname === "devpod.io" ||
+        window.location.hostname === "devpod.khulnasoft.com" ||
         window.location.hostname === "devpod-staging.com" ||
         window.location.hostname.endsWith("devpod-dev.com") ||
         window.location.hostname.endsWith("khulnasoft-dev.com")

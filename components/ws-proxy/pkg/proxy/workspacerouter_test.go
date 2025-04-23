@@ -162,7 +162,7 @@ func TestMatchWorkspaceHostHeader(t *testing.T) {
 		PortVars         map[string]string
 	}
 
-	wsHostSuffix := ".devpod.io"
+	wsHostSuffix := ".devpod.khulnasoft.com"
 	tests := []struct {
 		Name       string
 		HostHeader string

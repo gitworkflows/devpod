@@ -1285,7 +1285,7 @@
           "rustrover"
         ],
         "installationSteps": [
-          "If you don't see an open dialog in your browser, make sure you have the <a target='_blank' class='gp-link' href='https://www.devpod.io/docs/ides-and-editors/jetbrains-gateway#getting-started-jetbrains-gateway'>JetBrains Gateway with Devpod Plugin</a> installed on your machine, and then click <b>${OPEN_LINK_LABEL}</b> below."
+          "If you don't see an open dialog in your browser, make sure you have the <a target='_blank' class='gp-link' href='https://www.devpod.khulnasoft.com/docs/ides-and-editors/jetbrains-gateway#getting-started-jetbrains-gateway'>JetBrains Gateway with Devpod Plugin</a> installed on your machine, and then click <b>${OPEN_LINK_LABEL}</b> below."
         ]
       },
       "jetbrains-toolbox": {
@@ -1302,7 +1302,7 @@
           "rustrover"
         ],
         "installationSteps": [
-          "If you don't see an open dialog in your browser, make sure you have the <a target='_blank' class='gp-link' href='https://www.devpod.io/docs/ides-and-editors/jetbrains-toolbox#getting-started-jetbrains-toolbox'>JetBrains Toolbox with Devpod Plugin</a> installed on your machine, and then click <b>${OPEN_LINK_LABEL}</b> below."
+          "If you don't see an open dialog in your browser, make sure you have the <a target='_blank' class='gp-link' href='https://www.devpod.khulnasoft.com/docs/ides-and-editors/jetbrains-toolbox#getting-started-jetbrains-toolbox'>JetBrains Toolbox with Devpod Plugin</a> installed on your machine, and then click <b>${OPEN_LINK_LABEL}</b> below."
         ]
       },
       "vscode": {

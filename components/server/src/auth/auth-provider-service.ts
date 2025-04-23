@@ -368,7 +368,7 @@ export class AuthProviderService {
                 break;
             case "AzureDevOps":
                 // We don't support Azure DevOps for PAYG users yet because our auth flow is based on provider's host
-                if (this.config.hostUrl.url.host === "devpod.io") {
+                if (this.config.hostUrl.url.host === "devpod.khulnasoft.com") {
                     throw new ApplicationError(ErrorCodes.BAD_REQUEST, "Unexpected service type.");
                 }
                 const { authorizationUrl, tokenUrl } = newEntry;

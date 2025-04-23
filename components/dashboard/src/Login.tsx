@@ -333,7 +333,7 @@ const RightProductDescriptionPanel = () => {
 
                     <p className="text-pk-content-secondary mb-2">
                         Devpod Classic is sunsetting fall 2025.{" "}
-                        <a className="gp-link font-bold" href="https://app.devpod.io" target="_blank" rel="noreferrer">
+                        <a className="gp-link font-bold" href="https://app.devpod.khulnasoft.com" target="_blank" rel="noreferrer">
                             Try the new Devpod
                         </a>{" "}
                         now (hosted compute coming soon).
@@ -350,14 +350,14 @@ const TermsOfServiceAndPrivacyPolicy = () => {
         <div className="flex-none mx-auto text-center px-4 pb-4">
             <span className="text-gray-400 dark:text-gray-500 text-sm">
                 By signing in, you agree to our{" "}
-                <a className="gp-link hover:text-gray-600" target="devpod-terms" href="https://www.devpod.io/terms/">
+                <a className="gp-link hover:text-gray-600" target="devpod-terms" href="https://www.devpod.khulnasoft.com/terms/">
                     terms of service
                 </a>{" "}
                 and{" "}
                 <a
                     className="gp-link hover:text-gray-600"
                     target="devpod-privacy"
-                    href="https://www.devpod.io/privacy/"
+                    href="https://www.devpod.khulnasoft.com/privacy/"
                 >
                     privacy policy
                 </a>

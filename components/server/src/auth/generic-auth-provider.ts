@@ -446,7 +446,7 @@ export abstract class GenericAuthProvider implements AuthProvider {
                     isBlocked: flowContext.isBlocked,
                 });
 
-                // Set all cookies used on website for visitor preferences for .devpod.io domain if no preference exists yet
+                // Set all cookies used on website for visitor preferences for .devpod.khulnasoft.com domain if no preference exists yet
                 ["gp-analytical", "gp-necessary", "gp-targeting"].forEach((cookieName) => {
                     if (!request.cookies[cookieName]) {
                         response.cookie(cookieName, "true", {

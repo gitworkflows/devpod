@@ -380,19 +380,19 @@ const RedirectUrlDescription: FunctionComponent<RedirectUrlDescriptionProps> = (
     let docsUrl = ``;
     switch (type) {
         case AuthProviderType.GITHUB:
-            docsUrl = `https://www.devpod.io/docs/configure/authentication/github-enterprise`;
+            docsUrl = `https://www.devpod.khulnasoft.com/docs/configure/authentication/github-enterprise`;
             break;
         case AuthProviderType.GITLAB:
-            docsUrl = `https://www.devpod.io/docs/configure/authentication/gitlab#registering-a-self-hosted-gitlab-installation`;
+            docsUrl = `https://www.devpod.khulnasoft.com/docs/configure/authentication/gitlab#registering-a-self-hosted-gitlab-installation`;
             break;
         case AuthProviderType.BITBUCKET:
-            docsUrl = `https://www.devpod.io/docs/configure/authentication`;
+            docsUrl = `https://www.devpod.khulnasoft.com/docs/configure/authentication`;
             break;
         case AuthProviderType.BITBUCKET_SERVER:
-            docsUrl = "https://www.devpod.io/docs/configure/authentication/bitbucket-server";
+            docsUrl = "https://www.devpod.khulnasoft.com/docs/configure/authentication/bitbucket-server";
             break;
         case AuthProviderType.AZURE_DEVOPS:
-            docsUrl = "https://www.devpod.io/docs/configure/authentication/azure-devops";
+            docsUrl = "https://www.devpod.khulnasoft.com/docs/configure/authentication/azure-devops";
             break;
         default:
             return null;

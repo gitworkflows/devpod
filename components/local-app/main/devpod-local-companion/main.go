@@ -48,7 +48,7 @@ func main() {
 				EnvVars: []string{
 					"DEVPOD_HOST",
 				},
-				Value: "https://devpod.io",
+				Value: "https://devpod.khulnasoft.com",
 			},
 			&cli.BoolFlag{
 				Name:  "mock-keyring",

@@ -247,7 +247,7 @@ export class SessionHandler {
 
         const hostname = req.hostname;
         if (
-            hostname === "devpod.io" ||
+            hostname === "devpod.khulnasoft.com" ||
             hostname === "devpod-staging.com" ||
             hostname.endsWith("devpod-dev.com") ||
             hostname.endsWith("khulnasoft-dev.com")

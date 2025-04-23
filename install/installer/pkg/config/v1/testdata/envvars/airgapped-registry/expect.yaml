@@ -7,7 +7,7 @@ containerRegistry:
   privateBaseImageAllowList:
     - local-registry-host.com
     - docker.io
-domain: devpod.io
+domain: devpod.khulnasoft.com
 dropImageRepo: true
 imagePullSecrets:
   - kind: secret

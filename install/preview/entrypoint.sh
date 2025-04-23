@@ -257,9 +257,9 @@ run_telemetry(){
 run_telemetry 2>&1 &
 
 /bin/k3s server --disable traefik \
-  --node-label devpod.io/workload_meta=true \
-  --node-label devpod.io/workload_ide=true \
-  --node-label devpod.io/workload_workspace_services=true \
-  --node-label devpod.io/workload_services=true \
-  --node-label devpod.io/workload_workspace_regular=true \
-  --node-label devpod.io/workload_workspace_headless=true
+  --node-label devpod.khulnasoft.com/workload_meta=true \
+  --node-label devpod.khulnasoft.com/workload_ide=true \
+  --node-label devpod.khulnasoft.com/workload_workspace_services=true \
+  --node-label devpod.khulnasoft.com/workload_services=true \
+  --node-label devpod.khulnasoft.com/workload_workspace_regular=true \
+  --node-label devpod.khulnasoft.com/workload_workspace_headless=true

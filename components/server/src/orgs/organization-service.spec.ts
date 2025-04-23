@@ -54,7 +54,7 @@ describe("OrganizationService", async () => {
                                 orderKey: "00",
                                 title: "VS Code",
                                 type: "browser",
-                                logo: "https://ide.devpod.io/image/ide-logo/vscode.svg",
+                                logo: "https://ide.devpod.khulnasoft.com/image/ide-logo/vscode.svg",
                                 label: "Browser",
                                 image: "bar",
                                 latestImage: "baz",

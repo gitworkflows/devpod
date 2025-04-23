@@ -94,7 +94,7 @@
     "region": "workspace",
     "creationTime": "2023-12-01T04:53:27.295Z",
     "startedTime": "2023-12-01T04:53:41.918Z",
-    "ideUrl": "https://devpodio-devpod-ve5gs3cb32j.ws.devpod.io",
+    "ideUrl": "https://devpodio-devpod-ve5gs3cb32j.ws.devpod.khulnasoft.com",
     "workspaceImage": "877922613839.dkr.ecr.eu-central-1.amazonaws.com/image-build/workspace-images:adb73357f7e48abcb1210a0fad039618a8156bb5de667a2ae7acb98ff5244b5e",
     "status": {
       "phase": "running",
@@ -116,13 +116,13 @@
       "ownerToken": "ownerToken22",
       "exposedPorts": [
         {
-          "url": "https://3000-devpodio-devpod-ve5gs3cb32j.ws.devpod.io",
+          "url": "https://3000-devpodio-devpod-ve5gs3cb32j.ws.devpod.khulnasoft.com",
           "port": 3000,
           "protocol": "http",
           "visibility": "private"
         },
         {
-          "url": "https://3306-devpodio-devpod-ve5gs3cb32j.ws.devpod.io",
+          "url": "https://3306-devpodio-devpod-ve5gs3cb32j.ws.devpod.khulnasoft.com",
           "port": 3306,
           "protocol": "http",
           "visibility": "public"

@@ -28,7 +28,7 @@ rules:
   verbs:
   - get
 - apiGroups:
-  - workspace.devpod.io
+  - workspace.devpod.khulnasoft.com
   resources:
   - workspaces
   verbs:
@@ -40,13 +40,13 @@ rules:
   - update
   - watch
 - apiGroups:
-  - workspace.devpod.io
+  - workspace.devpod.khulnasoft.com
   resources:
   - workspaces/finalizers
   verbs:
   - update
 - apiGroups:
-  - workspace.devpod.io
+  - workspace.devpod.khulnasoft.com
   resources:
   - workspaces/status
   verbs:

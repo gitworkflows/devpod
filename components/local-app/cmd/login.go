@@ -194,7 +194,7 @@ var loginCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(loginCmd)
 
-	host := "https://devpod.io"
+	host := "https://devpod.khulnasoft.com"
 	if v := os.Getenv("DEVPOD_HOST"); v != "" {
 		host = v
 	}

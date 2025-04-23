@@ -167,7 +167,7 @@ function ListAccessTokensView() {
                         Create or regenerate access tokens.{" "}
                         <a
                             className="gp-link"
-                            href="https://www.devpod.io/docs/configure/user-settings/access-tokens"
+                            href="https://www.devpod.khulnasoft.com/docs/configure/user-settings/access-tokens"
                             target="_blank"
                             rel="noreferrer"
                         >

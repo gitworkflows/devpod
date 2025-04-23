@@ -17,7 +17,7 @@ database:
     certificate:
       kind: secret
       name: database-secret
-domain: devpod.io
+domain: devpod.khulnasoft.com
 metadata:
   region: s3-region
 objectStorage:

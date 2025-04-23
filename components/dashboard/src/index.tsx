@@ -28,11 +28,11 @@ import { UserContextProvider } from "./user-context";
 import { getURLHash, isDevpodIo, isWebsiteSlug } from "./utils";
 
 const bootApp = () => {
-    // devpod.io specific boot logic
+    // devpod.khulnasoft.com specific boot logic
     if (isDevpodIo()) {
         // Redirect to www website for any website slugs
         if (isWebsiteSlug(window.location.pathname)) {
-            window.location.host = "www.devpod.io";
+            window.location.host = "www.devpod.khulnasoft.com";
             return;
         }
     }

@@ -15,7 +15,7 @@
       "cloneUrl": "https://github.com/khulnasoft/empty.git",
       "host": "github.com",
       "name": "empty",
-      "owner": "devpod.io",
+      "owner": "devpod.khulnasoft.com",
       "private": false
     }
   },
@@ -71,7 +71,7 @@
   "startedTime": "2019-12-12T18:38:38.625Z",
   "deployedTime": "2019-12-12T18:38:21.501Z",
   "stoppedTime": "2019-12-12T19:20:11.821Z",
-  "ideUrl": "https://longlong-650a-413a-b5ed-aaaaa.ws-us02.devpod.io",
+  "ideUrl": "https://longlong-650a-413a-b5ed-aaaaa.ws-us02.devpod.khulnasoft.com",
   "workspaceImage": "devpod/workspace-base",
   "status": {
     "repo": {

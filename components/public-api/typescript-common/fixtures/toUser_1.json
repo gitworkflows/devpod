@@ -26,7 +26,7 @@
     },
     "profile": {
       "acceptedPrivacyPolicyDate": "2023-12-04T08:54:31.700Z",
-      "emailAddress": "tester@devpod.io",
+      "emailAddress": "tester@devpod.khulnasoft.com",
       "lastUpdatedDetailsNudge": "2023-12-04T08:54:34.831Z",
       "jobRole": "other",
       "jobRoleOther": "",
@@ -42,7 +42,7 @@
       "companySize": "",
       "onboardedTimestamp": "2023-12-04T08:54:41.326Z",
       "name": "Devpod Tester",
-      "email": "tester@devpod.io",
+      "email": "tester@devpod.khulnasoft.com",
       "company": "",
       "avatarURL": "https://avatars.githubusercontent.com/u/37021919?v=4"
     },
@@ -77,7 +77,7 @@
       "authProviderId": "Public-GitHub",
       "authId": "37021919",
       "authName": "DevpodTester",
-      "primaryEmail": "tester@devpod.io",
+      "primaryEmail": "tester@devpod.khulnasoft.com",
       "deleted": false,
       "readonly": false
     }

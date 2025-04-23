@@ -8,9 +8,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.16.5
-  name: workspaces.workspace.devpod.io
+  name: workspaces.workspace.devpod.khulnasoft.com
 spec:
-  group: workspace.devpod.io
+  group: workspace.devpod.khulnasoft.com
   names:
     kind: Workspace
     listKind: WorkspaceList

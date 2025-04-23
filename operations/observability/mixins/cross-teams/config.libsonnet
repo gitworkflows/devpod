@@ -10,7 +10,7 @@
     showMultiCluster: true,
     clusterLabel: 'cluster',
 
-    devpodURL: 'https://devpod.io',
+    devpodURL: 'https://devpod.khulnasoft.com',
 
     dashboardNamePrefix: 'Devpod / ',
     dashboardTags: ['devpod-mixin'],

@@ -12,4 +12,4 @@ webhook:
   port: 9443
 leaderElection:
   leaderElect: true
-  resourceName: 0616d21e.devpod.io
+  resourceName: 0616d21e.devpod.khulnasoft.com

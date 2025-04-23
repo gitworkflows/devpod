@@ -32,40 +32,40 @@ export class EmailDomainFilterDBSpec {
 
     @test public async filterSimple() {
         await this.db.storeFilterEntry({
-            domain: "devpod.io",
+            domain: "devpod.khulnasoft.com",
             negative: true,
         });
 
-        const actual = await this.db.isBlocked("devpod.io");
+        const actual = await this.db.isBlocked("devpod.khulnasoft.com");
         expect(actual, "isBlocked").to.equal(true);
     }
 
     @test public async filterSimple_negative() {
         await this.db.storeFilterEntry({
-            domain: "devpod.io",
+            domain: "devpod.khulnasoft.com",
             negative: true,
         });
 
         const actual = await this.db.isBlocked("example.org");
         expect(actual, "isBlocked").to.equal(false);
 
-        const actual2 = await this.db.isBlocked("sub.devpod.io");
+        const actual2 = await this.db.isBlocked("sub.devpod.khulnasoft.com");
         expect(actual2, "isBlocked").to.equal(false);
     }
 
     @test public async filterSuffixMatch() {
         await this.db.storeFilterEntry({
-            domain: "%.devpod.io",
+            domain: "%.devpod.khulnasoft.com",
             negative: true,
         });
 
-        const actual = await this.db.isBlocked("devpod.io");
+        const actual = await this.db.isBlocked("devpod.khulnasoft.com");
         expect(actual, "isBlocked").to.equal(false);
 
-        const actual2 = await this.db.isBlocked("sub.devpod.io");
+        const actual2 = await this.db.isBlocked("sub.devpod.khulnasoft.com");
         expect(actual2, "isBlocked").to.equal(true);
 
-        const actual3 = await this.db.isBlocked("sub.devpod.io.xyz");
+        const actual3 = await this.db.isBlocked("sub.devpod.khulnasoft.com.xyz");
         expect(actual3, "isBlocked").to.equal(false);
     }
 
@@ -78,7 +78,7 @@ export class EmailDomainFilterDBSpec {
         const actual = await this.db.isBlocked("example.org");
         expect(actual, "isBlocked").to.equal(false);
 
-        const actual2 = await this.db.isBlocked("sub.devpod.io");
+        const actual2 = await this.db.isBlocked("sub.devpod.khulnasoft.com");
         expect(actual2, "isBlocked").to.equal(false);
     }
 }

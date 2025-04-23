@@ -83,7 +83,7 @@ export const SSOConfigForm: FC<Props> = ({ config, readOnly = false, onChange })
             <Subheading className="mt-8">
                 <strong>3.</strong> Restrict available accounts in your Identity Providers.
                 <a
-                    href="https://www.devpod.io/docs/enterprise/setup-devpod/configure-sso#restrict-available-accounts-in-your-identity-providers"
+                    href="https://www.devpod.khulnasoft.com/docs/enterprise/setup-devpod/configure-sso#restrict-available-accounts-in-your-identity-providers"
                     target="_blank"
                     rel="noreferrer noopener"
                     className="gp-link"

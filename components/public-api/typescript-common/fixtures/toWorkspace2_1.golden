@@ -37,7 +37,7 @@
                 {
                     "port": "5000",
                     "admission": "ADMISSION_LEVEL_OWNER_ONLY",
-                    "url": "https://5000-devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.io",
+                    "url": "https://5000-devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.khulnasoft.com",
                     "protocol": "PROTOCOL_HTTP"
                 }
             ],
@@ -67,7 +67,7 @@
                 "name": "PHASE_RUNNING",
                 "lastTransitionTime": "2023-12-01T05:02:04.539Z"
             },
-            "workspaceUrl": "https://devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.io",
+            "workspaceUrl": "https://devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.khulnasoft.com",
             "conditions": {
                 "failed": "",
                 "failedReason": "FAILED_REASON_UNSPECIFIED",

@@ -307,7 +307,7 @@ jobs:
           git push origin ${VERSION}
         env:
           GITHUB_USER: roboquat
-          GITHUB_EMAIL: roboquat@devpod.io
+          GITHUB_EMAIL: roboquat@devpod.khulnasoft.com
           VERSION: ${{ needs.configuration.outputs.version }}
 
   trivy-scan:

@@ -82,7 +82,7 @@
                 "name": "PHASE_STOPPED",
                 "lastTransitionTime": "2019-12-12T19:20:11.821Z"
             },
-            "workspaceUrl": "https://longlong-650a-413a-b5ed-aaaaa.ws-us02.devpod.io",
+            "workspaceUrl": "https://longlong-650a-413a-b5ed-aaaaa.ws-us02.devpod.khulnasoft.com",
             "conditions": {
                 "failed": "",
                 "failedReason": "FAILED_REASON_UNSPECIFIED",

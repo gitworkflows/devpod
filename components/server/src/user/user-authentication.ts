@@ -204,7 +204,7 @@ export class UserAuthentication {
     }
 
     /**
-     * devpod.io: Only installation-level users are allowed to create orgs
+     * devpod.khulnasoft.com: Only installation-level users are allowed to create orgs
      * Dedicated: Only if multiOrg is enabled, installation-level users (=admin-user) can create orgs
      * @param user
      * @returns

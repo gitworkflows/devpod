@@ -14,7 +14,7 @@ import (
 
 const (
 	// DevpodFinalizerName is the name of the finalizer we use on workspaces and their pods.
-	DevpodFinalizerName = "devpod.io/finalizer"
+	DevpodFinalizerName = "devpod.khulnasoft.com/finalizer"
 
 	// ReasonInitializationSuccess is a Reason for the WorkspaceConditionContentReady condition,
 	// incidating content init succeeded.

@@ -60,7 +60,7 @@
                 "name": "PHASE_STOPPED",
                 "lastTransitionTime": "2023-11-29T18:56:12.986Z"
             },
-            "workspaceUrl": "https://devpodio-empty-bs8378oes6b.ws.devpod.io",
+            "workspaceUrl": "https://devpodio-empty-bs8378oes6b.ws.devpod.khulnasoft.com",
             "conditions": {
                 "failed": "",
                 "failedReason": "FAILED_REASON_UNSPECIFIED",

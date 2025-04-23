@@ -102,7 +102,7 @@ The Usage component is configured through a JSON configuration file:
     "address": "redis:6379"
   },
   "serverAddress": "server:3000",
-  "devpodHost": "devpod.io"
+  "devpodHost": "devpod.khulnasoft.com"
 }
 ```
 

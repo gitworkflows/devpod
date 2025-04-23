@@ -61,7 +61,7 @@ export const EnableDockerdAuthentication: FC<Props> = ({ configuration }) => {
                 </Alert>
                 <a
                     className="gp-link flex flex-row items-center gap-1"
-                    href="https://www.devpod.io/docs/configure/repositories/environment-variables#docker-registry-authentication"
+                    href="https://www.devpod.khulnasoft.com/docs/configure/repositories/environment-variables#docker-registry-authentication"
                     target="_blank"
                     rel="noreferrer"
                 >

@@ -371,7 +371,7 @@ function GitProviders() {
                 Manage your permissions to the available Git provider integrations.{" "}
                 <a
                     className="gp-link"
-                    href="https://www.devpod.io/docs/configure/authentication"
+                    href="https://www.devpod.khulnasoft.com/docs/configure/authentication"
                     target="_blank"
                     rel="noreferrer"
                 >
@@ -742,7 +742,7 @@ export function GitIntegrationModal(
                 <span>
                     Use this redirect URI to update the OAuth application and set it up.&nbsp;
                     <a
-                        href="https://www.devpod.io/docs/azure-devops-integration/#oauth-application"
+                        href="https://www.devpod.khulnasoft.com/docs/azure-devops-integration/#oauth-application"
                         target="_blank"
                         rel="noreferrer noopener"
                         className="gp-link"
@@ -777,10 +777,10 @@ export function GitIntegrationModal(
         let docsUrl = ``;
         switch (type) {
             case AuthProviderType.GITHUB:
-                docsUrl = `https://www.devpod.io/docs/github-integration/#oauth-application`;
+                docsUrl = `https://www.devpod.khulnasoft.com/docs/github-integration/#oauth-application`;
                 break;
             case AuthProviderType.GITLAB:
-                docsUrl = `https://www.devpod.io/docs/gitlab-integration/#oauth-application`;
+                docsUrl = `https://www.devpod.khulnasoft.com/docs/gitlab-integration/#oauth-application`;
                 break;
             default:
                 return undefined;

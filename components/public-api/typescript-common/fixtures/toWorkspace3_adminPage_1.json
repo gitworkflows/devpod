@@ -59,7 +59,7 @@
   "startedTime": "2023-12-03T04:20:04.988Z",
   "stoppingTime": "2023-12-03T06:52:09.819Z",
   "stoppedTime": "2023-12-03T06:54:49.619Z",
-  "ideUrl": "https://balabala-ws-id.ws-us106.devpod.io",
+  "ideUrl": "https://balabala-ws-id.ws-us106.devpod.khulnasoft.com",
   "workspaceImage": "eu.gcr.io/devpod-dev/workspace-images:e4ac1036c2a8779f05f6707d3d716d7759f0d9d199d4810b9fd2abffdae92355",
   "status": {
     "phase": "stopped",
@@ -81,13 +81,13 @@
     "ownerToken": "ownerToken",
     "exposedPorts": [
       {
-        "url": "https://8080-balabala-ws-id.ws-us106.devpod.io",
+        "url": "https://8080-balabala-ws-id.ws-us106.devpod.khulnasoft.com",
         "port": 8080,
         "protocol": "http",
         "visibility": "private"
       },
       {
-        "url": "https://3306-balabala-ws-id.ws-us106.devpod.io",
+        "url": "https://3306-balabala-ws-id.ws-us106.devpod.khulnasoft.com",
         "port": 3306,
         "protocol": "http",
         "visibility": "private"

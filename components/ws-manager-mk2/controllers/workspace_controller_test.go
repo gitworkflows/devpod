@@ -925,7 +925,7 @@ func newWorkspace(name, namespace string) *workspacev1.Workspace {
 
 	return &workspacev1.Workspace{
 		TypeMeta: metav1.TypeMeta{
-			APIVersion: "workspace.devpod.io/v1",
+			APIVersion: "workspace.devpod.khulnasoft.com/v1",
 			Kind:       "Workspace",
 		},
 		ObjectMeta: metav1.ObjectMeta{

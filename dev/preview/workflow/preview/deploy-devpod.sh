@@ -150,7 +150,7 @@ cat <<EOF > blockNewUsers.yaml
 blockNewUsers:
   enabled: true
   passlist:
-    - "devpod.io"
+    - "devpod.khulnasoft.com"
 EOF
 yq m -i --overwrite "${INSTALLER_CONFIG_PATH}" "blockNewUsers.yaml"
 rm blockNewUsers.yaml

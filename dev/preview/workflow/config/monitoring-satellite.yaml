@@ -21,7 +21,7 @@ prometheus:
   remoteWrite:
     - username: ${PROM_REMOTE_WRITE_USER}
       password: ${PROM_REMOTE_WRITE_PASSWORD}
-      url: "https://victoriametrics.devpod.io/api/v1/write"
+      url: "https://victoriametrics.devpod.khulnasoft.com/api/v1/write"
       writeRelabelConfigs:
           - action: keep
             regex: "rest_client_requests_total.*|http_prober_.*"

@@ -173,10 +173,10 @@ export class Server {
         const websocketConnectionHandler = this.websocketConnectionHandler;
         this.eventEmitter.on(Server.EVENT_ON_START, (httpServer) => {
             // CSRF protection: check "Origin" header:
-            //  - for cookie/session AND Bearer auth: MUST be hostUrl.hostname (devpod.io)
+            //  - for cookie/session AND Bearer auth: MUST be hostUrl.hostname (devpod.khulnasoft.com)
             //  - edge case: empty "Origin" is always permitted
             // We rely on the origin header being set correctly (needed by regular clients to use Devpod:
-            // CORS allows subdomains to access devpod.io)
+            // CORS allows subdomains to access devpod.khulnasoft.com)
             const verifyOrigin = (origin: string) => {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 let allowedRequest = isAllowedWebsocketDomain(origin, this.config.hostUrl.url.hostname);

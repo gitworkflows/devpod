@@ -32,7 +32,7 @@ const (
 	// If the value of this label
 	//   - is not a number (cannot be parsed by strconv.ParseUint), registry-facade fails to use the image,
 	//   - is larger than the number of layers in the image, the image is considered empty (i.e. to have no layer).
-	labelSkipNLayer = "skip-n.registry-facade.devpod.io"
+	labelSkipNLayer = "skip-n.registry-facade.devpod.khulnasoft.com"
 )
 
 // LayerSource provides layers for a workspace image
