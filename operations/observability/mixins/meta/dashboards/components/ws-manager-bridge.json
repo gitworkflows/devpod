@@ -2280,7 +2280,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / Component / ws-manager-bridge",
+  "title": "Devpod / Component / ws-manager-bridge",
   "uid": "ws-manager-bridge",
   "version": 1,
   "weekStart": ""

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License-AGPL.txt in the project root for license information.
 
@@ -287,7 +287,7 @@ func (wsm *WorkspaceManagerServer) StartWorkspace(ctx context.Context, req *wsma
 			SSHGatewayCAPublicKey: sshGatewayCAPublicKey,
 		},
 	}
-	controllerutil.AddFinalizer(&ws, workspacev1.GitpodFinalizerName)
+	controllerutil.AddFinalizer(&ws, workspacev1.DevpodFinalizerName)
 
 	exists, err := wsm.workspaceExists(ctx, req.Metadata.MetaId)
 	if err != nil {
@@ -359,7 +359,7 @@ func isProtectedEnvVar(name string, sysEnvvars []*wsmanapi.EnvironmentVariable) 
 	case "THEIA_SUPERVISOR_TOKENS":
 		return true
 	default:
-		if isGitpodInternalEnvVar(name) {
+		if isDevpodInternalEnvVar(name) {
 			return false
 		}
 		for _, env := range sysEnvvars {
@@ -371,8 +371,8 @@ func isProtectedEnvVar(name string, sysEnvvars []*wsmanapi.EnvironmentVariable) 
 	}
 }
 
-func isGitpodInternalEnvVar(name string) bool {
-	return strings.HasPrefix(name, "GITPOD_") ||
+func isDevpodInternalEnvVar(name string) bool {
+	return strings.HasPrefix(name, "DEVPOD_") ||
 		strings.HasPrefix(name, "SUPERVISOR_") ||
 		strings.HasPrefix(name, "BOB_") ||
 		strings.HasPrefix(name, "THEIA_") ||
@@ -1088,7 +1088,7 @@ func (wsm *WorkspaceManagerServer) extractWorkspaceStatus(ws *workspacev1.Worksp
 			protocol = wsmanapi.PortProtocol_PORT_PROTOCOL_HTTPS
 		}
 		url, err := config.RenderWorkspacePortURL(wsm.Config.WorkspacePortURLTemplate, config.PortURLContext{
-			Host:          wsm.Config.GitpodHostURL,
+			Host:          wsm.Config.DevpodHostURL,
 			ID:            ws.Name,
 			IngressPort:   fmt.Sprint(p.Port),
 			Prefix:        ws.Spec.Ownership.WorkspaceID,

@@ -19,7 +19,7 @@ packages:
       - CGO_ENABLED=0
       - GOOS=linux
     prep:
-      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.io_workspaces.yaml", "crd/workspace.devpod.io_workspaces.yaml"]
+      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.khulnasoft.com_workspaces.yaml", "crd/workspace.devpod.khulnasoft.com_workspaces.yaml"]
     config:
       packaging: app
       buildCommand: ["go", "build", "-trimpath", "-ldflags=-buildid= -X 'github.com/khulnasoft/devpod/ws-daemon/cmd.Version=commit-${__git_commit}'"]
@@ -43,7 +43,7 @@ packages:
       - CGO_ENABLED=0
       - GOOS=linux
     prep:
-      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.io_workspaces.yaml", "crd/workspace.devpod.io_workspaces.yaml"]
+      - ["mv", "_deps/components-ws-manager-mk2--crd/workspace.devpod.khulnasoft.com_workspaces.yaml", "crd/workspace.devpod.khulnasoft.com_workspaces.yaml"]
     config:
       packaging: library
   - name: content-initializer
@@ -81,7 +81,7 @@ packages:
     config:
       buildArgs:
         VERSION: ${version}
-      dockerfile: leeway.Dockerfile
+      dockerfile: blazedock.Dockerfile
       metadata:
         helm-component: wsDaemon
       image:
@@ -92,7 +92,7 @@ scripts:
     description: Executes into the ws-daemon for a workspace pod in $WS
     script: |-
       if [ -z "$WS" ]; then
-        echo "usage: WS=<workspacePodName> leeway run components/ws-daemon:kube-exec"
+        echo "usage: WS=<workspacePodName> blazedock run components/ws-daemon:kube-exec"
         exit 1
       fi
       node=$(kubectl get pod -o jsonpath='{.spec.nodeName}' $WS)

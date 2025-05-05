@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -25,7 +25,7 @@ export interface ParseResult {
 }
 
 @injectable()
-export class GitpodFileParser {
+export class DevpodFileParser {
     public parse(content: string, parseOptions = {}, defaultConfig: WorkspaceConfig = {}): ParseResult {
         const options = {
             ...defaultParseOptions,
@@ -56,10 +56,10 @@ export class GitpodFileParser {
                 parsedConfig,
             };
         } catch (err) {
-            log.error("Unparsable Gitpod configuration", err, { content });
+            log.error("Unparsable Devpod configuration", err, { content });
             return {
                 config: defaultConfig,
-                validationErrors: ["Unparsable Gitpod configuration: " + err.toString()],
+                validationErrors: ["Unparsable Devpod configuration: " + err.toString()],
             };
         }
     }

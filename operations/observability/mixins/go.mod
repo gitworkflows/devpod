@@ -1,4 +1,4 @@
-module gitpod-io/mixin-utils
+module khulnasoft/mixin-utils
 
 go 1.15
 

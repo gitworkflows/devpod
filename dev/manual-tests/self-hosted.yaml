@@ -1,6 +1,6 @@
 id: devpod-self-hosted
-name: Gitpod Self-Hosted
-description: Manual tests to conduct before releasing Gitpod self-hosted
+name: Devpod Self-Hosted
+description: Manual tests to conduct before releasing Devpod self-hosted
 testset: []
 case:
 - id: helm-installer
@@ -10,9 +10,9 @@ case:
   steps: |
       - Log into AWS via https://devpod.awsapps.com/start#/
       - create a new subdomain in dns-for-playgrounds via https://www.notion.so/devpod/GCP-Playgrounds-5b49f9c92e5c42438af73343b98253b1
-      - Install Gitpod in the new Playground project following https://www.devpod.io/docs/self-hosted/latest/install/install-on-aws-script/ using that hostname
-      - Start a workspace on https://github.com/gitpod-io/spring-petclinic, modify a file, stop the workspace, start the workspace, check if the modification is still there.
-      - Start a workspace on https://github.com/gitpod-io/spring-petclinic, expose the port of the running application and open it in a new browser window.
+      - Install Devpod in the new Playground project following https://www.devpod.khulnasoft.com/docs/self-hosted/latest/install/install-on-aws-script/ using that hostname
+      - Start a workspace on https://github.com/khulnasoft/spring-petclinic, modify a file, stop the workspace, start the workspace, check if the modification is still there.
+      - Start a workspace on https://github.com/khulnasoft/spring-petclinic, expose the port of the running application and open it in a new browser window.
       - Start a workspace on https://github.com/eclipse-theia/theia and see if the image build passes.
   mustpass: false
   mintestercount: 1
@@ -23,11 +23,11 @@ case:
   description: ""
   steps: |
       - Create a new Playground Project on GKE via https://www.notion.so/devpod/GCP-Playgrounds-5b49f9c92e5c42438af73343b98253b1
-      - Install Gitpod in the new Playground project following https://www.devpod.io/docs/self-hosted/latest/install/install-on-gcp-script/
-      - Start a workspace on https://github.com/gitpod-io/spring-petclinic, modify a file, stop the workspace, start the workspace, check if the modification is still there.
-      - Start a workspace on https://github.com/gitpod-io/spring-petclinic, expose the port of the running application and open it in a new browser window.
+      - Install Devpod in the new Playground project following https://www.devpod.khulnasoft.com/docs/self-hosted/latest/install/install-on-gcp-script/
+      - Start a workspace on https://github.com/khulnasoft/spring-petclinic, modify a file, stop the workspace, start the workspace, check if the modification is still there.
+      - Start a workspace on https://github.com/khulnasoft/spring-petclinic, expose the port of the running application and open it in a new browser window.
       - Start a workspace on https://github.com/eclipse-theia/theia and see if the image build passes.
-      - Start a workspace on https://github.com/gitpod-io/spring-petclinic, and install a VS Code extension, e.g. https://open-vsx.org/extension/Tyriar/sort-lines
+      - Start a workspace on https://github.com/khulnasoft/spring-petclinic, and install a VS Code extension, e.g. https://open-vsx.org/extension/Tyriar/sort-lines
   mustpass: false
   mintestercount: 1
   annotations: {}
@@ -37,11 +37,11 @@ case:
   description: ""
   steps: |
       - Log into AWS via https://devpod.awsapps.com/start#/
-      - Install Gitpod in the new Playground project following https://www.devpod.io/docs/self-hosted/latest/install/install-on-aws-script/
-      - Start a workspace on https://github.com/gitpod-io/spring-petclinic, modify a file, stop the workspace, start the workspace, check if the modification is still there.
-      - Start a workspace on https://github.com/gitpod-io/spring-petclinic, expose the port of the running application and open it in a new browser window.
+      - Install Devpod in the new Playground project following https://www.devpod.khulnasoft.com/docs/self-hosted/latest/install/install-on-aws-script/
+      - Start a workspace on https://github.com/khulnasoft/spring-petclinic, modify a file, stop the workspace, start the workspace, check if the modification is still there.
+      - Start a workspace on https://github.com/khulnasoft/spring-petclinic, expose the port of the running application and open it in a new browser window.
       - Start a workspace on https://github.com/eclipse-theia/theia and see if the image build passes.
-      - Start a workspace on https://github.com/gitpod-io/spring-petclinic, and install a VS Code extension, e.g. https://open-vsx.org/extension/Tyriar/sort-lines
+      - Start a workspace on https://github.com/khulnasoft/spring-petclinic, and install a VS Code extension, e.g. https://open-vsx.org/extension/Tyriar/sort-lines
   mustpass: false
   mintestercount: 1
   annotations: {}

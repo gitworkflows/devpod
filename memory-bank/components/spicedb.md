@@ -2,12 +2,12 @@
 
 ## Overview
 
-The SpiceDB component in Gitpod provides authorization and permission management using the SpiceDB authorization system. It defines the relationship-based access control (ReBAC) schema that governs permissions across the Gitpod platform, enabling fine-grained access control for users, organizations, projects, workspaces, and other resources.
+The SpiceDB component in Devpod provides authorization and permission management using the SpiceDB authorization system. It defines the relationship-based access control (ReBAC) schema that governs permissions across the Devpod platform, enabling fine-grained access control for users, organizations, projects, workspaces, and other resources.
 
 ## Purpose
 
 The primary purposes of the SpiceDB component are:
-- Define the authorization schema for Gitpod
+- Define the authorization schema for Devpod
 - Model relationships between entities (users, organizations, projects, workspaces)
 - Specify permissions based on these relationships
 - Provide a consistent authorization system across the platform
@@ -31,8 +31,8 @@ The component follows the SpiceDB authorization model, which is based on the Goo
 ## Key Entities and Relationships
 
 ### Entities
-1. **User**: Individual users of the Gitpod platform
-2. **Installation**: The global Gitpod installation
+1. **User**: Individual users of the Devpod platform
+2. **Installation**: The global Devpod installation
 3. **Organization**: Groups of users with shared resources
 4. **Project**: Repositories or codebases within an organization
 5. **Workspace**: Development environments for projects

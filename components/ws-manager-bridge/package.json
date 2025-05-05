@@ -12,12 +12,12 @@
     "build:clean": "yarn clean && yarn build",
     "rebuild": "yarn build:clean",
     "build:watch": "watch 'yarn build' .",
-    "watch": "leeway exec --package .:app --transitive-dependencies --filter-type yarn --components --parallel -- yarn build -w --preserveWatchOutput",
+    "watch": "blazedock exec --package .:app --transitive-dependencies --filter-type yarn --components --parallel -- yarn build -w --preserveWatchOutput",
     "clean": "rimraf dist",
     "clean:node": "rimraf node_modules",
     "purge": "yarn clean && yarn clean:node && yarn run rimraf yarn.lock",
     "debug": "nodemon -w ./dist --inspect=9300 ./dist/index.js",
-    "telepresence": "leeway run .:telepresence"
+    "telepresence": "blazedock run .:telepresence"
   },
   "mocha": {
     "require": [

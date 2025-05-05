@@ -2,7 +2,7 @@
 
 ## How to add integration to a preview env
 
-Check `Gitpod Azure DevOps Integration (preview env)` item in 1P.
+Check `Devpod Azure DevOps Integration (preview env)` item in 1P.
 
 ## How to run the tests
 
@@ -11,7 +11,7 @@ Check `Gitpod Azure DevOps Integration (preview env)` item in 1P.
 3. Run the tests
 ```bash
   export AZURE_TOKEN=<token>
-export GITPOD_TEST_TOKEN_AZURE_DEVOPS='{"value": "'$AZURE_TOKEN'"}'
+export DEVPOD_TEST_TOKEN_AZURE_DEVOPS='{"value": "'$AZURE_TOKEN'"}'
 
 # `yarn watch` if needed
 # for all server tests `yarn test:unit`

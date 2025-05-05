@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -41,8 +41,8 @@ export const UserService = {
       kind: MethodKind.Unary,
     },
     /**
-     * SetWorkspaceAutoStartOptions updates the auto start options for the Gitpod Dashboard.
-     * +internal - only used by the Gitpod Dashboard.
+     * SetWorkspaceAutoStartOptions updates the auto start options for the Devpod Dashboard.
+     * +internal - only used by the Devpod Dashboard.
      *
      * @generated from rpc devpod.v1.UserService.SetWorkspaceAutoStartOptions
      */

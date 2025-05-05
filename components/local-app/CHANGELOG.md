@@ -1,6 +1,6 @@
 # Changelog
 
-A curated list of notable changes to the Gitpod CLI.
+A curated list of notable changes to the Devpod CLI.
 
 ## v1.0.5
 
@@ -17,7 +17,7 @@ A curated list of notable changes to the Gitpod CLI.
 
 ## v1.0.2
 
--   Improve login on Gitpod Cloud (https://github.com/khulnasoft/devpod/pull/19107)
+-   Improve login on Devpod Cloud (https://github.com/khulnasoft/devpod/pull/19107)
 
 ## v1.0.1
 

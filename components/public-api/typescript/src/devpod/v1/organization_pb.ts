@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -817,7 +817,7 @@ export class UpdateOrganizationSettingsRequest extends Message<UpdateOrganizatio
 
   /**
    * annotate_git_commits specifies whether to annotate git commits created in
-   * Gitpod workspaces with the devpod host
+   * Devpod workspaces with the devpod host
    *
    * @generated from field: optional bool annotate_git_commits = 17;
    */

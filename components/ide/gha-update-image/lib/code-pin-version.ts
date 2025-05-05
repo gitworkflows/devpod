@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -50,8 +50,8 @@ export async function updateCodeIDEConfigMapJson() {
     newJson.ideOptions.options.code = updateImages(newJson.ideOptions.options.code);
 
     // try append new pin versions
-    const previousCodeVersion = await getIDEVersionOfImage("ghcr.io/devpod-core-dev/build/" + ideConfigmapJson.ideOptions.options.code.image.replace("{{.Repository}}/", ""));
-    const installationCodeVersion = await getIDEVersionOfImage("ghcr.io/devpod-core-dev/build/" + newJson.ideOptions.options.code.image.replace("{{.Repository}}/", ""));
+    const previousCodeVersion = await getIDEVersionOfImage("khulnasoft/devpod-environment/build/" + ideConfigmapJson.ideOptions.options.code.image.replace("{{.Repository}}/", ""));
+    const installationCodeVersion = await getIDEVersionOfImage("khulnasoft/devpod-environment/build/" + newJson.ideOptions.options.code.image.replace("{{.Repository}}/", ""));
     if (installationCodeVersion.trim() === "" || previousCodeVersion.trim() === "") {
         throw new Error("installation or previous code version can't be empty");
     }

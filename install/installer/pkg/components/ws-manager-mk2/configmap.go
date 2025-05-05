@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License-AGPL.txt in the project root for license information.
 
@@ -199,7 +199,7 @@ func configmap(ctx *common.RenderContext) ([]runtime.Object, error) {
 			WorkspaceClasses:        classes,
 			PreferredWorkspaceClass: preferredWorkspaceClass,
 			HeartbeatInterval:       util.Duration(30 * time.Second),
-			GitpodHostURL:           devpodHostURL,
+			DevpodHostURL:           devpodHostURL,
 			WorkspaceClusterHost:    workspaceClusterHost,
 			InitProbe: config.InitProbeConfiguration{
 				Timeout: (1 * time.Second).String(),

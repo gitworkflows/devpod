@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -1682,19 +1682,19 @@ public final class Error {
     io.devpod.publicapi.v1.Error.TooManyRunningWorkspacesErrorOrBuilder getTooManyRunningWorkspacesOrBuilder();
 
     /**
-     * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
-     * @return Whether the invalidGitpodYml field is set.
+     * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
+     * @return Whether the invalidDevpodYml field is set.
      */
-    boolean hasInvalidGitpodYml();
+    boolean hasInvalidDevpodYml();
     /**
-     * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
-     * @return The invalidGitpodYml.
+     * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
+     * @return The invalidDevpodYml.
      */
-    io.devpod.publicapi.v1.Error.InvalidGitpodYMLError getInvalidGitpodYml();
+    io.devpod.publicapi.v1.Error.InvalidDevpodYMLError getInvalidDevpodYml();
     /**
-     * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
+     * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
      */
-    io.devpod.publicapi.v1.Error.InvalidGitpodYMLErrorOrBuilder getInvalidGitpodYmlOrBuilder();
+    io.devpod.publicapi.v1.Error.InvalidDevpodYMLErrorOrBuilder getInvalidDevpodYmlOrBuilder();
 
     /**
      * <code>.devpod.v1.RepositoryNotFoundError repository_not_found = 5 [json_name = "repositoryNotFound"];</code>
@@ -1808,7 +1808,7 @@ public final class Error {
       PAYMENT_SPENDING_LIMIT_REACHED(1),
       INVALID_COST_CENTER(2),
       TOO_MANY_RUNNING_WORKSPACES(3),
-      INVALID_GITPOD_YML(4),
+      INVALID_DEVPOD_YML(4),
       REPOSITORY_NOT_FOUND(5),
       REPOSITORY_UNAUTHORIZED(6),
       IMAGE_BUILD_LOGS_NOT_YET_AVAILABLE(7),
@@ -1833,7 +1833,7 @@ public final class Error {
           case 1: return PAYMENT_SPENDING_LIMIT_REACHED;
           case 2: return INVALID_COST_CENTER;
           case 3: return TOO_MANY_RUNNING_WORKSPACES;
-          case 4: return INVALID_GITPOD_YML;
+          case 4: return INVALID_DEVPOD_YML;
           case 5: return REPOSITORY_NOT_FOUND;
           case 6: return REPOSITORY_UNAUTHORIZED;
           case 7: return IMAGE_BUILD_LOGS_NOT_YET_AVAILABLE;
@@ -1946,35 +1946,35 @@ public final class Error {
       return io.devpod.publicapi.v1.Error.TooManyRunningWorkspacesError.getDefaultInstance();
     }
 
-    public static final int INVALID_GITPOD_YML_FIELD_NUMBER = 4;
+    public static final int INVALID_DEVPOD_YML_FIELD_NUMBER = 4;
     /**
-     * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
-     * @return Whether the invalidGitpodYml field is set.
+     * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
+     * @return Whether the invalidDevpodYml field is set.
      */
     @java.lang.Override
-    public boolean hasInvalidGitpodYml() {
+    public boolean hasInvalidDevpodYml() {
       return reasonCase_ == 4;
     }
     /**
-     * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
-     * @return The invalidGitpodYml.
+     * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
+     * @return The invalidDevpodYml.
      */
     @java.lang.Override
-    public io.devpod.publicapi.v1.Error.InvalidGitpodYMLError getInvalidGitpodYml() {
+    public io.devpod.publicapi.v1.Error.InvalidDevpodYMLError getInvalidDevpodYml() {
       if (reasonCase_ == 4) {
-         return (io.devpod.publicapi.v1.Error.InvalidGitpodYMLError) reason_;
+         return (io.devpod.publicapi.v1.Error.InvalidDevpodYMLError) reason_;
       }
-      return io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.getDefaultInstance();
+      return io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.getDefaultInstance();
     }
     /**
-     * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
+     * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
      */
     @java.lang.Override
-    public io.devpod.publicapi.v1.Error.InvalidGitpodYMLErrorOrBuilder getInvalidGitpodYmlOrBuilder() {
+    public io.devpod.publicapi.v1.Error.InvalidDevpodYMLErrorOrBuilder getInvalidDevpodYmlOrBuilder() {
       if (reasonCase_ == 4) {
-         return (io.devpod.publicapi.v1.Error.InvalidGitpodYMLError) reason_;
+         return (io.devpod.publicapi.v1.Error.InvalidDevpodYMLError) reason_;
       }
-      return io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.getDefaultInstance();
+      return io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.getDefaultInstance();
     }
 
     public static final int REPOSITORY_NOT_FOUND_FIELD_NUMBER = 5;
@@ -2125,7 +2125,7 @@ public final class Error {
         output.writeMessage(3, (io.devpod.publicapi.v1.Error.TooManyRunningWorkspacesError) reason_);
       }
       if (reasonCase_ == 4) {
-        output.writeMessage(4, (io.devpod.publicapi.v1.Error.InvalidGitpodYMLError) reason_);
+        output.writeMessage(4, (io.devpod.publicapi.v1.Error.InvalidDevpodYMLError) reason_);
       }
       if (reasonCase_ == 5) {
         output.writeMessage(5, (io.devpod.publicapi.v1.Error.RepositoryNotFoundError) reason_);
@@ -2162,7 +2162,7 @@ public final class Error {
       }
       if (reasonCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (io.devpod.publicapi.v1.Error.InvalidGitpodYMLError) reason_);
+          .computeMessageSize(4, (io.devpod.publicapi.v1.Error.InvalidDevpodYMLError) reason_);
       }
       if (reasonCase_ == 5) {
         size += com.google.protobuf.CodedOutputStream
@@ -2210,8 +2210,8 @@ public final class Error {
               .equals(other.getTooManyRunningWorkspaces())) return false;
           break;
         case 4:
-          if (!getInvalidGitpodYml()
-              .equals(other.getInvalidGitpodYml())) return false;
+          if (!getInvalidDevpodYml()
+              .equals(other.getInvalidDevpodYml())) return false;
           break;
         case 5:
           if (!getRepositoryNotFound()
@@ -2257,8 +2257,8 @@ public final class Error {
           hash = (53 * hash) + getTooManyRunningWorkspaces().hashCode();
           break;
         case 4:
-          hash = (37 * hash) + INVALID_GITPOD_YML_FIELD_NUMBER;
-          hash = (53 * hash) + getInvalidGitpodYml().hashCode();
+          hash = (37 * hash) + INVALID_DEVPOD_YML_FIELD_NUMBER;
+          hash = (53 * hash) + getInvalidDevpodYml().hashCode();
           break;
         case 5:
           hash = (37 * hash) + REPOSITORY_NOT_FOUND_FIELD_NUMBER;
@@ -2423,8 +2423,8 @@ public final class Error {
         if (tooManyRunningWorkspacesBuilder_ != null) {
           tooManyRunningWorkspacesBuilder_.clear();
         }
-        if (invalidGitpodYmlBuilder_ != null) {
-          invalidGitpodYmlBuilder_.clear();
+        if (invalidDevpodYmlBuilder_ != null) {
+          invalidDevpodYmlBuilder_.clear();
         }
         if (repositoryNotFoundBuilder_ != null) {
           repositoryNotFoundBuilder_.clear();
@@ -2492,8 +2492,8 @@ public final class Error {
           result.reason_ = tooManyRunningWorkspacesBuilder_.build();
         }
         if (reasonCase_ == 4 &&
-            invalidGitpodYmlBuilder_ != null) {
-          result.reason_ = invalidGitpodYmlBuilder_.build();
+            invalidDevpodYmlBuilder_ != null) {
+          result.reason_ = invalidDevpodYmlBuilder_.build();
         }
         if (reasonCase_ == 5 &&
             repositoryNotFoundBuilder_ != null) {
@@ -2538,8 +2538,8 @@ public final class Error {
             mergeTooManyRunningWorkspaces(other.getTooManyRunningWorkspaces());
             break;
           }
-          case INVALID_GITPOD_YML: {
-            mergeInvalidGitpodYml(other.getInvalidGitpodYml());
+          case INVALID_DEVPOD_YML: {
+            mergeInvalidDevpodYml(other.getInvalidDevpodYml());
             break;
           }
           case REPOSITORY_NOT_FOUND: {
@@ -2611,7 +2611,7 @@ public final class Error {
               } // case 26
               case 34: {
                 input.readMessage(
-                    getInvalidGitpodYmlFieldBuilder().getBuilder(),
+                    getInvalidDevpodYmlFieldBuilder().getBuilder(),
                     extensionRegistry);
                 reasonCase_ = 4;
                 break;
@@ -3103,71 +3103,71 @@ public final class Error {
       }
 
       private com.google.protobuf.SingleFieldBuilder<
-          io.devpod.publicapi.v1.Error.InvalidGitpodYMLError, io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.Builder, io.devpod.publicapi.v1.Error.InvalidGitpodYMLErrorOrBuilder> invalidGitpodYmlBuilder_;
+          io.devpod.publicapi.v1.Error.InvalidDevpodYMLError, io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.Builder, io.devpod.publicapi.v1.Error.InvalidDevpodYMLErrorOrBuilder> invalidDevpodYmlBuilder_;
       /**
-       * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
-       * @return Whether the invalidGitpodYml field is set.
+       * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
+       * @return Whether the invalidDevpodYml field is set.
        */
       @java.lang.Override
-      public boolean hasInvalidGitpodYml() {
+      public boolean hasInvalidDevpodYml() {
         return reasonCase_ == 4;
       }
       /**
-       * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
-       * @return The invalidGitpodYml.
+       * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
+       * @return The invalidDevpodYml.
        */
       @java.lang.Override
-      public io.devpod.publicapi.v1.Error.InvalidGitpodYMLError getInvalidGitpodYml() {
-        if (invalidGitpodYmlBuilder_ == null) {
+      public io.devpod.publicapi.v1.Error.InvalidDevpodYMLError getInvalidDevpodYml() {
+        if (invalidDevpodYmlBuilder_ == null) {
           if (reasonCase_ == 4) {
-            return (io.devpod.publicapi.v1.Error.InvalidGitpodYMLError) reason_;
+            return (io.devpod.publicapi.v1.Error.InvalidDevpodYMLError) reason_;
           }
-          return io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.getDefaultInstance();
+          return io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.getDefaultInstance();
         } else {
           if (reasonCase_ == 4) {
-            return invalidGitpodYmlBuilder_.getMessage();
+            return invalidDevpodYmlBuilder_.getMessage();
           }
-          return io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.getDefaultInstance();
+          return io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.getDefaultInstance();
         }
       }
       /**
-       * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
+       * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
        */
-      public Builder setInvalidGitpodYml(io.devpod.publicapi.v1.Error.InvalidGitpodYMLError value) {
-        if (invalidGitpodYmlBuilder_ == null) {
+      public Builder setInvalidDevpodYml(io.devpod.publicapi.v1.Error.InvalidDevpodYMLError value) {
+        if (invalidDevpodYmlBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
           reason_ = value;
           onChanged();
         } else {
-          invalidGitpodYmlBuilder_.setMessage(value);
+          invalidDevpodYmlBuilder_.setMessage(value);
         }
         reasonCase_ = 4;
         return this;
       }
       /**
-       * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
+       * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
        */
-      public Builder setInvalidGitpodYml(
-          io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.Builder builderForValue) {
-        if (invalidGitpodYmlBuilder_ == null) {
+      public Builder setInvalidDevpodYml(
+          io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.Builder builderForValue) {
+        if (invalidDevpodYmlBuilder_ == null) {
           reason_ = builderForValue.build();
           onChanged();
         } else {
-          invalidGitpodYmlBuilder_.setMessage(builderForValue.build());
+          invalidDevpodYmlBuilder_.setMessage(builderForValue.build());
         }
         reasonCase_ = 4;
         return this;
       }
       /**
-       * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
+       * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
        */
-      public Builder mergeInvalidGitpodYml(io.devpod.publicapi.v1.Error.InvalidGitpodYMLError value) {
-        if (invalidGitpodYmlBuilder_ == null) {
+      public Builder mergeInvalidDevpodYml(io.devpod.publicapi.v1.Error.InvalidDevpodYMLError value) {
+        if (invalidDevpodYmlBuilder_ == null) {
           if (reasonCase_ == 4 &&
-              reason_ != io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.getDefaultInstance()) {
-            reason_ = io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.newBuilder((io.devpod.publicapi.v1.Error.InvalidGitpodYMLError) reason_)
+              reason_ != io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.getDefaultInstance()) {
+            reason_ = io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.newBuilder((io.devpod.publicapi.v1.Error.InvalidDevpodYMLError) reason_)
                 .mergeFrom(value).buildPartial();
           } else {
             reason_ = value;
@@ -3175,19 +3175,19 @@ public final class Error {
           onChanged();
         } else {
           if (reasonCase_ == 4) {
-            invalidGitpodYmlBuilder_.mergeFrom(value);
+            invalidDevpodYmlBuilder_.mergeFrom(value);
           } else {
-            invalidGitpodYmlBuilder_.setMessage(value);
+            invalidDevpodYmlBuilder_.setMessage(value);
           }
         }
         reasonCase_ = 4;
         return this;
       }
       /**
-       * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
+       * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
        */
-      public Builder clearInvalidGitpodYml() {
-        if (invalidGitpodYmlBuilder_ == null) {
+      public Builder clearInvalidDevpodYml() {
+        if (invalidDevpodYmlBuilder_ == null) {
           if (reasonCase_ == 4) {
             reasonCase_ = 0;
             reason_ = null;
@@ -3198,50 +3198,50 @@ public final class Error {
             reasonCase_ = 0;
             reason_ = null;
           }
-          invalidGitpodYmlBuilder_.clear();
+          invalidDevpodYmlBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
+       * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
        */
-      public io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.Builder getInvalidGitpodYmlBuilder() {
-        return getInvalidGitpodYmlFieldBuilder().getBuilder();
+      public io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.Builder getInvalidDevpodYmlBuilder() {
+        return getInvalidDevpodYmlFieldBuilder().getBuilder();
       }
       /**
-       * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
+       * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
        */
       @java.lang.Override
-      public io.devpod.publicapi.v1.Error.InvalidGitpodYMLErrorOrBuilder getInvalidGitpodYmlOrBuilder() {
-        if ((reasonCase_ == 4) && (invalidGitpodYmlBuilder_ != null)) {
-          return invalidGitpodYmlBuilder_.getMessageOrBuilder();
+      public io.devpod.publicapi.v1.Error.InvalidDevpodYMLErrorOrBuilder getInvalidDevpodYmlOrBuilder() {
+        if ((reasonCase_ == 4) && (invalidDevpodYmlBuilder_ != null)) {
+          return invalidDevpodYmlBuilder_.getMessageOrBuilder();
         } else {
           if (reasonCase_ == 4) {
-            return (io.devpod.publicapi.v1.Error.InvalidGitpodYMLError) reason_;
+            return (io.devpod.publicapi.v1.Error.InvalidDevpodYMLError) reason_;
           }
-          return io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.getDefaultInstance();
+          return io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.getDefaultInstance();
         }
       }
       /**
-       * <code>.devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4 [json_name = "invalidGitpodYml"];</code>
+       * <code>.devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4 [json_name = "invalidDevpodYml"];</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          io.devpod.publicapi.v1.Error.InvalidGitpodYMLError, io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.Builder, io.devpod.publicapi.v1.Error.InvalidGitpodYMLErrorOrBuilder>
-          getInvalidGitpodYmlFieldBuilder() {
-        if (invalidGitpodYmlBuilder_ == null) {
+          io.devpod.publicapi.v1.Error.InvalidDevpodYMLError, io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.Builder, io.devpod.publicapi.v1.Error.InvalidDevpodYMLErrorOrBuilder>
+          getInvalidDevpodYmlFieldBuilder() {
+        if (invalidDevpodYmlBuilder_ == null) {
           if (!(reasonCase_ == 4)) {
-            reason_ = io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.getDefaultInstance();
+            reason_ = io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.getDefaultInstance();
           }
-          invalidGitpodYmlBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              io.devpod.publicapi.v1.Error.InvalidGitpodYMLError, io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.Builder, io.devpod.publicapi.v1.Error.InvalidGitpodYMLErrorOrBuilder>(
-                  (io.devpod.publicapi.v1.Error.InvalidGitpodYMLError) reason_,
+          invalidDevpodYmlBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              io.devpod.publicapi.v1.Error.InvalidDevpodYMLError, io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.Builder, io.devpod.publicapi.v1.Error.InvalidDevpodYMLErrorOrBuilder>(
+                  (io.devpod.publicapi.v1.Error.InvalidDevpodYMLError) reason_,
                   getParentForChildren(),
                   isClean());
           reason_ = null;
         }
         reasonCase_ = 4;
         onChanged();
-        return invalidGitpodYmlBuilder_;
+        return invalidDevpodYmlBuilder_;
       }
 
       private com.google.protobuf.SingleFieldBuilder<
@@ -5083,8 +5083,8 @@ public final class Error {
 
   }
 
-  public interface InvalidGitpodYMLErrorOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:devpod.v1.InvalidGitpodYMLError)
+  public interface InvalidDevpodYMLErrorOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:devpod.v1.InvalidDevpodYMLError)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -5113,12 +5113,12 @@ public final class Error {
         getViolationsBytes(int index);
   }
   /**
-   * Protobuf type {@code devpod.v1.InvalidGitpodYMLError}
+   * Protobuf type {@code devpod.v1.InvalidDevpodYMLError}
    */
-  public static final class InvalidGitpodYMLError extends
+  public static final class InvalidDevpodYMLError extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:devpod.v1.InvalidGitpodYMLError)
-      InvalidGitpodYMLErrorOrBuilder {
+      // @@protoc_insertion_point(message_implements:devpod.v1.InvalidDevpodYMLError)
+      InvalidDevpodYMLErrorOrBuilder {
   private static final long serialVersionUID = 0L;
     static {
       com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -5127,28 +5127,28 @@ public final class Error {
         /* minor= */ 27,
         /* patch= */ 2,
         /* suffix= */ "",
-        InvalidGitpodYMLError.class.getName());
+        InvalidDevpodYMLError.class.getName());
     }
-    // Use InvalidGitpodYMLError.newBuilder() to construct.
-    private InvalidGitpodYMLError(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    // Use InvalidDevpodYMLError.newBuilder() to construct.
+    private InvalidDevpodYMLError(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
-    private InvalidGitpodYMLError() {
+    private InvalidDevpodYMLError() {
       violations_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return io.devpod.publicapi.v1.Error.internal_static_devpod_v1_InvalidGitpodYMLError_descriptor;
+      return io.devpod.publicapi.v1.Error.internal_static_devpod_v1_InvalidDevpodYMLError_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return io.devpod.publicapi.v1.Error.internal_static_devpod_v1_InvalidGitpodYMLError_fieldAccessorTable
+      return io.devpod.publicapi.v1.Error.internal_static_devpod_v1_InvalidDevpodYMLError_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.class, io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.Builder.class);
+              io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.class, io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.Builder.class);
     }
 
     public static final int VIOLATIONS_FIELD_NUMBER = 1;
@@ -5232,10 +5232,10 @@ public final class Error {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof io.devpod.publicapi.v1.Error.InvalidGitpodYMLError)) {
+      if (!(obj instanceof io.devpod.publicapi.v1.Error.InvalidDevpodYMLError)) {
         return super.equals(obj);
       }
-      io.devpod.publicapi.v1.Error.InvalidGitpodYMLError other = (io.devpod.publicapi.v1.Error.InvalidGitpodYMLError) obj;
+      io.devpod.publicapi.v1.Error.InvalidDevpodYMLError other = (io.devpod.publicapi.v1.Error.InvalidDevpodYMLError) obj;
 
       if (!getViolationsList()
           .equals(other.getViolationsList())) return false;
@@ -5259,44 +5259,44 @@ public final class Error {
       return hash;
     }
 
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseFrom(
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseFrom(
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseFrom(
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseFrom(
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseFrom(byte[] data)
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseFrom(
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseFrom(java.io.InputStream input)
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseFrom(
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5304,26 +5304,26 @@ public final class Error {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseDelimitedFrom(java.io.InputStream input)
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseDelimitedFrom(
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseFrom(
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError parseFrom(
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -5336,7 +5336,7 @@ public final class Error {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(io.devpod.publicapi.v1.Error.InvalidGitpodYMLError prototype) {
+    public static Builder newBuilder(io.devpod.publicapi.v1.Error.InvalidDevpodYMLError prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -5352,26 +5352,26 @@ public final class Error {
       return builder;
     }
     /**
-     * Protobuf type {@code devpod.v1.InvalidGitpodYMLError}
+     * Protobuf type {@code devpod.v1.InvalidDevpodYMLError}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:devpod.v1.InvalidGitpodYMLError)
-        io.devpod.publicapi.v1.Error.InvalidGitpodYMLErrorOrBuilder {
+        // @@protoc_insertion_point(builder_implements:devpod.v1.InvalidDevpodYMLError)
+        io.devpod.publicapi.v1.Error.InvalidDevpodYMLErrorOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return io.devpod.publicapi.v1.Error.internal_static_devpod_v1_InvalidGitpodYMLError_descriptor;
+        return io.devpod.publicapi.v1.Error.internal_static_devpod_v1_InvalidDevpodYMLError_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.devpod.publicapi.v1.Error.internal_static_devpod_v1_InvalidGitpodYMLError_fieldAccessorTable
+        return io.devpod.publicapi.v1.Error.internal_static_devpod_v1_InvalidDevpodYMLError_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.class, io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.Builder.class);
+                io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.class, io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.Builder.class);
       }
 
-      // Construct using io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.newBuilder()
+      // Construct using io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.newBuilder()
       private Builder() {
 
       }
@@ -5393,17 +5393,17 @@ public final class Error {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return io.devpod.publicapi.v1.Error.internal_static_devpod_v1_InvalidGitpodYMLError_descriptor;
+        return io.devpod.publicapi.v1.Error.internal_static_devpod_v1_InvalidDevpodYMLError_descriptor;
       }
 
       @java.lang.Override
-      public io.devpod.publicapi.v1.Error.InvalidGitpodYMLError getDefaultInstanceForType() {
-        return io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.getDefaultInstance();
+      public io.devpod.publicapi.v1.Error.InvalidDevpodYMLError getDefaultInstanceForType() {
+        return io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.getDefaultInstance();
       }
 
       @java.lang.Override
-      public io.devpod.publicapi.v1.Error.InvalidGitpodYMLError build() {
-        io.devpod.publicapi.v1.Error.InvalidGitpodYMLError result = buildPartial();
+      public io.devpod.publicapi.v1.Error.InvalidDevpodYMLError build() {
+        io.devpod.publicapi.v1.Error.InvalidDevpodYMLError result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -5411,14 +5411,14 @@ public final class Error {
       }
 
       @java.lang.Override
-      public io.devpod.publicapi.v1.Error.InvalidGitpodYMLError buildPartial() {
-        io.devpod.publicapi.v1.Error.InvalidGitpodYMLError result = new io.devpod.publicapi.v1.Error.InvalidGitpodYMLError(this);
+      public io.devpod.publicapi.v1.Error.InvalidDevpodYMLError buildPartial() {
+        io.devpod.publicapi.v1.Error.InvalidDevpodYMLError result = new io.devpod.publicapi.v1.Error.InvalidDevpodYMLError(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(io.devpod.publicapi.v1.Error.InvalidGitpodYMLError result) {
+      private void buildPartial0(io.devpod.publicapi.v1.Error.InvalidDevpodYMLError result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           violations_.makeImmutable();
@@ -5428,16 +5428,16 @@ public final class Error {
 
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof io.devpod.publicapi.v1.Error.InvalidGitpodYMLError) {
-          return mergeFrom((io.devpod.publicapi.v1.Error.InvalidGitpodYMLError)other);
+        if (other instanceof io.devpod.publicapi.v1.Error.InvalidDevpodYMLError) {
+          return mergeFrom((io.devpod.publicapi.v1.Error.InvalidDevpodYMLError)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(io.devpod.publicapi.v1.Error.InvalidGitpodYMLError other) {
-        if (other == io.devpod.publicapi.v1.Error.InvalidGitpodYMLError.getDefaultInstance()) return this;
+      public Builder mergeFrom(io.devpod.publicapi.v1.Error.InvalidDevpodYMLError other) {
+        if (other == io.devpod.publicapi.v1.Error.InvalidDevpodYMLError.getDefaultInstance()) return this;
         if (!other.violations_.isEmpty()) {
           if (violations_.isEmpty()) {
             violations_ = other.violations_;
@@ -5608,23 +5608,23 @@ public final class Error {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:devpod.v1.InvalidGitpodYMLError)
+      // @@protoc_insertion_point(builder_scope:devpod.v1.InvalidDevpodYMLError)
     }
 
-    // @@protoc_insertion_point(class_scope:devpod.v1.InvalidGitpodYMLError)
-    private static final io.devpod.publicapi.v1.Error.InvalidGitpodYMLError DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:devpod.v1.InvalidDevpodYMLError)
+    private static final io.devpod.publicapi.v1.Error.InvalidDevpodYMLError DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new io.devpod.publicapi.v1.Error.InvalidGitpodYMLError();
+      DEFAULT_INSTANCE = new io.devpod.publicapi.v1.Error.InvalidDevpodYMLError();
     }
 
-    public static io.devpod.publicapi.v1.Error.InvalidGitpodYMLError getDefaultInstance() {
+    public static io.devpod.publicapi.v1.Error.InvalidDevpodYMLError getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<InvalidGitpodYMLError>
-        PARSER = new com.google.protobuf.AbstractParser<InvalidGitpodYMLError>() {
+    private static final com.google.protobuf.Parser<InvalidDevpodYMLError>
+        PARSER = new com.google.protobuf.AbstractParser<InvalidDevpodYMLError>() {
       @java.lang.Override
-      public InvalidGitpodYMLError parsePartialFrom(
+      public InvalidDevpodYMLError parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5643,17 +5643,17 @@ public final class Error {
       }
     };
 
-    public static com.google.protobuf.Parser<InvalidGitpodYMLError> parser() {
+    public static com.google.protobuf.Parser<InvalidDevpodYMLError> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<InvalidGitpodYMLError> getParserForType() {
+    public com.google.protobuf.Parser<InvalidDevpodYMLError> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public io.devpod.publicapi.v1.Error.InvalidGitpodYMLError getDefaultInstanceForType() {
+    public io.devpod.publicapi.v1.Error.InvalidDevpodYMLError getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8960,10 +8960,10 @@ public final class Error {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_devpod_v1_TooManyRunningWorkspacesError_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_devpod_v1_InvalidGitpodYMLError_descriptor;
+    internal_static_devpod_v1_InvalidDevpodYMLError_descriptor;
   private static final
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_devpod_v1_InvalidGitpodYMLError_fieldAccessorTable;
+      internal_static_devpod_v1_InvalidDevpodYMLError_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_devpod_v1_RepositoryNotFoundError_descriptor;
   private static final
@@ -9010,7 +9010,7 @@ public final class Error {
       "aces\030\003 \001(\0132(.devpod.v1.TooManyRunningWor" +
       "kspacesErrorH\000R\030tooManyRunningWorkspaces" +
       "\022P\n\022invalid_devpod_yml\030\004 \001(\0132 .devpod.v1" +
-      ".InvalidGitpodYMLErrorH\000R\020invalidGitpodY" +
+      ".InvalidDevpodYMLErrorH\000R\020invalidDevpodY" +
       "ml\022V\n\024repository_not_found\030\005 \001(\0132\".gitpo" +
       "d.v1.RepositoryNotFoundErrorH\000R\022reposito" +
       "ryNotFound\022a\n\027repository_unauthorized\030\006 " +
@@ -9024,7 +9024,7 @@ public final class Error {
       " PaymentSpendingLimitReachedError\"?\n\026Inv" +
       "alidCostCenterError\022%\n\016attribution_id\030\001 " +
       "\001(\tR\rattributionId\"\037\n\035TooManyRunningWork" +
-      "spacesError\"7\n\025InvalidGitpodYMLError\022\036\n\n" +
+      "spacesError\"7\n\025InvalidDevpodYMLError\022\036\n\n" +
       "violations\030\001 \003(\tR\nviolations\"\353\001\n\027Reposit" +
       "oryNotFoundError\022\022\n\004host\030\001 \001(\tR\004host\022\024\n\005" +
       "owner\030\002 \001(\tR\005owner\022\"\n\ruser_is_owner\030\003 \001(" +
@@ -9071,7 +9071,7 @@ public final class Error {
     internal_static_devpod_v1_FailedPreconditionDetails_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_devpod_v1_FailedPreconditionDetails_descriptor,
-        new java.lang.String[] { "PaymentSpendingLimitReached", "InvalidCostCenter", "TooManyRunningWorkspaces", "InvalidGitpodYml", "RepositoryNotFound", "RepositoryUnauthorized", "ImageBuildLogsNotYetAvailable", "CellIsDisabled", "Reason", });
+        new java.lang.String[] { "PaymentSpendingLimitReached", "InvalidCostCenter", "TooManyRunningWorkspaces", "InvalidDevpodYml", "RepositoryNotFound", "RepositoryUnauthorized", "ImageBuildLogsNotYetAvailable", "CellIsDisabled", "Reason", });
     internal_static_devpod_v1_PaymentSpendingLimitReachedError_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_devpod_v1_PaymentSpendingLimitReachedError_fieldAccessorTable = new
@@ -9090,11 +9090,11 @@ public final class Error {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_devpod_v1_TooManyRunningWorkspacesError_descriptor,
         new java.lang.String[] { });
-    internal_static_devpod_v1_InvalidGitpodYMLError_descriptor =
+    internal_static_devpod_v1_InvalidDevpodYMLError_descriptor =
       getDescriptor().getMessageTypes().get(7);
-    internal_static_devpod_v1_InvalidGitpodYMLError_fieldAccessorTable = new
+    internal_static_devpod_v1_InvalidDevpodYMLError_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_devpod_v1_InvalidGitpodYMLError_descriptor,
+        internal_static_devpod_v1_InvalidDevpodYMLError_descriptor,
         new java.lang.String[] { "Violations", });
     internal_static_devpod_v1_RepositoryNotFoundError_descriptor =
       getDescriptor().getMessageTypes().get(8);

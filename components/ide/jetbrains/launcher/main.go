@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -81,7 +81,7 @@ type LaunchContext struct {
 
 	// Custom fields
 
-	// shouldWaitBackendPlugin is controlled by env GITPOD_WAIT_IDE_BACKEND
+	// shouldWaitBackendPlugin is controlled by env DEVPOD_WAIT_IDE_BACKEND
 	shouldWaitBackendPlugin bool
 }
 
@@ -110,9 +110,9 @@ func main() {
 	}
 
 	// supervisor refer see https://github.com/khulnasoft/devpod/blob/main/components/supervisor/pkg/supervisor/supervisor.go#L961
-	shouldWaitBackendPlugin := os.Getenv("GITPOD_WAIT_IDE_BACKEND") == "true"
+	shouldWaitBackendPlugin := os.Getenv("DEVPOD_WAIT_IDE_BACKEND") == "true"
 	debugEnabled := os.Getenv("SUPERVISOR_DEBUG_ENABLE") == "true"
-	preferToolbox := os.Getenv("GITPOD_PREFER_TOOLBOX") == "true"
+	preferToolbox := os.Getenv("DEVPOD_PREFER_TOOLBOX") == "true"
 	log.Init(ServiceName, constant.Version, true, debugEnabled)
 	log.Info(ServiceName + ": " + constant.Version)
 	startTime := time.Now()
@@ -347,7 +347,7 @@ func serve(launchCtx *LaunchContext) {
 	}
 }
 
-// isBackendPluginReady checks if the backend plugin is ready via backend plugin CLI GitpodCLIService.kt
+// isBackendPluginReady checks if the backend plugin is ready via backend plugin CLI DevpodCLIService.kt
 func isBackendPluginReady(ctx context.Context, backendPort string, shouldWaitBackendPlugin bool) error {
 	if !shouldWaitBackendPlugin {
 		log.Debug("will not wait plugin ready")
@@ -406,7 +406,7 @@ type JoinLinkResponse struct {
 }
 
 func resolveToolboxLink(wsInfo *supervisor.WorkspaceInfoResponse) (string, error) {
-	devpodUrl, err := url.Parse(wsInfo.GitpodHost)
+	devpodUrl, err := url.Parse(wsInfo.DevpodHost)
 	if err != nil {
 		return "", err
 	}
@@ -421,7 +421,7 @@ func resolveToolboxLink(wsInfo *supervisor.WorkspaceInfoResponse) (string, error
 }
 
 func resolveGatewayLink(backendPort string, wsInfo *supervisor.WorkspaceInfoResponse) (string, error) {
-	devpodUrl, err := url.Parse(wsInfo.GitpodHost)
+	devpodUrl, err := url.Parse(wsInfo.DevpodHost)
 	if err != nil {
 		return "", err
 	}
@@ -542,7 +542,7 @@ func resolveWorkspaceInfo(ctx context.Context) (*supervisor.WorkspaceInfoRespons
 
 func launch(launchCtx *LaunchContext) {
 	projectDir := launchCtx.wsInfo.GetCheckoutLocation()
-	devpodConfig, err := parseGitpodConfig(projectDir)
+	devpodConfig, err := parseDevpodConfig(projectDir)
 	if err != nil {
 		log.WithError(err).Error("failed to parse .devpod.yml")
 	}
@@ -622,10 +622,10 @@ func run(launchCtx *LaunchContext) {
 	args = append(args, launchCtx.projectContextDir)
 
 	cmd := remoteDevServerCmd(args, launchCtx)
-	cmd.Env = append(cmd.Env, "JETBRAINS_GITPOD_BACKEND_KIND="+launchCtx.alias)
+	cmd.Env = append(cmd.Env, "JETBRAINS_DEVPOD_BACKEND_KIND="+launchCtx.alias)
 	workspaceUrl, err := url.Parse(launchCtx.wsInfo.WorkspaceUrl)
 	if err == nil {
-		cmd.Env = append(cmd.Env, "JETBRAINS_GITPOD_WORKSPACE_HOST="+workspaceUrl.Hostname())
+		cmd.Env = append(cmd.Env, "JETBRAINS_DEVPOD_WORKSPACE_HOST="+workspaceUrl.Hostname())
 	}
 	// Enable host status endpoint
 	cmd.Env = append(cmd.Env, "CWM_HOST_STATUS_OVER_HTTP_TOKEN=devpod")
@@ -787,7 +787,7 @@ func updatePlatformProperties(content string, configDir string, systemDir string
 	return updated, content
 }
 
-func configureVMOptions(config *devpod.GitpodConfig, alias string, vmOptionsPath string) error {
+func configureVMOptions(config *devpod.DevpodConfig, alias string, vmOptionsPath string) error {
 	options, err := readVMOptions(vmOptionsPath)
 	if err != nil {
 		return err
@@ -829,7 +829,7 @@ func deduplicateVMOption(oldLines []string, newLines []string, predicate func(l,
 }
 
 func updateVMOptions(
-	config *devpod.GitpodConfig,
+	config *devpod.DevpodConfig,
 	alias string,
 	// original vmoptions (inherited from $JETBRAINS_IDE_HOME/bin/idea64.vmoptions)
 	ideaVMOptionsLines []string) []string {
@@ -844,25 +844,25 @@ func updateVMOptions(
 			strings.Split(l, "=")[0] == strings.Split(r, "=")[0]
 		return isEqual || isXmx || isXms || isXss || isXXOptions
 	}
-	// Gitpod's default customization
+	// Devpod's default customization
 	var devpodVMOptions []string
 	devpodVMOptions = append(devpodVMOptions, "-Dgtw.disable.exit.dialog=true")
 	// temporary disable auto-attach of the async-profiler to prevent JVM crash
-	// see https://youtrack.jetbrains.com/issue/IDEA-326201/SIGSEGV-on-startup-2023.2-IDE-backend-on-devpod.io?s=SIGSEGV-on-startup-2023.2-IDE-backend-on-devpod.io
+	// see https://youtrack.jetbrains.com/issue/IDEA-326201/SIGSEGV-on-startup-2023.2-IDE-backend-on-devpod.khulnasoft.com?s=SIGSEGV-on-startup-2023.2-IDE-backend-on-devpod.khulnasoft.com
 	devpodVMOptions = append(devpodVMOptions, "-Dfreeze.reporter.profiling=false")
 	if alias == "intellij" {
 		devpodVMOptions = append(devpodVMOptions, "-Djdk.configure.existing=true")
 	}
 	// container relevant options
 	devpodVMOptions = append(devpodVMOptions, "-XX:+UseContainerSupport")
-	cpuCount := os.Getenv("GITPOD_CPU_COUNT")
+	cpuCount := os.Getenv("DEVPOD_CPU_COUNT")
 	parsedCPUCount, err := strconv.Atoi(cpuCount)
 	// if CPU count is set and is parseable as a positive number
 	if err == nil && parsedCPUCount > 0 && parsedCPUCount <= 16 {
 		devpodVMOptions = append(devpodVMOptions, "-XX:ActiveProcessorCount="+cpuCount)
 	}
 
-	memory := os.Getenv("GITPOD_MEMORY")
+	memory := os.Getenv("DEVPOD_MEMORY")
 	parsedMemory, err := strconv.Atoi(memory)
 	if err == nil && parsedMemory > 0 {
 		xmx := (float64(parsedMemory) * 0.6)
@@ -1119,7 +1119,7 @@ func unzipArchive(src, dest string) error {
 	return nil
 }
 
-func installPlugins(config *devpod.GitpodConfig, launchCtx *LaunchContext) error {
+func installPlugins(config *devpod.DevpodConfig, launchCtx *LaunchContext) error {
 	plugins, err := getPlugins(config, launchCtx.alias)
 	if err != nil {
 		return err
@@ -1147,7 +1147,7 @@ func installPlugins(config *devpod.GitpodConfig, launchCtx *LaunchContext) error
 	return nil
 }
 
-func parseGitpodConfig(repoRoot string) (*devpod.GitpodConfig, error) {
+func parseDevpodConfig(repoRoot string) (*devpod.DevpodConfig, error) {
 	if repoRoot == "" {
 		return nil, errors.New("repoRoot is empty")
 	}
@@ -1159,14 +1159,14 @@ func parseGitpodConfig(repoRoot string) (*devpod.GitpodConfig, error) {
 		}
 		return nil, errors.New("read .devpod.yml file failed: " + err.Error())
 	}
-	var config *devpod.GitpodConfig
+	var config *devpod.DevpodConfig
 	if err = yaml.Unmarshal(data, &config); err != nil {
 		return nil, errors.New("unmarshal .devpod.yml file failed" + err.Error())
 	}
 	return config, nil
 }
 
-func getPlugins(config *devpod.GitpodConfig, alias string) ([]string, error) {
+func getPlugins(config *devpod.DevpodConfig, alias string) ([]string, error) {
 	var plugins []string
 	if config == nil || config.Jetbrains == nil {
 		return nil, nil
@@ -1181,7 +1181,7 @@ func getPlugins(config *devpod.GitpodConfig, alias string) ([]string, error) {
 	return plugins, nil
 }
 
-func getProductConfig(config *devpod.GitpodConfig, alias string) *devpod.JetbrainsProduct {
+func getProductConfig(config *devpod.DevpodConfig, alias string) *devpod.JetbrainsProduct {
 	defer func() {
 		if err := recover(); err != nil {
 			log.WithField("error", err).WithField("alias", alias).Error("failed to extract JB product config")
@@ -1286,7 +1286,7 @@ func configureToolboxCliProperties(backendDir string) error {
 
 	toolboxCliPropertiesFilePath := fmt.Sprintf("%s/environment.json", toolboxCliPropertiesDir)
 
-	debuggingToolbox := os.Getenv("GITPOD_TOOLBOX_DEBUGGING")
+	debuggingToolbox := os.Getenv("DEVPOD_TOOLBOX_DEBUGGING")
 	allowInstallation := strconv.FormatBool(strings.Contains(debuggingToolbox, "allowInstallation"))
 
 	// TODO(hw): restrict IDE installation

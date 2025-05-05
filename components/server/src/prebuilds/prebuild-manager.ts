@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -475,7 +475,7 @@ export class PrebuildManager {
             if (await this.shouldRateLimitPrebuild(span, project)) {
                 prebuild.state = "aborted";
                 prebuild.error =
-                    "Prebuild is rate limited. Please contact Gitpod if you believe this happened in error.";
+                    "Prebuild is rate limited. Please contact Devpod if you believe this happened in error.";
                 await this.workspaceDB.trace({ span }).storePrebuiltWorkspace(prebuild);
                 span.setTag("ratelimited", true);
             } else if (

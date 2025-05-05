@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -64,7 +64,7 @@ func Execute(ctx context.Context, destination string, cfgin io.Reader, forceGitU
 
 		rs = &storage.NamedURLDownloader{URLs: cfg.URLs}
 		ilr, err = initializer.NewFromRequest(ctx, destination, rs, &req, initializer.NewFromRequestOpts{
-			ForceGitpodUserForGit: forceGitUser,
+			ForceDevpodUserForGit: forceGitUser,
 		})
 		if err != nil {
 			return "", err
@@ -83,7 +83,7 @@ func Execute(ctx context.Context, destination string, cfgin io.Reader, forceGitU
 		return "", err
 	}
 
-	err = initializer.PlaceWorkspaceReadyFile(ctx, destination, src, stats, initializer.GitpodUID, initializer.GitpodGID)
+	err = initializer.PlaceWorkspaceReadyFile(ctx, destination, src, stats, initializer.DevpodUID, initializer.DevpodGID)
 	if err != nil {
 		return src, err
 	}

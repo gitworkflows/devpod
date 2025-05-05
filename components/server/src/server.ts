@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -29,7 +29,7 @@ import { Disposable, DisposableCollection } from "@devpod/devpod-protocol";
 import { BearerAuth, isBearerAuthError } from "./auth/bearer-authenticator";
 import { HostContextProvider } from "./auth/host-context-provider";
 import { CodeSyncService } from "./code-sync/code-sync-service";
-import { increaseHttpRequestCounter, observeHttpRequestDuration, setGitpodVersion } from "./prometheus-metrics";
+import { increaseHttpRequestCounter, observeHttpRequestDuration, setDevpodVersion } from "./prometheus-metrics";
 import { OAuthController } from "./oauth-server/oauth-controller";
 import { HeadlessLogController } from "./workspace/headless-log-controller";
 import { NewsletterSubscriptionController } from "./user/newsletter-subscription-controller";
@@ -111,7 +111,7 @@ export class Server {
         log.info("server initializing...");
 
         // Set version info metric
-        setGitpodVersion(this.config.version);
+        setDevpodVersion(this.config.version);
 
         // ensure DB connection is established to avoid noisy error messages
         await this.typeOrm.connect();
@@ -173,10 +173,10 @@ export class Server {
         const websocketConnectionHandler = this.websocketConnectionHandler;
         this.eventEmitter.on(Server.EVENT_ON_START, (httpServer) => {
             // CSRF protection: check "Origin" header:
-            //  - for cookie/session AND Bearer auth: MUST be hostUrl.hostname (devpod.io)
+            //  - for cookie/session AND Bearer auth: MUST be hostUrl.hostname (devpod.khulnasoft.com)
             //  - edge case: empty "Origin" is always permitted
-            // We rely on the origin header being set correctly (needed by regular clients to use Gitpod:
-            // CORS allows subdomains to access devpod.io)
+            // We rely on the origin header being set correctly (needed by regular clients to use Devpod:
+            // CORS allows subdomains to access devpod.khulnasoft.com)
             const verifyOrigin = (origin: string) => {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 let allowedRequest = isAllowedWebsocketDomain(origin, this.config.hostUrl.url.hostname);
@@ -365,7 +365,7 @@ export class Server {
         this.httpServer = httpServer;
 
         if (this.monitoringApp) {
-            this.monitoringHttpServer = this.monitoringApp.listen(MONITORING_PORT, "localhost", () => {
+            this.monitoringHttpServer = this.monitoringApp.listen(MONITORING_PORT, "127.0.0.1", () => {
                 log.info(
                     `monitoring app listening on port: ${(<AddressInfo>this.monitoringHttpServer!.address()).port}`,
                 );

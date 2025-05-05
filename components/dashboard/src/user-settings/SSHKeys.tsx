@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -77,7 +77,7 @@ export function AddSSHKeyModal(props: AddModalProps) {
                 <Alert type="info" className="mt-2">
                     SSH key are used to connect securely to workspaces.{" "}
                     <a
-                        href="https://www.devpod.io/docs/configure/user-settings/ssh#create-an-ssh-key"
+                        href="https://www.devpod.khulnasoft.com/docs/configure/user-settings/ssh#create-an-ssh-key"
                         target="devpod-create-ssh-key-doc"
                         className="gp-link"
                     >
@@ -185,7 +185,7 @@ export default function SSHKeys() {
                         Create and manage SSH keys.{" "}
                         <a
                             className="gp-link"
-                            href="https://www.devpod.io/docs/configure/user-settings/ssh"
+                            href="https://www.devpod.khulnasoft.com/docs/configure/user-settings/ssh"
                             target="_blank"
                             rel="noreferrer"
                         >

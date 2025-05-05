@@ -1,7 +1,7 @@
 # Workspace Manager API
 
 ## Overview
-The Workspace Manager API defines the gRPC interfaces for the Workspace Manager service, which is responsible for managing the lifecycle of workspaces within the Gitpod platform. This API enables the creation, monitoring, and control of workspaces running in Kubernetes clusters.
+The Workspace Manager API defines the gRPC interfaces for the Workspace Manager service, which is responsible for managing the lifecycle of workspaces within the Devpod platform. This API enables the creation, monitoring, and control of workspaces running in Kubernetes clusters.
 
 ## Purpose
 This API provides a standardized interface for:
@@ -167,9 +167,9 @@ After regenerating the code, you may need to rebuild components that depend on t
    yarn build
    ```
 
-3. Using Leeway (for CI/CD):
+3. Using Blazedock (for CI/CD):
    ```bash
-   leeway build -D components/<component-name>:app
+   blazedock build -D components/<component-name>:app
    ```
 
 The Workspace Manager API is primarily used by the ws-manager-mk2 component, which is a Kubernetes controller for managing workspace lifecycle. It plays a critical role in the platform by enabling the creation, monitoring, and control of workspaces running in Kubernetes clusters.

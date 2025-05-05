@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -16,7 +16,7 @@ import (
 )
 
 var tmplString = `
-<p>Gitpod was successfully deployed to your preview environment.</p>
+<p>Devpod was successfully deployed to your preview environment.</p>
 <ul>
 	<li><b>🏷️ Name</b> - {{ .Name }}</li>
 	<li><b>🔗 URL</b> - <a href="https://{{ .Name }}.preview.devpod-dev.com/workspaces" target="_blank">{{ .Name }}.preview.devpod-dev.com/workspaces</a>.</li>

@@ -6,7 +6,7 @@ Publicly available commands are part of our user contract. They use [Cobra](http
 
 ### config
 
-These are designed to manipulate configuration files and generate a configuration file that can be used to install Gitpod.
+These are designed to manipulate configuration files and generate a configuration file that can be used to install Devpod.
 
 #### init
 

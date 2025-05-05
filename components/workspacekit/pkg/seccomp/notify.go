@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -201,7 +201,7 @@ type InWorkspaceServiceClient interface {
 	io.Closer
 }
 
-// InWorkspaceHandler is the seccomp notification handler that serves a Gitpod workspace
+// InWorkspaceHandler is the seccomp notification handler that serves a Devpod workspace
 type InWorkspaceHandler struct {
 	FD          libseccomp.ScmpFd
 	Daemon      IWSClientProvider
@@ -275,7 +275,9 @@ func (h *InWorkspaceHandler) Mount(req *libseccomp.ScmpNotifReq) (val uint64, er
 		if strings.HasPrefix(dest, "/proc/self/") {
 			target = filepath.Join("/proc", strconv.Itoa(int(req.Pid)), strings.TrimPrefix(dest, "/proc/self/"))
 		}
-
+		if strings.HasPrefix(dest, "/proc/thread-self/") {
+			target = filepath.Join("/proc", strconv.Itoa(int(req.Pid)), strings.TrimPrefix(dest, "/proc/thread-self/"))
+		}
 		stat, err := os.Lstat(target)
 		if errors.Is(err, fs.ErrNotExist) {
 			err = os.MkdirAll(target, 0755)

@@ -1,7 +1,7 @@
 # Workspace Manager Bridge API
 
 ## Overview
-The Workspace Manager Bridge API defines the gRPC interfaces for the Workspace Manager Bridge service, which enables dynamic management of workspace clusters within the Gitpod platform. This API allows for the registration, updating, and deregistration of workspace clusters, facilitating multi-cluster deployments and cluster lifecycle management.
+The Workspace Manager Bridge API defines the gRPC interfaces for the Workspace Manager Bridge service, which enables dynamic management of workspace clusters within the Devpod platform. This API allows for the registration, updating, and deregistration of workspace clusters, facilitating multi-cluster deployments and cluster lifecycle management.
 
 ## Purpose
 This API provides a standardized interface for:
@@ -121,9 +121,9 @@ After regenerating the code, you may need to rebuild components that depend on t
    yarn build
    ```
 
-3. Using Leeway (for CI/CD):
+3. Using Blazedock (for CI/CD):
    ```bash
-   leeway build -D components/<component-name>:app
+   blazedock build -D components/<component-name>:app
    ```
 
 The Workspace Manager Bridge API is primarily used by the ws-manager-bridge component, which bridges between workspace managers and the rest of the platform. It plays a critical role in multi-cluster deployments by enabling dynamic management of workspace clusters, facilitating load balancing, and providing a unified interface for cluster operations.

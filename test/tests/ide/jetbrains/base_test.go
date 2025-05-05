@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -34,7 +34,7 @@ var testBaseConfig = map[string]struct{ ProductCode, Repo string }{
 	"pycharm":  {"PY", "https://github.com/devpod-samples/template-python-django"},
 	// TODO: open comment after https://github.com/khulnasoft/devpod/issues/16302 resolved
 	// "rubymine":  {"RM", "https://github.com/devpod-samples/template-ruby-on-rails-postgres"},
-	"rubymine":  {"RM", "https://github.com/gitpod-io/Gitpod-Ruby-On-Rails"},
+	"rubymine":  {"RM", "https://github.com/khulnasoft/Devpod-Ruby-On-Rails"},
 	"webstorm":  {"WS", "https://github.com/devpod-samples/template-typescript-react"},
 	"rider":     {"RD", "https://github.com/devpod-samples/template-dotnet-core-cli-csharp"},
 	"clion":     {"CL", "https://github.com/devpod-samples/template-cpp"},
@@ -153,7 +153,7 @@ func JetBrainsIDETest(ctx context.Context, t *testing.T, cfg *envconf.Config, op
 
 	t.Logf("get oauth2 token")
 	oauthToken, err := api.CreateOAuth2Token(username, []string{
-		"function:getGitpodTokenScopes",
+		"function:getDevpodTokenScopes",
 		"function:getIDEOptions",
 		"function:getOwnerToken",
 		"function:getWorkspace",
@@ -264,9 +264,9 @@ func JetBrainsIDETest(ctx context.Context, t *testing.T, cfg *envconf.Config, op
 			t.Fatal("idea.log file not found in the expected location")
 		}
 
-		pluginLoadedRegex := regexp.MustCompile(`Loaded custom plugins:.* (Gitpod Remote|devpod-remote)`)
-		pluginStartedRegex := regexp.MustCompile(`Gitpod gateway link`)
-		pluginIncompatibleRegex := regexp.MustCompile(`Plugin '(Gitpod Remote|devpod-remote)' .* is not compatible`)
+		pluginLoadedRegex := regexp.MustCompile(`Loaded custom plugins:.* (Devpod Remote|devpod-remote)`)
+		pluginStartedRegex := regexp.MustCompile(`Devpod gateway link`)
+		pluginIncompatibleRegex := regexp.MustCompile(`Plugin '(Devpod Remote|devpod-remote)' .* is not compatible`)
 
 		ideaLogs := []byte(resp.Stdout)
 		if pluginLoadedRegex.Match(ideaLogs) {
@@ -399,12 +399,12 @@ func MustConnectToServer(ctx context.Context, t *testing.T, cfg *envconf.Config)
 	}
 
 	t.Logf("connecting to server...")
-	server, err := api.GitpodServer(integration.WithGitpodUser(username))
+	server, err := api.DevpodServer(integration.WithDevpodUser(username))
 	if err != nil {
 		t.Fatal(err)
 	}
 	t.Logf("connecting to papi...")
-	papi, err := api.PublicApi(integration.WithGitpodUser(username))
+	papi, err := api.PublicApi(integration.WithDevpodUser(username))
 	if err != nil {
 		t.Fatal(err)
 	}

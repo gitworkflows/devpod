@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License-AGPL.txt in the project root for license information.
 
@@ -41,7 +41,7 @@ var _ = Describe("WorkspaceController", func() {
 			m := collectMetricCounts(wsMetrics, ws)
 			pod := createWorkspaceExpectPod(ws)
 
-			Expect(controllerutil.ContainsFinalizer(pod, workspacev1.GitpodFinalizerName)).To(BeTrue())
+			Expect(controllerutil.ContainsFinalizer(pod, workspacev1.DevpodFinalizerName)).To(BeTrue())
 
 			By("controller updating the pod starts value")
 			Eventually(func() (int, error) {
@@ -309,7 +309,7 @@ var _ = Describe("WorkspaceController", func() {
 				ObjectMeta: metav1.ObjectMeta{
 					Name:       fmt.Sprintf("ws-%s", ws.Name),
 					Namespace:  ws.Namespace,
-					Finalizers: []string{workspacev1.GitpodFinalizerName},
+					Finalizers: []string{workspacev1.DevpodFinalizerName},
 					Labels: map[string]string{
 						wsk8s.WorkspaceManagedByLabel: constants.ManagedBy,
 					},
@@ -408,7 +408,7 @@ var _ = Describe("WorkspaceController", func() {
 				ObjectMeta: metav1.ObjectMeta{
 					Name:       fmt.Sprintf("ws-%s", ws.Name),
 					Namespace:  ws.Namespace,
-					Finalizers: []string{workspacev1.GitpodFinalizerName},
+					Finalizers: []string{workspacev1.DevpodFinalizerName},
 					Labels: map[string]string{
 						wsk8s.WorkspaceManagedByLabel: constants.ManagedBy,
 					},
@@ -664,7 +664,7 @@ func createHeadlessWorkspace(typ workspacev1.WorkspaceType) (ws *workspacev1.Wor
 
 	// Expect headless
 	Expect(ws.IsHeadless()).To(BeTrue())
-	Expect(controllerutil.ContainsFinalizer(pod, workspacev1.GitpodFinalizerName)).To(BeTrue())
+	Expect(controllerutil.ContainsFinalizer(pod, workspacev1.DevpodFinalizerName)).To(BeTrue())
 
 	// Expect runtime status also gets reported for headless workspaces.
 	expectRuntimeStatus(ws, pod)
@@ -811,7 +811,7 @@ func expectFinalizerAndMarkBackupCompleted(ws *workspacev1.Workspace, pod *corev
 		if err := k8sClient.Get(ctx, types.NamespacedName{Name: pod.GetName(), Namespace: pod.GetNamespace()}, pod); err != nil {
 			return false, err
 		}
-		return controllerutil.ContainsFinalizer(pod, workspacev1.GitpodFinalizerName), nil
+		return controllerutil.ContainsFinalizer(pod, workspacev1.DevpodFinalizerName), nil
 	}, duration, interval).Should(BeTrue(), "missing devpod finalizer on pod, expected one to wait for backup to succeed")
 
 	By("signalling backup completed")
@@ -829,7 +829,7 @@ func expectFinalizerAndMarkBackupFailed(ws *workspacev1.Workspace, pod *corev1.P
 		if err := k8sClient.Get(ctx, types.NamespacedName{Name: pod.GetName(), Namespace: pod.GetNamespace()}, pod); err != nil {
 			return false, err
 		}
-		return controllerutil.ContainsFinalizer(pod, workspacev1.GitpodFinalizerName), nil
+		return controllerutil.ContainsFinalizer(pod, workspacev1.DevpodFinalizerName), nil
 	}, duration, interval).Should(BeTrue(), "missing devpod finalizer on pod, expected one to wait for backup to succeed")
 
 	By("signalling backup failed")
@@ -925,13 +925,13 @@ func newWorkspace(name, namespace string) *workspacev1.Workspace {
 
 	return &workspacev1.Workspace{
 		TypeMeta: metav1.TypeMeta{
-			APIVersion: "workspace.devpod.io/v1",
+			APIVersion: "workspace.devpod.khulnasoft.com/v1",
 			Kind:       "Workspace",
 		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:       name,
 			Namespace:  namespace,
-			Finalizers: []string{workspacev1.GitpodFinalizerName},
+			Finalizers: []string{workspacev1.DevpodFinalizerName},
 			Labels: map[string]string{
 				wsk8s.WorkspaceManagedByLabel: constants.ManagedBy,
 			},

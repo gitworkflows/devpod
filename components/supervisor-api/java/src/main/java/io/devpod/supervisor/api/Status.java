@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -9637,7 +9637,7 @@ public final class Status {
 
     /**
      * <pre>
-     * Port description, obtained from Gitpod PortConfig.
+     * Port description, obtained from Devpod PortConfig.
      * </pre>
      *
      * <code>string description = 8;</code>
@@ -9646,7 +9646,7 @@ public final class Status {
     java.lang.String getDescription();
     /**
      * <pre>
-     * Port description, obtained from Gitpod PortConfig.
+     * Port description, obtained from Devpod PortConfig.
      * </pre>
      *
      * <code>string description = 8;</code>
@@ -9657,7 +9657,7 @@ public final class Status {
 
     /**
      * <pre>
-     * Port name, obtained from Gitpod PortConfig.
+     * Port name, obtained from Devpod PortConfig.
      * </pre>
      *
      * <code>string name = 9;</code>
@@ -9666,7 +9666,7 @@ public final class Status {
     java.lang.String getName();
     /**
      * <pre>
-     * Port name, obtained from Gitpod PortConfig.
+     * Port name, obtained from Devpod PortConfig.
      * </pre>
      *
      * <code>string name = 9;</code>
@@ -10119,7 +10119,7 @@ public final class Status {
     private volatile java.lang.Object description_;
     /**
      * <pre>
-     * Port description, obtained from Gitpod PortConfig.
+     * Port description, obtained from Devpod PortConfig.
      * </pre>
      *
      * <code>string description = 8;</code>
@@ -10140,7 +10140,7 @@ public final class Status {
     }
     /**
      * <pre>
-     * Port description, obtained from Gitpod PortConfig.
+     * Port description, obtained from Devpod PortConfig.
      * </pre>
      *
      * <code>string description = 8;</code>
@@ -10165,7 +10165,7 @@ public final class Status {
     private volatile java.lang.Object name_;
     /**
      * <pre>
-     * Port name, obtained from Gitpod PortConfig.
+     * Port name, obtained from Devpod PortConfig.
      * </pre>
      *
      * <code>string name = 9;</code>
@@ -10186,7 +10186,7 @@ public final class Status {
     }
     /**
      * <pre>
-     * Port name, obtained from Gitpod PortConfig.
+     * Port name, obtained from Devpod PortConfig.
      * </pre>
      *
      * <code>string name = 9;</code>
@@ -11183,7 +11183,7 @@ public final class Status {
       private java.lang.Object description_ = "";
       /**
        * <pre>
-       * Port description, obtained from Gitpod PortConfig.
+       * Port description, obtained from Devpod PortConfig.
        * </pre>
        *
        * <code>string description = 8;</code>
@@ -11203,7 +11203,7 @@ public final class Status {
       }
       /**
        * <pre>
-       * Port description, obtained from Gitpod PortConfig.
+       * Port description, obtained from Devpod PortConfig.
        * </pre>
        *
        * <code>string description = 8;</code>
@@ -11224,7 +11224,7 @@ public final class Status {
       }
       /**
        * <pre>
-       * Port description, obtained from Gitpod PortConfig.
+       * Port description, obtained from Devpod PortConfig.
        * </pre>
        *
        * <code>string description = 8;</code>
@@ -11243,7 +11243,7 @@ public final class Status {
       }
       /**
        * <pre>
-       * Port description, obtained from Gitpod PortConfig.
+       * Port description, obtained from Devpod PortConfig.
        * </pre>
        *
        * <code>string description = 8;</code>
@@ -11257,7 +11257,7 @@ public final class Status {
       }
       /**
        * <pre>
-       * Port description, obtained from Gitpod PortConfig.
+       * Port description, obtained from Devpod PortConfig.
        * </pre>
        *
        * <code>string description = 8;</code>
@@ -11279,7 +11279,7 @@ public final class Status {
       private java.lang.Object name_ = "";
       /**
        * <pre>
-       * Port name, obtained from Gitpod PortConfig.
+       * Port name, obtained from Devpod PortConfig.
        * </pre>
        *
        * <code>string name = 9;</code>
@@ -11299,7 +11299,7 @@ public final class Status {
       }
       /**
        * <pre>
-       * Port name, obtained from Gitpod PortConfig.
+       * Port name, obtained from Devpod PortConfig.
        * </pre>
        *
        * <code>string name = 9;</code>
@@ -11320,7 +11320,7 @@ public final class Status {
       }
       /**
        * <pre>
-       * Port name, obtained from Gitpod PortConfig.
+       * Port name, obtained from Devpod PortConfig.
        * </pre>
        *
        * <code>string name = 9;</code>
@@ -11339,7 +11339,7 @@ public final class Status {
       }
       /**
        * <pre>
-       * Port name, obtained from Gitpod PortConfig.
+       * Port name, obtained from Devpod PortConfig.
        * </pre>
        *
        * <code>string name = 9;</code>
@@ -11353,7 +11353,7 @@ public final class Status {
       }
       /**
        * <pre>
-       * Port name, obtained from Gitpod PortConfig.
+       * Port name, obtained from Devpod PortConfig.
        * </pre>
        *
        * <code>string name = 9;</code>

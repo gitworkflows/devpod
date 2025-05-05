@@ -1,8 +1,8 @@
-# Active Context: Gitpod
+# Active Context: Devpod
 
 ## Current Work Focus
 
-We are focusing on understanding the Gitpod codebase and architecture. The primary goal is to build a comprehensive knowledge base that will allow for effective development, troubleshooting, and enhancement of the Gitpod platform.
+We are focusing on understanding the Devpod codebase and architecture. The primary goal is to build a comprehensive knowledge base that will allow for effective development, troubleshooting, and enhancement of the Devpod platform.
 
 Key areas of focus include:
 
@@ -21,7 +21,7 @@ Key areas of focus include:
 - Created detailed documentation for key components:
   - blobserve: Service that provides static assets from OCI images
   - content-service: Manages various types of content within the platform
-  - dashboard: Web-based user inSterface for Gitpod
+  - dashboard: Web-based user inSterface for Devpod
   - ws-manager-mk2: Kubernetes controller for managing workspace lifecycle
   - supervisor: Init process that runs inside each workspace container
   - ws-daemon: Node-level daemon for workspace operations
@@ -31,15 +31,15 @@ Key areas of focus include:
   - server: Main backend service handling API requests and user management
   - proxy: Main entry point for all HTTP and WebSocket traffic
   - ws-proxy: Handles routing and proxying of traffic to workspaces
-  - devpod-cli: Command-line interface for interacting with Gitpod workspaces
-  - devpod-db: Database layer for the Gitpod platform
+  - devpod-cli: Command-line interface for interacting with Devpod workspaces
+  - devpod-db: Database layer for the Devpod platform
   - devpod-protocol: Core type definitions and shared protocol library
-  - ide: Packages and manages IDEs available in Gitpod workspaces
+  - ide: Packages and manages IDEs available in Devpod workspaces
   - ide-proxy: Serves static IDE-related assets and proxies requests
   - ws-manager-bridge: Bridges between workspace managers and the rest of the platform
   - ide-metrics: Collects and processes metrics and error reports from IDE components
-  - local-app: Provides tools for interacting with Gitpod workspaces from local machine
-  - public-api-server: Provides a stable, versioned API for programmatic access to Gitpod
+  - local-app: Provides tools for interacting with Devpod workspaces from local machine
+  - public-api-server: Provides a stable, versioned API for programmatic access to Devpod
   - usage: Tracks, calculates, and manages workspace usage and billing
   - common-go: Foundational Go library providing shared utilities across services
   - workspacekit: Manages container setup and namespace isolation for workspaces
@@ -83,7 +83,7 @@ The immediate next steps are:
 
 1. **Explore Component Interactions**: Understand how components interact with each other
 2. **Set Up Development Environment**: Configure a local development environment for effective testing
-3. **Explore Build System**: Gain hands-on experience with both in-tree and Leeway builds
+3. **Explore Build System**: Gain hands-on experience with both in-tree and Blazedock builds
 4. **Test Component Builds**: Practice building and testing different component types
 5. **Identify Initial Tasks**: Determine specific tasks or improvements to focus on
 6. **Establish Testing Approach**: Define how changes will be tested and validated
@@ -111,7 +111,7 @@ The immediate next steps are:
 
 ## Current Questions and Uncertainties
 
-As we begin working with the Gitpod codebase, several questions and uncertainties exist:
+As we begin working with the Devpod codebase, several questions and uncertainties exist:
 
 1. **Component Interactions**: How do the various components interact in specific scenarios?
 2. **Performance Bottlenecks**: What are the current performance bottlenecks in the system?
@@ -127,9 +127,9 @@ No active experiments are currently in progress. This section will be updated as
 
 ## Recent Learnings
 
-Initial exploration of the Gitpod codebase has revealed:
+Initial exploration of the Devpod codebase has revealed:
 
-- **Microservices Architecture**: Gitpod is built as a collection of loosely coupled services, each with specific responsibilities
+- **Microservices Architecture**: Devpod is built as a collection of loosely coupled services, each with specific responsibilities
 - **Go and TypeScript**: Backend services are primarily written in Go, while frontend components use TypeScript/React
 - **Kubernetes Native**: Many components are designed as Kubernetes controllers or operators
 - **gRPC Communication**: Services communicate using gRPC for efficient, typed communication
@@ -137,17 +137,17 @@ Initial exploration of the Gitpod codebase has revealed:
   - Go services typically have a cmd/ directory with command implementations
   - TypeScript services use React and modern frontend practices
   - Most components have a clear separation between API definitions and implementations
-- **Build System Approaches**: Gitpod uses two primary approaches for building components:
+- **Build System Approaches**: Devpod uses two primary approaches for building components:
   - **In-tree builds**: Using language-specific tools (yarn, go) directly in the workspace
     - Primary method for local development
     - TypeScript components use commands defined in package.json (yarn build, yarn test, etc.)
     - Go components use standard Go tools (go build, go test, etc.)
-  - **Out-of-tree builds**: Using Leeway, a custom build tool
+  - **Out-of-tree builds**: Using Blazedock, a custom build tool
     - Primary method for CI to generate build artifacts
     - Works by copying relevant sources into a separate file tree
     - Can also be run from inside the workspace
     - Manages complex dependencies between components
-- **Server Health Checks**: The Gitpod server uses two distinct health check mechanisms:
+- **Server Health Checks**: The Devpod server uses two distinct health check mechanisms:
   - **Liveness Probe**: Checks the event loop lag to determine if the server is functioning properly
   - **Readiness Probe**: Checks database, SpiceDB, and Redis connectivity to ensure the server is ready to handle requests
     - Controlled by a ConfigCat feature flag `server_readiness_probe` (default: true) that can bypass the actual checks

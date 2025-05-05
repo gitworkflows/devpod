@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2024 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -19,7 +19,7 @@ echo "Image Version: $version"
 bldfn="/tmp/build-$version.tar.gz"
 
 docker ps &> /dev/null || (echo "You need a working Docker daemon. Maybe set DOCKER_HOST?"; exit 1)
-leeway build -Dversion="$version" -DimageRepoBase=ghcr.io/devpod-core-dev/build .:docker --save "$bldfn"
+blazedock build -Dversion="$version" -DimageRepoBase=khulnasoft/devpod-environment/build .:docker --save "$bldfn"
 dev_image="$(tar xfO "$bldfn" ./imgnames.txt | head -n1)"
 echo "Dev Image: $dev_image"
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -85,8 +85,8 @@ func File(ctx context.Context, path string, onChange func()) error {
 
 				currentHash, err := hashConfig(path)
 				if err != nil {
-					log.WithError(err).Warn("Cannot check if config has changed")
-					return
+					log.WithError(err).WithField("event", event.Name).Warn("Cannot check if config has changed")
+					continue
 				}
 
 				// no change

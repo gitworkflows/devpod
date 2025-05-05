@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -188,7 +188,7 @@ func (tm *tasksManager) setTaskState(t *task, newState api.TaskState) {
 func (tm *tasksManager) init(ctx context.Context) {
 	defer close(tm.ready)
 
-	tasks, err := tm.config.getGitpodTasks()
+	tasks, err := tm.config.getDevpodTasks()
 	if err != nil {
 		log.WithError(err).Error()
 		return
@@ -215,7 +215,7 @@ func (tm *tasksManager) init(ctx context.Context) {
 		if config.Name != nil {
 			presentation.Name = *config.Name
 		} else {
-			presentation.Name = "Gitpod Task " + strconv.Itoa(i+1)
+			presentation.Name = "Devpod Task " + strconv.Itoa(i+1)
 		}
 		if config.OpenIn != nil {
 			presentation.OpenIn = *config.OpenIn

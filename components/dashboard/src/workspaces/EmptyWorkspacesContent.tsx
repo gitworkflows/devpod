@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -38,7 +38,7 @@ export const EmptyWorkspacesContent = () => {
                 ) : (
                     <>
                         <VideoSection
-                            metadataVideoTitle="Gitpod demo"
+                            metadataVideoTitle="Devpod demo"
                             playbackId="m01BUvCkTz7HzQKFoIcQmK00Rx5laLLoMViWBstetmvLs"
                             poster="https://i.ytimg.com/vi_webp/1ZBN-b2cIB8/maxresdefault.webp"
                             playerProps={{ onPlay: handlePlay, defaultHiddenCaptions: true }}

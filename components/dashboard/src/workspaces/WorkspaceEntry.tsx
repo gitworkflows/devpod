@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { GitpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
+import { DevpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { Item, ItemFieldIcon } from "../components/ItemsList";
 import PendingChangesDropdown from "../components/PendingChangesDropdown";
@@ -50,7 +50,7 @@ export const WorkspaceEntry: FunctionComponent<Props> = ({ info, shortVersion })
     // Could this be `/start#${workspace.id}` instead?
     const startUrl = useMemo(
         () =>
-            new GitpodHostUrl(window.location.href)
+            new DevpodHostUrl(window.location.href)
                 .with({
                     pathname: "/start/",
                     hash: "#" + workspace.id,

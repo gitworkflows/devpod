@@ -67,7 +67,7 @@ func main() {
 
 			marked := true
 			// marked := slices.ContainsFunc(pod.Spec.Containers[0].Env, func(e corev1.EnvVar) bool {
-			// 	return e.Name == "GITPOD_WORKSPACE_CONTEXT_URL" && strings.Contains(e.Value, "geropl")
+			// 	return e.Name == "DEVPOD_WORKSPACE_CONTEXT_URL" && strings.Contains(e.Value, "geropl")
 			// })
 
 			knownVersion, known := knownPodVersions[pod.Name]

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -19,7 +19,7 @@ import (
 
 func TestGetProductConfig(t *testing.T) {
 	expectation := &protocol.JetbrainsProduct{}
-	actual := getProductConfig(&protocol.GitpodConfig{
+	actual := getProductConfig(&protocol.DevpodConfig{
 		Jetbrains: &protocol.Jetbrains{
 			Intellij: expectation,
 		},
@@ -30,8 +30,8 @@ func TestGetProductConfig(t *testing.T) {
 	}
 }
 
-func TestParseGitpodConfig(t *testing.T) {
-	devpodConfig, _ := parseGitpodConfig("testdata")
+func TestParseDevpodConfig(t *testing.T) {
+	devpodConfig, _ := parseDevpodConfig("testdata")
 	assert.Equal(t, 1, len(devpodConfig.Jetbrains.Intellij.Plugins))
 	assert.Equal(t, "both", devpodConfig.Jetbrains.Intellij.Prebuilds.Version)
 	assert.Equal(t, "-Xmx3g", devpodConfig.Jetbrains.Intellij.Vmoptions)
@@ -46,20 +46,20 @@ func TestUpdateVMOptions(t *testing.T) {
 		Src         string
 		Expectation string
 	}{
-		{"idea64.vmoptions (GITPOD_CPU_COUNT)", "intellij", map[string]string{"INTELLIJ_VMOPTIONS": "-Xmx4096m", "GITPOD_CPU_COUNT": "1"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx4096m\n-Dsun.tools.attach.tmp.only=true\n-XX:+UseContainerSupport\n-XX:ActiveProcessorCount=1\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true"},
-		{"idea64.vmoptions (GITPOD_CPU_COUNT 2)", "intellij", map[string]string{"INTELLIJ_VMOPTIONS": "-Xmx4096m", "GITPOD_CPU_COUNT": "12"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx4096m\n-Dsun.tools.attach.tmp.only=true\n-XX:+UseContainerSupport\n-XX:ActiveProcessorCount=12\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true"},
+		{"idea64.vmoptions (DEVPOD_CPU_COUNT)", "intellij", map[string]string{"INTELLIJ_VMOPTIONS": "-Xmx4096m", "DEVPOD_CPU_COUNT": "1"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx4096m\n-Dsun.tools.attach.tmp.only=true\n-XX:+UseContainerSupport\n-XX:ActiveProcessorCount=1\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true"},
+		{"idea64.vmoptions (DEVPOD_CPU_COUNT 2)", "intellij", map[string]string{"INTELLIJ_VMOPTIONS": "-Xmx4096m", "DEVPOD_CPU_COUNT": "12"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx4096m\n-Dsun.tools.attach.tmp.only=true\n-XX:+UseContainerSupport\n-XX:ActiveProcessorCount=12\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true"},
 		{"goland64.vmoptions", "goland", nil, "-Xms128m\n-Xmx750m\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx750m\n-Dsun.tools.attach.tmp.only=true\n-XX:+UseContainerSupport\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true"},
 		{"idea64.vmoptions", "intellij", nil, "-Xms128m\n-Xmx750m\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx750m\n-Dsun.tools.attach.tmp.only=true\n-XX:+UseContainerSupport\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true"},
 		{"idea64.vmoptions (INTELLIJ_VMOPTIONS env set)", "intellij", map[string]string{"INTELLIJ_VMOPTIONS": "-Xmx2048m"}, "-Xms128m\n-Xmx750m\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx2048m\n-Dsun.tools.attach.tmp.only=true\n-XX:+UseContainerSupport\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true"},
 		{"idea64.vmoptions (INTELLIJ_VMOPTIONS env set)", "intellij", map[string]string{"INTELLIJ_VMOPTIONS": "-Xmx4096m"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx4096m\n-Dsun.tools.attach.tmp.only=true\n-XX:+UseContainerSupport\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true"},
 		{"idea64.vmoptions (INTELLIJ_VMOPTIONS env set)", "intellij", map[string]string{"INTELLIJ_VMOPTIONS": "-Xmx4096m -XX:MaxRAMPercentage=75"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx4096m\n-XX:MaxRAMPercentage=75\n-Dsun.tools.attach.tmp.only=true\n-XX:+UseContainerSupport\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true"},
 		{"goland64.vmoptions (GOLAND_VMOPTIONS env set with conflicting options)", "goland", map[string]string{"GOLAND_VMOPTIONS": "-ea -XX:+IgnoreUnrecognizedVMOptions -XX:MaxRAMPercentage=75 -XX:MaxRAMPercentage=50"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-ea\n-XX:+IgnoreUnrecognizedVMOptions\n-XX:+UseContainerSupport\n-XX:MaxRAMPercentage=50"},
-		{"GITPOD_MEMORY with 1G", "intellij", map[string]string{"GITPOD_MEMORY": "1024"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true\n-XX:+UseContainerSupport\n"},
-		{"GITPOD_MEMORY with 4G", "intellij", map[string]string{"GITPOD_MEMORY": "4096"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx2457m\n-Dsun.tools.attach.tmp.only=true\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true\n-XX:+UseContainerSupport\n"},
-		{"GITPOD_MEMORY with 256G will use max 8G", "intellij", map[string]string{"GITPOD_MEMORY": "262144"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx8192m\n-Dsun.tools.attach.tmp.only=true\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true\n-XX:+UseContainerSupport\n"},
+		{"DEVPOD_MEMORY with 1G", "intellij", map[string]string{"DEVPOD_MEMORY": "1024"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true\n-XX:+UseContainerSupport\n"},
+		{"DEVPOD_MEMORY with 4G", "intellij", map[string]string{"DEVPOD_MEMORY": "4096"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx2457m\n-Dsun.tools.attach.tmp.only=true\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true\n-XX:+UseContainerSupport\n"},
+		{"DEVPOD_MEMORY with 256G will use max 8G", "intellij", map[string]string{"DEVPOD_MEMORY": "262144"}, "-Xms128m\n-Xmx2g\n-Dsun.tools.attach.tmp.only=true", "-Xms128m\n-Xmx8192m\n-Dsun.tools.attach.tmp.only=true\n-Dfreeze.reporter.profiling=false\n-Dgtw.disable.exit.dialog=true\n-Djdk.configure.existing=true\n-XX:+UseContainerSupport\n"},
 	}
-	os.Unsetenv("GITPOD_CPU_COUNT")
-	os.Unsetenv("GITPOD_MEMORY")
+	os.Unsetenv("DEVPOD_CPU_COUNT")
+	os.Unsetenv("DEVPOD_MEMORY")
 	for _, test := range tests {
 		// compare vmoptions string content equality (i.e. split into slices and compare ignore order)
 		lessFunc := func(a, b string) bool { return a < b }

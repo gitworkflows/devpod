@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -28,9 +28,9 @@ import (
 
 	"github.com/gorilla/websocket"
 
-	"github.com/gitpod-io/golang-crypto/ssh"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	"github.com/khulnasoft/golang-crypto/ssh"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/xerrors"
 
@@ -54,7 +54,7 @@ type RouteHandlerConfigOpt func(*Config, *RouteHandlerConfig)
 // WithDefaultAuth enables workspace access authentication.
 func WithDefaultAuth(infoprov common.WorkspaceInfoProvider) RouteHandlerConfigOpt {
 	return func(config *Config, c *RouteHandlerConfig) {
-		c.WorkspaceAuthHandler = WorkspaceAuthHandler(config.GitpodInstallation.HostName, infoprov)
+		c.WorkspaceAuthHandler = WorkspaceAuthHandler(config.DevpodInstallation.HostName, infoprov)
 	}
 }
 
@@ -382,7 +382,7 @@ func (ir *ideRoutes) HandleRoot(route *mux.Route) {
 	r.Use(logRouteHandlerHandler("handleRoot"))
 	r.Use(ir.workspaceMustExistHandler)
 
-	proxyPassWoSensitiveCookies := sensitiveCookieHandler(ir.Config.Config.GitpodInstallation.HostName)(proxyPass(ir.Config, ir.InfoProvider, workspacePodResolver))
+	proxyPassWoSensitiveCookies := sensitiveCookieHandler(ir.Config.Config.DevpodInstallation.HostName)(proxyPass(ir.Config, ir.InfoProvider, workspacePodResolver))
 	directIDEPass := ir.Config.WorkspaceAuthHandler(proxyPassWoSensitiveCookies)
 
 	// always hit the blobserver to ensure that blob is downloaded
@@ -489,7 +489,7 @@ func installForeignBlobserveRoutes(r *mux.Router, config *RouteHandlerConfig, in
 	r.Use(logRouteHandlerHandler("BlobserveRootHandler"))
 
 	// filter all session cookies
-	r.Use(sensitiveCookieHandler(config.Config.GitpodInstallation.HostName))
+	r.Use(sensitiveCookieHandler(config.Config.DevpodInstallation.HostName))
 
 	targetResolver := func(cfg *Config, infoProvider common.WorkspaceInfoProvider, req *http.Request) (tgt *url.URL, str string, err error) {
 		segments := strings.SplitN(req.URL.Path, imagePathSeparator, 2)
@@ -519,7 +519,7 @@ func installDebugWorkspaceRoutes(r *mux.Router, config *RouteHandlerConfig, info
 	r.Use(logHandler)
 	r.Use(config.WorkspaceAuthHandler)
 	// filter all session cookies
-	r.Use(sensitiveCookieHandler(config.Config.GitpodInstallation.HostName))
+	r.Use(sensitiveCookieHandler(config.Config.DevpodInstallation.HostName))
 
 	r.NewRoute().HandlerFunc(proxyPass(config, infoProvider, workspacePodResolver, withHTTPErrorHandler(showPortNotFoundPage)))
 	return nil
@@ -535,7 +535,7 @@ func installWorkspacePortRoutes(r *mux.Router, config *RouteHandlerConfig, infoP
 	r.Use(logHandler)
 	r.Use(config.WorkspaceAuthHandler)
 	// filter all session cookies
-	r.Use(sensitiveCookieHandler(config.Config.GitpodInstallation.HostName))
+	r.Use(sensitiveCookieHandler(config.Config.DevpodInstallation.HostName))
 
 	// forward request to workspace port
 	r.NewRoute().HandlerFunc(
@@ -758,7 +758,7 @@ func workspaceMustExistHandler(config *Config, infoProvider common.WorkspaceInfo
 			coords := getWorkspaceCoords(req)
 			info := infoProvider.WorkspaceInfo(coords.ID)
 			if info == nil {
-				redirectURL := fmt.Sprintf("%s://%s/start/?not_found=true#%s", config.GitpodInstallation.Scheme, config.GitpodInstallation.HostName, coords.ID)
+				redirectURL := fmt.Sprintf("%s://%s/start/?not_found=true#%s", config.DevpodInstallation.Scheme, config.DevpodInstallation.HostName, coords.ID)
 				http.Redirect(resp, req, redirectURL, http.StatusFound)
 				return
 			}
@@ -915,8 +915,8 @@ func (t *blobserveTransport) redirect(image string, req *http.Request) (*http.Re
 
 func (t *blobserveTransport) asBlobserveURL(image string, path string) string {
 	return fmt.Sprintf("%s://ide.%s/blobserve/%s%s%s",
-		t.Config.GitpodInstallation.Scheme,
-		t.Config.GitpodInstallation.HostName,
+		t.Config.DevpodInstallation.Scheme,
+		t.Config.DevpodInstallation.HostName,
 		image,
 		imagePathSeparator,
 		path,
@@ -938,7 +938,7 @@ func servePortNotFoundPage(config *Config) (http.Handler, error) {
 	if err != nil {
 		return nil, err
 	}
-	page = bytes.ReplaceAll(page, []byte("https://devpod.io"), []byte(fmt.Sprintf("%s://%s", config.GitpodInstallation.Scheme, config.GitpodInstallation.HostName)))
+	page = bytes.ReplaceAll(page, []byte("https://devpod.khulnasoft.com"), []byte(fmt.Sprintf("%s://%s", config.DevpodInstallation.Scheme, config.DevpodInstallation.HostName)))
 
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNotFound)

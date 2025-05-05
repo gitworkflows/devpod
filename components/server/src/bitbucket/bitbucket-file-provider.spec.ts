@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -18,7 +18,7 @@ import { BitbucketTokenHelper } from "./bitbucket-token-handler";
 const expect = chai.expect;
 import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
 
-@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("GITPOD_TEST_TOKEN_BITBUCKET")))
+@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("DEVPOD_TEST_TOKEN_BITBUCKET")))
 class TestBitbucketFileProvider {
     protected fileProvider: BitbucketFileProvider;
     protected user: User;

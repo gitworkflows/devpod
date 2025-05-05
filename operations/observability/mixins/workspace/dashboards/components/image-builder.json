@@ -2368,7 +2368,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / Component / image-builder",
+  "title": "Devpod / Component / image-builder",
   "uid": "image-builder",
   "version": 1,
   "weekStart": ""

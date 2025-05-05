@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -28,7 +28,7 @@ export const DisabledCell = () => {
                     width="240"
                     height="251"
                 />
-                <Heading2 className="my-4">Thank you for evaluating Gitpod</Heading2>
+                <Heading2 className="my-4">Thank you for evaluating Devpod</Heading2>
                 <TextMuted>
                     This evaluation instance is now stopped. <br />
                     Please contact our team to move to next steps.

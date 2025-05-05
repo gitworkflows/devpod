@@ -4,7 +4,7 @@ Handy, cheaper and easier way to help collect `error report` and `metrics` for i
 
 ## How to Debug
 
-### From source in Gitpod Browser Code
+### From source in Devpod Browser Code
 
 **start simple server**
 

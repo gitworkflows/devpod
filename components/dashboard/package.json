@@ -112,7 +112,7 @@
     "test:unit": "craco test --all --watchAll=false",
     "test:unit:watch": "craco test --all",
     "eject": "react-scripts eject",
-    "telepresence": "TELEPRESENCE_USE_DEPLOYMENT=1 leeway run .:telepresence"
+    "telepresence": "TELEPRESENCE_USE_DEPLOYMENT=1 blazedock run .:telepresence"
   },
   "files": [
     "conf",

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -14,7 +14,7 @@ object LocalHostUri {
         val port: Int
     }
 
-    /** Function ported from https://github.com/gitpod-io/openvscode-server/blob/ce5566276e561303d92bec32a9f58008cddd5270/src/vs/platform/tunnel/common/tunnel.ts#L138 */
+    /** Function ported from https://github.com/khulnasoft/openvscode-server/blob/ce5566276e561303d92bec32a9f58008cddd5270/src/vs/platform/tunnel/common/tunnel.ts#L138 */
     fun extractLocalHostUriMetaDataForPortMapping(uri: URI): Optional<LocalHostUriMetadata> {
         if (uri.scheme != "http" && uri.scheme != "https") return Optional.empty()
 

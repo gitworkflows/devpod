@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -34,7 +34,7 @@ import (
 
 cd test
 export TEST_COLLABORATOR=true
-export GITPOD_HOST=hw-collaborator.preview.devpod-dev.com
+export DEVPOD_HOST=hw-collaborator.preview.devpod-dev.com
 export ORG_ID=130d67cf-8b11-45e9-b8d2-33bf34ca4a4c
 export PROJECT_ID=699c6566-1049-469e-9e61-c8fe0db9d396
 
@@ -63,7 +63,7 @@ func TestMembers(t *testing.T) {
 		return
 	}
 	userToken, _ := os.LookupEnv("USER_TOKEN")
-	devpodHost, _ := os.LookupEnv("GITPOD_HOST")
+	devpodHost, _ := os.LookupEnv("DEVPOD_HOST")
 	orgID, _ := os.LookupEnv("ORG_ID")
 
 	serverConn, err0 := connectToServer(devpodHost, userToken)
@@ -110,7 +110,7 @@ func TestProjects(t *testing.T) {
 		return
 	}
 	userToken, _ := os.LookupEnv("USER_TOKEN")
-	devpodHost, _ := os.LookupEnv("GITPOD_HOST")
+	devpodHost, _ := os.LookupEnv("DEVPOD_HOST")
 	orgID, _ := os.LookupEnv("ORG_ID")
 
 	serverConn, err0 := connectToServer(devpodHost, userToken)
@@ -161,7 +161,7 @@ func TestGetProject(t *testing.T) {
 		return
 	}
 	userToken, _ := os.LookupEnv("USER_TOKEN")
-	devpodHost, _ := os.LookupEnv("GITPOD_HOST")
+	devpodHost, _ := os.LookupEnv("DEVPOD_HOST")
 	projectID, _ := os.LookupEnv("PROJECT_ID")
 
 	if _, err := connectToServer(devpodHost, userToken); err != nil {

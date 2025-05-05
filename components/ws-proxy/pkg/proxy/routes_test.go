@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -21,8 +21,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gitpod-io/golang-crypto/ssh"
 	"github.com/google/go-cmp/cmp"
+	"github.com/khulnasoft/golang-crypto/ssh"
 	"github.com/sirupsen/logrus"
 
 	"github.com/khulnasoft/devpod/common-go/log"
@@ -43,8 +43,8 @@ var (
 	debugWorkspaceURL = "https://debug-amaranth-smelt-9ba20cc1.test-domain.com/"
 	workspaces        = []common.WorkspaceInfo{
 		{
-			IDEImage:        "gitpod-io/ide:latest",
-			SupervisorImage: "gitpod-io/supervisor:latest",
+			IDEImage:        "khulnasoft/ide:latest",
+			SupervisorImage: "khulnasoft/supervisor:latest",
 			Auth: &api.WorkspaceAuthentication{
 				Admission:  api.AdmissionLevel_ADMIT_OWNER_ONLY,
 				OwnerToken: "owner-token",
@@ -76,7 +76,7 @@ var (
 			MaxIdleConns:        0,
 			MaxIdleConnsPerHost: 100,
 		},
-		GitpodInstallation: &GitpodInstallation{
+		DevpodInstallation: &DevpodInstallation{
 			HostName:            "test-domain.com",
 			Scheme:              "https",
 			WorkspaceHostSuffix: ".ws.test-domain.com",
@@ -238,11 +238,11 @@ func TestRoutes(t *testing.T) {
 				Header: http.Header{
 					"Content-Type": {"text/html; charset=utf-8"},
 					"Location": {
-						"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/favicon.ico",
+						"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/favicon.ico",
 					},
 					"Vary": {"Accept-Encoding"},
 				},
-				Body: "<a href=\"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/favicon.ico\">See Other</a>.\n\n",
+				Body: "<a href=\"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/favicon.ico\">See Other</a>.\n\n",
 			},
 		},
 		{
@@ -266,10 +266,10 @@ func TestRoutes(t *testing.T) {
 				Status: http.StatusSeeOther,
 				Header: http.Header{
 					"Content-Type": {"text/html; charset=utf-8"},
-					"Location":     {"https://ide.test-domain.com/blobserve/gitpod-io/ide:latest/__files__/"},
+					"Location":     {"https://ide.test-domain.com/blobserve/khulnasoft/ide:latest/__files__/"},
 					"Vary":         {"Accept-Encoding"},
 				},
-				Body: "<a href=\"https://ide.test-domain.com/blobserve/gitpod-io/ide:latest/__files__/\">See Other</a>.\n\n",
+				Body: "<a href=\"https://ide.test-domain.com/blobserve/khulnasoft/ide:latest/__files__/\">See Other</a>.\n\n",
 			},
 		},
 		{
@@ -286,7 +286,7 @@ func TestRoutes(t *testing.T) {
 					"Content-Type":   {"text/plain; charset=utf-8"},
 					"Vary":           {"Accept-Encoding"},
 				},
-				Body: "blobserve hit: /gitpod-io/ide:latest/\nhost: localhost:20003\ninlineVars: {\"ide\":\"https://ide.test-domain.com/blobserve/gitpod-io/ide:latest/__files__\",\"supervisor\":\"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__\"}\n",
+				Body: "blobserve hit: /khulnasoft/ide:latest/\nhost: localhost:20003\ninlineVars: {\"ide\":\"https://ide.test-domain.com/blobserve/khulnasoft/ide:latest/__files__\",\"supervisor\":\"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__\"}\n",
 			},
 		},
 		{
@@ -303,7 +303,7 @@ func TestRoutes(t *testing.T) {
 					"Content-Type":   {"text/plain; charset=utf-8"},
 					"Vary":           {"Accept-Encoding"},
 				},
-				Body: "blobserve hit: /gitpod-io/ide:latest/\nhost: localhost:20003\ninlineVars: {\"ide\":\"https://ide.test-domain.com/blobserve/gitpod-io/ide:latest/__files__\",\"supervisor\":\"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__\"}\n",
+				Body: "blobserve hit: /khulnasoft/ide:latest/\nhost: localhost:20003\ninlineVars: {\"ide\":\"https://ide.test-domain.com/blobserve/khulnasoft/ide:latest/__files__\",\"supervisor\":\"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__\"}\n",
 			},
 		},
 		{
@@ -455,7 +455,7 @@ func TestRoutes(t *testing.T) {
 			Request: modifyRequest(httptest.NewRequest("GET", workspaces[0].URL+"somewhere/in/the/ide", nil),
 				addHostHeader,
 				addOwnerToken(domain, workspaces[0].InstanceID, workspaces[0].Auth.OwnerToken),
-				addHeader("Origin", config.GitpodInstallation.HostName),
+				addHeader("Origin", config.DevpodInstallation.HostName),
 				addHeader("Access-Control-Request-Method", "OPTIONS"),
 			),
 			Targets: &Targets{Workspace: &Target{Status: http.StatusOK}, Blobserve: &Target{Status: http.StatusNotFound}},
@@ -565,7 +565,7 @@ func TestRoutes(t *testing.T) {
 					"Content-Type":   {"text/plain; charset=utf-8"},
 					"Vary":           {"Accept-Encoding"},
 				},
-				Body: "blobserve hit: /gitpod-io/supervisor:latest/worker-proxy.js\nhost: localhost:20003\n",
+				Body: "blobserve hit: /khulnasoft/supervisor:latest/worker-proxy.js\nhost: localhost:20003\n",
 			},
 		},
 		{
@@ -578,10 +578,10 @@ func TestRoutes(t *testing.T) {
 				Status: http.StatusSeeOther,
 				Header: http.Header{
 					"Content-Type": {"text/html; charset=utf-8"},
-					"Location":     {"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/main.js"},
+					"Location":     {"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/main.js"},
 					"Vary":         {"Accept-Encoding"},
 				},
-				Body: "<a href=\"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/main.js\">See Other</a>.\n\n",
+				Body: "<a href=\"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/main.js\">See Other</a>.\n\n",
 			},
 		},
 		{
@@ -604,10 +604,10 @@ func TestRoutes(t *testing.T) {
 				Status: http.StatusSeeOther,
 				Header: http.Header{
 					"Content-Type": {"text/html; charset=utf-8"},
-					"Location":     {"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/main.js"},
+					"Location":     {"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/main.js"},
 					"Vary":         {"Accept-Encoding"},
 				},
-				Body: "<a href=\"https://ide.test-domain.com/blobserve/gitpod-io/supervisor:latest/__files__/main.js\">See Other</a>.\n\n",
+				Body: "<a href=\"https://ide.test-domain.com/blobserve/khulnasoft/supervisor:latest/__files__/main.js\">See Other</a>.\n\n",
 			},
 		},
 		{
@@ -987,7 +987,7 @@ func TestRemoveSensitiveCookies(t *testing.T) {
 		domain                  = "test-domain.com"
 		sessionCookie           = &http.Cookie{Domain: domain, Name: "_test_domain_com_", Value: "fobar"}
 		sessionCookieJwt2       = &http.Cookie{Domain: domain, Name: "__Host-_test_domain_com_jwt2_", Value: "fobar"}
-		realGitpodSessionCookie = &http.Cookie{Domain: domain, Name: server_lib.CookieNameFromDomain(domain), Value: "fobar"}
+		realDevpodSessionCookie = &http.Cookie{Domain: domain, Name: server_lib.CookieNameFromDomain(domain), Value: "fobar"}
 		portAuthCookie          = &http.Cookie{Domain: domain, Name: "_test_domain_com_ws_77f6b236_3456_4b88_8284_81ca543a9d65_port_auth_", Value: "some-token"}
 		ownerCookie             = &http.Cookie{Domain: domain, Name: "_test_domain_com_ws_77f6b236_3456_4b88_8284_81ca543a9d65_owner_", Value: "some-other-token"}
 		ownerCookieGen          = ownerTokenCookie(domain, "77f6b236_3456_4b88_8284_81ca543a9d65", "owner-token-gen")
@@ -1003,7 +1003,7 @@ func TestRemoveSensitiveCookies(t *testing.T) {
 		{Name: "no cookies", Input: []*http.Cookie{}, Expected: []*http.Cookie{}},
 		{Name: "session cookie", Input: []*http.Cookie{sessionCookie, miscCookie}, Expected: []*http.Cookie{miscCookie}},
 		{Name: "session cookie ending on _jwt2_", Input: []*http.Cookie{sessionCookieJwt2, miscCookie}, Expected: []*http.Cookie{miscCookie}},
-		{Name: "real Gitpod session cookie", Input: []*http.Cookie{realGitpodSessionCookie, miscCookie}, Expected: []*http.Cookie{miscCookie}},
+		{Name: "real Devpod session cookie", Input: []*http.Cookie{realDevpodSessionCookie, miscCookie}, Expected: []*http.Cookie{miscCookie}},
 		{Name: "portAuth cookie", Input: []*http.Cookie{portAuthCookie, miscCookie}, Expected: []*http.Cookie{miscCookie}},
 		{Name: "owner cookie", Input: []*http.Cookie{ownerCookie, miscCookie}, Expected: []*http.Cookie{miscCookie}},
 		{Name: "owner cookie generated", Input: []*http.Cookie{ownerCookieGen, miscCookie}, Expected: []*http.Cookie{miscCookie}},

@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -63,7 +63,7 @@ func socketActivationForDocker(parentCtx context.Context, wg *sync.WaitGroup, te
 	}
 
 	// insert credentials into docker config
-	credentialsWritten, err := insertCredentialsIntoConfig(cfg.GitpodImageAuth)
+	credentialsWritten, err := insertCredentialsIntoConfig(cfg.DevpodImageAuth)
 	if err != nil {
 		log.WithError(err).Warn("authentication: cannot write credentials to config")
 	}

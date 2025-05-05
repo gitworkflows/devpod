@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -111,9 +111,9 @@ func DefaultEnv(cfg *config.Config) []corev1.EnvVar {
 
 	return MergeEnv(
 		[]corev1.EnvVar{
-			{Name: "GITPOD_DOMAIN", Value: cfg.Domain},
-			{Name: "GITPOD_INSTALLATION_SHORTNAME", Value: cfg.Metadata.InstallationShortname},
-			{Name: "GITPOD_REGION", Value: cfg.Metadata.Region},
+			{Name: "DEVPOD_DOMAIN", Value: cfg.Domain},
+			{Name: "DEVPOD_INSTALLATION_SHORTNAME", Value: cfg.Metadata.InstallationShortname},
+			{Name: "DEVPOD_REGION", Value: cfg.Metadata.Region},
 			{Name: "HOST_URL", Value: "https://" + cfg.Domain},
 			{Name: "KUBE_NAMESPACE", ValueFrom: &corev1.EnvVarSource{
 				FieldRef: &corev1.ObjectFieldSelector{
@@ -122,6 +122,11 @@ func DefaultEnv(cfg *config.Config) []corev1.EnvVar {
 			}},
 			{Name: "KUBE_DOMAIN", Value: "svc.cluster.local"},
 			{Name: "LOG_LEVEL", Value: strings.ToLower(logLevel)},
+			// TODO(gpl): This is our bandaid for https:://tldr.fail, until we upgrade from Go 1.23 to 1.24
+			// See these issues for details:
+			//  - https://linear.app/devpod/issue/CLC-1264/investigate-public-api-server-connectivity-issues-during-sso-login#comment-f2daa302
+			//  - https://linear.app/devpod/issue/CLC-1067/go-upgrade-from-123x-to-124x-once-available for details
+			{Name: "GODEBUG", Value: "tlskyber=0"},
 		},
 		ProxyEnv(cfg),
 	)
@@ -240,13 +245,13 @@ func AnalyticsEnv(cfg *config.Config) (res []corev1.EnvVar) {
 	}
 
 	return []corev1.EnvVar{{
-		Name:  "GITPOD_ANALYTICS_WRITER",
+		Name:  "DEVPOD_ANALYTICS_WRITER",
 		Value: cfg.Analytics.Writer,
 	}, {
-		Name:  "GITPOD_ANALYTICS_SEGMENT_KEY",
+		Name:  "DEVPOD_ANALYTICS_SEGMENT_KEY",
 		Value: cfg.Analytics.SegmentKey,
 	}, {
-		Name:  "GITPOD_ANALYTICS_SEGMENT_ENDPOINT",
+		Name:  "DEVPOD_ANALYTICS_SEGMENT_ENDPOINT",
 		Value: cfg.Analytics.SegmentEndpoint,
 	}}
 }
@@ -797,13 +802,13 @@ func RandomString(length int) (string, error) {
 }
 
 // ThirdPartyContainerRepo returns the container registry to use for third-party containers.
-// If config registry is set to the Gitpod registry, the third-party registry is returned. If
+// If config registry is set to the Devpod registry, the third-party registry is returned. If
 // config registry is different, that repository is returned and deployment expected to mirror
 // the images to their registry
 func ThirdPartyContainerRepo(configRegistry string, thirdPartyRegistry string) string {
 	configRegistry = strings.TrimSuffix(configRegistry, "/")
 
-	if configRegistry == GitpodContainerRegistry {
+	if configRegistry == DevpodContainerRegistry {
 		return thirdPartyRegistry
 	}
 

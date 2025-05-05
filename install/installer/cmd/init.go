@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -18,7 +18,7 @@ var initCmd = &cobra.Command{
 	Short:      "Create a base config file",
 	Long: `Create a base config file
 
-This file contains all the credentials to install a Gitpod instance and
+This file contains all the credentials to install a Devpod instance and
 be saved to a repository.`,
 	Example: `  # Save config to config.yaml.
   devpod-installer init > config.yaml`,

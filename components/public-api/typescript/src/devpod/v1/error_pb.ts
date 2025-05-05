@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -155,10 +155,10 @@ export class FailedPreconditionDetails extends Message<FailedPreconditionDetails
     case: "tooManyRunningWorkspaces";
   } | {
     /**
-     * @generated from field: devpod.v1.InvalidGitpodYMLError invalid_devpod_yml = 4;
+     * @generated from field: devpod.v1.InvalidDevpodYMLError invalid_devpod_yml = 4;
      */
-    value: InvalidGitpodYMLError;
-    case: "invalidGitpodYml";
+    value: InvalidDevpodYMLError;
+    case: "invalidDevpodYml";
   } | {
     /**
      * @generated from field: devpod.v1.RepositoryNotFoundError repository_not_found = 5;
@@ -196,7 +196,7 @@ export class FailedPreconditionDetails extends Message<FailedPreconditionDetails
     { no: 1, name: "payment_spending_limit_reached", kind: "message", T: PaymentSpendingLimitReachedError, oneof: "reason" },
     { no: 2, name: "invalid_cost_center", kind: "message", T: InvalidCostCenterError, oneof: "reason" },
     { no: 3, name: "too_many_running_workspaces", kind: "message", T: TooManyRunningWorkspacesError, oneof: "reason" },
-    { no: 4, name: "invalid_devpod_yml", kind: "message", T: InvalidGitpodYMLError, oneof: "reason" },
+    { no: 4, name: "invalid_devpod_yml", kind: "message", T: InvalidDevpodYMLError, oneof: "reason" },
     { no: 5, name: "repository_not_found", kind: "message", T: RepositoryNotFoundError, oneof: "reason" },
     { no: 6, name: "repository_unauthorized", kind: "message", T: RepositoryUnauthorizedError, oneof: "reason" },
     { no: 7, name: "image_build_logs_not_yet_available", kind: "message", T: ImageBuildLogsNotYetAvailableError, oneof: "reason" },
@@ -320,39 +320,39 @@ export class TooManyRunningWorkspacesError extends Message<TooManyRunningWorkspa
 }
 
 /**
- * @generated from message devpod.v1.InvalidGitpodYMLError
+ * @generated from message devpod.v1.InvalidDevpodYMLError
  */
-export class InvalidGitpodYMLError extends Message<InvalidGitpodYMLError> {
+export class InvalidDevpodYMLError extends Message<InvalidDevpodYMLError> {
   /**
    * @generated from field: repeated string violations = 1;
    */
   violations: string[] = [];
 
-  constructor(data?: PartialMessage<InvalidGitpodYMLError>) {
+  constructor(data?: PartialMessage<InvalidDevpodYMLError>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "devpod.v1.InvalidGitpodYMLError";
+  static readonly typeName = "devpod.v1.InvalidDevpodYMLError";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "violations", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): InvalidGitpodYMLError {
-    return new InvalidGitpodYMLError().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): InvalidDevpodYMLError {
+    return new InvalidDevpodYMLError().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): InvalidGitpodYMLError {
-    return new InvalidGitpodYMLError().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): InvalidDevpodYMLError {
+    return new InvalidDevpodYMLError().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): InvalidGitpodYMLError {
-    return new InvalidGitpodYMLError().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): InvalidDevpodYMLError {
+    return new InvalidDevpodYMLError().fromJsonString(jsonString, options);
   }
 
-  static equals(a: InvalidGitpodYMLError | PlainMessage<InvalidGitpodYMLError> | undefined, b: InvalidGitpodYMLError | PlainMessage<InvalidGitpodYMLError> | undefined): boolean {
-    return proto3.util.equals(InvalidGitpodYMLError, a, b);
+  static equals(a: InvalidDevpodYMLError | PlainMessage<InvalidDevpodYMLError> | undefined, b: InvalidDevpodYMLError | PlainMessage<InvalidDevpodYMLError> | undefined): boolean {
+    return proto3.util.equals(InvalidDevpodYMLError, a, b);
   }
 }
 

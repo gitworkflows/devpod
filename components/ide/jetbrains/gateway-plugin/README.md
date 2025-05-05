@@ -1,9 +1,9 @@
 <img align="right" height="400" src="./screenshot.png">
 
-## Gitpod Gateway
+## Devpod Gateway
 
 <!-- Plugin description -->
-Provides a way to connect to Gitpod workspaces.
+Provides a way to connect to Devpod workspaces.
 
 <!-- Plugin description end -->
 
@@ -11,7 +11,7 @@ This plugin is based on the [IntelliJ Platform Plugin Template](https://github.c
 
 ## Development
 
-This project is not Gitpodified yet because it requires running the JetBrains Gateway locally. For now, for development, contributors can use [IntelliJ IDEA](https://www.jetbrains.com/idea/) installed on their machines.
+This project is not Devpodified yet because it requires running the JetBrains Gateway locally. For now, for development, contributors can use [IntelliJ IDEA](https://www.jetbrains.com/idea/) installed on their machines.
 
 ## Testing
 
@@ -31,12 +31,12 @@ If you want to open a real workspace in the dev build, follow these steps:
     curl http://localhost:24000/gatewayLink
 
     # This will output something like:
-    # jetbrains-gateway://connect#devpodHost=devpod.io&workspaceId=andreafalze-devpodexper-4xasfqb42zr&backendPort=63342
+    # jetbrains-gateway://connect#devpodHost=devpod.khulnasoft.com&workspaceId=andreafalze-devpodexper-4xasfqb42zr&backendPort=63342
     ```
 3. Copy the output value
 4. Go to your local terminal and run:
     ```console
-    ./gradlew runIde --args="jetbrains-gateway://connect#devpodHost=devpod.io&workspaceId=andreafalze-devpodexper-4xasfqb42zr&backendPort=63342"
+    ./gradlew runIde --args="jetbrains-gateway://connect#devpodHost=devpod.khulnasoft.com&workspaceId=andreafalze-devpodexper-4xasfqb42zr&backendPort=63342"
     ```
 
 For executing the tests and the static analysis validations, run:
@@ -50,7 +50,7 @@ For executing the tests and the static analysis validations, run:
 ## How to test from a Pull Request
 
 - Ensure you have the latest JetBrains Gateway installed: https://www.jetbrains.com/remote-development/gateway/
-- Download this Gateway Plugin build, from Gitpod's Plugin Dev Channel: https://plugins.jetbrains.com/plugin/18438-devpod-gateway/versions/dev
+- Download this Gateway Plugin build, from Devpod's Plugin Dev Channel: https://plugins.jetbrains.com/plugin/18438-devpod-gateway/versions/dev
 - Install it on the Gateway following these instructions: https://www.jetbrains.com/help/idea/managing-plugins.html#install_plugin_from_disk
 - Do the checks requested by the pull request creator or do a full manual test as instructed below.
 
@@ -59,5 +59,5 @@ For executing the tests and the static analysis validations, run:
 - Check if you can create a new workspace
 - Check if you can connect to a running workspace
 - Check if you can connect to a stopped workspace
-- Check if changing the "Gitpod Host" in Preferences >> Tools >> Gitpod takes effect
+- Check if changing the "Devpod Host" in Preferences >> Tools >> Devpod takes effect
 - Check if the info displayed in the workspaces list is matching what you see on the Web App Dashboard

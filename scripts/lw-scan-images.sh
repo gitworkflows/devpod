@@ -32,7 +32,7 @@ fi
 
 echo "=== Gathering list of _all_ images for $VERSION"
 INSTALLER="$TMP/installer"
-"$OCI_TOOL" fetch file -o "$INSTALLER" --platform=linux-amd64 "ghcr.io/devpod-core-dev/build/installer:${VERSION}" app/installer
+"$OCI_TOOL" fetch file -o "$INSTALLER" --platform=linux-amd64 "khulnasoft/devpod-environment/build/installer:${VERSION}" app/installer
 echo ""
 chmod +x "$INSTALLER"
 # Extract list of images
@@ -46,7 +46,7 @@ TOTAL_IMAGES=$(cat "$TMP/images.txt" | wc -l)
 echo "=== Found $TOTAL_IMAGES images to scan"
 
 # Scan all images, and push the result to Lacework
-# There, we can see the results in the "Vulnerabilities" tab, by searching for the Gitpod version
+# There, we can see the results in the "Vulnerabilities" tab, by searching for the Devpod version
 # Note: Does not fail on CVEs!
 COUNTER=0
 FAILED=0

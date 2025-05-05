@@ -1,0 +1,29 @@
+# Copyright (c) 2020 Devpod GmbH. All rights reserved.
+# Licensed under the GNU Affero General Public License (AGPL).
+# See License.AGPL.txt in the project root for license information.
+
+FROM node:18.20.7-alpine AS builder
+
+# Install bash for the installer script
+RUN apk update && \
+    apk add bash && \
+    rm -rf /var/cache/apk/*
+
+COPY components-ws-manager-bridge--app /installer/
+
+WORKDIR /app
+RUN /installer/install.sh
+
+FROM node:18.20.7-alpine
+ENV NODE_OPTIONS=--unhandled-rejections=warn
+EXPOSE 3000
+COPY --from=builder --chown=node:node /app /app/
+WORKDIR /app/node_modules/@devpod/ws-manager-bridge
+
+ARG __GIT_COMMIT
+ARG VERSION
+
+ENV DEVPOD_BUILD_GIT_COMMIT=${__GIT_COMMIT}
+ENV DEVPOD_BUILD_VERSION=${VERSION}
+
+CMD ["./dist/index.js"]

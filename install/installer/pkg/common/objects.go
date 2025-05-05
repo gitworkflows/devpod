@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -58,7 +58,7 @@ func GenerateService(component string, ports []ServicePort, mod ...func(spec *co
 			})
 		}
 
-		// kind=service is required for services. It allows Gitpod to find them
+		// kind=service is required for services. It allows Devpod to find them
 		serviceLabels := DefaultLabels(component)
 		serviceLabels["kind"] = "service"
 

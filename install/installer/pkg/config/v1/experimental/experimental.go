@@ -1,13 +1,13 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
 // experimental bundles all internal bits of configuration for which we do not offer
 // support. We use those flags internally to operate SaaS, but do not expect anyone
-// outside of Gitpod to use.
+// outside of Devpod to use.
 //
 // Changes in this section will NOT be backwards compatible change at will without prior notice.
-// If you use any setting herein, you forfeit support from Gitpod.
+// If you use any setting herein, you forfeit support from Devpod.
 package experimental
 
 import (
@@ -113,9 +113,9 @@ type WorkspaceConfig struct {
 	WSProxy struct {
 		IngressHeader                              string `json:"ingressHeader"`
 		BlobServeHost                              string `json:"blobServeHost"`
-		GitpodInstallationHostName                 string `json:"devpodInstallationHostName"`
-		GitpodInstallationWorkspaceHostSuffix      string `json:"devpodInstallationWorkspaceHostSuffix"`
-		GitpodInstallationWorkspaceHostSuffixRegex string `json:"devpodInstallationWorkspaceHostSuffixRegex"`
+		DevpodInstallationHostName                 string `json:"devpodInstallationHostName"`
+		DevpodInstallationWorkspaceHostSuffix      string `json:"devpodInstallationWorkspaceHostSuffix"`
+		DevpodInstallationWorkspaceHostSuffixRegex string `json:"devpodInstallationWorkspaceHostSuffixRegex"`
 	} `json:"wsProxy"`
 
 	ContentService struct {

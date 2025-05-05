@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Image-Builder-Bob component in Gitpod is a CLI tool responsible for building and pushing workspace images during workspace startup. It operates within a headless workspace created by the image-builder-mk3 component and handles the building of custom Docker images based on user-defined Dockerfiles in `.devpod.yml`. The component consists of two main parts: a build process that creates the images and a proxy that handles authentication for pushing the images to registries.
+The Image-Builder-Bob component in Devpod is a CLI tool responsible for building and pushing workspace images during workspace startup. It operates within a headless workspace created by the image-builder-mk3 component and handles the building of custom Docker images based on user-defined Dockerfiles in `.devpod.yml`. The component consists of two main parts: a build process that creates the images and a proxy that handles authentication for pushing the images to registries.
 
 ## Purpose
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -14,12 +14,12 @@ import com.intellij.openapi.ide.CopyPasteManager
 import com.intellij.util.ExceptionUtil
 import io.devpod.devpodprotocol.api.entities.Error
 import io.devpod.devpodprotocol.api.entities.TakeSnapshotOptions
-import io.devpod.jetbrains.remote.GitpodManager
+import io.devpod.jetbrains.remote.DevpodManager
 import org.eclipse.lsp4j.jsonrpc.ResponseErrorException
 import java.awt.datatransfer.StringSelection
 
 class ShareWorkspaceSnapshotAction : AnAction() {
-    private val manager = service<GitpodManager>()
+    private val manager = service<DevpodManager>()
 
     override fun actionPerformed(event: AnActionEvent) {
         manager.pendingInfo.thenAccept { workspaceInfo ->

@@ -1,10 +1,10 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
 package devpodlib
 
-type GitpodImage struct {
+type DevpodImage struct {
 	File    string
 	Context string `yaml:"context,omitempty"`
 }
@@ -18,7 +18,7 @@ type devpodTask struct {
 	Init    string `yaml:"init,omitempty"`
 }
 
-type GitpodFile struct {
+type DevpodFile struct {
 	Image             interface{}  `yaml:"image,omitempty"`
 	Ports             []devpodPort `yaml:"ports,omitempty"`
 	Tasks             []devpodTask `yaml:"tasks,omitempty"`
@@ -27,7 +27,7 @@ type GitpodFile struct {
 }
 
 // SetImageName configures a pre-built docker image by name
-func (cfg *GitpodFile) SetImageName(name string) {
+func (cfg *DevpodFile) SetImageName(name string) {
 	if name == "" {
 		return
 	}
@@ -35,19 +35,19 @@ func (cfg *GitpodFile) SetImageName(name string) {
 }
 
 // SetImage configures a Dockerfile as workspace image
-func (cfg *GitpodFile) SetImage(img GitpodImage) {
+func (cfg *DevpodFile) SetImage(img DevpodImage) {
 	cfg.Image = img
 }
 
 // AddPort adds a port to the list of exposed ports
-func (cfg *GitpodFile) AddPort(port int32) {
+func (cfg *DevpodFile) AddPort(port int32) {
 	cfg.Ports = append(cfg.Ports, devpodPort{
 		Number: port,
 	})
 }
 
 // AddTask adds a workspace startup task
-func (cfg *GitpodFile) AddTask(task ...string) {
+func (cfg *DevpodFile) AddTask(task ...string) {
 	if len(task) > 1 {
 		cfg.Tasks = append(cfg.Tasks, devpodTask{
 			Command: task[0],

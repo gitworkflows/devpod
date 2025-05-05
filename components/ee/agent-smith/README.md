@@ -2,7 +2,7 @@
 
 Agent smith is the component that takes care of policing workspaces
 against threats and noisy neighbours to make sure that everyone gets a safe and
-smooth Gitpod experience.
+smooth Devpod experience.
 
 ## How to add new signatures?
 ```

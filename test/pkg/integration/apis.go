@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -42,7 +42,7 @@ import (
 	"sigs.k8s.io/e2e-framework/klient"
 	"sigs.k8s.io/e2e-framework/klient/k8s"
 
-	// Gitpod uses mysql, so it makes sense to make this DB driver available
+	// Devpod uses mysql, so it makes sense to make this DB driver available
 	// by default.
 	_ "github.com/go-sql-driver/mysql"
 
@@ -239,11 +239,11 @@ type devpodServerOpts struct {
 	User string
 }
 
-// GitpodServerOpt specificies Gitpod server access
-type GitpodServerOpt func(*devpodServerOpts) error
+// DevpodServerOpt specificies Devpod server access
+type DevpodServerOpt func(*devpodServerOpts) error
 
-// WithGitpodUser specifies the user as which we want to access the API.
-func WithGitpodUser(name string) GitpodServerOpt {
+// WithDevpodUser specifies the user as which we want to access the API.
+func WithDevpodUser(name string) DevpodServerOpt {
 	return func(o *devpodServerOpts) error {
 		o.User = name
 		return nil
@@ -251,24 +251,24 @@ func WithGitpodUser(name string) GitpodServerOpt {
 }
 
 func (c *ComponentAPI) CreateOAuth2Token(user string, scopes []string) (string, error) {
-	tkn, err := c.createGitpodToken(user, scopes)
+	tkn, err := c.createDevpodToken(user, scopes)
 	if err != nil {
 		return "", err
 	}
 	return tkn, nil
 }
 
-func (c *ComponentAPI) ClearGitpodServerClientCache() {
+func (c *ComponentAPI) ClearDevpodServerClientCache() {
 	c.serverStatus.Client = map[string]*devpod.APIoverJSONRPC{}
 }
 
-// GitpodServer provides access to the Gitpod server API
-func (c *ComponentAPI) GitpodServer(opts ...GitpodServerOpt) (devpod.APIInterface, error) {
+// DevpodServer provides access to the Devpod server API
+func (c *ComponentAPI) DevpodServer(opts ...DevpodServerOpt) (devpod.APIInterface, error) {
 	var options devpodServerOpts
 	for _, o := range opts {
 		err := o(&options)
 		if err != nil {
-			return nil, xerrors.Errorf("cannot access Gitpod server API: %q", err)
+			return nil, xerrors.Errorf("cannot access Devpod server API: %q", err)
 		}
 	}
 
@@ -281,7 +281,7 @@ func (c *ComponentAPI) GitpodServer(opts ...GitpodServerOpt) (devpod.APIInterfac
 		tkn := c.serverStatus.Token[options.User]
 		if tkn == "" {
 			var err error
-			tkn, err = c.createGitpodToken(options.User, []string{
+			tkn, err = c.createDevpodToken(options.User, []string{
 				"resource:default",
 				"function:*",
 			})
@@ -341,7 +341,7 @@ func (c *ComponentAPI) GitpodServer(opts ...GitpodServerOpt) (devpod.APIInterfac
 		return nil
 	}()
 	if err != nil {
-		return nil, xerrors.Errorf("cannot access Gitpod server API: %q", err)
+		return nil, xerrors.Errorf("cannot access Devpod server API: %q", err)
 	}
 
 	return res, nil
@@ -366,7 +366,7 @@ func (c *ComponentAPI) GetServerEndpoint() (string, error) {
 	return fmt.Sprintf("%s://%s/", "https", endpoint.Hostname()), nil
 }
 
-func (c *ComponentAPI) GitpodSessionCookie(userId string, secretKey string) (*http.Cookie, error) {
+func (c *ComponentAPI) DevpodSessionCookie(userId string, secretKey string) (*http.Cookie, error) {
 	var res *http.Cookie
 	err := func() error {
 		config, err := GetServerConfig(c.namespace, c.client)
@@ -568,7 +568,7 @@ func (c *ComponentAPI) CreateUser(username string, token string) (string, error)
 	return userId, nil
 }
 
-func (c *ComponentAPI) createGitpodToken(user string, scopes []string) (tkn string, err error) {
+func (c *ComponentAPI) createDevpodToken(user string, scopes []string) (tkn string, err error) {
 	id, err := c.GetUserId(user)
 	if err != nil {
 		return "", err
@@ -611,7 +611,7 @@ func (c *ComponentAPI) createGitpodToken(user string, scopes []string) (tkn stri
 	return tkn, nil
 }
 
-func (c *ComponentAPI) CreateGitpodOneTimeSecret(value string) (id string, err error) {
+func (c *ComponentAPI) CreateDevpodOneTimeSecret(value string) (id string, err error) {
 	dbConfig, err := FindDBConfigFromPodEnv("server", c.namespace, c.client)
 	if err != nil {
 		return "", err
@@ -811,7 +811,7 @@ var (
 	cachedDBs = sync.Map{}
 )
 
-// DB provides access to the Gitpod database.
+// DB provides access to the Devpod database.
 // Callers must never close the DB.
 func (c *ComponentAPI) DB(options ...DBOpt) (*sql.DB, error) {
 	opts := dbOpts{
@@ -1192,7 +1192,7 @@ func (c *ComponentAPI) Done(t *testing.T) {
 		} else {
 			t.Logf("preview status: ready=%v, reason=%s", ready, reason)
 		}
-		logGitpodStatus(t, c.client, c.namespace)
+		logDevpodStatus(t, c.client, c.namespace)
 	}
 }
 

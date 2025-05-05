@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -162,10 +162,10 @@ func (wso *DefaultWorkspaceOperations) InitWorkspace(ctx context.Context, option
 		// required for this operation.
 		//
 		// With FWB this bit becomes unneccesary.
-		UID: (wsinit.GitpodUID + 100000 - 1),
-		GID: (wsinit.GitpodGID + 100000 - 1),
+		UID: (wsinit.DevpodUID + 100000 - 1),
+		GID: (wsinit.DevpodGID + 100000 - 1),
 		IdMappings: []archive.IDMapping{
-			{ContainerID: 0, HostID: wsinit.GitpodUID, Size: 1},
+			{ContainerID: 0, HostID: wsinit.DevpodUID, Size: 1},
 			{ContainerID: 1, HostID: 100000, Size: 65534},
 		},
 		OWI: content.OWI{
@@ -523,7 +523,7 @@ func (wso *DefaultWorkspaceOperations) uploadWorkspaceContent(ctx context.Contex
 		var opts []archive.TarOption
 		opts = append(opts)
 		mappings := []archive.IDMapping{
-			{ContainerID: 0, HostID: wsinit.GitpodUID, Size: 1},
+			{ContainerID: 0, HostID: wsinit.DevpodUID, Size: 1},
 			{ContainerID: 1, HostID: 100000, Size: 65534},
 		}
 		opts = append(opts,
@@ -581,8 +581,8 @@ func (wso *DefaultWorkspaceOperations) writeImageInfo(_ context.Context, ws *ses
 	if err != nil {
 		return fmt.Errorf("cannot marshal image info: %w", err)
 	}
-	uid := (wsinit.GitpodUID + 100000 - 1)
-	gid := (wsinit.GitpodGID + 100000 - 1)
+	uid := (wsinit.DevpodUID + 100000 - 1)
+	gid := (wsinit.DevpodGID + 100000 - 1)
 	fp := filepath.Join(ws.Location, ".devpod/image")
 	err = os.WriteFile(fp, b, 0644)
 	if err != nil {

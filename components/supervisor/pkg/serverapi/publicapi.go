@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -40,8 +40,8 @@ type APIInterface interface {
 }
 
 const (
-	// KindGitpod marks tokens that provide access to the Gitpod server API.
-	KindGitpod = "devpod"
+	// KindDevpod marks tokens that provide access to the Devpod server API.
+	KindDevpod = "devpod"
 )
 
 var errNotConnected = errors.New("not connected to server/public api")
@@ -97,7 +97,7 @@ var _ APIInterface = (*Service)(nil)
 
 func NewServerApiService(ctx context.Context, cfg *ServiceConfig, tknsrv api.TokenServiceServer) *Service {
 	tknres, err := tknsrv.GetToken(context.Background(), &api.GetTokenRequest{
-		Kind: KindGitpod,
+		Kind: KindDevpod,
 		Host: cfg.Host,
 		Scope: []string{
 			"function:getToken",
@@ -108,7 +108,7 @@ func NewServerApiService(ctx context.Context, cfg *ServiceConfig, tknsrv api.Tok
 		},
 	})
 	if err != nil {
-		log.WithError(err).Error("cannot get token for Gitpod API")
+		log.WithError(err).Error("cannot get token for Devpod API")
 		return nil
 	}
 

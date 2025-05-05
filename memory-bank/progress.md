@@ -1,8 +1,8 @@
-# Progress: Gitpod
+# Progress: Devpod
 
 ## Current Status
 
-We are in the early stages of our work with the Gitpod codebase. The current status is:
+We are in the early stages of our work with the Devpod codebase. The current status is:
 
 - **Memory Bank**: Initial setup complete with core files and component documentation
 - **Codebase Understanding**: Basic overview obtained, with detailed understanding of key components
@@ -49,7 +49,7 @@ Our current contributions:
   - scheduler-extender
   - ipfs
 
-The existing functionality of the Gitpod platform:
+The existing functionality of the Devpod platform:
 
 ### Core Functionality
 - Workspace creation from Git repositories
@@ -60,7 +60,7 @@ The existing functionality of the Gitpod platform:
 - Collaborative features
 
 ### Development Infrastructure
-- Leeway build system for component management
+- Blazedock build system for component management
 - Kubernetes-based deployment
 - Microservices architecture
 - Testing frameworks
@@ -70,7 +70,7 @@ The existing functionality of the Gitpod platform:
 ### Immediate Tasks
 - Explore component interactions
 - Set up local development environment
-- Explore build system approaches (in-tree and Leeway)
+- Explore build system approaches (in-tree and Blazedock)
 - Test component builds for different component types
 - Identify specific components for deeper exploration
 - Establish testing methodology
@@ -175,7 +175,7 @@ No specific blockers or dependencies have been identified yet. This section will
 - **2/27/2025**:
   - Documented build system approaches:
     - In-tree builds using language-specific tools (yarn, go)
-    - Out-of-tree builds using Leeway
+    - Out-of-tree builds using Blazedock
   - Updated techContext.md with detailed build process information
   - Updated .clinerules with build patterns and commands
   - Added build information tracking to memory bank maintenance procedures

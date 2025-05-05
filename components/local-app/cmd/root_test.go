@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -14,11 +14,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gitpod-io/local-app/pkg/config"
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
 	"github.com/google/go-cmp/cmp"
 	"github.com/khulnasoft/devpod/components/public-api/go/client"
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
+	"github.com/khulnasoft/local-app/pkg/config"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 )
 
 type CommandTest struct {

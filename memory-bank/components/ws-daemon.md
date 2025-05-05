@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Workspace Daemon (ws-daemon) is a critical component that runs on each Kubernetes node in the Gitpod cluster. It manages workspace-related operations at the node level, including workspace initialization, content synchronization, backup, and resource management.
+The Workspace Daemon (ws-daemon) is a critical component that runs on each Kubernetes node in the Devpod cluster. It manages workspace-related operations at the node level, including workspace initialization, content synchronization, backup, and resource management.
 
 ## Purpose
 

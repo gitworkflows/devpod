@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -238,7 +238,7 @@ func (s *Containerd) handleNewContainer(c containers.Container) {
 		} else {
 			// this is a ws-manager-mk2 workspace
 			info = &containerInfo{
-				InstanceID:  c.Labels["devpod.io/instanceID"],
+				InstanceID:  c.Labels["devpod.khulnasoft.com/instanceID"],
 				OwnerID:     c.Labels[wsk8s.OwnerLabel],
 				WorkspaceID: c.Labels[wsk8s.WorkspaceIDLabel],
 				PodName:     podName,

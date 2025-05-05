@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { Combobox, ComboboxElement, ComboboxSelectedItem } from "./podkit/combobox/Combobox";
 import RepositorySVG from "../icons/Repository.svg";
 import { ReactComponent as RepositoryIcon } from "../icons/RepositoryWithColor.svg";
-import GitpodRepositoryTemplateSVG from "../icons/GitpodRepositoryTemplate.svg";
+import DevpodRepositoryTemplateSVG from "../icons/DevpodRepositoryTemplate.svg";
 import { MiddleDot } from "./typography/MiddleDot";
 import {
     deduplicateAndFilterRepositories,
@@ -36,7 +36,7 @@ const isPredefined = (repo: SuggestedRepository | PredefinedRepo): boolean => {
 
 const resolveIcon = (contextUrl?: string): string => {
     if (!contextUrl) return RepositorySVG;
-    return PREDEFINED_REPOS.some((repo) => repo.url === contextUrl) ? GitpodRepositoryTemplateSVG : RepositorySVG;
+    return PREDEFINED_REPOS.some((repo) => repo.url === contextUrl) ? DevpodRepositoryTemplateSVG : RepositorySVG;
 };
 
 type PredefinedRepositoryOptionProps = {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import { FC, useCallback, useContext, useEffect, useMemo, useState } from "react
 import { useLocation } from "react-router";
 import { Location } from "history";
 import { countries } from "countries-list";
-import { getGitpodService, devpodHostUrl } from "../service/service";
+import { getDevpodService, devpodHostUrl } from "../service/service";
 import { useCurrentUser } from "../user-context";
 import ContextMenu, { ContextMenuEntry } from "../components/ContextMenu";
 import { Separator } from "../components/Separator";
@@ -22,6 +22,8 @@ import { User, RoleOrPermission } from "@devpod/public-api/lib/devpod/v1/user_pb
 import { getPrimaryEmail } from "@devpod/public-api-common/lib/user-utils";
 import { ConfigurationsMigrationCoachmark } from "../repositories/coachmarks/MigrationCoachmark";
 import { useInstallationConfiguration } from "../data/installation/installation-config-query";
+import { useIsDataOps } from "../data/featureflag-query";
+import { ProductLogo } from "../components/ProductLogo";
 
 interface Entry {
     title: string;
@@ -34,12 +36,10 @@ export default function Menu() {
     const location = useLocation();
     const { setCurrency } = useContext(PaymentContext);
     const [isFeedbackFormVisible, setFeedbackFormVisible] = useState<boolean>(false);
-
-    const { data: installationConfig, isLoading: isInstallationConfigLoading } = useInstallationConfiguration();
-    const isGitpodIo = isInstallationConfigLoading ? false : !installationConfig?.isDedicatedInstallation;
+    const isDataOps = useIsDataOps();
 
     useEffect(() => {
-        const { server } = getGitpodService();
+        const { server } = getDevpodService();
         server.getClientRegion().then((v) => {
             // @ts-ignore
             setCurrency(countries[v]?.currency === "EUR" ? "EUR" : "USD");
@@ -79,16 +79,24 @@ export default function Menu() {
                         <ConfigurationsMigrationCoachmark>
                             <OrganizationSelector />
                         </ConfigurationsMigrationCoachmark>
-                        {/* hidden on smaller screens (in its own menu below on smaller screens) */}
-                        <div className="hidden md:block pl-2">
-                            <OrgPagesNav />
+                        {/* Mobile Only Divider and User Menu */}
+                        <div className="flex items-center md:hidden">
+                            <div className="h-6 w-px bg-gray-300 dark:bg-gray-600 mx-2" />
+                            <UserMenu user={user} className="" onFeedback={handleFeedbackFormClick} withAdminLink />
+                        </div>
+                        {/* Desktop Only Divider, User Menu, and Workspaces Nav */}
+                        <div className="hidden md:flex items-center">
+                            <div className="h-6 w-px bg-gray-300 dark:bg-gray-600 mx-2" />
+                            <UserMenu user={user} className="" onFeedback={handleFeedbackFormClick} />
+                            <div className="pl-4">
+                                <OrgPagesNav />
+                            </div>
                         </div>
                     </div>
                     <div className="flex items-center w-auto" id="menu">
-                        {/* hidden on smaller screens - TODO: move to user menu on smaller screen */}
+                        {/* Right side nav - Desktop Only */}
                         <nav className="hidden md:block flex-1">
-                            <ul className="flex flex-1 items-center justify-between text-base text-gray-500 dark:text-gray-400 space-x-2">
-                                <li className="flex-1"></li>
+                            <ul className="flex flex-1 items-center justify-end text-base text-gray-500 dark:text-gray-400 space-x-4">
                                 {user?.rolesOrPermissions?.includes(RoleOrPermission.ADMIN) && (
                                     <li className="cursor-pointer">
                                         <PillMenuItem
@@ -98,31 +106,32 @@ export default function Menu() {
                                         />
                                     </li>
                                 )}
-                                {isGitpodIo && (
-                                    <li className="cursor-pointer">
-                                        <PillMenuItem name="Feedback" onClick={handleFeedbackFormClick} />
+                                {!isDataOps && (
+                                    <li>
+                                        <div className="flex items-center gap-x-1 text-sm text-pk-content-secondary">
+                                            <ProductLogo className="h-4 w-auto" />
+                                            <span>Devpod Classic</span>
+                                        </div>
                                     </li>
                                 )}
                             </ul>
                         </nav>
-                        {/* Hide normal user menu on small screens */}
-                        <UserMenu user={user} className="hidden md:block" />
-                        {/* Show a user menu w/ admin & feedback links on small screens */}
-                        <UserMenu
-                            user={user}
-                            className="md:hidden"
-                            withAdminLink
-                            withFeedbackLink
-                            onFeedback={handleFeedbackFormClick}
-                        />
+                        {/* Right side items - Mobile Only */}
+                        <div className="flex items-center space-x-3 md:hidden">
+                            {!isDataOps && (
+                                <div className="flex items-center gap-x-1 text-sm text-pk-content-secondary">
+                                    <ProductLogo className="h-4 w-auto" />
+                                    <span>Devpod Classic</span>
+                                </div>
+                            )}
+                        </div>
                     </div>
                     {isFeedbackFormVisible && <FeedbackFormModal onClose={onFeedbackFormClose} />}
                 </div>
             </header>
             <Separator />
-            {/* only shown on small screens */}
+            {/* Mobile-only OrgPagesNav and Separator */}
             <OrgPagesNav className="md:hidden app-container flex justify-start py-2" />
-            {/* only shown on small screens */}
             <Separator className="md:hidden" />
         </>
     );
@@ -162,26 +171,19 @@ type UserMenuProps = {
     user?: User;
     className?: string;
     withAdminLink?: boolean;
-    withFeedbackLink?: boolean;
     onFeedback?: () => void;
 };
-const UserMenu: FC<UserMenuProps> = ({ user, className, withAdminLink, withFeedbackLink, onFeedback }) => {
+const UserMenu: FC<UserMenuProps> = ({ user, className, withAdminLink, onFeedback }) => {
     const { data: installationConfig, isLoading: isInstallationConfigLoading } = useInstallationConfiguration();
-    const isGitpodIo = isInstallationConfigLoading ? false : !installationConfig?.isDedicatedInstallation;
+    const isDevpodIo = isInstallationConfigLoading ? false : !installationConfig?.isDedicatedInstallation;
 
-    const extraSection = useMemo(() => {
+    const adminSection = useMemo(() => {
         const items: ContextMenuEntry[] = [];
 
         if (withAdminLink && user?.rolesOrPermissions?.includes(RoleOrPermission.ADMIN)) {
             items.push({
                 title: "Admin",
                 link: "/admin",
-            });
-        }
-        if (withFeedbackLink && isGitpodIo) {
-            items.push({
-                title: "Feedback",
-                onClick: onFeedback,
             });
         }
 
@@ -191,10 +193,10 @@ const UserMenu: FC<UserMenuProps> = ({ user, className, withAdminLink, withFeedb
         }
 
         return items;
-    }, [isGitpodIo, onFeedback, user?.rolesOrPermissions, withAdminLink, withFeedbackLink]);
+    }, [user?.rolesOrPermissions, withAdminLink]);
 
     const menuEntries = useMemo(() => {
-        return [
+        const entries: ContextMenuEntry[] = [
             {
                 title: (user && (getPrimaryEmail(user) || user?.name)) || "User",
                 customFontStyle: "text-gray-400",
@@ -206,24 +208,36 @@ const UserMenu: FC<UserMenuProps> = ({ user, className, withAdminLink, withFeedb
             },
             {
                 title: "Docs",
-                href: "https://www.devpod.io/docs/introduction",
+                href: "https://www.devpod.khulnasoft.com/docs/introduction",
                 target: "_blank",
                 rel: "noreferrer",
             },
             {
                 title: "Help",
-                href: "https://www.devpod.io/support/",
+                href: "https://www.devpod.khulnasoft.com/support/",
                 target: "_blank",
                 rel: "noreferrer",
-                separator: true,
-            },
-            ...extraSection,
-            {
-                title: "Log out",
-                href: devpodHostUrl.asApiLogout().toString(),
+                separator: !isDevpodIo,
             },
         ];
-    }, [extraSection, user]);
+
+        if (isDevpodIo) {
+            entries.push({
+                title: "Feedback",
+                onClick: onFeedback,
+                separator: true,
+            });
+        }
+
+        entries.push(...adminSection);
+
+        entries.push({
+            title: "Log out",
+            href: devpodHostUrl.asApiLogout().toString(),
+        });
+
+        return entries;
+    }, [adminSection, user, isDevpodIo, onFeedback]);
 
     return (
         <div
@@ -243,5 +257,5 @@ const UserMenu: FC<UserMenuProps> = ({ user, className, withAdminLink, withFeedb
 function isSelected(entry: Entry, location: Location<any>) {
     const all = [entry.link, ...(entry.alternatives || [])].map((l) => l.toLowerCase());
     const path = location.pathname.toLowerCase();
-    return all.some((n) => n === path || n + "/" === path);
+    return all.some((n) => n === path || n + "/" === path || path.startsWith(n + "/"));
 }

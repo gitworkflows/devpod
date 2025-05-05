@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Server is a central component in Gitpod that serves as the main backend service, handling API requests, authentication, user management, workspace operations, and integration with various source code management systems. It acts as the core orchestrator for the Gitpod platform, connecting various components and providing a unified API for clients.
+The Server is a central component in Devpod that serves as the main backend service, handling API requests, authentication, user management, workspace operations, and integration with various source code management systems. It acts as the core orchestrator for the Devpod platform, connecting various components and providing a unified API for clients.
 
 ## Purpose
 
@@ -15,7 +15,7 @@ The primary purposes of the Server component are:
 - Process webhooks for prebuilds and other automated operations
 - Manage billing and subscription information
 - Provide real-time communication via WebSockets
-- Coordinate with other Gitpod components
+- Coordinate with other Devpod components
 
 ## Architecture
 
@@ -52,7 +52,7 @@ The server is designed as a modular application using dependency injection (Inve
 - `components/content-service-api`: Content service API definitions
 - `components/ws-manager-api`: Workspace manager API definitions
 - `components/image-builder-api`: Image builder API definitions
-- Various other Gitpod component APIs
+- Various other Devpod component APIs
 
 ### External Dependencies
 - Express.js for HTTP server

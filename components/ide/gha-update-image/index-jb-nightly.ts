@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -68,7 +68,7 @@ const targetConfig = parseGradlePropertiesFromTaskConfig(task, targetRelease);
 
 // TODO: actually update nightly editor
 console.log(
-    `Going to exec \`leeway build -Dversion=latest -DimageRepoBase=$imageRepoBase -DbuildNumber=${targetConfig.platformVersion} components/ide/jetbrains/image:${task.productId}-latest -DjbBackendVersion=${targetRelease.version}\``,
+    `Going to exec \`blazedock build -Dversion=latest -DimageRepoBase=$imageRepoBase -DbuildNumber=${targetConfig.platformVersion} components/ide/jetbrains/image:${task.productId}-latest -DjbBackendVersion=${targetRelease.version}\``,
 );
 
 appendGitHubOutput(`buildNumber=${targetConfig.platformVersion}`);

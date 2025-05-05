@@ -32,21 +32,21 @@ const GitIntegration = React.lazy(() => import("./settings/GitIntegration"));
 Global state is passed through `React.Context`.
 
 After creating a new component, run the following to update the license header:
-`leeway run components:update-license-header`
+`blazedock run components:update-license-header`
 
-## How to develop in devpod.io
+## How to develop in devpod.khulnasoft.com
 
-### Against any* Gitpod installation
+### Against any* Devpod installation
 
-Gitpod installations have a feature that - if you are authorized - allow different versions of the dashboard. This allows for front-end development with live data and super-quick turnarounds.
+Devpod installations have a feature that - if you are authorized - allow different versions of the dashboard. This allows for front-end development with live data and super-quick turnarounds.
 
 **Preconditions**
- 1. logged in user on the respective Gitpod installation (e.g. devpod.example.org)
+ 1. logged in user on the respective Devpod installation (e.g. devpod.example.org)
  1. user has the `"developer"` role
 
 **Steps**
  1. Start a workspace (on any installation), and start the dev-server with `yarn start-local`
- 1. Configure your browser to always send header `X-Frontend-Dev-URL` with value set to the result of `gp url 3000` to the Gitpod installation you want to modify (devpod.example.org)
+ 1. Configure your browser to always send header `X-Frontend-Dev-URL` with value set to the result of `gp url 3000` to the Devpod installation you want to modify (devpod.example.org)
  1. Visit https://devpod.example.org, start modifying your `dashboard` in your workspace, and experience the effect live (incl. hot reloading)
 
 *: This feature is _not_ enabled on all installations, and requires special user privileges.
@@ -57,7 +57,7 @@ All the commands in this section are meant to be executed from the `components/d
 
 #### 1. Environment variables
 
-Set the following 2 [environment variables](https://www.devpod.io/docs/environment-variables) either [via your account settings](https://devpod.io/variables) or [via the command line](https://www.devpod.io/docs/environment-variables#using-the-command-line-gp-env).
+Set the following 2 [environment variables](https://www.devpod.khulnasoft.com/docs/environment-variables) either [via your account settings](https://devpod.khulnasoft.com/variables) or [via the command line](https://www.devpod.khulnasoft.com/docs/environment-variables#using-the-command-line-gp-env).
 
 You are not expected to update the values of these variables for a long time after you first set them.
 
@@ -66,15 +66,15 @@ You are not expected to update the values of these variables for a long time aft
 You can always go to your account settings and edit the scope for each variable to something like `*/devpod`.
 
 ```bash
-# Use "devpod.io" for the SaaS version of Gitpod, or specify the host of your self-hosted devpod
-GP_DEV_HOST=devpod.io
+# Use "devpod.khulnasoft.com" for the SaaS version of Devpod, or specify the host of your self-hosted devpod
+GP_DEV_HOST=devpod.khulnasoft.com
 
 # Notice the cookie name (_devpod_io_v2_) may be different if self-hosted.
 # Read below for how to get the actual value to use instead of "AUTHENTICATION_COOKIE_VALUE"
 GP_DEV_COOKIE="_devpod_io_v2_=AUTHENTICATION_COOKIE_VALUE"
 ```
 
-Replace `AUTHENTICATION_COOKIE_VALUE` with the value of your auth cookie taken from your browser's dev tools while visiting your target Gitpod host (e.g. `s%3Axxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.XXXXXXXXXXXXXXX`).
+Replace `AUTHENTICATION_COOKIE_VALUE` with the value of your auth cookie taken from your browser's dev tools while visiting your target Devpod host (e.g. `s%3Axxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.XXXXXXXXXXXXXXX`).
 
 | ℹ️ How to get the cookie name and value                                    |
 | -------------------------------------------------------------------------- |
@@ -83,7 +83,7 @@ Replace `AUTHENTICATION_COOKIE_VALUE` with the value of your auth cookie taken f
 #### 2. Start the dashboard app
 
 🚀 After following the above steps, run `yarn run start` to start developing.
-You can view the dashboard at https://`PORT_NUMBER`-`GITPOD_WORKSPACE_URL` (`PORT_NUMBER` is usually `3000`).
+You can view the dashboard at https://`PORT_NUMBER`-`DEVPOD_WORKSPACE_URL` (`PORT_NUMBER` is usually `3000`).
 
 ### How to run tests in watch mode
 

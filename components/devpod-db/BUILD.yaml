@@ -76,12 +76,12 @@ packages:
         # Check if a DB is present. If not: start one and wait until it's up
         # Note: In CI there is a DB running as sidecar; in workspaces we're starting it once.
         #       Re-use of the instance because of the init scripts (cmp. next step).
-        # (gpl): It would be nice to use bitnami/mysql here as we do in previews. However the container does not start in Gitpod workspaces due to some docker/kernel/namespace issue.
+        # (gpl): It would be nice to use bitnami/mysql here as we do in previews. However the container does not start in Devpod workspaces due to some docker/kernel/namespace issue.
         - ["sh", "-c", "mysqladmin ping --wait=${DB_RETRIES:-1} -h $DB_HOST --port $DB_PORT -p$DB_PASSWORD -u$DB_USER --default-auth=mysql_native_password --silent || (docker container rm test-mysql; docker run --name test-mysql -d -e MYSQL_ROOT_PASSWORD=$DB_PASSWORD -e MYSQL_TCP_PORT=$DB_PORT -p $DB_PORT:$DB_PORT mysql:8.0.33 --default-authentication-plugin=mysql_native_password; while ! mysqladmin ping -h \"$DB_HOST\" -P \"$DB_PORT\" -p$DB_PASSWORD -u$DB_USER --default-auth=mysql_native_password --silent; do echo \"waiting for DB...\"; sleep 2; done)"]
         # Apply the DB initialization scripts (re-creates the "devpod" DB if already there)
         - ["mkdir", "-p", "init-scripts"]
         - ["sh", "-c", "find . -name \"*.sql\" | sort | xargs -I file cp file init-scripts"]
-        - ["sh", "-c", "ls init-scripts | sort | xargs -I file cat init-scripts/file | sed -e 's/__GITPOD_USERNAME__/devpod/g' | sed -e 's/__GITPOD_USERNAME__/devpod/g' | sed -e 's/__GITPOD_DB_NAME__/devpod/g' | tee debug.txt | mysql -h \"$DB_HOST\" -P \"$DB_PORT\" -p$DB_PASSWORD -u $DB_USER"]
+        - ["sh", "-c", "ls init-scripts | sort | xargs -I file cat init-scripts/file | sed -e 's/__DEVPOD_USERNAME__/devpod/g' | sed -e 's/__DEVPOD_USERNAME__/devpod/g' | sed -e 's/__DEVPOD_DB_NAME__/devpod/g' | tee debug.txt | mysql -h \"$DB_HOST\" -P \"$DB_PORT\" -p$DB_PASSWORD -u $DB_USER"]
         # Run DB migrations
         - ["sh", "-c", "mkdir -p mig; cd mig; ../components-devpod-db--migrations/install.sh"]
         # migrate 'migrations'
@@ -104,7 +104,7 @@ packages:
     config:
       buildArgs:
         VERSION: ${version}
-      dockerfile: leeway.Dockerfile
+      dockerfile: blazedock.Dockerfile
       metadata:
         helm-component: dbMigrations
       image:
@@ -112,13 +112,13 @@ packages:
         - ${imageRepoBase}/db-migrations:commit-${__git_commit}
 scripts:
 - name: init-testdb
-  description: "Starts a properly initialized MySQL instance to run tests against. Usage: '. $(leeway run components/devpod-db:init-testdb)'"
+  description: "Starts a properly initialized MySQL instance to run tests against. Usage: '. $(blazedock run components/devpod-db:init-testdb)'"
   deps: []
   script: |
     export DB_HOST=${DB_HOST:-127.0.0.1}
-    leeway build components/devpod-db/go:init-testdb
+    blazedock build components/devpod-db/go:init-testdb
 - name: db-test-env
-  description: "Creates a file with env vars necessary for running DB tests. The file delets itself after being sourced. Usage: '. $(leeway run components/devpod-db:db-test-env)'"
+  description: "Creates a file with env vars necessary for running DB tests. The file delets itself after being sourced. Usage: '. $(blazedock run components/devpod-db:db-test-env)'"
   deps: []
   script: |
     TMP="$(mktemp)"

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import { suite, test } from "@testdeck/mocha";
 import * as chai from "chai";
 
 import { WorkspaceConfig } from "./protocol";
-import { GitpodFileParser } from "./devpod-file-parser";
+import { DevpodFileParser } from "./devpod-file-parser";
 
 const expect = chai.expect;
 
@@ -16,11 +16,11 @@ const DEFAULT_IMAGE = "default-image";
 const DEFAULT_CONFIG = <WorkspaceConfig>{ image: DEFAULT_IMAGE };
 
 @suite
-class TestGitpodFileParser {
-    protected parser: GitpodFileParser;
+class TestDevpodFileParser {
+    protected parser: DevpodFileParser;
 
     public before() {
-        this.parser = new GitpodFileParser();
+        this.parser = new DevpodFileParser();
     }
 
     @test public testOnlyOnePort() {
@@ -142,4 +142,4 @@ gitConfig:
         });
     }
 }
-module.exports = new TestGitpodFileParser(); // Only to circumvent no usage warning :-/
+module.exports = new TestDevpodFileParser(); // Only to circumvent no usage warning :-/

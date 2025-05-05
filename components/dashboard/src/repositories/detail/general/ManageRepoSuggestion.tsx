@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -63,10 +63,10 @@ export const ManageRepoSuggestion: FC<Props> = ({ configuration }) => {
             </Heading3>
             <Subheading className="max-w-lg flex flex-col gap-2">
                 The Suggested section highlights recommended repositories on the dashboard for new members, making it
-                easier to find and start working on key projects in Gitpod.
+                easier to find and start working on key projects in Devpod.
                 <a
                     className="gp-link flex flex-row items-center gap-1"
-                    href="https://www.devpod.io/docs/configure/orgs/onboarding#suggested-repositories"
+                    href="https://www.devpod.khulnasoft.com/docs/configure/orgs/onboarding#suggested-repositories"
                     target="_blank"
                     rel="noreferrer"
                 >

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -211,10 +211,10 @@ message PortsStatus {
     // the port is not tunneled.
     TunneledPortInfo tunneled = 6;
 
-    // Port description, obtained from Gitpod PortConfig.
+    // Port description, obtained from Devpod PortConfig.
     string description = 8;
 
-    // Port name, obtained from Gitpod PortConfig.
+    // Port name, obtained from Devpod PortConfig.
     string name = 9;
 
     enum OnOpenAction {

@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -33,14 +33,14 @@ func testWithoutGithubAction(ctx context.Context, gatewayLink, devpodAccessToken
 	}
 
 	if localDebug {
-		fmt.Printf("Exec command below to run UI tests:\n\nexport DISPLAY=:0\nexport GATEWAY_LINK=\"%s\"\nexport GITPOD_TEST_ACCESSTOKEN=\"%s\"\nexport WS_ENDPOINT=%s\nleeway run %s -Dversion=integration-test -DpublishToJBMarketplace=false", gatewayLink, devpodAccessToken, secretEndpoint, scriptName)
+		fmt.Printf("Exec command below to run UI tests:\n\nexport DISPLAY=:0\nexport GATEWAY_LINK=\"%s\"\nexport DEVPOD_TEST_ACCESSTOKEN=\"%s\"\nexport WS_ENDPOINT=%s\nblazedock run %s -Dversion=integration-test -DpublishToJBMarketplace=false", gatewayLink, devpodAccessToken, secretEndpoint, scriptName)
 		os.Exit(1)
 	}
 	cmdEnv := os.Environ()
 	cmdEnv = append(cmdEnv, "GATEWAY_LINK="+gatewayLink)
-	cmdEnv = append(cmdEnv, "GITPOD_TEST_ACCESSTOKEN="+devpodAccessToken)
+	cmdEnv = append(cmdEnv, "DEVPOD_TEST_ACCESSTOKEN="+devpodAccessToken)
 	cmdEnv = append(cmdEnv, "WS_ENDPOINT="+secretEndpoint)
-	cmd := exec.CommandContext(ctx, "leeway", "run", scriptName, "-Dversion=integration-test", "-DpublishToJBMarketplace=false")
+	cmd := exec.CommandContext(ctx, "blazedock", "run", scriptName, "-Dversion=integration-test", "-DpublishToJBMarketplace=false")
 	cmd.Env = cmdEnv
 	// writer := &testLogWriter{t: t}
 	cmd.Stdout = os.Stdout

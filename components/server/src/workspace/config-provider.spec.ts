@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import { suite, test } from "@testdeck/mocha";
 import * as chai from "chai";
 import { ConfigProvider } from "./config-provider";
 import { Container, ContainerModule } from "inversify";
-import { GitpodFileParser } from "@devpod/devpod-protocol/lib/devpod-file-parser";
+import { DevpodFileParser } from "@devpod/devpod-protocol/lib/devpod-file-parser";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { ConfigurationService } from "../config/configuration-service";
 import { TeamDB } from "@devpod/devpod-db/lib";
@@ -39,7 +39,7 @@ class TestConfigProvider {
     public before() {
         this.container.load(
             new ContainerModule((bind, unbind, isBound, rebind) => {
-                bind(GitpodFileParser).toSelf().inSingletonScope();
+                bind(DevpodFileParser).toSelf().inSingletonScope();
                 bind(ConfigProvider).toSelf().inSingletonScope();
                 bind(HostContextProvider).toConstantValue({
                     get(hostname: string) {
@@ -49,7 +49,7 @@ class TestConfigProvider {
                             },
                             services: {
                                 fileProvider: {
-                                    getGitpodFileContent: async () => {
+                                    getDevpodFileContent: async () => {
                                         return hostname === "HAS_IMAGE" ? "image: " + baseYamlImage : undefined;
                                     },
                                     getFileContent: async () => {

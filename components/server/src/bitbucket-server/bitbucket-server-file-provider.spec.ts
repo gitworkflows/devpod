@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
 import { Container, ContainerModule } from "inversify";
 import { retries, skip, suite, test, timeout } from "@testdeck/mocha";
 import { expect } from "chai";
-import { GitpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
+import { DevpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
 import { BitbucketServerFileProvider } from "./bitbucket-server-file-provider";
 import { AuthProviderParams } from "../auth/auth-provider";
 import { BitbucketServerContextParser } from "./bitbucket-server-context-parser";
@@ -20,7 +20,7 @@ import { TokenProvider } from "../user/token-provider";
 import { BitbucketServerApi } from "./bitbucket-server-api";
 import { HostContextProvider } from "../auth/host-context-provider";
 
-@suite(timeout(10000), retries(1), skip(ifEnvVarNotSet("GITPOD_TEST_TOKEN_BITBUCKET_SERVER")))
+@suite(timeout(10000), retries(1), skip(ifEnvVarNotSet("DEVPOD_TEST_TOKEN_BITBUCKET_SERVER")))
 class TestBitbucketServerFileProvider {
     protected service: BitbucketServerFileProvider;
     protected user: User;
@@ -52,15 +52,15 @@ class TestBitbucketServerFileProvider {
                 bind(BitbucketServerTokenHelper).toSelf().inSingletonScope();
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 bind(TokenService).toConstantValue({
-                    createGitpodToken: async () => ({ token: { value: "foobar123-token" } }),
+                    createDevpodToken: async () => ({ token: { value: "foobar123-token" } }),
                 } as any);
                 bind(Config).toConstantValue({
-                    hostUrl: new GitpodHostUrl("https://devpod.io"),
+                    hostUrl: new DevpodHostUrl("https://devpod.khulnasoft.com"),
                 });
                 bind(TokenProvider).toConstantValue(<TokenProvider>{
                     getTokenForHost: async () => {
                         return {
-                            value: process.env["GITPOD_TEST_TOKEN_BITBUCKET_SERVER"] || "undefined",
+                            value: process.env["DEVPOD_TEST_TOKEN_BITBUCKET_SERVER"] || "undefined",
                             scopes: [],
                         };
                     },
@@ -89,8 +89,8 @@ class TestBitbucketServerFileProvider {
         };
     }
 
-    @test async test_getGitpodFileContent_ok() {
-        const result = await this.service.getGitpodFileContent(
+    @test async test_getDevpodFileContent_ok() {
+        const result = await this.service.getDevpodFileContent(
             // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
             {
                 revision: "main",

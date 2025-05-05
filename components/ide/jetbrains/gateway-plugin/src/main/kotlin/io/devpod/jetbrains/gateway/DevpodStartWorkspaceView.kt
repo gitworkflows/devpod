@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -16,7 +16,7 @@ import com.intellij.util.EventDispatcher
 import com.jetbrains.rd.util.concurrentMapOf
 import com.jetbrains.rd.util.lifetime.Lifetime
 import io.devpod.devpodprotocol.api.entities.IDEOption
-import io.devpod.jetbrains.auth.GitpodAuthService
+import io.devpod.jetbrains.auth.DevpodAuthService
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -27,7 +27,7 @@ import java.util.*
 import javax.swing.DefaultComboBoxModel
 
 @Suppress("UnstableApiUsage", "OPT_IN_USAGE")
-class GitpodStartWorkspaceView(
+class DevpodStartWorkspaceView(
     lifetime: Lifetime
 ) {
 
@@ -35,7 +35,7 @@ class GitpodStartWorkspaceView(
         fun stateChanged()
     }
 
-    private val settings = service<GitpodSettingsState>()
+    private val settings = service<DevpodSettingsState>()
 
     private val backendsModel = DefaultComboBoxModel<String>()
     private val backendToId = concurrentMapOf<String, String>()
@@ -87,7 +87,7 @@ class GitpodStartWorkspaceView(
                                 "RubyMine" -> "https://github.com/devpod-samples/template-ruby-on-rails-postgres"
                                 "PhpStorm" -> "https://github.com/devpod-samples/template-php-laravel-mysql"
                                 "RustRover" -> "https://github.com/devpod-samples/template-rust-cli"
-                                else -> "https://github.com/gitpod-io/empty"
+                                else -> "https://github.com/khulnasoft/empty"
                             }
                         }
                     }
@@ -119,11 +119,11 @@ class GitpodStartWorkspaceView(
                 ensureActive()
 
                 val devpodHost = settings.devpodHost
-                if (!GitpodAuthService.hasAccessToken(devpodHost)) {
+                if (!DevpodAuthService.hasAccessToken(devpodHost)) {
                     backendsModel.removeAllElements()
                     backendToId.clear()
                 } else {
-                    val client = service<GitpodConnectionService>().obtainClient(devpodHost)
+                    val client = service<DevpodConnectionService>().obtainClient(devpodHost)
                     val ideOptions = client.server.ideOptions.await()
                     ensureActive()
 
@@ -167,7 +167,7 @@ class GitpodStartWorkspaceView(
         update()
         val toDispose = CompositeDisposable()
         toDispose.add(settings.addListener { update() })
-        toDispose.add(GitpodAuthService.addListener { update() })
+        toDispose.add(DevpodAuthService.addListener { update() })
         lifetime.onTerminationOrNow { toDispose.dispose() }
     }
 }

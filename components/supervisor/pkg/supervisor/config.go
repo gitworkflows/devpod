@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -34,8 +34,8 @@ const supervisorConfigFile = "supervisor-config.json"
 //   1. supervisor (static):
 //                  there's some configuration that lives with supervisor and its "installation",
 //                  For example the IDE config location depends on if supervisor is served via registry-facade.
-//   2. IDE: Gitpod supports different IDEs, all of which have different configuration needs.
-//   3. DesktopIDE: Gitpod supports to connect external IDEs (like desktop IDEs).
+//   2. IDE: Devpod supports different IDEs, all of which have different configuration needs.
+//   3. DesktopIDE: Devpod supports to connect external IDEs (like desktop IDEs).
 //   4. Workspace: which depends on the individual workspace, its content and configuration.
 
 // Config configures supervisor.
@@ -237,49 +237,49 @@ func (i WorkspaceClassInfo) MarshalEnvironmentValue() (string, error) {
 // from environment variables.
 type WorkspaceConfig struct {
 	// WorkspaceContextURL is an URL for which workspace was created.
-	WorkspaceContextURL string `env:"GITPOD_WORKSPACE_CONTEXT_URL"`
+	WorkspaceContextURL string `env:"DEVPOD_WORKSPACE_CONTEXT_URL"`
 
 	// WorkspaceUrl is an URL for which workspace is accessed.
-	WorkspaceUrl string `env:"GITPOD_WORKSPACE_URL"`
+	WorkspaceUrl string `env:"DEVPOD_WORKSPACE_URL"`
 
 	// WorkspaceClass denotes the class of the workspace
-	WorkspaceClass string `env:"GITPOD_WORKSPACE_CLASS"`
+	WorkspaceClass string `env:"DEVPOD_WORKSPACE_CLASS"`
 
 	// WorkspaceClassInfo denotes the detail of workspace class
-	WorkspaceClassInfo *WorkspaceClassInfo `env:"GITPOD_WORKSPACE_CLASS_INFO"`
+	WorkspaceClassInfo *WorkspaceClassInfo `env:"DEVPOD_WORKSPACE_CLASS_INFO"`
 
 	// DefaultWorkspaceImage is the default image of current workspace
-	DefaultWorkspaceImage string `env:"GITPOD_DEFAULT_WORKSPACE_IMAGE"`
+	DefaultWorkspaceImage string `env:"DEVPOD_DEFAULT_WORKSPACE_IMAGE"`
 
 	// IsSetJavaXmx is a flag to indicate if the JAVA_XMX environment variable is set
 	// value retrieved from server with FeatureFlag
-	IsSetJavaXmx bool `env:"GITPOD_IS_SET_JAVA_XMX"`
+	IsSetJavaXmx bool `env:"DEVPOD_IS_SET_JAVA_XMX"`
 
 	// IsSetJavaProcessorCount is a flag to indicate if the JAVA_PROCESSOR_COUNT environment variable is set
 	// value retrieved from server with FeatureFlag
-	IsSetJavaProcessorCount bool `env:"GITPOD_IS_SET_JAVA_PROCESSOR_COUNT"`
+	IsSetJavaProcessorCount bool `env:"DEVPOD_IS_SET_JAVA_PROCESSOR_COUNT"`
 
 	// IDEPort is the port at which the IDE will need to run on. This is not an IDE config
-	// because Gitpod determines this port, not the IDE.
-	IDEPort int `env:"GITPOD_THEIA_PORT"`
+	// because Devpod determines this port, not the IDE.
+	IDEPort int `env:"DEVPOD_THEIA_PORT"`
 
 	// IDEAlias is the alias of the IDE to be run. Possible values: "code", "code-latest", "theia"
-	IDEAlias string `env:"GITPOD_IDE_ALIAS"`
+	IDEAlias string `env:"DEVPOD_IDE_ALIAS"`
 
 	// WorkspaceRoot is the location in the filesystem where the workspace content root is located.
 	WorkspaceRoot string `env:"THEIA_WORKSPACE_ROOT"`
 
 	// RepoRoot is the location in the filesystem where the Git repository (not workspace content)
 	// is located. If there's no Git repo in this workspace, this will be empty.
-	RepoRoot string `env:"GITPOD_REPO_ROOT"`
+	RepoRoot string `env:"DEVPOD_REPO_ROOT"`
 
 	// RepoRoots is the comma separated list of locations in the filesystem where Git repositories
 	// are located. If there's no Git repo in this workspace, this will be empty.
-	RepoRoots string `env:"GITPOD_REPO_ROOTS"`
+	RepoRoots string `env:"DEVPOD_REPO_ROOTS"`
 
 	// PreventMetadataAccess exits supervisor/stops the workspace if we can access Google Cloud
 	// compute metadata from within the container.
-	PreventMetadataAccess bool `env:"GITPOD_PREVENT_METADATA_ACCESS"`
+	PreventMetadataAccess bool `env:"DEVPOD_PREVENT_METADATA_ACCESS"`
 
 	// LogRateLimit limits the log output of the IDE process.
 	// Any output that exceeds this limit is silently dropped.
@@ -287,30 +287,30 @@ type WorkspaceConfig struct {
 	WorkspaceLogRateLimit int `env:"THEIA_RATELIMIT_LOG"`
 
 	// GitUsername makes supervisor configure the global user.name Git setting.
-	GitUsername string `env:"GITPOD_GIT_USER_NAME"`
+	GitUsername string `env:"DEVPOD_GIT_USER_NAME"`
 	// GitEmail makes supervisor configure the global user.email Git setting.
-	GitEmail string `env:"GITPOD_GIT_USER_EMAIL"`
+	GitEmail string `env:"DEVPOD_GIT_USER_EMAIL"`
 
-	// CommitAnnotationEnabled controls whether to annotate commits with the Gitpod instance host
-	CommitAnnotationEnabled bool `env:"GITPOD_COMMIT_ANNOTATION_ENABLED"`
+	// CommitAnnotationEnabled controls whether to annotate commits with the Devpod instance host
+	CommitAnnotationEnabled bool `env:"DEVPOD_COMMIT_ANNOTATION_ENABLED"`
 
-	// Tokens is a JSON encoded list of WorkspaceGitpodToken
+	// Tokens is a JSON encoded list of WorkspaceDevpodToken
 	Tokens string `env:"THEIA_SUPERVISOR_TOKENS"`
 
 	// WorkspaceID is the ID of the workspace
-	WorkspaceID string `env:"GITPOD_WORKSPACE_ID"`
+	WorkspaceID string `env:"DEVPOD_WORKSPACE_ID"`
 
 	// WorkspaceInstanceID is the instance ID of the workspace
-	WorkspaceInstanceID string `env:"GITPOD_INSTANCE_ID"`
+	WorkspaceInstanceID string `env:"DEVPOD_INSTANCE_ID"`
 
-	// GitpodHost points to the Gitpod API server we're to talk to
-	GitpodHost string `env:"GITPOD_HOST"`
+	// DevpodHost points to the Devpod API server we're to talk to
+	DevpodHost string `env:"DEVPOD_HOST"`
 
-	// GitpodTasks is the task configuration of the workspace
-	GitpodTasks string `env:"GITPOD_TASKS"`
+	// DevpodTasks is the task configuration of the workspace
+	DevpodTasks string `env:"DEVPOD_TASKS"`
 
-	// GitpodHeadless controls whether the workspace is running headless
-	GitpodHeadless string `env:"GITPOD_HEADLESS"`
+	// DevpodHeadless controls whether the workspace is running headless
+	DevpodHeadless string `env:"DEVPOD_HEADLESS"`
 
 	// BobDockerfilePath is the path to the Dockerfile image builder will attempt to build
 	BobDockerfilePath string `env:"BOB_DOCKERFILE_PATH"`
@@ -319,10 +319,10 @@ type WorkspaceConfig struct {
 	DebugEnable bool `env:"SUPERVISOR_DEBUG_ENABLE"`
 
 	// WorkspaceContext is a context for this workspace
-	WorkspaceContext string `env:"GITPOD_WORKSPACE_CONTEXT"`
+	WorkspaceContext string `env:"DEVPOD_WORKSPACE_CONTEXT"`
 
-	// WorkspaceClusterHost is a host under which this workspace is served, e.g. ws-eu11.devpod.io
-	WorkspaceClusterHost string `env:"GITPOD_WORKSPACE_CLUSTER_HOST"`
+	// WorkspaceClusterHost is a host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
+	WorkspaceClusterHost string `env:"DEVPOD_WORKSPACE_CLUSTER_HOST"`
 
 	// DotfileRepo is a user-configurable repository which contains their dotfiles to customize
 	// the in-workspace experience.
@@ -335,10 +335,10 @@ type WorkspaceConfig struct {
 	EnvvarOTS string `env:"SUPERVISOR_ENVVAR_OTS"`
 
 	// TerminationGracePeriodSeconds is the max number of seconds the workspace can take to shut down all its processes after SIGTERM was sent.
-	TerminationGracePeriodSeconds *int `env:"GITPOD_TERMINATION_GRACE_PERIOD_SECONDS"`
+	TerminationGracePeriodSeconds *int `env:"DEVPOD_TERMINATION_GRACE_PERIOD_SECONDS"`
 
 	// OwnerId is the user id who owns the workspace
-	OwnerId string `env:"GITPOD_OWNER_ID"`
+	OwnerId string `env:"DEVPOD_OWNER_ID"`
 
 	// DebugWorkspaceType indicates whether it is a regular or prebuild debug workspace
 	DebugWorkspaceType api.DebugWorkspaceType `env:"SUPERVISOR_DEBUG_WORKSPACE_TYPE"`
@@ -347,16 +347,16 @@ type WorkspaceConfig struct {
 	DebugWorkspaceContenSource api.ContentSource `env:"SUPERVISOR_DEBUG_WORKSPACE_CONTENT_SOURCE"`
 
 	// ConfigcatEnabled controls whether configcat is enabled
-	ConfigcatEnabled bool `env:"GITPOD_CONFIGCAT_ENABLED"`
+	ConfigcatEnabled bool `env:"DEVPOD_CONFIGCAT_ENABLED"`
 
-	SSHGatewayCAPublicKey string `env:"GITPOD_SSH_CA_PUBLIC_KEY"`
+	SSHGatewayCAPublicKey string `env:"DEVPOD_SSH_CA_PUBLIC_KEY"`
 
 	// Comma-separated list of host:<base64ed user:password> pairs to authenticate against docker registries
-	GitpodImageAuth string `env:"GITPOD_IMAGE_AUTH"`
+	DevpodImageAuth string `env:"DEVPOD_IMAGE_AUTH"`
 }
 
-// WorkspaceGitpodToken is a list of tokens that should be added to supervisor's token service.
-type WorkspaceGitpodToken struct {
+// WorkspaceDevpodToken is a list of tokens that should be added to supervisor's token service.
+type WorkspaceDevpodToken struct {
 	api.SetTokenRequest
 	TokenOTS string `json:"tokenOTS"`
 }
@@ -376,7 +376,7 @@ type TaskConfig struct {
 // Validate validates this configuration.
 func (c WorkspaceConfig) Validate() error {
 	if !(0 < c.IDEPort && c.IDEPort <= math.MaxUint16) {
-		return xerrors.Errorf("GITPOD_THEIA_PORT must be between 0 and %d", math.MaxUint16)
+		return xerrors.Errorf("DEVPOD_THEIA_PORT must be between 0 and %d", math.MaxUint16)
 	}
 
 	if c.WorkspaceRoot == "" {
@@ -391,7 +391,7 @@ func (c WorkspaceConfig) Validate() error {
 		return err
 	}
 
-	if _, _, err := c.GitpodAPIEndpoint(); err != nil {
+	if _, _, err := c.DevpodAPIEndpoint(); err != nil {
 		return err
 	}
 
@@ -405,13 +405,13 @@ func (c Config) GetDesktopIDE() *IDEConfig {
 	return c.DesktopIDEs[0]
 }
 
-// GetTokens parses tokens from GITPOD_TOKENS and possibly downloads OTS.
-func (c WorkspaceConfig) GetTokens(downloadOTS bool) ([]WorkspaceGitpodToken, error) {
+// GetTokens parses tokens from DEVPOD_TOKENS and possibly downloads OTS.
+func (c WorkspaceConfig) GetTokens(downloadOTS bool) ([]WorkspaceDevpodToken, error) {
 	if c.Tokens == "" {
 		return nil, nil
 	}
 
-	var tks []WorkspaceGitpodToken
+	var tks []WorkspaceDevpodToken
 	err := json.Unmarshal([]byte(c.Tokens), &tks)
 	if err != nil {
 		return nil, xerrors.Errorf("cannot parse tokens: %w", err)
@@ -446,9 +446,9 @@ func (c WorkspaceConfig) GetTokens(downloadOTS bool) ([]WorkspaceGitpodToken, er
 	return tks, nil
 }
 
-// GitpodAPIEndpoint produces the data required to connect to the Gitpod API.
-func (c WorkspaceConfig) GitpodAPIEndpoint() (endpoint, host string, err error) {
-	gphost, err := url.Parse(c.GitpodHost)
+// DevpodAPIEndpoint produces the data required to connect to the Devpod API.
+func (c WorkspaceConfig) DevpodAPIEndpoint() (endpoint, host string, err error) {
+	gphost, err := url.Parse(c.DevpodHost)
 	if err != nil {
 		return
 	}
@@ -464,12 +464,12 @@ func (c WorkspaceConfig) GitpodAPIEndpoint() (endpoint, host string, err error) 
 
 // isPrebuild returns true if the workspace is prebuild.
 func (c WorkspaceConfig) isPrebuild() bool {
-	return c.GitpodHeadless == "true" || c.DebugWorkspaceType == api.DebugWorkspaceType_prebuild
+	return c.DevpodHeadless == "true" || c.DebugWorkspaceType == api.DebugWorkspaceType_prebuild
 }
 
-// getGitpodTasks returns true if the workspace is headless.
+// getDevpodTasks returns true if the workspace is headless.
 func (c WorkspaceConfig) isHeadless() bool {
-	return c.GitpodHeadless == "true"
+	return c.DevpodHeadless == "true"
 }
 
 // isDebugWorkspace returns true if the workspace is in debug mode.
@@ -492,11 +492,11 @@ func (c WorkspaceConfig) GetDebugWorkspaceContentSource() csapi.WorkspaceInitSou
 	return contentSources[c.DebugWorkspaceContenSource]
 }
 
-// getGitpodTasks parses devpod tasks.
-func (c Config) getGitpodTasks() (tasks []TaskConfig, err error) {
-	if c.GitpodTasks != "" {
+// getDevpodTasks parses devpod tasks.
+func (c Config) getDevpodTasks() (tasks []TaskConfig, err error) {
+	if c.DevpodTasks != "" {
 		var configured *[]TaskConfig
-		err = json.Unmarshal([]byte(c.GitpodTasks), &configured)
+		err = json.Unmarshal([]byte(c.DevpodTasks), &configured)
 		if err != nil {
 			return nil, xerrors.Errorf("cannot parse tasks: %w", err)
 		}

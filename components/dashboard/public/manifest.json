@@ -1,6 +1,6 @@
 {
-  "short_name": "Gitpod",
-  "name": "Gitpod - Always Ready-to-Code.",
+  "short_name": "Devpod",
+  "name": "Devpod - Always Ready-to-Code.",
   "icons": [
     {
       "src": "favicon256.png",

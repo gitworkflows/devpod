@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License-AGPL.txt in the project root for license information.
 
@@ -13,8 +13,8 @@ import (
 )
 
 const (
-	// GitpodFinalizerName is the name of the finalizer we use on workspaces and their pods.
-	GitpodFinalizerName = "devpod.io/finalizer"
+	// DevpodFinalizerName is the name of the finalizer we use on workspaces and their pods.
+	DevpodFinalizerName = "devpod.khulnasoft.com/finalizer"
 
 	// ReasonInitializationSuccess is a Reason for the WorkspaceConditionContentReady condition,
 	// incidating content init succeeded.

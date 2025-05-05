@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -307,7 +307,7 @@ describe("ProjectsService", async () => {
         // Create data which should not be found
         await createTestProject(ps, org, owner, {
             name: "my-project-3",
-            cloneUrl: "https://github.com/gitpod-io/different-repo",
+            cloneUrl: "https://github.com/khulnasoft/different-repo",
         });
         await createTestProject(ps, anotherOrg, owner, {
             name: "my-project-4",

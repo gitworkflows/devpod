@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import ProjectDetail from "./ProjectDetail";
-import { getGitpodService } from "../service/service";
+import { getDevpodService } from "../service/service";
 import { AdminGetListResult, Project } from "@devpod/devpod-protocol";
 import { AdminPageHeader } from "./AdminPageHeader";
 import Pagination from "../Pagination/Pagination";
@@ -43,7 +43,7 @@ export function ProjectsSearch() {
             if (currentProject) {
                 setCurrentProject(currentProject);
             } else {
-                getGitpodService()
+                getDevpodService()
                     .server.adminGetProjectById(projectId)
                     .then((project) => setCurrentProject(project))
                     .catch((e) => console.error(e));
@@ -57,7 +57,7 @@ export function ProjectsSearch() {
     useEffect(() => {
         (async () => {
             if (currentProject) {
-                const owner = await getGitpodService().server.adminGetTeamById(currentProject.teamId);
+                const owner = await getDevpodService().server.adminGetTeamById(currentProject.teamId);
                 if (owner) {
                     setCurrentProjectOwner(owner.name);
                 }
@@ -72,7 +72,7 @@ export function ProjectsSearch() {
     const search = async (page: number = 1) => {
         setSearching(true);
         try {
-            const result = await getGitpodService().server.adminGetProjectsBySearchTerm({
+            const result = await getDevpodService().server.adminGetProjectsBySearchTerm({
                 searchTerm,
                 limit: pageLength,
                 orderBy: "creationTime",

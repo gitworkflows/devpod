@@ -2268,7 +2268,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / Component / content-service",
+  "title": "Devpod / Component / content-service",
   "uid": "content-service",
   "version": 1
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -13,7 +13,7 @@ import { SetupCompleteStep } from "./SetupCompleteStep";
 import { useOIDCClientsQuery } from "../data/oidc-clients/oidc-clients-query";
 import { useCurrentOrg } from "../data/organizations/orgs-query";
 import { SpinnerLoader } from "../components/Loader";
-import { getGitpodService } from "../service/service";
+import { getDevpodService } from "../service/service";
 import { UserContext } from "../user-context";
 import { OIDCClientConfig } from "@devpod/public-api/lib/devpod/experimental/v1/oidc_pb";
 import { useQueryParams } from "../hooks/use-query-params";
@@ -98,7 +98,7 @@ const DedicatedSetupSteps: FC<DedicatedSetupStepsProps> = ({ org, ssoConfig, onC
 
     const updateUser = useCallback(async () => {
         // TODO(at) this is still required if the FE shim is used per FF
-        await getGitpodService().reconnect();
+        await getDevpodService().reconnect();
 
         const response = await userClient.getAuthenticatedUser({});
         if (response.user) {

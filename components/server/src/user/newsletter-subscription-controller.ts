@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -53,7 +53,7 @@ export class NewsletterSubscriptionController {
                 // Not all newsletter subscribers are users,
                 // therefore the email address is our starting point
                 const user = (await this.userDb.findUsersByEmail(email))[0];
-                const successPageUrl: string = "https://www.devpod.io/unsubscribe";
+                const successPageUrl: string = "https://www.devpod.khulnasoft.com/unsubscribe";
 
                 if (user && user.additionalData && user.additionalData.emailNotificationSettings) {
                     await this.userDb.updateUserPartial({

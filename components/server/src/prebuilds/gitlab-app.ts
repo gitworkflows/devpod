@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -112,9 +112,9 @@ export class GitLabApp {
             } else if (!!user.blocked) {
                 throw new Error(`Blocked user ${user.id} tried to start prebuild.`);
             }
-            const identity = user.identities.find((i) => i.authProviderId === TokenService.GITPOD_AUTH_PROVIDER_ID);
+            const identity = user.identities.find((i) => i.authProviderId === TokenService.DEVPOD_AUTH_PROVIDER_ID);
             if (!identity) {
-                throw new Error(`User ${user.id} has no identity for '${TokenService.GITPOD_AUTH_PROVIDER_ID}'.`);
+                throw new Error(`User ${user.id} has no identity for '${TokenService.DEVPOD_AUTH_PROVIDER_ID}'.`);
             }
             const tokens = await this.userService.findTokensForIdentity(userid, identity);
             const token = tokens.find((t) => t.token.value === tokenValue);

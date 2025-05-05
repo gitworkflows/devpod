@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -21,7 +21,7 @@ const workspaceIDRegex = RegExp(`^(?:debug-)?${baseWorkspaceIDRegex}$`);
 // this pattern matches URL prefixes of workspaces
 const workspaceUrlPrefixRegex = RegExp(`^(([0-9]{4,6}|debug)-)?${baseWorkspaceIDRegex}\\.`);
 
-export class GitpodHostUrl {
+export class DevpodHostUrl {
     readonly url: URL;
 
     constructor(url: string) {
@@ -45,11 +45,11 @@ export class GitpodHostUrl {
         return this.withDomainPrefix(`${workspaceId}.ws-${region}.`);
     }
 
-    withDomainPrefix(prefix: string): GitpodHostUrl {
+    withDomainPrefix(prefix: string): DevpodHostUrl {
         return this.with((url) => ({ host: prefix + url.host }));
     }
 
-    withoutWorkspacePrefix(): GitpodHostUrl {
+    withoutWorkspacePrefix(): DevpodHostUrl {
         if (!this.url.host.match(workspaceUrlPrefixRegex)) {
             // URL has no workspace prefix
             return this;
@@ -58,7 +58,7 @@ export class GitpodHostUrl {
         return this.withoutDomainPrefix(2);
     }
 
-    withoutDomainPrefix(removeSegmentsCount: number): GitpodHostUrl {
+    withoutDomainPrefix(removeSegmentsCount: number): DevpodHostUrl {
         return this.with((url) => ({ host: url.host.split(".").splice(removeSegmentsCount).join(".") }));
     }
 
@@ -70,7 +70,7 @@ export class GitpodHostUrl {
         }
         const result = Object.assign(new URL(this.toString()), update);
         // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        return new GitpodHostUrl(result);
+        return new DevpodHostUrl(result);
     }
 
     withApi(urlUpdate?: UrlUpdate) {
@@ -89,46 +89,46 @@ export class GitpodHostUrl {
         return this.with((url) => ({ hash: contextUrl, search: searchParams.toString() }));
     }
 
-    asWebsocket(): GitpodHostUrl {
+    asWebsocket(): DevpodHostUrl {
         return this.with((url) => ({ protocol: url.protocol === "https:" ? "wss:" : "ws:" }));
     }
 
-    asWorkspacePage(): GitpodHostUrl {
+    asWorkspacePage(): DevpodHostUrl {
         return this.with((url) => ({ pathname: "/workspaces" }));
     }
 
-    asDashboard(): GitpodHostUrl {
+    asDashboard(): DevpodHostUrl {
         return this.with((url) => ({ pathname: "/" }));
     }
 
-    asBilling(): GitpodHostUrl {
+    asBilling(): DevpodHostUrl {
         return this.with((url) => ({ pathname: "/user/billing" }));
     }
 
-    asLogin(): GitpodHostUrl {
+    asLogin(): DevpodHostUrl {
         return this.with((url) => ({ pathname: "/login" }));
     }
 
-    asAccessControl(): GitpodHostUrl {
+    asAccessControl(): DevpodHostUrl {
         return this.with((url) => ({ pathname: "/user/integrations" }));
     }
 
-    asSettings(): GitpodHostUrl {
+    asSettings(): DevpodHostUrl {
         return this.with((url) => ({ pathname: "/user/account" }));
     }
 
-    asPreferences(): GitpodHostUrl {
+    asPreferences(): DevpodHostUrl {
         return this.with((url) => ({ pathname: "/user/preferences" }));
     }
 
-    asStart(workspaceId = this.workspaceId): GitpodHostUrl {
+    asStart(workspaceId = this.workspaceId): DevpodHostUrl {
         return this.with({
             pathname: "/start/",
             hash: "#" + workspaceId,
         });
     }
 
-    asWorkspaceAuth(instanceID: string): GitpodHostUrl {
+    asWorkspaceAuth(instanceID: string): DevpodHostUrl {
         return this.with((url) => ({
             pathname: `/api/auth/workspace-cookie/${instanceID}`,
         }));
@@ -188,11 +188,11 @@ export class GitpodHostUrl {
         return this.with({ pathname: "/sorry", hash: message });
     }
 
-    asApiLogout(): GitpodHostUrl {
+    asApiLogout(): DevpodHostUrl {
         return this.withApi((url) => ({ pathname: "/logout/" }));
     }
 
-    asIDEProxy(): GitpodHostUrl {
+    asIDEProxy(): DevpodHostUrl {
         const hostSegments = this.url.host.split(".");
         if (hostSegments[0] === "ide") {
             return this;
@@ -200,7 +200,7 @@ export class GitpodHostUrl {
         return this.with((url) => ({ host: "ide." + url.host }));
     }
 
-    asPublicServices(): GitpodHostUrl {
+    asPublicServices(): DevpodHostUrl {
         const hostSegments = this.url.host.split(".");
         if (hostSegments[0] === "services") {
             return this;
@@ -208,8 +208,8 @@ export class GitpodHostUrl {
         return this.with((url) => ({ host: "services." + url.host }));
     }
 
-    asIDEMetrics(): GitpodHostUrl {
-        let newUrl: GitpodHostUrl = this;
+    asIDEMetrics(): DevpodHostUrl {
+        let newUrl: DevpodHostUrl = this;
         const hostSegments = this.url.host.split(".");
         if (hostSegments[0] !== "ide") {
             newUrl = newUrl.asIDEProxy();

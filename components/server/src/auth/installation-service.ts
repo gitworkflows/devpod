@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import {
     AdminGetListResult,
     Configuration,
     EmailDomainFilterEntry,
-    GitpodServer,
+    DevpodServer,
 } from "@devpod/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { EmailDomainFilterDB, TeamDB } from "@devpod/devpod-db/lib";
@@ -75,8 +75,8 @@ export class InstallationService {
         return this.config.workspaceDefaults.workspaceImage;
     }
 
-    async getOnboardingState(): Promise<GitpodServer.OnboardingState> {
-        // Find useful details about the state of the Gitpod installation.
+    async getOnboardingState(): Promise<DevpodServer.OnboardingState> {
+        // Find useful details about the state of the Devpod installation.
         const { rows } = await this.teamDB.findTeams(
             0 /* offset */,
             undefined /* limit */,

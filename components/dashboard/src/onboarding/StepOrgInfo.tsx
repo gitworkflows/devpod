@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -187,7 +187,7 @@ export const StepOrgInfo: FC<Props> = ({ user, onComplete }) => {
                 <TextInputField value={jobRoleOther} onChange={setJobRoleOther} placeholder="Please share (optional)" />
             )}
 
-            <CheckboxListField label="You're exploring Gitpod for">
+            <CheckboxListField label="You're exploring Devpod for">
                 {explorationReasonsOptions.map((o) => (
                     <CheckboxInputField
                         key={o.value}
@@ -222,7 +222,7 @@ export const StepOrgInfo: FC<Props> = ({ user, onComplete }) => {
                 </SelectInputField>
             )}
 
-            <CheckboxListField label="I'm hoping to use Gitpod for" sublabel="Select all that apply">
+            <CheckboxListField label="I'm hoping to use Devpod for" sublabel="Select all that apply">
                 {signupGoalsOptions.map((o) => (
                     <CheckboxInputField
                         key={o.value}

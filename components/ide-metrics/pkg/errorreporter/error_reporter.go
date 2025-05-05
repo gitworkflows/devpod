@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -17,10 +17,10 @@ type ErrorReporter interface {
 	Report(ReportedErrorEvent)
 }
 
-// NewFromEnvironment creates a new error report instance based on the GITPOD_ENABLED_ERROR_REPORTING
+// NewFromEnvironment creates a new error report instance based on the DEVPOD_ENABLED_ERROR_REPORTING
 // environment variable. This function never returns nil
 func NewFromEnvironment() ErrorReporter {
-	isEnabled := os.Getenv("GITPOD_ENABLED_ERROR_REPORTING") == "true"
+	isEnabled := os.Getenv("DEVPOD_ENABLED_ERROR_REPORTING") == "true"
 	if !isEnabled {
 		return &noErrorReporter{}
 	}

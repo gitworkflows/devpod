@@ -7,8 +7,8 @@ inputs:
   service_account:
     description: "GCP service account"
     required: true
-  leeway_segment_key:
-    description: "leeway analytics key"
+  blazedock_segment_key:
+    description: "blazedock analytics key"
     required: true
 
 runs:
@@ -29,9 +29,9 @@ runs:
       name: configure env variables
       shell: bash
       run: |
-        gcloud auth configure-docker ghcr.io --quiet
+        gcloud auth configure-docker eu.gcr.io --quiet
 
         {
-            echo "LEEWAY_SEGMENT_KEY=${{ inputs.leeway_segment_key }}"
-            echo "LEEWAY_WORKSPACE_ROOT=$GITHUB_WORKSPACE"
+            echo "BLAZEDOCK_SEGMENT_KEY=${{ inputs.blazedock_segment_key }}"
+            echo "BLAZEDOCK_WORKSPACE_ROOT=$GITHUB_WORKSPACE"
         }  >> "$GITHUB_ENV"

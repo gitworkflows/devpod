@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -167,7 +167,7 @@ function ListAccessTokensView() {
                         Create or regenerate access tokens.{" "}
                         <a
                             className="gp-link"
-                            href="https://www.devpod.io/docs/configure/user-settings/access-tokens"
+                            href="https://www.devpod.khulnasoft.com/docs/configure/user-settings/access-tokens"
                             target="_blank"
                             rel="noreferrer"
                         >
@@ -230,7 +230,7 @@ function ListAccessTokensView() {
                                 No Access Tokens
                             </Heading2>
                             <Subheading className="text-center pb-6 w-96">
-                                Generate an access token for applications that need access to the Gitpod API.{" "}
+                                Generate an access token for applications that need access to the Devpod API.{" "}
                             </Subheading>
                             <LinkButton href={settingsPathPersonalAccessTokenCreate}>New Access Token</LinkButton>
                         </div>
@@ -285,7 +285,7 @@ function ListAccessTokensView() {
                     token={modalData.token}
                     title="Delete Access Token"
                     description="Are you sure you want to delete this access token?"
-                    descriptionImportant="Any applications using this token will no longer be able to access the Gitpod API."
+                    descriptionImportant="Any applications using this token will no longer be able to access the Devpod API."
                     actionDescription="Delete Access Token"
                     onSave={() => handleDeleteToken(modalData.token.id)}
                     onClose={() => setModalData(undefined)}
@@ -296,7 +296,7 @@ function ListAccessTokensView() {
                     token={modalData.token}
                     title="Regenerate Token"
                     description="Are you sure you want to regenerate this access token?"
-                    descriptionImportant="Any applications using this token will no longer be able to access the Gitpod API."
+                    descriptionImportant="Any applications using this token will no longer be able to access the Devpod API."
                     actionDescription="Regenerate Token"
                     showDateSelector
                     onSave={({ expirationDate }) => handleRegenerateToken(modalData.token.id, expirationDate)}

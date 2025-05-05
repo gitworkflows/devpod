@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -176,7 +176,7 @@ func TestIntellijNotPreconfiguredRepo(t *testing.T) {
 			// ENT-260
 			// https://github.com/spring-projects/spring-petclinic is not an option because it will prompt to ask user to select project type
 			// which will block integration test (UI tests)
-			JetBrainsIDETest(ctx, t, cfg, WithIDE("intellij"), WithRepo("https://github.com/gitpod-io/empty"))
+			JetBrainsIDETest(ctx, t, cfg, WithIDE("intellij"), WithRepo("https://github.com/khulnasoft/empty"))
 			return testCtx
 		}).
 		Feature()

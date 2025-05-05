@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -25,7 +25,7 @@ function isLocalhostOrigin(url: string): boolean {
     originUrl.protocol = window.location.protocol;
     return originUrl.hostname === "localhost";
 }
-function isGitpodOrigin(url: string): boolean {
+function isDevpodOrigin(url: string): boolean {
     const originUrl = new URL(url);
     originUrl.protocol = window.location.protocol;
     return originUrl.origin === devpodOrigin;
@@ -53,7 +53,7 @@ class IDEWebSocket extends ReconnectingWebSocket {
             });
         } else if (isLocalhostOrigin(url)) {
             origin = "localhost";
-        } else if (isGitpodOrigin(url)) {
+        } else if (isDevpodOrigin(url)) {
             origin = "devpod";
         }
         metricsReporter.instrumentWebSocket(this as any, origin);

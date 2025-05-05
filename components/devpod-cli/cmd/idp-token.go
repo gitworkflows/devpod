@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -78,7 +78,7 @@ func idpToken(ctx context.Context, audience []string, scope string) (idToken str
 	}
 	defer supervisorConn.Close()
 	clientToken, err := supervisor.NewTokenServiceClient(supervisorConn).GetToken(ctx, &supervisor.GetTokenRequest{
-		Host: wsInfo.GitpodApi.Host,
+		Host: wsInfo.DevpodApi.Host,
 		Kind: "devpod",
 		Scope: []string{
 			"function:getWorkspace",
@@ -88,7 +88,7 @@ func idpToken(ctx context.Context, audience []string, scope string) (idToken str
 		return "", xerrors.Errorf("failed getting token from supervisor: %w", err)
 	}
 
-	c, err := client.New(client.WithCredentials(clientToken.Token), client.WithURL("https://api."+wsInfo.GitpodApi.Host))
+	c, err := client.New(client.WithCredentials(clientToken.Token), client.WithURL("https://api."+wsInfo.DevpodApi.Host))
 	if err != nil {
 		return "", err
 	}

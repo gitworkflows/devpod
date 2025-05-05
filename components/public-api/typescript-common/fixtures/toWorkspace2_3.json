@@ -4,24 +4,24 @@
     "creationTime": "2023-11-29T18:55:49.279Z",
     "organizationId": "ce36c2f8-5d43-4b1d-92f2-08cb6f0e0869",
     "ownerId": "b49148ed-6e1f-4eae-927f-1e62a3c9dab9",
-    "contextURL": "https://github.com/gitpod-io/empty",
-    "description": "gitpod-io/empty ",
+    "contextURL": "https://github.com/khulnasoft/empty",
+    "description": "khulnasoft/empty ",
     "context": {
       "isFile": false,
       "path": "",
-      "title": "gitpod-io/empty ",
+      "title": "khulnasoft/empty ",
       "revision": "",
       "repository": {
-        "cloneUrl": "https://github.com/gitpod-io/empty.git",
+        "cloneUrl": "https://github.com/khulnasoft/empty.git",
         "host": "github.com",
         "name": "empty",
         "owner": "khulnasoft",
         "private": false
       },
-      "normalizedContextURL": "https://github.com/gitpod-io/empty",
+      "normalizedContextURL": "https://github.com/khulnasoft/empty",
       "checkoutLocation": "empty"
     },
-    "cloneUrl": "https://github.com/gitpod-io/empty.git",
+    "cloneUrl": "https://github.com/khulnasoft/empty.git",
     "config": {
       "ports": [],
       "tasks": [],
@@ -48,7 +48,7 @@
     "startedTime": "2023-11-29T18:55:55.461Z",
     "stoppingTime": "2023-11-29T18:56:12.005Z",
     "stoppedTime": "2023-11-29T18:56:12.986Z",
-    "ideUrl": "https://devpodio-empty-bs8378oes6b.ws.devpod.io",
+    "ideUrl": "https://devpodio-empty-bs8378oes6b.ws.devpod.khulnasoft.com",
     "workspaceImage": "877922613839.dkr.ecr.eu-central-1.amazonaws.com/image-build/workspace-images:cdbae29656d3033ebc3dbc45e5a7ee6e1907ad513af9d41014e2ae113f5dba7b",
     "status": {
       "phase": "stopped",
@@ -89,11 +89,11 @@
       "ideSetup": {
         "envvars": [
           {
-            "name": "GITPOD_CONFIGCAT_ENABLED",
+            "name": "DEVPOD_CONFIGCAT_ENABLED",
             "value": "true"
           },
           {
-            "name": "GITPOD_IDE_ALIAS",
+            "name": "DEVPOD_IDE_ALIAS",
             "value": "code"
           }
         ],

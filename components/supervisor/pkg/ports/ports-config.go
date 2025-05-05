@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -145,7 +145,7 @@ func (service *ConfigService) Observe(ctx context.Context) (<-chan *Configs, <-c
 	return updatesChan, errorsChan
 }
 
-func (service *ConfigService) update(config *devpod.GitpodConfig, current *Configs) bool {
+func (service *ConfigService) update(config *devpod.DevpodConfig, current *Configs) bool {
 	currentPortConfigs, currentRangeConfigs := current.instancePortConfigs, current.instanceRangeConfigs
 	var ports []*devpod.PortsItems
 	if config != nil {

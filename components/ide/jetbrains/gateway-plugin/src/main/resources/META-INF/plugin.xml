@@ -1,5 +1,5 @@
 <!--
- Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ Copyright (c) 2021 Devpod GmbH. All rights reserved.
  Licensed under the GNU Affero General Public License (AGPL).
  See License.AGPL.txt in the project root for license information.
 -->
@@ -8,8 +8,8 @@
     <xi:include href="/META-INF/extensions.xml" xpointer="xpointer(/idea-plugin/*)"/>
 
     <id>io.devpod.jetbrains.gateway</id>
-    <name>Gitpod Gateway</name>
-    <vendor>Gitpod</vendor>
+    <name>Devpod Gateway</name>
+    <vendor>Devpod</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
@@ -21,18 +21,18 @@
     <depends optional="true">com.jetbrains.gateway</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <httpRequestHandler implementation="io.devpod.jetbrains.auth.GitpodAuthCallbackHandler"/>
-        <applicationService serviceImplementation="io.devpod.jetbrains.gateway.GitpodSettingsState"/>
-        <applicationConfigurable parentId="tools" instance="io.devpod.jetbrains.gateway.GitpodSettingsConfigurable"
-                                 id="io.devpod.jetbrains.gateway.GitpodSettingsConfigurable"
-                                 displayName="Gitpod"/>
-        <applicationService serviceInterface="io.devpod.jetbrains.gateway.common.GitpodConnectionHandleFactory"
-                            serviceImplementation="io.devpod.jetbrains.gateway.GitpodConnectionHandleFactoryImpl"/>
+        <httpRequestHandler implementation="io.devpod.jetbrains.auth.DevpodAuthCallbackHandler"/>
+        <applicationService serviceImplementation="io.devpod.jetbrains.gateway.DevpodSettingsState"/>
+        <applicationConfigurable parentId="tools" instance="io.devpod.jetbrains.gateway.DevpodSettingsConfigurable"
+                                 id="io.devpod.jetbrains.gateway.DevpodSettingsConfigurable"
+                                 displayName="Devpod"/>
+        <applicationService serviceInterface="io.devpod.jetbrains.gateway.common.DevpodConnectionHandleFactory"
+                            serviceImplementation="io.devpod.jetbrains.gateway.DevpodConnectionHandleFactoryImpl"/>
     </extensions>
 
     <extensions defaultExtensionNs="com.jetbrains">
-        <gatewayConnector implementation="io.devpod.jetbrains.gateway.GitpodConnector"/>
-        <gatewayConnectionProvider implementation="io.devpod.jetbrains.gateway.GitpodConnectionProvider"/>
+        <gatewayConnector implementation="io.devpod.jetbrains.gateway.DevpodConnector"/>
+        <gatewayConnectionProvider implementation="io.devpod.jetbrains.gateway.DevpodConnectionProvider"/>
     </extensions>
 
     <applicationListeners>

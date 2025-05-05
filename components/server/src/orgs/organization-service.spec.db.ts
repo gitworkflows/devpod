@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -58,7 +58,7 @@ describe("OrganizationService", async () => {
                             orderKey: "00",
                             title: "VS Code",
                             type: "browser",
-                            logo: "https://ide.devpod.io/image/ide-logo/vscode.svg",
+                            logo: "https://ide.devpod.khulnasoft.com/image/ide-logo/vscode.svg",
                             label: "Browser",
                             image: "bar",
                             latestImage: "baz",
@@ -68,7 +68,7 @@ describe("OrganizationService", async () => {
                             orderKey: "01",
                             title: "Intellij",
                             type: "desktop",
-                            logo: "https://ide.devpod.io/image/ide-logo/intellij.svg",
+                            logo: "https://ide.devpod.khulnasoft.com/image/ide-logo/intellij.svg",
                             label: "Desktop",
                             image: "bar",
                             latestImage: "baz",

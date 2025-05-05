@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -24,7 +24,7 @@ import (
 
 func TestBlobFor(t *testing.T) {
 	const (
-		refDescriptor = "devpod.io/test:tag"
+		refDescriptor = "devpod.khulnasoft.com/test:tag"
 		hashManifest  = "5de870aced7e6c182a10e032e94de15893c95edd80d9cc20348b0f1627826d93"
 		hashLayer     = "4970405cb2a3a461cc00fd755712beded51919d7e69270d7d10d0dcf5e209714"
 	)

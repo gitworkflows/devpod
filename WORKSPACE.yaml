@@ -1,14 +1,14 @@
-# this file makes this a leeway workspace
+# this file makes this a blazedock workspace
 defaultTarget: components:all
 defaultArgs:
-  imageRepoBase: "ghcr.io/devpod-dev-artifact/build"
+  imageRepoBase: "eu.gcr.io/devpod-dev-artifact/build"
   coreYarnLockBase: ../..
   npmPublishTrigger: "false"
   publishToNPM: true
   publishToJBMarketplace: true
   localAppVersion: unknown
-  codeCommit: e81ab749002377cf40b1551661a6b80725141ff0
-  codeVersion: 1.97.2
+  codeCommit: 74a2fbf70cc0f306dac374ee78760da2e157bb7c
+  codeVersion: 1.98.2
   codeQuality: stable
   codeWebExtensionCommit: 3953e8160fffa97dd4a4509542b4bf7ff9b704cd
   xtermCommit: d547d4ff4590b66c3ea24342fc62e3afcf6b77bc
@@ -23,8 +23,8 @@ defaultArgs:
   clionDownloadUrl: "https://download.jetbrains.com/cpp/CLion-2024.3.3.tar.gz"
   rustroverDownloadUrl: "https://download.jetbrains.com/rustrover/RustRover-2024.3.4.tar.gz"
   jbBackendVersion: "latest"
-  dockerVersion: "20.10.24"
-  dockerComposeVersion: "2.27.0-devpod.0"
+  dockerVersion: "27.5.1"
+  dockerComposeVersion: "2.34.0-devpod.1"
   ipfsKuboVersion: "v0.18.0"
   ipfsClusterVersion: "v1.0.8"
   schedulerExtenderVersion: "c1925d8"
@@ -41,7 +41,7 @@ defaultVariant:
     - GOARCH=amd64
     - DOCKER_DEFAULT_PLATFORM=linux/amd64
     - NODE_OPTIONS=--max_old_space_size=8192
-    - LEEWAY_BUILD=true
+    - BLAZEDOCK_BUILD=true
   srcs:
     exclude:
       # Make sure we don't include node_modules/**/*.ts by accident

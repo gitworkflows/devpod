@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -469,7 +469,7 @@ func TestCostCenterManager_ResetUsage(t *testing.T) {
 		t.Cleanup(func() {
 			conn.Exec(`DELETE FROM d_b_free_credits WHERE userId = ?`, userID)
 		})
-		createIdentity(t, userID, "foo@devpod.io")
+		createIdentity(t, userID, "foo@devpod.khulnasoft.com")
 		createMembership(t, orgID, userID)
 		createMembership(t, orgID2, userID)
 		cc1, err := mnr.GetOrCreateCostCenter(context.Background(), db.NewTeamAttributionID(orgID))

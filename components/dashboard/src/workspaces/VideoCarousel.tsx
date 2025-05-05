@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -17,8 +17,8 @@ interface Video {
 }
 
 const videos: Video[] = [
-    { id: "1ZBN-b2cIB8", title: "Gitpod in 120 seconds", analyticsLabel: "devpod-demo" },
-    { id: "zhZNnzFlZnY", title: "Getting started with Gitpod", analyticsLabel: "getting-started-with-devpod" },
+    { id: "1ZBN-b2cIB8", title: "Devpod in 120 seconds", analyticsLabel: "devpod-demo" },
+    { id: "zhZNnzFlZnY", title: "Getting started with Devpod", analyticsLabel: "getting-started-with-devpod" },
     { id: "kuoHM2bpBqY", title: "Fully automate your dev setup", analyticsLabel: "automate-devpod-setup" },
     { id: "_CwFzCbAsoU", title: "Personalise your workspace", analyticsLabel: "personalise-devpod-workspace" },
 ];

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -48,7 +48,7 @@ export class GetUserStatsRequest extends Message<GetUserStatsRequest> {
  */
 export class GetUserStatsResponse extends Message<GetUserStatsResponse> {
   /**
-   * All users that have an active Gitpod (not deleted) account at the time of asking.
+   * All users that have an active Devpod (not deleted) account at the time of asking.
    *
    * @generated from field: uint32 registered_users = 1;
    */

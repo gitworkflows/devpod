@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -15,8 +15,8 @@ import org.jetbrains.ide.RestService
 import org.jetbrains.io.response
 import java.nio.charset.StandardCharsets
 
-internal class GitpodAuthCallbackHandler : RestService() {
-    private val service = GitpodAuthService.instance.get()
+internal class DevpodAuthCallbackHandler : RestService() {
+    private val service = DevpodAuthService.instance.get()
 
     override fun getServiceName(): String = service.name
 
@@ -51,7 +51,7 @@ internal class GitpodAuthCallbackHandler : RestService() {
                 				const message = new URLSearchParams(window.location.search).get("message");
                 				window.opener.postMessage(message, "https://" + window.location.hostname);
                 			} else {
-                				console.log("This page was not opened by Gitpod.")
+                				console.log("This page was not opened by Devpod.")
                 				setTimeout("window.close();", 1000);
                 			}
                 		</script>

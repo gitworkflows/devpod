@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -80,7 +80,7 @@ export interface OIDCCreateSessionPayload {
         email_verified: true;
         family_name: string;
         given_name: string;
-        hd?: string; // accepted domain, e.g. "devpod.io"
+        hd?: string; // accepted domain, e.g. "devpod.khulnasoft.com"
         iss: string; // "https://accounts.google.com"
         locale: string; // e.g. "de"
         /**

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License-AGPL.txt in the project root for license information.
 
@@ -124,7 +124,7 @@ func (r *WorkspaceReconciler) updateWorkspaceStatus(ctx context.Context, workspa
 	}
 
 	if workspace.Status.URL == "" {
-		url, err := config.RenderWorkspaceURL(cfg.WorkspaceURLTemplate, workspace.Name, workspace.Spec.Ownership.WorkspaceID, cfg.GitpodHostURL)
+		url, err := config.RenderWorkspaceURL(cfg.WorkspaceURLTemplate, workspace.Name, workspace.Spec.Ownership.WorkspaceID, cfg.DevpodHostURL)
 		if err != nil {
 			return xerrors.Errorf("cannot get workspace URL: %w", err)
 		}

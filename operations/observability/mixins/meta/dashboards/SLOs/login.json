@@ -791,8 +791,8 @@
           "scopedVars": {
             "cluster": {
               "selected": false,
-              "text": "production.gitpod-io.us-west1.03",
-              "value": "production.gitpod-io.us-west1.03"
+              "text": "production.khulnasoft.us-west1.03",
+              "value": "production.khulnasoft.us-west1.03"
             }
           },
           "seriesOverrides": [
@@ -910,8 +910,8 @@
           "scopedVars": {
             "cluster": {
               "selected": false,
-              "text": "production.gitpod-io.europe-west1.03",
-              "value": "production.gitpod-io.europe-west1.03"
+              "text": "production.khulnasoft.europe-west1.03",
+              "value": "production.khulnasoft.europe-west1.03"
             }
           },
           "seriesOverrides": [
@@ -1396,6 +1396,6 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / SLOs / Login",
+  "title": "Devpod / SLOs / Login",
   "uid": "login-slo"
 }

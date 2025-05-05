@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -49,7 +49,7 @@ const fooAnyUserEnvVar = {
 const barUserCommitEnvVar = {
     name: "bar",
     value: "commit",
-    repositoryPattern: "devpod/gitpod-io",
+    repositoryPattern: "devpod/khulnasoft",
 } as const;
 
 const barUserAnotherCommitEnvVar = {
@@ -80,7 +80,7 @@ const contextEnvVars = {
 } as WithEnvvarsContext;
 
 const devpodImageAuthOrgEnvVar: OrgEnvVarWithValue = {
-    name: "GITPOD_IMAGE_AUTH",
+    name: "DEVPOD_IMAGE_AUTH",
     value: "some-token",
 };
 
@@ -313,8 +313,8 @@ describe("EnvVarService", async () => {
         await expectError(ErrorCodes.NOT_FOUND, es.addOrgEnvVar(stranger.id, org.id, someOrgEnvVar));
     });
 
-    it("should restrict org env var names to GITPOD_IMAGE_AUTH", async () => {
-        // Owner can create GITPOD_IMAGE_AUTH
+    it("should restrict org env var names to DEVPOD_IMAGE_AUTH", async () => {
+        // Owner can create DEVPOD_IMAGE_AUTH
         await es.addOrgEnvVar(owner.id, org.id, devpodImageAuthOrgEnvVar);
 
         // Owner cannot create other env var names
@@ -331,7 +331,7 @@ describe("EnvVarService", async () => {
 
         const envVars = await es.listOrgEnvVars(owner.id, org.id);
         expect(envVars.length).to.equal(1);
-        expect(envVars[0].name).to.equal("GITPOD_IMAGE_AUTH");
+        expect(envVars[0].name).to.equal("DEVPOD_IMAGE_AUTH");
     });
 
     it("should control org env var read access", async () => {
@@ -541,7 +541,7 @@ describe("EnvVarService", async () => {
             {
                 name: "MULTIPLE_VARS_WITH_SAME_NAME",
                 value: "true",
-                repositoryPattern: "devpod/gitpod-io",
+                repositoryPattern: "devpod/khulnasoft",
             },
             {
                 name: "MULTIPLE_VARS_WITH_SAME_NAME",
@@ -551,7 +551,7 @@ describe("EnvVarService", async () => {
             {
                 name: "MULTIPLE_VARS_WITH_SAME_NAME",
                 value: "true",
-                repositoryPattern: "*/gitpod-io",
+                repositoryPattern: "*/khulnasoft",
             },
             {
                 name: "MULTIPLE_VARS_WITH_SAME_NAME",

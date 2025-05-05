@@ -13,6 +13,6 @@ service StatsService {
 message GetUserStatsRequest {}
 
 message GetUserStatsResponse {
-  // All users that have an active Gitpod (not deleted) account at the time of asking.
+  // All users that have an active Devpod (not deleted) account at the time of asking.
   uint32 registered_users = 1;
 }

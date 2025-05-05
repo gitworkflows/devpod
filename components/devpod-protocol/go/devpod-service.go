@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -34,7 +34,7 @@ type APIInterface interface {
 	UpdateOwnAuthProvider(ctx context.Context, params *UpdateOwnAuthProviderParams) (err error)
 	DeleteOwnAuthProvider(ctx context.Context, params *DeleteOwnAuthProviderParams) (err error)
 	GetConfiguration(ctx context.Context) (res *Configuration, err error)
-	GetGitpodTokenScopes(ctx context.Context, tokenHash string) (res []string, err error)
+	GetDevpodTokenScopes(ctx context.Context, tokenHash string) (res []string, err error)
 	GetToken(ctx context.Context, query *GetTokenSearchOptions) (res *Token, err error)
 	DeleteAccount(ctx context.Context) (err error)
 	GetClientRegion(ctx context.Context) (res string, err error)
@@ -67,9 +67,9 @@ type APIInterface interface {
 	GetSSHPublicKeys(ctx context.Context) (res []*UserSSHPublicKeyValue, err error)
 	AddSSHPublicKey(ctx context.Context, value *SSHPublicKeyValue) (res *UserSSHPublicKeyValue, err error)
 	DeleteSSHPublicKey(ctx context.Context, id string) (err error)
-	GetGitpodTokens(ctx context.Context) (res []*APIToken, err error)
-	GenerateNewGitpodToken(ctx context.Context, options *GenerateNewGitpodTokenOptions) (res string, err error)
-	DeleteGitpodToken(ctx context.Context, tokenHash string) (err error)
+	GetDevpodTokens(ctx context.Context) (res []*APIToken, err error)
+	GenerateNewDevpodToken(ctx context.Context, options *GenerateNewDevpodTokenOptions) (res string, err error)
+	DeleteDevpodToken(ctx context.Context, tokenHash string) (err error)
 	RegisterGithubApp(ctx context.Context, installationID string) (err error)
 	TakeSnapshot(ctx context.Context, options *TakeSnapshotOptions) (res string, err error)
 	WaitForSnapshot(ctx context.Context, snapshotId string) (err error)
@@ -128,8 +128,8 @@ const (
 	FunctionDeleteOwnAuthProvider FunctionName = "deleteOwnAuthProvider"
 	// FunctionGetConfiguration is the name of the getConfiguration function
 	FunctionGetConfiguration FunctionName = "getConfiguration"
-	// FunctionGetGitpodTokenScopes is the name of the GetGitpodTokenScopes function
-	FunctionGetGitpodTokenScopes FunctionName = "getGitpodTokenScopes"
+	// FunctionGetDevpodTokenScopes is the name of the GetDevpodTokenScopes function
+	FunctionGetDevpodTokenScopes FunctionName = "getDevpodTokenScopes"
 	// FunctionGetToken is the name of the getToken function
 	FunctionGetToken FunctionName = "getToken"
 	// FunctionDeleteAccount is the name of the deleteAccount function
@@ -190,12 +190,12 @@ const (
 	FunctionAddSSHPublicKey FunctionName = "addSSHPublicKey"
 	// FunctionDeleteSSHPublicKey is the name of the deleteSSHPublicKey function
 	FunctionDeleteSSHPublicKey FunctionName = "deleteSSHPublicKey"
-	// FunctionGetGitpodTokens is the name of the getGitpodTokens function
-	FunctionGetGitpodTokens FunctionName = "getGitpodTokens"
-	// FunctionGenerateNewGitpodToken is the name of the generateNewGitpodToken function
-	FunctionGenerateNewGitpodToken FunctionName = "generateNewGitpodToken"
-	// FunctionDeleteGitpodToken is the name of the deleteGitpodToken function
-	FunctionDeleteGitpodToken FunctionName = "deleteGitpodToken"
+	// FunctionGetDevpodTokens is the name of the getDevpodTokens function
+	FunctionGetDevpodTokens FunctionName = "getDevpodTokens"
+	// FunctionGenerateNewDevpodToken is the name of the generateNewDevpodToken function
+	FunctionGenerateNewDevpodToken FunctionName = "generateNewDevpodToken"
+	// FunctionDeleteDevpodToken is the name of the deleteDevpodToken function
+	FunctionDeleteDevpodToken FunctionName = "deleteDevpodToken"
 	// FunctionRegisterGithubApp is the name of the registerGithubApp function
 	FunctionRegisterGithubApp FunctionName = "registerGithubApp"
 	// FunctionTakeSnapshot is the name of the takeSnapshot function
@@ -249,7 +249,7 @@ const (
 	FunctionGetIDToken FunctionName = "getIDToken"
 )
 
-var errNotConnected = errors.New("not connected to Gitpod server")
+var errNotConnected = errors.New("not connected to Devpod server")
 
 // ConnectToServerOpts configures the server connection
 type ConnectToServerOpts struct {
@@ -298,7 +298,7 @@ func ConnectToServer(endpoint string, opts ConnectToServerOpts) (*APIoverJSONRPC
 	return &res, nil
 }
 
-// APIoverJSONRPC makes JSON RPC calls to the Gitpod server is the APIoverJSONRPC message type
+// APIoverJSONRPC makes JSON RPC calls to the Devpod server is the APIoverJSONRPC message type
 type APIoverJSONRPC struct {
 	C   jsonrpc2.JSONRPC2
 	log *logrus.Entry
@@ -563,8 +563,8 @@ func (gp *APIoverJSONRPC) GetConfiguration(ctx context.Context) (res *Configurat
 	return
 }
 
-// GetGitpodTokenScopes calls getGitpodTokenScopes on the server
-func (gp *APIoverJSONRPC) GetGitpodTokenScopes(ctx context.Context, tokenHash string) (res []string, err error) {
+// GetDevpodTokenScopes calls getDevpodTokenScopes on the server
+func (gp *APIoverJSONRPC) GetDevpodTokenScopes(ctx context.Context, tokenHash string) (res []string, err error) {
 	if gp == nil {
 		err = errNotConnected
 		return
@@ -574,7 +574,7 @@ func (gp *APIoverJSONRPC) GetGitpodTokenScopes(ctx context.Context, tokenHash st
 	_params = append(_params, tokenHash)
 
 	var result []string
-	err = gp.C.Call(ctx, "getGitpodTokenScopes", _params, &result)
+	err = gp.C.Call(ctx, "getDevpodTokenScopes", _params, &result)
 	if err != nil {
 		return
 	}
@@ -1165,8 +1165,8 @@ func (gp *APIoverJSONRPC) DeleteSSHPublicKey(ctx context.Context, id string) (er
 	return
 }
 
-// GetGitpodTokens calls getGitpodTokens on the server
-func (gp *APIoverJSONRPC) GetGitpodTokens(ctx context.Context) (res []*APIToken, err error) {
+// GetDevpodTokens calls getDevpodTokens on the server
+func (gp *APIoverJSONRPC) GetDevpodTokens(ctx context.Context) (res []*APIToken, err error) {
 	if gp == nil {
 		err = errNotConnected
 		return
@@ -1174,7 +1174,7 @@ func (gp *APIoverJSONRPC) GetGitpodTokens(ctx context.Context) (res []*APIToken,
 	var _params []interface{}
 
 	var result []*APIToken
-	err = gp.C.Call(ctx, "getGitpodTokens", _params, &result)
+	err = gp.C.Call(ctx, "getDevpodTokens", _params, &result)
 	if err != nil {
 		return
 	}
@@ -1183,8 +1183,8 @@ func (gp *APIoverJSONRPC) GetGitpodTokens(ctx context.Context) (res []*APIToken,
 	return
 }
 
-// GenerateNewGitpodToken calls generateNewGitpodToken on the server
-func (gp *APIoverJSONRPC) GenerateNewGitpodToken(ctx context.Context, options *GenerateNewGitpodTokenOptions) (res string, err error) {
+// GenerateNewDevpodToken calls generateNewDevpodToken on the server
+func (gp *APIoverJSONRPC) GenerateNewDevpodToken(ctx context.Context, options *GenerateNewDevpodTokenOptions) (res string, err error) {
 	if gp == nil {
 		err = errNotConnected
 		return
@@ -1194,7 +1194,7 @@ func (gp *APIoverJSONRPC) GenerateNewGitpodToken(ctx context.Context, options *G
 	_params = append(_params, options)
 
 	var result string
-	err = gp.C.Call(ctx, "generateNewGitpodToken", _params, &result)
+	err = gp.C.Call(ctx, "generateNewDevpodToken", _params, &result)
 	if err != nil {
 		return
 	}
@@ -1203,8 +1203,8 @@ func (gp *APIoverJSONRPC) GenerateNewGitpodToken(ctx context.Context, options *G
 	return
 }
 
-// DeleteGitpodToken calls deleteGitpodToken on the server
-func (gp *APIoverJSONRPC) DeleteGitpodToken(ctx context.Context, tokenHash string) (err error) {
+// DeleteDevpodToken calls deleteDevpodToken on the server
+func (gp *APIoverJSONRPC) DeleteDevpodToken(ctx context.Context, tokenHash string) (err error) {
 	if gp == nil {
 		err = errNotConnected
 		return
@@ -1213,7 +1213,7 @@ func (gp *APIoverJSONRPC) DeleteGitpodToken(ctx context.Context, tokenHash strin
 
 	_params = append(_params, tokenHash)
 
-	err = gp.C.Call(ctx, "deleteGitpodToken", _params, nil)
+	err = gp.C.Call(ctx, "deleteDevpodToken", _params, nil)
 	if err != nil {
 		return
 	}
@@ -1918,8 +1918,8 @@ type UserSSHPublicKeyValue struct {
 	LastUsedTime string `json:"lastUsedTime,omitempty"`
 }
 
-// GenerateNewGitpodTokenOptions is the GenerateNewGitpodTokenOptions message type
-type GenerateNewGitpodTokenOptions struct {
+// GenerateNewDevpodTokenOptions is the GenerateNewDevpodTokenOptions message type
+type GenerateNewDevpodTokenOptions struct {
 	Name string `json:"name,omitempty"`
 
 	// Scopes []string `json:"scopes,omitempty"`  float64 is the   float64 message type
@@ -2079,7 +2079,7 @@ type User struct {
 	// The timestamp when the user entry was created
 	CreationDate string `json:"creationDate,omitempty"`
 
-	// A map of random settings that alter the behaviour of Gitpod on a per-user basis
+	// A map of random settings that alter the behaviour of Devpod on a per-user basis
 	FeatureFlags *UserFeatureSettings `json:"featureFlags,omitempty"`
 
 	// Optional for backwards compatibility

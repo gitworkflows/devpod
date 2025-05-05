@@ -1255,7 +1255,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / Component / db",
+  "title": "Devpod / Component / db",
   "uid": "db",
   "version": 1
 }

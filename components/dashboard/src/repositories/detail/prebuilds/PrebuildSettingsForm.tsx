@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -161,7 +161,7 @@ export const PrebuildSettingsForm: FC<Props> = ({ configuration }) => {
                     <a
                         className="gp-link"
                         target="_blank"
-                        href="https://www.devpod.io/changelog/activity-based-prebuilds"
+                        href="https://www.devpod.khulnasoft.com/changelog/activity-based-prebuilds"
                         rel="noreferrer"
                     >
                         Learn more
@@ -234,7 +234,7 @@ export const PrebuildSettingsForm: FC<Props> = ({ configuration }) => {
                             ? "Activity-based"
                             : "Webhook-based"}
                         <a
-                            href="https://www.devpod.io/docs/configure/repositories/prebuilds#triggers"
+                            href="https://www.devpod.khulnasoft.com/docs/configure/repositories/prebuilds#triggers"
                             target="_blank"
                             rel="noreferrer"
                         >

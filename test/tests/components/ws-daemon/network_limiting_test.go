@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -41,7 +41,7 @@ func TestNetworkLimiting(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			ws, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "https://github.com/gitpod-io/empty", username, api, integration.WithGitpodUser(username))
+			ws, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "https://github.com/khulnasoft/empty", username, api, integration.WithDevpodUser(username))
 			if err != nil {
 				t.Fatal(err)
 			}

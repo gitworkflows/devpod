@@ -2,15 +2,15 @@
     "result": {
         "id": "007a807f-f2a7-436b-a77f-66ed11ee7828",
         "organizationId": "6f5b2707-c83f-4e04-a37c-23d1b1d385ae",
-        "name": "Gitpod Tester",
+        "name": "Devpod Tester",
         "avatarUrl": "https://avatars.githubusercontent.com/u/37021919?v=4",
         "createdAt": "2023-12-04T08:54:31.686Z",
         "identities": [
             {
                 "authProviderId": "Public-GitHub",
                 "authId": "37021919",
-                "authName": "GitpodTester",
-                "primaryEmail": "tester@devpod.io"
+                "authName": "DevpodTester",
+                "primaryEmail": "tester@devpod.khulnasoft.com"
             }
         ],
         "blocked": false,
@@ -36,7 +36,7 @@
             "lastUpdatedDetailsNudge": "2023-12-04T08:54:34.831Z",
             "acceptedPrivacyPolicyDate": "2023-12-04T08:54:31.700Z",
             "companyName": "",
-            "emailAddress": "tester@devpod.io",
+            "emailAddress": "tester@devpod.khulnasoft.com",
             "jobRole": "other",
             "jobRoleOther": "",
             "explorationReasons": [

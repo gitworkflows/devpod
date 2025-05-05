@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -44,9 +44,9 @@ import (
 func Start(logger *logrus.Entry, version string, cfg *config.Configuration) error {
 	logger.WithField("config", cfg).Info("Starting public-api.")
 
-	devpodAPI, err := url.Parse(cfg.GitpodServiceURL)
+	devpodAPI, err := url.Parse(cfg.DevpodServiceURL)
 	if err != nil {
-		return fmt.Errorf("failed to parse Gitpod API URL: %w", err)
+		return fmt.Errorf("failed to parse Devpod API URL: %w", err)
 	}
 
 	connPool, err := proxy.NewConnectionPool(devpodAPI, 500)

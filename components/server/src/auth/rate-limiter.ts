@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { GitpodServer } from "@devpod/devpod-protocol";
+import { DevpodServer } from "@devpod/devpod-protocol";
 import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { RateLimiterMemory, RateLimiterRes } from "rate-limiter-flexible";
 
 export const accessCodeSyncStorage = "accessCodeSyncStorage";
 export const accessHeadlessLogs = "accessHeadlessLogs";
-type GitpodServerMethodType =
-    | keyof Omit<GitpodServer, "dispose" | "setClient">
+type DevpodServerMethodType =
+    | keyof Omit<DevpodServer, "dispose" | "setClient">
     | typeof accessCodeSyncStorage
     | typeof accessHeadlessLogs;
 type GroupKey = "default" | "startWorkspace" | "createWorkspace" | "phoneVerification" | "sendHeartBeat" | "getToken";
@@ -22,7 +22,7 @@ type GroupsConfig = {
     };
 };
 type FunctionsConfig = {
-    [K in GitpodServerMethodType]: {
+    [K in DevpodServerMethodType]: {
         group: GroupKey;
         points: number;
     };
@@ -35,10 +35,10 @@ export type RateLimiterConfig = {
 /**
  *
  * @param name
- * @returns True iff the name is a valid function of the GitpodServer interface. name is case sensitive.
+ * @returns True iff the name is a valid function of the DevpodServer interface. name is case sensitive.
  */
 export function isValidFunctionName(name: string): boolean {
-    const valid: boolean = !!defaultFunctions[name as any as GitpodServerMethodType];
+    const valid: boolean = !!defaultFunctions[name as any as DevpodServerMethodType];
     return valid;
 }
 
@@ -56,7 +56,7 @@ const defaultFunctions: FunctionsConfig = {
     getOrgAuthProviders: { group: "default", points: 1 },
     deleteOrgAuthProvider: { group: "default", points: 1 },
     getConfiguration: { group: "default", points: 1 },
-    getGitpodTokenScopes: { group: "default", points: 1 },
+    getDevpodTokenScopes: { group: "default", points: 1 },
     getToken: { group: "getToken", points: 1 },
     deleteAccount: { group: "default", points: 1 },
     getClientRegion: { group: "default", points: 1 },
@@ -123,9 +123,9 @@ const defaultFunctions: FunctionsConfig = {
     triggerPrebuild: { group: "default", points: 1 },
     cancelPrebuild: { group: "default", points: 1 },
     updateProjectPartial: { group: "default", points: 1 },
-    getGitpodTokens: { group: "default", points: 1 },
-    generateNewGitpodToken: { group: "default", points: 1 },
-    deleteGitpodToken: { group: "default", points: 1 },
+    getDevpodTokens: { group: "default", points: 1 },
+    generateNewDevpodToken: { group: "default", points: 1 },
+    deleteDevpodToken: { group: "default", points: 1 },
     isGitHubAppEnabled: { group: "default", points: 1 },
     registerGithubApp: { group: "default", points: 1 },
     takeSnapshot: { group: "default", points: 1 },
@@ -266,8 +266,8 @@ export class UserRateLimiter {
     }
 
     async consume(user: string, method: string): Promise<RateLimiterRes> {
-        const group = this.config.functions[method as GitpodServerMethodType]?.group || "default";
-        if (group !== this.config.functions[method as GitpodServerMethodType]?.group) {
+        const group = this.config.functions[method as DevpodServerMethodType]?.group || "default";
+        if (group !== this.config.functions[method as DevpodServerMethodType]?.group) {
             log.warn(`method '${method}' is not configured for a rate limiter, using 'default'`);
         }
 
@@ -278,7 +278,7 @@ export class UserRateLimiter {
             );
         }
 
-        const points = this.config.functions[method as GitpodServerMethodType]?.points || 1;
+        const points = this.config.functions[method as DevpodServerMethodType]?.points || 1;
         return await limiter.consume(user, points);
     }
 }

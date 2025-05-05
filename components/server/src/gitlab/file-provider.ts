@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -15,7 +15,7 @@ import { log } from "@devpod/devpod-protocol/lib/util/logging";
 export class GitlabFileProvider implements FileProvider {
     @inject(GitLabApi) protected readonly gitlabApi: GitLabApi;
 
-    public async getGitpodFileContent(commit: Commit, user: User): Promise<MaybeContent> {
+    public async getDevpodFileContent(commit: Commit, user: User): Promise<MaybeContent> {
         const yamlVersion1 = await Promise.all([
             this.getFileContent(commit, user, ".devpod.yml"),
             this.getFileContent(commit, user, ".devpod"),

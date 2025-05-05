@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -30,14 +30,14 @@ func TestEditorService_ListEditorOptions(t *testing.T) {
 			"code": {
 				OrderKey:           "02",
 				Title:              "VS Code",
-				Logo:               "https://devpod.io/icons/vscode.svg",
+				Logo:               "https://devpod.khulnasoft.com/icons/vscode.svg",
 				ImageVersion:       "1.68.0",
 				LatestImageVersion: "1.69.0",
 			},
 			"theia": {
 				OrderKey:     "01",
 				Title:        "Theia",
-				Logo:         "https://devpod.io/icons/theia.svg",
+				Logo:         "https://devpod.khulnasoft.com/icons/theia.svg",
 				ImageVersion: "1.68.0",
 			},
 		}, DefaultIde: "", DefaultDesktopIde: "", Clients: map[string]protocol.IDEClient{}}, nil)
@@ -49,7 +49,7 @@ func TestEditorService_ListEditorOptions(t *testing.T) {
 				{
 					Title: "Theia",
 					Id:    "theia",
-					Logo:  "https://devpod.io/icons/theia.svg",
+					Logo:  "https://devpod.khulnasoft.com/icons/theia.svg",
 					Stable: &v1.EditorOption_Kind{
 						Version: "1.68.0",
 					},
@@ -58,7 +58,7 @@ func TestEditorService_ListEditorOptions(t *testing.T) {
 				{
 					Title: "VS Code",
 					Id:    "code",
-					Logo:  "https://devpod.io/icons/vscode.svg",
+					Logo:  "https://devpod.khulnasoft.com/icons/vscode.svg",
 					Stable: &v1.EditorOption_Kind{
 						Version: "1.68.0",
 					},

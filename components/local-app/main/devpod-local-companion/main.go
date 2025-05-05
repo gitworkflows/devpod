@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -16,12 +16,12 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/gitpod-io/local-app/pkg/auth"
-	"github.com/gitpod-io/local-app/pkg/bastion"
-	"github.com/gitpod-io/local-app/pkg/constants"
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
 	devpod "github.com/khulnasoft/devpod/devpod-protocol"
 	appapi "github.com/khulnasoft/devpod/local-app/api"
+	"github.com/khulnasoft/local-app/pkg/auth"
+	"github.com/khulnasoft/local-app/pkg/bastion"
+	"github.com/khulnasoft/local-app/pkg/constants"
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli/v2"
 	"github.com/zalando/go-keyring"
@@ -30,29 +30,29 @@ import (
 
 func main() {
 	// maintain compatibility with old keyring
-	sshConfig := os.Getenv("GITPOD_LCA_SSH_CONFIG")
+	sshConfig := os.Getenv("DEVPOD_LCA_SSH_CONFIG")
 	if sshConfig == "" {
 		sshConfig = filepath.Join(os.TempDir(), "devpod_ssh_config")
 	}
 
 	app := cli.App{
 		Name:                 "devpod-local-companion",
-		Usage:                "connect your Gitpod workspaces",
+		Usage:                "connect your Devpod workspaces",
 		Action:               DefaultCommand("run"),
 		EnableBashCompletion: true,
 		Version:              constants.Version.String(),
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:  "devpod-host",
-				Usage: "URL of the Gitpod installation to connect to",
+				Usage: "URL of the Devpod installation to connect to",
 				EnvVars: []string{
-					"GITPOD_HOST",
+					"DEVPOD_HOST",
 				},
-				Value: "https://devpod.io",
+				Value: "https://devpod.khulnasoft.com",
 			},
 			&cli.BoolFlag{
 				Name:  "mock-keyring",
-				Usage: "Don't use system native keyring, but store Gitpod token in memory",
+				Usage: "Don't use system native keyring, but store Devpod token in memory",
 			},
 			&cli.BoolFlag{
 				Name:  "allow-cors-from-port",
@@ -62,7 +62,7 @@ func main() {
 				Name:  "api-port",
 				Usage: "Local App API endpoint's port",
 				EnvVars: []string{
-					"GITPOD_LCA_API_PORT",
+					"DEVPOD_LCA_API_PORT",
 				},
 				Value: 63100,
 			},
@@ -70,21 +70,21 @@ func main() {
 				Name:  "auto-tunnel",
 				Usage: "Enable auto tunneling",
 				EnvVars: []string{
-					"GITPOD_LCA_AUTO_TUNNEL",
+					"DEVPOD_LCA_AUTO_TUNNEL",
 				},
 				Value: true,
 			},
 			&cli.StringFlag{
 				Name: "auth-redirect-url",
 				EnvVars: []string{
-					"GITPOD_LCA_AUTH_REDIRECT_URL",
+					"DEVPOD_LCA_AUTH_REDIRECT_URL",
 				},
 			},
 			&cli.BoolFlag{
 				Name:  "verbose",
 				Usage: "Enable verbose logging",
 				EnvVars: []string{
-					"GITPOD_LCA_VERBOSE",
+					"DEVPOD_LCA_VERBOSE",
 				},
 				Value: false,
 			},
@@ -92,7 +92,7 @@ func main() {
 				Name:  "auth-timeout",
 				Usage: "Auth timeout in seconds",
 				EnvVars: []string{
-					"GITPOD_LCA_AUTH_TIMEOUT",
+					"DEVPOD_LCA_AUTH_TIMEOUT",
 				},
 				Value: 30,
 			},
@@ -100,7 +100,7 @@ func main() {
 				Name:  "timeout",
 				Usage: "How long the local app can run if last workspace was stopped",
 				EnvVars: []string{
-					"GITPOD_LCA_TIMEOUT",
+					"DEVPOD_LCA_TIMEOUT",
 				},
 				Value: "0",
 			},
@@ -127,7 +127,7 @@ func main() {
 				Flags: []cli.Flag{
 					&cli.PathFlag{
 						Name:  "ssh_config",
-						Usage: "produce and update an OpenSSH compatible ssh_config file (defaults to $GITPOD_LCA_SSH_CONFIG)",
+						Usage: "produce and update an OpenSSH compatible ssh_config file (defaults to $DEVPOD_LCA_SSH_CONFIG)",
 						Value: sshConfig,
 					},
 				},
@@ -184,7 +184,7 @@ func run(opts runOptions) error {
 
 	var b *bastion.Bastion
 
-	client, err := connectToServer(auth.LoginOpts{GitpodURL: origin, RedirectURL: opts.authRedirectURL, AuthTimeout: opts.authTimeout}, func() {
+	client, err := connectToServer(auth.LoginOpts{DevpodURL: origin, RedirectURL: opts.authRedirectURL, AuthTimeout: opts.authTimeout}, func() {
 		if b != nil {
 			b.FullUpdate()
 		}
@@ -243,30 +243,30 @@ func connectToServer(loginOpts auth.LoginOpts, reconnectionHandler func(), close
 			closeHandler(closeErr)
 		}
 	}
-	tkn, err := auth.GetToken(loginOpts.GitpodURL)
+	tkn, err := auth.GetToken(loginOpts.DevpodURL)
 	if err != nil {
 		return nil, err
 	}
 
 	if tkn != "" {
 		// try to connect with existing token
-		client, err = tryConnectToServer(loginOpts.GitpodURL, tkn, reconnectionHandler, onClose)
+		client, err = tryConnectToServer(loginOpts.DevpodURL, tkn, reconnectionHandler, onClose)
 		if client != nil {
 			return client, err
 		}
-		_, invalid := err.(*auth.ErrInvalidGitpodToken)
+		_, invalid := err.(*auth.ErrInvalidDevpodToken)
 		if !invalid {
 			return nil, err
 		}
 		// existing token is invalid, try again
-		logrus.WithError(err).WithField("origin", loginOpts.GitpodURL).Error()
+		logrus.WithError(err).WithField("origin", loginOpts.DevpodURL).Error()
 	}
 
 	tkn, err = login(loginOpts)
 	if err != nil {
 		return nil, err
 	}
-	client, err = tryConnectToServer(loginOpts.GitpodURL, tkn, reconnectionHandler, onClose)
+	client, err = tryConnectToServer(loginOpts.DevpodURL, tkn, reconnectionHandler, onClose)
 	return client, err
 }
 
@@ -311,9 +311,9 @@ func tryConnectToServer(devpodUrl string, tkn string, reconnectionHandler func()
 func login(loginOpts auth.LoginOpts) (string, error) {
 	tkn, err := auth.Login(context.Background(), loginOpts)
 	if tkn != "" {
-		err = auth.SetToken(loginOpts.GitpodURL, tkn)
+		err = auth.SetToken(loginOpts.DevpodURL, tkn)
 		if err != nil {
-			logrus.WithField("origin", loginOpts.GitpodURL).Warnf("could not write token to keyring: %s", err)
+			logrus.WithField("origin", loginOpts.DevpodURL).Warnf("could not write token to keyring: %s", err)
 			// Allow to continue
 			err = nil
 		}

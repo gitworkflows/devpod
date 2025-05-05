@@ -27,7 +27,7 @@ scripts:
     script: |
       set -e
 
-      leeway run components/spicedb:stop-spicedb || true
+      blazedock run components/spicedb:stop-spicedb || true
 
       spicedb serve-testing  --log-level debug --load-configs schema/schema.yaml &
 

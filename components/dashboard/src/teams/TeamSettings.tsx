@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -52,7 +52,7 @@ export default function TeamSettingsPage() {
     const [updated, setUpdated] = useState(false);
 
     const orgEnvVars = useListOrganizationEnvironmentVariables(org?.id || "");
-    const devpodImageAuthEnvVar = orgEnvVars.data?.find((v) => v.name === EnvVar.GITPOD_IMAGE_AUTH_ENV_VAR_NAME);
+    const devpodImageAuthEnvVar = orgEnvVars.data?.find((v) => v.name === EnvVar.DEVPOD_IMAGE_AUTH_ENV_VAR_NAME);
 
     const updateOrg = useUpdateOrgMutation();
     const isCommitAnnotationEnabled = useFeatureFlag("commit_annotation_setting_enabled");
@@ -234,7 +234,7 @@ export default function TeamSettingsPage() {
 
                             <NamedOrganizationEnvvarItem
                                 disabled={!isOwner}
-                                name={EnvVar.GITPOD_IMAGE_AUTH_ENV_VAR_NAME}
+                                name={EnvVar.DEVPOD_IMAGE_AUTH_ENV_VAR_NAME}
                                 organizationId={org.id}
                                 variable={devpodImageAuthEnvVar}
                             />
@@ -253,7 +253,7 @@ export default function TeamSettingsPage() {
                         <ConfigurationSettingsField>
                             <Heading3>Insights</Heading3>
                             <Subheading className="mb-4">
-                                Configure insights into usage of Gitpod in your organization.
+                                Configure insights into usage of Devpod in your organization.
                             </Subheading>
 
                             <InputField
@@ -261,7 +261,7 @@ export default function TeamSettingsPage() {
                                 hint={
                                     <>
                                         Add a <code>Tool:</code> field to all git commit messages created from
-                                        workspaces in your organization to associate them with this Gitpod instance.
+                                        workspaces in your organization to associate them with this Devpod instance.
                                     </>
                                 }
                                 id="annotate-git-commits"
@@ -463,7 +463,7 @@ function OrgDefaultWorkspaceImageModal(props: OrgDefaultWorkspaceImageModalProps
                 <div className="mt-4">
                     <TextInputField
                         label="Default Image"
-                        hint="Use any official or custom workspace image from Docker Hub or any private container registry that the Gitpod instance can access."
+                        hint="Use any official or custom workspace image from Docker Hub or any private container registry that the Devpod instance can access."
                         placeholder={props.installationDefaultWorkspaceImage}
                         value={defaultWorkspaceImage}
                         onChange={setDefaultWorkspaceImage}

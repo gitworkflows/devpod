@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-# inspired by https://github.com/gitpod-io/ops/blob/main/deploy/workspace/templates/bootstrap.sh
+# inspired by https://github.com/khulnasoft/ops/blob/main/deploy/workspace/templates/bootstrap.sh
 
 # Install k3s
 export INSTALL_K3S_SKIP_DOWNLOAD=true
@@ -33,15 +33,15 @@ sleep 10
 # shellcheck disable=SC2154
 # shellcheck disable=SC2086
 kubectl label nodes ${vm_name} \
-  devpod.io/workload_meta=true \
-  devpod.io/workload_ide=true \
-  devpod.io/workload_workspace_services=true \
-  devpod.io/workload_services=true \
-  devpod.io/workload_workspace_regular=true \
-  devpod.io/workload_workspace_headless=true \
-  devpod.io/workspace_0=true \
-  devpod.io/workspace_1=true \
-  devpod.io/workspace_2=true
+  devpod.khulnasoft.com/workload_meta=true \
+  devpod.khulnasoft.com/workload_ide=true \
+  devpod.khulnasoft.com/workload_workspace_services=true \
+  devpod.khulnasoft.com/workload_services=true \
+  devpod.khulnasoft.com/workload_workspace_regular=true \
+  devpod.khulnasoft.com/workload_workspace_headless=true \
+  devpod.khulnasoft.com/workspace_0=true \
+  devpod.khulnasoft.com/workspace_1=true \
+  devpod.khulnasoft.com/workspace_2=true
 
 # apply fix from https://github.com/k3s-io/klipper-lb/issues/6 so we can use the klipper servicelb
 # this can be removed if https://github.com/khulnasoft/devpod-packer-gcp-image/pull/20 gets merged

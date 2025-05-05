@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -247,10 +247,10 @@ export class SessionHandler {
 
         const hostname = req.hostname;
         if (
-            hostname === "devpod.io" ||
+            hostname === "devpod.khulnasoft.com" ||
             hostname === "devpod-staging.com" ||
             hostname.endsWith("devpod-dev.com") ||
-            hostname.endsWith("gitpod-io-dev.com")
+            hostname.endsWith("khulnasoft-dev.com")
         ) {
             const existingHashedId = req.cookies["devpod_hashed_user_id"];
             if (!existingHashedId) {

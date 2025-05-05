@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -33,7 +33,7 @@ func LoadMock() *Config {
 		Metadata: Metadata{
 			Region: "eu-west1",
 		},
-		Repository: "ghcr.io/devpod-core-dev/build",
+		Repository: "khulnasoft/devpod-environment/build",
 		Observability: Observability{
 			LogLevel: "debug",
 		},

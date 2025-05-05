@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -10,7 +10,7 @@ import { columnExists } from "./helper/helper";
 const TABLE_NAME = "d_b_devpod_token";
 const COLUMN_NAME = "deleted";
 
-export class GitpodTokenDropDeleted1695821079717 implements MigrationInterface {
+export class DevpodTokenDropDeleted1695821079717 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         if (await columnExists(queryRunner, TABLE_NAME, COLUMN_NAME)) {
             await queryRunner.query(`ALTER TABLE \`${TABLE_NAME}\` DROP COLUMN \`${COLUMN_NAME}\``);

@@ -39,8 +39,8 @@ inputs:
   service_account:
     description: "GCP service account"
     required: true
-  leeway_segment_key:
-    description: "leeway analytics key"
+  blazedock_segment_key:
+    description: "blazedock analytics key"
     required: true
 runs:
   using: "composite"
@@ -51,8 +51,8 @@ runs:
       shell: bash
       run: |
         {
-            echo "LEEWAY_SEGMENT_KEY=${{ inputs.leeway_segment_key }}"
-            echo "LEEWAY_WORKSPACE_ROOT=$GITHUB_WORKSPACE"
+            echo "BLAZEDOCK_SEGMENT_KEY=${{ inputs.blazedock_segment_key }}"
+            echo "BLAZEDOCK_WORKSPACE_ROOT=$GITHUB_WORKSPACE"
             echo "HOME=/home/devpod"
         }  >> "$GITHUB_ENV"
     - id: auth
@@ -69,13 +69,13 @@ runs:
       name: configure docker
       shell: bash
       run: |
-        gcloud auth configure-docker ghcr.io --quiet
+        gcloud auth configure-docker eu.gcr.io --quiet
     - name: Setup
       shell: bash
       env:
         PREVIEW_NAME: ${{ inputs.preview_name }}
       run: |
-        leeway run dev/preview/previewctl:install
+        blazedock run dev/preview/previewctl:install
         previewctl install-context --branch "${PREVIEW_NAME}" --log-level debug --timeout 10m
 
     - name: Integration Test

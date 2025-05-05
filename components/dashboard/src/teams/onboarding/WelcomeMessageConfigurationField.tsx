@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -21,7 +21,7 @@ import { WelcomeMessageEditorModal } from "./WelcomeMessageEditor";
 import { WelcomeMessagePreview } from "./WelcomeMessagePreview";
 
 export const devpodWelcomeSubheading =
-    `With Gitpod, you'll start coding instantly in a pre-configured environment that matches your team's setup, giving you the freedom to focus on what matters most: writing great code.` as const;
+    `With Devpod, you'll start coding instantly in a pre-configured environment that matches your team's setup, giving you the freedom to focus on what matters most: writing great code.` as const;
 
 type Props = {
     handleUpdateTeamSettings: (

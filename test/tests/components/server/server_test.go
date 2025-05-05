@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -30,9 +30,9 @@ func TestServerAccess(t *testing.T) {
 
 			username := integration.EnsureUserExists(t, username, api)
 
-			server, err := api.GitpodServer(integration.WithGitpodUser(username))
+			server, err := api.DevpodServer(integration.WithDevpodUser(username))
 			if err != nil {
-				t.Fatalf("cannot get GitpodServer: %q", err)
+				t.Fatalf("cannot get DevpodServer: %q", err)
 			}
 
 			_, err = server.GetLoggedInUser(ctx)
@@ -61,9 +61,9 @@ func TestStartWorkspace(t *testing.T) {
 				api.Done(t)
 			})
 
-			server, err := api.GitpodServer(integration.WithGitpodUser(username))
+			server, err := api.DevpodServer(integration.WithDevpodUser(username))
 			if err != nil {
-				t.Fatalf("cannot get GitpodServer: %q", err)
+				t.Fatalf("cannot get DevpodServer: %q", err)
 			}
 
 			resp, err := server.CreateWorkspace(ctx, &protocol.CreateWorkspaceOptions{

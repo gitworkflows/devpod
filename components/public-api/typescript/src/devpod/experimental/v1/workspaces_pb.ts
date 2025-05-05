@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -2203,7 +2203,7 @@ export enum GetDefaultWorkspaceImageResponse_ImageSource {
   UNSPECIFIED = 0,
 
   /**
-   * IMAGE_SOURCE_INSTALLATION means the image from Gitpod instance install config
+   * IMAGE_SOURCE_INSTALLATION means the image from Devpod instance install config
    *
    * @generated from enum value: IMAGE_SOURCE_INSTALLATION = 1;
    */

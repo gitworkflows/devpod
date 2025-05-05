@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -48,8 +48,8 @@ export const start = async (container: Container) => {
             res.send(await mergedRegistry.metrics());
         });
         const metricsPort = 9500;
-        const metricsHttpServer = metricsApp.listen(metricsPort, "localhost", () => {
-            log.info(`prometheus metrics server running on: localhost:${metricsPort}`);
+        const metricsHttpServer = metricsApp.listen(metricsPort, "127.0.0.1", () => {
+            log.info(`prometheus metrics server running on: 127.0.0.1:${metricsPort}`);
         });
 
         const debugApp = container.get<DebugApp>(DebugApp);

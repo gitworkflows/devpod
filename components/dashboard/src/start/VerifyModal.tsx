@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -84,8 +84,8 @@ export function VerifyModal() {
                 visible={true}
             >
                 <Alert type="warning" className="mt-2">
-                    To use Gitpod for free you'll need to validate your account with your phone number. This is required
-                    to discourage and reduce abuse on Gitpod infrastructure.
+                    To use Devpod for free you'll need to validate your account with your phone number. This is required
+                    to discourage and reduce abuse on Devpod infrastructure.
                 </Alert>
                 <Alert type="info" className="mt-4">
                     Alternatively, you can verify by subscribing to our paid plan.
@@ -196,8 +196,8 @@ export function VerifyModal() {
                 visible={true}
             >
                 <Alert type="warning" className="mt-2">
-                    To use Gitpod for free you'll need to validate your account with your phone number. This is required
-                    to discourage and reduce abuse on Gitpod infrastructure.
+                    To use Devpod for free you'll need to validate your account with your phone number. This is required
+                    to discourage and reduce abuse on Devpod infrastructure.
                 </Alert>
                 <div className="pt-4">
                     <LinkButton onClick={reset}>&larr; Use a different phone number</LinkButton>

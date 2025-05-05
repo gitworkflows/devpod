@@ -462,7 +462,7 @@ message GetDefaultWorkspaceImageResponse {
   enum ImageSource {
     IMAGE_SOURCE_UNSPECIFIED = 0;
 
-    // IMAGE_SOURCE_INSTALLATION means the image from Gitpod instance install config
+    // IMAGE_SOURCE_INSTALLATION means the image from Devpod instance install config
     IMAGE_SOURCE_INSTALLATION = 1;
 
     // IMAGE_SOURCE_ORGANIZATION means the image from  Organization settings

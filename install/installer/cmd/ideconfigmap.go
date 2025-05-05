@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -77,7 +77,7 @@ func init() {
 		log.WithError(err).Fatal("Failed to get working directory")
 	}
 
-	ideConfigmapCmd.PersistentFlags().StringVarP(&ideOpts.ConfigFN, "config", "c", getEnvvar("GITPOD_INSTALLER_CONFIG", filepath.Join(dir, "devpod.config.yaml")), "path to the config file, use - for stdin")
+	ideConfigmapCmd.PersistentFlags().StringVarP(&ideOpts.ConfigFN, "config", "c", getEnvvar("DEVPOD_INSTALLER_CONFIG", filepath.Join(dir, "devpod.config.yaml")), "path to the config file, use - for stdin")
 	ideConfigmapCmd.PersistentFlags().StringVarP(&ideOpts.Namespace, "namespace", "n", getEnvvar("NAMESPACE", "default"), "namespace to deploy to")
 	ideConfigmapCmd.Flags().BoolVar(&ideOpts.UseExperimentalConfig, "use-experimental-config", false, "enable the use of experimental config that is prone to be changed")
 }

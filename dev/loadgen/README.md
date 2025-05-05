@@ -1,6 +1,6 @@
 # loadgen
 
-A load generator (framework) for Gitpod.
+A load generator (framework) for Devpod.
 
 **Note:** this is a development tool only - there's no support for this.
 
@@ -68,7 +68,7 @@ After the benchmark has completed, the command will print where the results are 
     "Class": "default",
     "NodeName": "workspace-ws-ephemeral-fo3-pool-wtcj",
     "Pod": "ws-d25c1a63-0319-4ecc-881d-68804a0d1e4a",
-    "Context": "https://github.com/gitpod-io/template-python-flask"
+    "Context": "https://github.com/khulnasoft/template-python-flask"
   },
   {
     "WorkspaceName": "black-wren-lqa4698w",
@@ -77,7 +77,7 @@ After the benchmark has completed, the command will print where the results are 
     "Class": "default",
     "NodeName": "workspace-ws-ephemeral-fo3-pool-wtcj",
     "Pod": "ws-95f24d47-8c0c-4249-be24-fcc5d4d7b6fb",
-    "Context": "https://github.com/gitpod-io/template-python-django"
+    "Context": "https://github.com/khulnasoft/template-python-django"
   },
   ...
 ```

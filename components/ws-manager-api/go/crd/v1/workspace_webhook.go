@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License-AGPL.txt in the project root for license information.
 
@@ -23,7 +23,7 @@ func (r *Workspace) SetupWebhookWithManager(mgr ctrl.Manager) error {
 
 // TODO(user): EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 
-//+kubebuilder:webhook:path=/mutate-workspace-gitpod-io-v1-workspace,mutating=true,failurePolicy=fail,sideEffects=None,groups=workspace.devpod.io,resources=workspaces,verbs=create;update,versions=v1,name=mworkspace.kb.io,admissionReviewVersions=v1
+//+kubebuilder:webhook:path=/mutate-workspace-khulnasoft-v1-workspace,mutating=true,failurePolicy=fail,sideEffects=None,groups=workspace.devpod.khulnasoft.com,resources=workspaces,verbs=create;update,versions=v1,name=mworkspace.kb.io,admissionReviewVersions=v1
 
 var _ webhook.Defaulter = &Workspace{}
 
@@ -35,7 +35,7 @@ func (r *Workspace) Default() {
 }
 
 // TODO(user): change verbs to "verbs=create;update;delete" if you want to enable deletion validation.
-//+kubebuilder:webhook:path=/validate-workspace-gitpod-io-v1-workspace,mutating=false,failurePolicy=fail,sideEffects=None,groups=workspace.devpod.io,resources=workspaces,verbs=create;update,versions=v1,name=vworkspace.kb.io,admissionReviewVersions=v1
+//+kubebuilder:webhook:path=/validate-workspace-khulnasoft-v1-workspace,mutating=false,failurePolicy=fail,sideEffects=None,groups=workspace.devpod.khulnasoft.com,resources=workspaces,verbs=create;update,versions=v1,name=vworkspace.kb.io,admissionReviewVersions=v1
 
 var _ webhook.Validator = &Workspace{}
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -58,9 +58,9 @@ func (*NoopExposedPorts) Expose(ctx context.Context, local uint32, public bool, 
 	return done
 }
 
-// GitpodExposedPorts uses a connection to the Gitpod server to implement
+// DevpodExposedPorts uses a connection to the Devpod server to implement
 // the ExposedPortsInterface.
-type GitpodExposedPorts struct {
+type DevpodExposedPorts struct {
 	WorkspaceID   string
 	InstanceID    string
 	WorkspaceUrl  string
@@ -79,9 +79,9 @@ type exposePortRequest struct {
 	done chan error
 }
 
-// NewGitpodExposedPorts creates a new instance of GitpodExposedPorts
-func NewGitpodExposedPorts(workspaceID string, instanceID string, workspaceUrl string, devpodService serverapi.APIInterface) *GitpodExposedPorts {
-	return &GitpodExposedPorts{
+// NewDevpodExposedPorts creates a new instance of DevpodExposedPorts
+func NewDevpodExposedPorts(workspaceID string, instanceID string, workspaceUrl string, devpodService serverapi.APIInterface) *DevpodExposedPorts {
+	return &DevpodExposedPorts{
 		WorkspaceID:   workspaceID,
 		InstanceID:    instanceID,
 		WorkspaceUrl:  workspaceUrl,
@@ -93,7 +93,7 @@ func NewGitpodExposedPorts(workspaceID string, instanceID string, workspaceUrl s
 	}
 }
 
-func (g *GitpodExposedPorts) getPortUrl(port uint32) string {
+func (g *DevpodExposedPorts) getPortUrl(port uint32) string {
 	u, err := url.Parse(g.WorkspaceUrl)
 	if err != nil {
 		return ""
@@ -102,7 +102,7 @@ func (g *GitpodExposedPorts) getPortUrl(port uint32) string {
 	return u.String()
 }
 
-func (g *GitpodExposedPorts) getPortProtocol(protocol string) string {
+func (g *DevpodExposedPorts) getPortProtocol(protocol string) string {
 	switch protocol {
 	case devpod.PortProtocolHTTP, devpod.PortProtocolHTTPS:
 		return protocol
@@ -111,7 +111,7 @@ func (g *GitpodExposedPorts) getPortProtocol(protocol string) string {
 	}
 }
 
-func (g *GitpodExposedPorts) existInLocalExposed(port uint32) bool {
+func (g *DevpodExposedPorts) existInLocalExposed(port uint32) bool {
 	for _, p := range g.localExposedPort {
 		if p == port {
 			return true
@@ -121,7 +121,7 @@ func (g *GitpodExposedPorts) existInLocalExposed(port uint32) bool {
 }
 
 // Observe starts observing the exposed ports until the context is canceled.
-func (g *GitpodExposedPorts) Observe(ctx context.Context) (<-chan []ExposedPort, <-chan error) {
+func (g *DevpodExposedPorts) Observe(ctx context.Context) (<-chan []ExposedPort, <-chan error) {
 	var (
 		reschan = make(chan []ExposedPort)
 		errchan = make(chan error, 1)
@@ -184,7 +184,7 @@ func (g *GitpodExposedPorts) Observe(ctx context.Context) (<-chan []ExposedPort,
 }
 
 // Listen starts listening to expose port requests
-func (g *GitpodExposedPorts) Run(ctx context.Context) {
+func (g *DevpodExposedPorts) Run(ctx context.Context) {
 	// process multiple parallel requests but process one by one to avoid server/ws-manager rate limitting
 	// if it does not help then we try to expose the same port again with the exponential backoff.
 	for {
@@ -197,7 +197,7 @@ func (g *GitpodExposedPorts) Run(ctx context.Context) {
 	}
 }
 
-func (g *GitpodExposedPorts) doExpose(req *exposePortRequest) {
+func (g *DevpodExposedPorts) doExpose(req *exposePortRequest) {
 	var err error
 	defer func() {
 		if err != nil {
@@ -238,7 +238,7 @@ func (g *GitpodExposedPorts) doExpose(req *exposePortRequest) {
 }
 
 // Expose exposes a port to the internet. Upon successful execution any Observer will be updated.
-func (g *GitpodExposedPorts) Expose(ctx context.Context, local uint32, public bool, protocol string) <-chan error {
+func (g *DevpodExposedPorts) Expose(ctx context.Context, local uint32, public bool, protocol string) <-chan error {
 	if protocol != devpod.PortProtocolHTTPS && protocol != devpod.PortProtocolHTTP {
 		protocol = devpod.PortProtocolHTTP
 	}

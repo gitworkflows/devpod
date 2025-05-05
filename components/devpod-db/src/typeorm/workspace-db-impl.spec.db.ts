@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -96,11 +96,11 @@ export class WorkspaceSpec {
                     creationTime: now,
                     organizationId: this.org,
                     contextURL: configuration.cloneUrl,
-                    description: "Gitpod",
+                    description: "Devpod",
                     ownerId: randomUUID(),
                     projectId: configuration.id,
                     context: {
-                        title: "Gitpod",
+                        title: "Devpod",
                         ref: configuration.branch,
                     },
                     config: {},

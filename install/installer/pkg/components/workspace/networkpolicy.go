@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -23,7 +23,7 @@ func networkpolicy(ctx *common.RenderContext) ([]runtime.Object, error) {
 	podSelectorLabels := map[string]string{
 		"app":                     "devpod",
 		"component":               Component,
-		"devpod.io/networkpolicy": "default",
+		"devpod.khulnasoft.com/networkpolicy": "default",
 	}
 
 	return []runtime.Object{&networkingv1.NetworkPolicy{

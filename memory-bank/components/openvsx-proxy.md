@@ -2,7 +2,7 @@
 
 ## Overview
 
-The OpenVSX-Proxy component in Gitpod is a caching proxy service for the OpenVSX registry, which is a repository for VS Code extensions. It stores frequently used requests to the OpenVSX registry and serves these cached responses when needed, particularly when the upstream registry is unavailable. This ensures that VS Code extensions remain accessible to Gitpod workspaces even during OpenVSX outages, improving the reliability and resilience of the IDE experience.
+The OpenVSX-Proxy component in Devpod is a caching proxy service for the OpenVSX registry, which is a repository for VS Code extensions. It stores frequently used requests to the OpenVSX registry and serves these cached responses when needed, particularly when the upstream registry is unavailable. This ensures that VS Code extensions remain accessible to Devpod workspaces even during OpenVSX outages, improving the reliability and resilience of the IDE experience.
 
 ## Purpose
 
@@ -48,7 +48,7 @@ The component operates as an HTTP server that intercepts requests for VS Code ex
 - **CORS Support**: Handles cross-origin requests appropriately
 - **Error Handling**: Provides fallback responses when upstream is unavailable
 - **Connection Pooling**: Configurable connection pooling for upstream requests
-- **Experiment Support**: Integration with Gitpod's experiment framework for A/B testing
+- **Experiment Support**: Integration with Devpod's experiment framework for A/B testing
 
 ### Monitoring and Metrics
 
@@ -94,7 +94,7 @@ The OpenVSX-Proxy component integrates with:
 2. **VS Code/Theia**: The IDE that requests extensions through the proxy
 3. **Redis**: Optional caching backend for distributed deployments
 4. **Prometheus**: For metrics collection and monitoring
-5. **Gitpod Experiment Framework**: For A/B testing and feature flags
+5. **Devpod Experiment Framework**: For A/B testing and feature flags
 
 ## Usage Patterns
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -26,7 +26,7 @@ import { HostContextProvider } from "../auth/host-context-provider";
 import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
 import { GithubRepositoryProvider } from "./github-repository-provider";
 
-@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("GITPOD_TEST_TOKEN_GITHUB")))
+@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("DEVPOD_TEST_TOKEN_GITHUB")))
 class TestGithubContextRepositoryProvider {
     protected provider: GithubRepositoryProvider;
     protected user: User;

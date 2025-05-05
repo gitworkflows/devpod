@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2023 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -16,7 +16,7 @@ metadata:
   name: snapshot-viewer-role
 rules:
 - apiGroups:
-  - workspace.devpod.io
+  - workspace.devpod.khulnasoft.com
   resources:
   - snapshots
   verbs:
@@ -24,7 +24,7 @@ rules:
   - list
   - watch
 - apiGroups:
-  - workspace.devpod.io
+  - workspace.devpod.khulnasoft.com
   resources:
   - snapshots/status
   verbs:

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -10,7 +10,7 @@ import (
 
 var idpCmd = &cobra.Command{
 	Use:   "idp",
-	Short: "Interact with Gitpod's OIDC identity provider",
+	Short: "Interact with Devpod's OIDC identity provider",
 }
 
 func init() {

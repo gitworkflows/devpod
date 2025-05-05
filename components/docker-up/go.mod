@@ -19,4 +19,4 @@ require (
 	github.com/vishvananda/netns v0.0.4 // indirect
 )
 
-replace github.com/khulnasoft/devpod/common-go => ../common-go // leeway
+replace github.com/khulnasoft/devpod/common-go => ../common-go // blazedock

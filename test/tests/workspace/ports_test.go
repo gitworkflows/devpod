@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -27,7 +27,7 @@ func TestRegularWorkspacePorts(t *testing.T) {
 	integration.SkipWithoutUsername(t, username)
 	integration.SkipWithoutUserToken(t, userToken)
 
-	// This branch exposes a python server on port 3000 as part of the Gitpod tasks.
+	// This branch exposes a python server on port 3000 as part of the Devpod tasks.
 	testRepo := "https://github.com/khulnasoft/devpod-test-repo/tree/integration-test/ports"
 	testRepoName := "devpod-test-repo"
 	wsLoc := fmt.Sprintf("/workspace/%s", testRepoName)
@@ -51,8 +51,8 @@ func TestRegularWorkspacePorts(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			serverOpts := []integration.GitpodServerOpt{integration.WithGitpodUser(username)}
-			server, err := api.GitpodServer(serverOpts...)
+			serverOpts := []integration.DevpodServerOpt{integration.WithDevpodUser(username)}
+			server, err := api.DevpodServer(serverOpts...)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -61,7 +61,7 @@ func TestRegularWorkspacePorts(t *testing.T) {
 			err = server.SetEnvVar(ctx, &devpod.UserEnvVarValue{
 				Name:              "SUPERVISOR_ADDR",
 				Value:             `10.0.5.2:22999`,
-				RepositoryPattern: "gitpod-io/" + testRepoName,
+				RepositoryPattern: "khulnasoft/" + testRepoName,
 			})
 			if err != nil {
 				t.Fatal(err)
@@ -69,14 +69,14 @@ func TestRegularWorkspacePorts(t *testing.T) {
 			defer func() {
 				err := server.DeleteEnvVar(ctx, &devpod.UserEnvVarValue{
 					Name:              "SUPERVISOR_ADDR",
-					RepositoryPattern: "gitpod-io/" + testRepoName,
+					RepositoryPattern: "khulnasoft/" + testRepoName,
 				})
 				if err != nil {
 					t.Fatal(err)
 				}
 			}()
 
-			nfo, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, testRepo, username, api, integration.WithGitpodUser(username))
+			nfo, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, testRepo, username, api, integration.WithDevpodUser(username))
 			if err != nil {
 				t.Fatal(err)
 			}

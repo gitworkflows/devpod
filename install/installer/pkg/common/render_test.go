@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 /// Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -193,9 +193,9 @@ func TestRepoName(t *testing.T) {
 		DropImageRepo *bool
 	}{
 		{
-			Name: "gitpod-io/workspace-full",
+			Name: "khulnasoft/workspace-full",
 			Expectation: Expectation{
-				Result: "docker.io/gitpod-io/workspace-full",
+				Result: "docker.io/khulnasoft/workspace-full",
 			},
 		},
 		{
@@ -214,7 +214,7 @@ func TestRepoName(t *testing.T) {
 		},
 		// Drop repo, no namespace
 		{
-			Name: "gitpod-io/workspace-full",
+			Name: "khulnasoft/workspace-full",
 			Expectation: Expectation{
 				Result: "some.registry.com/workspace-full",
 			},
@@ -241,7 +241,7 @@ func TestRepoName(t *testing.T) {
 		},
 		// Drop repo, namespace
 		{
-			Name: "gitpod-io/workspace-full",
+			Name: "khulnasoft/workspace-full",
 			Expectation: Expectation{
 				Result: "some.registry.com/devpod/workspace-full",
 			},

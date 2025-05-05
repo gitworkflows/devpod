@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -232,7 +232,7 @@ export default function EnvVars() {
                         Variables are used to store information like passwords.{" "}
                         <a
                             className="gp-link"
-                            href="https://www.devpod.io/docs/configure/projects/environment-variables#environment-variables"
+                            href="https://www.devpod.khulnasoft.com/docs/configure/projects/environment-variables#environment-variables"
                             target="_blank"
                             rel="noreferrer"
                         >

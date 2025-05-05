@@ -191,7 +191,7 @@ message CreateAndStartWorkspaceRequest {
   }
 
   // metadata is data associated with this workspace that's required for other
-  // parts of Gitpod to function
+  // parts of Devpod to function
   WorkspaceMetadata metadata = 1;
 
   oneof source {
@@ -279,7 +279,7 @@ message Workspace {
   string id = 1;
 
   // Metadata is data associated with this workspace that's required for other
-  // parts of Gitpod to function
+  // parts of Devpod to function
   WorkspaceMetadata metadata = 2;
 
   // Spec is the configuration of the workspace that's required for the
@@ -293,7 +293,7 @@ message Workspace {
 // WorkspaceMetadata is data associated with a workspace that's required for
 // other parts of the system to function
 message WorkspaceMetadata {
-  // owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+  // owner_id is the ID of the Devpod user to whom we'll bill this workspace and
   // who we consider responsible for its content
   string owner_id = 1;
 
@@ -389,7 +389,7 @@ message WorkspaceSpec {
 
   // subassembly_references is a list of workspace IDs that this workspace
   // depends on. For example:
-  //   index.docker.io/gitpod-io/subassmeblies/code:latest
+  //   index.docker.io/khulnasoft/subassmeblies/code:latest
   repeated string subassembly_references = 10;
 
   // last_user_activity is the time when the user last interacted with the
@@ -782,7 +782,7 @@ message UpdateWorkspaceRequest {
   string workspace_id = 1;
 
   // metadata is data associated with this workspace that's required for other
-  // parts of Gitpod to function
+  // parts of Devpod to function
   optional UpdateWorkspaceMetadata metadata = 2;
 
   // spec is the configuration of the workspace that's required for the
@@ -937,7 +937,7 @@ message WorkspaceSession {
     // workspace_image_size is the size of the workspace image in bytes
     int64 workspace_image_size = 1;
 
-    // total_image_size is the total size of the image in bytes (includes Gitpod-specific layers like IDE)
+    // total_image_size is the total size of the image in bytes (includes Devpod-specific layers like IDE)
     int64 total_image_size = 2;
 
     // initializer_metrics are all metrics exported from the content initializer on workspace start

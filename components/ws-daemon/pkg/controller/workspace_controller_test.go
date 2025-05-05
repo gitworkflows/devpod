@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -145,13 +145,13 @@ func newWorkspace(name, namespace string, phase workspacev1.WorkspacePhase) *wor
 
 	return &workspacev1.Workspace{
 		TypeMeta: metav1.TypeMeta{
-			APIVersion: "workspace.devpod.io/v1",
+			APIVersion: "workspace.devpod.khulnasoft.com/v1",
 			Kind:       "Workspace",
 		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:       name,
 			Namespace:  namespace,
-			Finalizers: []string{workspacev1.GitpodFinalizerName},
+			Finalizers: []string{workspacev1.DevpodFinalizerName},
 		},
 		Spec: workspacev1.WorkspaceSpec{
 			Ownership: workspacev1.Ownership{

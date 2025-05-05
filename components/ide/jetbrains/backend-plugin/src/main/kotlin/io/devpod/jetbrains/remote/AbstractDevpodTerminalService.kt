@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -28,11 +28,11 @@ import java.util.concurrent.CompletableFuture
 import java.util.concurrent.ExecutionException
 import kotlin.coroutines.coroutineContext
 
-abstract class AbstractGitpodTerminalService(project: Project) : Disposable {
+abstract class AbstractDevpodTerminalService(project: Project) : Disposable {
     private val lifetime = defineNestedLifetime()
-    private val terminalServiceFutureStub = TerminalServiceGrpc.newFutureStub(GitpodManager.supervisorChannel)
-    private val terminalServiceStub = TerminalServiceGrpc.newStub(GitpodManager.supervisorChannel)
-    private val statusServiceStub = StatusServiceGrpc.newStub(GitpodManager.supervisorChannel)
+    private val terminalServiceFutureStub = TerminalServiceGrpc.newFutureStub(DevpodManager.supervisorChannel)
+    private val terminalServiceStub = TerminalServiceGrpc.newStub(DevpodManager.supervisorChannel)
+    private val statusServiceStub = StatusServiceGrpc.newStub(DevpodManager.supervisorChannel)
 
     init {
         start()
@@ -88,7 +88,7 @@ abstract class AbstractGitpodTerminalService(project: Project) : Disposable {
                 thisLogger().warn("devpod: found no terminal for task ${task.id}, expecting ${task.terminal}")
                 return@forEachIndexed
             }
-            val title = terminal.title.takeIf { !it.isNullOrBlank() } ?: "Gitpod Task ${index + 1}"
+            val title = terminal.title.takeIf { !it.isNullOrBlank() } ?: "Devpod Task ${index + 1}"
             thisLogger().info("devpod: attaching task ${terminal.title} (${task.terminal}) with title $title")
             createAttachedSharedTerminal(title, terminal)
             thisLogger().info("devpod: attached task ${terminal.title} (${task.terminal})")

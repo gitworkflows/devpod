@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -61,8 +61,8 @@ func TestPythonExtWorkspace(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			serverOpts := []integration.GitpodServerOpt{integration.WithGitpodUser(username)}
-			server, err := api.GitpodServer(serverOpts...)
+			serverOpts := []integration.DevpodServerOpt{integration.WithDevpodUser(username)}
+			server, err := api.DevpodServer(serverOpts...)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -78,7 +78,7 @@ func TestPythonExtWorkspace(t *testing.T) {
 				t.Fatalf("cannot set ide to vscode insiders: %q", err)
 			}
 
-			nfo, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "github.com/gitpod-io/python-test-workspace", username, api)
+			nfo, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "github.com/khulnasoft/python-test-workspace", username, api)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -103,12 +103,12 @@ func TestPythonExtWorkspace(t *testing.T) {
 			}
 
 			hash := sha256.Sum256([]byte(userId + serverConfig.Session.Secret))
-			secretKey, err := api.CreateGitpodOneTimeSecret(fmt.Sprintf("%x", hash))
+			secretKey, err := api.CreateDevpodOneTimeSecret(fmt.Sprintf("%x", hash))
 			if err != nil {
 				t.Fatal(err)
 			}
 
-			sessionCookie, err := api.GitpodSessionCookie(userId, secretKey)
+			sessionCookie, err := api.DevpodSessionCookie(userId, secretKey)
 			if err != nil {
 				t.Fatal(err)
 			}

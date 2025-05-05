@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -43,8 +43,8 @@ func TestSSHGatewayConnection(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			serverOpts := []integration.GitpodServerOpt{integration.WithGitpodUser(username)}
-			server, err := api.GitpodServer(serverOpts...)
+			serverOpts := []integration.DevpodServerOpt{integration.WithDevpodUser(username)}
+			server, err := api.DevpodServer(serverOpts...)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -65,7 +65,7 @@ func TestSSHGatewayConnection(t *testing.T) {
 World`,
 			})
 
-			nfo, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "github.com/gitpod-io/empty", username, api)
+			nfo, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "github.com/khulnasoft/empty", username, api)
 			if err != nil {
 				t.Fatal(err)
 			}

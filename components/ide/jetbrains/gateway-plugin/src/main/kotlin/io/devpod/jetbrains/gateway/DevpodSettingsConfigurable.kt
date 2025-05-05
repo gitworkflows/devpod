@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -12,18 +12,18 @@ import com.intellij.ui.components.JBTextField
 import com.intellij.ui.dsl.builder.*
 import com.intellij.ui.layout.ValidationInfoBuilder
 
-class GitpodSettingsConfigurable : BoundConfigurable("Gitpod") {
+class DevpodSettingsConfigurable : BoundConfigurable("Devpod") {
 
     override fun createPanel(): DialogPanel {
-        val state = service<GitpodSettingsState>()
+        val state = service<DevpodSettingsState>()
         return panel {
             row {
                 textField()
-                    .label("Gitpod Host:", LabelPosition.LEFT)
+                    .label("Devpod Host:", LabelPosition.LEFT)
                     .align(Align.FILL)
                     .bindText(state::devpodHost)
-                    .validationOnApply(::validateGitpodHost)
-                    .validationOnInput(::validateGitpodHost)
+                    .validationOnApply(::validateDevpodHost)
+                    .validationOnInput(::validateDevpodHost)
             }
             row {
                 checkBox("Force SSH over HTTP tunnel")
@@ -40,7 +40,7 @@ class GitpodSettingsConfigurable : BoundConfigurable("Gitpod") {
         }
     }
 
-    private fun validateGitpodHost(
+    private fun validateDevpodHost(
         builder: ValidationInfoBuilder,
         devpodHost: JBTextField
     ): ValidationInfo? {

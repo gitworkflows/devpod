@@ -2,19 +2,19 @@
 
 ## Overview
 
-The Scheduler-Extender component in Gitpod appears to be a Kubernetes scheduler extender that enhances the default Kubernetes scheduling capabilities. It is implemented as a wrapper around an external image hosted on AWS ECR. Kubernetes scheduler extenders allow for custom scheduling decisions beyond what the default scheduler provides, enabling more sophisticated workload placement based on custom criteria.
+The Scheduler-Extender component in Devpod appears to be a Kubernetes scheduler extender that enhances the default Kubernetes scheduling capabilities. It is implemented as a wrapper around an external image hosted on AWS ECR. Kubernetes scheduler extenders allow for custom scheduling decisions beyond what the default scheduler provides, enabling more sophisticated workload placement based on custom criteria.
 
 ## Purpose
 
 While specific implementation details are limited in the codebase, based on the component's name and general knowledge of Kubernetes scheduler extenders, the primary purposes of the Scheduler-Extender component likely include:
 
-- Extend Kubernetes scheduling decisions for Gitpod workspaces
-- Implement custom scheduling logic specific to Gitpod's requirements
+- Extend Kubernetes scheduling decisions for Devpod workspaces
+- Implement custom scheduling logic specific to Devpod's requirements
 - Optimize workspace placement across cluster nodes
 - Consider specialized resource requirements for workspaces
 - Support advanced scheduling features not available in the default Kubernetes scheduler
 - Enable workload-specific placement policies
-- Integrate with Gitpod's workspace management system
+- Integrate with Devpod's workspace management system
 - Improve resource utilization across the cluster
 - Support specialized node selection criteria
 
@@ -40,14 +40,14 @@ Based on general knowledge of Kubernetes scheduler extenders, the component like
 
 - **Workspace-Specific Criteria**: Custom criteria for workspace scheduling
 - **Resource Optimization**: Advanced resource allocation strategies
-- **Node Filtering**: Custom filtering of nodes based on Gitpod-specific requirements
+- **Node Filtering**: Custom filtering of nodes based on Devpod-specific requirements
 - **Node Prioritization**: Custom scoring of nodes to optimize workspace placement
 - **Affinity Rules**: Implementation of specialized affinity/anti-affinity rules
 
 ### Integration Capabilities
 
 - **Kubernetes API Integration**: Integration with the Kubernetes scheduler
-- **Gitpod Component Awareness**: Awareness of other Gitpod components' requirements
+- **Devpod Component Awareness**: Awareness of other Devpod components' requirements
 - **Node Labeling**: Potential integration with node labels for scheduling decisions
 - **Resource Management**: Custom resource tracking and allocation
 
@@ -56,7 +56,7 @@ Based on general knowledge of Kubernetes scheduler extenders, the component like
 The component is likely configured through:
 
 1. **Kubernetes Scheduler Configuration**: Registration as an extender in the kube-scheduler configuration
-2. **Custom Configuration**: Specific configuration for Gitpod's scheduling requirements
+2. **Custom Configuration**: Specific configuration for Devpod's scheduling requirements
 3. **Version Management**: Versioned through the `schedulerExtenderVersion` variable
 
 ## Integration Points
@@ -76,9 +76,9 @@ The Scheduler-Extender component likely integrates with:
 1. Kubernetes scheduler receives a pod creation request for a workspace
 2. Scheduler performs its default filtering and prioritization
 3. Scheduler calls the scheduler-extender for custom filtering
-4. Scheduler-extender applies Gitpod-specific logic to filter nodes
+4. Scheduler-extender applies Devpod-specific logic to filter nodes
 5. Scheduler calls the scheduler-extender for custom prioritization
-6. Scheduler-extender scores nodes based on Gitpod-specific criteria
+6. Scheduler-extender scores nodes based on Devpod-specific criteria
 7. Kubernetes scheduler combines all scores and selects the best node
 8. Workspace pod is scheduled on the selected node
 
@@ -105,10 +105,10 @@ As a scheduler extender, the component would need to consider:
 The component appears to be implemented as a wrapper around an external image, suggesting that:
 
 1. The core scheduling logic is maintained separately
-2. The component may be part of Gitpod's enterprise offering
+2. The component may be part of Devpod's enterprise offering
 3. The implementation details are not fully open-sourced
 
-Based on the CODEOWNERS file, the component is maintained by the Gitpod Engine team and Enterprise team.
+Based on the CODEOWNERS file, the component is maintained by the Devpod Engine team and Enterprise team.
 
 ## Related Components
 
@@ -119,4 +119,4 @@ Based on the CODEOWNERS file, the component is maintained by the Gitpod Engine t
 
 ## Notes
 
-This documentation is based on limited information available in the codebase. The scheduler-extender component appears to be a wrapper around an external image, with minimal code present in the open-source repository. For more detailed information, internal Gitpod documentation or the team responsible for the component (Engine and Enterprise teams) should be consulted.
+This documentation is based on limited information available in the codebase. The scheduler-extender component appears to be a wrapper around an external image, with minimal code present in the open-source repository. For more detailed information, internal Devpod documentation or the team responsible for the component (Engine and Enterprise teams) should be consulted.

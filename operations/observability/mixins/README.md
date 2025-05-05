@@ -1,6 +1,6 @@
-# Gitpod's Mixin
+# Devpod's Mixin
 
-Gitpod's mixin is based on the [Prometheus Monitoring Mixins project](https://github.com/monitoring-mixins/docs/blob/master/design.pdf). Mixins are jsonnet packages that bundle together [Prometheus Alerts](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/), [Prometheus Recording Rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) and [Grafana Dashboards](https://grafana.com/grafana/).
+Devpod's mixin is based on the [Prometheus Monitoring Mixins project](https://github.com/monitoring-mixins/docs/blob/master/design.pdf). Mixins are jsonnet packages that bundle together [Prometheus Alerts](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/), [Prometheus Recording Rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) and [Grafana Dashboards](https://grafana.com/grafana/).
 
 ## Table of contents
 
@@ -22,7 +22,7 @@ Gitpod's mixin is based on the [Prometheus Monitoring Mixins project](https://gi
 
 ## Folders and Teams
 
-Folders are organized following Gitpod as an organization, while also adding an extra folder for dashboards and alerts that involves multiple teams (Good place for broad overviews and SLOs):
+Folders are organized following Devpod as an organization, while also adding an extra folder for dashboards and alerts that involves multiple teams (Good place for broad overviews and SLOs):
 * Meta
 * Workspace
 * IDE
@@ -193,7 +193,7 @@ When developing new recording rules, please use [Prometheus' recording rule nami
 
 [Alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) are definitions of alerts, where you can optionally include additional metadata to them.
 
-Alerting rules that we develop have a direct impact on the reliability of our systems, and also on the pressure put on top of the person on-call. To make the duty of the person on-call more efficient, and reduce stress at the same time, we require that every new `critical` alert has a corresponding runbook at the [observability repository](https://github.com/gitpod-io/observability). Please don't forget to open a new Pull Request there!
+Alerting rules that we develop have a direct impact on the reliability of our systems, and also on the pressure put on top of the person on-call. To make the duty of the person on-call more efficient, and reduce stress at the same time, we require that every new `critical` alert has a corresponding runbook at the [observability repository](https://github.com/khulnasoft/observability). Please don't forget to open a new Pull Request there!
 
 It doesn't matter how they are imported from each teams' `mixin.libsonnet` file, the only requirement is that they end up in an object called `prometheusAlerts`.
 
@@ -271,11 +271,11 @@ We also have this same validation running in our CI, to make sure we don't merge
 
 ## Deploying merged changes to production
 
-Alright, you got your changes merged, now what? The changes need to land on our [gitpod-io/observability](https://github.com/gitpod-io/observability) repository by updating the `vendor/` folder.
+Alright, you got your changes merged, now what? The changes need to land on our [khulnasoft/observability](https://github.com/khulnasoft/observability) repository by updating the `vendor/` folder.
 
-The `vendor/` folder can be updated by triggering this [workflow](https://github.com/gitpod-io/observability/actions/workflows/dep-update.yaml). Yes, you just need to click the button and the workflow will open a new Pull Request with the updates.
+The `vendor/` folder can be updated by triggering this [workflow](https://github.com/khulnasoft/observability/actions/workflows/dep-update.yaml). Yes, you just need to click the button and the workflow will open a new Pull Request with the updates.
 
-After all CI checks pass, it is safe to merge the Pull Request. It is now ArgoCD's duty to synchronize the monitoring-satellite applications across all clusters. If you want to check progress, you can do that through [ArgoCD UI](https://argo-cd.gitpod-io-dev.com/applications?labels=application%253Dmonitoring-satellite).
+After all CI checks pass, it is safe to merge the Pull Request. It is now ArgoCD's duty to synchronize the monitoring-satellite applications across all clusters. If you want to check progress, you can do that through [ArgoCD UI](https://argo-cd.khulnasoft-dev.com/applications?labels=application%253Dmonitoring-satellite).
 
 ## FAQ
 
@@ -289,7 +289,7 @@ It's tempting to add every simple piece of information in a dashboard, however, 
 
 ### How is our mixin consumed?
 
-They are consumed by our git repository with the monitoring system configuration. To be more precise, a jsonnet package manager(jsonnet-bundler) can import jsonnet code from git repositories, as long as they are added to the [jsonnetfile.json](https://github.com/gitpod-io/observability/blob/main/jsonnetfile.json).
+They are consumed by our git repository with the monitoring system configuration. To be more precise, a jsonnet package manager(jsonnet-bundler) can import jsonnet code from git repositories, as long as they are added to the [jsonnetfile.json](https://github.com/khulnasoft/observability/blob/main/jsonnetfile.json).
 
 This `jsonnetfile.json` lists all dependencies that we use, which includes this very mixin. While also pointing to the specific version of each dependency(A git branch or commit SHA).
 
@@ -305,15 +305,15 @@ The following combination of annotations can be used to deploy monitoring satell
 * Use harvester previews. Monitoring-satellite is deployed on those previews by default
 ```
 /werft with-vm=true
-# Just in case your PR requires extra configuration on Prometheus side (and you have a new branch on https://github.com/gitpod-io/observability with such changes)
+# Just in case your PR requires extra configuration on Prometheus side (and you have a new branch on https://github.com/khulnasoft/observability with such changes)
 # You can add the line below
 /werft withObservabilityBranch=<my-branch>
 ```
 
-* Use Gitpod helm charts to deploy a preview, and add the observability annotation
+* Use Devpod helm charts to deploy a preview, and add the observability annotation
 ```
 /werft with-helm=true with-observability=true
-# Just in case your PR requires extra configuration on Prometheus side (and you have a new branch on https://github.com/gitpod-io/observability with such changes)
+# Just in case your PR requires extra configuration on Prometheus side (and you have a new branch on https://github.com/khulnasoft/observability with such changes)
 # You can add the line below
 /werft withObservabilityBranch=<my-branch>
 ```

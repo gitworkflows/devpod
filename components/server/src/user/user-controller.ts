@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -18,7 +18,7 @@ import { parseWorkspaceIdFromHostname } from "@devpod/devpod-protocol/lib/util/p
 import { SessionHandler } from "../session-handler";
 import { URL } from "url";
 import { getRequestingClientInfo } from "../express-util";
-import { GitpodToken, GitpodTokenType, User } from "@devpod/devpod-protocol";
+import { DevpodToken, DevpodTokenType, User } from "@devpod/devpod-protocol";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { reportJWTCookieIssued } from "../prometheus-metrics";
 import {
@@ -31,7 +31,7 @@ import { OneTimeSecretServer } from "../one-time-secret-server";
 import { ClientMetadata } from "../websocket/websocket-connection-manager";
 import * as fs from "fs/promises";
 import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { GitpodServerImpl } from "../workspace/devpod-server-impl";
+import { DevpodServerImpl } from "../workspace/devpod-server-impl";
 import { StopWorkspacePolicy } from "@devpod/ws-manager/lib";
 import { UserService } from "./user-service";
 import { WorkspaceService } from "../workspace/workspace-service";
@@ -40,7 +40,7 @@ import { SubjectId } from "../auth/subject-id";
 import { TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
 
 export const ServerFactory = Symbol("ServerFactory");
-export type ServerFactory = () => GitpodServerImpl;
+export type ServerFactory = () => DevpodServerImpl;
 
 @injectable()
 export class UserController {
@@ -413,7 +413,7 @@ export class UserController {
 
                 await runWithSubjectId(SubjectId.fromUserId(user.id), async () => {
                     const resourceGuard = new FGAResourceAccessGuard(user.id, new OwnerResourceGuard(user.id));
-                    const server = this.createGitpodServer(user, resourceGuard);
+                    const server = this.createDevpodServer(user, resourceGuard);
                     try {
                         await server.sendHeartBeat({}, { wasClosed: true, instanceId: instanceID });
                         /** no await */ server
@@ -475,10 +475,10 @@ export class UserController {
 
                     const token = crypto.randomBytes(30).toString("hex");
                     const tokenHash = crypto.createHash("sha256").update(token, "utf8").digest("hex");
-                    const dbToken: GitpodToken = {
+                    const dbToken: DevpodToken = {
                         tokenHash,
                         name: `local-app`,
-                        type: GitpodTokenType.MACHINE_AUTH_TOKEN,
+                        type: DevpodTokenType.MACHINE_AUTH_TOKEN,
                         userId: req.user.id,
                         scopes: [
                             "function:getWorkspaces",
@@ -498,7 +498,7 @@ export class UserController {
                         ],
                         created: new Date().toISOString(),
                     };
-                    await this.userDb.storeGitpodToken(dbToken);
+                    await this.userDb.storeDevpodToken(dbToken);
 
                     const otsExpirationTime = new Date();
                     otsExpirationTime.setMinutes(otsExpirationTime.getMinutes() + 2);
@@ -581,7 +581,7 @@ export class UserController {
 
         // If the context URL contains a known auth host, just use this
         if (returnToURL) {
-            // returnToURL -> https://devpod.io/#https://github.com/theia-ide/theia"
+            // returnToURL -> https://devpod.khulnasoft.com/#https://github.com/theia-ide/theia"
             const hash = decodeURIComponent(new URL(decodeURIComponent(returnToURL)).hash);
             const value = hash.substr(1); // to remove the leading #
             let contextUrlHost: string | undefined;
@@ -622,7 +622,7 @@ export class UserController {
 
         if (
             this.urlStartsWith(returnToURL, this.config.hostUrl.toString()) ||
-            this.urlStartsWith(returnToURL, "https://www.devpod.io")
+            this.urlStartsWith(returnToURL, "https://www.devpod.khulnasoft.com")
         ) {
             return returnToURL;
         }
@@ -631,7 +631,7 @@ export class UserController {
         return;
     }
 
-    private createGitpodServer(user: User, resourceGuard: ResourceAccessGuard) {
+    private createDevpodServer(user: User, resourceGuard: ResourceAccessGuard) {
         const server = this.serverFactory();
         server.initialize(undefined, user.id, resourceGuard, ClientMetadata.from(user.id), undefined, {});
         return server;

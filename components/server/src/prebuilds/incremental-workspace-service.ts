@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -85,7 +85,7 @@ export class IncrementalWorkspaceService {
 
         const [recentPrebuilds, imageSource] = await Promise.allSettled([
             // Note: This query returns only not-garbage-collected prebuilds in order to reduce cardinality
-            // (e.g., at the time of writing, the Gitpod repository has 16K+ prebuilds, but only ~300 not-garbage-collected)
+            // (e.g., at the time of writing, the Devpod repository has 16K+ prebuilds, but only ~300 not-garbage-collected)
             this.workspaceDB.findPrebuildsWithWorkspace(projectId),
             this.imageSourceProvider.getImageSource({}, user, context, config),
         ]);

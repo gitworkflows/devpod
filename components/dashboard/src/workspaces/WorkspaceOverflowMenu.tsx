@@ -1,10 +1,10 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { GitpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
+import { DevpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { ContextMenuEntry } from "../components/ContextMenu";
 import { ItemFieldContextMenu } from "../components/ItemsList";
@@ -82,7 +82,7 @@ export const WorkspaceEntryOverflowMenu: FunctionComponent<WorkspaceEntryOverflo
     // Can we use `/start#${workspace.id}` instead?
     const startUrl = useMemo(
         () =>
-            new GitpodHostUrl(window.location.href).with({
+            new DevpodHostUrl(window.location.href).with({
                 pathname: "/start/",
                 hash: "#" + workspace.id,
             }),
@@ -92,7 +92,7 @@ export const WorkspaceEntryOverflowMenu: FunctionComponent<WorkspaceEntryOverflo
     // Can we use `/workspace-download/get/${workspace.id}` instead?
     const downloadURL = useMemo(
         () =>
-            new GitpodHostUrl(window.location.href)
+            new DevpodHostUrl(window.location.href)
                 .with({
                     pathname: `/workspace-download/get/${workspace.id}`,
                 })

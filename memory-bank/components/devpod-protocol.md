@@ -1,14 +1,14 @@
-# Gitpod Protocol Component
+# Devpod Protocol Component
 
 ## Overview
 
-The Gitpod Protocol component serves as the core type definition and shared protocol library for the Gitpod platform. It defines the data structures, interfaces, and utility functions that are used across various components of the system, providing a consistent and type-safe way to communicate between services.
+The Devpod Protocol component serves as the core type definition and shared protocol library for the Devpod platform. It defines the data structures, interfaces, and utility functions that are used across various components of the system, providing a consistent and type-safe way to communicate between services.
 
 ## Purpose
 
-The primary purposes of the Gitpod Protocol component are:
+The primary purposes of the Devpod Protocol component are:
 - Define shared data structures and interfaces
-- Provide type definitions for core Gitpod entities
+- Provide type definitions for core Devpod entities
 - Implement utility functions for common operations
 - Enable type-safe communication between services
 - Define service interfaces and contracts
@@ -18,7 +18,7 @@ The primary purposes of the Gitpod Protocol component are:
 
 ## Architecture
 
-The Gitpod Protocol component is primarily a TypeScript library with additional language bindings for Go and Java. It consists of several key modules:
+The Devpod Protocol component is primarily a TypeScript library with additional language bindings for Go and Java. It consists of several key modules:
 
 1. **Core Protocol**: Defines the fundamental data structures and interfaces
 2. **Service Interfaces**: Defines the contracts for various services
@@ -27,7 +27,7 @@ The Gitpod Protocol component is primarily a TypeScript library with additional 
 5. **Utilities**: Offers common helper functions and tools
 6. **Experiments**: Supports feature flagging and experimentation
 
-The component is designed to be imported by other components that need to interact with Gitpod's data model or services.
+The component is designed to be imported by other components that need to interact with Devpod's data model or services.
 
 ## Key Files and Structure
 
@@ -44,13 +44,13 @@ The component is designed to be imported by other components that need to intera
 
 ## Core Data Structures
 
-The Gitpod Protocol defines numerous core data structures, including:
+The Devpod Protocol defines numerous core data structures, including:
 
 ### User and Authentication
 - `User`: User account information
 - `Identity`: Authentication provider identity
 - `Token`: Authentication tokens
-- `GitpodToken`: API tokens
+- `DevpodToken`: API tokens
 - `AuthProviderInfo`: Authentication provider metadata
 - `AuthProviderEntry`: Authentication provider configuration
 
@@ -84,10 +84,10 @@ The Gitpod Protocol defines numerous core data structures, including:
 
 ## Service Interfaces
 
-The protocol defines interfaces for various Gitpod services:
+The protocol defines interfaces for various Devpod services:
 
-- `GitpodClient`: Client-side interface for Gitpod service
-- `GitpodServer`: Server-side interface for Gitpod service
+- `DevpodClient`: Client-side interface for Devpod service
+- `DevpodServer`: Server-side interface for Devpod service
 - `HeadlessLogService`: Service for headless workspace logs
 - `WorkspaceInstancePort`: Service for workspace ports
 - `IDEFrontendService`: Service for IDE frontend integration
@@ -122,7 +122,7 @@ The protocol provides encryption utilities:
 
 ## Language Bindings
 
-The Gitpod Protocol provides bindings for multiple languages:
+The Devpod Protocol provides bindings for multiple languages:
 
 ### TypeScript/JavaScript
 - Primary implementation
@@ -138,7 +138,7 @@ The Gitpod Protocol provides bindings for multiple languages:
 
 ## Integration Points
 
-The Gitpod Protocol integrates with:
+The Devpod Protocol integrates with:
 1. **Server**: Uses protocol definitions for API endpoints
 2. **Dashboard**: Uses protocol for client-server communication
 3. **Workspace**: Uses protocol for workspace configuration
@@ -147,7 +147,7 @@ The Gitpod Protocol integrates with:
 
 ## Common Usage Patterns
 
-The Gitpod Protocol is typically used to:
+The Devpod Protocol is typically used to:
 1. Define data structures for database entities
 2. Specify API contracts between services
 3. Implement type-safe communication
@@ -158,6 +158,6 @@ The Gitpod Protocol is typically used to:
 
 - **Server**: Implements the server-side of the protocol
 - **Dashboard**: Implements the client-side of the protocol
-- **Gitpod DB**: Persists entities defined in the protocol
+- **Devpod DB**: Persists entities defined in the protocol
 - **Workspace Manager**: Uses workspace-related protocol definitions
 - **IDE Service**: Uses IDE-related protocol definitions

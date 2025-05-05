@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -22,8 +22,8 @@ service InfoService {
 message WorkspaceInfoRequest {}
 
 message WorkspaceInfoResponse {
-    message GitpodAPI {
-        // endpoint is the websocket URL on which the token-accessible Gitpod API is served on
+    message DevpodAPI {
+        // endpoint is the websocket URL on which the token-accessible Devpod API is served on
         string endpoint = 1;
         // host is the host of the endpoint. Use this host to ask supervisor a token.
         string host = 2;
@@ -49,10 +49,10 @@ message WorkspaceInfoResponse {
     // user_home is the path to the user's home.
     string user_home = 6;
 
-    // GitpodAPI provides information to reach the Gitpod server API.
-    GitpodAPI devpod_api = 7;
+    // DevpodAPI provides information to reach the Devpod server API.
+    DevpodAPI devpod_api = 7;
 
-    // devpod_host provides Gitpod host URL.
+    // devpod_host provides Devpod host URL.
     string devpod_host = 8;
 
     // workspace_context_url is an URL for which the workspace was created.
@@ -67,7 +67,7 @@ message WorkspaceInfoResponse {
     // repository is a repository from which this workspace was created
     Repository repository = 10;
 
-    // workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+    // workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
     string workspace_cluster_host = 11;
 
     // workspace_url is an URL for which the workspace is accessed.

@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -134,7 +134,7 @@ export const getLatestInstallerVersions = async (version?: string) => {
     const installationVersion = await getInstallerVersion(version);
     console.log("Fetching installer versions for", installationVersion);
     const versionData =
-        await $`docker run --rm ghcr.io/devpod-core-dev/build/versions:${installationVersion} cat /versions.yaml`
+        await $`docker run --rm khulnasoft/devpod-environment/build/versions:${installationVersion} cat /versions.yaml`
             .text()
             .catch((e) => {
                 throw new Error("Failed to get installer versions: " + e);
@@ -185,13 +185,13 @@ export const getLatestInstallerVersions = async (version?: string) => {
 
 export const renderInstallerIDEConfigMap = async (version?: string) => {
     const installationVersion = await getInstallerVersion(version);
-    await $`docker run --rm -v /tmp:/tmp ghcr.io/devpod-core-dev/build/installer:${installationVersion} config init --overwrite --log-level=error -c /tmp/devpod.config.yaml`.catch(
+    await $`docker run --rm -v /tmp:/tmp khulnasoft/devpod-environment/build/installer:${installationVersion} config init --overwrite --log-level=error -c /tmp/devpod.config.yaml`.catch(
         (e) => {
             throw new Error("Failed to render devpod.config.yaml: " + e);
         },
     );
     const ideConfigMapStr =
-        await $`cat /tmp/devpod.config.yaml | docker run -i --rm ghcr.io/devpod-core-dev/build/installer:${installationVersion} ide-configmap -c -`
+        await $`cat /tmp/devpod.config.yaml | docker run -i --rm khulnasoft/devpod-environment/build/installer:${installationVersion} ide-configmap -c -`
             .text()
             .catch((e) => {
                 throw new Error(`Failed to render ide-configmap: ` + e);

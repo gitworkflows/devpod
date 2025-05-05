@@ -34,7 +34,7 @@ message InitWorkspaceRequest {
     // ID is a unique identifier of this workspace. No other workspace with the same name must exist in the realm of this daemon
     string id = 1;
 
-    // Metadata is data associated with this workspace that's required for other parts of Gitpod to function
+    // Metadata is data associated with this workspace that's required for other parts of Devpod to function
     WorkspaceMetadata metadata = 2;
 
     // Initializer specifies how the workspace is to be initialized
@@ -67,7 +67,7 @@ message InitWorkspaceRequest {
 
 // WorkspaceMetadata is data associated with a workspace that's required for other parts of the system to function
 message WorkspaceMetadata {
-    // owner is the ID of the Gitpod user to whom we'll bill this workspace and who we consider responsible for its content
+    // owner is the ID of the Devpod user to whom we'll bill this workspace and who we consider responsible for its content
     string owner = 1;
 
     // meta_id is the workspace ID of this currently running workspace instance on the "meta pool" side

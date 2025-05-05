@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -20385,7 +20385,7 @@ java.lang.String defaultValue) {
 
       /**
        * <pre>
-       * Reasons user is exploring Gitpod when they signed up
+       * Reasons user is exploring Devpod when they signed up
        *
        * +optional
        * </pre>
@@ -20397,7 +20397,7 @@ java.lang.String defaultValue) {
           getExplorationReasonsList();
       /**
        * <pre>
-       * Reasons user is exploring Gitpod when they signed up
+       * Reasons user is exploring Devpod when they signed up
        *
        * +optional
        * </pre>
@@ -20408,7 +20408,7 @@ java.lang.String defaultValue) {
       int getExplorationReasonsCount();
       /**
        * <pre>
-       * Reasons user is exploring Gitpod when they signed up
+       * Reasons user is exploring Devpod when they signed up
        *
        * +optional
        * </pre>
@@ -20420,7 +20420,7 @@ java.lang.String defaultValue) {
       java.lang.String getExplorationReasons(int index);
       /**
        * <pre>
-       * Reasons user is exploring Gitpod when they signed up
+       * Reasons user is exploring Devpod when they signed up
        *
        * +optional
        * </pre>
@@ -20991,7 +20991,7 @@ java.lang.String defaultValue);
           com.google.protobuf.LazyStringArrayList.emptyList();
       /**
        * <pre>
-       * Reasons user is exploring Gitpod when they signed up
+       * Reasons user is exploring Devpod when they signed up
        *
        * +optional
        * </pre>
@@ -21005,7 +21005,7 @@ java.lang.String defaultValue);
       }
       /**
        * <pre>
-       * Reasons user is exploring Gitpod when they signed up
+       * Reasons user is exploring Devpod when they signed up
        *
        * +optional
        * </pre>
@@ -21018,7 +21018,7 @@ java.lang.String defaultValue);
       }
       /**
        * <pre>
-       * Reasons user is exploring Gitpod when they signed up
+       * Reasons user is exploring Devpod when they signed up
        *
        * +optional
        * </pre>
@@ -21032,7 +21032,7 @@ java.lang.String defaultValue);
       }
       /**
        * <pre>
-       * Reasons user is exploring Gitpod when they signed up
+       * Reasons user is exploring Devpod when they signed up
        *
        * +optional
        * </pre>
@@ -22610,7 +22610,7 @@ java.lang.String defaultValue) {
         }
         /**
          * <pre>
-         * Reasons user is exploring Gitpod when they signed up
+         * Reasons user is exploring Devpod when they signed up
          *
          * +optional
          * </pre>
@@ -22625,7 +22625,7 @@ java.lang.String defaultValue) {
         }
         /**
          * <pre>
-         * Reasons user is exploring Gitpod when they signed up
+         * Reasons user is exploring Devpod when they signed up
          *
          * +optional
          * </pre>
@@ -22638,7 +22638,7 @@ java.lang.String defaultValue) {
         }
         /**
          * <pre>
-         * Reasons user is exploring Gitpod when they signed up
+         * Reasons user is exploring Devpod when they signed up
          *
          * +optional
          * </pre>
@@ -22652,7 +22652,7 @@ java.lang.String defaultValue) {
         }
         /**
          * <pre>
-         * Reasons user is exploring Gitpod when they signed up
+         * Reasons user is exploring Devpod when they signed up
          *
          * +optional
          * </pre>
@@ -22667,7 +22667,7 @@ java.lang.String defaultValue) {
         }
         /**
          * <pre>
-         * Reasons user is exploring Gitpod when they signed up
+         * Reasons user is exploring Devpod when they signed up
          *
          * +optional
          * </pre>
@@ -22688,7 +22688,7 @@ java.lang.String defaultValue) {
         }
         /**
          * <pre>
-         * Reasons user is exploring Gitpod when they signed up
+         * Reasons user is exploring Devpod when they signed up
          *
          * +optional
          * </pre>
@@ -22708,7 +22708,7 @@ java.lang.String defaultValue) {
         }
         /**
          * <pre>
-         * Reasons user is exploring Gitpod when they signed up
+         * Reasons user is exploring Devpod when they signed up
          *
          * +optional
          * </pre>
@@ -22728,7 +22728,7 @@ java.lang.String defaultValue) {
         }
         /**
          * <pre>
-         * Reasons user is exploring Gitpod when they signed up
+         * Reasons user is exploring Devpod when they signed up
          *
          * +optional
          * </pre>
@@ -22745,7 +22745,7 @@ java.lang.String defaultValue) {
         }
         /**
          * <pre>
-         * Reasons user is exploring Gitpod when they signed up
+         * Reasons user is exploring Devpod when they signed up
          *
          * +optional
          * </pre>
@@ -31199,7 +31199,7 @@ java.lang.String defaultValue) {
       "SetRolesOrPermissions\022\'.devpod.v1.SetRol" +
       "esOrPermissionsRequest\032(.devpod.v1.SetRo" +
       "lesOrPermissionsResponse\"\000BQ\n\026io.devpod." +
-      "publicapi.v1Z7github.com/gitpod-io/gitpo" +
+      "publicapi.v1Z7github.com/khulnasoft/gitpo" +
       "d/components/public-api/go/v1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -59,7 +59,7 @@ export const OrganizationJoinModal = ({ welcomeMessage, user }: Props) => {
             onClose={dismissOrgOnboarding}
             containerClassName="min-[576px]:max-w-[650px]"
         >
-            <ModalHeader>Welcome to Gitpod</ModalHeader>
+            <ModalHeader>Welcome to Devpod</ModalHeader>
             <ModalBody>
                 <WelcomeMessagePreview hideHeader />
             </ModalBody>

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import { ContainerModule } from "inversify";
 
 import { RedisPublisher, newRedisClient } from "@devpod/devpod-db/lib";
 import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
-import { GitpodFileParser } from "@devpod/devpod-protocol/lib/devpod-file-parser";
+import { DevpodFileParser } from "@devpod/devpod-protocol/lib/devpod-file-parser";
 import { PrometheusClientCallMetrics } from "@devpod/devpod-protocol/lib/messaging/client-call-metrics";
 import { newAnalyticsWriterFromEnv } from "@devpod/devpod-protocol/lib/util/analytics";
 import { DebugApp } from "@devpod/devpod-protocol/lib/util/debug-app";
@@ -95,7 +95,7 @@ import { ContentServiceStorageClient } from "./storage/content-service-client";
 import { StorageClient } from "./storage/storage-client";
 import { AuthorizationService, AuthorizationServiceImpl } from "./user/authorization-service";
 import { EnvVarService } from "./user/env-var-service";
-import { GitpodTokenService } from "./user/devpod-token-service";
+import { DevpodTokenService } from "./user/devpod-token-service";
 import { NewsletterSubscriptionController } from "./user/newsletter-subscription-controller";
 import { SSHKeyService } from "./user/sshkey-service";
 import { TokenProvider } from "./user/token-provider";
@@ -112,7 +112,7 @@ import { ContextParser } from "./workspace/context-parser-service";
 import { EnvvarPrefixParser } from "./workspace/envvar-prefix-context-parser";
 import { GitTokenScopeGuesser } from "./workspace/git-token-scope-guesser";
 import { GitTokenValidator } from "./workspace/git-token-validator";
-import { GitpodServerImpl } from "./workspace/devpod-server-impl";
+import { DevpodServerImpl } from "./workspace/devpod-server-impl";
 import { HeadlessLogController } from "./workspace/headless-log-controller";
 import { HeadlessLogService } from "./workspace/headless-log-service";
 import { ImageSourceProvider } from "./workspace/image-source-provider";
@@ -153,7 +153,7 @@ export const productionContainerModule = new ContainerModule(
         bind(AuthorizationService).to(AuthorizationServiceImpl).inSingletonScope();
 
         bind(SSHKeyService).toSelf().inSingletonScope();
-        bind(GitpodTokenService).toSelf().inSingletonScope();
+        bind(DevpodTokenService).toSelf().inSingletonScope();
         bind(EnvVarService).toSelf().inSingletonScope();
 
         bind(TokenService).toSelf().inSingletonScope();
@@ -166,7 +166,7 @@ export const productionContainerModule = new ContainerModule(
         bind(Server).toSelf().inSingletonScope();
         bind(DebugApp).toSelf().inSingletonScope();
 
-        bind(GitpodFileParser).toSelf().inSingletonScope();
+        bind(DevpodFileParser).toSelf().inSingletonScope();
 
         bind(ConfigProvider).toSelf().inSingletonScope();
         bind(ConfigurationService).toSelf().inSingletonScope();
@@ -178,17 +178,17 @@ export const productionContainerModule = new ContainerModule(
         bind(WorkspaceStartController).toSelf().inSingletonScope();
         bind(ImageSourceProvider).toSelf().inSingletonScope();
 
-        bind(ServerFactory).toAutoFactory(GitpodServerImpl);
+        bind(ServerFactory).toAutoFactory(DevpodServerImpl);
         bind(UserController).toSelf().inSingletonScope();
 
         bind(ContextService).toSelf().inSingletonScope();
 
         bind(AuditLogService).toSelf().inSingletonScope();
 
-        bind(GitpodServerImpl).toSelf();
+        bind(DevpodServerImpl).toSelf();
         bind(WebsocketConnectionManager)
             .toDynamicValue((ctx) => {
-                const serverFactory = () => ctx.container.get<GitpodServerImpl>(GitpodServerImpl);
+                const serverFactory = () => ctx.container.get<DevpodServerImpl>(DevpodServerImpl);
                 const hostContextProvider = ctx.container.get<HostContextProvider>(HostContextProvider);
                 const config = ctx.container.get<Config>(Config);
                 const auditLogService = ctx.container.get<AuditLogService>(AuditLogService);

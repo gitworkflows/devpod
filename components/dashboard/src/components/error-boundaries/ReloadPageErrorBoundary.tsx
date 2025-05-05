@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -30,7 +30,7 @@ export const ReloadPageErrorFallback: FC<Pick<FallbackProps, "error">> = ({ erro
         window.location.reload();
     }, []);
 
-    const emailSubject = encodeURIComponent("Gitpod Dashboard Error");
+    const emailSubject = encodeURIComponent("Devpod Dashboard Error");
     let emailBodyStr = `\n\nError: ${caughtError.message}`;
     if (caughtError.code) {
         emailBodyStr += `\nCode: ${caughtError.code}`;
@@ -39,11 +39,11 @@ export const ReloadPageErrorFallback: FC<Pick<FallbackProps, "error">> = ({ erro
 
     return (
         <div role="alert" className="app-container mt-14 flex flex-col items-center justify-center space-y-6">
-            <img src={devpodIcon} className="h-16 mx-auto" alt="Gitpod's logo" />
+            <img src={devpodIcon} className="h-16 mx-auto" alt="Devpod's logo" />
             <Heading1>Oh, no! Something went wrong!</Heading1>
             <Subheading>
                 Please try reloading the page. If the issue continues, please{" "}
-                <a className="gp-link" href={`mailto:support@devpod.io?Subject=${emailSubject}&Body=${emailBody}`}>
+                <a className="gp-link" href={`mailto:support@devpod.khulnasoft.com?Subject=${emailSubject}&Body=${emailBody}`}>
                     get in touch
                 </a>
                 .

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -253,7 +253,7 @@ func (wbs *InWorkspaceServiceServer) PrepareForUserNS(ctx context.Context, req *
 	//   - https://lists.linuxcontainers.org/pipermail/lxc-devel/2014-July/009797.html
 	//   - https://lists.linuxcontainers.org/pipermail/lxc-users/2014-October/007948.html
 	err = nsi.Nsinsider(wbs.Session.InstanceID, int(containerPID), func(c *exec.Cmd) {
-		c.Args = append(c.Args, "prepare-dev", "--uid", strconv.Itoa(wsinit.GitpodUID), "--gid", strconv.Itoa(wsinit.GitpodGID))
+		c.Args = append(c.Args, "prepare-dev", "--uid", strconv.Itoa(wsinit.DevpodUID), "--gid", strconv.Itoa(wsinit.DevpodGID))
 	})
 	if err != nil {
 		log.WithError(err).WithFields(wbs.Session.OWI()).Error("PrepareForUserNS: cannot prepare /dev")
@@ -947,7 +947,7 @@ func (wbs *InWorkspaceServiceServer) EvacuateCGroup(ctx context.Context, req *ap
 		return nil, status.Errorf(codes.FailedPrecondition, "cannot produce user cgroup")
 	}
 
-	out, err := exec.CommandContext(ctx, "chown", "-R", fmt.Sprintf("%d:%d", wsinit.GitpodUID, wsinit.GitpodGID), filepath.Join(wbs.CGroupMountPoint, workspaceCGroup)).CombinedOutput()
+	out, err := exec.CommandContext(ctx, "chown", "-R", fmt.Sprintf("%d:%d", wsinit.DevpodUID, wsinit.DevpodGID), filepath.Join(wbs.CGroupMountPoint, workspaceCGroup)).CombinedOutput()
 	if err != nil {
 		log.WithError(err).WithFields(wbs.Session.OWI()).WithField("path", workspaceCGroup).WithField("out", string(out)).Error("EvacuateCGroup: cannot chown workspace cgroup")
 		return nil, status.Errorf(codes.FailedPrecondition, "cannot chown workspace cgroup")

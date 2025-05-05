@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -349,7 +349,7 @@ func teamMembersToAPIResponse(members []*protocol.TeamMemberInfo) []*v1.TeamMemb
 		result = append(result, &v1.TeamMember{
 			UserId:              m.UserId,
 			Role:                teamRoleToAPIResponse(m.Role),
-			MemberSince:         parseGitpodTimeStampOrDefault(m.MemberSince),
+			MemberSince:         parseDevpodTimeStampOrDefault(m.MemberSince),
 			AvatarUrl:           m.AvatarUrl,
 			FullName:            m.FullName,
 			PrimaryEmail:        m.PrimaryEmail,

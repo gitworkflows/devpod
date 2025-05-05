@@ -109,7 +109,7 @@ function terraform_output() {
 
   pushd "${TARGET_DIR}" >/dev/null || return "${ERROR_CHANGE_DIR}"
 
-  terraform output -${format} "${var}" 2>/dev/null
+  terraform output "-${format}" "${var}" 2>/dev/null
 
   popd >/dev/null || return "${ERROR_CHANGE_DIR}"
 }

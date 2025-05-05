@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -31,7 +31,7 @@ import { useDeleteInactiveWorkspacesMutation } from "../data/workspaces/delete-i
 import { useListWorkspacesQuery } from "../data/workspaces/list-workspaces-query";
 import { useListenToWorkspacesWSMessages as useListenToWorkspacesStatusUpdates } from "../data/workspaces/listen-to-workspace-ws-messages";
 import { useUserLoader } from "../hooks/use-user-loader";
-import { ReactComponent as GitpodStrokedSVG } from "../icons/devpod-stroked.svg";
+import { ReactComponent as DevpodStrokedSVG } from "../icons/devpod-stroked.svg";
 import { VideoSection } from "../onboarding/VideoSection";
 import { OrganizationJoinModal } from "../teams/onboarding/OrganizationJoinModal";
 import { BlogBanners } from "./BlogBanners";
@@ -195,7 +195,7 @@ const WorkspacesPage: FunctionComponent = () => {
             {isEnterpriseOnboardingEnabled && isDedicatedInstallation && (
                 <>
                     <div className="app-container flex flex-row items-center justify-end mt-4 mb-2">
-                        <Tooltip content="Toggle helpful resources for getting started with Gitpod">
+                        <Tooltip content="Toggle helpful resources for getting started with Devpod">
                             <Button
                                 variant="ghost"
                                 onClick={() => toggleGettingStarted(!showGettingStarted)}
@@ -220,9 +220,9 @@ const WorkspacesPage: FunctionComponent = () => {
                                 <Card onClick={() => setVideoModalVisible(true)}>
                                     <Video className="flex-shrink-0" size={24} />
                                     <div className="min-w-0">
-                                        <CardTitle>Learn how Gitpod works</CardTitle>
+                                        <CardTitle>Learn how Devpod works</CardTitle>
                                         <CardDescription>
-                                            We've put together resources for you to get the most out of Gitpod.
+                                            We've put together resources for you to get the most out of Devpod.
                                         </CardDescription>
                                     </div>
                                 </Card>
@@ -231,9 +231,9 @@ const WorkspacesPage: FunctionComponent = () => {
                                     <Card href={orgSettings.onboardingSettings.internalLink} isLinkExternal>
                                         <Building className="flex-shrink-0" size={24} />
                                         <div className="min-w-0">
-                                            <CardTitle>Learn more about Gitpod at {org?.name}</CardTitle>
+                                            <CardTitle>Learn more about Devpod at {org?.name}</CardTitle>
                                             <CardDescription>
-                                                Read through the internal Gitpod landing page of your organization.
+                                                Read through the internal Devpod landing page of your organization.
                                             </CardDescription>
                                         </div>
                                     </Card>
@@ -247,13 +247,13 @@ const WorkspacesPage: FunctionComponent = () => {
                                                 {orgSuggestedRepos?.length
                                                     ? "repositories recommended by your organization"
                                                     : "a sample repository"}{" "}
-                                                to quickly experience Gitpod.
+                                                to quickly experience Devpod.
                                             </CardDescription>
                                         </div>
                                     </Card>
                                 )}
 
-                                <Card href="https://www.devpod.io/docs/introduction" isLinkExternal>
+                                <Card href="https://www.devpod.khulnasoft.com/docs/introduction" isLinkExternal>
                                     <Book className="flex-shrink-0" size={24} />
                                     <div className="min-w-0">
                                         <CardTitle>Visit the docs</CardTitle>
@@ -322,7 +322,7 @@ const WorkspacesPage: FunctionComponent = () => {
                         <ModalBody>
                             <div className="flex flex-row items-center justify-center">
                                 <VideoSection
-                                    metadataVideoTitle="Gitpod demo"
+                                    metadataVideoTitle="Devpod demo"
                                     playbackId="m01BUvCkTz7HzQKFoIcQmK00Rx5laLLoMViWBstetmvLs"
                                     poster="https://i.ytimg.com/vi_webp/1ZBN-b2cIB8/maxresdefault.webp"
                                     playerProps={{ onPlay: handlePlay, defaultHiddenCaptions: true }}
@@ -394,7 +394,7 @@ const WorkspacesPage: FunctionComponent = () => {
                                                             target="_blank"
                                                             rel="noreferrer"
                                                             className="gp-link"
-                                                            href="https://www.devpod.io/docs/configure/workspaces/workspace-lifecycle#workspace-deletion"
+                                                            href="https://www.devpod.khulnasoft.com/docs/configure/workspaces/workspace-lifecycle#workspace-deletion"
                                                             onClick={(evt) => evt.stopPropagation()}
                                                         >
                                                             Learn more
@@ -437,7 +437,7 @@ const WorkspacesPage: FunctionComponent = () => {
                                         <h3 className="text-lg font-semibold text-pk-content-primary">Documentation</h3>
                                         <div className="flex flex-col gap-1 w-fit">
                                             <a
-                                                href="https://www.devpod.io/docs/introduction"
+                                                href="https://www.devpod.khulnasoft.com/docs/introduction"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="text-sm text-pk-content-primary items-center gap-x-2 flex flex-row"
@@ -448,18 +448,18 @@ const WorkspacesPage: FunctionComponent = () => {
                                                 </span>
                                             </a>
                                             <a
-                                                href="https://www.devpod.io/docs/configure/workspaces"
+                                                href="https://www.devpod.khulnasoft.com/docs/configure/workspaces"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="text-sm text-pk-content-primary items-center gap-x-2 flex flex-row"
                                             >
-                                                <GitpodStrokedSVG />
+                                                <DevpodStrokedSVG />
                                                 <span className="hover:text-blue-600 dark:hover:text-blue-400">
                                                     Configuring a workspace
                                                 </span>
                                             </a>
                                             <a
-                                                href="https://www.devpod.io/docs/references/devpod-yml"
+                                                href="https://www.devpod.khulnasoft.com/docs/references/devpod-yml"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="text-sm text-pk-content-primary items-center gap-x-2 flex flex-row"

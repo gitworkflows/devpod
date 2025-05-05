@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -207,8 +207,8 @@ export class EnvVarService {
         if (!envVar.name) {
             throw new ApplicationError(ErrorCodes.BAD_REQUEST, "Variable name cannot be empty");
         }
-        if (!EnvVar.WhiteListFromReserved.includes(envVar.name) && envVar.name.startsWith("GITPOD_")) {
-            throw new ApplicationError(ErrorCodes.BAD_REQUEST, "Variable name with prefix 'GITPOD_' is reserved");
+        if (!EnvVar.WhiteListFromReserved.includes(envVar.name) && envVar.name.startsWith("DEVPOD_")) {
+            throw new ApplicationError(ErrorCodes.BAD_REQUEST, "Variable name with prefix 'DEVPOD_' is reserved");
         }
         if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(envVar.name)) {
             throw new ApplicationError(
@@ -270,10 +270,10 @@ export class EnvVarService {
 
         // gpl: We only intent to use org-level env vars for this very specific use case right now.
         // If we every want to use it more generically, just lift this restriction
-        if (envVar.name !== EnvVar.GITPOD_IMAGE_AUTH_ENV_VAR_NAME) {
+        if (envVar.name !== EnvVar.DEVPOD_IMAGE_AUTH_ENV_VAR_NAME) {
             throw new ApplicationError(
                 ErrorCodes.BAD_REQUEST,
-                "Can only update GITPOD_IMAGE_AUTH env var on org level",
+                "Can only update DEVPOD_IMAGE_AUTH env var on org level",
             );
         }
 
@@ -372,14 +372,14 @@ export class EnvVarService {
             merge(wsContext.envvars);
         }
 
-        // GITPOD_IMAGE_AUTH is a special case: it is only passed into the workspace if the project settings allow it
-        const credentials = EnvVar.getGitpodImageAuth([...workspaceEnvVars.values()]);
+        // DEVPOD_IMAGE_AUTH is a special case: it is only passed into the workspace if the project settings allow it
+        const credentials = EnvVar.getDevpodImageAuth([...workspaceEnvVars.values()]);
         let project: Project | undefined;
         if (projectId) {
             project = await this.projectDB.findProjectById(projectId);
         }
         if (!project?.settings?.enableDockerdAuthentication) {
-            workspaceEnvVars.delete(EnvVar.GITPOD_IMAGE_AUTH_ENV_VAR_NAME);
+            workspaceEnvVars.delete(EnvVar.DEVPOD_IMAGE_AUTH_ENV_VAR_NAME);
         }
 
         return {

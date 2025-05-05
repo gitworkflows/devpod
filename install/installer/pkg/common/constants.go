@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -14,7 +14,7 @@ import (
 // This file exists to break cyclic-dependency errors
 
 var (
-	GitpodContainerRegistry = config.GitpodContainerRegistry
+	DevpodContainerRegistry = config.DevpodContainerRegistry
 )
 
 const (
@@ -26,7 +26,7 @@ const (
 	InClusterDbSecret           = "mysql"
 	KubeRBACProxyRepo           = "quay.io"
 	KubeRBACProxyImage          = "brancz/kube-rbac-proxy"
-	KubeRBACProxyTag            = "v0.15.0"
+	KubeRBACProxyTag            = "v0.19.0"
 	MinioServiceAPIPort         = 9000
 	MonitoringChart             = "monitoring"
 	ProxyComponent              = "proxy"
@@ -61,7 +61,7 @@ const (
 	DBCaBasePath                = "/db-ssl"
 	DBCaPath                    = DBCaBasePath + "/" + DBCaFileName
 	WorkspaceSecretsNamespace   = "workspace-secrets"
-	AnnotationConfigChecksum    = "devpod.io/checksum_config"
+	AnnotationConfigChecksum    = "devpod.khulnasoft.com/checksum_config"
 	DatabaseConfigMountPath     = "/secrets/database-config"
 	AuthPKISecretName           = "auth-pki"
 	IDEServiceComponent         = "ide-service"

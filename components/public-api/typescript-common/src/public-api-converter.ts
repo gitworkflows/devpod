@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import "reflect-metadata";
 
 import { Duration, PartialMessage, PlainMessage, Timestamp, toPlainMessage } from "@bufbuild/protobuf";
 import { Code, ConnectError } from "@connectrpc/connect";
-import { GitpodServer } from "@devpod/devpod-protocol";
+import { DevpodServer } from "@devpod/devpod-protocol";
 import { BlockedRepository as ProtocolBlockedRepository } from "@devpod/devpod-protocol/lib/blocked-repositories-protocol";
 import { ContextURL } from "@devpod/devpod-protocol/lib/context-url";
 import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
@@ -39,7 +39,7 @@ import {
     WorkspaceContext,
     WorkspaceInfo,
     WorkspaceSession as WorkspaceSessionProtocol,
-    Configuration as GitpodServerInstallationConfiguration,
+    Configuration as DevpodServerInstallationConfiguration,
     NavigatorContext,
     RefType,
     OrgEnvVar,
@@ -106,7 +106,7 @@ import {
     FailedPreconditionDetails,
     ImageBuildLogsNotYetAvailableError,
     InvalidCostCenterError as InvalidCostCenterErrorData,
-    InvalidGitpodYMLError as InvalidGitpodYMLErrorData,
+    InvalidDevpodYMLError as InvalidDevpodYMLErrorData,
     NeedsVerificationError,
     PaymentSpendingLimitReachedError,
     PermissionDeniedDetails,
@@ -192,7 +192,7 @@ import {
 } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { BigIntToJson } from "@devpod/devpod-protocol/lib/util/stringify";
 import { getPrebuildLogPath } from "./prebuild-utils";
-import { InvalidGitpodYMLError, RepositoryNotFoundError, UnauthorizedRepositoryAccessError } from "./public-api-errors";
+import { InvalidDevpodYMLError, RepositoryNotFoundError, UnauthorizedRepositoryAccessError } from "./public-api-errors";
 const URL = require("url").URL || window.URL;
 
 export type PartialConfiguration = DeepPartial<Configuration> & Pick<Configuration, "id">;
@@ -624,7 +624,7 @@ export class PublicAPIConverter {
                     reason,
                 );
             }
-            if (reason instanceof InvalidGitpodYMLError) {
+            if (reason instanceof InvalidDevpodYMLError) {
                 return new ConnectError(
                     reason.message,
                     Code.FailedPrecondition,
@@ -632,8 +632,8 @@ export class PublicAPIConverter {
                     [
                         new FailedPreconditionDetails({
                             reason: {
-                                case: "invalidGitpodYml",
-                                value: new InvalidGitpodYMLErrorData(reason.info),
+                                case: "invalidDevpodYml",
+                                value: new InvalidDevpodYMLErrorData(reason.info),
                             },
                         }),
                     ],
@@ -818,10 +818,10 @@ export class PublicAPIConverter {
         if (reason.code === Code.FailedPrecondition) {
             const details = reason.findDetails(FailedPreconditionDetails)[0];
             switch (details?.reason?.case) {
-                case "invalidGitpodYml":
-                    const invalidGitpodYmlInfo = toPlainMessage(details.reason.value);
+                case "invalidDevpodYml":
+                    const invalidDevpodYmlInfo = toPlainMessage(details.reason.value);
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                    return new InvalidGitpodYMLError(invalidGitpodYmlInfo);
+                    return new InvalidDevpodYMLError(invalidDevpodYmlInfo);
                 case "repositoryNotFound":
                     const repositoryNotFoundInfo = toPlainMessage(details.reason.value);
                     return new RepositoryNotFoundError(repositoryNotFoundInfo);
@@ -1950,14 +1950,14 @@ export class PublicAPIConverter {
         });
     }
 
-    toOnboardingState(state: GitpodServer.OnboardingState): OnboardingState {
+    toOnboardingState(state: DevpodServer.OnboardingState): OnboardingState {
         return new OnboardingState({
             completed: state.isCompleted,
             organizationCountTotal: state.organizationCountTotal,
         });
     }
 
-    toInstallationConfiguration(config: GitpodServerInstallationConfiguration): InstallationConfiguration {
+    toInstallationConfiguration(config: DevpodServerInstallationConfiguration): InstallationConfiguration {
         return new InstallationConfiguration({
             isDedicatedInstallation: config.isDedicatedInstallation,
         });

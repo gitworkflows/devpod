@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -11,8 +11,8 @@ import (
 	"time"
 
 	"github.com/bufbuild/connect-go"
-	"github.com/gitpod-io/local-app/pkg/helper"
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
+	"github.com/khulnasoft/local-app/pkg/helper"
 	"github.com/spf13/cobra"
 )
 
@@ -33,7 +33,7 @@ var workspaceOpenCmd = &cobra.Command{
 
 		workspaceID := args[0]
 
-		devpod, err := getGitpodClient(cmd.Context())
+		devpod, err := getDevpodClient(cmd.Context())
 		if err != nil {
 			return err
 		}

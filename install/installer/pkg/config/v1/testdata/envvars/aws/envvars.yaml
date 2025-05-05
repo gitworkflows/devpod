@@ -1,11 +1,11 @@
-# Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2022 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
 envvars:
   DB_INCLUSTER_ENABLED: "0"
   DB_EXTERNAL_CERTIFICATE_NAME: database-secret
-  DOMAIN: devpod.io
+  DOMAIN: devpod.khulnasoft.com
   REGISTRY_INCLUSTER_ENABLED: "1"
   REGISTRY_INCLUSTER_STORAGE_S3_BUCKET_NAME: container-s3-bucket
   REGISTRY_INCLUSTER_STORAGE_S3_CERTIFICATE_NAME: container-s3-secret

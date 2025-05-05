@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
- Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ Copyright (c) 2021 Devpod GmbH. All rights reserved.
  Licensed under the GNU Affero General Public License (AGPL).
  See License.AGPL.txt in the project root for license information.
 -->
@@ -15,7 +15,7 @@
             const message = search.get("message");
             window.opener.postMessage(message, `https://${window.location.hostname}`);
         } else {
-            console.log("This page is supposed to be opened by Gitpod.")
+            console.log("This page is supposed to be opened by Devpod.")
             setTimeout("window.close();", 1000);
         }
     </script>

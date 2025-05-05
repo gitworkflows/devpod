@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -21,7 +21,7 @@ import {
     ListOrganizationPrebuildsRequest,
     ListOrganizationPrebuildsResponse,
 } from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
-import { getGitpodService } from "./service";
+import { getDevpodService } from "./service";
 import { converter } from "./public-api";
 import { PrebuildWithStatus } from "@devpod/devpod-protocol";
 import { generateAsyncGenerator } from "@devpod/devpod-protocol/lib/generate-async-generator";
@@ -35,7 +35,7 @@ export class JsonRpcPrebuildClient implements PromiseClient<typeof PrebuildServi
         if (!request.configurationId) {
             throw new ApplicationError(ErrorCodes.BAD_REQUEST, "configurationId is required");
         }
-        const result = await getGitpodService().server.triggerPrebuild(request.configurationId, request.gitRef || null);
+        const result = await getDevpodService().server.triggerPrebuild(request.configurationId, request.gitRef || null);
         return new StartPrebuildResponse({
             prebuildId: result.prebuildId,
         });
@@ -46,7 +46,7 @@ export class JsonRpcPrebuildClient implements PromiseClient<typeof PrebuildServi
         options?: CallOptions,
     ): Promise<CancelPrebuildResponse> {
         const response = await this.getPrebuild(request, options);
-        await getGitpodService().server.cancelPrebuild(response.prebuild!.configurationId, response.prebuild!.id);
+        await getDevpodService().server.cancelPrebuild(response.prebuild!.configurationId, response.prebuild!.id);
         return new CancelPrebuildResponse();
     }
 
@@ -61,7 +61,7 @@ export class JsonRpcPrebuildClient implements PromiseClient<typeof PrebuildServi
         if (!request.prebuildId) {
             throw new ApplicationError(ErrorCodes.BAD_REQUEST, "prebuildId is required");
         }
-        const result = await getGitpodService().server.getPrebuild(request.prebuildId);
+        const result = await getDevpodService().server.getPrebuild(request.prebuildId);
         if (!result) {
             throw new ApplicationError(ErrorCodes.NOT_FOUND, `prebuild ${request.prebuildId} not found`);
         }
@@ -75,9 +75,9 @@ export class JsonRpcPrebuildClient implements PromiseClient<typeof PrebuildServi
         options?: CallOptions,
     ): Promise<ListPrebuildsResponse> {
         if (request.workspaceId) {
-            const pbws = await getGitpodService().server.findPrebuildByWorkspaceID(request.workspaceId);
+            const pbws = await getDevpodService().server.findPrebuildByWorkspaceID(request.workspaceId);
             if (pbws) {
-                const prebuild = await getGitpodService().server.getPrebuild(pbws.id);
+                const prebuild = await getDevpodService().server.getPrebuild(pbws.id);
                 if (prebuild) {
                     return new ListPrebuildsResponse({
                         prebuilds: [converter.toPrebuild(this.devpodHost, prebuild)],
@@ -91,7 +91,7 @@ export class JsonRpcPrebuildClient implements PromiseClient<typeof PrebuildServi
         if (!request.configurationId) {
             throw new ApplicationError(ErrorCodes.BAD_REQUEST, "configurationId is required");
         }
-        const result = await getGitpodService().server.findPrebuilds({
+        const result = await getDevpodService().server.findPrebuilds({
             projectId: request.configurationId,
             branch: request.gitRef || undefined,
             limit: request.pagination?.pageSize || undefined,
@@ -120,7 +120,7 @@ export class JsonRpcPrebuildClient implements PromiseClient<typeof PrebuildServi
         const it = generateAsyncGenerator<PrebuildWithStatus>(
             (queue) => {
                 try {
-                    const dispose = getGitpodService().registerClient({
+                    const dispose = getDevpodService().registerClient({
                         onPrebuildUpdate: (prebuild) => {
                             queue.push(prebuild);
                         },

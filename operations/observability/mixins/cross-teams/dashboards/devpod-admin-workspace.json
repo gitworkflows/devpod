@@ -91,8 +91,8 @@
           "links": [
             {
               "targetBlank": true,
-              "title": "See user in 'Gitpod Admin'",
-              "url": "https://devpod.io/admin/users/${__field.labels.owner}"
+              "title": "See user in 'Devpod Admin'",
+              "url": "https://devpod.khulnasoft.com/admin/users/${__field.labels.owner}"
             }
           ],
           "mappings": [],
@@ -152,8 +152,8 @@
           "links": [
             {
               "targetBlank": true,
-              "title": "See workspace in 'Gitpod Admin'",
-              "url": "https://devpod.io/admin/workspaces/${__field.labels.metaID}"
+              "title": "See workspace in 'Devpod Admin'",
+              "url": "https://devpod.khulnasoft.com/admin/workspaces/${__field.labels.metaID}"
             }
           ],
           "mappings": [],
@@ -1091,7 +1091,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "Gitpod / Admin / Workspace",
+  "title": "Devpod / Admin / Workspace",
   "uid": "devpod-admin-workspaces",
   "version": 1,
   "weekStart": ""

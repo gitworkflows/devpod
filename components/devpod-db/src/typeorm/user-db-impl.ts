@@ -1,13 +1,13 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import * as crypto from "crypto";
 import {
-    GitpodToken,
-    GitpodTokenType,
+    DevpodToken,
+    DevpodTokenType,
     Identity,
     IdentityLookup,
     SSHPublicKeyValue,
@@ -40,7 +40,7 @@ import {
     UserDB,
     isBuiltinUser,
 } from "../user-db";
-import { DBGitpodToken } from "./entity/db-devpod-token";
+import { DBDevpodToken } from "./entity/db-devpod-token";
 import { DBIdentity } from "./entity/db-identity";
 import { DBTokenEntry } from "./entity/db-token-entry";
 import { DBUser } from "./entity/db-user";
@@ -84,8 +84,8 @@ export class TypeORMUserDBImpl extends TransactionalDBImpl<UserDB> implements Us
         return (await this.getEntityManager()).getRepository<DBTokenEntry>(DBTokenEntry);
     }
 
-    private async getGitpodTokenRepo(): Promise<Repository<DBGitpodToken>> {
-        return (await this.getEntityManager()).getRepository<DBGitpodToken>(DBGitpodToken);
+    private async getDevpodTokenRepo(): Promise<Repository<DBDevpodToken>> {
+        return (await this.getEntityManager()).getRepository<DBDevpodToken>(DBDevpodToken);
     }
 
     private async getUserEnvVarRepo(): Promise<Repository<DBUserEnvVar>> {
@@ -213,11 +213,11 @@ export class TypeORMUserDBImpl extends TransactionalDBImpl<UserDB> implements Us
         return result.map((dbUser) => this.mapDBUserToUser(dbUser)).sort(order);
     }
 
-    public async findUserByGitpodToken(
+    public async findUserByDevpodToken(
         tokenHash: string,
-        tokenType?: GitpodTokenType,
-    ): Promise<{ user: User; token: GitpodToken } | undefined> {
-        const repo = await this.getGitpodTokenRepo();
+        tokenType?: DevpodTokenType,
+    ): Promise<{ user: User; token: DevpodToken } | undefined> {
+        const repo = await this.getDevpodTokenRepo();
         const qBuilder = repo.createQueryBuilder("devpodToken");
         if (!!tokenType) {
             qBuilder.where("devpodToken.tokenHash = :tokenHash AND devpodToken.type = :tokenType", {
@@ -239,33 +239,33 @@ export class TypeORMUserDBImpl extends TransactionalDBImpl<UserDB> implements Us
         return { user, token };
     }
 
-    public async findGitpodTokensOfUser(userId: string, tokenHash: string): Promise<GitpodToken | undefined> {
-        const repo = await this.getGitpodTokenRepo();
+    public async findDevpodTokensOfUser(userId: string, tokenHash: string): Promise<DevpodToken | undefined> {
+        const repo = await this.getDevpodTokenRepo();
         const qBuilder = repo.createQueryBuilder("devpodToken");
         qBuilder.where("userId = :userId AND devpodToken.tokenHash = :tokenHash", { userId, tokenHash });
         return qBuilder.getOne();
     }
 
-    public async findAllGitpodTokensOfUser(userId: string): Promise<GitpodToken[]> {
-        const repo = await this.getGitpodTokenRepo();
+    public async findAllDevpodTokensOfUser(userId: string): Promise<DevpodToken[]> {
+        const repo = await this.getDevpodTokenRepo();
         const qBuilder = repo.createQueryBuilder("devpodToken");
         qBuilder.where("userId = :userId", { userId });
         return qBuilder.getMany();
     }
 
-    public async storeGitpodToken(token: GitpodToken): Promise<void> {
-        const repo = await this.getGitpodTokenRepo();
+    public async storeDevpodToken(token: DevpodToken): Promise<void> {
+        const repo = await this.getDevpodTokenRepo();
         await repo.insert(token);
         await this.cache.invalidate(getUserCacheKey(token.userId));
     }
 
-    public async deleteGitpodToken(tokenHash: string): Promise<void> {
-        const repo = await this.getGitpodTokenRepo();
+    public async deleteDevpodToken(tokenHash: string): Promise<void> {
+        const repo = await this.getDevpodTokenRepo();
         await repo.delete({ tokenHash });
     }
 
-    public async deleteGitpodTokensNamedLike(userId: string, namePattern: string): Promise<void> {
-        const repo = await this.getGitpodTokenRepo();
+    public async deleteDevpodTokensNamedLike(userId: string, namePattern: string): Promise<void> {
+        const repo = await this.getDevpodTokenRepo();
         await repo.delete({ userId, name: new FindOperator("like", namePattern) });
     }
 
@@ -575,7 +575,7 @@ export class TypeORMUserDBImpl extends TransactionalDBImpl<UserDB> implements Us
         };
     }
     async issueRefreshToken(accessToken: OAuthToken): Promise<OAuthToken> {
-        // NOTE(rl): this exists for the OAuth server code - Gitpod tokens are non-refreshable (atm)
+        // NOTE(rl): this exists for the OAuth server code - Devpod tokens are non-refreshable (atm)
         accessToken.refreshToken = "refreshtokentoken";
         accessToken.refreshTokenExpiresAt = new DateInterval("30d").getEndDate();
         await this.persist(accessToken);
@@ -585,16 +585,16 @@ export class TypeORMUserDBImpl extends TransactionalDBImpl<UserDB> implements Us
         const scopes = accessToken.scopes.map((s) => s.name);
 
         // Does the token already exist?
-        let dbToken: GitpodToken;
+        let dbToken: DevpodToken;
         const tokenHash = crypto.createHash("sha256").update(accessToken.accessToken, "utf8").digest("hex");
-        const userAndToken = await this.findUserByGitpodToken(tokenHash);
+        const userAndToken = await this.findUserByDevpodToken(tokenHash);
         if (userAndToken) {
             // Yes, update it (~)
             // NOTE(rl): as we don't support refresh tokens yet this is not really required
             // since the OAuth server lib calls issueRefreshToken immediately after issueToken
             // We do not allow changes of name, type, user or scope.
-            dbToken = userAndToken.token as GitpodToken & { user: DBUser };
-            const repo = await this.getGitpodTokenRepo();
+            dbToken = userAndToken.token as DevpodToken & { user: DBUser };
+            const repo = await this.getDevpodTokenRepo();
             await repo.update(tokenHash, dbToken);
             return;
         } else {
@@ -605,17 +605,17 @@ export class TypeORMUserDBImpl extends TransactionalDBImpl<UserDB> implements Us
             dbToken = {
                 tokenHash,
                 name: accessToken.client.id,
-                type: GitpodTokenType.MACHINE_AUTH_TOKEN,
+                type: DevpodTokenType.MACHINE_AUTH_TOKEN,
                 userId: accessToken.user.id.toString(),
                 scopes: scopes,
                 created: new Date().toISOString(),
             };
-            return this.storeGitpodToken(dbToken);
+            return this.storeDevpodToken(dbToken);
         }
     }
     async revoke(accessTokenToken: OAuthToken): Promise<void> {
         const tokenHash = crypto.createHash("sha256").update(accessTokenToken.accessToken, "utf8").digest("hex");
-        await this.deleteGitpodToken(tokenHash);
+        await this.deleteDevpodToken(tokenHash);
     }
     async isRefreshTokenRevoked(refreshToken: OAuthToken): Promise<boolean> {
         return Date.now() > (refreshToken.refreshTokenExpiresAt?.getTime() ?? 0);

@@ -16,4 +16,4 @@ jobs:
           number: ${{ github.event.pull_request.number }}
           comment: |
             :warning: Hey reviewer! BE CAREFUL :warning:
-            Review the code before opening in your Gitpod. `.devpod.yml` was changed and it might be harmful.
+            Review the code before opening in your Devpod. `.devpod.yml` was changed and it might be harmful.

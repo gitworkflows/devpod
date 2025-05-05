@@ -1,7 +1,7 @@
 # IDE Metrics API
 
 ## Overview
-The IDE Metrics API defines the gRPC interfaces for collecting metrics and error reports from IDE components within the Gitpod platform. It provides a standardized way for IDE instances to report performance data and errors to a central metrics service.
+The IDE Metrics API defines the gRPC interfaces for collecting metrics and error reports from IDE components within the Devpod platform. It provides a standardized way for IDE instances to report performance data and errors to a central metrics service.
 
 ## Purpose
 This API enables:
@@ -119,7 +119,7 @@ After regenerating the code, you may need to rebuild components that depend on t
    ./gradlew build
    ```
 
-4. Using Leeway (for CI/CD):
+4. Using Blazedock (for CI/CD):
    ```bash
-   leeway build -D components/<component-name>:app
+   blazedock build -D components/<component-name>:app
    ```

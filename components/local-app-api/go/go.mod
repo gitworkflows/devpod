@@ -17,4 +17,4 @@ require (
 	google.golang.org/genproto v0.0.0-20220822174746-9e6da59bd2fc // indirect
 )
 
-replace github.com/khulnasoft/devpod/supervisor/api => ../../supervisor-api/go // leeway
+replace github.com/khulnasoft/devpod/supervisor/api => ../../supervisor-api/go // blazedock

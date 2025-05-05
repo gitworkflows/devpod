@@ -12,16 +12,16 @@ on:
         default: "latest"
       version:
         required: true
-        description: "The version of Gitpod to install"
+        description: "The version of Devpod to install"
         default: "latest"
       image_repo_base:
         type: choice
         required: false
         description: "The base repo of image"
         options:
-          - "ghcr.io/devpod-core-dev/build"
-          - "ghcr.io/devpod-dev-artifact/build"
-        default: "ghcr.io/devpod-core-dev/build"
+          - "khulnasoft/devpod-environment/build"
+          - "eu.gcr.io/devpod-dev-artifact/build"
+        default: "khulnasoft/devpod-environment/build"
       skip_deploy:
         required: false
         description: "Skip deploy preview environment (debug only)"
@@ -33,7 +33,7 @@ on:
 
 jobs:
   create-runner:
-    uses: gitpod-io/gce-github-runner/.github/workflows/create-vm.yml@main
+    uses: khulnasoft/gce-github-runner/.github/workflows/create-vm.yml@main
     secrets:
       runner_token: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_TOKEN }}
       gcp_credentials: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_GCP_CREDENTIALS }}
@@ -43,7 +43,7 @@ jobs:
     runs-on: ${{ needs.create-runner.outputs.label }}
     needs: [create-runner]
     container:
-      image: docker.io/khulnasoft/devpod-environment:latest
+      image: khulnasoft/devpod-environment:main-gha.30393
     outputs:
       name: ${{ steps.configuration.outputs.name }}
       version: ${{ steps.configuration.outputs.version }}
@@ -65,14 +65,14 @@ jobs:
               # others
               RUNID=$(gh run list -R khulnasoft/devpod -b main -w build.yml --limit 1 --json databaseId --jq .[0].databaseId)
               gh run watch "$RUNID" -R khulnasoft/devpod
-              CONCLUSION=$(gh run view "$RUNID" -R khulnasoft/devpod --json jobs --jq '.jobs[] | select(.name == "Build Gitpod") | {name, status, conclusion} | .conclusion')
+              CONCLUSION=$(gh run view "$RUNID" -R khulnasoft/devpod --json jobs --jq '.jobs[] | select(.name == "Build Devpod") | {name, status, conclusion} | .conclusion')
               if [ "$CONCLUSION" != "success" ]; then
                 echo main branch build is failed, see https://github.com/khulnasoft/devpod/actions/runs/"$RUNID" for detail | tee -a $GITHUB_STEP_SUMMARY
                 exit 1
               fi
 
               {
-                  echo "version=$(gh run view "$RUNID" --log -R khulnasoft/devpod | grep 'main-gha.[0-9]*' -o | head -n 1)"
+                  echo "version=$(gh run view "$RUNID" --log -R khulnasoft/devpod | grep 'Build Devpod' | grep 'Tag the release' | grep 'main-gha\.[0-9]*' -o | head -n 1)"
                   echo "name=ide-integration-test-${{ github.run_id }}-${{ github.run_attempt }}"
               } >> $GITHUB_OUTPUT
           fi
@@ -82,7 +82,7 @@ jobs:
               } >> $GITHUB_OUTPUT
           else
               {
-                  echo "image_repo_base=ghcr.io/devpod-core-dev/build"
+                  echo "image_repo_base=khulnasoft/devpod-environment/build"
               } >> $GITHUB_OUTPUT
           fi
       - name: Slack Notification
@@ -107,7 +107,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Create preview environment infrastructure
         id: create
         uses: ./.github/actions/preview-create
@@ -117,7 +117,7 @@ jobs:
           large_vm: true
           preemptible: true
           image_repo_base: ${{ needs.configuration.outputs.image_repo_base }}
-      - name: Deploy Gitpod to the preview environment
+      - name: Deploy Devpod to the preview environment
         id: deploy-devpod
         if: github.event.inputs.skip_deploy != 'true'
         uses: ./.github/actions/deploy-devpod
@@ -131,7 +131,7 @@ jobs:
     needs: [configuration, infrastructure, create-runner]
     runs-on: ${{ needs.create-runner.outputs.label }}
     container:
-      image: docker.io/khulnasoft/devpod-environment:latest
+      image: khulnasoft/devpod-environment:main-gha.30393
       volumes:
         - /var/tmp:/var/tmp
         - /tmp:/tmp
@@ -144,7 +144,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Integration Test
         shell: bash
         env:
@@ -159,9 +159,9 @@ jobs:
         run: |
           set -euo pipefail
 
-          export LEEWAY_WORKSPACE_ROOT="$(pwd)"
+          export BLAZEDOCK_WORKSPACE_ROOT="$(pwd)"
 
-          leeway run dev/preview/previewctl:install
+          blazedock run dev/preview/previewctl:install
 
           previewctl install-context --branch "${PREVIEW_NAME}" --log-level debug --timeout 1m
 
@@ -226,7 +226,7 @@ jobs:
         with:
           identity_provider: ${{ secrets.DEV_PREVIEW_PROVIDER }}
           service_account: ${{ secrets.DEV_PREVIEW_SA }}
-          leeway_segment_key: ${{ secrets.LEEWAY_SEGMENT_KEY }}
+          blazedock_segment_key: ${{ secrets.BLAZEDOCK_SEGMENT_KEY }}
       - name: Delete preview environment
         uses: ./.github/actions/delete-preview
         with:
@@ -240,7 +240,7 @@ jobs:
       - infrastructure
       - check
       - delete
-    uses: gitpod-io/gce-github-runner/.github/workflows/delete-vm.yml@main
+    uses: khulnasoft/gce-github-runner/.github/workflows/delete-vm.yml@main
     secrets:
       gcp_credentials: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_GCP_CREDENTIALS }}
     with:

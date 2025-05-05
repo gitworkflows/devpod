@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -87,7 +87,7 @@ func buildWorkspaceImage(wg *sync.WaitGroup, ctx context.Context, client builder
 			},
 		},
 		// TODO: this shouldn't be hard coded
-		SupervisorRef: "ghcr.io/devpod-core-dev/build/supervisor:commit-4cb5b6b9c0e993f3964e978e387fb0e7c1c04276",
+		SupervisorRef: "khulnasoft/devpod-environment/build/supervisor:commit-4cb5b6b9c0e993f3964e978e387fb0e7c1c04276",
 		TriggeredBy:   "c0f5dbf1-8d50-4d2a-8cd9-fe563fa53c71",
 	})
 	if err != nil {

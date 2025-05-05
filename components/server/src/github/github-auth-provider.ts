@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -124,7 +124,7 @@ export class GitHubAuthProvider extends GenericAuthProvider {
                         return result[0].email;
                     }
                 }
-                // otherwise use GitHub's primary email as Gitpod's primary email
+                // otherwise use GitHub's primary email as Devpod's primary email
                 return emails.filter((e) => e.primary)[0].email;
             };
 

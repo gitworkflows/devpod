@@ -28,7 +28,7 @@ packages:
     config:
       metadata:
         helm-component: ideService
-      dockerfile: leeway.Dockerfile
+      dockerfile: blazedock.Dockerfile
       image:
         - ${imageRepoBase}/ide-service:${version}
         - ${imageRepoBase}/ide-service:commit-${__git_commit}

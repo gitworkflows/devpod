@@ -2,12 +2,12 @@
 
 ## Overview
 
-The Common-Go component is a foundational Go library that provides shared utilities, abstractions, and functionality used across multiple Gitpod services. It serves as a central repository for common code patterns, helping to maintain consistency, reduce duplication, and simplify development across the Gitpod platform's Go-based microservices.
+The Common-Go component is a foundational Go library that provides shared utilities, abstractions, and functionality used across multiple Devpod services. It serves as a central repository for common code patterns, helping to maintain consistency, reduce duplication, and simplify development across the Devpod platform's Go-based microservices.
 
 ## Purpose
 
 The primary purposes of the Common-Go component are:
-- Provide shared utilities and abstractions for Gitpod's Go-based services
+- Provide shared utilities and abstractions for Devpod's Go-based services
 - Ensure consistent implementation of cross-cutting concerns
 - Reduce code duplication across services
 - Simplify service development with ready-to-use components
@@ -30,7 +30,7 @@ The Common-Go component is structured as a collection of Go packages, each focus
 8. **Metrics**: Prometheus metrics collection
 9. **Utilities**: Various helper functions and utilities
 
-The component is designed to be imported and used by other Go-based services in the Gitpod platform, providing a consistent foundation for service development.
+The component is designed to be imported and used by other Go-based services in the Devpod platform, providing a consistent foundation for service development.
 
 ## Key Packages and Functionality
 
@@ -108,7 +108,7 @@ The component is designed to be imported and used by other Go-based services in 
 ## Integration Points
 
 The Common-Go component integrates with:
-1. **All Go-based Gitpod Services**: Provides foundational functionality
+1. **All Go-based Devpod Services**: Provides foundational functionality
 2. **Kubernetes**: For cluster interaction and management
 3. **Prometheus**: For metrics collection
 4. **Tracing Systems**: For distributed tracing

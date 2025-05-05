@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -15,7 +15,7 @@ import { handleBitbucketError } from "../bitbucket-server/utils";
 export class BitbucketFileProvider implements FileProvider {
     @inject(BitbucketApiFactory) protected readonly apiFactory: BitbucketApiFactory;
 
-    public async getGitpodFileContent(commit: Commit, user: User): Promise<MaybeContent> {
+    public async getDevpodFileContent(commit: Commit, user: User): Promise<MaybeContent> {
         const yamlVersion1 = await Promise.all([
             this.getFileContent(commit, user, ".devpod.yml"),
             this.getFileContent(commit, user, ".devpod"),

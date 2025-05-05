@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -31,7 +31,7 @@ type Attributes struct {
 	// this is vscode header `x-market-client-id`
 	VSCodeClientID string
 
-	GitpodHost string
+	DevpodHost string
 
 	// Component is using in components/service-waiter
 	// Feature Flag key is `service_waiter_skip_component`
@@ -40,7 +40,7 @@ type Attributes struct {
 
 type ClientOpt func(o *options)
 
-func WithGitpodProxy(devpodHost string) ClientOpt {
+func WithDevpodProxy(devpodHost string) ClientOpt {
 	return func(o *options) {
 		o.sdkKey = "devpod"
 		o.baseURL = fmt.Sprintf("https://%s/configcat", devpodHost)

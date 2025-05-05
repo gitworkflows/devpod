@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -10,10 +10,10 @@ import (
 	"strings"
 
 	"github.com/bufbuild/connect-go"
-	"github.com/gitpod-io/local-app/pkg/config"
-	"github.com/gitpod-io/local-app/pkg/helper"
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
+	"github.com/khulnasoft/local-app/pkg/config"
+	"github.com/khulnasoft/local-app/pkg/helper"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 	"github.com/spf13/cobra"
 )
 
@@ -31,7 +31,7 @@ var workspaceCreateCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		devpod, err := getGitpodClient(cmd.Context())
+		devpod, err := getDevpodClient(cmd.Context())
 		if err != nil {
 			return err
 		}
@@ -150,7 +150,7 @@ var workspaceCreateOpts struct {
 
 func classCompletionFunc(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 	ctx := cmd.Context()
-	devpod, err := getGitpodClient(ctx)
+	devpod, err := getDevpodClient(ctx)
 	if err != nil {
 		return nil, cobra.ShellCompDirectiveError
 	}
@@ -172,7 +172,7 @@ func classCompletionFunc(cmd *cobra.Command, args []string, toComplete string) (
 
 func editorCompletionFunc(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 	ctx := cmd.Context()
-	devpod, err := getGitpodClient(ctx)
+	devpod, err := getDevpodClient(ctx)
 	if err != nil {
 		return nil, cobra.ShellCompDirectiveError
 	}

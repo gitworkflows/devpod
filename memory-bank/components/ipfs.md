@@ -2,7 +2,7 @@
 
 ## Overview
 
-The IPFS (InterPlanetary File System) component in Gitpod consists of two main parts: Kubo and IPFS Cluster. Kubo is the core IPFS implementation in Go, while IPFS Cluster provides pinset orchestration for IPFS. This component is primarily used by the registry-facade component to cache container image layers, improving performance and reliability of workspace image distribution.
+The IPFS (InterPlanetary File System) component in Devpod consists of two main parts: Kubo and IPFS Cluster. Kubo is the core IPFS implementation in Go, while IPFS Cluster provides pinset orchestration for IPFS. This component is primarily used by the registry-facade component to cache container image layers, improving performance and reliability of workspace image distribution.
 
 ## Purpose
 
@@ -66,7 +66,7 @@ The IPFS component integrates with:
 
 ### Container Image Caching
 
-The primary use of IPFS in Gitpod is for caching container image layers:
+The primary use of IPFS in Devpod is for caching container image layers:
 
 1. When a container image is pulled, registry-facade checks if the layers are already in IPFS
 2. If a layer is not in IPFS, it is fetched from the original source and stored in IPFS

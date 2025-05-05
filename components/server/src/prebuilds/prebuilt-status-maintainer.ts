@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -32,8 +32,8 @@ const MAX_UPDATABLE_AGE = 6 * 60 * 60 * 1000; // 6h
 const MAX_UPDATABLES = 100; // to be processed at a time
 const IGNORED_UPDATEABLE_AGE = 24 * 60 * 60 * 1000; // 24h
 
-const DEFAULT_STATUS_DESCRIPTION = "Open a prebuilt online workspace in Gitpod";
-const NON_PREBUILT_STATUS_DESCRIPTION = "Open an online workspace in Gitpod";
+const DEFAULT_STATUS_DESCRIPTION = "Open a prebuilt online workspace in Devpod";
+const NON_PREBUILT_STATUS_DESCRIPTION = "Open an online workspace in Devpod";
 
 export type AuthenticatedGithubProvider = (
     installationId: number,
@@ -92,7 +92,7 @@ export class PrebuildStatusMaintainer implements Disposable {
                     owner: cri.owner,
                     sha: cri.head_sha,
                     target_url: cri.details_url,
-                    context: "Gitpod",
+                    context: "Devpod",
                     description: "prebuilding an online workspace for this PR",
                     state: "pending",
                 });
@@ -104,7 +104,7 @@ export class PrebuildStatusMaintainer implements Disposable {
                     owner: cri.owner,
                     sha: cri.head_sha,
                     target_url: cri.details_url,
-                    context: "Gitpod",
+                    context: "Devpod",
                     description: conclusion == "success" ? DEFAULT_STATUS_DESCRIPTION : NON_PREBUILT_STATUS_DESCRIPTION,
                     state: config?.github?.prebuilds?.addCheck === "prevent-merge-on-error" ? conclusion : "success",
                 });
@@ -188,7 +188,7 @@ export class PrebuildStatusMaintainer implements Disposable {
                     await githubApi.repos.createCommitStatus({
                         owner: updatable.owner,
                         repo: updatable.repo,
-                        context: "Gitpod",
+                        context: "Devpod",
                         sha: updatable.commitSHA || pws.commit,
                         target_url: updatable.contextUrl,
                         description:

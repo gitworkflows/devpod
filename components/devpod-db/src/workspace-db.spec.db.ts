@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -144,7 +144,7 @@ class WorkspaceDBSpec {
             revision: "abc",
         },
         contextURL: "https://github.com/khulnasoft/devpod",
-        description: "Gitpod",
+        description: "Devpod",
         ownerId: this.userId,
         organizationId: this.orgidA,
     };

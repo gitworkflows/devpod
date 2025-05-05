@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -15,7 +15,7 @@ import {
 import dayjs from "dayjs";
 import { useEffect, useRef, useState } from "react";
 import Modal from "../components/Modal";
-import { getGitpodService } from "../service/service";
+import { getDevpodService } from "../service/service";
 import { WorkspaceSearch } from "./WorkspacesSearch";
 import Property from "./Property";
 import { AdminPageHeader } from "./AdminPageHeader";
@@ -46,14 +46,14 @@ export default function UserDetail(p: { user: User }) {
 
     const verifyUser = async () => {
         await updateUser(async (u) => {
-            return await getGitpodService().server.adminVerifyUser(u.id);
+            return await getDevpodService().server.adminVerifyUser(u.id);
         });
     };
 
     const toggleBlockUser = async () => {
         await updateUser(async (u) => {
             u.blocked = !u.blocked;
-            await getGitpodService().server.adminBlockUser({
+            await getDevpodService().server.adminBlockUser({
                 blocked: u.blocked,
                 id: u.id,
             });
@@ -64,7 +64,7 @@ export default function UserDetail(p: { user: User }) {
     const deleteUser = async () => {
         await updateUser(async (u) => {
             u.markedDeleted = !u.markedDeleted;
-            await getGitpodService().server.adminDeleteUser(u.id);
+            await getDevpodService().server.adminDeleteUser(u.id);
             return u;
         });
     };
@@ -227,7 +227,7 @@ function getFlags(user: User, updateUser: UpdateUserFunction): Entry[] {
                 checked,
                 onClick: async () => {
                     await updateUser(async (u) => {
-                        return await getGitpodService().server.adminModifyPermanentWorkspaceFeatureFlag({
+                        return await getDevpodService().server.adminModifyPermanentWorkspaceFeatureFlag({
                             id: user.id,
                             changes: [
                                 {
@@ -250,7 +250,7 @@ function getRopEntries(user: User, updateUser: UpdateUserFunction): Entry[] {
             checked,
             onClick: async () => {
                 await updateUser(async (u) => {
-                    return await getGitpodService().server.adminModifyRoleOrPermission({
+                    return await getDevpodService().server.adminModifyRoleOrPermission({
                         id: user.id,
                         rpp: [
                             {

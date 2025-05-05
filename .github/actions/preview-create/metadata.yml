@@ -2,7 +2,7 @@ name: "Create preview environment"
 description: "Creates the infrastructure for a preview environment"
 inputs:
     name:
-        description: "The name of the preview environment to deploy Gitpod to"
+        description: "The name of the preview environment to deploy Devpod to"
         required: false
     infrastructure_provider:
         description: "The infrastructure provider to use"

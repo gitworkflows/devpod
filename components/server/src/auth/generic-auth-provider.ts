@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -446,7 +446,7 @@ export abstract class GenericAuthProvider implements AuthProvider {
                     isBlocked: flowContext.isBlocked,
                 });
 
-                // Set all cookies used on website for visitor preferences for .devpod.io domain if no preference exists yet
+                // Set all cookies used on website for visitor preferences for .devpod.khulnasoft.com domain if no preference exists yet
                 ["gp-analytical", "gp-necessary", "gp-targeting"].forEach((cookieName) => {
                     if (!request.cookies[cookieName]) {
                         response.cookie(cookieName, "true", {
@@ -568,7 +568,7 @@ export abstract class GenericAuthProvider implements AuthProvider {
         const { strategyName } = this;
         const clientInfo = getRequestingClientInfo(req);
         const authProviderId = this.authProviderId;
-        let currentGitpodUser: User | undefined = User.is(req.user) ? req.user : undefined;
+        let currentDevpodUser: User | undefined = User.is(req.user) ? req.user : undefined;
         let candidate: Identity;
 
         const authFlow = req.authFlow;
@@ -588,11 +588,11 @@ export abstract class GenericAuthProvider implements AuthProvider {
 
             log.info(`(${strategyName}) Verify function called for ${authName}`, { ...defaultLogPayload, authUser });
 
-            if (currentGitpodUser) {
+            if (currentDevpodUser) {
                 // user is already logged in
 
                 // check for matching auth ID
-                const currentIdentity = currentGitpodUser.identities.find(
+                const currentIdentity = currentDevpodUser.identities.find(
                     (i) => i.authProviderId === this.authProviderId,
                 );
                 if (currentIdentity && currentIdentity.authId !== candidate.authId) {
@@ -600,7 +600,7 @@ export abstract class GenericAuthProvider implements AuthProvider {
                         ...defaultLogPayload,
                         authUser,
                         candidate,
-                        currentGitpodUser: currentGitpodUser.id,
+                        currentDevpodUser: currentDevpodUser.id,
                         clientInfo,
                     });
                     done(
@@ -617,7 +617,7 @@ export abstract class GenericAuthProvider implements AuthProvider {
                 // we need to check current provider authorizations first...
                 try {
                     await this.userAuthentication.assertNoTwinAccount(
-                        currentGitpodUser,
+                        currentDevpodUser,
                         this.host,
                         this.authProviderId,
                         candidate,
@@ -627,7 +627,7 @@ export abstract class GenericAuthProvider implements AuthProvider {
                         ...defaultLogPayload,
                         authUser,
                         candidate,
-                        currentGitpodUser: currentGitpodUser.id,
+                        currentDevpodUser: currentDevpodUser.id,
                         clientInfo,
                     });
                     done(error, undefined);
@@ -635,9 +635,9 @@ export abstract class GenericAuthProvider implements AuthProvider {
                 }
             } else {
                 // no user session present, let's initiate a login
-                currentGitpodUser = await this.userAuthentication.findUserForLogin({ candidate });
+                currentDevpodUser = await this.userAuthentication.findUserForLogin({ candidate });
 
-                if (!currentGitpodUser) {
+                if (!currentDevpodUser) {
                     // signup new accounts with email adresses already taken is disallowed
                     try {
                         await this.userAuthentication.asserNoAccountWithEmail(primaryEmail);
@@ -662,19 +662,19 @@ export abstract class GenericAuthProvider implements AuthProvider {
                 tokenResponse.expires_in,
             );
 
-            if (currentGitpodUser) {
+            if (currentDevpodUser) {
                 const elevateScopes = authFlow.overrideScopes
                     ? undefined
-                    : await this.getMissingScopeForElevation(currentGitpodUser, currentScopes);
-                const isBlocked = await this.userAuthentication.isBlocked({ user: currentGitpodUser });
+                    : await this.getMissingScopeForElevation(currentDevpodUser, currentScopes);
+                const isBlocked = await this.userAuthentication.isBlocked({ user: currentDevpodUser });
 
                 const user = await this.userAuthentication.updateUserOnLogin(
-                    currentGitpodUser,
+                    currentDevpodUser,
                     authUser,
                     candidate,
                     token,
                 );
-                currentGitpodUser = user;
+                currentDevpodUser = user;
 
                 flowContext = <VerifyResult.WithUser>{
                     user: user,
@@ -694,7 +694,7 @@ export abstract class GenericAuthProvider implements AuthProvider {
                     isBlocked,
                 };
             }
-            done(undefined, currentGitpodUser || candidate, flowContext);
+            done(undefined, currentDevpodUser || candidate, flowContext);
         } catch (err) {
             log.error(`(${strategyName}) Exception in verify function`, err, { ...defaultLogPayload, err, authFlow });
             done(err, undefined);
@@ -854,7 +854,7 @@ namespace VerifyResult {
 interface GenericOAuthStrategyOptions {
     scope?: string | string[];
     /**
-     * This should be Gitpod's hostname.
+     * This should be Devpod's hostname.
      */
     userAgent: string;
 

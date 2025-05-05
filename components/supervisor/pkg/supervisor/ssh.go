@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -166,7 +166,7 @@ func (s *sshServer) handleConn(ctx context.Context, conn net.Conn) {
 
 	log.WithField("args", args).Debug("sshd flags")
 	cmd := exec.CommandContext(ctx, openssh, args...)
-	cmd = runAsGitpodUser(cmd)
+	cmd = runAsDevpodUser(cmd)
 	cmd.Env = s.envvars
 	cmd.ExtraFiles = []*os.File{socketFD}
 	cmd.Stderr = os.Stderr
@@ -224,7 +224,7 @@ func prepareSSHKey(ctx context.Context, sshkey string) error {
 	}
 
 	keycmd := exec.Command(sshkeygen, "-t", "ecdsa", "-q", "-N", "", "-f", sshkey)
-	// We need to force HOME because the Gitpod user might not have existed at the start of the container
+	// We need to force HOME because the Devpod user might not have existed at the start of the container
 	// which makes the container runtime set an invalid HOME value.
 	keycmd.Env = func() []string {
 		env := os.Environ()
@@ -304,7 +304,7 @@ func configureSSHDefaultDir(cfg *Config) {
 }
 
 func configureSSHMessageOfTheDay() {
-	msg := []byte(`Welcome to Gitpod: Always ready to code. Try the following commands to get started:
+	msg := []byte(`Welcome to Devpod: Always ready to code. Try the following commands to get started:
 
 	gp tasks list         List all your defined tasks in .devpod.yml
 	gp tasks attach       Attach your terminal to a workspace task
@@ -313,7 +313,7 @@ func configureSSHMessageOfTheDay() {
 	gp stop               Stop current workspace
 	gp help               To learn about the gp CLI commands
 
-For more information, see the Gitpod documentation: https://devpod.io/docs
+For more information, see the Devpod documentation: https://devpod.khulnasoft.com/docs
 `)
 
 	if err := ioutil.WriteFile("/etc/motd", msg, 0o644); err != nil {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import { QueryErrorResetBoundary, useQueryClient } from "@tanstack/react-query";
 import { FC } from "react";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 import { hasLoggedInBefore, Login } from "../../Login";
-import { isGitpodIo } from "../../utils";
+import { isDevpodIo } from "../../utils";
 import { CaughtError } from "./ReloadPageErrorBoundary";
 import { devpodHostUrl } from "../../service/service";
 import QuickStart from "../QuickStart";
@@ -75,10 +75,10 @@ const ExpectedQueryErrorsFallback: FC<FallbackProps> = ({ error, resetErrorBound
 
         // Before we show a Login screen, check to see if we need to redirect to www site
         // Redirects if it's the root, no user, and no gp cookie present (has logged in recently)
-        if (isGitpodIo() && window.location.pathname === "/" && window.location.hash === "") {
+        if (isDevpodIo() && window.location.pathname === "/" && window.location.hash === "") {
             // If there's no gp cookie, bounce to www site
             if (!hasLoggedInBefore()) {
-                window.location.href = `https://www.devpod.io`;
+                window.location.href = `https://www.devpod.khulnasoft.com`;
                 return <div></div>;
             }
         }

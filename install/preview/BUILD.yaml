@@ -10,6 +10,6 @@ packages:
       - "entrypoint.sh"
       - "manifests/*.yaml"
     config:
-      dockerfile: leeway.Dockerfile
+      dockerfile: blazedock.Dockerfile
       image:
         - ${imageRepoBase}/local-preview:${version}

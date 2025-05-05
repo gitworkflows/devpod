@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -43,10 +43,10 @@ const (
 	ServiceTypeLabel = "serviceType"
 
 	// WorkspaceManaged indicates which component is responsible for managing the workspace
-	WorkspaceManagedByLabel = "devpod.io/managed-by"
+	WorkspaceManagedByLabel = "devpod.khulnasoft.com/managed-by"
 
 	// CPULimitAnnotation enforces a strict CPU limit on a workspace by virtue of ws-daemon
-	CPULimitAnnotation = "devpod.io/cpuLimit"
+	CPULimitAnnotation = "devpod.khulnasoft.com/cpuLimit"
 
 	// WorkspaceURLAnnotation is the annotation on the WS pod which contains the public workspace URL.
 	WorkspaceURLAnnotation = "devpod/url"
@@ -65,22 +65,22 @@ const (
 	WorkspaceExposedPorts = "devpod/exposedPorts"
 
 	// WorkspaceSSHPublicKeys contains all authorized ssh public keys that can be connected to the workspace
-	WorkspaceSSHPublicKeys = "devpod.io/sshPublicKeys"
+	WorkspaceSSHPublicKeys = "devpod.khulnasoft.com/sshPublicKeys"
 
 	// workspaceCpuMinLimitAnnotation denotes the minimum cpu limit of a workspace i.e. the minimum amount of resources it is guaranteed to get
-	WorkspaceCpuMinLimitAnnotation = "devpod.io/cpuMinLimit"
+	WorkspaceCpuMinLimitAnnotation = "devpod.khulnasoft.com/cpuMinLimit"
 
 	// workspaceCpuBurstLimit denotes the cpu burst limit of a workspace
-	WorkspaceCpuBurstLimitAnnotation = "devpod.io/cpuBurstLimit"
+	WorkspaceCpuBurstLimitAnnotation = "devpod.khulnasoft.com/cpuBurstLimit"
 
 	// workspaceNetConnLimit denotes the maximum number of connections a workspace can make per minute
-	WorkspaceNetConnLimitAnnotation = "devpod.io/netConnLimitPerMinute"
+	WorkspaceNetConnLimitAnnotation = "devpod.khulnasoft.com/netConnLimitPerMinute"
 
 	// workspacePressureStallInfo indicates if pressure stall information should be retrieved for the workspace
-	WorkspacePressureStallInfoAnnotation = "devpod.io/psi"
+	WorkspacePressureStallInfoAnnotation = "devpod.khulnasoft.com/psi"
 
 	// ImageNameAnnotation indicates the original format of the main image of the pod
-	ImageNameAnnotation = "devpod.io/image_name"
+	ImageNameAnnotation = "devpod.khulnasoft.com/image_name"
 )
 
 // GetOWIFromObject finds the owner, workspace and instance information on a Kubernetes object using labels

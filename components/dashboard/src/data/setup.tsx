@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -87,7 +87,7 @@ export const setupQueryClientProvider = () => {
     };
 
     // Return a wrapper around PersistQueryClientProvider w/ the query client options we setp
-    const GitpodQueryClientProvider: FunctionComponent = ({ children }) => {
+    const DevpodQueryClientProvider: FunctionComponent = ({ children }) => {
         return (
             <PersistQueryClientProvider client={client} persistOptions={persistOptions}>
                 {children}
@@ -96,7 +96,7 @@ export const setupQueryClientProvider = () => {
         );
     };
 
-    return GitpodQueryClientProvider;
+    return DevpodQueryClientProvider;
 };
 
 // Persister that uses IndexedDB

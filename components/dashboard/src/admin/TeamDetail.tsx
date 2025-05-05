@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,7 +7,7 @@
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { Team, TeamMemberInfo, TeamMemberRole, VALID_ORG_MEMBER_ROLES } from "@devpod/devpod-protocol";
-import { getGitpodService } from "../service/service";
+import { getDevpodService } from "../service/service";
 import { Item, ItemField, ItemsList } from "../components/ItemsList";
 import DropDown from "../components/DropDown";
 import { Link } from "react-router-dom";
@@ -36,14 +36,14 @@ export default function TeamDetail(props: { team: Team }) {
     const attributionId = AttributionId.render(AttributionId.create(team));
     const initialize = () => {
         (async () => {
-            const members = await getGitpodService().server.adminGetTeamMembers(team.id);
+            const members = await getDevpodService().server.adminGetTeamMembers(team.id);
             if (members.length > 0) {
                 setTeamMembers(members);
             }
         })();
-        getGitpodService().server.adminGetBillingMode(attributionId).then(setBillingMode);
-        getGitpodService().server.adminGetCostCenter(attributionId).then(setCostCenter);
-        getGitpodService().server.adminGetUsageBalance(attributionId).then(setUsageBalance);
+        getDevpodService().server.adminGetBillingMode(attributionId).then(setBillingMode);
+        getDevpodService().server.adminGetCostCenter(attributionId).then(setCostCenter);
+        getDevpodService().server.adminGetUsageBalance(attributionId).then(setUsageBalance);
     };
 
     useEffect(initialize, [team, attributionId]);
@@ -64,8 +64,8 @@ export default function TeamDetail(props: { team: Team }) {
     });
 
     const setTeamMemberRole = async (userId: string, role: TeamMemberRole) => {
-        await getGitpodService().server.adminSetTeamMemberRole(team!.id, userId, role);
-        setTeamMembers(await getGitpodService().server.adminGetTeamMembers(team!.id));
+        await getDevpodService().server.adminSetTeamMemberRole(team!.id, userId, role);
+        setTeamMembers(await getDevpodService().server.adminGetTeamMembers(team!.id));
     };
     return (
         <>
@@ -225,7 +225,7 @@ export default function TeamDetail(props: { team: Team }) {
                         disabled={usageLimit === costCenter?.spendingLimit}
                         onClick={async () => {
                             if (usageLimit !== undefined) {
-                                await getGitpodService().server.adminSetUsageLimit(attributionId, usageLimit || 0);
+                                await getDevpodService().server.adminSetUsageLimit(attributionId, usageLimit || 0);
                                 setUsageLimit(undefined);
                                 initialize();
                                 setEditSpendingLimit(false);
@@ -259,7 +259,7 @@ export default function TeamDetail(props: { team: Team }) {
                         disabled={creditNote.credits === 0 || !creditNote.note}
                         onClick={async () => {
                             if (creditNote.credits !== 0 && !!creditNote.note) {
-                                await getGitpodService().server.adminAddUsageCreditNote(
+                                await getDevpodService().server.adminAddUsageCreditNote(
                                     attributionId,
                                     creditNote.credits,
                                     creditNote.note,

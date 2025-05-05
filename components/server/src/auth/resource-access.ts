@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import {
     CommitContext,
-    GitpodToken,
+    DevpodToken,
     PrebuiltWorkspace,
     Repository,
     Snapshot,
@@ -34,7 +34,7 @@ export type GuardedResource =
     | GuardedWorkspaceInstance
     | GuardedUser
     | GuardedSnapshot
-    | GuardedGitpodToken
+    | GuardedDevpodToken
     | GuardedToken
     | GuardedUserStorage
     | GuardedContentBlob
@@ -107,9 +107,9 @@ export interface GuardedTeam {
     members: TeamMemberInfo[];
 }
 
-export interface GuardedGitpodToken {
+export interface GuardedDevpodToken {
     kind: "devpodToken";
-    subject: GitpodToken;
+    subject: DevpodToken;
 }
 
 export interface GuardedToken {

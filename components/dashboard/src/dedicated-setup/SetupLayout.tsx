@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -39,7 +39,7 @@ export const SetupLayout: FC<Props> = ({
             <div className="app-container">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center justify-start py-3 space-x-1">
-                        <img src={devpodIcon} className="w-6 h-6" alt="Gitpod's logo" />
+                        <img src={devpodIcon} className="w-6 h-6" alt="Devpod's logo" />
                         {showOrg ? (
                             <div className="pr-1 flex font-semibold whitespace-nowrap max-w-xs overflow-hidden">
                                 <OrgIcon
@@ -51,7 +51,7 @@ export const SetupLayout: FC<Props> = ({
                                 {currentOrg.data?.name}
                             </div>
                         ) : (
-                            <span className="text-lg">Gitpod</span>
+                            <span className="text-lg">Devpod</span>
                         )}
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -53,7 +53,7 @@ import { useAllowedWorkspaceClassesMemo } from "../data/workspaces/workspace-cla
 import Menu from "../menu/Menu";
 import { useOrgSettingsQuery } from "../data/organizations/org-settings-query";
 import { useAllowedWorkspaceEditorsMemo } from "../data/ide-options/ide-options-query";
-import { isGitpodIo } from "../utils";
+import { isDevpodIo } from "../utils";
 import { useListConfigurations } from "../data/configurations/configuration-queries";
 import { flattenPagedConfigurations } from "../data/git-providers/unified-repositories-search-query";
 import { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
@@ -270,11 +270,11 @@ export function CreateWorkspacePage() {
                 return;
             }
 
-            // if user received an INVALID_GITPOD_YML yml for their contextURL they can choose to proceed using default configuration
+            // if user received an INVALID_DEVPOD_YML yml for their contextURL they can choose to proceed using default configuration
             if (
                 workspaceContext.error &&
                 ApplicationError.hasErrorCode(workspaceContext.error) &&
-                workspaceContext.error.code === ErrorCodes.INVALID_GITPOD_YML
+                workspaceContext.error.code === ErrorCodes.INVALID_DEVPOD_YML
             ) {
                 opts.forceDefaultConfig = true;
             }
@@ -457,12 +457,12 @@ export function CreateWorkspacePage() {
             return true;
         }
         if (workspaceContext.error) {
-            // For INVALID_GITPOD_YML we don't want to disable the button
+            // For INVALID_DEVPOD_YML we don't want to disable the button
             // The user see a warning that their file is invalid, but they can continue and it will be ignored
             if (
                 workspaceContext.error &&
                 ApplicationError.hasErrorCode(workspaceContext.error) &&
-                workspaceContext.error.code === ErrorCodes.INVALID_GITPOD_YML
+                workspaceContext.error.code === ErrorCodes.INVALID_DEVPOD_YML
             ) {
                 return false;
             }
@@ -684,7 +684,7 @@ const ErrorMessage: FunctionComponent<ErrorMessageProps> = ({ error, reset, setS
     }
 
     switch (error.code) {
-        case ErrorCodes.INVALID_GITPOD_YML:
+        case ErrorCodes.INVALID_DEVPOD_YML:
             return (
                 <RepositoryInputError
                     title="Invalid YAML configuration; using default settings."
@@ -794,7 +794,7 @@ export const RepositoryNotFound: FC<{ error: StartWorkspaceError }> = ({ error }
     if (!userScopes.includes(missingScope)) {
         return (
             <RepositoryInputError
-                title="The repository may be private. Please authorize Gitpod to access private repositories."
+                title="The repository may be private. Please authorize Devpod to access private repositories."
                 message={errorMessage}
                 linkText="Grant access"
                 linkHref={authorizeURL}
@@ -819,14 +819,14 @@ export const RepositoryNotFound: FC<{ error: StartWorkspaceError }> = ({ error }
     if (!updatedRecently) {
         return (
             <RepositoryInputError
-                title={`Permission to access private repositories has been granted. If you are a member of '${owner}', please try to request access for Gitpod.`}
+                title={`Permission to access private repositories has been granted. If you are a member of '${owner}', please try to request access for Devpod.`}
                 message={errorMessage}
                 linkText="Request access"
                 linkHref={authorizeURL}
             />
         );
     }
-    if (authProvider.id.toLocaleLowerCase() === "public-github" && isGitpodIo()) {
+    if (authProvider.id.toLocaleLowerCase() === "public-github" && isDevpodIo()) {
         return (
             <RepositoryInputError
                 title={`Although you appear to have the correct authorization credentials, the '${owner}' organization has enabled OAuth App access restrictions, meaning that data access to third-parties is limited. For more information on these restrictions, including how to enable this app, visit https://docs.github.com/articles/restricting-access-to-your-organization-s-data/.`}
@@ -839,7 +839,7 @@ export const RepositoryNotFound: FC<{ error: StartWorkspaceError }> = ({ error }
 
     return (
         <RepositoryInputError
-            title={`Your access token was updated recently. Please try again if the repository exists and Gitpod was approved for '${owner}'.`}
+            title={`Your access token was updated recently. Please try again if the repository exists and Devpod was approved for '${owner}'.`}
             message={errorMessage}
             linkText="Authorize again"
             linkHref={authorizeURL}

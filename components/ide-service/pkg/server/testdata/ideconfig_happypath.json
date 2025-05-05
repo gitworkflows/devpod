@@ -1,55 +1,55 @@
 {
-  "supervisorImage": "ghcr.io/devpod-core-dev/build/supervisor:commit-ff38b98b7dde4929159bcaeec68d178898dc2139",
+  "supervisorImage": "khulnasoft/devpod-environment/build/supervisor:commit-ff38b98b7dde4929159bcaeec68d178898dc2139",
   "ideOptions": {
     "options": {
       "code": {
         "orderKey": "00",
         "title": "VS Code",
         "type": "browser",
-        "logo": "https://ide.devpod.io/image/ide-logo/vscode.svg",
+        "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/vscode.svg",
         "label": "Browser",
-        "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
+        "image": "khulnasoft/devpod-environment/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
       },
       "code-desktop": {
         "orderKey": "02",
         "title": "VS Code",
         "type": "desktop",
-        "logo": "https://ide.devpod.io/image/ide-logo/vscode.svg",
-        "image": "ghcr.io/devpod-core-dev/build/ide/code-desktop:commit-c2b7421628ed5a5fb618817a4fd1549684659c2d",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/code-desktop-insiders:commit-c2b7421628ed5a5fb618817a4fd1549684659c2d"
+        "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/vscode.svg",
+        "image": "khulnasoft/devpod-environment/build/ide/code-desktop:commit-c2b7421628ed5a5fb618817a4fd1549684659c2d",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/code-desktop-insiders:commit-c2b7421628ed5a5fb618817a4fd1549684659c2d"
       },
       "goland": {
         "orderKey": "05",
         "title": "GoLand",
         "type": "desktop",
-        "logo": "https://ide.devpod.io/image/ide-logo/golandLogo.svg",
-        "image": "ghcr.io/devpod-core-dev/build/ide/goland:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/goland:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df"
+        "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/golandLogo.svg",
+        "image": "khulnasoft/devpod-environment/build/ide/goland:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/goland:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df"
       },
       "intellij": {
         "orderKey": "04",
         "title": "IntelliJ IDEA",
         "type": "desktop",
-        "logo": "https://ide.devpod.io/image/ide-logo/intellijIdeaLogo.svg",
-        "image": "ghcr.io/devpod-core-dev/build/ide/intellij:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/intellij:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df"
+        "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/intellijIdeaLogo.svg",
+        "image": "khulnasoft/devpod-environment/build/ide/intellij:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/intellij:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df"
       },
       "phpstorm": {
         "orderKey": "07",
         "title": "PhpStorm",
         "type": "desktop",
-        "logo": "https://ide.devpod.io/image/ide-logo/phpstormLogo.svg",
-        "image": "ghcr.io/devpod-core-dev/build/ide/phpstorm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/phpstorm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df"
+        "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/phpstormLogo.svg",
+        "image": "khulnasoft/devpod-environment/build/ide/phpstorm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/phpstorm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df"
       },
       "pycharm": {
         "orderKey": "06",
         "title": "PyCharm",
         "type": "desktop",
-        "logo": "https://ide.devpod.io/image/ide-logo/pycharmLogo.svg",
-        "image": "ghcr.io/devpod-core-dev/build/ide/pycharm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/pycharm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df"
+        "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/pycharmLogo.svg",
+        "image": "khulnasoft/devpod-environment/build/ide/pycharm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/pycharm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df"
       }
     },
     "defaultIde": "code",
@@ -64,7 +64,7 @@
           "phpstorm"
         ],
         "installationSteps": [
-          "If you don't see an open dialog in your browser, make sure you have the \u003ca target='_blank' class='gp-link' href='https://www.devpod.io/docs/ides-and-editors/jetbrains-gateway#getting-started-jetbrains-gateway'\u003eJetBrains Gateway with Gitpod Plugin\u003c/a\u003e installed on your machine, and then click \u003cb\u003e${OPEN_LINK_LABEL}\u003c/b\u003e below."
+          "If you don't see an open dialog in your browser, make sure you have the \u003ca target='_blank' class='gp-link' href='https://www.devpod.khulnasoft.com/docs/ides-and-editors/jetbrains-gateway#getting-started-jetbrains-gateway'\u003eJetBrains Gateway with Devpod Plugin\u003c/a\u003e installed on your machine, and then click \u003cb\u003e${OPEN_LINK_LABEL}\u003c/b\u003e below."
         ]
       },
       "vscode": {

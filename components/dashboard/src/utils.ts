@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -55,12 +55,12 @@ export const poll = async <T>(
     }
 };
 
-export function isGitpodIo() {
+export function isDevpodIo() {
     return (
-        window.location.hostname === "devpod.io" ||
+        window.location.hostname === "devpod.khulnasoft.com" ||
         window.location.hostname === "devpod-staging.com" ||
         window.location.hostname.endsWith("devpod-dev.com") ||
-        window.location.hostname.endsWith("gitpod-io-dev.com")
+        window.location.hostname.endsWith("khulnasoft-dev.com")
     );
 }
 

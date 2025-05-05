@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -17,7 +17,7 @@ import { GitHubRestApi } from "./api";
 import { GithubFileProvider } from "./file-provider";
 import { GitHubTokenHelper } from "./github-token-helper";
 
-@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("GITPOD_TEST_TOKEN_GITHUB")))
+@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("DEVPOD_TEST_TOKEN_GITHUB")))
 class TestFileProvider {
     static readonly AUTH_HOST_CONFIG: Partial<AuthProviderParams> = {
         id: "Public-GitHub",
@@ -64,7 +64,7 @@ class TestFileProvider {
             "License.txt",
         );
         expect(result).to.not.be.undefined;
-        expect(result).to.contain(`To determine under which license you may use a file from the Gitpod source code,
+        expect(result).to.contain(`To determine under which license you may use a file from the Devpod source code,
 please resort to the header of that file.`);
     }
 }

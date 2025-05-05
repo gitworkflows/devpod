@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { UserDB, PersonalAccessTokenDB } from "@devpod/devpod-db/lib";
-import { GitpodTokenType, User } from "@devpod/devpod-protocol";
+import { DevpodTokenType, User } from "@devpod/devpod-protocol";
 import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import * as crypto from "crypto";
 import express from "express";
@@ -155,7 +155,7 @@ export class BearerAuth {
         }
 
         const hash = crypto.createHash("sha256").update(token, "utf8").digest("hex");
-        const userAndToken = await this.userDB.findUserByGitpodToken(hash, GitpodTokenType.API_AUTH_TOKEN);
+        const userAndToken = await this.userDB.findUserByDevpodToken(hash, DevpodTokenType.API_AUTH_TOKEN);
         if (!userAndToken) {
             throw createBearerAuthError("invalid Bearer token");
         }

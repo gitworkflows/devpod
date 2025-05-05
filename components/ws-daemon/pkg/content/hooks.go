@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -103,7 +103,7 @@ func hookSetupWorkspaceLocation(ctx context.Context, ws *session.Workspace) (err
 	}
 
 	// Chown the workspace directory
-	err = os.Chown(location, initializer.GitpodUID, initializer.GitpodGID)
+	err = os.Chown(location, initializer.DevpodUID, initializer.DevpodGID)
 	if err != nil {
 		return xerrors.Errorf("cannot create workspace: %w", err)
 	}

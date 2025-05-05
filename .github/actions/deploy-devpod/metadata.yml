@@ -1,11 +1,11 @@
-name: "Deploy Gitpod"
-description: "Deploys Gitpod to an existing preview environment"
+name: "Deploy Devpod"
+description: "Deploys Devpod to an existing preview environment"
 inputs:
     name:
-        description: "The name of the preview environment to deploy Gitpod to"
+        description: "The name of the preview environment to deploy Devpod to"
         required: false
     version:
-        description: "The version of Gitpod to install"
+        description: "The version of Devpod to install"
         required: true
     with_dedicated_emu:
         description: "Dedicated Config"

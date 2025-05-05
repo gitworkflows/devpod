@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -18,7 +18,7 @@ func networkpolicy(ctx *common.RenderContext) ([]runtime.Object, error) {
 	labels := common.DefaultLabels(Component)
 	var ingressRules []networkingv1.NetworkPolicyPeer
 	// Allow all ingress in workspace clusters
-	// until https://github.com/gitpod-io/ops/issues/6905 is fixed.
+	// until https://github.com/khulnasoft/ops/issues/6905 is fixed.
 	if ctx.Config.Kind != config.InstallationWorkspace {
 		ingressRules = []networkingv1.NetworkPolicyPeer{
 			{

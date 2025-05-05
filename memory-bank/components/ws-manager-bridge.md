@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Workspace Manager Bridge (ws-manager-bridge) is a critical component in the Gitpod architecture that acts as an intermediary between the workspace manager (ws-manager) and the rest of the Gitpod platform. It subscribes to workspace status updates from the workspace manager, processes these updates, and synchronizes the information with the database and other components of the system.
+The Workspace Manager Bridge (ws-manager-bridge) is a critical component in the Devpod architecture that acts as an intermediary between the workspace manager (ws-manager) and the rest of the Devpod platform. It subscribes to workspace status updates from the workspace manager, processes these updates, and synchronizes the information with the database and other components of the system.
 
 ## Purpose
 
@@ -13,7 +13,7 @@ The primary purposes of the Workspace Manager Bridge component are:
 - Trigger appropriate actions based on workspace lifecycle events
 - Provide metrics and monitoring for workspace instances
 - Manage workspace cluster information and available workspace classes
-- Bridge the communication between workspace managers and other Gitpod components
+- Bridge the communication between workspace managers and other Devpod components
 - Handle prebuild status updates and synchronization
 - Expose a gRPC service for cluster management
 
@@ -73,7 +73,7 @@ The Workspace Manager Bridge follows this general workflow:
 
 ## Status Update Processing
 
-The bridge processes workspace status updates from the workspace manager and maps them to the Gitpod data model:
+The bridge processes workspace status updates from the workspace manager and maps them to the Devpod data model:
 
 1. **Phase Mapping**: Maps workspace phases (PENDING, CREATING, INITIALIZING, RUNNING, STOPPING, STOPPED) to the corresponding database representation
 2. **Condition Mapping**: Maps workspace conditions (deployed, failed, timeout, etc.) to the database
@@ -104,7 +104,7 @@ The Workspace Manager Bridge integrates with:
 2. **Database**: Updates workspace instance information
 3. **Redis**: Publishes instance updates for other components
 4. **Prometheus**: Exposes metrics
-5. **Other Gitpod Components**: Provides workspace status information
+5. **Other Devpod Components**: Provides workspace status information
 
 ## Configuration
 

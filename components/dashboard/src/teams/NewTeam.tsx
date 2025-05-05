@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -46,11 +46,11 @@ export default function NewTeamPage() {
         <div className="flex flex-col w-96 mt-24 mx-auto items-center">
             <Heading1>New&nbsp;Organization</Heading1>
             <Subheading className="text-center">
-                <a href="https://www.devpod.io/docs/configure/teams" className="gp-link">
+                <a href="https://www.devpod.khulnasoft.com/docs/configure/teams" className="gp-link">
                     Organizations
                 </a>{" "}
                 allow you to manage related{" "}
-                <a href="https://www.devpod.io/docs/configure/repositories" className="gp-link">
+                <a href="https://www.devpod.khulnasoft.com/docs/configure/repositories" className="gp-link">
                     repositories
                 </a>{" "}
                 and collaborate with other members.

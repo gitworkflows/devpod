@@ -2,8 +2,8 @@
   "id": "007a807f-f2a7-436b-a77f-66ed11ee7828",
   "creationDate": "2023-12-04T08:54:31.686Z",
   "avatarUrl": "https://avatars.githubusercontent.com/u/37021919?v=4",
-  "name": "GitpodTester",
-  "fullName": "Gitpod Tester",
+  "name": "DevpodTester",
+  "fullName": "Devpod Tester",
   "organizationId": "6f5b2707-c83f-4e04-a37c-23d1b1d385ae",
   "verificationPhoneNumber": "+49150-111111111",
   "blocked": false,
@@ -26,7 +26,7 @@
     },
     "profile": {
       "acceptedPrivacyPolicyDate": "2023-12-04T08:54:31.700Z",
-      "emailAddress": "tester@devpod.io",
+      "emailAddress": "tester@devpod.khulnasoft.com",
       "lastUpdatedDetailsNudge": "2023-12-04T08:54:34.831Z",
       "jobRole": "other",
       "jobRoleOther": "",
@@ -41,8 +41,8 @@
       "signupGoalsOther": "",
       "companySize": "",
       "onboardedTimestamp": "2023-12-04T08:54:41.326Z",
-      "name": "Gitpod Tester",
-      "email": "tester@devpod.io",
+      "name": "Devpod Tester",
+      "email": "tester@devpod.khulnasoft.com",
       "company": "",
       "avatarURL": "https://avatars.githubusercontent.com/u/37021919?v=4"
     },
@@ -76,8 +76,8 @@
     {
       "authProviderId": "Public-GitHub",
       "authId": "37021919",
-      "authName": "GitpodTester",
-      "primaryEmail": "tester@devpod.io",
+      "authName": "DevpodTester",
+      "primaryEmail": "tester@devpod.khulnasoft.com",
       "deleted": false,
       "readonly": false
     }

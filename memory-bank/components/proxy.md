@@ -2,12 +2,12 @@
 
 ## Overview
 
-The Proxy is a critical component in Gitpod that serves as the main entry point for all HTTP and WebSocket traffic to the platform. It routes requests to the appropriate backend services, handles TLS termination, enforces security policies, and provides various routing and transformation capabilities for the Gitpod platform.
+The Proxy is a critical component in Devpod that serves as the main entry point for all HTTP and WebSocket traffic to the platform. It routes requests to the appropriate backend services, handles TLS termination, enforces security policies, and provides various routing and transformation capabilities for the Devpod platform.
 
 ## Purpose
 
 The primary purposes of the Proxy component are:
-- Act as the main ingress point for all Gitpod traffic
+- Act as the main ingress point for all Devpod traffic
 - Route requests to appropriate backend services
 - Terminate TLS connections
 - Enforce security headers and policies
@@ -19,11 +19,11 @@ The primary purposes of the Proxy component are:
 
 ## Architecture
 
-The Proxy is built on Caddy, a powerful, extensible web server with automatic HTTPS capabilities. The Gitpod proxy extends Caddy with custom plugins to handle specific Gitpod requirements:
+The Proxy is built on Caddy, a powerful, extensible web server with automatic HTTPS capabilities. The Devpod proxy extends Caddy with custom plugins to handle specific Devpod requirements:
 
 1. **Core Proxy**: Handles general routing and TLS termination
 2. **Workspace Handler**: Routes workspace-specific requests
-3. **Custom Plugins**: Extend Caddy with Gitpod-specific functionality
+3. **Custom Plugins**: Extend Caddy with Devpod-specific functionality
 4. **Security Layer**: Enforces security headers and policies
 5. **Metrics Endpoint**: Provides monitoring capabilities
 
@@ -33,7 +33,7 @@ The Proxy is built on Caddy, a powerful, extensible web server with automatic HT
 - `conf/Caddyfile`: Main configuration file for the proxy
 - `conf/workspace-handler.full`: Configuration for handling workspace requests
 - `conf/workspace-handler.meta`: Configuration for handling workspace metadata
-- `plugins/`: Custom Caddy plugins for Gitpod-specific functionality
+- `plugins/`: Custom Caddy plugins for Devpod-specific functionality
 
 ## Custom Plugins
 
@@ -57,7 +57,7 @@ The proxy is configured via the Caddyfile, which includes:
 ### Main Domain Configuration
 - TLS settings
 - Security headers
-- Routing rules for the main Gitpod domain
+- Routing rules for the main Devpod domain
 - API endpoints
 - Backend service routing
 
@@ -77,7 +77,7 @@ The proxy is configured via the Caddyfile, which includes:
 
 The proxy implements sophisticated routing logic:
 
-1. **Main Domain Routing**: Routes requests to the main Gitpod domain to appropriate backend services
+1. **Main Domain Routing**: Routes requests to the main Devpod domain to appropriate backend services
 2. **Workspace Routing**: Routes workspace requests based on subdomain patterns
 3. **API Routing**: Routes API requests to the server component
 4. **Public API Routing**: Routes public API requests to the public-api-server

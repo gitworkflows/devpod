@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,11 +9,11 @@ import { IAnalyticsWriter, IdentifyMessage, TrackMessage, PageMessage } from "..
 import { log } from "./logging";
 
 export function newAnalyticsWriterFromEnv(): IAnalyticsWriter {
-    switch (process.env.GITPOD_ANALYTICS_WRITER) {
+    switch (process.env.DEVPOD_ANALYTICS_WRITER) {
         case "segment":
             return new SegmentAnalyticsWriter(
-                process.env.GITPOD_ANALYTICS_SEGMENT_KEY || "",
-                process.env.GITPOD_ANALYTICS_SEGMENT_ENDPOINT || "",
+                process.env.DEVPOD_ANALYTICS_SEGMENT_KEY || "",
+                process.env.DEVPOD_ANALYTICS_SEGMENT_ENDPOINT || "",
             );
         case "log":
             return new LogAnalyticsWriter();

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -16,7 +16,7 @@ import { getOrgAndProject } from "./azure-converter";
 export class AzureDevOpsFileProvider implements FileProvider {
     @inject(AzureDevOpsApi) protected readonly azureDevOpsApi: AzureDevOpsApi;
 
-    public async getGitpodFileContent(commit: Commit, user: User): Promise<MaybeContent> {
+    public async getDevpodFileContent(commit: Commit, user: User): Promise<MaybeContent> {
         const [azOrgId, azProject] = getOrgAndProject(commit.repository.owner);
         const repoName = commit.repository.name;
         const yamlVersion1 = await Promise.all([

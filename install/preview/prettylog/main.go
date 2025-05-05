@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 /// Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -30,22 +30,22 @@ var (
 
 		Msg string
 	}{
-		{Msg: "checking prerequisites", Fail: "requires a system with at least", Success: "Gitpod Domain:", Status: "checking prerequisites"},
+		{Msg: "checking prerequisites", Fail: "requires a system with at least", Success: "Devpod Domain:", Status: "checking prerequisites"},
 		{Msg: "preparing system", Success: "extracting images to download ahead"},
 		{Msg: "downloading images", Success: "images pulled"},
-		{Msg: "preparing Gitpod preview installation", Success: "manifests generated"},
-		{Msg: "starting Gitpod", Success: "Gitpod pods are ready", Status: "starting devpod"},
-		{Msg: fmt.Sprintf("Gitpod is running. Visit https://%s to access the dashboard", os.Getenv("DOMAIN")), Status: "devpod ready"},
+		{Msg: "preparing Devpod preview installation", Success: "manifests generated"},
+		{Msg: "starting Devpod", Success: "Devpod pods are ready", Status: "starting devpod"},
+		{Msg: fmt.Sprintf("Devpod is running. Visit https://%s to access the dashboard", os.Getenv("DOMAIN")), Status: "devpod ready"},
 	}
 )
 
 func main() {
 	// Warn and wait for user approval
 	pterm.FgLightCyan.Println(`
-Welcome to the local preview of Gitpod. Please note the following limitations:
+Welcome to the local preview of Devpod. Please note the following limitations:
   - Performance is limited by the capabilities of your machine - a minimum of 4 cores and 6GB of RAM are required
   - ARM CPUs including Macs with Apple Silicon (e.g. M1) are currently not supported
-For more information about these limitation, please visit the local preview documentation: https://www.devpod.io/docs/self-hosted/latest/local-preview`)
+For more information about these limitation, please visit the local preview documentation: https://www.devpod.khulnasoft.com/docs/self-hosted/latest/local-preview`)
 
 	result, _ := pterm.DefaultInteractiveConfirm.WithDefaultText("Continue?").WithDefaultValue(true).Show()
 	if !result {

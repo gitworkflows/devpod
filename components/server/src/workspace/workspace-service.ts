@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -10,7 +10,7 @@ import { ProjectDB, RedisPublisher, WorkspaceDB } from "@devpod/devpod-db/lib";
 import {
     CommitContext,
     GetWorkspaceTimeoutResult,
-    GitpodServer,
+    DevpodServer,
     HeadlessLogUrls,
     PortProtocol,
     PortVisibility,
@@ -242,7 +242,7 @@ export class WorkspaceService {
         };
     }
 
-    async getWorkspaces(userId: string, options: GitpodServer.GetWorkspacesOptions): Promise<WorkspaceInfo[]> {
+    async getWorkspaces(userId: string, options: DevpodServer.GetWorkspacesOptions): Promise<WorkspaceInfo[]> {
         const res = await this.db.find({
             limit: 20,
             ...options,
@@ -1322,7 +1322,7 @@ export class WorkspaceService {
 
     public async sendHeartBeat(
         userId: string,
-        options: GitpodServer.SendHeartBeatOptions,
+        options: DevpodServer.SendHeartBeatOptions,
         check: (instance: WorkspaceInstance, workspace: Workspace) => Promise<void> = async () => {},
     ): Promise<void> {
         const instanceId = options.instanceId;
@@ -1455,7 +1455,7 @@ export class WorkspaceService {
         };
     }
 
-    public async takeSnapshot(userId: string, options: GitpodServer.TakeSnapshotOptions): Promise<Snapshot> {
+    public async takeSnapshot(userId: string, options: DevpodServer.TakeSnapshotOptions): Promise<Snapshot> {
         const { workspaceId, dontWait } = options;
         await this.auth.checkPermissionOnWorkspace(userId, "create_snapshot", workspaceId);
         const workspace = await this.doGetWorkspace(userId, workspaceId);

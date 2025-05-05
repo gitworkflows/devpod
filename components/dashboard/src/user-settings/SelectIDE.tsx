@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -112,7 +112,7 @@ export default function SelectIDE(props: SelectIDEProps) {
                 <p className="text-left w-full text-gray-400 dark:text-gray-500">
                     <strong>JetBrains </strong> integration is currently in{" "}
                     <PillLabel type="warn" className="font-semibold mt-2 ml-0 py-0.5 px-1 self-center">
-                        <a href="https://www.devpod.io/docs/references/devpod-releases">
+                        <a href="https://www.devpod.khulnasoft.com/docs/references/devpod-releases">
                             <span className="text-xs">Beta</span>
                         </a>
                     </PillLabel>
@@ -163,7 +163,7 @@ export default function SelectIDE(props: SelectIDEProps) {
                         <span className="flex items-center gap-2">
                             Launch in JetBrains Toolbox{" "}
                             <PillLabel type="warn">
-                                <a href="https://www.devpod.io/docs/references/devpod-releases">
+                                <a href="https://www.devpod.khulnasoft.com/docs/references/devpod-releases">
                                     <span className="text-xs">BETA</span>
                                 </a>
                             </PillLabel>

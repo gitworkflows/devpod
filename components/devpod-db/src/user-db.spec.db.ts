@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -8,7 +8,7 @@ import * as chai from "chai";
 const expect = chai.expect;
 import { suite, test, timeout } from "@testdeck/mocha";
 
-import { GitpodTokenType, Identity, Workspace, WorkspaceInstance } from "@devpod/devpod-protocol";
+import { DevpodTokenType, Identity, Workspace, WorkspaceInstance } from "@devpod/devpod-protocol";
 import { testContainer } from "./test-container";
 import { DBIdentity } from "./typeorm/entity/db-identity";
 import { TypeORMUserDBImpl } from "./typeorm/user-db-impl";
@@ -232,21 +232,21 @@ class UserDBSpec {
         user1.identities.push(TestData.ID2);
         user1 = await this.db.storeUser(user1);
 
-        await this.db.storeGitpodToken({
+        await this.db.storeDevpodToken({
             tokenHash: "tokenhash",
             created: new Date().toISOString(),
             scopes: ["read-only"],
-            type: GitpodTokenType.API_AUTH_TOKEN,
+            type: DevpodTokenType.API_AUTH_TOKEN,
             userId: user1.id,
         });
-        const result = await this.db.findUserByGitpodToken("tokenhash");
+        const result = await this.db.findUserByDevpodToken("tokenhash");
         expect(result).to.not.be.undefined;
         expect(result?.user.id).to.eq(user1.id);
         expect(result?.token.userId).to.eq(user1.id);
     }
 
     @test(timeout(10000))
-    public async findGitpodTokenOfUser() {
+    public async findDevpodTokenOfUser() {
         let user1 = await this.db.newUser();
         user1.name = "ABC";
         user1.identities.push(TestData.ID1);
@@ -257,18 +257,18 @@ class UserDBSpec {
             tokenHash: "tokenhash",
             created: new Date().toISOString(),
             scopes: ["read-only"],
-            type: GitpodTokenType.API_AUTH_TOKEN,
+            type: DevpodTokenType.API_AUTH_TOKEN,
             userId: user1.id,
         };
-        await this.db.storeGitpodToken(token);
-        const result = await this.db.findGitpodTokensOfUser(user1.id, token.tokenHash);
+        await this.db.storeDevpodToken(token);
+        const result = await this.db.findDevpodTokensOfUser(user1.id, token.tokenHash);
         expect(result).to.not.be.undefined;
         expect(result?.userId).to.eq(user1.id);
         expect(result?.tokenHash).to.eq(token.tokenHash);
     }
 
     @test(timeout(10000))
-    public async findAllGitpodTokensOfUser() {
+    public async findAllDevpodTokensOfUser() {
         let user1 = await this.db.newUser();
         user1.name = "ABC";
         user1.identities.push(TestData.ID1);
@@ -279,19 +279,19 @@ class UserDBSpec {
             tokenHash: "tokenhash",
             created: new Date().toISOString(),
             scopes: ["read-only"],
-            type: GitpodTokenType.API_AUTH_TOKEN,
+            type: DevpodTokenType.API_AUTH_TOKEN,
             userId: user1.id,
         };
-        await this.db.storeGitpodToken(token);
+        await this.db.storeDevpodToken(token);
         const token2 = {
             tokenHash: "tokenhash2",
             created: new Date().toISOString(),
             scopes: ["read-only"],
-            type: GitpodTokenType.API_AUTH_TOKEN,
+            type: DevpodTokenType.API_AUTH_TOKEN,
             userId: user1.id,
         };
-        await this.db.storeGitpodToken(token2);
-        const result = await this.db.findAllGitpodTokensOfUser(user1.id);
+        await this.db.storeDevpodToken(token2);
+        const result = await this.db.findAllDevpodTokensOfUser(user1.id);
         expect(result).to.not.be.undefined;
         expect(result.length).to.eq(2);
         expect(result.some((t) => t.tokenHash === token.tokenHash)).to.be.true;

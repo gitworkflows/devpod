@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -33,7 +33,7 @@ var latestMigrationName string
 var databaseCmd = &cobra.Command{
 	Use:   "database",
 	Short: "waits for a MySQL database to become available",
-	Long: `Uses the default db env config of a Gitpod deployment to try and
+	Long: `Uses the default db env config of a Devpod deployment to try and
 connect to a MySQL database, specifically DB_HOST, DB_PORT, DB_PASSWORD,
 DB_CA_CERT and DB_USER(=devpod)`,
 	PreRun: func(cmd *cobra.Command, args []string) {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -45,7 +45,7 @@ describe("AuthProviderService", async () => {
             host: "github.com",
             oauth: {
                 authorizationUrl: "https://github.com/login/oauth/authorize",
-                callBackUrl: "https://devpod.io/auth/callback",
+                callBackUrl: "https://devpod.khulnasoft.com/auth/callback",
                 clientId: "123",
                 clientSecret: "redacted",
                 tokenUrl: "https://github.com/login/oauth/access_token",
@@ -78,7 +78,7 @@ describe("AuthProviderService", async () => {
             host: "github.com",
             oauth: {
                 authorizationUrl: "https://github.com/login/oauth/authorize",
-                callBackUrl: "https://devpod.io/auth/callback",
+                callBackUrl: "https://devpod.khulnasoft.com/auth/callback",
                 clientId: "123",
                 clientSecret: "redacted",
                 tokenUrl: "https://github.com/login/oauth/access_token",

@@ -1,12 +1,12 @@
 {
   "foo": {
     "baseRef": "docker.io/library/ubuntu:latest",
-    "ideRef": "ghcr.io/devpod-core-dev/build/ide/code:commit-8dd2ddd844f30a4ff66d2704f4714e9da875c7d5",
-    "supervisorRef": "ghcr.io/devpod-core-dev/build/supervisor:main.2733"
+    "ideRef": "khulnasoft/devpod-environment/build/ide/code:commit-8dd2ddd844f30a4ff66d2704f4714e9da875c7d5",
+    "supervisorRef": "khulnasoft/devpod-environment/build/supervisor:main.2733"
   },
   "bar": {
     "baseRef": "docker.io/library/ubuntu:latest",
-    "ideRef": "ghcr.io/devpod-core-dev/build/ide/code:commit-8dd2ddd844f30a4ff66d2704f4714e9da875c7d5",
-    "supervisorRef": "ghcr.io/devpod-core-dev/build/supervisor:main.2762"
+    "ideRef": "khulnasoft/devpod-environment/build/ide/code:commit-8dd2ddd844f30a4ff66d2704f4714e9da875c7d5",
+    "supervisorRef": "khulnasoft/devpod-environment/build/supervisor:main.2762"
   }
 }

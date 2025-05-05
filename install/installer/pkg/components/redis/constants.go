@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -14,11 +14,11 @@ const (
 	RegistryImage = "chainguard/redis"
 
 	ContainerName = "redis"
-	ImageDigest   = "sha256:ea316302f4072beea2083beb7dd38d9e002386586127f0111c669aa6142d46ef"
+	ImageDigest   = "sha256:40896624ea61e7b4ae748825826f8d87099fd3802e3c0afd5d9b746849c733af"
 
 	ExporterRegistryRepo  = "quay.io"
 	ExporterRegistryImage = "oliver006/redis_exporter"
-	ExporterImageDigest   = "sha256:e7e96895407ae28cf28dc97c73c9cd958c5adb4746120e2664569393436c1bd0"
+	ExporterImageDigest   = "sha256:dbd410eb9255016c9440b40b8fa18872fdf0e7972d06fc1df8d5b120d35efe05"
 
 	ExporterContainerName = "exporter"
 	ExporterPortName      = "exporter"

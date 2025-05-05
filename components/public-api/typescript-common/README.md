@@ -2,7 +2,7 @@
 
 ## Overview
 
-This package serves as a bridge for code conversion between two distinct Gitpod packages: @devpod/devpod-protocol and @devpod/public-api. Its primary responsibility is to ensure seamless translation of application data structures from the devpod-protocol format to the public-api gRPC format, and vice versa.
+This package serves as a bridge for code conversion between two distinct Devpod packages: @devpod/devpod-protocol and @devpod/public-api. Its primary responsibility is to ensure seamless translation of application data structures from the devpod-protocol format to the public-api gRPC format, and vice versa.
 
 ## Allowed Usage
 

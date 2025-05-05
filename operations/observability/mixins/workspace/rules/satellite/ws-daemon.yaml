@@ -1,4 +1,4 @@
-# Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2022 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -13,13 +13,13 @@ spec:
   groups:
   - name: ws-daemon
     rules:
-    - alert: BackupFailureBecauseOfGitpodWsDaemonCrash
+    - alert: BackupFailureBecauseOfDevpodWsDaemonCrash
       labels:
         severity: critical
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/GitpodWsDaemonCrashLooping.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodWsDaemonCrashLooping.md
         summary: Increase the number of backup failure because of ws-daemon is crashlooping.
         description: Ws-daemon is restarting {{ printf "%.2f" $value }} times / 10 minutes.
-        dashboard_url: https://grafana.devpod.io/d/ws-daemon/devpod-component-ws-daemon
+        dashboard_url: https://grafana.devpod.khulnasoft.com/d/ws-daemon/devpod-component-ws-daemon
       expr: |
         sum(increase(kube_pod_container_status_restarts_total{container="ws-daemon"}[10m])) by(cluster) > 0 AND sum(increase(devpod_ws_manager_mk2_workspace_backups_failure_total{type="Regular"}[10m])) by(cluster) > 0

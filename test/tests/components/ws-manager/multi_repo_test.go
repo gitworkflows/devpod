@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -39,25 +39,25 @@ var repos = []struct {
 		CheckoutLocation: "devpod",
 	},
 	{
-		RemoteUri:        "https://github.com/gitpod-io/workspace-images",
+		RemoteUri:        "https://github.com/khulnasoft/workspace-images",
 		CloneTarget:      "main",
 		ExpectedBranch:   "main",
 		CheckoutLocation: "workspace-images",
 	},
 	{
-		RemoteUri:        "https://github.com/gitpod-io/dazzle",
+		RemoteUri:        "https://github.com/khulnasoft/dazzle",
 		CloneTarget:      "main",
 		ExpectedBranch:   "main",
 		CheckoutLocation: "dazzle",
 	},
 	{
-		RemoteUri:        "https://github.com/gitpod-io/leeway",
+		RemoteUri:        "https://github.com/khulnasoft/blazedock",
 		CloneTarget:      "main",
 		ExpectedBranch:   "main",
-		CheckoutLocation: "leeway",
+		CheckoutLocation: "blazedock",
 	},
 	{
-		RemoteUri:        "https://github.com/gitpod-io/ws-manager-integration-test",
+		RemoteUri:        "https://github.com/khulnasoft/ws-manager-integration-test",
 		CloneTarget:      "master", // default branch is main
 		ExpectedBranch:   "master",
 		CheckoutLocation: "ws-manager-integration-test",

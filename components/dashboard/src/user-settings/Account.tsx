@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { useCallback, useContext, useState } from "react";
-import { getGitpodService, devpodHostUrl } from "../service/service";
+import { getDevpodService, devpodHostUrl } from "../service/service";
 import { UserContext } from "../user-context";
 import ConfirmationModal from "../components/ConfirmationModal";
 import { PageWithSettingsSubMenu } from "./PageWithSettingsSubMenu";
@@ -76,7 +76,7 @@ export default function Account() {
     }, [updateUser, canUpdateEmail, profileState, setUser, toast, user]);
 
     const deleteAccount = useCallback(async () => {
-        await getGitpodService().server.deleteAccount();
+        await getDevpodService().server.deleteAccount();
         document.location.href = devpodHostUrl.asApiLogout().toString();
     }, []);
 
@@ -97,7 +97,7 @@ export default function Account() {
                         All your workspaces and related data will be deleted and cannot be restored afterwards.
                     </li>
                     <li className="ml-5">
-                        Your subscription will be cancelled. If you obtained a Gitpod subscription through the GitHub
+                        Your subscription will be cancelled. If you obtained a Devpod subscription through the GitHub
                         marketplace, you need to cancel your plan there.
                     </li>
                 </ol>
@@ -131,7 +131,7 @@ export default function Account() {
                 </form>
                 <Heading2 className="mt-12">Delete Account</Heading2>
                 <Subheading className="mb-3">
-                    This action will remove all the data associated with your account in Gitpod.
+                    This action will remove all the data associated with your account in Devpod.
                 </Subheading>
                 <Button variant="destructive" onClick={() => setModal(true)}>
                     Delete Account

@@ -2,14 +2,14 @@
 
 ## Overview
 
-The IDE component in Gitpod is responsible for packaging and managing the various Integrated Development Environments (IDEs) that are available to users within Gitpod workspaces. It includes support for VS Code (both web and desktop versions) and JetBrains IDEs, providing the necessary files, configurations, and integration points for these IDEs to work seamlessly within the Gitpod environment.
+The IDE component in Devpod is responsible for packaging and managing the various Integrated Development Environments (IDEs) that are available to users within Devpod workspaces. It includes support for VS Code (both web and desktop versions) and JetBrains IDEs, providing the necessary files, configurations, and integration points for these IDEs to work seamlessly within the Devpod environment.
 
 ## Purpose
 
 The primary purposes of the IDE component are:
-- Package and distribute IDE binaries for use in Gitpod workspaces
-- Configure IDEs to work within the Gitpod environment
-- Provide integration between IDEs and the Gitpod platform
+- Package and distribute IDE binaries for use in Devpod workspaces
+- Configure IDEs to work within the Devpod environment
+- Provide integration between IDEs and the Devpod platform
 - Support multiple IDE types (VS Code, JetBrains)
 - Enable both web-based and desktop IDE experiences
 - Manage IDE versions and updates
@@ -28,20 +28,20 @@ Each IDE sub-component typically includes:
 - Dockerfiles for building IDE images
 - Configuration files for IDE integration
 - Scripts for downloading and setting up IDE binaries
-- Plugins or extensions for Gitpod integration
+- Plugins or extensions for Devpod integration
 
 ## Key Files and Structure
 
 ### VS Code (Code)
 - `code/BUILD.yaml`: Build configuration for VS Code
-- `code/leeway.Dockerfile`: Dockerfile for building VS Code image
+- `code/blazedock.Dockerfile`: Dockerfile for building VS Code image
 - `code/codehelper/`: Helper utilities for VS Code
-- `code/devpod-web-extension/`: Gitpod-specific VS Code extension
+- `code/devpod-web-extension/`: Devpod-specific VS Code extension
 
 ### JetBrains
 - `jetbrains/image/`: JetBrains IDE image building
 - `jetbrains/image/BUILD.js`: Build script for JetBrains IDE images
-- `jetbrains/image/leeway.Dockerfile`: Dockerfile for JetBrains IDE images
+- `jetbrains/image/blazedock.Dockerfile`: Dockerfile for JetBrains IDE images
 - `jetbrains/image/supervisor-ide-config_*.json`: IDE-specific configuration files
 - `jetbrains/backend-plugin/`: Backend plugin for JetBrains IDEs
 - `jetbrains/gateway-plugin/`: Gateway plugin for JetBrains remote development
@@ -75,12 +75,12 @@ Each JetBrains IDE is available in two versions:
 1. Clones the OpenVSCode Server repository
 2. Builds the web and desktop versions
 3. Packages the built binaries into a Docker image
-4. Configures the image for use with Gitpod
+4. Configures the image for use with Devpod
 
 ### JetBrains
 1. Downloads the specified JetBrains IDE binary
 2. Creates a Docker image with the IDE binary
-3. Configures the IDE for use with Gitpod
+3. Configures the IDE for use with Devpod
 4. Sets up the necessary plugins and extensions
 
 ## Integration Points
@@ -123,9 +123,9 @@ Each IDE has specific configuration requirements:
 ## Common Usage Patterns
 
 The IDE component is typically used to:
-1. Build and package IDE images for use in Gitpod workspaces
-2. Configure IDEs for optimal use within Gitpod
-3. Provide integration between IDEs and the Gitpod platform
+1. Build and package IDE images for use in Devpod workspaces
+2. Configure IDEs for optimal use within Devpod
+3. Provide integration between IDEs and the Devpod platform
 4. Support both web-based and desktop IDE experiences
 5. Manage IDE versions and updates
 

@@ -1,14 +1,14 @@
 # Integration Tests
 
-This directory contains Gitpod's integration tests, including the framework that makes them possible.
+This directory contains Devpod's integration tests, including the framework that makes them possible.
 
-Integration tests work by instrumenting Gitpod's components to modify and verify its state.
+Integration tests work by instrumenting Devpod's components to modify and verify its state.
 Such tests are for example:
 
 |    test case    |                                                                description                                                                |
 |:---------------:|:-----------------------------------------------------------------------------------------------------------------------------------------:|
 |  create bucket  | executing code within ws-daemon's context that loads the config file, creates a remote storage instance, and attempts to create a bucket. |
-| start workspace | obtaining a Gitpod API token, calling "createWorkspace" and watching for successful startup events.                                       |
+| start workspace | obtaining a Devpod API token, calling "createWorkspace" and watching for successful startup events.                                       |
 |    task start   | starting a workspace using the ws-manager interface, instrumenting the workspace container and ensuring that tasks have run.              |
 
 # Integrations
@@ -16,11 +16,11 @@ Such tests are for example:
 - instrumentation: agents that are compiled before/during the test, uploaded to a pod and executed there.
                    They communicate with the test using net/rpc.
 - API access: to all internal APIs, including ws-manager, ws-daemon, image-builder, registry-facade, server
-- DB access to the Gitpod DB
+- DB access to the Devpod DB
 
 # Running the tests
 
-## Automatically at Gitpod
+## Automatically at Devpod
 
 You can opt-in to run the integrations tests as part of the build job. that runs the integration tests against preview environments.
 
@@ -36,16 +36,16 @@ werft job run github -a with-preview=true -a with-integration-tests=webapp -f
 
 ## Manually
 
-You may want to run tests to assert whether a Gitpod installation is successfully integrated.
+You may want to run tests to assert whether a Devpod installation is successfully integrated.
 
 > Use a preview environment with a large VM to run the tests. The tests run in parallel and can consume a large amount of recources. Create one as follows:
-> `TF_VAR_with_large_vm=true leeway run dev:preview`
+> `TF_VAR_with_large_vm=true blazedock run dev:preview`
 
 ### Go test
 
-This is best for when you're actively developing Gitpod.
+This is best for when you're actively developing Devpod.
 
-Test will work if images that they use are already cached by Gitpod instance. If not, they might fail if it takes too long to pull an image.
+Test will work if images that they use are already cached by Devpod instance. If not, they might fail if it takes too long to pull an image.
 
 There are 4 different types of tests:
 
@@ -71,7 +71,7 @@ If you're iterating on a single test, the easiest is to use `go test` directly.
 
 If your integration tests depends on having having a user token available, then you'll have to set `USER_NAME` and `USER_TOKEN` environment variables. This can be done a couple ways:
 1. Get credentials persisted as secrets (either in Github Actions, or GCP Secret Manager via the `core-dev` project), which vary by job that trigger tests. Refer to `run.sh` for details.
-2. In your Gitpod (preview) environment, log into the preview environment, set `USER_NAME` to the user you logged in with, and set `USER_TOKEN` to any (does not have to be valid).
+2. In your Devpod (preview) environment, log into the preview environment, set `USER_NAME` to the user you logged in with, and set `USER_TOKEN` to any (does not have to be valid).
 
 ```console
 cd test

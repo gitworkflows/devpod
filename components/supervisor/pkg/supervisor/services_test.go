@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -26,7 +26,7 @@ func TestInMemoryTokenServiceGetToken(t *testing.T) {
 	var (
 		defaultToken = "foobar"
 		defaultKind  = "myprovider"
-		defaultHost  = "devpod.io"
+		defaultHost  = "devpod.khulnasoft.com"
 
 		errNoToken = status.Error(codes.NotFound, "no token available").Error()
 	)
@@ -265,7 +265,7 @@ func TestInMemoryTokenServiceGetToken(t *testing.T) {
 
 func TestInMemoryTokenServiceSetToken(t *testing.T) {
 	var (
-		defaultHost  = "devpod.io"
+		defaultHost  = "devpod.khulnasoft.com"
 		defaultToken = "foobar"
 	)
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -10,7 +10,7 @@ import org.eclipse.lsp4j.jsonrpc.services.JsonRequest;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public interface GitpodServer {
+public interface DevpodServer {
     @JsonRequest
     CompletableFuture<User> getLoggedInUser();
 
@@ -21,7 +21,7 @@ public interface GitpodServer {
     CompletableFuture<Void> trackEvent(RemoteTrackMessage event);
 
     @JsonRequest
-    CompletableFuture<List<String>> getGitpodTokenScopes(String tokenHash);
+    CompletableFuture<List<String>> getDevpodTokenScopes(String tokenHash);
 
     @JsonRequest
     CompletableFuture<WorkspaceInfo> getWorkspace(String workspaceId);

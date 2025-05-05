@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -43,8 +43,8 @@ import com.jetbrains.rd.util.lifetime.Lifetime
 import com.jetbrains.rd.util.lifetime.LifetimeDefinition
 import com.jetbrains.rd.util.threading.coroutines.launch
 import io.devpod.devpodprotocol.api.entities.WorkspaceInstance
-import io.devpod.jetbrains.gateway.common.GitpodConnectionHandleFactory
-import io.devpod.jetbrains.icons.GitpodIcons
+import io.devpod.jetbrains.gateway.common.DevpodConnectionHandleFactory
+import io.devpod.jetbrains.icons.DevpodIcons
 import kotlinx.coroutines.*
 import kotlinx.coroutines.future.await
 import java.net.URL
@@ -60,11 +60,11 @@ import kotlin.io.path.writeText
 import kotlin.random.Random.Default.nextInt
 
 @Suppress("UnstableApiUsage", "OPT_IN_USAGE")
-class GitpodConnectionProvider : GatewayConnectionProvider {
+class DevpodConnectionProvider : GatewayConnectionProvider {
     private val activeConnections = ConcurrentHashMap<String, LifetimeDefinition>()
-    private val devpod = service<GitpodConnectionService>()
-    private val connectionHandleFactory = service<GitpodConnectionHandleFactory>()
-    private val settings = service<GitpodSettingsState>()
+    private val devpod = service<DevpodConnectionService>()
+    private val connectionHandleFactory = service<DevpodConnectionHandleFactory>()
+    private val settings = service<DevpodSettingsState>()
 
     private val httpClient = HttpClient.newBuilder()
         .followRedirects(HttpClient.Redirect.ALWAYS)
@@ -152,7 +152,7 @@ class GitpodConnectionProvider : GatewayConnectionProvider {
                     resizableRow()
                     panel {
                         row {
-                            icon(GitpodIcons.Logo2x).align(AlignX.CENTER)
+                            icon(DevpodIcons.Logo2x).align(AlignX.CENTER)
                         }
                         row {
                             cell(phaseMessage)
@@ -201,7 +201,7 @@ class GitpodConnectionProvider : GatewayConnectionProvider {
             var thinClientJob: Job? = null
 
             var lastUpdate: WorkspaceInstance? = null
-            var canceledByGitpod = false
+            var canceledByDevpod = false
 
             val ownerToken = client.server.getOwnerToken(connectParams.actualWorkspaceId).await()
 
@@ -303,7 +303,7 @@ class GitpodConnectionProvider : GatewayConnectionProvider {
                             }
                         }
                         if (update.status.phase == "stopping" || update.status.phase == "stopped") {
-                            canceledByGitpod = true
+                            canceledByDevpod = true
                             thinClientJob?.cancel()
                             thinClient?.close()
                         }
@@ -345,7 +345,7 @@ class GitpodConnectionProvider : GatewayConnectionProvider {
                                     var triggeredClientClosed = false
                                     clientHandle.clientClosed.advise(connectionLifetime) {
                                         // Been canceled by user
-                                        if (!canceledByGitpod) {
+                                        if (!canceledByDevpod) {
                                             connectionLifetime.launch {
                                                 // Delay for 5 seconds to see if thinClient could be terminated in time
                                                 // Then we don't see error dialog from Gateway
@@ -443,7 +443,7 @@ class GitpodConnectionProvider : GatewayConnectionProvider {
             }
         }
 
-        return connectionHandleFactory.createGitpodConnectionHandle(connectionLifetime, connectionPanel, connectParams)
+        return connectionHandleFactory.createDevpodConnectionHandle(connectionLifetime, connectionPanel, connectParams)
     }
 
     private suspend fun resolveCredentialsWithWebSocketTunnel(
@@ -466,7 +466,7 @@ class GitpodConnectionProvider : GatewayConnectionProvider {
 
             val proxies = JdkProxyProvider.getInstance().proxySelector.select(ideUrl.toURI())
             val sslContext = CertificateManager.getInstance().sslContext
-            val sshWebSocketServer = GitpodWebSocketTunnelServer(
+            val sshWebSocketServer = DevpodWebSocketTunnelServer(
                 "wss://${ideUrl.host}/_supervisor/tunnel/ssh",
                 ownerToken,
                 proxies,

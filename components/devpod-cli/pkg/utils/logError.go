@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -34,9 +34,9 @@ func LogError(errToReport error, errorMessage string, wsInfo *api.WorkspaceInfoR
 		return
 	}
 
-	parsedUrl, err := url.Parse(wsInfo.GitpodHost)
+	parsedUrl, err := url.Parse(wsInfo.DevpodHost)
 	if err != nil {
-		log.WithError(err).Error("cannot parse GitpodHost")
+		log.WithError(err).Error("cannot parse DevpodHost")
 		return
 	}
 

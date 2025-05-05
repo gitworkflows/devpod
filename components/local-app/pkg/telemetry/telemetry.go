@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License-AGPL.txt in the project root for license information.
 
@@ -18,7 +18,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 	segment "github.com/segmentio/analytics-go/v3"
 	"github.com/spf13/cobra"
 	"golang.org/x/exp/slices"

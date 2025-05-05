@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -39,12 +39,12 @@ export default function OAuthClientApproval() {
                     <div className="flex-grow h-100 flex flex-row items-center justify-center">
                         <div className="rounded-xl px-10 py-10 mx-auto">
                             <div className="mx-auto pb-8">
-                                <img src={devpodIcon} className="h-16 mx-auto" alt="Gitpod's logo" />
+                                <img src={devpodIcon} className="h-16 mx-auto" alt="Devpod's logo" />
                             </div>
                             <div className="mx-auto text-center pb-8 space-y-2">
                                 <Heading1>Authorize {clientName}</Heading1>
                                 <Subheading>
-                                    You are about to authorize {clientName} to access your Gitpod account including data
+                                    You are about to authorize {clientName} to access your Devpod account including data
                                     for all workspaces.
                                 </Subheading>
                             </div>

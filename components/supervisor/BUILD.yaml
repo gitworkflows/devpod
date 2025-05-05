@@ -36,7 +36,7 @@ packages:
       buildArgs:
         VERSION: ${version}
         DOCKER_VERSION: ${dockerVersion}
-      dockerfile: leeway.Dockerfile
+      dockerfile: blazedock.Dockerfile
       metadata:
         helm-component: workspace.supervisor
       image:

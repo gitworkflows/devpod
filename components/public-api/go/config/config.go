@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -12,7 +12,7 @@ type Configuration struct {
 	// PublicURL is the URL under which the API server is publicly reachable
 	PublicURL string `json:"publicURL"`
 
-	GitpodServiceURL string `json:"devpodServiceUrl"`
+	DevpodServiceURL string `json:"devpodServiceUrl"`
 
 	BillingServiceAddress string `json:"billingServiceAddress,omitempty"`
 

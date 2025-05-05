@@ -1,13 +1,13 @@
-# Gitpod Local Preview
+# Devpod Local Preview
 
-This repo helps users to try out and preview self-hosted Gitpod **locally** without all the things
+This repo helps users to try out and preview self-hosted Devpod **locally** without all the things
 needed for a production instance. The aim is to provide an installation mechanism as minimal and
 simple as possible.
 
 ## Installation
 
 ```bash
-docker run --privileged --name devpod --rm -it -v /tmp/devpod:/var/devpod ghcr.io/devpod-core-dev/build/preview-install
+docker run --privileged --name devpod --rm -it -v /tmp/devpod:/var/devpod khulnasoft/devpod-environment/build/preview-install
 ```
 
 Once the above command starts running and the pods are ready (can be checked by running `docker exec devpod kubectl get pods`),

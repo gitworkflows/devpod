@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -10,20 +10,20 @@ import com.jetbrains.gateway.ssh.ClientOverSshTunnelConnector
 import com.jetbrains.gateway.ssh.HostTunnelConnector
 import com.jetbrains.gateway.thinClientLink.ThinClientHandle
 import com.jetbrains.rd.util.lifetime.Lifetime
-import io.devpod.jetbrains.gateway.GitpodConnectionProvider.ConnectParams
-import io.devpod.jetbrains.gateway.common.GitpodConnectionHandle
-import io.devpod.jetbrains.gateway.common.GitpodConnectionHandleFactory
+import io.devpod.jetbrains.gateway.DevpodConnectionProvider.ConnectParams
+import io.devpod.jetbrains.gateway.common.DevpodConnectionHandle
+import io.devpod.jetbrains.gateway.common.DevpodConnectionHandleFactory
 import java.net.URI
 import javax.swing.JComponent
 
 @Suppress("UnstableApiUsage")
-class GitpodConnectionHandleFactoryImpl: GitpodConnectionHandleFactory {
-    override fun createGitpodConnectionHandle(
+class DevpodConnectionHandleFactoryImpl: DevpodConnectionHandleFactory {
+    override fun createDevpodConnectionHandle(
         lifetime: Lifetime,
         component: JComponent,
         params: ConnectParams
     ): GatewayConnectionHandle {
-        return GitpodConnectionHandle(lifetime, component, params)
+        return DevpodConnectionHandle(lifetime, component, params)
     }
 
     override suspend fun connect(lifetime: Lifetime, connector: HostTunnelConnector, tcpJoinLink: URI): ThinClientHandle {

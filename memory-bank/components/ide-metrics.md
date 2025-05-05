@@ -2,7 +2,7 @@
 
 ## Overview
 
-The IDE Metrics component is a service in Gitpod that collects, processes, and exposes metrics and error reports from various IDE components. It provides a centralized way to gather performance data, usage statistics, and error information from IDE-related components such as the supervisor, VS Code extensions, and web workbenches.
+The IDE Metrics component is a service in Devpod that collects, processes, and exposes metrics and error reports from various IDE components. It provides a centralized way to gather performance data, usage statistics, and error information from IDE-related components such as the supervisor, VS Code extensions, and web workbenches.
 
 ## Purpose
 

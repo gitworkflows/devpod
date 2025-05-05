@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -362,7 +362,7 @@ func (s *OIDCService) getConnection(ctx context.Context) (protocol.APIInterface,
 	conn, err := s.connectionPool.Get(ctx, token)
 	if err != nil {
 		log.Extract(ctx).WithError(err).Error("Failed to get connection to server.")
-		return nil, connect.NewError(connect.CodeInternal, errors.New("Failed to establish connection to downstream services. If this issue persists, please contact Gitpod Support."))
+		return nil, connect.NewError(connect.CodeInternal, errors.New("Failed to establish connection to downstream services. If this issue persists, please contact Devpod Support."))
 	}
 
 	return conn, nil

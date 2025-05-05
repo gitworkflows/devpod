@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 /// Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -42,7 +42,7 @@ func TestConfigMap(t *testing.T) {
 
 	expectedConfiguration := config.Configuration{
 		PublicURL:                         fmt.Sprintf("https://services.%s", ctx.Config.Domain),
-		GitpodServiceURL:                  fmt.Sprintf("ws://server.%s.svc.cluster.local:3000", ctx.Namespace),
+		DevpodServiceURL:                  fmt.Sprintf("ws://server.%s.svc.cluster.local:3000", ctx.Namespace),
 		BillingServiceAddress:             fmt.Sprintf("usage.%s.svc.cluster.local:9001", ctx.Namespace),
 		SessionServiceAddress:             fmt.Sprintf("server.%s.svc.cluster.local:9876", ctx.Namespace),
 		StripeWebhookSigningSecretPath:    stripeSecretPath,

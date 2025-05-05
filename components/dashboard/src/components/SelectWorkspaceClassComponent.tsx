@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -12,7 +12,7 @@ import { useAllowedWorkspaceClassesMemo } from "../data/workspaces/workspace-cla
 import { PlainMessage } from "@bufbuild/protobuf";
 import { Link } from "react-router-dom";
 import { repositoriesRoutes } from "../repositories/repositories.routes";
-import { isGitpodIo } from "../utils";
+import { isDevpodIo } from "../utils";
 
 interface SelectWorkspaceClassProps {
     selectedConfigurationId?: string;
@@ -44,7 +44,7 @@ export default function SelectWorkspaceClassComponent({
             element: <WorkspaceClassDropDownElement wsClass={c} />,
             isSelectable: true,
         }));
-        if (isGitpodIo()) {
+        if (isDevpodIo()) {
             elements.push({
                 id: "learn-more",
                 element: (
@@ -52,11 +52,11 @@ export default function SelectWorkspaceClassComponent({
                         <span>Need more classes? </span>
                         <a
                             className="text-sm gp-link"
-                            href="https://www.devpod.io/docs/enterprise"
+                            href="https://www.devpod.khulnasoft.com/docs/enterprise"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Learn about Gitpod Enterprise
+                            Learn about Devpod Enterprise
                         </a>
                     </div>
                 ),

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -285,7 +285,7 @@ export class WorkspaceInstanceControllerImpl implements WorkspaceInstanceControl
         const span = TraceContext.startSpan("onInstanceStopped", ctx);
 
         try {
-            await this.userDB.trace({ span }).deleteGitpodTokensNamedLike(ownerUserID, `${instance.id}-%`);
+            await this.userDB.trace({ span }).deleteDevpodTokensNamedLike(ownerUserID, `${instance.id}-%`);
             this.analytics.track({
                 userId: ownerUserID,
                 event: "workspace_stopped",

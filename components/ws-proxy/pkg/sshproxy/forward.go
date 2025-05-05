@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -9,10 +9,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gitpod-io/golang-crypto/ssh"
 	"github.com/khulnasoft/devpod/common-go/analytics"
 	"github.com/khulnasoft/devpod/common-go/log"
 	tracker "github.com/khulnasoft/devpod/ws-proxy/pkg/analytics"
+	"github.com/khulnasoft/golang-crypto/ssh"
 	"golang.org/x/net/context"
 )
 

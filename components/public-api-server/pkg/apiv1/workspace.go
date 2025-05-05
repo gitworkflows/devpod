@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -454,7 +454,7 @@ func convertWorkspaceInstance(wsi *protocol.WorkspaceInstance, wsCtx *protocol.W
 		return nil, nil
 	}
 
-	creationTime, err := parseGitpodTimestamp(wsi.CreationTime)
+	creationTime, err := parseDevpodTimestamp(wsi.CreationTime)
 	if err != nil {
 		// TODO(cw): should this really return an error and possibly fail the entire operation?
 		return nil, connect.NewError(connect.CodeFailedPrecondition, fmt.Errorf("cannot parse creation time: %v", err))
@@ -496,7 +496,7 @@ func convertWorkspaceInstance(wsi *protocol.WorkspaceInstance, wsCtx *protocol.W
 
 	var firstUserActivity *timestamppb.Timestamp
 	if fua := wsi.Status.Conditions.FirstUserActivity; fua != "" {
-		firstUserActivity, _ = parseGitpodTimestamp(fua)
+		firstUserActivity, _ = parseDevpodTimestamp(fua)
 	}
 
 	var ports []*v1.Port

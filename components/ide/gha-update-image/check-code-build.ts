@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -33,13 +33,13 @@ const main = async () => {
         throw new Error(`invalid branch ${inputs.branch}, expected something like \`gp-code/release/1.90\``);
     }
     const commit =
-        await $`curl -H 'Accept: application/vnd.github.VERSION.sha' https://api.github.com/repos/gitpod-io/openvscode-server/commits/${inputs.branch}`.text();
+        await $`curl -H 'Accept: application/vnd.github.VERSION.sha' https://api.github.com/repos/khulnasoft/openvscode-server/commits/${inputs.branch}`.text();
 
     const version = JSON.parse(
-        await $`curl https://raw.githubusercontent.com/gitpod-io/openvscode-server/${commit}/package.json`.text(),
+        await $`curl https://raw.githubusercontent.com/khulnasoft/openvscode-server/${commit}/package.json`.text(),
     ).version;
 
-    console.log("fetch gitpod-io/openvscode-server with " + inputs.branch, { commit, version });
+    console.log("fetch khulnasoft/openvscode-server with " + inputs.branch, { commit, version });
 
     if (workspaceYaml.defaultArgs.codeVersion === version) {
         console.error("code version is the same, no need to update");

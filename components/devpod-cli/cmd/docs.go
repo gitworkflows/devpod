@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -8,12 +8,12 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// URL of the Gitpod documentation
-const DocsUrl = "https://www.devpod.io/docs/introduction"
+// URL of the Devpod documentation
+const DocsUrl = "https://www.devpod.khulnasoft.com/docs/introduction"
 
 var docsCmd = &cobra.Command{
 	Use:   "docs",
-	Short: "Open Gitpod Documentation in default browser",
+	Short: "Open Devpod Documentation in default browser",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return openPreview("GP_EXTERNAL_BROWSER", DocsUrl)
 	},

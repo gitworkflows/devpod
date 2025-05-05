@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -66,7 +66,7 @@ export const UsageEntry: FC<Props> = ({ usage }) => {
                 <div className="flex">
                     {metadata.workspaceType === "prebuild" ? <UsageIcon className="my-auto w-4 h-4 mr-1" /> : ""}
                     {metadata.workspaceType === "prebuild" ? (
-                        <span className="text-sm text-gray-400 dark:text-gray-500">Gitpod</span>
+                        <span className="text-sm text-gray-400 dark:text-gray-500">Devpod</span>
                     ) : (
                         <div className="flex">
                             <img

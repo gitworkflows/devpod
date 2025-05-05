@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -31,14 +31,14 @@ func TestDiskActions(t *testing.T) {
 	tests := []DiskTest{
 		{
 			Name:            "xfs-quota-is_exceeded",
-			ContextURL:      "github.com/gitpod-io/empty",
+			ContextURL:      "github.com/khulnasoft/empty",
 			SpaceToAllocate: "55G",
 			TestFilePath:    "/workspace/is-exceeded",
 			ExpectError:     true,
 		},
 		{
 			Name:            "xfs-quota-is_OK",
-			ContextURL:      "github.com/gitpod-io/empty",
+			ContextURL:      "github.com/khulnasoft/empty",
 			SpaceToAllocate: "4G",
 			TestFilePath:    "/workspace/is-OK",
 			ExpectError:     false,

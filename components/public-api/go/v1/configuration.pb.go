@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -371,7 +371,7 @@ type WorkspaceSettings struct {
 	WorkspaceClass             string   `protobuf:"bytes,1,opt,name=workspace_class,json=workspaceClass,proto3" json:"workspace_class,omitempty"`
 	RestrictedWorkspaceClasses []string `protobuf:"bytes,2,rep,name=restricted_workspace_classes,json=restrictedWorkspaceClasses,proto3" json:"restricted_workspace_classes,omitempty"`
 	RestrictedEditorNames      []string `protobuf:"bytes,3,rep,name=restricted_editor_names,json=restrictedEditorNames,proto3" json:"restricted_editor_names,omitempty"`
-	// Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+	// Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
 	EnableDockerdAuthentication bool `protobuf:"varint,4,opt,name=enable_dockerd_authentication,json=enableDockerdAuthentication,proto3" json:"enable_dockerd_authentication,omitempty"`
 }
 
@@ -1091,7 +1091,7 @@ type UpdateConfigurationRequest_WorkspaceSettings struct {
 	RestrictedEditorNames []string `protobuf:"bytes,4,rep,name=restricted_editor_names,json=restrictedEditorNames,proto3" json:"restricted_editor_names,omitempty"`
 	// Specifies whether restricted_editor_names should be updated.
 	UpdateRestrictedEditorNames *bool `protobuf:"varint,5,opt,name=update_restricted_editor_names,json=updateRestrictedEditorNames,proto3,oneof" json:"update_restricted_editor_names,omitempty"`
-	// Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+	// Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
 	EnableDockerdAuthentication *bool `protobuf:"varint,6,opt,name=enable_dockerd_authentication,json=enableDockerdAuthentication,proto3,oneof" json:"enable_dockerd_authentication,omitempty"`
 }
 

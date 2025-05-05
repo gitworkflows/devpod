@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -616,7 +616,7 @@ func main() {
 	log.Init("nsinsider", "", true, false)
 	err := app.Run(os.Args)
 	if err != nil {
-		log.WithField("instanceId", os.Getenv("GITPOD_INSTANCE_ID")).WithField("args", os.Args).Fatal(err)
+		log.WithField("instanceId", os.Getenv("DEVPOD_INSTANCE_ID")).WithField("args", os.Args).Fatal(err)
 	}
 }
 

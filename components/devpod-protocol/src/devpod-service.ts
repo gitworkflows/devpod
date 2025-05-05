@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -15,8 +15,8 @@ import {
     UserEnvVarValue,
     Configuration,
     UserInfo,
-    GitpodTokenType,
-    GitpodToken,
+    DevpodTokenType,
+    DevpodToken,
     AuthProviderEntry,
     GuessGitTokenScopesParams,
     GuessedGitTokenScopes,
@@ -60,7 +60,7 @@ import { SupportedWorkspaceClass } from "./workspace-class";
 import { BillingMode } from "./billing-mode";
 import { WorkspaceRegion } from "./workspace-cluster";
 
-export interface GitpodClient {
+export interface DevpodClient {
     onInstanceUpdate(instance: WorkspaceInstance): void;
     onWorkspaceImageBuildLogs: WorkspaceImageBuild.LogCallback;
 
@@ -72,16 +72,16 @@ export interface GitpodClient {
     //#endregion
 }
 
-export const GitpodServer = Symbol("GitpodServer");
-export interface GitpodServer extends JsonRpcServer<GitpodClient>, AdminServer, IDEServer {
+export const DevpodServer = Symbol("DevpodServer");
+export interface DevpodServer extends JsonRpcServer<DevpodClient>, AdminServer, IDEServer {
     // User related API
     getLoggedInUser(): Promise<User>;
     updateLoggedInUser(user: Partial<User>): Promise<User>;
     sendPhoneNumberVerificationToken(phoneNumber: string): Promise<{ verificationId: string }>;
     verifyPhoneNumberVerificationToken(phoneNumber: string, token: string, verificationId: string): Promise<boolean>;
     getConfiguration(): Promise<Configuration>;
-    getToken(query: GitpodServer.GetTokenSearchOptions): Promise<Token | undefined>;
-    getGitpodTokenScopes(tokenHash: string): Promise<string[]>;
+    getToken(query: DevpodServer.GetTokenSearchOptions): Promise<Token | undefined>;
+    getDevpodTokenScopes(tokenHash: string): Promise<string[]>;
     deleteAccount(): Promise<void>;
     getClientRegion(): Promise<string | undefined>;
 
@@ -89,13 +89,13 @@ export interface GitpodServer extends JsonRpcServer<GitpodClient>, AdminServer, 
     getAuthProviders(): Promise<AuthProviderInfo[]>;
     // user-level
     getOwnAuthProviders(): Promise<AuthProviderEntry[]>;
-    updateOwnAuthProvider(params: GitpodServer.UpdateOwnAuthProviderParams): Promise<AuthProviderEntry>;
-    deleteOwnAuthProvider(params: GitpodServer.DeleteOwnAuthProviderParams): Promise<void>;
+    updateOwnAuthProvider(params: DevpodServer.UpdateOwnAuthProviderParams): Promise<AuthProviderEntry>;
+    deleteOwnAuthProvider(params: DevpodServer.DeleteOwnAuthProviderParams): Promise<void>;
     // org-level
-    createOrgAuthProvider(params: GitpodServer.CreateOrgAuthProviderParams): Promise<AuthProviderEntry>;
-    updateOrgAuthProvider(params: GitpodServer.UpdateOrgAuthProviderParams): Promise<AuthProviderEntry>;
-    getOrgAuthProviders(params: GitpodServer.GetOrgAuthProviderParams): Promise<AuthProviderEntry[]>;
-    deleteOrgAuthProvider(params: GitpodServer.DeleteOrgAuthProviderParams): Promise<void>;
+    createOrgAuthProvider(params: DevpodServer.CreateOrgAuthProviderParams): Promise<AuthProviderEntry>;
+    updateOrgAuthProvider(params: DevpodServer.UpdateOrgAuthProviderParams): Promise<AuthProviderEntry>;
+    getOrgAuthProviders(params: DevpodServer.GetOrgAuthProviderParams): Promise<AuthProviderEntry[]>;
+    deleteOrgAuthProvider(params: DevpodServer.DeleteOrgAuthProviderParams): Promise<void>;
     // public-api compatibility
     /** @deprecated used for public-api compatibility only */
     getAuthProvider(id: string): Promise<AuthProviderEntry>;
@@ -105,7 +105,7 @@ export interface GitpodServer extends JsonRpcServer<GitpodClient>, AdminServer, 
     updateAuthProvider(id: string, update: AuthProviderEntry.UpdateOAuth2Config): Promise<AuthProviderEntry>;
 
     // Query/retrieve workspaces
-    getWorkspaces(options: GitpodServer.GetWorkspacesOptions): Promise<WorkspaceInfo[]>;
+    getWorkspaces(options: DevpodServer.GetWorkspacesOptions): Promise<WorkspaceInfo[]>;
     getWorkspaceOwner(workspaceId: string): Promise<UserInfo | undefined>;
     getWorkspaceUsers(workspaceId: string): Promise<WorkspaceInstanceUser[]>;
     getSuggestedRepositories(organizationId: string): Promise<SuggestedRepository[]>;
@@ -122,19 +122,19 @@ export interface GitpodServer extends JsonRpcServer<GitpodClient>, AdminServer, 
 
     /**
      * Creates and starts a workspace for the given context URL.
-     * @param options GitpodServer.CreateWorkspaceOptions
+     * @param options DevpodServer.CreateWorkspaceOptions
      * @return WorkspaceCreationResult
      */
-    createWorkspace(options: GitpodServer.CreateWorkspaceOptions): Promise<WorkspaceCreationResult>;
-    startWorkspace(id: string, options: GitpodServer.StartWorkspaceOptions): Promise<StartWorkspaceResult>;
+    createWorkspace(options: DevpodServer.CreateWorkspaceOptions): Promise<WorkspaceCreationResult>;
+    startWorkspace(id: string, options: DevpodServer.StartWorkspaceOptions): Promise<StartWorkspaceResult>;
     stopWorkspace(id: string): Promise<void>;
     deleteWorkspace(id: string): Promise<void>;
     setWorkspaceDescription(id: string, desc: string): Promise<void>;
-    controlAdmission(id: string, level: GitpodServer.AdmissionLevel): Promise<void>;
+    controlAdmission(id: string, level: DevpodServer.AdmissionLevel): Promise<void>;
     resolveContext(contextUrl: string): Promise<WorkspaceContext>;
 
-    updateWorkspaceUserPin(id: string, action: GitpodServer.PinAction): Promise<void>;
-    sendHeartBeat(options: GitpodServer.SendHeartBeatOptions): Promise<void>;
+    updateWorkspaceUserPin(id: string, action: DevpodServer.PinAction): Promise<void>;
+    sendHeartBeat(options: DevpodServer.SendHeartBeatOptions): Promise<void>;
     watchWorkspaceImageBuildLogs(workspaceId: string): Promise<void>;
     isPrebuildDone(pwsid: string): Promise<boolean>;
     getHeadlessLog(instanceId: string): Promise<HeadlessLogUrls>;
@@ -183,7 +183,7 @@ export interface GitpodServer extends JsonRpcServer<GitpodClient>, AdminServer, 
     getDefaultWorkspaceImage(params: GetDefaultWorkspaceImageParams): Promise<GetDefaultWorkspaceImageResult>;
 
     // Dedicated, Dedicated, Dedicated
-    getOnboardingState(): Promise<GitpodServer.OnboardingState>;
+    getOnboardingState(): Promise<DevpodServer.OnboardingState>;
 
     // Projects
     /** @deprecated no-op */
@@ -211,10 +211,10 @@ export interface GitpodServer extends JsonRpcServer<GitpodClient>, AdminServer, 
     getProjectEnvironmentVariables(projectId: string): Promise<ProjectEnvVar[]>;
     deleteProjectEnvironmentVariable(variableId: string): Promise<void>;
 
-    // Gitpod token
-    getGitpodTokens(): Promise<GitpodToken[]>;
-    generateNewGitpodToken(options: GitpodServer.GenerateNewGitpodTokenOptions): Promise<string>;
-    deleteGitpodToken(tokenHash: string): Promise<void>;
+    // Devpod token
+    getDevpodTokens(): Promise<DevpodToken[]>;
+    generateNewDevpodToken(options: DevpodServer.GenerateNewDevpodTokenOptions): Promise<string>;
+    deleteDevpodToken(tokenHash: string): Promise<void>;
 
     // misc
     /** @deprecated always returns false */
@@ -226,7 +226,7 @@ export interface GitpodServer extends JsonRpcServer<GitpodClient>, AdminServer, 
      * Stores a new snapshot for the given workspace and bucketId. Returns _before_ the actual snapshot is done. To wait for that, use `waitForSnapshot`.
      * @return the snapshot id
      */
-    takeSnapshot(options: GitpodServer.TakeSnapshotOptions): Promise<string>;
+    takeSnapshot(options: DevpodServer.TakeSnapshotOptions): Promise<string>;
     /**
      *
      * @param snapshotId
@@ -301,7 +301,7 @@ export interface GetDefaultWorkspaceImageParams {
 }
 
 export type DefaultImageSource =
-    | "installation" // Source installation means the image comes from Gitpod instance install config
+    | "installation" // Source installation means the image comes from Devpod instance install config
     | "organization"; // Source organization means the image comes from Organization settings
 
 export interface GetDefaultWorkspaceImageResult {
@@ -380,13 +380,13 @@ export const WORKSPACE_LIFETIME_LONG: WorkspaceTimeoutDuration = "36h";
 export const MAX_PARALLEL_WORKSPACES_FREE = 4;
 export const MAX_PARALLEL_WORKSPACES_PAID = 16;
 
-export const createServiceMock = function <C extends GitpodClient, S extends GitpodServer>(
+export const createServiceMock = function <C extends DevpodClient, S extends DevpodServer>(
     methods: Partial<JsonRpcProxy<S>>,
-): GitpodServiceImpl<C, S> {
-    return new GitpodServiceImpl<C, S>(createServerMock(methods));
+): DevpodServiceImpl<C, S> {
+    return new DevpodServiceImpl<C, S>(createServerMock(methods));
 };
 
-export const createServerMock = function <S extends GitpodServer>(methods: Partial<JsonRpcProxy<S>>): JsonRpcProxy<S> {
+export const createServerMock = function <S extends DevpodServer>(methods: Partial<JsonRpcProxy<S>>): JsonRpcProxy<S> {
     methods.setClient = methods.setClient || (() => {});
     methods.dispose = methods.dispose || (() => {});
     return new Proxy<JsonRpcProxy<S>>(methods as any as JsonRpcProxy<S>, {
@@ -417,7 +417,7 @@ export interface StartWorkspaceResult {
     workspaceURL?: string;
 }
 
-export namespace GitpodServer {
+export namespace DevpodServer {
     export interface GetWorkspacesOptions {
         limit?: number;
         searchString?: string;
@@ -482,14 +482,14 @@ export namespace GitpodServer {
     }
     export type AdmissionLevel = "owner" | "everyone";
     export type PinAction = "pin" | "unpin" | "toggle";
-    export interface GenerateNewGitpodTokenOptions {
+    export interface GenerateNewDevpodTokenOptions {
         name?: string;
-        type: GitpodTokenType;
+        type: DevpodTokenType;
         scopes?: string[];
     }
     export interface OnboardingState {
         /**
-         * Whether this Gitpod instance is already configured with SSO.
+         * Whether this Devpod instance is already configured with SSO.
          */
         readonly isCompleted: boolean;
         /**
@@ -499,12 +499,12 @@ export namespace GitpodServer {
     }
 }
 
-export const GitpodServerPath = "/devpod";
+export const DevpodServerPath = "/devpod";
 
-export const GitpodServerProxy = Symbol("GitpodServerProxy");
-export type GitpodServerProxy<S extends GitpodServer> = JsonRpcProxy<S>;
+export const DevpodServerProxy = Symbol("DevpodServerProxy");
+export type DevpodServerProxy<S extends DevpodServer> = JsonRpcProxy<S>;
 
-export class GitpodCompositeClient<Client extends GitpodClient> implements GitpodClient {
+export class DevpodCompositeClient<Client extends DevpodClient> implements DevpodClient {
     protected clients: Partial<Client>[] = [];
 
     public registerClient(client: Partial<Client>): Disposable {
@@ -583,7 +583,7 @@ export class GitpodCompositeClient<Client extends GitpodClient> implements Gitpo
     }
 }
 
-export type GitpodService = GitpodServiceImpl<GitpodClient, GitpodServer>;
+export type DevpodService = DevpodServiceImpl<DevpodClient, DevpodServer>;
 
 const hasWindow = typeof window !== "undefined";
 const phasesOrder: Record<WorkspaceInstancePhase, number> = {
@@ -608,7 +608,7 @@ export class WorkspaceInstanceUpdateListener {
         return this._info;
     }
 
-    constructor(private readonly service: GitpodService, private _info: WorkspaceInfo) {
+    constructor(private readonly service: DevpodService, private _info: WorkspaceInfo) {
         service.registerClient({
             onInstanceUpdate: (instance) => {
                 if (this.isOutOfOrder(instance)) {
@@ -690,14 +690,14 @@ export class WorkspaceInstanceUpdateListener {
     }
 }
 
-export interface GitpodServiceOptions {
+export interface DevpodServiceOptions {
     onReconnect?: () => void | Promise<void>;
 }
 
-export class GitpodServiceImpl<Client extends GitpodClient, Server extends GitpodServer> {
-    private readonly compositeClient = new GitpodCompositeClient<Client>();
+export class DevpodServiceImpl<Client extends DevpodClient, Server extends DevpodServer> {
+    private readonly compositeClient = new DevpodCompositeClient<Client>();
 
-    constructor(public readonly server: JsonRpcProxy<Server>, private options?: GitpodServiceOptions) {
+    constructor(public readonly server: JsonRpcProxy<Server>, private options?: DevpodServiceOptions) {
         server.setClient(this.compositeClient);
         server.onDidOpenConnection(() => this.compositeClient.notifyDidOpenConnection());
         server.onDidCloseConnection(() => this.compositeClient.notifyDidCloseConnection());

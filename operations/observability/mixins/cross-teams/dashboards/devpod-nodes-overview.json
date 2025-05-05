@@ -962,7 +962,7 @@
     ]
   },
   "timezone": "utc",
-  "title": "Gitpod / Nodes Overview",
+  "title": "Devpod / Nodes Overview",
   "uid": "devpod-nodes-overview",
   "version": 1,
   "weekStart": ""

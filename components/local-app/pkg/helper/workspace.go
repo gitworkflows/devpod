@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -18,14 +18,14 @@ import (
 	"time"
 
 	"github.com/bufbuild/connect-go"
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
 	"github.com/khulnasoft/devpod/components/public-api/go/client"
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 	"github.com/skratchdot/open-golang/open"
 )
 
 // OpenWorkspaceInPreferredEditor opens the workspace in the user's preferred editor
-func OpenWorkspaceInPreferredEditor(ctx context.Context, clnt *client.Gitpod, workspaceID string) error {
+func OpenWorkspaceInPreferredEditor(ctx context.Context, clnt *client.Devpod, workspaceID string) error {
 	workspace, err := clnt.Workspaces.GetWorkspace(ctx, connect.NewRequest(&v1.GetWorkspaceRequest{WorkspaceId: workspaceID}))
 	if err != nil {
 		return err
@@ -94,7 +94,7 @@ func OpenWorkspaceInPreferredEditor(ctx context.Context, clnt *client.Gitpod, wo
 }
 
 // SSHConnectToWorkspace connects to the workspace via SSH
-func SSHConnectToWorkspace(ctx context.Context, clnt *client.Gitpod, workspaceID string, runDry bool, sshArgs ...string) error {
+func SSHConnectToWorkspace(ctx context.Context, clnt *client.Devpod, workspaceID string, runDry bool, sshArgs ...string) error {
 	workspace, err := clnt.Workspaces.GetWorkspace(ctx, connect.NewRequest(&v1.GetWorkspaceRequest{WorkspaceId: workspaceID}))
 	if err != nil {
 		return err
@@ -157,7 +157,7 @@ func HasInstanceStatus(ws *v1.Workspace) bool {
 }
 
 // ObserveWorkspaceUntilStarted waits for the workspace to start and prints the status
-func ObserveWorkspaceUntilStarted(ctx context.Context, clnt *client.Gitpod, workspaceID string) (*v1.WorkspaceStatus, error) {
+func ObserveWorkspaceUntilStarted(ctx context.Context, clnt *client.Devpod, workspaceID string) (*v1.WorkspaceStatus, error) {
 	wsInfo, err := clnt.Workspaces.GetWorkspace(ctx, connect.NewRequest(&v1.GetWorkspaceRequest{WorkspaceId: workspaceID}))
 	if err != nil {
 		return nil, fmt.Errorf("cannot get workspace info: %w", err)

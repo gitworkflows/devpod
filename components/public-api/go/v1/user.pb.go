@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -1894,7 +1894,7 @@ type User_ProfileDetails struct {
 	//
 	// +optional
 	JobRoleOther string `protobuf:"bytes,6,opt,name=job_role_other,json=jobRoleOther,proto3" json:"job_role_other,omitempty"`
-	// Reasons user is exploring Gitpod when they signed up
+	// Reasons user is exploring Devpod when they signed up
 	//
 	// +optional
 	ExplorationReasons []string `protobuf:"bytes,7,rep,name=exploration_reasons,json=explorationReasons,proto3" json:"exploration_reasons,omitempty"`

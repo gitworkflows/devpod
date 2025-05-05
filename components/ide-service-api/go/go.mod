@@ -46,6 +46,6 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/khulnasoft/devpod/common-go => ../../common-go // leeway
+replace github.com/khulnasoft/devpod/common-go => ../../common-go // blazedock
 
-replace github.com/khulnasoft/devpod/components/scrubber => ../../scrubber // leeway
+replace github.com/khulnasoft/devpod/components/scrubber => ../../scrubber // blazedock

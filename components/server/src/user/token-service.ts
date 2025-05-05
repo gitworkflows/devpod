@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -21,7 +21,7 @@ import {
 
 @injectable()
 export class TokenService implements TokenProvider {
-    static readonly GITPOD_AUTH_PROVIDER_ID = "Gitpod";
+    static readonly DEVPOD_AUTH_PROVIDER_ID = "Devpod";
     /**
      * [mins]
      *
@@ -153,11 +153,11 @@ export class TokenService implements TokenProvider {
         }
     }
 
-    async getOrCreateGitpodIdentity(user: User): Promise<Identity> {
-        let identity = User.getIdentity(user, TokenService.GITPOD_AUTH_PROVIDER_ID);
+    async getOrCreateDevpodIdentity(user: User): Promise<Identity> {
+        let identity = User.getIdentity(user, TokenService.DEVPOD_AUTH_PROVIDER_ID);
         if (!identity) {
             identity = {
-                authProviderId: TokenService.GITPOD_AUTH_PROVIDER_ID,
+                authProviderId: TokenService.DEVPOD_AUTH_PROVIDER_ID,
                 authId: user.id,
                 authName: user.name || user.id,
             };
@@ -167,8 +167,8 @@ export class TokenService implements TokenProvider {
         return identity;
     }
 
-    async createGitpodToken(user: User, ...scopes: string[]): Promise<TokenEntry> {
-        const identity = await this.getOrCreateGitpodIdentity(user);
+    async createDevpodToken(user: User, ...scopes: string[]): Promise<TokenEntry> {
+        const identity = await this.getOrCreateDevpodIdentity(user);
         await this.userDB.deleteTokens(
             identity,
             // delete any tokens with the same scopes

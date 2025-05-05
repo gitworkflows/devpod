@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -52,20 +52,20 @@ export const EnableDockerdAuthentication: FC<Props> = ({ configuration }) => {
             <Subheading className="max-w-lg flex flex-col gap-2">
                 <span className="flex-1 text-left">
                     Enable authentication with Docker registries inside of workspaces based on the{" "}
-                    <code>GITPOD_IMAGE_AUTH</code> environment variable.
+                    <code>DEVPOD_IMAGE_AUTH</code> environment variable.
                 </span>
 
                 <Alert type={"warning"} closable={false} showIcon={true} className="flex rounded p-2 mb-2 w-full">
-                    By enabling this, credentials specified in <code>GITPOD_IMAGE_AUTH</code> will be visible inside all
+                    By enabling this, credentials specified in <code>DEVPOD_IMAGE_AUTH</code> will be visible inside all
                     workspaces on this project.
                 </Alert>
                 <a
                     className="gp-link flex flex-row items-center gap-1"
-                    href="https://www.devpod.io/docs/configure/repositories/environment-variables#docker-registry-authentication"
+                    href="https://www.devpod.khulnasoft.com/docs/configure/repositories/environment-variables#docker-registry-authentication"
                     target="_blank"
                     rel="noreferrer"
                 >
-                    Learn about using private Docker images with Gitpod
+                    Learn about using private Docker images with Devpod
                     <SquareArrowOutUpRight size={12} />
                 </a>
             </Subheading>

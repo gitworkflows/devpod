@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -1488,7 +1488,7 @@ export class User_ProfileDetails extends Message<User_ProfileDetails> {
   jobRoleOther = "";
 
   /**
-   * Reasons user is exploring Gitpod when they signed up
+   * Reasons user is exploring Devpod when they signed up
    *
    * +optional
    *

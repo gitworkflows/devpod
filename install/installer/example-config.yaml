@@ -26,7 +26,7 @@ observability:
   logLevel: info
 openVSX:
   url: https://open-vsx.org
-repository: ghcr.io/devpod-core-dev/build
+repository: khulnasoft/devpod-environment/build
 workspace:
   maxLifetime: 36h0m0s
   resources:

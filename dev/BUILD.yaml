@@ -22,7 +22,7 @@ packages:
     config:
       buildArgs:
         VERSION: ${version}
-      dockerfile: leeway.Dockerfile
+      dockerfile: blazedock.Dockerfile
       image:
         - ${imageRepoBase}/dev-utils:${version}
         - ${imageRepoBase}/dev-utils:commit-${__git_commit}
@@ -40,17 +40,17 @@ packages:
 
 scripts:
   - name: preview
-    description: Build Gitpod, create a preview environment, and deploy to it
+    description: Build Devpod, create a preview environment, and deploy to it
     script: ./preview/workflow/preview/preview.sh
   - name: prepare
     description: Prepare the repository for development
     script: |
-      leeway run dev:prepare-go dev:prepare-ts
+      blazedock run dev:prepare-go dev:prepare-ts
   - name: prepare-go
     description: Prepare go packages
     script: |
       ./components/devpod-protocol/go/scripts/generate-config.sh
-      leeway exec --filter-type go -v -- go mod verify
+      blazedock exec --filter-type go -v -- go mod verify
   - name: prepare-ts
     description: Prepare typescript packages
     script: |
@@ -58,4 +58,4 @@ scripts:
   - name: install-dev-utils
     description: Install dev-utils
     script: |
-      leeway build dev:install --dont-test --cache=remote-pull
+      blazedock build dev:install --dont-test --cache=remote-pull

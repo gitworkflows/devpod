@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,14 +9,14 @@ import { toPlainMessage, Duration } from "@bufbuild/protobuf";
 import { expect } from "chai";
 import { PublicAPIConverter } from "./public-api-converter";
 import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
-import { InvalidGitpodYMLError, RepositoryNotFoundError, UnauthorizedRepositoryAccessError } from "./public-api-errors";
+import { InvalidDevpodYMLError, RepositoryNotFoundError, UnauthorizedRepositoryAccessError } from "./public-api-errors";
 import { Code, ConnectError } from "@connectrpc/connect";
 import {
     FailedPreconditionDetails,
     NeedsVerificationError,
     PermissionDeniedDetails,
     UserBlockedError,
-    InvalidGitpodYMLError as InvalidGitpodYMLErrorData,
+    InvalidDevpodYMLError as InvalidDevpodYMLErrorData,
     RepositoryNotFoundError as RepositoryNotFoundErrorData,
     RepositoryUnauthorizedError as RepositoryUnauthorizedErrorData,
     PaymentSpendingLimitReachedError,
@@ -34,7 +34,7 @@ import { WorkspaceAndInstance } from "@devpod/devpod-protocol";
 describe("PublicAPIConverter", () => {
     const converter = new PublicAPIConverter();
 
-    const testGitpodHost = "https://devpod-test.preview.devpod-dev.com/";
+    const testDevpodHost = "https://devpod-test.preview.devpod-dev.com/";
 
     describe("golden tests", () => {
         it("toWorkspaceSnapshot", async () => {
@@ -194,7 +194,7 @@ describe("PublicAPIConverter", () => {
 
         it("toPrebuild", async () => {
             await startFixtureTest("../fixtures/toPrebuild_*.json", async (input) =>
-                converter.toPrebuild(testGitpodHost, input),
+                converter.toPrebuild(testDevpodHost, input),
             );
         });
 
@@ -394,9 +394,9 @@ describe("PublicAPIConverter", () => {
             expect(appError.message).to.equal("needs verification");
         });
 
-        it("INVALID_GITPOD_YML", () => {
+        it("INVALID_DEVPOD_YML", () => {
             const connectError = converter.toError(
-                new InvalidGitpodYMLError({
+                new InvalidDevpodYMLError({
                     violations: ['Invalid value: "": must not be empty'],
                 }),
             );
@@ -405,18 +405,18 @@ describe("PublicAPIConverter", () => {
 
             const details = connectError.findDetails(FailedPreconditionDetails)[0];
             expect(details).to.not.be.undefined;
-            expect(details?.reason?.case).to.equal("invalidGitpodYml");
-            expect(details?.reason?.value).to.be.instanceOf(InvalidGitpodYMLErrorData);
+            expect(details?.reason?.case).to.equal("invalidDevpodYml");
+            expect(details?.reason?.value).to.be.instanceOf(InvalidDevpodYMLErrorData);
 
-            let violations = (details?.reason?.value as InvalidGitpodYMLErrorData).violations;
+            let violations = (details?.reason?.value as InvalidDevpodYMLErrorData).violations;
             expect(violations).to.deep.equal(['Invalid value: "": must not be empty']);
 
             const appError = converter.fromError(connectError);
-            expect(appError).to.be.instanceOf(InvalidGitpodYMLError);
-            expect(appError.code).to.equal(ErrorCodes.INVALID_GITPOD_YML);
+            expect(appError).to.be.instanceOf(InvalidDevpodYMLError);
+            expect(appError.code).to.equal(ErrorCodes.INVALID_DEVPOD_YML);
             expect(appError.message).to.equal('Invalid devpod.yml: Invalid value: "": must not be empty');
 
-            violations = (appError as InvalidGitpodYMLError).info.violations;
+            violations = (appError as InvalidDevpodYMLError).info.violations;
             expect(violations).to.deep.equal(['Invalid value: "": must not be empty']);
         });
 

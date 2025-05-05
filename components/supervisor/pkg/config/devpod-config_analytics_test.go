@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -14,52 +14,52 @@ import (
 	devpod "github.com/khulnasoft/devpod/devpod-protocol"
 )
 
-func TestAnalyzeGitpodConfig(t *testing.T) {
+func TestAnalyzeDevpodConfig(t *testing.T) {
 	tests := []struct {
 		Desc    string
-		Prev    *devpod.GitpodConfig
-		Current *devpod.GitpodConfig
+		Prev    *devpod.DevpodConfig
+		Current *devpod.DevpodConfig
 		Fields  []string
 	}{
 		{
 			Desc: "change",
-			Prev: &devpod.GitpodConfig{
+			Prev: &devpod.DevpodConfig{
 				CheckoutLocation: "foo",
 			},
-			Current: &devpod.GitpodConfig{
+			Current: &devpod.DevpodConfig{
 				CheckoutLocation: "bar",
 			},
 			Fields: []string{"CheckoutLocation"},
 		},
 		{
 			Desc: "add",
-			Prev: &devpod.GitpodConfig{},
-			Current: &devpod.GitpodConfig{
+			Prev: &devpod.DevpodConfig{},
+			Current: &devpod.DevpodConfig{
 				CheckoutLocation: "bar",
 			},
 			Fields: []string{"CheckoutLocation"},
 		},
 		{
 			Desc: "remove",
-			Prev: &devpod.GitpodConfig{
+			Prev: &devpod.DevpodConfig{
 				CheckoutLocation: "bar",
 			},
-			Current: &devpod.GitpodConfig{},
+			Current: &devpod.DevpodConfig{},
 			Fields:  []string{"CheckoutLocation"},
 		},
 		{
 			Desc: "none",
-			Prev: &devpod.GitpodConfig{
+			Prev: &devpod.DevpodConfig{
 				CheckoutLocation: "bar",
 			},
-			Current: &devpod.GitpodConfig{
+			Current: &devpod.DevpodConfig{
 				CheckoutLocation: "bar",
 			},
 			Fields: nil,
 		},
 		{
 			Desc:    "fie created",
-			Current: &devpod.GitpodConfig{},
+			Current: &devpod.DevpodConfig{},
 			Fields:  nil,
 		},
 	}

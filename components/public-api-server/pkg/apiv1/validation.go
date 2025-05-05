@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -30,15 +30,15 @@ func validateTeamID(ctx context.Context, id string) (uuid.UUID, error) {
 	return teamID, nil
 }
 
-func parseGitpodTimeStampOrDefault(s string) *timestamppb.Timestamp {
-	parsed, err := parseGitpodTimestamp(s)
+func parseDevpodTimeStampOrDefault(s string) *timestamppb.Timestamp {
+	parsed, err := parseDevpodTimestamp(s)
 	if err != nil {
 		return &timestamppb.Timestamp{}
 	}
 	return parsed
 }
 
-func parseGitpodTimestamp(input string) (*timestamppb.Timestamp, error) {
+func parseDevpodTimestamp(input string) (*timestamppb.Timestamp, error) {
 	parsed, err := iso8601.ParseString(input)
 	if err != nil {
 		return nil, err

@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -10,8 +10,8 @@ import (
 )
 
 const (
-	RegistryFacadeTaintKey = "devpod.io/registry-facade-not-ready"
-	WsDaemonTaintKey       = "devpod.io/ws-daemon-not-ready"
+	RegistryFacadeTaintKey = "devpod.khulnasoft.com/registry-facade-not-ready"
+	WsDaemonTaintKey       = "devpod.khulnasoft.com/ws-daemon-not-ready"
 )
 
 func WithTolerationWorkspaceComponentNotReady(ctx *RenderContext) []corev1.Toleration {

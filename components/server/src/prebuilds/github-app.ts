@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -47,12 +47,12 @@ import { SubjectId } from "../auth/subject-id";
 
 /**
  * GitHub app urls:
- *    User authorization callback URL: https://devpod.io/install-github-app
- *    Setup URL:                       https://devpod.io/install-github-app
- *    Webhook URL:                     https://devpod.io/apps/github
+ *    User authorization callback URL: https://devpod.khulnasoft.com/install-github-app
+ *    Setup URL:                       https://devpod.khulnasoft.com/install-github-app
+ *    Webhook URL:                     https://devpod.khulnasoft.com/apps/github
  *
  * Make sure that the webhook secret you set in GitHub matches what's in your
- * values.yaml file (GITPOD_GITHUB_APP_WEBHOOK_SECRET) - it's not a bad idea to
+ * values.yaml file (DEVPOD_GITHUB_APP_WEBHOOK_SECRET) - it's not a bad idea to
  * look at those values to begin with.
  */
 @injectable()

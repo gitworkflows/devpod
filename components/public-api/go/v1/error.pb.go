@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -194,7 +194,7 @@ type FailedPreconditionDetails struct {
 	//	*FailedPreconditionDetails_PaymentSpendingLimitReached
 	//	*FailedPreconditionDetails_InvalidCostCenter
 	//	*FailedPreconditionDetails_TooManyRunningWorkspaces
-	//	*FailedPreconditionDetails_InvalidGitpodYml
+	//	*FailedPreconditionDetails_InvalidDevpodYml
 	//	*FailedPreconditionDetails_RepositoryNotFound
 	//	*FailedPreconditionDetails_RepositoryUnauthorized
 	//	*FailedPreconditionDetails_ImageBuildLogsNotYetAvailable
@@ -262,9 +262,9 @@ func (x *FailedPreconditionDetails) GetTooManyRunningWorkspaces() *TooManyRunnin
 	return nil
 }
 
-func (x *FailedPreconditionDetails) GetInvalidGitpodYml() *InvalidGitpodYMLError {
-	if x, ok := x.GetReason().(*FailedPreconditionDetails_InvalidGitpodYml); ok {
-		return x.InvalidGitpodYml
+func (x *FailedPreconditionDetails) GetInvalidDevpodYml() *InvalidDevpodYMLError {
+	if x, ok := x.GetReason().(*FailedPreconditionDetails_InvalidDevpodYml); ok {
+		return x.InvalidDevpodYml
 	}
 	return nil
 }
@@ -313,8 +313,8 @@ type FailedPreconditionDetails_TooManyRunningWorkspaces struct {
 	TooManyRunningWorkspaces *TooManyRunningWorkspacesError `protobuf:"bytes,3,opt,name=too_many_running_workspaces,json=tooManyRunningWorkspaces,proto3,oneof"`
 }
 
-type FailedPreconditionDetails_InvalidGitpodYml struct {
-	InvalidGitpodYml *InvalidGitpodYMLError `protobuf:"bytes,4,opt,name=invalid_devpod_yml,json=invalidGitpodYml,proto3,oneof"`
+type FailedPreconditionDetails_InvalidDevpodYml struct {
+	InvalidDevpodYml *InvalidDevpodYMLError `protobuf:"bytes,4,opt,name=invalid_devpod_yml,json=invalidDevpodYml,proto3,oneof"`
 }
 
 type FailedPreconditionDetails_RepositoryNotFound struct {
@@ -339,7 +339,7 @@ func (*FailedPreconditionDetails_InvalidCostCenter) isFailedPreconditionDetails_
 
 func (*FailedPreconditionDetails_TooManyRunningWorkspaces) isFailedPreconditionDetails_Reason() {}
 
-func (*FailedPreconditionDetails_InvalidGitpodYml) isFailedPreconditionDetails_Reason() {}
+func (*FailedPreconditionDetails_InvalidDevpodYml) isFailedPreconditionDetails_Reason() {}
 
 func (*FailedPreconditionDetails_RepositoryNotFound) isFailedPreconditionDetails_Reason() {}
 
@@ -473,7 +473,7 @@ func (*TooManyRunningWorkspacesError) Descriptor() ([]byte, []int) {
 	return file_devpod_v1_error_proto_rawDescGZIP(), []int{6}
 }
 
-type InvalidGitpodYMLError struct {
+type InvalidDevpodYMLError struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -481,8 +481,8 @@ type InvalidGitpodYMLError struct {
 	Violations []string `protobuf:"bytes,1,rep,name=violations,proto3" json:"violations,omitempty"`
 }
 
-func (x *InvalidGitpodYMLError) Reset() {
-	*x = InvalidGitpodYMLError{}
+func (x *InvalidDevpodYMLError) Reset() {
+	*x = InvalidDevpodYMLError{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_devpod_v1_error_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -490,13 +490,13 @@ func (x *InvalidGitpodYMLError) Reset() {
 	}
 }
 
-func (x *InvalidGitpodYMLError) String() string {
+func (x *InvalidDevpodYMLError) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*InvalidGitpodYMLError) ProtoMessage() {}
+func (*InvalidDevpodYMLError) ProtoMessage() {}
 
-func (x *InvalidGitpodYMLError) ProtoReflect() protoreflect.Message {
+func (x *InvalidDevpodYMLError) ProtoReflect() protoreflect.Message {
 	mi := &file_devpod_v1_error_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -508,12 +508,12 @@ func (x *InvalidGitpodYMLError) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use InvalidGitpodYMLError.ProtoReflect.Descriptor instead.
-func (*InvalidGitpodYMLError) Descriptor() ([]byte, []int) {
+// Deprecated: Use InvalidDevpodYMLError.ProtoReflect.Descriptor instead.
+func (*InvalidDevpodYMLError) Descriptor() ([]byte, []int) {
 	return file_devpod_v1_error_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *InvalidGitpodYMLError) GetViolations() []string {
+func (x *InvalidDevpodYMLError) GetViolations() []string {
 	if x != nil {
 		return x.Violations
 	}
@@ -926,7 +926,7 @@ var file_devpod_v1_error_proto_goTypes = []interface{}{
 	(*PaymentSpendingLimitReachedError)(nil),   // 4: devpod.v1.PaymentSpendingLimitReachedError
 	(*InvalidCostCenterError)(nil),             // 5: devpod.v1.InvalidCostCenterError
 	(*TooManyRunningWorkspacesError)(nil),      // 6: devpod.v1.TooManyRunningWorkspacesError
-	(*InvalidGitpodYMLError)(nil),              // 7: devpod.v1.InvalidGitpodYMLError
+	(*InvalidDevpodYMLError)(nil),              // 7: devpod.v1.InvalidDevpodYMLError
 	(*RepositoryNotFoundError)(nil),            // 8: devpod.v1.RepositoryNotFoundError
 	(*RepositoryUnauthorizedError)(nil),        // 9: devpod.v1.RepositoryUnauthorizedError
 	(*ImageBuildLogsNotYetAvailableError)(nil), // 10: devpod.v1.ImageBuildLogsNotYetAvailableError
@@ -938,7 +938,7 @@ var file_devpod_v1_error_proto_depIdxs = []int32{
 	4,  // 2: devpod.v1.FailedPreconditionDetails.payment_spending_limit_reached:type_name -> devpod.v1.PaymentSpendingLimitReachedError
 	5,  // 3: devpod.v1.FailedPreconditionDetails.invalid_cost_center:type_name -> devpod.v1.InvalidCostCenterError
 	6,  // 4: devpod.v1.FailedPreconditionDetails.too_many_running_workspaces:type_name -> devpod.v1.TooManyRunningWorkspacesError
-	7,  // 5: devpod.v1.FailedPreconditionDetails.invalid_devpod_yml:type_name -> devpod.v1.InvalidGitpodYMLError
+	7,  // 5: devpod.v1.FailedPreconditionDetails.invalid_devpod_yml:type_name -> devpod.v1.InvalidDevpodYMLError
 	8,  // 6: devpod.v1.FailedPreconditionDetails.repository_not_found:type_name -> devpod.v1.RepositoryNotFoundError
 	9,  // 7: devpod.v1.FailedPreconditionDetails.repository_unauthorized:type_name -> devpod.v1.RepositoryUnauthorizedError
 	10, // 8: devpod.v1.FailedPreconditionDetails.image_build_logs_not_yet_available:type_name -> devpod.v1.ImageBuildLogsNotYetAvailableError
@@ -1041,7 +1041,7 @@ func file_devpod_v1_error_proto_init() {
 			}
 		}
 		file_devpod_v1_error_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InvalidGitpodYMLError); i {
+			switch v := v.(*InvalidDevpodYMLError); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1109,7 +1109,7 @@ func file_devpod_v1_error_proto_init() {
 		(*FailedPreconditionDetails_PaymentSpendingLimitReached)(nil),
 		(*FailedPreconditionDetails_InvalidCostCenter)(nil),
 		(*FailedPreconditionDetails_TooManyRunningWorkspaces)(nil),
-		(*FailedPreconditionDetails_InvalidGitpodYml)(nil),
+		(*FailedPreconditionDetails_InvalidDevpodYml)(nil),
 		(*FailedPreconditionDetails_RepositoryNotFound)(nil),
 		(*FailedPreconditionDetails_RepositoryUnauthorized)(nil),
 		(*FailedPreconditionDetails_ImageBuildLogsNotYetAvailable)(nil),

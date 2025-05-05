@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -47,7 +47,7 @@ func TestProtectedSecrets(t *testing.T) {
 			req.Spec.Initializer = &csapi.WorkspaceInitializer{
 				Spec: &csapi.WorkspaceInitializer_Git{
 					Git: &csapi.GitInitializer{
-						RemoteUri:        "https://github.com/gitpod-io/empty",
+						RemoteUri:        "https://github.com/khulnasoft/empty",
 						CheckoutLocation: "empty",
 						Config:           &csapi.GitConfig{},
 					},

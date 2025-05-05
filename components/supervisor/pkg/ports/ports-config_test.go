@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -17,7 +17,7 @@ import (
 func TestPortsConfig(t *testing.T) {
 	tests := []struct {
 		Desc         string
-		GitpodConfig *devpod.GitpodConfig
+		DevpodConfig *devpod.DevpodConfig
 		Expectation  *PortConfigTestExpectations
 	}{
 		{
@@ -26,7 +26,7 @@ func TestPortsConfig(t *testing.T) {
 		},
 		{
 			Desc: "instance port config",
-			GitpodConfig: &devpod.GitpodConfig{
+			DevpodConfig: &devpod.DevpodConfig{
 				Ports: []*devpod.PortsItems{
 					{
 						Port:        9229,
@@ -51,7 +51,7 @@ func TestPortsConfig(t *testing.T) {
 		},
 		{
 			Desc: "instance range config",
-			GitpodConfig: &devpod.GitpodConfig{
+			DevpodConfig: &devpod.DevpodConfig{
 				Ports: []*devpod.PortsItems{
 					{
 						Port:        "9229-9339",
@@ -81,8 +81,8 @@ func TestPortsConfig(t *testing.T) {
 	}
 	for _, test := range tests {
 		t.Run(test.Desc, func(t *testing.T) {
-			configService := &testGitpodConfigService{
-				configs: make(chan *devpod.GitpodConfig),
+			configService := &testDevpodConfigService{
+				configs: make(chan *devpod.DevpodConfig),
 				changes: make(chan *struct{}),
 			}
 			defer close(configService.configs)
@@ -101,9 +101,9 @@ func TestPortsConfig(t *testing.T) {
 
 			actual := &PortConfigTestExpectations{}
 
-			if test.GitpodConfig != nil {
+			if test.DevpodConfig != nil {
 				go func() {
-					configService.configs <- test.GitpodConfig
+					configService.configs <- test.DevpodConfig
 				}()
 				select {
 				case err := <-errors:
@@ -128,18 +128,18 @@ type PortConfigTestExpectations struct {
 	InstanceRangeConfigs []*RangeConfig
 }
 
-type testGitpodConfigService struct {
-	configs chan *devpod.GitpodConfig
+type testDevpodConfigService struct {
+	configs chan *devpod.DevpodConfig
 	changes chan *struct{}
 }
 
-func (service *testGitpodConfigService) Watch(ctx context.Context) {
+func (service *testDevpodConfigService) Watch(ctx context.Context) {
 }
 
-func (service *testGitpodConfigService) Observe(ctx context.Context) <-chan *devpod.GitpodConfig {
+func (service *testDevpodConfigService) Observe(ctx context.Context) <-chan *devpod.DevpodConfig {
 	return service.configs
 }
 
-func (service *testGitpodConfigService) ObserveImageFile(ctx context.Context) <-chan *struct{} {
+func (service *testDevpodConfigService) ObserveImageFile(ctx context.Context) <-chan *struct{} {
 	return service.changes
 }

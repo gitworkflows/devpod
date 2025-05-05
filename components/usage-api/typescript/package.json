@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "build": "mkdir -p lib; tsc",
-    "watch": "leeway exec --package .:lib --transitive-dependencies --filter-type yarn --components --parallel -- tsc -w --preserveWatchOutput"
+    "watch": "blazedock exec --package .:lib --transitive-dependencies --filter-type yarn --components --parallel -- tsc -w --preserveWatchOutput"
   },
   "overrides": {
     "long": "4.0.0"

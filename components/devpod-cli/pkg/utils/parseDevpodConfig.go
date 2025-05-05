@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -13,7 +13,7 @@ import (
 	yaml "gopkg.in/yaml.v2"
 )
 
-func ParseGitpodConfig(repoRoot string) (*devpod.GitpodConfig, error) {
+func ParseDevpodConfig(repoRoot string) (*devpod.DevpodConfig, error) {
 	if repoRoot == "" {
 		return nil, errors.New("repoRoot is empty")
 	}
@@ -25,7 +25,7 @@ func ParseGitpodConfig(repoRoot string) (*devpod.GitpodConfig, error) {
 		}
 		return nil, errors.New("read .devpod.yml file failed: " + err.Error())
 	}
-	var config *devpod.GitpodConfig
+	var config *devpod.DevpodConfig
 	if err = yaml.Unmarshal(data, &config); err != nil {
 		return nil, errors.New("unmarshal .devpod.yml file failed" + err.Error())
 	}

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -13,7 +13,7 @@ export const PROJECT_ID_ATTRIBUTE = "project_id";
 export const TEAM_ID_ATTRIBUTE = "team_id";
 export const TEAM_NAME_ATTRIBUTE = "team_name";
 export const BILLING_TIER_ATTRIBUTE = "billing_tier";
-export const GITPOD_HOST = "devpod_host";
+export const DEVPOD_HOST = "devpod_host";
 
 export class ConfigCatClient implements Client {
     constructor(private readonly client: IConfigCatClient, private readonly devpodHost?: string) {}
@@ -55,7 +55,7 @@ export function attributesToUser(attributes: Attributes): ConfigCatUser {
         custom[BILLING_TIER_ATTRIBUTE] = attributes.billingTier;
     }
     if (attributes.devpodHost) {
-        custom[GITPOD_HOST] = attributes.devpodHost;
+        custom[DEVPOD_HOST] = attributes.devpodHost;
     }
 
     return new ConfigCatUser(userId, email, "", custom);

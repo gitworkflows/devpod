@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -29,7 +29,7 @@ import (
 
 var credentialHelper = &cobra.Command{
 	Use:    "credential-helper get",
-	Short:  "Gitpod Credential Helper for Git",
+	Short:  "Devpod Credential Helper for Git",
 	Long:   "Supports reading of credentials per host.",
 	Args:   cobra.MinimumNArgs(1),
 	Hidden: true,

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -23,7 +23,7 @@ type ConfigInterface interface {
 	// Watch starts the config watching
 	Watch(ctx context.Context)
 	// Observe provides channels triggered whenever the config is changed
-	Observe(ctx context.Context) <-chan *devpod.GitpodConfig
+	Observe(ctx context.Context) <-chan *devpod.DevpodConfig
 	// Observe provides channels triggered whenever the image file is changed
 	ObserveImageFile(ctx context.Context) <-chan *struct{}
 }
@@ -33,7 +33,7 @@ type ConfigService struct {
 	locationReady <-chan struct{}
 
 	configLocation string
-	configWatcher  *fileWatcher[devpod.GitpodConfig]
+	configWatcher  *fileWatcher[devpod.DevpodConfig]
 
 	imageWatcher *fileWatcher[struct{}]
 }
@@ -43,8 +43,8 @@ func NewConfigService(configLocation string, locationReady <-chan struct{}) *Con
 	return &ConfigService{
 		locationReady:  locationReady,
 		configLocation: configLocation,
-		configWatcher: newFileWatcher(func(data []byte) (*devpod.GitpodConfig, error) {
-			var config *devpod.GitpodConfig
+		configWatcher: newFileWatcher(func(data []byte) (*devpod.DevpodConfig, error) {
+			var config *devpod.DevpodConfig
 			err := yaml.Unmarshal(data, &config)
 			return config, err
 		}),
@@ -55,7 +55,7 @@ func NewConfigService(configLocation string, locationReady <-chan struct{}) *Con
 }
 
 // Observe provides channels triggered whenever the config is changed.
-func (service *ConfigService) Observe(ctx context.Context) <-chan *devpod.GitpodConfig {
+func (service *ConfigService) Observe(ctx context.Context) <-chan *devpod.DevpodConfig {
 	return service.configWatcher.observe(ctx)
 }
 

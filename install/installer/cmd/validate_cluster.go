@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -110,6 +110,6 @@ func init() {
 	}
 
 	validateClusterCmd.PersistentFlags().StringVar(&validateClusterOpts.Kube.Config, "kubeconfig", "", "path to the kubeconfig file")
-	validateClusterCmd.PersistentFlags().StringVarP(&validateClusterOpts.Config, "config", "c", getEnvvar("GITPOD_INSTALLER_CONFIG", filepath.Join(dir, "devpod.config.yaml")), "path to the config file")
+	validateClusterCmd.PersistentFlags().StringVarP(&validateClusterOpts.Config, "config", "c", getEnvvar("DEVPOD_INSTALLER_CONFIG", filepath.Join(dir, "devpod.config.yaml")), "path to the config file")
 	validateClusterCmd.PersistentFlags().StringVarP(&validateClusterOpts.Namespace, "namespace", "n", getEnvvar("NAMESPACE", "default"), "namespace to deploy to")
 }

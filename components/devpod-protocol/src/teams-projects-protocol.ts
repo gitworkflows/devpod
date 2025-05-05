@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -30,7 +30,7 @@ export interface ProjectSettings {
     restrictedEditorNames?: string[];
 
     /**
-     * Enable automatic authentication for docker daemon with all credentials specified in GITPOD_IMAGE_AUTH
+     * Enable automatic authentication for docker daemon with all credentials specified in DEVPOD_IMAGE_AUTH
      */
     enableDockerdAuthentication?: boolean;
 }
@@ -245,7 +245,7 @@ export interface OrganizationSettings {
     // onboarding settings for the organization
     onboardingSettings?: OnboardingSettings;
 
-    // whether to add a special annotation to commits that are created through Gitpod
+    // whether to add a special annotation to commits that are created through Devpod
     annotateGitCommits?: boolean;
 }
 

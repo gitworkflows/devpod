@@ -1,39 +1,39 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import * as crypto from "crypto";
-import { DBGitpodToken, UserDB } from "@devpod/devpod-db/lib";
-import { GitpodToken, GitpodTokenType } from "@devpod/devpod-protocol";
+import { DBDevpodToken, UserDB } from "@devpod/devpod-db/lib";
+import { DevpodToken, DevpodTokenType } from "@devpod/devpod-protocol";
 import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { inject, injectable } from "inversify";
 import { Authorizer } from "../authorization/authorizer";
 
 @injectable()
-export class GitpodTokenService {
+export class DevpodTokenService {
     constructor(
         @inject(UserDB) private readonly userDB: UserDB,
         @inject(Authorizer) private readonly auth: Authorizer,
     ) {}
 
-    async getGitpodTokens(requestorId: string, userId: string): Promise<GitpodToken[]> {
+    async getDevpodTokens(requestorId: string, userId: string): Promise<DevpodToken[]> {
         await this.auth.checkPermissionOnUser(requestorId, "read_tokens", userId);
-        const devpodTokens = await this.userDB.findAllGitpodTokensOfUser(userId);
+        const devpodTokens = await this.userDB.findAllDevpodTokensOfUser(userId);
         return devpodTokens;
     }
 
-    async generateNewGitpodToken(
+    async generateNewDevpodToken(
         requestorId: string,
         userId: string,
-        options: { name?: string; type: GitpodTokenType; scopes?: string[] },
-        oldPermissionCheck?: (dbToken: DBGitpodToken) => Promise<void>, // @deprecated
+        options: { name?: string; type: DevpodTokenType; scopes?: string[] },
+        oldPermissionCheck?: (dbToken: DBDevpodToken) => Promise<void>, // @deprecated
     ): Promise<string> {
         await this.auth.checkPermissionOnUser(requestorId, "write_tokens", userId);
         const token = crypto.randomBytes(30).toString("hex");
         const tokenHash = crypto.createHash("sha256").update(token, "utf8").digest("hex");
-        const dbToken: DBGitpodToken = {
+        const dbToken: DBDevpodToken = {
             tokenHash,
             name: options.name,
             type: options.type,
@@ -44,29 +44,29 @@ export class GitpodTokenService {
         if (oldPermissionCheck) {
             await oldPermissionCheck(dbToken);
         }
-        await this.userDB.storeGitpodToken(dbToken);
+        await this.userDB.storeDevpodToken(dbToken);
         return token;
     }
 
-    async findGitpodToken(requestorId: string, userId: string, tokenHash: string): Promise<GitpodToken | undefined> {
+    async findDevpodToken(requestorId: string, userId: string, tokenHash: string): Promise<DevpodToken | undefined> {
         await this.auth.checkPermissionOnUser(requestorId, "read_tokens", userId);
-        let token: GitpodToken | undefined;
+        let token: DevpodToken | undefined;
         try {
-            token = await this.userDB.findGitpodTokensOfUser(userId, tokenHash);
+            token = await this.userDB.findDevpodTokensOfUser(userId, tokenHash);
         } catch (error) {
             log.error({ userId }, "failed to resolve devpod token: ", error);
         }
         return token;
     }
 
-    async deleteGitpodToken(
+    async deleteDevpodToken(
         requestorId: string,
         userId: string,
         tokenHash: string,
-        oldPermissionCheck?: (token: GitpodToken) => Promise<void>, // @deprecated
+        oldPermissionCheck?: (token: DevpodToken) => Promise<void>, // @deprecated
     ): Promise<void> {
         await this.auth.checkPermissionOnUser(requestorId, "write_tokens", userId);
-        const existingTokens = await this.getGitpodTokens(requestorId, userId);
+        const existingTokens = await this.getDevpodTokens(requestorId, userId);
         const tkn = existingTokens.find((token) => token.tokenHash === tokenHash);
         if (!tkn) {
             throw new Error(`User ${requestorId} tries to delete a token ${tokenHash} that does not exist.`);
@@ -74,6 +74,6 @@ export class GitpodTokenService {
         if (oldPermissionCheck) {
             await oldPermissionCheck(tkn);
         }
-        await this.userDB.deleteGitpodToken(tokenHash);
+        await this.userDB.deleteDevpodToken(tokenHash);
     }
 }

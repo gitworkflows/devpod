@@ -3,7 +3,7 @@
         "url": "https://github.com/khulnasoft/devpod",
         "repoName": "devpod",
         "configurationId": "123",
-        "configurationName": "Gitpod"
+        "configurationName": "Devpod"
     },
     "err": ""
 }

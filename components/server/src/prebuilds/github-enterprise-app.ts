@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -109,7 +109,7 @@ export class GitHubEnterpriseApp {
             }
             for (const user of projectOwners.users) {
                 const devpodIdentity = user.identities.find(
-                    (i) => i.authProviderId === TokenService.GITPOD_AUTH_PROVIDER_ID,
+                    (i) => i.authProviderId === TokenService.DEVPOD_AUTH_PROVIDER_ID,
                 );
                 if (!devpodIdentity) {
                     continue;

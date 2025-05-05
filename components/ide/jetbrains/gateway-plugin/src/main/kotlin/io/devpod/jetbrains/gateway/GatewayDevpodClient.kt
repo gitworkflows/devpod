@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -10,7 +10,7 @@ import com.jetbrains.rd.util.CopyOnWriteArrayList
 import com.jetbrains.rd.util.concurrentMapOf
 import com.jetbrains.rd.util.lifetime.Lifetime
 import com.jetbrains.rd.util.lifetime.LifetimeDefinition
-import io.devpod.devpodprotocol.api.GitpodClient
+import io.devpod.devpodprotocol.api.DevpodClient
 import io.devpod.devpodprotocol.api.entities.WorkspaceInfo
 import io.devpod.devpodprotocol.api.entities.WorkspaceInstance
 import kotlinx.coroutines.*
@@ -20,10 +20,10 @@ import kotlinx.coroutines.future.await
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
-class GatewayGitpodClient(
+class GatewayDevpodClient(
     private val lifetimeDefinition: LifetimeDefinition,
     private val devpodHost: String
-) : GitpodClient() {
+) : DevpodClient() {
 
     private val mutex = Mutex()
 

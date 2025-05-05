@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -14,12 +14,12 @@ import java.net.URL
 import java.util.*
 
 @State(
-    name = "io.devpod.jetbrains.gateway.GitpodSettingsState",
+    name = "io.devpod.jetbrains.gateway.DevpodSettingsState",
     storages = [Storage("devpod.xml")]
 )
-class GitpodSettingsState : PersistentStateComponent<GitpodSettingsState> {
+class DevpodSettingsState : PersistentStateComponent<DevpodSettingsState> {
 
-    var devpodHost: String = "devpod.io"
+    var devpodHost: String = "devpod.khulnasoft.com"
         set(value) {
             if (value.isNullOrBlank()) {
                 return
@@ -69,11 +69,11 @@ class GitpodSettingsState : PersistentStateComponent<GitpodSettingsState> {
         return Disposable { dispatcher.removeListener(internalListener) }
     }
 
-    override fun getState(): GitpodSettingsState {
+    override fun getState(): DevpodSettingsState {
         return this
     }
 
-    override fun loadState(state: GitpodSettingsState) {
+    override fun loadState(state: DevpodSettingsState) {
         XmlSerializerUtil.copyBean(state, this)
     }
 }

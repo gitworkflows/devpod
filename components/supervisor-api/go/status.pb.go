@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -1075,9 +1075,9 @@ type PortsStatus struct {
 	// Tunneled provides information when a port is tunneled. If not present then
 	// the port is not tunneled.
 	Tunneled *TunneledPortInfo `protobuf:"bytes,6,opt,name=tunneled,proto3" json:"tunneled,omitempty"`
-	// Port description, obtained from Gitpod PortConfig.
+	// Port description, obtained from Devpod PortConfig.
 	Description string `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
-	// Port name, obtained from Gitpod PortConfig.
+	// Port name, obtained from Devpod PortConfig.
 	Name string `protobuf:"bytes,9,opt,name=name,proto3" json:"name,omitempty"`
 	// Action hint on open
 	OnOpen PortsStatus_OnOpenAction `protobuf:"varint,10,opt,name=on_open,json=onOpen,proto3,enum=supervisor.PortsStatus_OnOpenAction" json:"on_open,omitempty"`

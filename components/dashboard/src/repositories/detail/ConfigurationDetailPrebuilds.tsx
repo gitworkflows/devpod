@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -61,7 +61,7 @@ export const ConfigurationDetailPrebuilds: FC<Props> = ({ configuration }) => {
                 <Subheading className="max-w-lg">
                     Prebuilds reduce wait time for new workspaces.{" "}
                     <a
-                        href="https://www.devpod.io/docs/configure/repositories/prebuilds"
+                        href="https://www.devpod.khulnasoft.com/docs/configure/repositories/prebuilds"
                         target="_blank"
                         rel="noreferrer"
                         className="gp-link"

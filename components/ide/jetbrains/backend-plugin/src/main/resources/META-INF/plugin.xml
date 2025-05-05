@@ -1,5 +1,5 @@
 <!--
- Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ Copyright (c) 2021 Devpod GmbH. All rights reserved.
  Licensed under the GNU Affero General Public License (AGPL).
  See License.AGPL.txt in the project root for license information.
 -->
@@ -8,9 +8,9 @@
     <xi:include href="/META-INF/extensions.xml" xpointer="xpointer(/idea-plugin/*)"/>
 
     <id>io.devpod.jetbrains.remote</id>
-    <name>Gitpod Remote</name>
-    <vendor>Gitpod</vendor>
-    <description>Provides integrations within a Gitpod workspace.</description>
+    <name>Devpod Remote</name>
+    <vendor>Devpod</vendor>
+    <description>Provides integrations within a Devpod workspace.</description>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
@@ -29,118 +29,118 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="io.devpod.jetbrains.remote.services.HeartbeatService"
                             preload="true"/>
-        <applicationService serviceImplementation="io.devpod.jetbrains.remote.GitpodManager" preload="true"/>
+        <applicationService serviceImplementation="io.devpod.jetbrains.remote.DevpodManager" preload="true"/>
 
-        <projectService serviceImplementation="io.devpod.jetbrains.remote.internal.GitpodTerminalServiceImpl" client="controller"
+        <projectService serviceImplementation="io.devpod.jetbrains.remote.internal.DevpodTerminalServiceImpl" client="controller"
                         preload="true"/>
 
-        <notificationGroup id="Gitpod Notifications" displayType="BALLOON" isLogByDefault="false"/>
+        <notificationGroup id="Devpod Notifications" displayType="BALLOON" isLogByDefault="false"/>
 
-        <httpRequestHandler implementation="io.devpod.jetbrains.remote.GitpodCLIService"/>
+        <httpRequestHandler implementation="io.devpod.jetbrains.remote.DevpodCLIService"/>
 
         <gateway.customization.name
-                implementation="io.devpod.jetbrains.remote.GitpodGatewayClientCustomizationProvider"/>
+                implementation="io.devpod.jetbrains.remote.DevpodGatewayClientCustomizationProvider"/>
         <gateway.customization.metrics id="devpodMetricsProvider"
-                                       implementation="io.devpod.jetbrains.remote.GitpodMetricProvider"/>
+                                       implementation="io.devpod.jetbrains.remote.DevpodMetricProvider"/>
 
         <registryKey key="devpod.forceUpdateMavenProjects.disabled" defaultValue="false"
                      description="Disable the forced update of Maven projects when IDE opens."
                      restartRequired="true"/>
 
 
-        <applicationService serviceInterface="io.devpod.jetbrains.remote.GitpodIgnoredPortsForNotificationService"
-                            serviceImplementation="io.devpod.jetbrains.remote.internal.GitpodIgnoredPortsForNotificationServiceImpl"
+        <applicationService serviceInterface="io.devpod.jetbrains.remote.DevpodIgnoredPortsForNotificationService"
+                            serviceImplementation="io.devpod.jetbrains.remote.internal.DevpodIgnoredPortsForNotificationServiceImpl"
                             preload="true"/>
 
 
-        <applicationService serviceInterface="io.devpod.jetbrains.remote.GitpodPortForwardingService"
-                            serviceImplementation="io.devpod.jetbrains.remote.GitpodPortForwardingServiceImpl"
+        <applicationService serviceInterface="io.devpod.jetbrains.remote.DevpodPortForwardingService"
+                            serviceImplementation="io.devpod.jetbrains.remote.DevpodPortForwardingServiceImpl"
                             client="controller" preload="true"/>
         <gateway.customization.performance id="devpodMetricsControl" order="before cpuControl"
-                                           implementation="io.devpod.jetbrains.remote.GitpodMetricControlProvider"/>
+                                           implementation="io.devpod.jetbrains.remote.DevpodMetricControlProvider"/>
     </extensions>
 
     <actions>
         <action id="io.devpod.jetbrains.remote.actions.StopWorkspaceAction"
                 class="io.devpod.jetbrains.remote.actions.StopWorkspaceAction"
-                text="Gitpod: Stop Workspace"
+                text="Devpod: Stop Workspace"
                 icon="AllIcons.Actions.Pause">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
         <action id="io.devpod.jetbrains.remote.actions.DashboardAction"
                 class="io.devpod.jetbrains.remote.actions.DashboardAction"
-                text="Gitpod: Open Dashboard"
+                text="Devpod: Open Dashboard"
                 icon="AllIcons.General.ProjectTab">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
         <action id="io.devpod.jetbrains.remote.actions.ExtendWorkspaceTimeoutAction"
                 class="io.devpod.jetbrains.remote.actions.ExtendWorkspaceTimeoutAction"
-                text="Gitpod: Extend Workspace Timeout"
+                text="Devpod: Extend Workspace Timeout"
                 icon="AllIcons.Vcs.History">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
         <action id="io.devpod.jetbrains.remote.actions.ContextAction"
                 class="io.devpod.jetbrains.remote.actions.ContextAction"
-                text="Gitpod: Open Context"
+                text="Devpod: Open Context"
                 icon="AllIcons.General.FitContent">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
         <action id="io.devpod.jetbrains.remote.actions.SettingsAction"
                 class="io.devpod.jetbrains.remote.actions.SettingsAction"
-                text="Gitpod: Open Settings"
+                text="Devpod: Open Settings"
                 icon="AllIcons.General.Settings">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
         <action id="io.devpod.jetbrains.remote.actions.ShareWorkspaceSnapshotAction"
                 class="io.devpod.jetbrains.remote.actions.ShareWorkspaceSnapshotAction"
-                text="Gitpod: Share Workspace Snapshot"
+                text="Devpod: Share Workspace Snapshot"
                 icon="AllIcons.Actions.Dump">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
         <action id="io.devpod.jetbrains.remote.actions.AccessControlAction"
                 class="io.devpod.jetbrains.remote.actions.AccessControlAction"
-                text="Gitpod: Open Access Control"
+                text="Devpod: Open Access Control"
                 icon="AllIcons.Actions.Properties">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
         <action id="io.devpod.jetbrains.remote.actions.DocumentationAction"
                 class="io.devpod.jetbrains.remote.actions.DocumentationAction"
-                text="Gitpod: Documentation"
+                text="Devpod: Documentation"
                 icon="AllIcons.General.ReaderMode">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
         <action id="io.devpod.jetbrains.remote.actions.UpgradeSubscriptionAction"
                 class="io.devpod.jetbrains.remote.actions.UpgradeSubscriptionAction"
-                text="Gitpod: Upgrade Subscription"
+                text="Devpod: Upgrade Subscription"
                 icon="AllIcons.Actions.PreviousOccurence">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
         <action id="io.devpod.jetbrains.remote.actions.CommunityChatAction"
                 class="io.devpod.jetbrains.remote.actions.CommunityChatAction"
-                text="Gitpod: Open Community Chat"
+                text="Devpod: Open Community Chat"
                 icon="AllIcons.General.Balloon">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
         <action id="io.devpod.jetbrains.remote.actions.ReportIssueAction"
                 class="io.devpod.jetbrains.remote.actions.ReportIssueAction"
-                text="Gitpod: Report Issue"
+                text="Devpod: Report Issue"
                 icon="AllIcons.General.ShowWarning">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
         <action id="io.devpod.jetbrains.remote.actions.FollowUsOnTwitterAction"
                 class="io.devpod.jetbrains.remote.actions.FollowUsOnTwitterAction"
-                text="Gitpod: Follow Us On Twitter"
+                text="Devpod: Follow Us On Twitter"
                 icon="AllIcons.Gutter.ExtAnnotation">
             <add-to-group group-id="UnattendedHostDropdownGroup" anchor="last"/>
         </action>
-        <action id="io.devpod.jetbrains.remote.actions.GitpodCopyUrlAction"
-                class="io.devpod.jetbrains.remote.actions.GitpodCopyUrlAction"
+        <action id="io.devpod.jetbrains.remote.actions.DevpodCopyUrlAction"
+                class="io.devpod.jetbrains.remote.actions.DevpodCopyUrlAction"
                 text="Copy URL"
                 icon="AllIcons.Actions.Copy">
             <add-to-group group-id="PortForwardingPortGroup" anchor="last"/>
         </action>
-        <action id="io.devpod.jetbrains.remote.actions.GitpodCopyWebUrlAction"
-                class="io.devpod.jetbrains.remote.actions.GitpodCopyWebUrlAction"
+        <action id="io.devpod.jetbrains.remote.actions.DevpodCopyWebUrlAction"
+                class="io.devpod.jetbrains.remote.actions.DevpodCopyWebUrlAction"
                 text="Copy Web URL"
                 icon="AllIcons.Actions.Copy">
             <add-to-group group-id="PortForwardingPortGroup" anchor="last"/>

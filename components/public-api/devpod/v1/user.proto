@@ -19,8 +19,8 @@ service UserService {
   // UpdateUser updates the properties of a user.
   rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
 
-  // SetWorkspaceAutoStartOptions updates the auto start options for the Gitpod Dashboard.
-  // +internal - only used by the Gitpod Dashboard.
+  // SetWorkspaceAutoStartOptions updates the auto start options for the Devpod Dashboard.
+  // +internal - only used by the Devpod Dashboard.
   rpc SetWorkspaceAutoStartOptions(SetWorkspaceAutoStartOptionsRequest) returns (SetWorkspaceAutoStartOptionsResponse) {}
 
   // DeleteUser deletes the specified user.
@@ -247,7 +247,7 @@ message User {
     //
     // +optional
     string job_role_other = 6;
-    // Reasons user is exploring Gitpod when they signed up
+    // Reasons user is exploring Devpod when they signed up
     //
     // +optional
     repeated string exploration_reasons = 7;

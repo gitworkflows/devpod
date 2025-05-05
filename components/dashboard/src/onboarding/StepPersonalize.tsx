@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -30,7 +30,7 @@ export const StepPersonalize: FC<Props> = ({ user, onComplete }) => {
 
     return (
         <OnboardingStep
-            title="How are you going to use Gitpod?"
+            title="How are you going to use Devpod?"
             subtitle="We will tailor your experience based on your preferences."
             isValid={isValid}
             onSubmit={handleSubmitted}

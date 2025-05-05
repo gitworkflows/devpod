@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -71,7 +71,7 @@ func Setup(ctx context.Context) (string, string, env.Environment, bool, string, 
 		username        string
 		enterprise      bool
 		gitlab          bool
-		waitGitpodReady time.Duration
+		waitDevpodReady time.Duration
 
 		namespace  string
 		kubeconfig string
@@ -94,7 +94,7 @@ func Setup(ctx context.Context) (string, string, env.Environment, bool, string, 
 	flagset.BoolVar(&enterprise, "enterprise", false, "whether to test enterprise features. requires enterprise lisence installed.")
 	flagset.BoolVar(&gitlab, "gitlab", false, "whether to test gitlab integration.")
 	flagset.BoolVar(&parallel, "parallel-features", false, "Run test features in parallel")
-	flagset.DurationVar(&waitGitpodReady, "wait-devpod-timeout", 5*time.Minute, `wait time for Gitpod components before starting integration test`)
+	flagset.DurationVar(&waitDevpodReady, "wait-devpod-timeout", 5*time.Minute, `wait time for Devpod components before starting integration test`)
 	flagset.StringVar(&namespace, "namespace", "", "Kubernetes cluster namespaces to use")
 	flagset.StringVar(&kubeconfig, "kubeconfig", defaultKubeConfig, "The path to the kubeconfig file")
 	flagset.StringVar(&feature, "feature", "", "Regular expression that targets features to test")
@@ -141,7 +141,7 @@ func Setup(ctx context.Context) (string, string, env.Environment, bool, string, 
 		klog.Fatalf("unexpected error: %v", err)
 	}
 	testenv.Setup(
-		waitOnGitpodRunning(e.Namespace(), waitGitpodReady),
+		waitOnDevpodRunning(e.Namespace(), waitDevpodReady),
 	)
 
 	return username, e.Namespace(), testenv, enterprise, kubeconfig, gitlab
@@ -186,8 +186,8 @@ var (
 	}
 )
 
-func waitOnGitpodRunning(namespace string, waitTimeout time.Duration) env.Func {
-	klog.V(2).Info("Checking status of Gitpod components...")
+func waitOnDevpodRunning(namespace string, waitTimeout time.Duration) env.Func {
+	klog.V(2).Info("Checking status of Devpod components...")
 	return func(ctx context.Context, cfg *envconf.Config) (context.Context, error) {
 		client := cfg.Client()
 		err := wait.PollImmediate(1*time.Second, waitTimeout, func() (bool, error) {
@@ -201,7 +201,7 @@ func waitOnGitpodRunning(namespace string, waitTimeout time.Duration) env.Func {
 				return false, nil
 			}
 
-			klog.V(2).Info("All Gitpod components are running...")
+			klog.V(2).Info("All Devpod components are running...")
 			return true, nil
 		})
 		if err != nil {
@@ -212,7 +212,7 @@ func waitOnGitpodRunning(namespace string, waitTimeout time.Duration) env.Func {
 	}
 }
 
-func logGitpodStatus(t *testing.T, client klient.Client, namespace string) {
+func logDevpodStatus(t *testing.T, client klient.Client, namespace string) {
 	var allPods corev1.PodList
 	err := client.Resources(namespace).List(context.Background(), &allPods)
 	if err != nil {
@@ -249,7 +249,7 @@ func logGitpodStatus(t *testing.T, client klient.Client, namespace string) {
 		}
 	}
 	tw.Flush()
-	t.Logf("Gitpod components status:\n" + buf.String())
+	t.Logf("Devpod components status:\n" + buf.String())
 }
 
 func isPreviewReady(client klient.Client, namespace string) (ready bool, reason string, err error) {

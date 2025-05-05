@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -43,7 +43,7 @@ const (
 	CONTEXT_PARSE_ERROR = 460
 
 	// 461 Invalid devpod yml
-	INVALID_GITPOD_YML = 461
+	INVALID_DEVPOD_YML = 461
 
 	// 470 User Blocked (custom status code)
 	USER_BLOCKED = 470

@@ -6,7 +6,7 @@
 	admin off
 
 	# set default SNI for old clients
-	default_sni {$GITPOD_DOMAIN}
+	default_sni {$DEVPOD_DOMAIN}
 
 	# debug
 
@@ -38,7 +38,7 @@
 		# disable clients from sniffing the media type
 		X-Content-Type-Options nosniff
 		# Define valid parents that may embed a page
-		Content-Security-Policy "frame-ancestors 'self' https://*.{$GITPOD_DOMAIN} https://{$GITPOD_DOMAIN}"
+		Content-Security-Policy "frame-ancestors 'self' https://*.{$DEVPOD_DOMAIN} https://{$DEVPOD_DOMAIN}"
 		# keep referrer data off of HTTP connections
 		Referrer-Policy no-referrer-when-downgrade
 		# Enable cross-site filter (XSS) and tell browser to block detected attacks
@@ -96,7 +96,7 @@
 }
 
 (debug_headers) {
-	header X-Gitpod-Region {$GITPOD_REGION}.{$GITPOD_INSTALLATION_SHORTNAME}
+	header X-Devpod-Region {$DEVPOD_REGION}.{$DEVPOD_INSTALLATION_SHORTNAME}
 }
 
 (workspace_transport) {
@@ -164,14 +164,14 @@
 }
 
 # public-api
-api.{$GITPOD_DOMAIN} {
+api.{$DEVPOD_DOMAIN} {
 	log {
 		level DEBUG
 		output stdout
 	}
 
 	devpod.cors_origin {
-		allowed_origins https://{$GITPOD_DOMAIN}
+		allowed_origins https://{$DEVPOD_DOMAIN}
 	}
 
 	@to_server path /auth/*/callback
@@ -197,7 +197,7 @@ http:// {
 
 # The services directly correlate to Public Services exposed by Dedicated
 # When adding new endpoints, please notify Team Engine
-https://services.{$GITPOD_DOMAIN} {
+https://services.{$DEVPOD_DOMAIN} {
 	import enable_log
 	import remove_server_header
 	import ssl_configuration
@@ -212,7 +212,7 @@ https://services.{$GITPOD_DOMAIN} {
 	}
 }
 
-https://{$GITPOD_DOMAIN} {
+https://{$DEVPOD_DOMAIN} {
 	import enable_log
 	import remove_server_header
 	import ssl_configuration
@@ -304,7 +304,7 @@ https://{$GITPOD_DOMAIN} {
 	}
 	handle @backend_wss {
 		devpod.cors_origin {
-			base_domain {$GITPOD_DOMAIN}
+			base_domain {$DEVPOD_DOMAIN}
 		}
 
 		devpod.sec_websocket_key
@@ -319,7 +319,7 @@ https://{$GITPOD_DOMAIN} {
 	@backend path /api/* /headless-logs/* /prebuild-logs/*
 	handle @backend {
 		devpod.cors_origin {
-			base_domain {$GITPOD_DOMAIN}
+			base_domain {$DEVPOD_DOMAIN}
 		}
 
 		uri strip_prefix /api
@@ -408,16 +408,16 @@ https://{$GITPOD_DOMAIN} {
 
 	@legacy_urls path /github.com/* /gitlab.com/* /bitbucket.org/*
 	handle @legacy_urls {
-		redir https://{$GITPOD_DOMAIN}/#{uri} permanent
+		redir https://{$DEVPOD_DOMAIN}/#{uri} permanent
 	}
 
 	handle_errors {
-		redir https://{$GITPOD_DOMAIN}/sorry/#Error%20{http.reverse_proxy.status_text} 302
+		redir https://{$DEVPOD_DOMAIN}/sorry/#Error%20{http.reverse_proxy.status_text} 302
 	}
 }
 
 # workspaces
-https://*.*.{$GITPOD_DOMAIN} {
+https://*.*.{$DEVPOD_DOMAIN} {
 	import enable_log
 	import workspace_security_headers
 	import remove_server_header

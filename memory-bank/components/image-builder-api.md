@@ -1,7 +1,7 @@
 # Image Builder API
 
 ## Overview
-The Image Builder API defines the gRPC interfaces for the Image Builder service, which is responsible for building Docker images for workspaces within the Gitpod platform. This API enables the dynamic creation, management, and monitoring of workspace image builds.
+The Image Builder API defines the gRPC interfaces for the Image Builder service, which is responsible for building Docker images for workspaces within the Devpod platform. This API enables the dynamic creation, management, and monitoring of workspace image builds.
 
 ## Purpose
 This API provides a standardized interface for:
@@ -137,7 +137,7 @@ After regenerating the code, you may need to rebuild components that depend on t
    yarn build
    ```
 
-3. Using Leeway (for CI/CD):
+3. Using Blazedock (for CI/CD):
    ```bash
-   leeway build -D components/<component-name>:app
+   blazedock build -D components/<component-name>:app
    ```

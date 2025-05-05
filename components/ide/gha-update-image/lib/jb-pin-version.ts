@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -51,8 +51,8 @@ export const appendPinVersionsIntoIDEConfigMap = async (updatedIDEs: string[] | 
             const previousVersion = await getIDEVersionOfImage(ideConfigMap.ideOptions.options[ide].image);
             const previousInfo = {
                 version: previousVersion,
-                image: ideConfigMap.ideOptions.options[ide].image.replaceAll("ghcr.io/devpod-core-dev/build", "{{.Repository}}"),
-                imageLayers: ideConfigMap.ideOptions.options[ide].imageLayers.map((e: string) => e.replaceAll("ghcr.io/devpod-core-dev/build", "{{.Repository}}")),
+                image: ideConfigMap.ideOptions.options[ide].image.replaceAll("khulnasoft/devpod-environment/build", "{{.Repository}}"),
+                imageLayers: ideConfigMap.ideOptions.options[ide].imageLayers.map((e: string) => e.replaceAll("khulnasoft/devpod-environment/build", "{{.Repository}}")),
             };
 
             if (!updatedIDEs || !updatedIDEs.includes(ide)) {

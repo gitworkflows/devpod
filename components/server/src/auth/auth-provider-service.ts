@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -368,7 +368,7 @@ export class AuthProviderService {
                 break;
             case "AzureDevOps":
                 // We don't support Azure DevOps for PAYG users yet because our auth flow is based on provider's host
-                if (this.config.hostUrl.url.host === "devpod.io") {
+                if (this.config.hostUrl.url.host === "devpod.khulnasoft.com") {
                     throw new ApplicationError(ErrorCodes.BAD_REQUEST, "Unexpected service type.");
                 }
                 const { authorizationUrl, tokenUrl } = newEntry;

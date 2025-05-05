@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Node-Labeler component in Gitpod is a Kubernetes controller responsible for managing node labels and annotations that are required for workspaces to run properly. It monitors the status of critical services like registry-facade and ws-daemon on each node, and adds or removes labels accordingly. Additionally, it manages cluster-autoscaler annotations to prevent nodes with active workspaces from being scaled down.
+The Node-Labeler component in Devpod is a Kubernetes controller responsible for managing node labels and annotations that are required for workspaces to run properly. It monitors the status of critical services like registry-facade and ws-daemon on each node, and adds or removes labels accordingly. Additionally, it manages cluster-autoscaler annotations to prevent nodes with active workspaces from being scaled down.
 
 ## Purpose
 
@@ -13,7 +13,7 @@ The primary purposes of the Node-Labeler component are:
 - Enable efficient node utilization in Kubernetes clusters
 - Facilitate proper workspace scheduling
 - Monitor the health of critical workspace services
-- Support the Gitpod workspace infrastructure
+- Support the Devpod workspace infrastructure
 - Optimize cluster resource usage
 - Provide metrics for service readiness
 
@@ -60,7 +60,7 @@ The Node-Labeler component can be configured through command-line flags:
 ### General Configuration
 - `--json-log`, `-j`: Produce JSON log output (default: true)
 - `--verbose`, `-v`: Enable verbose logging
-- `--namespace`: Namespace where Gitpod components are running (default: default)
+- `--namespace`: Namespace where Devpod components are running (default: default)
 
 ### Service Configuration
 - `--registry-facade-port`: Port for registry-facade node port (default: 31750)
@@ -79,8 +79,8 @@ The Node-Labeler component integrates with:
 
 ### Node Label Management
 The component adds the following labels to nodes:
-- `devpod.io/registry-facade_ready_ns_<namespace>`: Indicates registry-facade is ready
-- `devpod.io/ws-daemon_ready_ns_<namespace>`: Indicates ws-daemon is ready
+- `devpod.khulnasoft.com/registry-facade_ready_ns_<namespace>`: Indicates registry-facade is ready
+- `devpod.khulnasoft.com/ws-daemon_ready_ns_<namespace>`: Indicates ws-daemon is ready
 
 These labels are used by the workspace scheduler to ensure workspaces are only scheduled on nodes with the required services.
 

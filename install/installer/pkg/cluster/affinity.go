@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -11,11 +11,11 @@ import (
 
 // Valid characters for affinities are alphanumeric, -, _, . and one / as a subdomain prefix
 const (
-	AffinityLabelMeta               = "devpod.io/workload_meta"
-	AffinityLabelIDE                = "devpod.io/workload_ide"
-	AffinityLabelServices           = "devpod.io/workload_services"
-	AffinityLabelWorkspacesRegular  = "devpod.io/workload_workspace_regular"
-	AffinityLabelWorkspacesHeadless = "devpod.io/workload_workspace_headless"
+	AffinityLabelMeta               = "devpod.khulnasoft.com/workload_meta"
+	AffinityLabelIDE                = "devpod.khulnasoft.com/workload_ide"
+	AffinityLabelServices           = "devpod.khulnasoft.com/workload_services"
+	AffinityLabelWorkspacesRegular  = "devpod.khulnasoft.com/workload_workspace_regular"
+	AffinityLabelWorkspacesHeadless = "devpod.khulnasoft.com/workload_workspace_headless"
 
 	HostnameTopologyKey = "kubernetes.io/hostname"
 )

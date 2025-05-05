@@ -1,4 +1,4 @@
-image: docker.io/khulnasoft/devpod-environment:latest
+image: khulnasoft/devpod-environment:main-gha.30393
 workspaceLocation: devpod/devpod-ws.code-workspace
 checkoutLocation: devpod
 ports:
@@ -51,14 +51,14 @@ tasks:
       ./scripts/install-linear-mcp-go.sh "$LINEAR_WRITE_ACCESS"
   - name: Install `devpod` CLI
     command: |
-      leeway run components/local-app:install-cli
-      leeway run components/local-app:cli-completion
+      blazedock run components/local-app:install-cli
+      blazedock run components/local-app:cli-completion
       exit 0
   # This task takes care of configuring your workspace so it can manage and interact
   # with preview environments.
   - name: Preview environment configuration
-    init: leeway run dev/preview/previewctl:install
-    command: INSTALL_CONTEXT=true leeway run dev/preview:configure-workspace
+    init: blazedock run dev/preview/previewctl:install
+    command: INSTALL_CONTEXT=true blazedock run dev/preview:configure-workspace
   - name: Installer dependencies
     init: |
       (cd install/installer && make deps)
@@ -68,8 +68,8 @@ tasks:
       if [ -z "$RUN_GRADLE_TASK" ]; then
         read -r -p "Press enter to continue Java gradle task"
       fi
-      leeway exec --package components/supervisor-api/java:lib --package components/devpod-protocol/java:lib -- ./gradlew build
-      leeway exec --package components/ide/jetbrains/backend-plugin:plugin-latest --package components/ide/jetbrains/gateway-plugin:publish-latest --parallel -- ./gradlew buildPlugin
+      blazedock exec --package components/supervisor-api/java:lib --package components/devpod-protocol/java:lib -- ./gradlew build
+      blazedock exec --package components/ide/jetbrains/backend-plugin:plugin-latest --package components/ide/jetbrains/gateway-plugin:publish-latest --parallel -- ./gradlew buildPlugin
   - name: TypeScript
     init: yarn --network-timeout 100000 && yarn build
   - name: Install pre-commit hooks
@@ -79,7 +79,7 @@ tasks:
   - name: Go
     init: |
       ./components/devpod-protocol/go/scripts/generate-config.sh
-      leeway exec --filter-type go -v -- go mod verify
+      blazedock exec --filter-type go -v -- go mod verify
 vscode:
   extensions:
     - EditorConfig.EditorConfig

@@ -163,6 +163,9 @@
         "go.lintFlags": ["-disable", "govet,errcheck,staticcheck", "--allow-parallel-runners", "--timeout", "15m"],
         "gopls": {
         },
-        "prettier.configPath": "/workspace/devpod/.prettierrc.json"
+        "prettier.configPath": "/workspace/devpod/.prettierrc.json",
+        "yaml.schemas": {
+            "https://gitpod.io/schemas/gitpod-schema.json": "file:///workspace/devpod/.gitpod.yml"
+        }
     }
 }

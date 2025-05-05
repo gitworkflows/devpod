@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License-AGPL.txt in the project root for license information.
 
@@ -139,7 +139,7 @@ func main() {
 		}),
 		HealthProbeBindAddress:        cfg.Health.Addr,
 		LeaderElection:                true,
-		LeaderElectionID:              "ws-manager-mk2-leader.devpod.io",
+		LeaderElectionID:              "ws-manager-mk2-leader.devpod.khulnasoft.com",
 		LeaderElectionReleaseOnCancel: true,
 		NewClient: func(config *rest.Config, options client.Options) (client.Client, error) {
 			config.QPS = 100

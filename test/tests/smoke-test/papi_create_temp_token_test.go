@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -20,7 +20,7 @@ import (
 /*
 *
 export TEST_CREATE_TMP_TOKEN=true
-export GITPOD_HOST=hw-token-exp-1084.preview.devpod-dev.com
+export DEVPOD_HOST=hw-token-exp-1084.preview.devpod-dev.com
 
 	export INSTALLATION_ADMIN_PAT=<admin_pat>
 	# PAT of a member or an owner or a collaborator
@@ -38,7 +38,7 @@ func TestCreateTemporaryAccessToken(t *testing.T) {
 		t.Skip("skip papi create temporary access token test")
 		return
 	}
-	devpodHost, _ := os.LookupEnv("GITPOD_HOST")
+	devpodHost, _ := os.LookupEnv("DEVPOD_HOST")
 	adminPAT, _ := os.LookupEnv("INSTALLATION_ADMIN_PAT")
 	targetUserID, _ := os.LookupEnv("TARGET_USER_ID")
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)
@@ -60,7 +60,7 @@ func TestCreateTemporaryAccessTokenDeniedToCreateInstallationAdmin(t *testing.T)
 		t.Skip("skip papi create temporary access token test")
 		return
 	}
-	devpodHost, _ := os.LookupEnv("GITPOD_HOST")
+	devpodHost, _ := os.LookupEnv("DEVPOD_HOST")
 	adminPAT, _ := os.LookupEnv("INSTALLATION_ADMIN_PAT")
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)
 	defer cancel()
@@ -74,7 +74,7 @@ func TestCreateTemporaryAccessTokenWithNotFoundUser(t *testing.T) {
 		t.Skip("skip papi create temporary access token test")
 		return
 	}
-	devpodHost, _ := os.LookupEnv("GITPOD_HOST")
+	devpodHost, _ := os.LookupEnv("DEVPOD_HOST")
 	adminPAT, _ := os.LookupEnv("INSTALLATION_ADMIN_PAT")
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)
 	defer cancel()
@@ -88,7 +88,7 @@ func TestCreateTemporaryAccessTokenViaMember(t *testing.T) {
 		t.Skip("skip papi create temporary access token test")
 		return
 	}
-	devpodHost, _ := os.LookupEnv("GITPOD_HOST")
+	devpodHost, _ := os.LookupEnv("DEVPOD_HOST")
 	memberUserPAT, _ := os.LookupEnv("MEMBER_USER_PAT")
 	memberUserID, _ := os.LookupEnv("MEMBER_USER_ID")
 	targetUserID, _ := os.LookupEnv("TARGET_USER_ID")
@@ -104,7 +104,7 @@ func TestCreateTemporaryAccessTokenExpiry(t *testing.T) {
 		t.Skip("skip papi create temporary access token test")
 		return
 	}
-	devpodHost, _ := os.LookupEnv("GITPOD_HOST")
+	devpodHost, _ := os.LookupEnv("DEVPOD_HOST")
 	adminPAT, _ := os.LookupEnv("INSTALLATION_ADMIN_PAT")
 	targetUserID, _ := os.LookupEnv("TARGET_USER_ID")
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
@@ -128,7 +128,7 @@ func TestCreateTemporaryAccessTokenCreateEnv(t *testing.T) {
 		t.Skip("skip papi create temporary access token test")
 		return
 	}
-	devpodHost, _ := os.LookupEnv("GITPOD_HOST")
+	devpodHost, _ := os.LookupEnv("DEVPOD_HOST")
 	adminPAT, _ := os.LookupEnv("INSTALLATION_ADMIN_PAT")
 	targetUserID, _ := os.LookupEnv("TARGET_USER_ID")
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)

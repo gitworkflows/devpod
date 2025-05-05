@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -26,13 +26,13 @@ type PAPIClient struct {
 	Organization  v1connect.OrganizationServiceClient
 }
 
-// GitpodServer provides access to the Gitpod server API
-func (c *ComponentAPI) PublicApi(opts ...GitpodServerOpt) (*PAPIClient, error) {
+// DevpodServer provides access to the Devpod server API
+func (c *ComponentAPI) PublicApi(opts ...DevpodServerOpt) (*PAPIClient, error) {
 	var options devpodServerOpts
 	for _, o := range opts {
 		err := o(&options)
 		if err != nil {
-			return nil, xerrors.Errorf("cannot access Gitpod public API: %q", err)
+			return nil, xerrors.Errorf("cannot access Devpod public API: %q", err)
 		}
 	}
 
@@ -45,7 +45,7 @@ func (c *ComponentAPI) PublicApi(opts ...GitpodServerOpt) (*PAPIClient, error) {
 		tkn := c.serverStatus.Token[options.User]
 		if tkn == "" {
 			var err error
-			tkn, err = c.createGitpodToken(options.User, []string{
+			tkn, err = c.createDevpodToken(options.User, []string{
 				"resource:default",
 				"function:*",
 			})
@@ -103,7 +103,7 @@ func (c *ComponentAPI) PublicApi(opts ...GitpodServerOpt) (*PAPIClient, error) {
 		return nil
 	}()
 	if err != nil {
-		return nil, xerrors.Errorf("cannot access Gitpod public API: %q", err)
+		return nil, xerrors.Errorf("cannot access Devpod public API: %q", err)
 	}
 
 	return res, nil

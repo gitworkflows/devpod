@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -22,7 +22,7 @@ export class BitbucketService extends RepositoryService {
         super();
     }
 
-    public async isGitpodWebhookEnabled(user: User, cloneUrl: string): Promise<boolean> {
+    public async isDevpodWebhookEnabled(user: User, cloneUrl: string): Promise<boolean> {
         try {
             const api = await this.api.create(user);
             const { owner, repoName } = await this.bitbucketContextParser.parseURL(user, cloneUrl);
@@ -35,7 +35,7 @@ export class BitbucketService extends RepositoryService {
             }
             return hooks.data.values.some((hook) => hook.url === this.getHookUrl());
         } catch (error) {
-            console.error("Failed to check if Gitpod webhook is enabled.", error, { cloneUrl });
+            console.error("Failed to check if Devpod webhook is enabled.", error, { cloneUrl });
 
             return false;
         }

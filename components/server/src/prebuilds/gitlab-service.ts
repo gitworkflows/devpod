@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -25,7 +25,7 @@ export class GitlabService extends RepositoryService {
         super();
     }
 
-    public async isGitpodWebhookEnabled(user: User, cloneUrl: string): Promise<boolean> {
+    public async isDevpodWebhookEnabled(user: User, cloneUrl: string): Promise<boolean> {
         try {
             const { owner, repoName } = await this.gitlabContextParser.parseURL(user, cloneUrl);
             const hooks = (await this.api.run(user, (g) =>

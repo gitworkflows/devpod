@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -131,7 +131,7 @@ func SSHPreview(branch string) error {
 		return err
 	}
 
-	path := filepath.Join(os.Getenv("LEEWAY_WORKSPACE_ROOT"), "dev/preview/ssh-vm.sh")
+	path := filepath.Join(os.Getenv("BLAZEDOCK_WORKSPACE_ROOT"), "dev/preview/ssh-vm.sh")
 	sshCommand := exec.Command("bash", path, "-b", branch)
 
 	// We need to bind standard output files to the command

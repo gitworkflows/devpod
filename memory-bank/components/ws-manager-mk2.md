@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Workspace Manager MK2 (ws-manager-mk2) is a Kubernetes controller responsible for managing the lifecycle of workspaces in Gitpod. It orchestrates the creation, monitoring, and deletion of workspace pods and related resources in the Kubernetes cluster.
+The Workspace Manager MK2 (ws-manager-mk2) is a Kubernetes controller responsible for managing the lifecycle of workspaces in Devpod. It orchestrates the creation, monitoring, and deletion of workspace pods and related resources in the Kubernetes cluster.
 
 ## Purpose
 
@@ -111,7 +111,7 @@ The component exposes Prometheus metrics for:
 
 - Requires specific Kubernetes RBAC permissions
 - Operates within a specific namespace, not cluster-wide
-- Depends on other Gitpod components for full functionality
+- Depends on other Devpod components for full functionality
 
 ## Related Components
 

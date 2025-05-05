@@ -1,11 +1,11 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
 
 import { ListUsageRequest, Ordering, Usage } from "@devpod/devpod-protocol/lib/usage";
-import { getGitpodService } from "../../service/service";
+import { getDevpodService } from "../../service/service";
 
 type GetAllUsageRecordsArgs = Pick<ListUsageRequest, "attributionId" | "from" | "to"> & {
     signal?: AbortSignal;
@@ -68,5 +68,5 @@ const getUsagePage = async ({ attributionId, from, to, page }: GetUsagePageArgs)
         },
     };
 
-    return await getGitpodService().server.listUsage(request);
+    return await getDevpodService().server.listUsage(request);
 };

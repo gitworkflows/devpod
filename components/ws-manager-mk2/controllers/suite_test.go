@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License-AGPL.txt in the project root for license information.
 
@@ -138,7 +138,7 @@ var _ = BeforeSuite(func() {
 
 func newTestConfig() config.Configuration {
 	return config.Configuration{
-		GitpodHostURL:     "devpod.io",
+		DevpodHostURL:     "devpod.khulnasoft.com",
 		HeartbeatInterval: util.Duration(30 * time.Second),
 		Namespace:         "default",
 		SecretsNamespace:  secretsNamespace,

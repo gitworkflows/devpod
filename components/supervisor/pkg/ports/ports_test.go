@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -431,7 +431,7 @@ func TestPortsUpdateState(t *testing.T) {
 			},
 		},
 		{
-			Desc: "port status has the name attribute set as soon as the port gets exposed, if there was a name configured in Gitpod's Workspace",
+			Desc: "port status has the name attribute set as soon as the port gets exposed, if there was a name configured in Devpod's Workspace",
 			Changes: []Change{
 				{
 					Config: &ConfigChange{instance: []*devpod.PortsItems{
@@ -624,7 +624,7 @@ func TestPortsUpdateState(t *testing.T) {
 		},
 		{
 			// Please make sure this test pass for code browser resolveExternalPort
-			// see also https://github.com/gitpod-io/openvscode-server/blob/5ab7644a8bbf37d28e23212bc6f1529cafd8bf7b/extensions/devpod-web/src/extension.ts#L310-L339
+			// see also https://github.com/khulnasoft/openvscode-server/blob/5ab7644a8bbf37d28e23212bc6f1529cafd8bf7b/extensions/devpod-web/src/extension.ts#L310-L339
 			Desc: "expose port without served, port should be responded for use case of openvscode-server",
 			Changes: []Change{
 				{
@@ -933,7 +933,7 @@ func TestManager_getStatus(t *testing.T) {
 		},
 		{
 			// Please make sure this test pass for code browser resolveExternalPort
-			// see also https://github.com/gitpod-io/openvscode-server/blob/5ab7644a8bbf37d28e23212bc6f1529cafd8bf7b/extensions/devpod-web/src/extension.ts#L310-L339
+			// see also https://github.com/khulnasoft/openvscode-server/blob/5ab7644a8bbf37d28e23212bc6f1529cafd8bf7b/extensions/devpod-web/src/extension.ts#L310-L339
 			name: "expose not served ports should respond their status",
 			fields: fields{
 				orderInYaml: []any{},

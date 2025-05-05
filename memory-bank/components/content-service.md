@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Content Service is a core component of Gitpod that manages various types of content within the platform, including workspace content, blobs, logs, and IDE plugins. It provides a set of gRPC services that handle storage, retrieval, and management of different content types.
+The Content Service is a core component of Devpod that manages various types of content within the platform, including workspace content, blobs, logs, and IDE plugins. It provides a set of gRPC services that handle storage, retrieval, and management of different content types.
 
 ## Purpose
 
@@ -36,7 +36,7 @@ Each service is implemented as a separate module but shares common storage confi
 ## Dependencies
 
 ### Internal Dependencies
-- `components/common-go:lib`: Common Go utilities used across Gitpod
+- `components/common-go:lib`: Common Go utilities used across Devpod
 - `components/content-service-api/go:lib`: API definitions for the content service
 
 ### External Dependencies
@@ -78,7 +78,7 @@ The Content Service integrates with:
 1. **Storage Systems**: For persisting content (likely S3, filesystem, etc.)
 2. **Workspace Components**: For managing workspace content
 3. **IDE Components**: For managing IDE plugin content
-4. **Other Gitpod Services**: That need to store or retrieve content
+4. **Other Devpod Services**: That need to store or retrieve content
 
 ## Security Considerations
 

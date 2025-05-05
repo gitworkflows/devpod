@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2021 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -22,13 +22,13 @@ const localAppClientID = "gplctl-1.0";
 const localClient: OAuthClient = {
     id: localAppClientID,
     secret: `${localAppClientID}-secret`,
-    name: "Gitpod local control client",
+    name: "Devpod local control client",
     // Set of valid redirect URIs
     // NOTE: these need to be kept in sync with the port range in the local app
     redirectUris: Array.from({ length: 10 }, (_, i) => "http://127.0.0.1:" + (63110 + i)),
     allowedGrants: ["authorization_code"],
     scopes: [
-        { name: "function:getGitpodTokenScopes" },
+        { name: "function:getDevpodTokenScopes" },
         { name: "function:getWorkspace" },
         { name: "function:getWorkspaces" },
         { name: "function:listenForWorkspaceInstanceUpdates" },
@@ -40,14 +40,14 @@ const localCliClientID = "devpod-cli";
 const localCli: OAuthClient = {
     id: localCliClientID,
     secret: `${localCliClientID}-secret`,
-    name: "Gitpod CLI",
+    name: "Devpod CLI",
     // Set of valid redirect URIs
     // NOTE: these need to be kept in sync with the port range in the local app
     redirectUris: Array.from({ length: 10 }, (_, i) => "http://127.0.0.1:" + (63110 + i)),
     allowedGrants: ["authorization_code"],
     scopes: [
         { name: "function:listenForWorkspaceInstanceUpdates" },
-        { name: "function:getGitpodTokenScopes" },
+        { name: "function:getDevpodTokenScopes" },
         { name: "function:getLoggedInUser" },
         { name: "function:accessCodeSyncStorage" },
         { name: "function:getOwnerToken" },
@@ -71,7 +71,7 @@ const localCli: OAuthClient = {
 
 const jetBrainsGateway: OAuthClient = {
     id: "jetbrains-gateway-devpod-plugin",
-    name: "JetBrains Gateway Gitpod Plugin",
+    name: "JetBrains Gateway Devpod Plugin",
     // Set of valid redirect URIs
     // NOTE: these need to be kept in sync with the port range in
     // https://github.com/JetBrains/intellij-community/blob/8f07b83138bcb8a98a031e4508080c849a735644/platform/built-in-server/src/org/jetbrains/builtInWebServer/BuiltInServerOptions.java#L34
@@ -81,7 +81,7 @@ const jetBrainsGateway: OAuthClient = {
     ),
     allowedGrants: ["authorization_code"],
     scopes: [
-        { name: "function:getGitpodTokenScopes" },
+        { name: "function:getDevpodTokenScopes" },
         { name: "function:getIDEOptions" },
         { name: "function:getOwnerToken" },
         { name: "function:getWorkspace" },
@@ -94,11 +94,11 @@ const jetBrainsGateway: OAuthClient = {
 function createVSCodeClient(protocol: string, displayName: string): OAuthClient {
     return {
         id: `${protocol}-devpod`,
-        name: `${displayName}: Gitpod extension`,
+        name: `${displayName}: Devpod extension`,
         redirectUris: [protocol + "://devpod.devpod-desktop/complete-devpod-auth"],
         allowedGrants: ["authorization_code"],
         scopes: [
-            { name: "function:getGitpodTokenScopes" },
+            { name: "function:getDevpodTokenScopes" },
             { name: "function:getLoggedInUser" },
             { name: "function:accessCodeSyncStorage" },
             { name: "function:getOwnerToken" },
@@ -116,11 +116,11 @@ function createVSCodeClient(protocol: string, displayName: string): OAuthClient 
 
 const desktopClient: OAuthClient = {
     id: "devpod-desktop",
-    name: "Gitpod Desktop",
+    name: "Devpod Desktop",
     redirectUris: ["devpod://complete-auth"],
     allowedGrants: ["authorization_code"],
     scopes: [
-        { name: "function:getGitpodTokenScopes" },
+        { name: "function:getDevpodTokenScopes" },
         { name: "function:getLoggedInUser" },
         { name: "function:accessCodeSyncStorage" },
         { name: "function:getOwnerToken" },
@@ -143,11 +143,11 @@ const desktopClient: OAuthClient = {
 
 const toolbox: OAuthClient = {
     id: "toolbox-gateway-devpod-plugin",
-    name: "JetBrains Toolbox Gitpod Plugin",
+    name: "JetBrains Toolbox Devpod Plugin",
     redirectUris: ["jetbrains://gateway/io.devpod.toolbox.gateway/auth"],
     allowedGrants: ["authorization_code"],
     scopes: [
-        { name: "function:getGitpodTokenScopes" },
+        { name: "function:getDevpodTokenScopes" },
         { name: "function:getLoggedInUser" },
         { name: "function:getOwnerToken" },
         { name: "function:getWorkspace" },

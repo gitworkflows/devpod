@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -36,7 +36,7 @@ func WSManagerList(ctx *common.RenderContext) []WorkspaceCluster {
 	})
 
 	// Registering a local cluster ws-manager only makes sense when we actually deploy one,
-	// (ie when we are doing a full self hosted installation rather than a SaaS install to devpod.io).
+	// (ie when we are doing a full self hosted installation rather than a SaaS install to devpod.khulnasoft.com).
 	if skipSelf {
 		return []WorkspaceCluster{}
 	}

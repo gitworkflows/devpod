@@ -1,4 +1,4 @@
-gitpod-io/monitoring-central:
+khulnasoft/monitoring-central:
   - source: operations/observability/mixins/cross-teams/dashboards/
     dest: charts/grafana/dashboards/general/
   - source: operations/observability/mixins/IDE/dashboards/

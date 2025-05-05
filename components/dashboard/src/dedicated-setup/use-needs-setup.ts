@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -48,9 +48,9 @@ export const useOnboardingState = () => {
     );
 };
 
-// TODO: This is a temporary safety-guard against this flow showing up on devpod.io
+// TODO: This is a temporary safety-guard against this flow showing up on devpod.khulnasoft.com
 // We can remove this once we've ensured we're distinguishing different installation types for this
 export const isCurrentHostExcludedFromSetup = () => {
-    // Purposely not using isGitpodIo() check here to avoid disabling on preview environments too.
-    return ["devpod.io", "devpod-staging.com"].includes(window.location.hostname);
+    // Purposely not using isDevpodIo() check here to avoid disabling on preview environments too.
+    return ["devpod.khulnasoft.com", "devpod-staging.com"].includes(window.location.hostname);
 };

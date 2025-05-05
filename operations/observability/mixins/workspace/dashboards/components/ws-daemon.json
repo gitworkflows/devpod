@@ -3086,7 +3086,7 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "Gitpod / Component / ws-daemon",
+  "title": "Devpod / Component / ws-daemon",
   "uid": "ws-daemon",
   "version": 1,
   "weekStart": ""

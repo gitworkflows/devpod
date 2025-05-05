@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -49,7 +49,7 @@ func deployment(ctx *common.RenderContext) ([]runtime.Object, error) {
 
 	if ctx.Config.Components != nil && ctx.Config.Components.IDE != nil && ctx.Config.Components.IDE.Metrics != nil && ctx.Config.Components.IDE.Metrics.ErrorReportingEnabled {
 		env = append(env, corev1.EnvVar{
-			Name:  "GITPOD_ENABLED_ERROR_REPORTING",
+			Name:  "DEVPOD_ENABLED_ERROR_REPORTING",
 			Value: "true",
 		})
 	}

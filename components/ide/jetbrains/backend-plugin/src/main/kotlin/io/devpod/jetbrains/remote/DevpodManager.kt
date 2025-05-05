@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -21,8 +21,8 @@ import com.intellij.util.net.ssl.CertificateManager
 import com.intellij.util.proxy.CommonProxy
 import com.jetbrains.rd.util.lifetime.Lifetime
 import git4idea.config.GitVcsApplicationSettings
-import io.devpod.devpodprotocol.api.GitpodClient
-import io.devpod.devpodprotocol.api.GitpodServerLauncher
+import io.devpod.devpodprotocol.api.DevpodClient
+import io.devpod.devpodprotocol.api.DevpodServerLauncher
 import io.devpod.devpodprotocol.api.entities.RemoteTrackMessage
 import io.devpod.jetbrains.remote.services.HeartbeatService
 import io.devpod.jetbrains.remote.utils.Retrier.retry
@@ -56,7 +56,7 @@ import javax.websocket.DeploymentException
 
 @Suppress("UnstableApiUsage", "OPT_IN_USAGE")
 @Service
-class GitpodManager : Disposable {
+class DevpodManager : Disposable {
 
     companion object {
         // there should be only one channel per an application to avoid memory leak
@@ -64,7 +64,7 @@ class GitpodManager : Disposable {
     }
 
     val devMode = System.getenv("JB_DEV").toBoolean()
-    private val backendKind = System.getenv("JETBRAINS_GITPOD_BACKEND_KIND") ?: "unknown"
+    private val backendKind = System.getenv("JETBRAINS_DEVPOD_BACKEND_KIND") ?: "unknown"
     private val backendQualifier = System.getenv("JETBRAINS_BACKEND_QUALIFIER") ?: "unknown"
 
     private val lifetime = Lifetime.Eternal.createNested()
@@ -141,11 +141,11 @@ class GitpodManager : Disposable {
                     httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString())
                 if (response.statusCode() == 200) {
                     val gatewayLink = response.body()
-                    // the output format should be constant (includes `Gitpod gateway link`)
+                    // the output format should be constant (includes `Devpod gateway link`)
                     // which will be checked in integration test gateway_test.go
                     thisLogger().warn(
                         "\n\n\n*********************************************************\n\n" +
-                                "Gitpod gateway link: $gatewayLink" +
+                                "Devpod gateway link: $gatewayLink" +
                                 "\n\n*********************************************************\n\n\n"
                     )
                 } else {
@@ -161,7 +161,7 @@ class GitpodManager : Disposable {
         GitVcsApplicationSettings.getInstance().isUseCredentialHelper = true
     }
 
-    val notificationGroup = NotificationGroupManager.getInstance().getNotificationGroup("Gitpod Notifications")
+    val notificationGroup = NotificationGroupManager.getInstance().getNotificationGroup("Devpod Notifications")
     private val notificationsJob = GlobalScope.launch {
         if (application.isHeadlessEnvironment) {
             return@launch
@@ -254,7 +254,7 @@ class GitpodManager : Disposable {
         }
     }
 
-    val client = GitpodClient()
+    val client = DevpodClient()
     private val serverJob = GlobalScope.launch {
         val info = pendingInfo.await()
 
@@ -278,7 +278,7 @@ class GitpodManager : Disposable {
                     .await()
         }
 
-        val launcher = GitpodServerLauncher.create(client)
+        val launcher = DevpodServerLauncher.create(client)
         val plugin = PluginManagerCore.getPlugin(PluginId.getId("io.devpod.jetbrains.remote"))!!
         val connect = {
             val originalClassLoader = Thread.currentThread().contextClassLoader

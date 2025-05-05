@@ -1,7 +1,7 @@
 # Usage API
 
 ## Overview
-The Usage API defines the gRPC interfaces for the Usage service, which is responsible for tracking, calculating, and managing workspace usage, billing, and credits within the Gitpod platform. This API enables the management of cost centers, usage tracking, and integration with payment providers like Stripe.
+The Usage API defines the gRPC interfaces for the Usage service, which is responsible for tracking, calculating, and managing workspace usage, billing, and credits within the Devpod platform. This API enables the management of cost centers, usage tracking, and integration with payment providers like Stripe.
 
 ## Purpose
 This API provides a standardized interface for:
@@ -146,9 +146,9 @@ After regenerating the code, you may need to rebuild components that depend on t
    yarn build
    ```
 
-3. Using Leeway (for CI/CD):
+3. Using Blazedock (for CI/CD):
    ```bash
-   leeway build -D components/<component-name>:app
+   blazedock build -D components/<component-name>:app
    ```
 
-The Usage API is primarily used by the usage component, which manages workspace usage tracking, billing, and credits within the Gitpod platform. It plays a critical role in the business operations of the platform by enabling usage-based billing and credit management.
+The Usage API is primarily used by the usage component, which manages workspace usage tracking, billing, and credits within the Devpod platform. It plays a critical role in the business operations of the platform by enabling usage-based billing and credit management.

@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -1162,7 +1162,7 @@ type CreateAndStartWorkspaceRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// metadata is data associated with this workspace that's required for other
-	// parts of Gitpod to function
+	// parts of Devpod to function
 	Metadata *WorkspaceMetadata `protobuf:"bytes,1,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	// Types that are assignable to Source:
 	//
@@ -1817,7 +1817,7 @@ type Workspace struct {
 	// same name must be managed by this workspace manager
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Metadata is data associated with this workspace that's required for other
-	// parts of Gitpod to function
+	// parts of Devpod to function
 	Metadata *WorkspaceMetadata `protobuf:"bytes,2,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	// Spec is the configuration of the workspace that's required for the
 	// ws-manager to start the workspace
@@ -1893,7 +1893,7 @@ type WorkspaceMetadata struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// owner_id is the ID of the Gitpod user to whom we'll bill this workspace and
+	// owner_id is the ID of the Devpod user to whom we'll bill this workspace and
 	// who we consider responsible for its content
 	OwnerId string `protobuf:"bytes,1,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
 	// organization_id is the ID of the organization that contains the workspace
@@ -2031,7 +2031,7 @@ type WorkspaceSpec struct {
 	// subassembly_references is a list of workspace IDs that this workspace
 	// depends on. For example:
 	//
-	//	index.docker.io/gitpod-io/subassmeblies/code:latest
+	//	index.docker.io/khulnasoft/subassmeblies/code:latest
 	SubassemblyReferences []string `protobuf:"bytes,10,rep,name=subassembly_references,json=subassemblyReferences,proto3" json:"subassembly_references,omitempty"`
 	// last_user_activity is the time when the user last interacted with the
 	// workspace
@@ -2952,7 +2952,7 @@ type UpdateWorkspaceRequest struct {
 	// +required
 	WorkspaceId string `protobuf:"bytes,1,opt,name=workspace_id,json=workspaceId,proto3" json:"workspace_id,omitempty"`
 	// metadata is data associated with this workspace that's required for other
-	// parts of Gitpod to function
+	// parts of Devpod to function
 	Metadata *UpdateWorkspaceRequest_UpdateWorkspaceMetadata `protobuf:"bytes,2,opt,name=metadata,proto3,oneof" json:"metadata,omitempty"`
 	// spec is the configuration of the workspace that's required for the
 	// ws-manager to start the workspace
@@ -4838,7 +4838,7 @@ type WorkspaceSession_Metrics struct {
 
 	// workspace_image_size is the size of the workspace image in bytes
 	WorkspaceImageSize int64 `protobuf:"varint,1,opt,name=workspace_image_size,json=workspaceImageSize,proto3" json:"workspace_image_size,omitempty"`
-	// total_image_size is the total size of the image in bytes (includes Gitpod-specific layers like IDE)
+	// total_image_size is the total size of the image in bytes (includes Devpod-specific layers like IDE)
 	TotalImageSize int64 `protobuf:"varint,2,opt,name=total_image_size,json=totalImageSize,proto3" json:"total_image_size,omitempty"`
 	// initializer_metrics are all metrics exported from the content initializer on workspace start
 	InitializerMetrics *WorkspaceSession_InitializerMetrics `protobuf:"bytes,3,opt,name=initializer_metrics,json=initializerMetrics,proto3" json:"initializer_metrics,omitempty"`

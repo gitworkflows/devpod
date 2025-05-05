@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -13,10 +13,10 @@ import com.jetbrains.rd.util.lifetime.Lifetime
 import com.jetbrains.rd.util.reactive.Property
 import com.jetbrains.rdserver.unattendedHost.customization.controlCenter.performance.createProgressRow
 import com.jetbrains.rdserver.unattendedHost.diagnostics.BackendDiagnosticsService
-import io.devpod.jetbrains.remote.AbstractGitpodMetricControlProvider
+import io.devpod.jetbrains.remote.AbstractDevpodMetricControlProvider
 import io.devpod.jetbrains.remote.IBackendDiagnosticsService
 
-class GitpodMetricControlProvider: AbstractGitpodMetricControlProvider() {
+class DevpodMetricControlProvider: AbstractDevpodMetricControlProvider() {
     override fun setMargin(element: BeControl, left: Int, top: Int, right: Int, bottom: Int) = element.withMargin(left, top, right, bottom)
 
     override fun getBackendDiagnosticsService(): IBackendDiagnosticsService {

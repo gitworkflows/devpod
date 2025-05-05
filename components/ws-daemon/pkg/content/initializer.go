@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -142,10 +142,10 @@ func RunInitializer(ctx context.Context, destination string, initializer *csapi.
 	}
 
 	if opts.GID == 0 {
-		opts.GID = wsinit.GitpodGID
+		opts.GID = wsinit.DevpodGID
 	}
 	if opts.UID == 0 {
-		opts.UID = wsinit.GitpodUID
+		opts.UID = wsinit.DevpodUID
 	}
 
 	tmpdir, err := os.MkdirTemp("", "content-init")
@@ -387,7 +387,7 @@ func RunInitializerChild(statsFd *os.File) (err error) {
 	rs := &remoteContentStorage{RemoteContent: initmsg.RemoteContent}
 
 	dst := initmsg.Destination
-	initializer, err := wsinit.NewFromRequest(ctx, dst, rs, &req, wsinit.NewFromRequestOpts{ForceGitpodUserForGit: false})
+	initializer, err := wsinit.NewFromRequest(ctx, dst, rs, &req, wsinit.NewFromRequestOpts{ForceDevpodUserForGit: false})
 	if err != nil {
 		return err
 	}
@@ -404,7 +404,7 @@ func RunInitializerChild(statsFd *os.File) (err error) {
 
 	// some workspace content may have a `/dst/.devpod` file or directory. That would break
 	// the workspace ready file placement (see https://github.com/khulnasoft/devpod/issues/7694).
-	err = wsinit.EnsureCleanDotGitpodDirectory(ctx, dst)
+	err = wsinit.EnsureCleanDotDevpodDirectory(ctx, dst)
 	if err != nil {
 		return err
 	}

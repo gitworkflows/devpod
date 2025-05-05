@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -15,7 +15,7 @@ func BenchmarkRenderWorkspacePortURL(b *testing.B) {
 	b.ReportAllocs()
 
 	for n := 0; n < b.N; n++ {
-		RenderWorkspaceURL("{{.Port}}-{{.Prefix}}.{{.Host}}", "foo", "bar", "devpod.io")
+		RenderWorkspaceURL("{{.Port}}-{{.Prefix}}.{{.Host}}", "foo", "bar", "devpod.khulnasoft.com")
 	}
 }
 
@@ -37,9 +37,9 @@ func TestValidate(t *testing.T) {
 				DefaultWorkspaceClass: {},
 			},
 			HeartbeatInterval:    util.Duration(10 * time.Second),
-			GitpodHostURL:        "https://devpod.io",
+			DevpodHostURL:        "https://devpod.khulnasoft.com",
 			ReconnectionInterval: util.Duration(10 * time.Second),
-			WorkspaceURLTemplate: "https://devpod.io/foobar",
+			WorkspaceURLTemplate: "https://devpod.khulnasoft.com/foobar",
 			WorkspaceHostPath:    "/mnt/data",
 		}
 		mod(res)

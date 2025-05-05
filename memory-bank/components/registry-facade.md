@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Registry Facade is a specialized component in Gitpod that acts as an intermediary between the container runtime and container registries. It dynamically modifies container images by adding layers required for Gitpod workspaces, such as the supervisor, IDE, and other tools, without actually modifying the original images.
+The Registry Facade is a specialized component in Devpod that acts as an intermediary between the container runtime and container registries. It dynamically modifies container images by adding layers required for Devpod workspaces, such as the supervisor, IDE, and other tools, without actually modifying the original images.
 
 ## Purpose
 
@@ -71,7 +71,7 @@ The Registry Facade is configured via a JSON configuration file that includes:
 The Registry Facade manages several types of layers that are added to workspace images:
 
 1. **Base Image**: The original container image for the workspace
-2. **Supervisor**: The Gitpod supervisor component
+2. **Supervisor**: The Devpod supervisor component
 3. **Workspacekit**: Tools for workspace management
 4. **DockerUp**: Docker support in workspaces
 5. **IDE**: The IDE (VS Code, JetBrains, etc.)

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -98,7 +98,7 @@ func (g GitClient) ConfigUserName(dir string, username string) error {
 }
 
 func (g GitClient) ConfigUserEmail(dir string, files ...string) error {
-	args := []string{"config", "--local", "user.email", "integration-test@devpod.io"}
+	args := []string{"config", "--local", "user.email", "integration-test@devpod.khulnasoft.com"}
 	var resp agent.ExecResponse
 	err := g.rpcClient.Call("WorkspaceAgent.Exec", &agent.ExecRequest{
 		Dir:     dir,

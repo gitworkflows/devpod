@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -9,7 +9,7 @@ import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
 import { Container, ContainerModule } from "inversify";
 import { retries, skip, suite, test, timeout } from "@testdeck/mocha";
 import { expect } from "chai";
-import { GitpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
+import { DevpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
 import { AuthProviderParams } from "../auth/auth-provider";
 import { BitbucketServerContextParser } from "./bitbucket-server-context-parser";
 import { BitbucketServerTokenHelper } from "./bitbucket-server-token-handler";
@@ -19,7 +19,7 @@ import { TokenProvider } from "../user/token-provider";
 import { BitbucketServerApi } from "./bitbucket-server-api";
 import { HostContextProvider } from "../auth/host-context-provider";
 
-@suite(timeout(10000), retries(0), skip(ifEnvVarNotSet("GITPOD_TEST_TOKEN_BITBUCKET_SERVER")))
+@suite(timeout(10000), retries(0), skip(ifEnvVarNotSet("DEVPOD_TEST_TOKEN_BITBUCKET_SERVER")))
 class TestBitbucketServerApi {
     protected api: BitbucketServerApi;
     protected user: User;
@@ -42,15 +42,15 @@ class TestBitbucketServerApi {
                 bind(BitbucketServerTokenHelper).toSelf().inSingletonScope();
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 bind(TokenService).toConstantValue({
-                    createGitpodToken: async () => ({ token: { value: "foobar123-token" } }),
+                    createDevpodToken: async () => ({ token: { value: "foobar123-token" } }),
                 } as any);
                 bind(Config).toConstantValue({
-                    hostUrl: new GitpodHostUrl("https://devpod.io"),
+                    hostUrl: new DevpodHostUrl("https://devpod.khulnasoft.com"),
                 });
                 bind(TokenProvider).toConstantValue(<TokenProvider>{
                     getTokenForHost: async () => {
                         return {
-                            value: process.env["GITPOD_TEST_TOKEN_BITBUCKET_SERVER"] || "undefined",
+                            value: process.env["DEVPOD_TEST_TOKEN_BITBUCKET_SERVER"] || "undefined",
                             scopes: [],
                         };
                     },
@@ -79,12 +79,12 @@ class TestBitbucketServerApi {
     }
 
     @test async test_currentUsername_ok() {
-        const result = await this.api.currentUsername(process.env["GITPOD_TEST_TOKEN_BITBUCKET_SERVER"]!);
+        const result = await this.api.currentUsername(process.env["DEVPOD_TEST_TOKEN_BITBUCKET_SERVER"]!);
         expect(result).to.equal("admin-tester");
     }
 
     @test async test_getUserProfile_ok() {
-        const result = await this.api.getUserProfile(process.env["GITPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, "alex");
+        const result = await this.api.getUserProfile(process.env["DEVPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, "alex");
         expect(result).to.deep.include({
             id: 53, // Identity.authId
             name: "alex", // Identity.authName
@@ -94,7 +94,7 @@ class TestBitbucketServerApi {
     }
 
     @test async test_getRepos_no_searchString() {
-        const result = await this.api.getRepos(process.env["GITPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
+        const result = await this.api.getRepos(process.env["DEVPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
             permission: "REPO_READ",
         });
         expect(result.length).to.be.equal(10_000);
@@ -113,7 +113,7 @@ class TestBitbucketServerApi {
     }
 
     @test async test_getRepos_cap_no_searchstring() {
-        const result = await this.api.getRepos(process.env["GITPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
+        const result = await this.api.getRepos(process.env["DEVPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
             permission: "REPO_READ",
             maxPages: 3,
         });
@@ -126,7 +126,7 @@ class TestBitbucketServerApi {
     }
 
     @test async test_getRepos_searchString() {
-        const result = await this.api.getRepos(process.env["GITPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
+        const result = await this.api.getRepos(process.env["DEVPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
             permission: "REPO_READ",
             searchString: "zero",
         });
@@ -139,7 +139,7 @@ class TestBitbucketServerApi {
     }
 
     @test async test_getRepos_searchString_2() {
-        const result = await this.api.getRepos(process.env["GITPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
+        const result = await this.api.getRepos(process.env["DEVPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
             permission: "REPO_READ",
             searchString: "zero-minus-1",
         });
@@ -151,7 +151,7 @@ class TestBitbucketServerApi {
     }
 
     @test async test_getRepos_searchString_works_for_prefix_only() {
-        const result = await this.api.getRepos(process.env["GITPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
+        const result = await this.api.getRepos(process.env["DEVPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
             permission: "REPO_READ",
             searchString: "-minus-1",
         });
@@ -163,7 +163,7 @@ class TestBitbucketServerApi {
     }
 
     @test async test_getRepos_searchString_wildcards_are_not_supported() {
-        const result = await this.api.getRepos(process.env["GITPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
+        const result = await this.api.getRepos(process.env["DEVPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
             permission: "REPO_READ",
             searchString: "*-minus-1",
         });
@@ -175,7 +175,7 @@ class TestBitbucketServerApi {
     }
 
     @test async test_getRepos_searchString_unmatched() {
-        const result = await this.api.getRepos(process.env["GITPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
+        const result = await this.api.getRepos(process.env["DEVPOD_TEST_TOKEN_BITBUCKET_SERVER"]!, {
             permission: "REPO_READ",
             searchString: "RANDOM_asd8sdh7s8hsdhvisduh",
         });

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -23,7 +23,7 @@ export const WelcomeMessagePreview = ({ disabled, setWelcomeMessageEditorOpen, h
     return (
         <div className="max-w-2xl mx-auto">
             <div className="flex justify-between gap-2 items-center">
-                {!hideHeader && <Heading2 className="py-6">Welcome to Gitpod</Heading2>}
+                {!hideHeader && <Heading2 className="py-6">Welcome to Devpod</Heading2>}
                 {setWelcomeMessageEditorOpen && (
                     <Button variant="secondary" onClick={() => setWelcomeMessageEditorOpen(true)} disabled={disabled}>
                         Edit

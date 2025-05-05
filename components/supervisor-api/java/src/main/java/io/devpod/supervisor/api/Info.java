@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -699,50 +699,50 @@ public final class Info {
 
     /**
      * <pre>
-     * GitpodAPI provides information to reach the Gitpod server API.
+     * DevpodAPI provides information to reach the Devpod server API.
      * </pre>
      *
-     * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+     * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
      * @return Whether the devpodApi field is set.
      */
-    boolean hasGitpodApi();
+    boolean hasDevpodApi();
     /**
      * <pre>
-     * GitpodAPI provides information to reach the Gitpod server API.
+     * DevpodAPI provides information to reach the Devpod server API.
      * </pre>
      *
-     * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+     * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
      * @return The devpodApi.
      */
-    io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI getGitpodApi();
+    io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI getDevpodApi();
     /**
      * <pre>
-     * GitpodAPI provides information to reach the Gitpod server API.
+     * DevpodAPI provides information to reach the Devpod server API.
      * </pre>
      *
-     * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+     * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
      */
-    io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPIOrBuilder getGitpodApiOrBuilder();
+    io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPIOrBuilder getDevpodApiOrBuilder();
 
     /**
      * <pre>
-     * devpod_host provides Gitpod host URL.
+     * devpod_host provides Devpod host URL.
      * </pre>
      *
      * <code>string devpod_host = 8;</code>
      * @return The devpodHost.
      */
-    java.lang.String getGitpodHost();
+    java.lang.String getDevpodHost();
     /**
      * <pre>
-     * devpod_host provides Gitpod host URL.
+     * devpod_host provides Devpod host URL.
      * </pre>
      *
      * <code>string devpod_host = 8;</code>
      * @return The bytes for devpodHost.
      */
     com.google.protobuf.ByteString
-        getGitpodHostBytes();
+        getDevpodHostBytes();
 
     /**
      * <pre>
@@ -793,7 +793,7 @@ public final class Info {
 
     /**
      * <pre>
-     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
      * </pre>
      *
      * <code>string workspace_cluster_host = 11;</code>
@@ -802,7 +802,7 @@ public final class Info {
     java.lang.String getWorkspaceClusterHost();
     /**
      * <pre>
-     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
      * </pre>
      *
      * <code>string workspace_cluster_host = 11;</code>
@@ -1032,11 +1032,11 @@ public final class Info {
               break;
             }
             case 58: {
-              io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.Builder subBuilder = null;
+              io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.Builder subBuilder = null;
               if (devpodApi_ != null) {
                 subBuilder = devpodApi_.toBuilder();
               }
-              devpodApi_ = input.readMessage(io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.parser(), extensionRegistry);
+              devpodApi_ = input.readMessage(io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.parser(), extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(devpodApi_);
                 devpodApi_ = subBuilder.buildPartial();
@@ -1156,13 +1156,13 @@ public final class Info {
               io.devpod.supervisor.api.Info.WorkspaceInfoResponse.class, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.Builder.class);
     }
 
-    public interface GitpodAPIOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:supervisor.WorkspaceInfoResponse.GitpodAPI)
+    public interface DevpodAPIOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:supervisor.WorkspaceInfoResponse.DevpodAPI)
         com.google.protobuf.MessageOrBuilder {
 
       /**
        * <pre>
-       * endpoint is the websocket URL on which the token-accessible Gitpod API is served on
+       * endpoint is the websocket URL on which the token-accessible Devpod API is served on
        * </pre>
        *
        * <code>string endpoint = 1;</code>
@@ -1171,7 +1171,7 @@ public final class Info {
       java.lang.String getEndpoint();
       /**
        * <pre>
-       * endpoint is the websocket URL on which the token-accessible Gitpod API is served on
+       * endpoint is the websocket URL on which the token-accessible Devpod API is served on
        * </pre>
        *
        * <code>string endpoint = 1;</code>
@@ -1201,18 +1201,18 @@ public final class Info {
           getHostBytes();
     }
     /**
-     * Protobuf type {@code supervisor.WorkspaceInfoResponse.GitpodAPI}
+     * Protobuf type {@code supervisor.WorkspaceInfoResponse.DevpodAPI}
      */
-    public static final class GitpodAPI extends
+    public static final class DevpodAPI extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:supervisor.WorkspaceInfoResponse.GitpodAPI)
-        GitpodAPIOrBuilder {
+        // @@protoc_insertion_point(message_implements:supervisor.WorkspaceInfoResponse.DevpodAPI)
+        DevpodAPIOrBuilder {
     private static final long serialVersionUID = 0L;
-      // Use GitpodAPI.newBuilder() to construct.
-      private GitpodAPI(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // Use DevpodAPI.newBuilder() to construct.
+      private DevpodAPI(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
       }
-      private GitpodAPI() {
+      private DevpodAPI() {
         endpoint_ = "";
         host_ = "";
       }
@@ -1221,7 +1221,7 @@ public final class Info {
       @SuppressWarnings({"unused"})
       protected java.lang.Object newInstance(
           UnusedPrivateParameter unused) {
-        return new GitpodAPI();
+        return new DevpodAPI();
       }
 
       @java.lang.Override
@@ -1229,7 +1229,7 @@ public final class Info {
       getUnknownFields() {
         return this.unknownFields;
       }
-      private GitpodAPI(
+      private DevpodAPI(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1282,22 +1282,22 @@ public final class Info {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return io.devpod.supervisor.api.Info.internal_static_supervisor_WorkspaceInfoResponse_GitpodAPI_descriptor;
+        return io.devpod.supervisor.api.Info.internal_static_supervisor_WorkspaceInfoResponse_DevpodAPI_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return io.devpod.supervisor.api.Info.internal_static_supervisor_WorkspaceInfoResponse_GitpodAPI_fieldAccessorTable
+        return io.devpod.supervisor.api.Info.internal_static_supervisor_WorkspaceInfoResponse_DevpodAPI_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.class, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.Builder.class);
+                io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.class, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.Builder.class);
       }
 
       public static final int ENDPOINT_FIELD_NUMBER = 1;
       private volatile java.lang.Object endpoint_;
       /**
        * <pre>
-       * endpoint is the websocket URL on which the token-accessible Gitpod API is served on
+       * endpoint is the websocket URL on which the token-accessible Devpod API is served on
        * </pre>
        *
        * <code>string endpoint = 1;</code>
@@ -1318,7 +1318,7 @@ public final class Info {
       }
       /**
        * <pre>
-       * endpoint is the websocket URL on which the token-accessible Gitpod API is served on
+       * endpoint is the websocket URL on which the token-accessible Devpod API is served on
        * </pre>
        *
        * <code>string endpoint = 1;</code>
@@ -1430,10 +1430,10 @@ public final class Info {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI)) {
+        if (!(obj instanceof io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI)) {
           return super.equals(obj);
         }
-        io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI other = (io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI) obj;
+        io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI other = (io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI) obj;
 
         if (!getEndpoint()
             .equals(other.getEndpoint())) return false;
@@ -1459,69 +1459,69 @@ public final class Info {
         return hash;
       }
 
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseFrom(
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseFrom(
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseFrom(
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseFrom(
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseFrom(byte[] data)
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseFrom(
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseFrom(java.io.InputStream input)
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseFrom(
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseDelimitedFrom(java.io.InputStream input)
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseDelimitedFrom(
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseFrom(
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parseFrom(
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -1534,7 +1534,7 @@ public final class Info {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI prototype) {
+      public static Builder newBuilder(io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -1550,26 +1550,26 @@ public final class Info {
         return builder;
       }
       /**
-       * Protobuf type {@code supervisor.WorkspaceInfoResponse.GitpodAPI}
+       * Protobuf type {@code supervisor.WorkspaceInfoResponse.DevpodAPI}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:supervisor.WorkspaceInfoResponse.GitpodAPI)
-          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPIOrBuilder {
+          // @@protoc_insertion_point(builder_implements:supervisor.WorkspaceInfoResponse.DevpodAPI)
+          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPIOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return io.devpod.supervisor.api.Info.internal_static_supervisor_WorkspaceInfoResponse_GitpodAPI_descriptor;
+          return io.devpod.supervisor.api.Info.internal_static_supervisor_WorkspaceInfoResponse_DevpodAPI_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return io.devpod.supervisor.api.Info.internal_static_supervisor_WorkspaceInfoResponse_GitpodAPI_fieldAccessorTable
+          return io.devpod.supervisor.api.Info.internal_static_supervisor_WorkspaceInfoResponse_DevpodAPI_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.class, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.Builder.class);
+                  io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.class, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.Builder.class);
         }
 
-        // Construct using io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.newBuilder()
+        // Construct using io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -1597,17 +1597,17 @@ public final class Info {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return io.devpod.supervisor.api.Info.internal_static_supervisor_WorkspaceInfoResponse_GitpodAPI_descriptor;
+          return io.devpod.supervisor.api.Info.internal_static_supervisor_WorkspaceInfoResponse_DevpodAPI_descriptor;
         }
 
         @java.lang.Override
-        public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI getDefaultInstanceForType() {
-          return io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.getDefaultInstance();
+        public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI getDefaultInstanceForType() {
+          return io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.getDefaultInstance();
         }
 
         @java.lang.Override
-        public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI build() {
-          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI result = buildPartial();
+        public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI build() {
+          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -1615,8 +1615,8 @@ public final class Info {
         }
 
         @java.lang.Override
-        public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI buildPartial() {
-          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI result = new io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI(this);
+        public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI buildPartial() {
+          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI result = new io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI(this);
           result.endpoint_ = endpoint_;
           result.host_ = host_;
           onBuilt();
@@ -1657,16 +1657,16 @@ public final class Info {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI) {
-            return mergeFrom((io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI)other);
+          if (other instanceof io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI) {
+            return mergeFrom((io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI other) {
-          if (other == io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.getDefaultInstance()) return this;
+        public Builder mergeFrom(io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI other) {
+          if (other == io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.getDefaultInstance()) return this;
           if (!other.getEndpoint().isEmpty()) {
             endpoint_ = other.endpoint_;
             onChanged();
@@ -1690,11 +1690,11 @@ public final class Info {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI parsedMessage = null;
+          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI) e.getUnfinishedMessage();
+            parsedMessage = (io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -1707,7 +1707,7 @@ public final class Info {
         private java.lang.Object endpoint_ = "";
         /**
          * <pre>
-         * endpoint is the websocket URL on which the token-accessible Gitpod API is served on
+         * endpoint is the websocket URL on which the token-accessible Devpod API is served on
          * </pre>
          *
          * <code>string endpoint = 1;</code>
@@ -1727,7 +1727,7 @@ public final class Info {
         }
         /**
          * <pre>
-         * endpoint is the websocket URL on which the token-accessible Gitpod API is served on
+         * endpoint is the websocket URL on which the token-accessible Devpod API is served on
          * </pre>
          *
          * <code>string endpoint = 1;</code>
@@ -1748,7 +1748,7 @@ public final class Info {
         }
         /**
          * <pre>
-         * endpoint is the websocket URL on which the token-accessible Gitpod API is served on
+         * endpoint is the websocket URL on which the token-accessible Devpod API is served on
          * </pre>
          *
          * <code>string endpoint = 1;</code>
@@ -1767,7 +1767,7 @@ public final class Info {
         }
         /**
          * <pre>
-         * endpoint is the websocket URL on which the token-accessible Gitpod API is served on
+         * endpoint is the websocket URL on which the token-accessible Devpod API is served on
          * </pre>
          *
          * <code>string endpoint = 1;</code>
@@ -1781,7 +1781,7 @@ public final class Info {
         }
         /**
          * <pre>
-         * endpoint is the websocket URL on which the token-accessible Gitpod API is served on
+         * endpoint is the websocket URL on which the token-accessible Devpod API is served on
          * </pre>
          *
          * <code>string endpoint = 1;</code>
@@ -1908,41 +1908,41 @@ public final class Info {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:supervisor.WorkspaceInfoResponse.GitpodAPI)
+        // @@protoc_insertion_point(builder_scope:supervisor.WorkspaceInfoResponse.DevpodAPI)
       }
 
-      // @@protoc_insertion_point(class_scope:supervisor.WorkspaceInfoResponse.GitpodAPI)
-      private static final io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:supervisor.WorkspaceInfoResponse.DevpodAPI)
+      private static final io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI();
+        DEFAULT_INSTANCE = new io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI();
       }
 
-      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI getDefaultInstance() {
+      public static io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
-      private static final com.google.protobuf.Parser<GitpodAPI>
-          PARSER = new com.google.protobuf.AbstractParser<GitpodAPI>() {
+      private static final com.google.protobuf.Parser<DevpodAPI>
+          PARSER = new com.google.protobuf.AbstractParser<DevpodAPI>() {
         @java.lang.Override
-        public GitpodAPI parsePartialFrom(
+        public DevpodAPI parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
-          return new GitpodAPI(input, extensionRegistry);
+          return new DevpodAPI(input, extensionRegistry);
         }
       };
 
-      public static com.google.protobuf.Parser<GitpodAPI> parser() {
+      public static com.google.protobuf.Parser<DevpodAPI> parser() {
         return PARSER;
       }
 
       @java.lang.Override
-      public com.google.protobuf.Parser<GitpodAPI> getParserForType() {
+      public com.google.protobuf.Parser<DevpodAPI> getParserForType() {
         return PARSER;
       }
 
       @java.lang.Override
-      public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI getDefaultInstanceForType() {
+      public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
@@ -4071,56 +4071,56 @@ public final class Info {
       }
     }
 
-    public static final int GITPOD_API_FIELD_NUMBER = 7;
-    private io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI devpodApi_;
+    public static final int DEVPOD_API_FIELD_NUMBER = 7;
+    private io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI devpodApi_;
     /**
      * <pre>
-     * GitpodAPI provides information to reach the Gitpod server API.
+     * DevpodAPI provides information to reach the Devpod server API.
      * </pre>
      *
-     * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+     * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
      * @return Whether the devpodApi field is set.
      */
     @java.lang.Override
-    public boolean hasGitpodApi() {
+    public boolean hasDevpodApi() {
       return devpodApi_ != null;
     }
     /**
      * <pre>
-     * GitpodAPI provides information to reach the Gitpod server API.
+     * DevpodAPI provides information to reach the Devpod server API.
      * </pre>
      *
-     * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+     * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
      * @return The devpodApi.
      */
     @java.lang.Override
-    public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI getGitpodApi() {
-      return devpodApi_ == null ? io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.getDefaultInstance() : devpodApi_;
+    public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI getDevpodApi() {
+      return devpodApi_ == null ? io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.getDefaultInstance() : devpodApi_;
     }
     /**
      * <pre>
-     * GitpodAPI provides information to reach the Gitpod server API.
+     * DevpodAPI provides information to reach the Devpod server API.
      * </pre>
      *
-     * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+     * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
      */
     @java.lang.Override
-    public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPIOrBuilder getGitpodApiOrBuilder() {
-      return getGitpodApi();
+    public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPIOrBuilder getDevpodApiOrBuilder() {
+      return getDevpodApi();
     }
 
-    public static final int GITPOD_HOST_FIELD_NUMBER = 8;
+    public static final int DEVPOD_HOST_FIELD_NUMBER = 8;
     private volatile java.lang.Object devpodHost_;
     /**
      * <pre>
-     * devpod_host provides Gitpod host URL.
+     * devpod_host provides Devpod host URL.
      * </pre>
      *
      * <code>string devpod_host = 8;</code>
      * @return The devpodHost.
      */
     @java.lang.Override
-    public java.lang.String getGitpodHost() {
+    public java.lang.String getDevpodHost() {
       java.lang.Object ref = devpodHost_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
@@ -4134,7 +4134,7 @@ public final class Info {
     }
     /**
      * <pre>
-     * devpod_host provides Gitpod host URL.
+     * devpod_host provides Devpod host URL.
      * </pre>
      *
      * <code>string devpod_host = 8;</code>
@@ -4142,7 +4142,7 @@ public final class Info {
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getGitpodHostBytes() {
+        getDevpodHostBytes() {
       java.lang.Object ref = devpodHost_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b =
@@ -4243,7 +4243,7 @@ public final class Info {
     private volatile java.lang.Object workspaceClusterHost_;
     /**
      * <pre>
-     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
      * </pre>
      *
      * <code>string workspace_cluster_host = 11;</code>
@@ -4264,7 +4264,7 @@ public final class Info {
     }
     /**
      * <pre>
-     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+     * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
      * </pre>
      *
      * <code>string workspace_cluster_host = 11;</code>
@@ -4551,7 +4551,7 @@ public final class Info {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, userHome_);
       }
       if (devpodApi_ != null) {
-        output.writeMessage(7, getGitpodApi());
+        output.writeMessage(7, getDevpodApi());
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(devpodHost_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 8, devpodHost_);
@@ -4615,7 +4615,7 @@ public final class Info {
       }
       if (devpodApi_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, getGitpodApi());
+          .computeMessageSize(7, getDevpodApi());
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(devpodHost_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, devpodHost_);
@@ -4678,13 +4678,13 @@ public final class Info {
           .equals(other.getCheckoutLocation())) return false;
       if (!getUserHome()
           .equals(other.getUserHome())) return false;
-      if (hasGitpodApi() != other.hasGitpodApi()) return false;
-      if (hasGitpodApi()) {
-        if (!getGitpodApi()
-            .equals(other.getGitpodApi())) return false;
+      if (hasDevpodApi() != other.hasDevpodApi()) return false;
+      if (hasDevpodApi()) {
+        if (!getDevpodApi()
+            .equals(other.getDevpodApi())) return false;
       }
-      if (!getGitpodHost()
-          .equals(other.getGitpodHost())) return false;
+      if (!getDevpodHost()
+          .equals(other.getDevpodHost())) return false;
       if (!getWorkspaceContextUrl()
           .equals(other.getWorkspaceContextUrl())) return false;
       if (hasRepository() != other.hasRepository()) return false;
@@ -4742,12 +4742,12 @@ public final class Info {
       hash = (53 * hash) + getCheckoutLocation().hashCode();
       hash = (37 * hash) + USER_HOME_FIELD_NUMBER;
       hash = (53 * hash) + getUserHome().hashCode();
-      if (hasGitpodApi()) {
-        hash = (37 * hash) + GITPOD_API_FIELD_NUMBER;
-        hash = (53 * hash) + getGitpodApi().hashCode();
+      if (hasDevpodApi()) {
+        hash = (37 * hash) + DEVPOD_API_FIELD_NUMBER;
+        hash = (53 * hash) + getDevpodApi().hashCode();
       }
-      hash = (37 * hash) + GITPOD_HOST_FIELD_NUMBER;
-      hash = (53 * hash) + getGitpodHost().hashCode();
+      hash = (37 * hash) + DEVPOD_HOST_FIELD_NUMBER;
+      hash = (53 * hash) + getDevpodHost().hashCode();
       hash = (37 * hash) + WORKSPACE_CONTEXT_URL_FIELD_NUMBER;
       hash = (53 * hash) + getWorkspaceContextUrl().hashCode();
       if (hasRepository()) {
@@ -5089,10 +5089,10 @@ public final class Info {
           userHome_ = other.userHome_;
           onChanged();
         }
-        if (other.hasGitpodApi()) {
-          mergeGitpodApi(other.getGitpodApi());
+        if (other.hasDevpodApi()) {
+          mergeDevpodApi(other.getDevpodApi());
         }
-        if (!other.getGitpodHost().isEmpty()) {
+        if (!other.getDevpodHost().isEmpty()) {
           devpodHost_ = other.devpodHost_;
           onChanged();
         }
@@ -5818,43 +5818,43 @@ public final class Info {
         return this;
       }
 
-      private io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI devpodApi_;
+      private io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI devpodApi_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.Builder, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPIOrBuilder> devpodApiBuilder_;
+          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.Builder, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPIOrBuilder> devpodApiBuilder_;
       /**
        * <pre>
-       * GitpodAPI provides information to reach the Gitpod server API.
+       * DevpodAPI provides information to reach the Devpod server API.
        * </pre>
        *
-       * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+       * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
        * @return Whether the devpodApi field is set.
        */
-      public boolean hasGitpodApi() {
+      public boolean hasDevpodApi() {
         return devpodApiBuilder_ != null || devpodApi_ != null;
       }
       /**
        * <pre>
-       * GitpodAPI provides information to reach the Gitpod server API.
+       * DevpodAPI provides information to reach the Devpod server API.
        * </pre>
        *
-       * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+       * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
        * @return The devpodApi.
        */
-      public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI getGitpodApi() {
+      public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI getDevpodApi() {
         if (devpodApiBuilder_ == null) {
-          return devpodApi_ == null ? io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.getDefaultInstance() : devpodApi_;
+          return devpodApi_ == null ? io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.getDefaultInstance() : devpodApi_;
         } else {
           return devpodApiBuilder_.getMessage();
         }
       }
       /**
        * <pre>
-       * GitpodAPI provides information to reach the Gitpod server API.
+       * DevpodAPI provides information to reach the Devpod server API.
        * </pre>
        *
-       * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+       * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
        */
-      public Builder setGitpodApi(io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI value) {
+      public Builder setDevpodApi(io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI value) {
         if (devpodApiBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -5869,13 +5869,13 @@ public final class Info {
       }
       /**
        * <pre>
-       * GitpodAPI provides information to reach the Gitpod server API.
+       * DevpodAPI provides information to reach the Devpod server API.
        * </pre>
        *
-       * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+       * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
        */
-      public Builder setGitpodApi(
-          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.Builder builderForValue) {
+      public Builder setDevpodApi(
+          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.Builder builderForValue) {
         if (devpodApiBuilder_ == null) {
           devpodApi_ = builderForValue.build();
           onChanged();
@@ -5887,16 +5887,16 @@ public final class Info {
       }
       /**
        * <pre>
-       * GitpodAPI provides information to reach the Gitpod server API.
+       * DevpodAPI provides information to reach the Devpod server API.
        * </pre>
        *
-       * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+       * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
        */
-      public Builder mergeGitpodApi(io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI value) {
+      public Builder mergeDevpodApi(io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI value) {
         if (devpodApiBuilder_ == null) {
           if (devpodApi_ != null) {
             devpodApi_ =
-              io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.newBuilder(devpodApi_).mergeFrom(value).buildPartial();
+              io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.newBuilder(devpodApi_).mergeFrom(value).buildPartial();
           } else {
             devpodApi_ = value;
           }
@@ -5909,12 +5909,12 @@ public final class Info {
       }
       /**
        * <pre>
-       * GitpodAPI provides information to reach the Gitpod server API.
+       * DevpodAPI provides information to reach the Devpod server API.
        * </pre>
        *
-       * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+       * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
        */
-      public Builder clearGitpodApi() {
+      public Builder clearDevpodApi() {
         if (devpodApiBuilder_ == null) {
           devpodApi_ = null;
           onChanged();
@@ -5927,45 +5927,45 @@ public final class Info {
       }
       /**
        * <pre>
-       * GitpodAPI provides information to reach the Gitpod server API.
+       * DevpodAPI provides information to reach the Devpod server API.
        * </pre>
        *
-       * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+       * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
        */
-      public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.Builder getGitpodApiBuilder() {
+      public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.Builder getDevpodApiBuilder() {
 
         onChanged();
-        return getGitpodApiFieldBuilder().getBuilder();
+        return getDevpodApiFieldBuilder().getBuilder();
       }
       /**
        * <pre>
-       * GitpodAPI provides information to reach the Gitpod server API.
+       * DevpodAPI provides information to reach the Devpod server API.
        * </pre>
        *
-       * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+       * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
        */
-      public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPIOrBuilder getGitpodApiOrBuilder() {
+      public io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPIOrBuilder getDevpodApiOrBuilder() {
         if (devpodApiBuilder_ != null) {
           return devpodApiBuilder_.getMessageOrBuilder();
         } else {
           return devpodApi_ == null ?
-              io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.getDefaultInstance() : devpodApi_;
+              io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.getDefaultInstance() : devpodApi_;
         }
       }
       /**
        * <pre>
-       * GitpodAPI provides information to reach the Gitpod server API.
+       * DevpodAPI provides information to reach the Devpod server API.
        * </pre>
        *
-       * <code>.supervisor.WorkspaceInfoResponse.GitpodAPI devpod_api = 7;</code>
+       * <code>.supervisor.WorkspaceInfoResponse.DevpodAPI devpod_api = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.Builder, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPIOrBuilder>
-          getGitpodApiFieldBuilder() {
+          io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.Builder, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPIOrBuilder>
+          getDevpodApiFieldBuilder() {
         if (devpodApiBuilder_ == null) {
           devpodApiBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPI.Builder, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.GitpodAPIOrBuilder>(
-                  getGitpodApi(),
+              io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPI.Builder, io.devpod.supervisor.api.Info.WorkspaceInfoResponse.DevpodAPIOrBuilder>(
+                  getDevpodApi(),
                   getParentForChildren(),
                   isClean());
           devpodApi_ = null;
@@ -5976,13 +5976,13 @@ public final class Info {
       private java.lang.Object devpodHost_ = "";
       /**
        * <pre>
-       * devpod_host provides Gitpod host URL.
+       * devpod_host provides Devpod host URL.
        * </pre>
        *
        * <code>string devpod_host = 8;</code>
        * @return The devpodHost.
        */
-      public java.lang.String getGitpodHost() {
+      public java.lang.String getDevpodHost() {
         java.lang.Object ref = devpodHost_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
@@ -5996,14 +5996,14 @@ public final class Info {
       }
       /**
        * <pre>
-       * devpod_host provides Gitpod host URL.
+       * devpod_host provides Devpod host URL.
        * </pre>
        *
        * <code>string devpod_host = 8;</code>
        * @return The bytes for devpodHost.
        */
       public com.google.protobuf.ByteString
-          getGitpodHostBytes() {
+          getDevpodHostBytes() {
         java.lang.Object ref = devpodHost_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b =
@@ -6017,14 +6017,14 @@ public final class Info {
       }
       /**
        * <pre>
-       * devpod_host provides Gitpod host URL.
+       * devpod_host provides Devpod host URL.
        * </pre>
        *
        * <code>string devpod_host = 8;</code>
        * @param value The devpodHost to set.
        * @return This builder for chaining.
        */
-      public Builder setGitpodHost(
+      public Builder setDevpodHost(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
@@ -6036,28 +6036,28 @@ public final class Info {
       }
       /**
        * <pre>
-       * devpod_host provides Gitpod host URL.
+       * devpod_host provides Devpod host URL.
        * </pre>
        *
        * <code>string devpod_host = 8;</code>
        * @return This builder for chaining.
        */
-      public Builder clearGitpodHost() {
+      public Builder clearDevpodHost() {
 
-        devpodHost_ = getDefaultInstance().getGitpodHost();
+        devpodHost_ = getDefaultInstance().getDevpodHost();
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * devpod_host provides Gitpod host URL.
+       * devpod_host provides Devpod host URL.
        * </pre>
        *
        * <code>string devpod_host = 8;</code>
        * @param value The bytes for devpodHost to set.
        * @return This builder for chaining.
        */
-      public Builder setGitpodHostBytes(
+      public Builder setDevpodHostBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -6323,7 +6323,7 @@ public final class Info {
       private java.lang.Object workspaceClusterHost_ = "";
       /**
        * <pre>
-       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
        * </pre>
        *
        * <code>string workspace_cluster_host = 11;</code>
@@ -6343,7 +6343,7 @@ public final class Info {
       }
       /**
        * <pre>
-       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
        * </pre>
        *
        * <code>string workspace_cluster_host = 11;</code>
@@ -6364,7 +6364,7 @@ public final class Info {
       }
       /**
        * <pre>
-       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
        * </pre>
        *
        * <code>string workspace_cluster_host = 11;</code>
@@ -6383,7 +6383,7 @@ public final class Info {
       }
       /**
        * <pre>
-       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
        * </pre>
        *
        * <code>string workspace_cluster_host = 11;</code>
@@ -6397,7 +6397,7 @@ public final class Info {
       }
       /**
        * <pre>
-       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.io
+       * workspace_cluster_host provides the cluster host under which this workspace is served, e.g. ws-eu11.devpod.khulnasoft.com
        * </pre>
        *
        * <code>string workspace_cluster_host = 11;</code>
@@ -7082,10 +7082,10 @@ public final class Info {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_supervisor_WorkspaceInfoResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_supervisor_WorkspaceInfoResponse_GitpodAPI_descriptor;
+    internal_static_supervisor_WorkspaceInfoResponse_DevpodAPI_descriptor;
   private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_supervisor_WorkspaceInfoResponse_GitpodAPI_fieldAccessorTable;
+      internal_static_supervisor_WorkspaceInfoResponse_DevpodAPI_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_supervisor_WorkspaceInfoResponse_Repository_descriptor;
   private static final
@@ -7113,7 +7113,7 @@ public final class Info {
       "e\030\004 \001(\tH\000\022#\n\031workspace_location_folder\030\005" +
       " \001(\tH\000\022\021\n\tuser_home\030\006 \001(\t\022?\n\ndevpod_api\030" +
       "\007 \001(\0132+.supervisor.WorkspaceInfoResponse" +
-      ".GitpodAPI\022\023\n\013devpod_host\030\010 \001(\t\022\035\n\025works" +
+      ".DevpodAPI\022\023\n\013devpod_host\030\010 \001(\t\022\035\n\025works" +
       "pace_context_url\030\t \001(\t\022@\n\nrepository\030\n \001" +
       "(\0132,.supervisor.WorkspaceInfoResponse.Re" +
       "pository\022\036\n\026workspace_cluster_host\030\013 \001(\t" +
@@ -7123,7 +7123,7 @@ public final class Info {
       ".WorkspaceClass\022\020\n\010owner_id\030\020 \001(\t\022<\n\024deb" +
       "ug_workspace_type\030\021 \001(\0162\036.supervisor.Deb" +
       "ugWorkspaceType\022\031\n\021configcat_enabled\030\022 \001" +
-      "(\010\032+\n\tGitpodAPI\022\020\n\010endpoint\030\001 \001(\t\022\014\n\004hos" +
+      "(\010\032+\n\tDevpodAPI\022\020\n\010endpoint\030\001 \001(\t\022\014\n\004hos" +
       "t\030\002 \001(\t\032)\n\nRepository\022\r\n\005owner\030\001 \001(\t\022\014\n\004" +
       "name\030\002 \001(\t\032G\n\016WorkspaceClass\022\n\n\002id\030\001 \001(\t" +
       "\022\024\n\014display_name\030\002 \001(\t\022\023\n\013description\030\003 " +
@@ -7152,12 +7152,12 @@ public final class Info {
     internal_static_supervisor_WorkspaceInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_supervisor_WorkspaceInfoResponse_descriptor,
-        new java.lang.String[] { "WorkspaceId", "InstanceId", "CheckoutLocation", "WorkspaceLocationFile", "WorkspaceLocationFolder", "UserHome", "GitpodApi", "GitpodHost", "WorkspaceContextUrl", "Repository", "WorkspaceClusterHost", "WorkspaceUrl", "IdeAlias", "IdePort", "WorkspaceClass", "OwnerId", "DebugWorkspaceType", "ConfigcatEnabled", "WorkspaceLocation", });
-    internal_static_supervisor_WorkspaceInfoResponse_GitpodAPI_descriptor =
+        new java.lang.String[] { "WorkspaceId", "InstanceId", "CheckoutLocation", "WorkspaceLocationFile", "WorkspaceLocationFolder", "UserHome", "DevpodApi", "DevpodHost", "WorkspaceContextUrl", "Repository", "WorkspaceClusterHost", "WorkspaceUrl", "IdeAlias", "IdePort", "WorkspaceClass", "OwnerId", "DebugWorkspaceType", "ConfigcatEnabled", "WorkspaceLocation", });
+    internal_static_supervisor_WorkspaceInfoResponse_DevpodAPI_descriptor =
       internal_static_supervisor_WorkspaceInfoResponse_descriptor.getNestedTypes().get(0);
-    internal_static_supervisor_WorkspaceInfoResponse_GitpodAPI_fieldAccessorTable = new
+    internal_static_supervisor_WorkspaceInfoResponse_DevpodAPI_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_supervisor_WorkspaceInfoResponse_GitpodAPI_descriptor,
+        internal_static_supervisor_WorkspaceInfoResponse_DevpodAPI_descriptor,
         new java.lang.String[] { "Endpoint", "Host", });
     internal_static_supervisor_WorkspaceInfoResponse_Repository_descriptor =
       internal_static_supervisor_WorkspaceInfoResponse_descriptor.getNestedTypes().get(1);

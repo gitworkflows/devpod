@@ -1,4 +1,4 @@
-# Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2023 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -20,7 +20,7 @@ spec:
         dedicated: included
       for: 20m
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/SupervisorIncomingFailuresRatioTooHigh.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/SupervisorIncomingFailuresRatioTooHigh.md
         summary: Supervisor is returning higher number of errors. This can prevent workspace usability.
       expr: |
           sum(rate(grpc_server_handled_total{grpc_code!~"OK|Canceled", grpc_service=~"supervisor.*"}[5m])) by(cluster) / sum(rate(grpc_server_handled_total{grpc_service=~"supervisor.*"}[5m])) by(cluster) > 0.01
@@ -31,7 +31,7 @@ spec:
         dedicated: included
       for: 20m
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/SupervisorOutgoingFailuresRatioTooHigh.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/SupervisorOutgoingFailuresRatioTooHigh.md
         summary: PublicAPI or ServerAPI is returning higher number of errors. This can prevent workspace usability
       expr: |
           sum(rate(supervisor_client_handled_total{err_code!~"OK|Canceled|PermissionDenied", job="ide-metrics"}[5m])) by(cluster) / sum(rate(grpc_server_handled_total{grpc_service=~"supervisor.*"}[5m])) by(cluster) > 0.01

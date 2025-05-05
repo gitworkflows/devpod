@@ -104,9 +104,9 @@ After regenerating the code, you may need to rebuild components that depend on t
    go build ./...
    ```
 
-2. Using Leeway (for CI/CD):
+2. Using Blazedock (for CI/CD):
    ```bash
-   leeway build -D components/<component-name>:app
+   blazedock build -D components/<component-name>:app
    ```
 
 The Registry Facade API is primarily used by the registry-facade component, which provides a container registry interface that dynamically assembles workspace images on-demand.

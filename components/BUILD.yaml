@@ -1,4 +1,4 @@
-# Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+# Copyright (c) 2021 Devpod GmbH. All rights reserved.
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
@@ -17,7 +17,7 @@ packages:
   - name: docker-versions
     type: docker
     config:
-      dockerfile: leeway.Dockerfile
+      dockerfile: blazedock.Dockerfile
       image:
         - ${imageRepoBase}/versions:${version}
     deps:
@@ -139,7 +139,7 @@ scripts:
       # set `export LICENCE_HEADER_CHECK_ONLY=true` to just check if all headers are there (and exit with status code 1 if not)
       check=$([ "$LICENCE_HEADER_CHECK_ONLY" = true ] && printf "%s" '-check')
 
-      leeway collect files --format-string '{{ range . }}{{ .Name }}{{"\n"}}{{ end }}' | sort | uniq | while read f; do echo "$PWD/../$f"; done | addlicense $check -s -l agpl  . || exit 1
+      blazedock collect files --format-string '{{ range . }}{{ .Name }}{{"\n"}}{{ end }}' | sort | uniq | while read f; do echo "$PWD/../$f"; done | addlicense $check -s -l agpl  . || exit 1
   - name: dejson-log-output
     script: |-
       jq -Rr '. as $line |
@@ -179,9 +179,9 @@ scripts:
       - test/**/*
       - dev/**/*
     script: |
-      leeway exec --filter-type go -v -- go mod tidy -compat=1.22
+      blazedock exec --filter-type go -v -- go mod tidy -compat=1.22
 
-      # not all the code is present in leeway.
+      # not all the code is present in blazedock.
       # ensure we update everything containing a go.mod file
       for COMPONENT in $(find . -name go.mod); do
         DIRECTORY=$(dirname $COMPONENT)

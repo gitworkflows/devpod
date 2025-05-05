@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2024 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -479,7 +479,7 @@ type CreateStripeCustomerRequest struct {
 	Name     string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Email    string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	Currency string `protobuf:"bytes,4,opt,name=currency,proto3" json:"currency,omitempty"`
-	// Gitpod User ID for the user setting up billing.
+	// Devpod User ID for the user setting up billing.
 	BillingCreatorUserId string `protobuf:"bytes,5,opt,name=billing_creator_user_id,json=billingCreatorUserId,proto3" json:"billing_creator_user_id,omitempty"`
 }
 

@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2023 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -28,8 +28,8 @@ const (
 	RebuildErrorCode_DockerErr           = "rebuild_docker_err"
 	RebuildErrorCode_DockerNotFound      = "rebuild_docker_not_found"
 	RebuildErrorCode_DockerRunFailed     = "rebuild_docker_run_failed"
-	RebuildErrorCode_MalformedGitpodYaml = "rebuild_malformed_devpod_yaml"
-	RebuildErrorCode_MissingGitpodYaml   = "rebuild_missing_devpod_yaml"
+	RebuildErrorCode_MalformedDevpodYaml = "rebuild_malformed_devpod_yaml"
+	RebuildErrorCode_MissingDevpodYaml   = "rebuild_missing_devpod_yaml"
 	RebuildErrorCode_NoCustomImage       = "rebuild_no_custom_image"
 	RebuildErrorCode_AlreadyInDebug      = "rebuild_already_in_debug"
 	RebuildErrorCode_InvaligLogLevel     = "rebuild_invalid_log_level"

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -20,7 +20,7 @@ import { TokenProvider } from "../user/token-provider";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
 
-@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("GITPOD_TEST_TOKEN_GITLAB")))
+@suite(timeout(10000), retries(2), skip(ifEnvVarNotSet("DEVPOD_TEST_TOKEN_GITLAB")))
 class TestGitlabContextParser {
     protected parser: GitlabContextParser;
     protected user: User;

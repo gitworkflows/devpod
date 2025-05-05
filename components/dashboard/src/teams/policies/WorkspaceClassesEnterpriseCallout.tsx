@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -24,7 +24,7 @@ export const WorkspaceClassesEnterpriseCallout = () => {
                 <LinkButton
                     variant="secondary"
                     className="border border-pk-content-tertiary text-pk-content-primary bg-pk-surface-primary"
-                    href="https://www.devpod.io/docs/configure/workspaces/workspace-classes#enterprise"
+                    href="https://www.devpod.khulnasoft.com/docs/configure/workspaces/workspace-classes#enterprise"
                     isExternalUrl={true}
                 >
                     Documentation
@@ -32,7 +32,7 @@ export const WorkspaceClassesEnterpriseCallout = () => {
                 <LinkButton
                     variant="secondary"
                     className="border border-pk-content-tertiary text-pk-content-primary bg-pk-surface-primary"
-                    href="https://www.devpod.io/docs/enterprise"
+                    href="https://www.devpod.khulnasoft.com/docs/enterprise"
                     isExternalUrl={true}
                 >
                     Learn more about Enterprise

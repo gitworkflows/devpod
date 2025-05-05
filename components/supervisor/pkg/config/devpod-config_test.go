@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -17,16 +17,16 @@ import (
 	devpod "github.com/khulnasoft/devpod/devpod-protocol"
 )
 
-func TestGitpodConfig(t *testing.T) {
+func TestDevpodConfig(t *testing.T) {
 	tests := []struct {
 		Desc        string
 		Content     string
-		Expectation *devpod.GitpodConfig
+		Expectation *devpod.DevpodConfig
 	}{
 		{
 			Desc: "parsing",
 			Content: `
-image: ghcr.io/devpod-core-dev/dev/dev-environment:clu-yq4.1
+image: khulnasoft/devpod-environment/dev/dev-environment:clu-yq4.1
 workspaceLocation: devpod/devpod-ws.code-workspace
 checkoutLocation: devpod
 ports:
@@ -38,14 +38,14 @@ tasks:
   - before: scripts/branch-namespace.sh
     init: yarn --network-timeout 100000 && yarn build
   - name: Go
-    init: leeway exec --filter-type go -v -- go get -v ./...
+    init: blazedock exec --filter-type go -v -- go get -v ./...
     openMode: split-right
 vscode:
   extensions:
     - hangxingliu.vscode-nginx-conf-hint@0.1.0:UATTe2sTFfCYWQ3jw4IRsw==
     - zxh404.vscode-proto3@0.4.2:ZnPmyF/Pb8AIWeCqc83gPw==`,
-			Expectation: &devpod.GitpodConfig{
-				Image:             "ghcr.io/devpod-core-dev/dev/dev-environment:clu-yq4.1",
+			Expectation: &devpod.DevpodConfig{
+				Image:             "khulnasoft/devpod-environment/dev/dev-environment:clu-yq4.1",
 				WorkspaceLocation: "devpod/devpod-ws.code-workspace",
 				CheckoutLocation:  "devpod",
 				Ports: []*devpod.PortsItems{
@@ -64,7 +64,7 @@ vscode:
 					},
 					{
 						Name:     "Go",
-						Init:     "leeway exec --filter-type go -v -- go get -v ./...",
+						Init:     "blazedock exec --filter-type go -v -- go get -v ./...",
 						OpenMode: "split-right",
 					},
 				},
@@ -93,7 +93,7 @@ vscode:
 
 			go configService.Watch(ctx)
 
-			var listeners []<-chan *devpod.GitpodConfig
+			var listeners []<-chan *devpod.DevpodConfig
 			for i := 0; i < 10; i++ {
 				listeners = append(listeners, configService.Observe(ctx))
 			}
@@ -104,7 +104,7 @@ vscode:
 					l := listener
 					eg.Go(func() error {
 						config := <-l
-						if diff := cmp.Diff((*devpod.GitpodConfig)(nil), config); diff != "" {
+						if diff := cmp.Diff((*devpod.DevpodConfig)(nil), config); diff != "" {
 							return fmt.Errorf("unexpected output (-want +got):\n%s", diff)
 						}
 						return nil
@@ -145,7 +145,7 @@ vscode:
 	}
 }
 
-func TestInvalidGitpodConfig(t *testing.T) {
+func TestInvalidDevpodConfig(t *testing.T) {
 	tempDir, err := os.MkdirTemp("", "test-devpod-config-*")
 	if err != nil {
 		t.Fatal(err)
@@ -163,7 +163,7 @@ func TestInvalidGitpodConfig(t *testing.T) {
 	listener := configService.Observe(ctx)
 
 	config := <-listener
-	if diff := cmp.Diff((*devpod.GitpodConfig)(nil), config); diff != "" {
+	if diff := cmp.Diff((*devpod.DevpodConfig)(nil), config); diff != "" {
 		t.Errorf("unexpected output (-want +got):\n%s", diff)
 	}
 
@@ -183,7 +183,7 @@ vscode:
 	}
 
 	config = <-listener
-	if diff := cmp.Diff(&devpod.GitpodConfig{
+	if diff := cmp.Diff(&devpod.DevpodConfig{
 		Ports:  []*devpod.PortsItems{{Port: 8080}},
 		Tasks:  []*devpod.TasksItems{{Command: "echo \"Hello World\""}},
 		Vscode: &devpod.Vscode{Extensions: []string{"foo.bar"}},
@@ -220,7 +220,7 @@ ports:
 	}
 
 	config = <-listener
-	if diff := cmp.Diff(&devpod.GitpodConfig{
+	if diff := cmp.Diff(&devpod.DevpodConfig{
 		Ports: []*devpod.PortsItems{{Port: 8081}},
 	}, config); diff != "" {
 		t.Errorf("unexpected output (-want +got):\n%s", diff)

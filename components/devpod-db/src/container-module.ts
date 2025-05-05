@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2020 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -19,7 +19,7 @@ import { OneTimeSecretDB } from "./one-time-secret-db";
 import { TypeORMAppInstallationDBImpl } from "./typeorm/app-installation-db-impl";
 import { AppInstallationDB } from "./app-installation-db";
 import { TypeORMOneTimeSecretDBImpl } from "./typeorm/one-time-secret-db-impl";
-import { GitpodTableDescriptionProvider, TableDescriptionProvider } from "./tables";
+import { DevpodTableDescriptionProvider, TableDescriptionProvider } from "./tables";
 import { PeriodicDbDeleter } from "./periodic-deleter";
 import { CodeSyncResourceDB } from "./typeorm/code-sync-resource-db";
 
@@ -94,8 +94,8 @@ export const dbContainerModule = (cacheClass = DataCacheNoop) =>
             })
             .inSingletonScope();
 
-        bind(GitpodTableDescriptionProvider).toSelf().inSingletonScope();
-        bind(TableDescriptionProvider).toService(GitpodTableDescriptionProvider);
+        bind(DevpodTableDescriptionProvider).toSelf().inSingletonScope();
+        bind(TableDescriptionProvider).toService(DevpodTableDescriptionProvider);
         bind(PeriodicDbDeleter).toSelf().inSingletonScope();
 
         bind(CodeSyncResourceDB).toSelf().inSingletonScope();

@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -41,7 +41,7 @@ const (
 // Smith can perform operations within a users workspace and judge a user
 type Smith struct {
 	Config           config.Config
-	GitpodAPI        devpod.APIInterface
+	DevpodAPI        devpod.APIInterface
 	EnforcementRules map[string]config.EnforcementRules
 	Kubernetes       kubernetes.Interface
 	metrics          *metrics
@@ -63,20 +63,20 @@ func NewAgentSmith(cfg config.Config) (*Smith, error) {
 	}
 
 	var api devpod.APIInterface
-	if cfg.GitpodAPI.HostURL != "" {
-		u, err := url.Parse(cfg.GitpodAPI.HostURL)
+	if cfg.DevpodAPI.HostURL != "" {
+		u, err := url.Parse(cfg.DevpodAPI.HostURL)
 		if err != nil {
-			return nil, xerrors.Errorf("cannot parse Gitpod API host url: %w", err)
+			return nil, xerrors.Errorf("cannot parse Devpod API host url: %w", err)
 		}
 		endpoint := fmt.Sprintf("wss://%s/api/v1", u.Hostname())
 
 		api, err = devpod.ConnectToServer(endpoint, devpod.ConnectToServerOpts{
 			Context: context.Background(),
-			Token:   cfg.GitpodAPI.APIToken,
+			Token:   cfg.DevpodAPI.APIToken,
 			Log:     log.Log,
 		})
 		if err != nil {
-			return nil, xerrors.Errorf("cannot connect to Gitpod API: %w", err)
+			return nil, xerrors.Errorf("cannot connect to Devpod API: %w", err)
 		}
 	}
 
@@ -145,7 +145,7 @@ func NewAgentSmith(cfg config.Config) (*Smith, error) {
 			},
 		},
 		Config:     cfg,
-		GitpodAPI:  api,
+		DevpodAPI:  api,
 		Kubernetes: clientset,
 
 		wsman: wsman,

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2022 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -13,7 +13,7 @@ import Modal, { ModalBody, ModalFooter, ModalHeader } from "../components/Modal"
 import { useCurrentOrg } from "../data/organizations/orgs-query";
 import { ReactComponent as Spinner } from "../icons/Spinner.svg";
 import { ReactComponent as Check } from "../images/check-circle.svg";
-import { getGitpodService } from "../service/service";
+import { getDevpodService } from "../service/service";
 import Alert from "./Alert";
 import { Subheading } from "./typography/headings";
 import { AddPaymentMethodModal } from "./billing/AddPaymentMethodModal";
@@ -59,7 +59,7 @@ export default function UsageBasedBillingConfig({ hideSubheading = false }: Prop
     const [billingCycleTo, setBillingCycleTo] = useState<dayjs.Dayjs>(now.endOf("month"));
     useEffect(() => {
         if (attributionId) {
-            getGitpodService().server.getPriceInformation(attributionId).then(setPriceInformation);
+            getDevpodService().server.getPriceInformation(attributionId).then(setPriceInformation);
         }
     }, [attributionId]);
 
@@ -68,13 +68,13 @@ export default function UsageBasedBillingConfig({ hideSubheading = false }: Prop
             setStripeSubscriptionId(undefined);
             setIsLoadingStripeSubscription(true);
             try {
-                getGitpodService().server.getStripePortalUrl(attributionId).then(setStripePortalUrl);
-                getGitpodService().server.getUsageBalance(attributionId).then(setCurrentUsage);
-                const costCenter = await getGitpodService().server.getCostCenter(attributionId);
+                getDevpodService().server.getStripePortalUrl(attributionId).then(setStripePortalUrl);
+                getDevpodService().server.getUsageBalance(attributionId).then(setCurrentUsage);
+                const costCenter = await getDevpodService().server.getCostCenter(attributionId);
                 setUsageLimit(costCenter?.spendingLimit || 0);
                 setBillingCycleFrom(dayjs(costCenter?.billingCycleStart || now.startOf("month")).utc(true));
                 setBillingCycleTo(dayjs(costCenter?.nextBillingTime || now.endOf("month")).utc(true));
-                const subscriptionId = await getGitpodService().server.findStripeSubscriptionId(attributionId);
+                const subscriptionId = await getDevpodService().server.findStripeSubscriptionId(attributionId);
                 setStripeSubscriptionId(subscriptionId);
                 return subscriptionId;
             } catch (error) {
@@ -160,7 +160,7 @@ export default function UsageBasedBillingConfig({ hideSubheading = false }: Prop
                 if (attrId?.kind === "team" && currentOrg) {
                     limit = BASE_USAGE_LIMIT_FOR_STRIPE_USERS * (members?.length || 0);
                 }
-                const newLimit = await getGitpodService().server.subscribeToStripe(
+                const newLimit = await getDevpodService().server.subscribeToStripe(
                     attributionId,
                     paymentIntentId || "",
                     limit,
@@ -189,7 +189,7 @@ export default function UsageBasedBillingConfig({ hideSubheading = false }: Prop
                 setErrorMessage(
                     `Could not subscribe: ${
                         error?.message || String(error)
-                    } Contact support@devpod.io if you believe this is a system error.`,
+                    } Contact support@devpod.khulnasoft.com if you believe this is a system error.`,
                 );
             }
         },
@@ -209,7 +209,7 @@ export default function UsageBasedBillingConfig({ hideSubheading = false }: Prop
             }
 
             try {
-                await getGitpodService().server.setUsageLimit(attributionId, newLimit);
+                await getDevpodService().server.setUsageLimit(attributionId, newLimit);
                 setUsageLimit(newLimit);
                 toast(`Your usage limit was updated to ${newLimit || 0}`);
             } catch (error) {

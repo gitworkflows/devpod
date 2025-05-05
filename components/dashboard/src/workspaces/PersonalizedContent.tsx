@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2024 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -24,8 +24,8 @@ type ContentItem = {
 
 const contentList: ContentItem[] = [
     {
-        url: "https://www.devpod.io/blog/writing-software-with-chopsticks-an-intro-to-vdi",
-        title: "Why replace a VDI with Gitpod",
+        url: "https://www.devpod.khulnasoft.com/blog/writing-software-with-chopsticks-an-intro-to-vdi",
+        title: "Why replace a VDI with Devpod",
         label: "vdi-replacement",
         priority: 1,
         recommended: {
@@ -34,8 +34,8 @@ const contentList: ContentItem[] = [
         },
     },
     {
-        url: "https://www.devpod.io/customers/luminus",
-        title: "Solve python dependency issues with Gitpod",
+        url: "https://www.devpod.khulnasoft.com/customers/luminus",
+        title: "Solve python dependency issues with Devpod",
         label: "luminus-case-study",
         priority: 2,
         recommended: {
@@ -43,8 +43,8 @@ const contentList: ContentItem[] = [
         },
     },
     {
-        url: "https://www.devpod.io/blog/how-to-use-vdis-and-cdes-together",
-        title: "Using VDIs and Gitpod together",
+        url: "https://www.devpod.khulnasoft.com/blog/how-to-use-vdis-and-cdes-together",
+        title: "Using VDIs and Devpod together",
         label: "vdi-and-cde",
         priority: 3,
         recommended: {
@@ -53,8 +53,8 @@ const contentList: ContentItem[] = [
         },
     },
     {
-        url: "https://www.devpod.io/blog/onboard-contractors-securely-and-quickly-using-devpod",
-        title: "Onboard contractors securely with Gitpod",
+        url: "https://www.devpod.khulnasoft.com/blog/onboard-contractors-securely-and-quickly-using-devpod",
+        title: "Onboard contractors securely with Devpod",
         label: "onboard-contractors",
         priority: 4,
         recommended: {
@@ -63,8 +63,8 @@ const contentList: ContentItem[] = [
         },
     },
     {
-        url: "https://www.devpod.io/solutions/onboarding",
-        title: "Onboard developers in one click with Gitpod",
+        url: "https://www.devpod.khulnasoft.com/solutions/onboarding",
+        title: "Onboard developers in one click with Devpod",
         label: "onboarding-solutions",
         priority: 5,
         recommended: {
@@ -72,8 +72,8 @@ const contentList: ContentItem[] = [
         },
     },
     {
-        url: "https://www.devpod.io/customers/kingland",
-        title: "The impact of Gitpod on supply-chain security",
+        url: "https://www.devpod.khulnasoft.com/customers/kingland",
+        title: "The impact of Devpod on supply-chain security",
         label: "kingland-case-study",
         priority: 6,
         recommended: {
@@ -81,7 +81,7 @@ const contentList: ContentItem[] = [
         },
     },
     {
-        url: "https://www.devpod.io/blog/improve-security-using-ephemeral-development-environments",
+        url: "https://www.devpod.khulnasoft.com/blog/improve-security-using-ephemeral-development-environments",
         title: "Improve security with ephemeral environments",
         label: "ephemeral-security",
         priority: 7,
@@ -90,7 +90,7 @@ const contentList: ContentItem[] = [
         },
     },
     {
-        url: "https://www.devpod.io/blog/using-a-cde-roi-calculator",
+        url: "https://www.devpod.khulnasoft.com/blog/using-a-cde-roi-calculator",
         title: "What is the business case for a CDE",
         label: "cde-roi-calculator",
         priority: 8,
@@ -101,7 +101,7 @@ const contentList: ContentItem[] = [
         },
     },
     {
-        url: "https://www.devpod.io/blog/whats-a-cloud-development-environment",
+        url: "https://www.devpod.khulnasoft.com/blog/whats-a-cloud-development-environment",
         title: "What is a cloud development environment",
         label: "what-is-cde",
         priority: 9,
@@ -113,18 +113,18 @@ const contentList: ContentItem[] = [
 
 const defaultContent: ContentItem[] = [
     {
-        url: "https://www.devpod.io/blog/whats-a-cloud-development-environment",
+        url: "https://www.devpod.khulnasoft.com/blog/whats-a-cloud-development-environment",
         title: "What's a CDE",
         label: "what-is-cde",
     },
     {
-        url: "https://www.devpod.io/solutions/onboarding",
+        url: "https://www.devpod.khulnasoft.com/solutions/onboarding",
         title: "Onboarding developers in one click",
         label: "onboarding-solutions",
     },
     {
-        url: "https://www.devpod.io/blog/using-a-cde-roi-calculator",
-        title: "Building a business case for Gitpod",
+        url: "https://www.devpod.khulnasoft.com/blog/using-a-cde-roi-calculator",
+        title: "Building a business case for Devpod",
         label: "cde-roi-calculator",
     },
 ];

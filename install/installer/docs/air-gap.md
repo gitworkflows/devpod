@@ -1,13 +1,13 @@
-# Installing Gitpod in an air-gap network with the Gitpod Installer
+# Installing Devpod in an air-gap network with the Devpod Installer
 
-## Mirror Gitpod Images
+## Mirror Devpod Images
 
-You need a registry that is reachable in your network. Add the domain of your registry to the Gitpod config `devpod.config.yaml` like this:
+You need a registry that is reachable in your network. Add the domain of your registry to the Devpod config `devpod.config.yaml` like this:
 ```yaml
 repository: your-registry.example.com
 ```
 
-The command `devpod-installer mirror list` gives you a list of all images needed by Gitpod. You can run the following code to pull the needed images and push them to your registry:
+The command `devpod-installer mirror list` gives you a list of all images needed by Devpod. You can run the following code to pull the needed images and push them to your registry:
 
 ```
 for row in $(devpod-installer mirror list --config devpod.config.yaml | jq -c '.[]'); do
@@ -20,15 +20,15 @@ for row in $(devpod-installer mirror list --config devpod.config.yaml | jq -c '.
 done
 ```
 
-## Install Gitpod in Air-Gap Mode
+## Install Devpod in Air-Gap Mode
 
-To install Gitpod in an air-gap network, you need to configure the repository of the images needed by Gitpod (see previous step). Add this to your Gitpod config:
+To install Devpod in an air-gap network, you need to configure the repository of the images needed by Devpod (see previous step). Add this to your Devpod config:
 
 ```yaml
 repository: your-registry.example.com
 ```
 
-That's it. Run the following commands as usual and Gitpod fetches the images from your registry and does not need internet access to operate:
+That's it. Run the following commands as usual and Devpod fetches the images from your registry and does not need internet access to operate:
 
 ```
 devpod-installer render --config devpod.config.yaml > devpod.yaml

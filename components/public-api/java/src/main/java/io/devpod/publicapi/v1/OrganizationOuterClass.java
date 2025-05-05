@@ -1,4 +1,4 @@
-// Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2025 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -12953,7 +12953,7 @@ java.lang.String defaultValue);
     /**
      * <pre>
      * annotate_git_commits specifies whether to annotate git commits created in
-     * Gitpod workspaces with the devpod host
+     * Devpod workspaces with the devpod host
      * </pre>
      *
      * <code>optional bool annotate_git_commits = 17 [json_name = "annotateGitCommits"];</code>
@@ -12963,7 +12963,7 @@ java.lang.String defaultValue);
     /**
      * <pre>
      * annotate_git_commits specifies whether to annotate git commits created in
-     * Gitpod workspaces with the devpod host
+     * Devpod workspaces with the devpod host
      * </pre>
      *
      * <code>optional bool annotate_git_commits = 17 [json_name = "annotateGitCommits"];</code>
@@ -13723,7 +13723,7 @@ java.lang.String defaultValue) {
     /**
      * <pre>
      * annotate_git_commits specifies whether to annotate git commits created in
-     * Gitpod workspaces with the devpod host
+     * Devpod workspaces with the devpod host
      * </pre>
      *
      * <code>optional bool annotate_git_commits = 17 [json_name = "annotateGitCommits"];</code>
@@ -13736,7 +13736,7 @@ java.lang.String defaultValue) {
     /**
      * <pre>
      * annotate_git_commits specifies whether to annotate git commits created in
-     * Gitpod workspaces with the devpod host
+     * Devpod workspaces with the devpod host
      * </pre>
      *
      * <code>optional bool annotate_git_commits = 17 [json_name = "annotateGitCommits"];</code>
@@ -16355,7 +16355,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * annotate_git_commits specifies whether to annotate git commits created in
-       * Gitpod workspaces with the devpod host
+       * Devpod workspaces with the devpod host
        * </pre>
        *
        * <code>optional bool annotate_git_commits = 17 [json_name = "annotateGitCommits"];</code>
@@ -16368,7 +16368,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * annotate_git_commits specifies whether to annotate git commits created in
-       * Gitpod workspaces with the devpod host
+       * Devpod workspaces with the devpod host
        * </pre>
        *
        * <code>optional bool annotate_git_commits = 17 [json_name = "annotateGitCommits"];</code>
@@ -16381,7 +16381,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * annotate_git_commits specifies whether to annotate git commits created in
-       * Gitpod workspaces with the devpod host
+       * Devpod workspaces with the devpod host
        * </pre>
        *
        * <code>optional bool annotate_git_commits = 17 [json_name = "annotateGitCommits"];</code>
@@ -16398,7 +16398,7 @@ java.lang.String defaultValue) {
       /**
        * <pre>
        * annotate_git_commits specifies whether to annotate git commits created in
-       * Gitpod workspaces with the devpod host
+       * Devpod workspaces with the devpod host
        * </pre>
        *
        * <code>optional bool annotate_git_commits = 17 [json_name = "annotateGitCommits"];</code>

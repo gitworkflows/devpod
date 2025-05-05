@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2021 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -50,7 +50,7 @@ func main() {
 		type Query struct {
 			InstanceId     string `json:"instanceId"`
 			WorkspaceId    string `json:"workspaceId"`
-			GitpodHost     string `json:"devpodHost"`
+			DevpodHost     string `json:"devpodHost"`
 			DebugWorkspace bool   `json:"debugWorkspace"`
 		}
 		debugWorkspace := false
@@ -60,7 +60,7 @@ func main() {
 		query := &Query{
 			InstanceId:     wsInfo.InstanceId,
 			WorkspaceId:    wsInfo.WorkspaceId,
-			GitpodHost:     wsInfo.GitpodHost,
+			DevpodHost:     wsInfo.DevpodHost,
 			DebugWorkspace: debugWorkspace,
 		}
 		b, err := json.Marshal(query)

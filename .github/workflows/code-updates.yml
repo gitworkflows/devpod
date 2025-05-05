@@ -62,8 +62,8 @@ jobs:
           branch: "ide/code-release"
           labels: "team: IDE,editor: code (browser)"
           token: ${{ secrets.ROBOQUAT_REPO_PAT }}
-          committer: Robo Quat <roboquat@devpod.io>
-          author: Robo Quat <roboquat@devpod.io>
+          committer: Robo Quat <roboquat@devpod.khulnasoft.com>
+          author: Robo Quat <roboquat@devpod.khulnasoft.com>
           team-reviewers: |
             team-experience
 
@@ -97,8 +97,8 @@ jobs:
           branch: "ide/code-images"
           labels: "team: IDE,editor: code (browser)"
           token: ${{ secrets.ROBOQUAT_REPO_PAT }}
-          committer: Robo Quat <roboquat@devpod.io>
-          author: Robo Quat <roboquat@devpod.io>
+          committer: Robo Quat <roboquat@devpod.khulnasoft.com>
+          author: Robo Quat <roboquat@devpod.khulnasoft.com>
           team-reviewers: |
             team-experience
       - name: Slack notification (code)
@@ -115,7 +115,7 @@ jobs:
     needs: [update]
     if: ${{ needs.update.steps.code-update-pr.outputs.pull-request-url && always() }}
     steps:
-      - uses: gitpod-io/gh-app-auth@v0.1
+      - uses: khulnasoft/gh-app-auth@v0.1
         id: auth
         name: Auth GH App
         with:

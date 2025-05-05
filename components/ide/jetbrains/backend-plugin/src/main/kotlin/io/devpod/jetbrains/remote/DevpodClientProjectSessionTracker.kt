@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -35,15 +35,15 @@ import java.util.concurrent.CancellationException
 import java.util.concurrent.CompletableFuture
 
 @Suppress("UnstableApiUsage", "OPT_IN_USAGE")
-abstract class AbstractGitpodClientProjectSessionTracker(private val project: Project) : Disposable {
+abstract class AbstractDevpodClientProjectSessionTracker(private val project: Project) : Disposable {
 
-    private val manager = service<GitpodManager>()
+    private val manager = service<DevpodManager>()
     abstract val session: ClientProjectSession?
 
     private lateinit var info: Info.WorkspaceInfoResponse
     private val lifetime = Lifetime.Eternal.createNested()
 
-    private val ignoredPortsForNotificationService = service<GitpodIgnoredPortsForNotificationService>()
+    private val ignoredPortsForNotificationService = service<DevpodIgnoredPortsForNotificationService>()
 
     override fun dispose() {
         lifetime.terminate()
@@ -65,7 +65,7 @@ abstract class AbstractGitpodClientProjectSessionTracker(private val project: Pr
     }
 
     private fun getForwardedPortUrl(port: PortsStatus): String {
-        val localHostUri = serviceOrNull<GitpodPortForwardingService>()
+        val localHostUri = serviceOrNull<DevpodPortForwardingService>()
                 ?.getLocalHostUriFromHostPort(port.localPort)
                 ?: Optional.empty()
 
@@ -125,7 +125,7 @@ abstract class AbstractGitpodClientProjectSessionTracker(private val project: Pr
 
         val portsStatus = hashMapOf<Int, PortsStatus>()
 
-        val status = StatusServiceGrpc.newStub(GitpodManager.supervisorChannel)
+        val status = StatusServiceGrpc.newStub(DevpodManager.supervisorChannel)
         while (isActive) {
             try {
                 val f = CompletableFuture<Void>()

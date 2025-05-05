@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -13,7 +13,7 @@ import (
 	devpod_experimental_v1connect "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1/v1connect"
 )
 
-type Gitpod struct {
+type Devpod struct {
 	cfg *options
 
 	Workspaces           devpod_experimental_v1connect.WorkspacesServiceClient
@@ -25,7 +25,7 @@ type Gitpod struct {
 	User                 devpod_experimental_v1connect.UserServiceClient
 }
 
-func New(options ...Option) (*Gitpod, error) {
+func New(options ...Option) (*Devpod, error) {
 	opts, err := evaluateOptions(defaultOptions(), options...)
 	if err != nil {
 		return nil, fmt.Errorf("failed to evaluate client options: %w", err)
@@ -44,7 +44,7 @@ func New(options ...Option) (*Gitpod, error) {
 		),
 	}
 
-	return &Gitpod{
+	return &Devpod{
 		cfg:                  opts,
 		Teams:                devpod_experimental_v1connect.NewTeamsServiceClient(client, url, serviceOpts...),
 		Projects:             devpod_experimental_v1connect.NewProjectsServiceClient(client, url, serviceOpts...),
@@ -87,7 +87,7 @@ type options struct {
 
 func defaultOptions() *options {
 	return &options{
-		url:    "https://api.devpod.io",
+		url:    "https://api.devpod.khulnasoft.com",
 		client: http.DefaultClient,
 	}
 }

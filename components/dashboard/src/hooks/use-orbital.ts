@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -7,7 +7,7 @@
 import { useEffect, useState } from "react";
 import type { orbital } from "@useorbital/client-types/types";
 import { useFeatureFlag } from "../data/featureflag-query";
-import { isGitpodIo } from "../utils";
+import { isDevpodIo } from "../utils";
 
 declare global {
     interface Window {
@@ -22,7 +22,7 @@ export const useOrbital = (spaceId: string) => {
     const enabledOrbitalDiscoveries = useFeatureFlag("enabledOrbitalDiscoveries");
 
     useEffect(() => {
-        if (!isGitpodIo()) return;
+        if (!isDevpodIo()) return;
         if (document.getElementById("orbital-client")) return;
         if (discoveryIds.size === 0) return;
 

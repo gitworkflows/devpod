@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2023 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -25,7 +25,7 @@ export const SetupPending: FC<Props> = ({ alwaysShowHeader }) => {
         <div className="flex-grow flex items-center justify-center p-4">
             <div className={classNames(alwaysShowHeader ? "" : "lg:hidden", "absolute top-0 left-0 right-0")}>
                 <div className="flex items-center justify-center items-center py-3 space-x-1">
-                    <img src={isDark ? devpodDarkIcon : devpodIcon} className="h-8" alt="Gitpod's logo" />
+                    <img src={isDark ? devpodDarkIcon : devpodIcon} className="h-8" alt="Devpod's logo" />
                 </div>
             </div>
             <div className="max-w-md flex flex-col items-center justify-center text-center">
@@ -40,7 +40,7 @@ export const SetupPending: FC<Props> = ({ alwaysShowHeader }) => {
                     height="251"
                 />
                 <Heading2>Setup is pending</Heading2>
-                <Subheading>This instance of Gitpod is not quite ready.</Subheading>
+                <Subheading>This instance of Devpod is not quite ready.</Subheading>
                 <Subheading> An administrator has a few additional steps to complete.</Subheading>
             </div>
         </div>

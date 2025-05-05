@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2025 Gitpod GmbH. All rights reserved.
+ * Copyright (c) 2025 Devpod GmbH. All rights reserved.
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
@@ -11,7 +11,7 @@ import { log } from "@devpod/devpod-protocol/lib/util/logging";
 /**
  * ReadinessController is mimicking the behavior server had in the past: Behave as there is not ready probe - except during shutdown.
  *
- * Why? In Gitpod, our error strategy has always been "keep it local and retry", instead of "fail loud and have someone else handle it".
+ * Why? In Devpod, our error strategy has always been "keep it local and retry", instead of "fail loud and have someone else handle it".
  * As we don't want to change this now, we keep the same behavior for most of the services lifetime.
  *
  * Only during shutdown, we want to signal that the service is not ready anymore, to reduce error peaks.

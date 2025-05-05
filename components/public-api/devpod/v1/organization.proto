@@ -238,7 +238,7 @@ message UpdateOrganizationSettingsRequest {
   optional OnboardingSettings onboarding_settings = 16;
 
   // annotate_git_commits specifies whether to annotate git commits created in
-  // Gitpod workspaces with the devpod host
+  // Devpod workspaces with the devpod host
   optional bool annotate_git_commits = 17;
 
   // update_role_restrictions specifies whether role_restrictions should be

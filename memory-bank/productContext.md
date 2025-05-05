@@ -1,7 +1,7 @@
-# Product Context: Gitpod
+# Product Context: Devpod
 
-## Why Gitpod Exists
-Gitpod was created to solve the fundamental problem of development environment inconsistency and setup time. Traditional development workflows require developers to manually set up and maintain their development environments, leading to:
+## Why Devpod Exists
+Devpod was created to solve the fundamental problem of development environment inconsistency and setup time. Traditional development workflows require developers to manually set up and maintain their development environments, leading to:
 
 1. **"Works on my machine" problems**: Inconsistent environments across team members
 2. **Onboarding friction**: New team members spending days setting up their environment
@@ -9,9 +9,9 @@ Gitpod was created to solve the fundamental problem of development environment i
 4. **Resource limitations**: Local machines struggling with resource-intensive development tasks
 5. **Configuration drift**: Environments becoming inconsistent over time
 
-Gitpod addresses these challenges by providing ephemeral, automated, and consistent development environments in the cloud.
+Devpod addresses these challenges by providing ephemeral, automated, and consistent development environments in the cloud.
 
-## Problems Gitpod Solves
+## Problems Devpod Solves
 
 ### For Individual Developers
 - Eliminates environment setup and maintenance time
@@ -34,19 +34,19 @@ Gitpod addresses these challenges by providing ephemeral, automated, and consist
 - Provides flexibility for remote and distributed teams
 - Reduces costs associated with powerful local development machines
 
-## How Gitpod Works
+## How Devpod Works
 
 1. **Environment Definition**: Developers define their environment in a `.devpod.yml` file, specifying dependencies, tools, and configurations.
 
-2. **Prebuilding**: Gitpod continuously prebuilds environments for branches, similar to CI systems, preparing environments before they're needed.
+2. **Prebuilding**: Devpod continuously prebuilds environments for branches, similar to CI systems, preparing environments before they're needed.
 
-3. **Instant Start**: When a developer starts a workspace, Gitpod spins up a container with the prebuild results, providing a ready-to-code environment in seconds.
+3. **Instant Start**: When a developer starts a workspace, Devpod spins up a container with the prebuild results, providing a ready-to-code environment in seconds.
 
 4. **Development**: Developers work in a familiar IDE interface (VS Code, JetBrains) with full access to all necessary tools and resources.
 
 5. **Collaboration**: Developers can share workspaces, create snapshots, and collaborate in real-time.
 
-6. **Integration**: Gitpod integrates with GitHub, GitLab, Bitbucket, and Azure DevOps, providing seamless workflow integration.
+6. **Integration**: Devpod integrates with GitHub, GitLab, Bitbucket, and Azure DevOps, providing seamless workflow integration.
 
 ## User Experience Goals
 

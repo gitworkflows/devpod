@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2022 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -30,7 +30,7 @@ func ConnectForTests(t *testing.T) *gorm.DB {
 		return conn
 	}
 
-	// These are static connection details for tests, started by `leeway build components/devpod-db/go:init-testdb`.
+	// These are static connection details for tests, started by `blazedock build components/devpod-db/go:init-testdb`.
 	// We use the same static credentials for CI & local instance of MySQL Server.
 	var err error
 	conn, err = db.Connect(db.ConnectionParams{
@@ -39,7 +39,7 @@ func ConnectForTests(t *testing.T) *gorm.DB {
 		Host:     net.JoinHostPort(os.Getenv("DB_HOST"), "23306"),
 		Database: "devpod",
 	})
-	require.NoError(t, err, "Failed to establish connection to  In a workspace, run `leeway run components/devpod-db:init-testdb` once to bootstrap the db")
+	require.NoError(t, err, "Failed to establish connection to  In a workspace, run `blazedock run components/devpod-db:init-testdb` once to bootstrap the db")
 
 	return conn
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2020 Gitpod GmbH. All rights reserved.
+// Copyright (c) 2020 Devpod GmbH. All rights reserved.
 // Licensed under the GNU Affero General Public License (AGPL).
 // See License.AGPL.txt in the project root for license information.
 
@@ -29,7 +29,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	metricsserver "sigs.k8s.io/controller-runtime/pkg/metrics/server"
 
-	"github.com/gitpod-io/golang-crypto/ssh"
 	common_grpc "github.com/khulnasoft/devpod/common-go/grpc"
 	"github.com/khulnasoft/devpod/common-go/log"
 	"github.com/khulnasoft/devpod/common-go/pprof"
@@ -38,6 +37,7 @@ import (
 	"github.com/khulnasoft/devpod/ws-proxy/pkg/config"
 	"github.com/khulnasoft/devpod/ws-proxy/pkg/proxy"
 	"github.com/khulnasoft/devpod/ws-proxy/pkg/sshproxy"
+	"github.com/khulnasoft/golang-crypto/ssh"
 )
 
 var (
@@ -188,7 +188,7 @@ var runCmd = &cobra.Command{
 
 		go func() {
 			log.Infof("startint proxying on %s", cfg.Ingress.HTTPAddress)
-			proxy.NewWorkspaceProxy(cfg.Ingress, cfg.Proxy, proxy.HostBasedRouter(cfg.Ingress.Header, cfg.Proxy.GitpodInstallation.WorkspaceHostSuffix, cfg.Proxy.GitpodInstallation.WorkspaceHostSuffixRegex), infoprov, sshGatewayServer).MustServe(ctrlCtx)
+			proxy.NewWorkspaceProxy(cfg.Ingress, cfg.Proxy, proxy.HostBasedRouter(cfg.Ingress.Header, cfg.Proxy.DevpodInstallation.WorkspaceHostSuffix, cfg.Proxy.DevpodInstallation.WorkspaceHostSuffixRegex), infoprov, sshGatewayServer).MustServe(ctrlCtx)
 		}()
 
 		log.Info("🚪 ws-proxy is up and running")

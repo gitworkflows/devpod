@@ -4,34 +4,34 @@
     "creationTime": "2023-12-01T04:59:09.016Z",
     "organizationId": "ce36c2f8-5d43-4b1d-92f2-08cb6f0e0869",
     "ownerId": "b49148ed-6e1f-4eae-927f-1e62a3c9dab9",
-    "contextURL": "https://github.com/gitpod-io/workspace-images",
+    "contextURL": "https://github.com/khulnasoft/workspace-images",
     "projectId": "af8f3b00-5a0c-4be1-89bf-52bc72b75205",
-    "description": "gitpod-io/workspace-images - main",
+    "description": "khulnasoft/workspace-images - main",
     "context": {
       "isFile": false,
       "path": "",
-      "title": "gitpod-io/workspace-images - main",
+      "title": "khulnasoft/workspace-images - main",
       "ref": "main",
       "refType": "branch",
       "revision": "fa52963fa39227bcfbf005d396eb753bf3981e40",
       "repository": {
-        "cloneUrl": "https://github.com/gitpod-io/workspace-images.git",
+        "cloneUrl": "https://github.com/khulnasoft/workspace-images.git",
         "host": "github.com",
         "defaultBranch": "main",
         "name": "workspace-images",
         "owner": "khulnasoft",
         "private": false
       },
-      "normalizedContextURL": "https://github.com/gitpod-io/workspace-images",
+      "normalizedContextURL": "https://github.com/khulnasoft/workspace-images",
       "checkoutLocation": "workspace-images"
     },
-    "cloneUrl": "https://github.com/gitpod-io/workspace-images.git",
+    "cloneUrl": "https://github.com/khulnasoft/workspace-images.git",
     "config": {
       "image": {
         "file": ".devpod.Dockerfile",
         "externalSource": {
           "repository": {
-            "cloneUrl": "https://github.com/gitpod-io/workspace-images.git",
+            "cloneUrl": "https://github.com/khulnasoft/workspace-images.git",
             "host": "github.com",
             "defaultBranch": "main",
             "name": "workspace-images",
@@ -80,7 +80,7 @@
       "dockerFilePath": ".devpod.Dockerfile",
       "dockerFileSource": {
         "repository": {
-          "cloneUrl": "https://github.com/gitpod-io/workspace-images.git",
+          "cloneUrl": "https://github.com/khulnasoft/workspace-images.git",
           "host": "github.com",
           "defaultBranch": "main",
           "name": "workspace-images",
@@ -105,7 +105,7 @@
     "region": "workspace",
     "creationTime": "2023-12-01T04:59:09.080Z",
     "startedTime": "2023-12-01T05:02:04.539Z",
-    "ideUrl": "https://devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.io",
+    "ideUrl": "https://devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.khulnasoft.com",
     "workspaceImage": "877922613839.dkr.ecr.eu-central-1.amazonaws.com/image-build/workspace-images:7ce05944fe76199b43aa67aa398266389d2ab348acb01ce6ccca6585be1c7aac",
     "status": {
       "phase": "running",
@@ -127,7 +127,7 @@
       "ownerToken": "ownerToken111",
       "exposedPorts": [
         {
-          "url": "https://5000-devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.io",
+          "url": "https://5000-devpodio-workspaceimage-qjvlhi8es6o.ws.devpod.khulnasoft.com",
           "port": 5000,
           "protocol": "http",
           "visibility": "private"
@@ -154,11 +154,11 @@
       "ideSetup": {
         "envvars": [
           {
-            "name": "GITPOD_CONFIGCAT_ENABLED",
+            "name": "DEVPOD_CONFIGCAT_ENABLED",
             "value": "true"
           },
           {
-            "name": "GITPOD_IDE_ALIAS",
+            "name": "DEVPOD_IDE_ALIAS",
             "value": "code"
           }
         ],
