@@ -54,7 +54,7 @@ func TestPublicApiServerComponentWaiterContainer(t *testing.T) {
 	ctx, err := common.NewRenderContext(config.Config{}, versions.Manifest{}, "test_namespace")
 	require.NoError(t, err)
 
-	ctx.Config.Repository = "ghcr.io/devpod-core-dev/testing/installer"
+	ctx.Config.Repository = "khulnasoft/devpod-environment/testing/installer"
 	ctx.VersionManifest.Components.ServiceWaiter.Version = "test"
 	ctx.VersionManifest.Components.PublicAPIServer.Version = "happy_path_papi_image"
 	container := common.PublicApiServerComponentWaiterContainer(ctx)
@@ -67,7 +67,7 @@ func TestServerComponentWaiterContainer(t *testing.T) {
 	ctx, err := common.NewRenderContext(config.Config{}, versions.Manifest{}, "test_namespace")
 	require.NoError(t, err)
 
-	ctx.Config.Repository = "ghcr.io/devpod-core-dev/testing/installer"
+	ctx.Config.Repository = "khulnasoft/devpod-environment/testing/installer"
 	ctx.VersionManifest.Components.ServiceWaiter.Version = "test"
 	ctx.VersionManifest.Components.Server.Version = "happy_path_server_image"
 	container := common.ServerComponentWaiterContainer(ctx)

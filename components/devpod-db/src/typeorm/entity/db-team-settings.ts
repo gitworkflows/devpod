@@ -10,7 +10,7 @@ import {
     OrganizationSettings,
     RoleRestrictions,
     TimeoutSettings,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import { Entity, Column, PrimaryColumn } from "typeorm";
 import { TypeORM } from "../typeorm";
 

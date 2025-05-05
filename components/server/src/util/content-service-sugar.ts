@@ -10,12 +10,12 @@ import {
     createClientCallMetricsInterceptor,
     IClientCallMetrics,
     isConnectionAlive,
-} from "@khulnasoft/devpod-protocol/lib/util/grpc";
-import { IDEPluginServiceClient } from "@khulnasoft/content-service/lib/ideplugin_grpc_pb";
-import { ContentServiceClient } from "@khulnasoft/content-service/lib/content_grpc_pb";
-import { BlobServiceClient } from "@khulnasoft/content-service/lib/blobs_grpc_pb";
-import { WorkspaceServiceClient } from "@khulnasoft/content-service/lib/workspace_grpc_pb";
-import { HeadlessLogServiceClient } from "@khulnasoft/content-service/lib/headless-log_grpc_pb";
+} from "@devpod/devpod-protocol/lib/util/grpc";
+import { IDEPluginServiceClient } from "@devpod/content-service/lib/ideplugin_grpc_pb";
+import { ContentServiceClient } from "@devpod/content-service/lib/content_grpc_pb";
+import { BlobServiceClient } from "@devpod/content-service/lib/blobs_grpc_pb";
+import { WorkspaceServiceClient } from "@devpod/content-service/lib/workspace_grpc_pb";
+import { HeadlessLogServiceClient } from "@devpod/content-service/lib/headless-log_grpc_pb";
 
 export const ContentServiceClientConfig = Symbol("ContentServiceClientConfig");
 export const ContentServiceClientCallMetrics = Symbol("ContentServiceClientCallMetrics");

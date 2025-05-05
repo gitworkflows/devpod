@@ -55,7 +55,7 @@ if ! command -v envsubst; then
   go install github.com/a8m/envsubst/cmd/envsubst@latest
 fi
 
-GOBIN=$(pwd) go install github.com/gitpod-io/observability/installer@main
+GOBIN=$(pwd) go install github.com/khulnasoft/observability/installer@main
 mv installer observability-installer
 
 HONEYCOMB_API_KEY="$(gcloud secrets versions access latest --secret="honeycomb-api-key" --project=${PREVIEW_GCP_PROJECT})" \

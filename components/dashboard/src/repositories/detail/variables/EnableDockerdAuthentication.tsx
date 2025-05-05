@@ -11,7 +11,7 @@ import { InputField } from "../../../components/forms/InputField";
 import { useToast } from "../../../components/toasts/Toasts";
 import { useId } from "../../../hooks/useId";
 import { ConfigurationSettingsField } from "../ConfigurationSettingsField";
-import { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
+import { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
 import { SquareArrowOutUpRight } from "lucide-react";
 import { useConfiguration, useConfigurationMutation } from "../../../data/configurations/configuration-queries";
 import Alert from "../../../components/Alert";

@@ -18,7 +18,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 	segment "github.com/segmentio/analytics-go/v3"
 	"github.com/spf13/cobra"
 	"golang.org/x/exp/slices"

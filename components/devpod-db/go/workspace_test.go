@@ -40,7 +40,7 @@ func TestListWorkspacesByID(t *testing.T) {
 		},
 		{
 			Name:     "not found id returns emtpy results",
-			QueryIDs: []string{"khulnasoft-devpod-xxxxxxxxxxx"},
+			QueryIDs: []string{"devpodio-devpod-xxxxxxxxxxx"},
 			Expected: 0,
 		},
 		{
@@ -50,7 +50,7 @@ func TestListWorkspacesByID(t *testing.T) {
 		},
 		{
 			Name:     "one matching and one non existent returns one found result",
-			QueryIDs: []string{workspaces[0].ID, "khulnasoft-devpod-xxxxxxxxxxx"},
+			QueryIDs: []string{workspaces[0].ID, "devpodio-devpod-xxxxxxxxxxx"},
 			Expected: 1,
 		},
 		{

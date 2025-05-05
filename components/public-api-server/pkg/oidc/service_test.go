@@ -25,8 +25,8 @@ import (
 	"github.com/google/uuid"
 	db "github.com/khulnasoft/devpod/components/devpod-db/go"
 	"github.com/khulnasoft/devpod/components/devpod-db/go/dbtest"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws/jwstest"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/jws"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/jws/jwstest"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/oauth2"
 	"gopkg.in/square/go-jose.v2"
@@ -379,10 +379,10 @@ func Test_verifyCelExpression(t *testing.T) {
 					"devpod-team",
 					"devpod-team2/sub_group",
 				},
-				"email":          "test@khulnasoft.com",
+				"email":          "test@devpod.khulnasoft.com",
 				"email_verified": false,
 			},
-			CEL: "claims.email_verified && claims.email_verified.email.endsWith('@khulnasoft.com')",
+			CEL: "claims.email_verified && claims.email_verified.email.endsWith('@devpod.khulnasoft.com')",
 		},
 		{
 			Label:          "GitLab: groups restriction",
@@ -394,10 +394,10 @@ func Test_verifyCelExpression(t *testing.T) {
 					"devpod-team",
 					"devpod-team2/sub_group",
 				},
-				"email":          "test@khulnasoft.com",
+				"email":          "test@devpod.khulnasoft.com",
 				"email_verified": false,
 			},
-			CEL: "(claims.email_verified && claims.email_verified.email.endsWith('@khulnasoft.com')) || 'devpod-team' in claims.groups_direct",
+			CEL: "(claims.email_verified && claims.email_verified.email.endsWith('@devpod.khulnasoft.com')) || 'devpod-team' in claims.groups_direct",
 		},
 		{
 			Label:             "GitLab: groups restriction (not allowed)",
@@ -410,10 +410,10 @@ func Test_verifyCelExpression(t *testing.T) {
 				"groups_direct": []string{
 					"devpod-team2/sub_group",
 				},
-				"email":          "test@khulnasoft.com",
+				"email":          "test@devpod.khulnasoft.com",
 				"email_verified": false,
 			},
-			CEL: "(claims.email_verified && claims.email_verified.email.endsWith('@khulnasoft.com')) || 'devpod-team2' in claims.groups_direct",
+			CEL: "(claims.email_verified && claims.email_verified.email.endsWith('@devpod.khulnasoft.com')) || 'devpod-team2' in claims.groups_direct",
 		},
 		{
 			Label:             "invalidate cel",
@@ -426,7 +426,7 @@ func Test_verifyCelExpression(t *testing.T) {
 					"devpod-team",
 					"devpod-team2/sub_group",
 				},
-				"email":          "test@khulnasoft.com",
+				"email":          "test@devpod.khulnasoft.com",
 				"email_verified": false,
 			},
 			CEL: "foo",

@@ -6,19 +6,19 @@
 
 import { ProbotOctokit } from "probot";
 import { injectable, inject } from "inversify";
-import { WorkspaceDB, TracedWorkspaceDB, DBWithTracing } from "@khulnasoft/devpod-db/lib";
+import { WorkspaceDB, TracedWorkspaceDB, DBWithTracing } from "@devpod/devpod-db/lib";
 import { v4 as uuidv4 } from "uuid";
-import { HeadlessWorkspaceEvent } from "@khulnasoft/devpod-protocol/lib/headless-workspace-log";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { HeadlessWorkspaceEvent } from "@devpod/devpod-protocol/lib/headless-workspace-log";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import {
     PrebuiltWorkspaceUpdatable,
     PrebuiltWorkspace,
     Disposable,
     DisposableCollection,
     WorkspaceConfig,
-} from "@khulnasoft/devpod-protocol";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
-import { repeat } from "@khulnasoft/devpod-protocol/lib/util/repeat";
+} from "@devpod/devpod-protocol";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { repeat } from "@devpod/devpod-protocol/lib/util/repeat";
 import { RedisSubscriber } from "../messaging/redis-subscriber";
 
 export interface CheckRunInfo {

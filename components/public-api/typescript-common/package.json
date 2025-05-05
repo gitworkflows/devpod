@@ -1,5 +1,5 @@
 {
-  "name": "@khulnasoft/public-api-common",
+  "name": "@devpod/public-api-common",
   "version": "0.1.5",
   "license": "AGPL-3.0",
   "files": [
@@ -25,8 +25,8 @@
   "dependencies": {
     "@bufbuild/protobuf": "^1.3.3",
     "@connectrpc/connect": "1.1.2",
-    "@khulnasoft/devpod-protocol": "*",
-    "@khulnasoft/public-api": "*"
+    "@devpod/devpod-protocol": "0.1.5",
+    "@devpod/public-api": "0.1.5"
   },
   "devDependencies": {
     "@types/chai-subset": "^1.3.3",

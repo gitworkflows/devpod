@@ -4,11 +4,11 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ProjectDB, TypeORM, UserDB, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
-import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
-import { Organization, Project, ProjectSettings, User } from "@khulnasoft/devpod-protocol";
-import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
-import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ProjectDB, TypeORM, UserDB, WorkspaceDB } from "@devpod/devpod-db/lib";
+import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
+import { Organization, Project, ProjectSettings, User } from "@devpod/devpod-protocol";
+import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";
@@ -16,7 +16,7 @@ import { OrganizationService } from "../orgs/organization-service";
 import { expectError } from "../test/expect-utils";
 import { createTestContainer, withTestCtx } from "../test/service-testing-container-module";
 import { OldProjectSettings, ProjectsService } from "./projects-service";
-import { daysBefore } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
+import { daysBefore } from "@devpod/devpod-protocol/lib/util/timeutil";
 import { SYSTEM_USER } from "../authorization/authorizer";
 import { EnvVarService } from "../user/env-var-service";
 
@@ -307,7 +307,7 @@ describe("ProjectsService", async () => {
         // Create data which should not be found
         await createTestProject(ps, org, owner, {
             name: "my-project-3",
-            cloneUrl: "https://github.com/gitpod-io/different-repo",
+            cloneUrl: "https://github.com/khulnasoft/different-repo",
         });
         await createTestProject(ps, anotherOrg, owner, {
             name: "my-project-4",

@@ -6,7 +6,7 @@
 
 import { HostContext } from "./host-context";
 import { AuthProviderParams } from "./auth-provider";
-import { CommitInfo, User } from "@khulnasoft/devpod-protocol";
+import { CommitInfo, User } from "@devpod/devpod-protocol";
 import { RepoURL } from "../repohost";
 
 export const HostContextProvider = Symbol("HostContextProvider");

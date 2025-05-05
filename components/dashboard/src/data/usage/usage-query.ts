@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ListUsageRequest, ListUsageResponse } from "@khulnasoft/devpod-protocol/lib/usage";
+import { ListUsageRequest, ListUsageResponse } from "@devpod/devpod-protocol/lib/usage";
 import { useQuery } from "@tanstack/react-query";
 import { getDevpodService } from "../../service/service";
 

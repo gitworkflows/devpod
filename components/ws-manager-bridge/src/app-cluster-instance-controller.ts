@@ -4,11 +4,11 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WorkspaceDB } from "@khulnasoft/devpod-db/lib/workspace-db";
-import { Disposable, DisposableCollection } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { repeat } from "@khulnasoft/devpod-protocol/lib/util/repeat";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { WorkspaceDB } from "@devpod/devpod-db/lib/workspace-db";
+import { Disposable, DisposableCollection } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { repeat } from "@devpod/devpod-protocol/lib/util/repeat";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import { inject, injectable } from "inversify";
 import { Configuration } from "./config";
 import { WorkspaceInstanceController } from "./workspace-instance-controller";

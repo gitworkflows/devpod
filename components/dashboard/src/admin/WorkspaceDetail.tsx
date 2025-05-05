@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User, WorkspaceAndInstance, ContextURL, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
-import { DevpodHostUrl } from "@khulnasoft/devpod-protocol/lib/util/devpod-host-url";
+import { User, WorkspaceAndInstance, ContextURL, WorkspaceInstance } from "@devpod/devpod-protocol";
+import { DevpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ import { getDevpodService } from "../service/service";
 import { getProjectPath } from "../workspaces/WorkspaceEntry";
 import { WorkspaceStatusIndicator } from "../workspaces/WorkspaceStatusIndicator";
 import Property from "./Property";
-import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
+import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
 import { converter } from "../service/public-api";
 import { Button } from "@podkit/buttons/Button";
 

@@ -6,7 +6,7 @@
 
 import { PartialMessage } from "@bufbuild/protobuf";
 import { CallOptions, PromiseClient } from "@connectrpc/connect";
-import { PrebuildService } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_connect";
+import { PrebuildService } from "@devpod/public-api/lib/devpod/v1/prebuild_connect";
 import {
     StartPrebuildRequest,
     GetPrebuildRequest,
@@ -20,12 +20,12 @@ import {
     CancelPrebuildResponse,
     ListOrganizationPrebuildsRequest,
     ListOrganizationPrebuildsResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
+} from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
 import { getDevpodService } from "./service";
 import { converter } from "./public-api";
-import { PrebuildWithStatus } from "@khulnasoft/devpod-protocol";
-import { generateAsyncGenerator } from "@khulnasoft/devpod-protocol/lib/generate-async-generator";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { PrebuildWithStatus } from "@devpod/devpod-protocol";
+import { generateAsyncGenerator } from "@devpod/devpod-protocol/lib/generate-async-generator";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 
 export class JsonRpcPrebuildClient implements PromiseClient<typeof PrebuildService> {
     async startPrebuild(

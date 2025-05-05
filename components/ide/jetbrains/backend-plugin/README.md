@@ -30,7 +30,7 @@ There are a set of flags available in the script:
 
 ```bash
 -s # Use the stable image of IntelliJ (by default it will use the "latest")
--r # Specify a test repository (e.g. -r https://github.com/gitpod-io/empty)
+-r # Specify a test repository (e.g. -r https://github.com/khulnasoft/empty)
 -p # Specify a debug port (useful if used in combination with the Remote JVM debugger in IntelliJ)
 ```
 
@@ -45,7 +45,7 @@ To use the script, from your devpod's workspace:
   ```console
   *********************************************************
 
-  Devpod gateway link: jetbrains-gateway://connect#devpodHost=ak-jb-backend-debug-flow.staging.devpod-dev.com&workspaceId=khulnasoft-devpod-rvg0x7havor&backendPort=63343
+  Devpod gateway link: jetbrains-gateway://connect#devpodHost=ak-jb-backend-debug-flow.staging.devpod-dev.com&workspaceId=devpodio-devpod-rvg0x7havor&backendPort=63343
 
   *********************************************************
   ```
@@ -53,7 +53,7 @@ To use the script, from your devpod's workspace:
 By default, the test-repository is [devpod-samples/spring-petclinic](https://github.com/devpod-samples/spring-petclinic). You can specify a different test repo using the `-r` argument, e.g:
 
 ```bash
-./launch-dev-server.sh -r https://github.com/gitpod-io/empty
+./launch-dev-server.sh -r https://github.com/khulnasoft/empty
 ```
 
 If you want to specify the qualifier (latest/stable) of the IntelliJ version, use the `-s` flag, by default it will use the `latest`. To use stable, run:

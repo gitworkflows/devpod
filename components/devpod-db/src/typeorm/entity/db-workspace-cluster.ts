@@ -11,7 +11,7 @@ import {
     WorkspaceClass,
     WorkspaceCluster,
     WorkspaceClusterState,
-} from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+} from "@devpod/devpod-protocol/lib/workspace-cluster";
 import { ValueTransformer } from "typeorm/decorator/options/ValueTransformer";
 
 export type WorkspaceRegion = "europe" | "north-america" | "south-america" | "africa" | "asia" | ""; // unknown;

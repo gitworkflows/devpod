@@ -7,7 +7,7 @@
 import { Entity, Column, PrimaryColumn, Index } from "typeorm";
 import { TypeORM } from "../typeorm";
 
-// should be aligned with https://github.com/gitpod-io/openvscode-server/blob/a9286bef87ed21bbf108371aa1f62d9a5bc48fc4/src/vs/platform/userDataSync/common/userDataSync.ts#L110-L160
+// should be aligned with https://github.com/khulnasoft/openvscode-server/blob/a9286bef87ed21bbf108371aa1f62d9a5bc48fc4/src/vs/platform/userDataSync/common/userDataSync.ts#L110-L160
 export interface IUserData {
     ref: string;
     content: string | null;

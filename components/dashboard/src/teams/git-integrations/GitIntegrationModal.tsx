@@ -19,7 +19,7 @@ import { openAuthorizeWindow, toAuthProviderLabel } from "../../provider-utils";
 import { devpodHostUrl } from "../../service/service";
 import { UserContext } from "../../user-context";
 import { useToast } from "../../components/toasts/Toasts";
-import { AuthProvider, AuthProviderType } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProvider, AuthProviderType } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
 import { useCreateOrgAuthProviderMutation } from "../../data/auth-providers/create-org-auth-provider-mutation";
 import { useUpdateOrgAuthProviderMutation } from "../../data/auth-providers/update-org-auth-provider-mutation";
 import { authProviderClient, userClient } from "../../service/public-api";

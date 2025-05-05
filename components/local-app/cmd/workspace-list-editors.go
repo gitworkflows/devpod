@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/bufbuild/connect-go"
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 	"github.com/spf13/cobra"
 )
 

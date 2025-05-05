@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
-import { AuthProviderDescription, AuthProviderType } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
+import { AuthProviderDescription, AuthProviderType } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
 import EventEmitter from "events";
 import { uniq } from "lodash";
 
@@ -60,7 +60,7 @@ export function isDevpodIo() {
         window.location.hostname === "devpod.khulnasoft.com" ||
         window.location.hostname === "devpod-staging.com" ||
         window.location.hostname.endsWith("devpod-dev.com") ||
-        window.location.hostname.endsWith("gitpod-io-dev.com")
+        window.location.hostname.endsWith("khulnasoft-dev.com")
     );
 }
 

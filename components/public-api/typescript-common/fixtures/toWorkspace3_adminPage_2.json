@@ -1,18 +1,18 @@
 {
   "organizationId": "organizationId",
   "ownerId": "ownerId",
-  "contextURL": "https://github.com/gitpod-io/empty",
+  "contextURL": "https://github.com/khulnasoft/empty",
   "projectId": null,
   "description": "empty",
   "context": {
     "isFile": false,
     "path": "",
-    "title": "gitpod-io/empty - master",
+    "title": "khulnasoft/empty - master",
     "ref": "master",
     "refType": "branch",
     "revision": "revision",
     "repository": {
-      "cloneUrl": "https://github.com/gitpod-io/empty.git",
+      "cloneUrl": "https://github.com/khulnasoft/empty.git",
       "host": "github.com",
       "name": "empty",
       "owner": "devpod.khulnasoft.com",

@@ -237,7 +237,7 @@ func LaunchWorkspaceDirectly(t *testing.T, ctx context.Context, api *ComponentAP
 			},
 			Git: &wsmanapi.GitSpec{
 				Username: "integration-test",
-				Email:    "integration-test@khulnasoft.com",
+				Email:    "integration-test@devpod.khulnasoft.com",
 			},
 			Admission: wsmanapi.AdmissionLevel_ADMIT_OWNER_ONLY,
 			Envvars: []*wsmanapi.EnvironmentVariable{

@@ -1,11 +1,11 @@
 {
   "private": true,
-  "name": "@khulnasoft/supervisor-frontend",
+  "name": "@devpod/supervisor-frontend",
   "license": "UNLICENSED",
   "version": "0.0.0",
   "dependencies": {
-    "@khulnasoft/devpod-protocol": "*",
-    "@khulnasoft/supervisor-api-grpc": "*",
+    "@devpod/devpod-protocol": "0.1.5",
+    "@devpod/supervisor-api-grpc": "0.1.5",
     "buffer": "^4.3.0",
     "crypto-browserify": "3.12.0",
     "process": "^0.11.10",

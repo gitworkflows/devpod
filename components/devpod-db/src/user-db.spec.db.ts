@@ -8,7 +8,7 @@ import * as chai from "chai";
 const expect = chai.expect;
 import { suite, test, timeout } from "@testdeck/mocha";
 
-import { DevpodTokenType, Identity, Workspace, WorkspaceInstance } from "@khulnasoft/devpod-protocol";
+import { DevpodTokenType, Identity, Workspace, WorkspaceInstance } from "@devpod/devpod-protocol";
 import { testContainer } from "./test-container";
 import { DBIdentity } from "./typeorm/entity/db-identity";
 import { TypeORMUserDBImpl } from "./typeorm/user-db-impl";

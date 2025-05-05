@@ -4,16 +4,16 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { User } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { inject, injectable } from "inversify";
 import { Config } from "../config";
 import { Twilio } from "twilio";
 import { ServiceContext } from "twilio/lib/rest/verify/v2/service";
-import { TeamDB, UserDB } from "@khulnasoft/devpod-db/lib";
-import { ErrorCodes, ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { TeamDB, UserDB } from "@devpod/devpod-db/lib";
+import { ErrorCodes, ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
 import { v4 as uuidv4, validate as uuidValidate } from "uuid";
-import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
+import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
 import { UserService } from "../user/user-service";
 
 interface VerificationEndpoint {

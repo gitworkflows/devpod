@@ -5,9 +5,9 @@
  */
 
 import * as grpc from "@grpc/grpc-js";
-import { IAnalyticsWriter, NullAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
-import { IDEServiceClient, IDEServiceDefinition } from "@khulnasoft/ide-service-api/lib/ide.pb";
-import { UsageServiceDefinition } from "@khulnasoft/usage-api/lib/usage/v1/usage.pb";
+import { IAnalyticsWriter, NullAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
+import { IDEServiceClient, IDEServiceDefinition } from "@devpod/ide-service-api/lib/ide.pb";
+import { UsageServiceDefinition } from "@devpod/usage-api/lib/usage/v1/usage.pb";
 import { ContainerModule } from "inversify";
 import { v4 } from "uuid";
 import { AuthProvider, AuthProviderParams } from "../auth/auth-provider";
@@ -16,14 +16,14 @@ import { HostContextProviderImpl } from "../auth/host-context-provider-impl";
 import { SpiceDBClientProvider } from "../authorization/spicedb";
 import { AuthConfig, Config } from "../config";
 import { StorageClient } from "../storage/storage-client";
-import { testContainer } from "@khulnasoft/devpod-db/lib";
+import { testContainer } from "@devpod/devpod-db/lib";
 import { productionContainerModule } from "../container-module";
 import { createMock } from "./mocks/mock";
 import { UsageServiceClientMock } from "./mocks/usage-service-client-mock";
 import { env, nextTick } from "process";
-import { WorkspaceManagerClientProviderSource } from "@khulnasoft/ws-manager/lib/client-provider-source";
-import { WorkspaceClusterWoTLS } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
-import { WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
+import { WorkspaceManagerClientProviderSource } from "@devpod/ws-manager/lib/client-provider-source";
+import { WorkspaceClusterWoTLS } from "@devpod/devpod-protocol/lib/workspace-cluster";
+import { WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
 import {
     BuildInfo,
     BuildResponse,
@@ -31,16 +31,16 @@ import {
     IImageBuilderClient,
     LogInfo,
     ResolveWorkspaceImageResponse,
-} from "@khulnasoft/image-builder/lib";
-import { IWorkspaceManagerClient, StartWorkspaceResponse } from "@khulnasoft/ws-manager/lib";
+} from "@devpod/image-builder/lib";
+import { IWorkspaceManagerClient, StartWorkspaceResponse } from "@devpod/ws-manager/lib";
 import { TokenProvider } from "../user/token-provider";
-import { DevpodHostUrl } from "@khulnasoft/devpod-protocol/lib/util/devpod-host-url";
+import { DevpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
 import * as crypto from "crypto";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { Subject, SubjectId } from "../auth/subject-id";
-import { User } from "@khulnasoft/devpod-protocol";
+import { User } from "@devpod/devpod-protocol";
 import { runWithRequestContext } from "../util/request-context";
-import { GitHubOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
+import { GitHubOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
 
 const signingKeyPair = crypto.generateKeyPairSync("rsa", { modulusLength: 2048 });
 const validatingKeyPair1 = crypto.generateKeyPairSync("rsa", { modulusLength: 2048 });

@@ -5,12 +5,12 @@
  */
 
 import { v1 } from "@authzed/authzed-node";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import * as grpc from "@grpc/grpc-js";
-import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
-import { TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
-import { createDebugLogInterceptor } from "@khulnasoft/devpod-protocol/lib/util/grpc";
-import { isConnectionAlive } from "@khulnasoft/devpod-protocol/lib/util/grpc";
+import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
+import { createDebugLogInterceptor } from "@devpod/devpod-protocol/lib/util/grpc";
+import { isConnectionAlive } from "@devpod/devpod-protocol/lib/util/grpc";
 
 export interface SpiceDBClientConfig {
     address: string;

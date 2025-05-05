@@ -22,16 +22,16 @@ import (
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
 	"github.com/khulnasoft/devpod/components/public-api/go/experimental/v1/v1connect"
 	protocol "github.com/khulnasoft/devpod/devpod-protocol"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/auth"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws/jwstest"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/auth"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/jws"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/jws/jwstest"
 	"github.com/sourcegraph/jsonrpc2"
 	"github.com/stretchr/testify/require"
 	"github.com/zitadel/oidc/pkg/oidc"
 )
 
 func TestGetIDToken(t *testing.T) {
-	const workspaceID = "khulnasoft-devpod-te23l4bjejv"
+	const workspaceID = "devpodio-devpod-te23l4bjejv"
 	type Expectation struct {
 		Error    string
 		Response *v1.GetIDTokenResponse
@@ -48,7 +48,7 @@ func TestGetIDToken(t *testing.T) {
 			Name: "org-owned user",
 			TokenSource: func(t *testing.T) IDTokenSource {
 				return functionIDTokenSource(func(ctx context.Context, org string, audience []string, userInfo oidc.UserInfo) (string, error) {
-					require.Equal(t, "correct@khulnasoft.com", userInfo.GetEmail())
+					require.Equal(t, "correct@devpod.khulnasoft.com", userInfo.GetEmail())
 					require.True(t, userInfo.IsEmailVerified())
 
 					return "foobar", nil
@@ -75,8 +75,8 @@ func TestGetIDToken(t *testing.T) {
 						Name: "foobar",
 						Identities: []*protocol.Identity{
 							nil,
-							{Deleted: true, PrimaryEmail: "nonsense@khulnasoft.com"},
-							{Deleted: false, PrimaryEmail: "correct@khulnasoft.com", LastSigninTime: "2021-01-01T00:00:00Z"},
+							{Deleted: true, PrimaryEmail: "nonsense@devpod.khulnasoft.com"},
+							{Deleted: false, PrimaryEmail: "correct@devpod.khulnasoft.com", LastSigninTime: "2021-01-01T00:00:00Z"},
 						},
 						OrganizationId: "test",
 					},
@@ -97,7 +97,7 @@ func TestGetIDToken(t *testing.T) {
 			Name: "none org-owned user",
 			TokenSource: func(t *testing.T) IDTokenSource {
 				return functionIDTokenSource(func(ctx context.Context, org string, audience []string, userInfo oidc.UserInfo) (string, error) {
-					require.Equal(t, "correct@khulnasoft.com", userInfo.GetEmail())
+					require.Equal(t, "correct@devpod.khulnasoft.com", userInfo.GetEmail())
 					require.False(t, userInfo.IsEmailVerified())
 
 					return "foobar", nil
@@ -124,8 +124,8 @@ func TestGetIDToken(t *testing.T) {
 						Name: "foobar",
 						Identities: []*protocol.Identity{
 							nil,
-							{Deleted: true, PrimaryEmail: "nonsense@khulnasoft.com"},
-							{Deleted: false, PrimaryEmail: "correct@khulnasoft.com", LastSigninTime: "2021-01-01T00:00:00Z"},
+							{Deleted: true, PrimaryEmail: "nonsense@devpod.khulnasoft.com"},
+							{Deleted: false, PrimaryEmail: "correct@devpod.khulnasoft.com", LastSigninTime: "2021-01-01T00:00:00Z"},
 						},
 					},
 					nil,
@@ -214,7 +214,7 @@ func TestGetIDToken(t *testing.T) {
 			Name: "include scope",
 			TokenSource: func(t *testing.T) IDTokenSource {
 				return functionIDTokenSource(func(ctx context.Context, org string, audience []string, userInfo oidc.UserInfo) (string, error) {
-					require.Equal(t, "correct@khulnasoft.com", userInfo.GetEmail())
+					require.Equal(t, "correct@devpod.khulnasoft.com", userInfo.GetEmail())
 					require.True(t, userInfo.IsEmailVerified())
 					require.Equal(t, "foo", userInfo.GetClaim("scope"))
 
@@ -242,8 +242,8 @@ func TestGetIDToken(t *testing.T) {
 						Name: "foobar",
 						Identities: []*protocol.Identity{
 							nil,
-							{Deleted: true, PrimaryEmail: "nonsense@khulnasoft.com"},
-							{Deleted: false, PrimaryEmail: "correct@khulnasoft.com", LastSigninTime: "2021-01-01T00:00:00Z"},
+							{Deleted: true, PrimaryEmail: "nonsense@devpod.khulnasoft.com"},
+							{Deleted: false, PrimaryEmail: "correct@devpod.khulnasoft.com", LastSigninTime: "2021-01-01T00:00:00Z"},
 						},
 						OrganizationId: "test",
 					},

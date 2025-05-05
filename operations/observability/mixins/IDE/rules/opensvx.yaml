@@ -20,7 +20,7 @@ spec:
         dedicated: included
       for: 20m
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/DevpodOpenVsxRegistryDown.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodOpenVsxRegistryDown.md
         summary: Open-VSX registry is possibly down
         description: Open-VSX registry is possibly down. We cannot pull VSCode extensions we don't have in our caches
         dashboard_url: https://grafana.devpod.khulnasoft.com/d/HNOvmGpxgd/openvsx-proxy?var-cluster={{ $labels.cluster }}
@@ -32,7 +32,7 @@ spec:
         severity: critical
       for: 20m
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/DevpodOpenVSXUpstreamDown.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodOpenVSXUpstreamDown.md
         summary: Open-VSX upstream is possibly down
         description: Open-VSX upstream is possibly down.
         dashboard_url: https://grafana.devpod.khulnasoft.com/d/WI_x6hN4k/openvsx-mirror?var-cluster=openvsx-mirror-us01&viewPanel=13

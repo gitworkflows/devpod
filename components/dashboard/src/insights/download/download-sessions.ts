@@ -9,7 +9,7 @@ import {
     PrebuildInitializer,
     WorkspaceSession,
     WorkspaceSpec_WorkspaceType,
-} from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+} from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { workspaceClient } from "../../service/public-api";
 import dayjs from "dayjs";
 import { useQuery, useQueryClient } from "@tanstack/react-query";

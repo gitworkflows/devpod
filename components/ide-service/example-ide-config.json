@@ -1,5 +1,5 @@
 {
-  "supervisorImage": "ghcr.io/devpod-core-dev/build/supervisor:commit-ff38b98b7dde4929159bcaeec68d178898dc2139",
+  "supervisorImage": "khulnasoft/devpod-environment/build/supervisor:commit-ff38b98b7dde4929159bcaeec68d178898dc2139",
   "ideOptions": {
     "options": {
       "code": {
@@ -8,17 +8,17 @@
         "type": "browser",
         "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/vscode.svg",
         "label": "Browser",
-        "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/code:nightly@sha256:8669f6ab8dceefde11138bf4bc0ee73b934b2cc47e6135426f05fb4343ec5ab1",
+        "image": "khulnasoft/devpod-environment/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/code:nightly@sha256:8669f6ab8dceefde11138bf4bc0ee73b934b2cc47e6135426f05fb4343ec5ab1",
         "allowPin": true,
         "versions": [
           {
             "version": "1.87.0",
-            "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-82dc424633bdc7266b46302042dd98af201fa8f8"
+            "image": "khulnasoft/devpod-environment/build/ide/code:commit-82dc424633bdc7266b46302042dd98af201fa8f8"
           },
           {
             "version": "1.86.2",
-            "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-d86f6aa033943c9650d06339915e68063b0cf142"
+            "image": "khulnasoft/devpod-environment/build/ide/code:commit-d86f6aa033943c9650d06339915e68063b0cf142"
           }
         ]
       },
@@ -27,23 +27,23 @@
         "title": "VS Code",
         "type": "desktop",
         "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/vscode.svg",
-        "image": "ghcr.io/devpod-core-dev/build/ide/code-desktop:commit-c2b7421628ed5a5fb618817a4fd1549684659c2d",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/code-desktop-insiders:commit-c2b7421628ed5a5fb618817a4fd1549684659c2d"
+        "image": "khulnasoft/devpod-environment/build/ide/code-desktop:commit-c2b7421628ed5a5fb618817a4fd1549684659c2d",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/code-desktop-insiders:commit-c2b7421628ed5a5fb618817a4fd1549684659c2d"
       },
       "goland": {
         "orderKey": "05",
         "title": "GoLand",
         "type": "desktop",
         "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/golandLogo.svg",
-        "image": "ghcr.io/devpod-core-dev/build/ide/goland:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/goland:latest@sha256:e07524e52089829dc8d3b38f7d18fb51b24f07aed7d8e4e6e447899687978d43",
+        "image": "khulnasoft/devpod-environment/build/ide/goland:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/goland:latest@sha256:e07524e52089829dc8d3b38f7d18fb51b24f07aed7d8e4e6e447899687978d43",
         "imageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a",
-          "ghcr.io/devpod-core-dev/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
+          "khulnasoft/devpod-environment/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a",
+          "khulnasoft/devpod-environment/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
         ],
         "latestImageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a-latest",
-          "ghcr.io/devpod-core-dev/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
+          "khulnasoft/devpod-environment/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a-latest",
+          "khulnasoft/devpod-environment/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
         ]
       },
       "intellij": {
@@ -51,15 +51,15 @@
         "title": "IntelliJ IDEA",
         "type": "desktop",
         "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/intellijIdeaLogo.svg",
-        "image": "ghcr.io/devpod-core-dev/build/ide/intellij:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/intellij:latest@sha256:e07524e52089829dc8d3b38f7d18fb51b24f07aed7d8e4e6e447899687978d43",
+        "image": "khulnasoft/devpod-environment/build/ide/intellij:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/intellij:latest@sha256:e07524e52089829dc8d3b38f7d18fb51b24f07aed7d8e4e6e447899687978d43",
         "imageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a",
-          "ghcr.io/devpod-core-dev/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
+          "khulnasoft/devpod-environment/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a",
+          "khulnasoft/devpod-environment/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
         ],
         "latestImageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a-latest",
-          "ghcr.io/devpod-core-dev/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
+          "khulnasoft/devpod-environment/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a-latest",
+          "khulnasoft/devpod-environment/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
         ],
         "allowPin": true,
         "versions": [
@@ -86,15 +86,15 @@
         "title": "PhpStorm",
         "type": "desktop",
         "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/phpstormLogo.svg",
-        "image": "ghcr.io/devpod-core-dev/build/ide/phpstorm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/phpstorm:latest@sha256:e07524e52089829dc8d3b38f7d18fb51b24f07aed7d8e4e6e447899687978d43",
+        "image": "khulnasoft/devpod-environment/build/ide/phpstorm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/phpstorm:latest@sha256:e07524e52089829dc8d3b38f7d18fb51b24f07aed7d8e4e6e447899687978d43",
         "imageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a",
-          "ghcr.io/devpod-core-dev/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
+          "khulnasoft/devpod-environment/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a",
+          "khulnasoft/devpod-environment/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
         ],
         "latestImageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a-latest",
-          "ghcr.io/devpod-core-dev/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
+          "khulnasoft/devpod-environment/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a-latest",
+          "khulnasoft/devpod-environment/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
         ]
       },
       "pycharm": {
@@ -102,15 +102,15 @@
         "title": "PyCharm",
         "type": "desktop",
         "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/pycharmLogo.svg",
-        "image": "ghcr.io/devpod-core-dev/build/ide/pycharm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/pycharm:latest@sha256:e07524e52089829dc8d3b38f7d18fb51b24f07aed7d8e4e6e447899687978d43",
+        "image": "khulnasoft/devpod-environment/build/ide/pycharm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/pycharm:latest@sha256:e07524e52089829dc8d3b38f7d18fb51b24f07aed7d8e4e6e447899687978d43",
         "imageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a",
-          "ghcr.io/devpod-core-dev/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
+          "khulnasoft/devpod-environment/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a",
+          "khulnasoft/devpod-environment/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
         ],
         "latestImageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a-latest",
-          "ghcr.io/devpod-core-dev/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
+          "khulnasoft/devpod-environment/build/ide/jb-backend-plugin:commit-b38092639d1783a1957894ddd4f492b3cdc9794a-latest",
+          "khulnasoft/devpod-environment/build/ide/jb-launcher:commit-b38092639d1783a1957894ddd4f492b3cdc9794a"
         ]
       }
     },

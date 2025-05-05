@@ -14,7 +14,7 @@ import { useOrgSettingsQuery } from "../../../data/organizations/org-settings-qu
 import { useUpdateOrgSettingsMutation } from "../../../data/organizations/update-org-settings-mutation";
 import { useId } from "../../../hooks/useId";
 import { ConfigurationSettingsField } from "../ConfigurationSettingsField";
-import { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
+import { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
 import { SquareArrowOutUpRight } from "lucide-react";
 
 type Props = {

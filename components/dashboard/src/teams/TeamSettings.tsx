@@ -5,9 +5,9 @@
  */
 
 import { PlainMessage } from "@bufbuild/protobuf";
-import { EnvVar } from "@khulnasoft/devpod-protocol";
-import { ErrorCode } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { OrganizationSettings } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import { EnvVar } from "@devpod/devpod-protocol";
+import { ErrorCode } from "@devpod/devpod-protocol/lib/messaging/error";
+import { OrganizationSettings } from "@devpod/public-api/lib/devpod/v1/organization_pb";
 import { Button } from "@podkit/buttons/Button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@podkit/select/Select";
 import { SwitchInputField } from "@podkit/switch/Switch";

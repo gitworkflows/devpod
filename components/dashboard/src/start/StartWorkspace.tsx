@@ -4,9 +4,9 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { DisposableCollection, RateLimiterError, WorkspaceImageBuild } from "@khulnasoft/devpod-protocol";
-import { IDEOptions } from "@khulnasoft/devpod-protocol/lib/ide-protocol";
-import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { DisposableCollection, RateLimiterError, WorkspaceImageBuild } from "@devpod/devpod-protocol";
+import { IDEOptions } from "@devpod/devpod-protocol/lib/ide-protocol";
+import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import EventEmitter from "events";
 import * as queryString from "query-string";
 import React, { Suspense, useEffect, useMemo } from "react";
@@ -32,7 +32,7 @@ import {
     Workspace,
     WorkspacePhase_Phase,
     WorkspaceSpec_WorkspaceType,
-} from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+} from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { PartialMessage } from "@bufbuild/protobuf";
 import { trackEvent } from "../Analytics";
 import { fromWorkspaceName } from "../workspaces/RenameWorkspaceModal";

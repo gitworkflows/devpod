@@ -13,8 +13,8 @@ import {
     generatePaginationToken,
     parsePaginationToken,
 } from "./pagination";
-import { PaginationRequest } from "@khulnasoft/public-api/lib/devpod/v1/pagination_pb";
-import { ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { PaginationRequest } from "@devpod/public-api/lib/devpod/v1/pagination_pb";
+import { ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
 
 const expect = chai.expect;
 

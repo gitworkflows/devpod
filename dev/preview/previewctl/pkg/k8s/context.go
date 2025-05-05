@@ -13,7 +13,7 @@ import (
 )
 
 func RenameConfig(config *api.Config, oldName, newName string) (*api.Config, error) {
-	// TODO: https://github.com/gitpod-io/ops/issues/6524
+	// TODO: https://github.com/khulnasoft/ops/issues/6524
 	kubeCtx, exists := config.Contexts[oldName]
 	if !exists {
 		return nil, fmt.Errorf("cannot rename %q, it's not in the provided context", oldName)
@@ -62,7 +62,7 @@ func RenameConfig(config *api.Config, oldName, newName string) (*api.Config, err
 }
 
 func MergeContextsWithDefault(configs ...*api.Config) (*api.Config, error) {
-	// TODO: https://github.com/gitpod-io/ops/issues/6524
+	// TODO: https://github.com/khulnasoft/ops/issues/6524
 	defaultConfig, err := clientcmd.NewDefaultClientConfigLoadingRules().Load()
 	if err != nil {
 		return nil, err

@@ -6,7 +6,7 @@
 
 import { inject, injectable } from "inversify";
 import { Config } from "../config";
-import { UserDB } from "@khulnasoft/devpod-db/lib";
+import { UserDB } from "@devpod/devpod-db/lib";
 import { Authorizer } from "../authorization/authorizer";
 import {
     AdditionalUserData,
@@ -17,14 +17,14 @@ import {
     User,
     WorkspaceTimeoutDuration,
     WorkspaceTimeoutSetting,
-} from "@khulnasoft/devpod-protocol";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+} from "@devpod/devpod-protocol";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { CreateUserParams } from "./user-authentication";
-import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
-import { TransactionalContext } from "@khulnasoft/devpod-db/lib/typeorm/transactional-db-impl";
+import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
+import { TransactionalContext } from "@devpod/devpod-db/lib/typeorm/transactional-db-impl";
 import { RelationshipUpdater } from "../authorization/relationship-updater";
-import { getName, getPrimaryEmail } from "@khulnasoft/public-api-common/lib/user-utils";
+import { getName, getPrimaryEmail } from "@devpod/public-api-common/lib/user-utils";
 
 @injectable()
 export class UserService {

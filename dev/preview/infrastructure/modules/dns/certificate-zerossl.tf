@@ -20,7 +20,7 @@ resource "acme_registration" "zerossl" {
   count    = local.zerossl_enabled ? 1 : 0
 
   account_key_pem = tls_private_key.zerossl[0].private_key_pem
-  email_address   = "preview-environment-certificate-throwaway@khulnasoft.com"
+  email_address   = "preview-environment-certificate-throwaway@devpod.khulnasoft.com"
 
   external_account_binding {
     key_id      = jsondecode(data.google_secret_manager_secret_version.zerossl_eab[0].secret_data).kid

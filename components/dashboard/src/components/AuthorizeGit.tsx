@@ -15,7 +15,7 @@ import { Heading2, Heading3, Subheading } from "./typography/headings";
 import classNames from "classnames";
 import { iconForAuthProvider, simplifyProviderName } from "../provider-utils";
 import { useIsOwner } from "../data/organizations/members-query";
-import { AuthProviderDescription } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProviderDescription } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
 
 export function useNeedsGitAuthorization() {
     const { data: authProviders } = useAuthProviderDescriptions();

@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WorkspacePhase_Phase, WorkspaceSession } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspacePhase_Phase, WorkspaceSession } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { displayTime } from "./WorkspaceSessionGroup";
 
 type Props = {

@@ -7,7 +7,7 @@
 import { injectable, inject } from "inversify";
 import { EntityManager, Repository } from "typeorm";
 
-import { EmailDomainFilterEntry } from "@khulnasoft/devpod-protocol";
+import { EmailDomainFilterEntry } from "@devpod/devpod-protocol";
 import { TypeORM } from "../typeorm/typeorm";
 import { EmailDomainFilterDB } from "../email-domain-filter-db";
 import { DBEmailDomainFilterEntry } from "./entity/db-email-domain-filter-entry";

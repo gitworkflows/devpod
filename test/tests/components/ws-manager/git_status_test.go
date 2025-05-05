@@ -33,7 +33,7 @@ func TestGitStatus(t *testing.T) {
 			}{
 				{
 					Name:             "classic",
-					ContextURL:       "https://github.com/gitpod-io/empty",
+					ContextURL:       "https://github.com/khulnasoft/empty",
 					WorkspaceRoot:    "/workspace/empty",
 					CheckoutLocation: "empty",
 				},

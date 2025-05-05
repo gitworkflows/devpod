@@ -17,13 +17,13 @@ import (
 	"time"
 
 	"github.com/bufbuild/connect-go"
-	"github.com/gitpod-io/local-app/pkg/config"
-	"github.com/gitpod-io/local-app/pkg/helper"
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
 	"github.com/go-git/go-git/v5"
 	gitcfg "github.com/go-git/go-git/v5/config"
 	"github.com/gookit/color"
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
+	"github.com/khulnasoft/local-app/pkg/config"
+	"github.com/khulnasoft/local-app/pkg/helper"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 	"github.com/melbahja/goph"
 	"github.com/spf13/cobra"
 	"golang.org/x/crypto/ssh"
@@ -154,7 +154,7 @@ var workspaceUpCmd = &cobra.Command{
 
 		newWorkspace, err := devpod.Workspaces.CreateAndStartWorkspace(ctx, connect.NewRequest(
 			&v1.CreateAndStartWorkspaceRequest{
-				Source:         &v1.CreateAndStartWorkspaceRequest_ContextUrl{ContextUrl: "DEVPODCLI_CONTENT_INIT=push/https://github.com/gitpod-io/empty"},
+				Source:         &v1.CreateAndStartWorkspaceRequest_ContextUrl{ContextUrl: "DEVPODCLI_CONTENT_INIT=push/https://github.com/khulnasoft/empty"},
 				OrganizationId: orgId,
 				StartSpec: &v1.StartWorkspaceSpec{
 					IdeSettings: &v1.IDESettings{

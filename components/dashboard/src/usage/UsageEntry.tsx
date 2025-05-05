@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WorkspaceType } from "@khulnasoft/devpod-protocol";
-import { Usage, WorkspaceInstanceUsageData } from "@khulnasoft/devpod-protocol/lib/usage";
+import { WorkspaceType } from "@devpod/devpod-protocol";
+import { Usage, WorkspaceInstanceUsageData } from "@devpod/devpod-protocol/lib/usage";
 import { FC } from "react";
 import { useWorkspaceClasses } from "../data/workspaces/workspace-classes-query";
 import { ReactComponent as UsageIcon } from "../images/usage-default.svg";

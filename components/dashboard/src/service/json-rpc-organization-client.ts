@@ -6,7 +6,7 @@
 
 import { PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { CallOptions, PromiseClient } from "@connectrpc/connect";
-import { OrganizationService } from "@khulnasoft/public-api/lib/devpod/v1/organization_connect";
+import { OrganizationService } from "@devpod/public-api/lib/devpod/v1/organization_connect";
 import {
     CreateOrganizationRequest,
     CreateOrganizationResponse,
@@ -37,10 +37,10 @@ import {
     UpdateOrganizationResponse,
     UpdateOrganizationSettingsRequest,
     UpdateOrganizationSettingsResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+} from "@devpod/public-api/lib/devpod/v1/organization_pb";
 import { getDevpodService } from "./service";
 import { converter } from "./public-api";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 
 export class JsonRpcOrganizationClient implements PromiseClient<typeof OrganizationService> {
     async createOrganization(

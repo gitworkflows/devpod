@@ -19,7 +19,7 @@ spec:
         severity: critical
       for: 20m
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/SSHGatewayFailingToConnect.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/SSHGatewayFailingToConnect.md
         summary: SSH connectivity issues
         description: SSH Gateway is failing to connect to SSH servers in Devpod workspaces
         dashboard_url: https://grafana.devpod.khulnasoft.com/d/3oan1Zr7k/ssh-gateway-overview?orgId=1&refresh=30s&from=now-2d&to=now

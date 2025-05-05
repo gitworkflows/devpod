@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@khulnasoft/devpod-protocol";
+import { User } from "@devpod/devpod-protocol";
 import { injectable } from "inversify";
 
 @injectable()

@@ -13,8 +13,8 @@ import {
     PrebuildInitializer,
     SnapshotInitializer,
     WorkspaceInitializer,
-} from "@khulnasoft/content-service/lib";
-import { CompositeInitializer, FromBackupInitializer } from "@khulnasoft/content-service/lib/initializer_pb";
+} from "@devpod/content-service/lib";
+import { CompositeInitializer, FromBackupInitializer } from "@devpod/content-service/lib/initializer_pb";
 import {
     DBWithTracing,
     ProjectDB,
@@ -24,8 +24,8 @@ import {
     TracedWorkspaceDB,
     UserDB,
     WorkspaceDB,
-} from "@khulnasoft/devpod-db/lib";
-import { BlockedRepositoryDB } from "@khulnasoft/devpod-db/lib/blocked-repository-db";
+} from "@devpod/devpod-db/lib";
+import { BlockedRepositoryDB } from "@devpod/devpod-db/lib/blocked-repository-db";
 import {
     AdditionalContentContext,
     BillingTier,
@@ -61,14 +61,14 @@ import {
     WorkspaceInstancePhase,
     WorkspaceInstanceStatus,
     WorkspaceTimeoutDuration,
-} from "@khulnasoft/devpod-protocol";
-import { IAnalyticsWriter, TrackMessage } from "@khulnasoft/devpod-protocol/lib/analytics";
-import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
-import { Deferred } from "@khulnasoft/devpod-protocol/lib/util/deferred";
-import { LogContext, log } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
-import { WorkspaceRegion } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
-import * as IdeServiceApi from "@khulnasoft/ide-service-api/lib/ide.pb";
+} from "@devpod/devpod-protocol";
+import { IAnalyticsWriter, TrackMessage } from "@devpod/devpod-protocol/lib/analytics";
+import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
+import { Deferred } from "@devpod/devpod-protocol/lib/util/deferred";
+import { LogContext, log } from "@devpod/devpod-protocol/lib/util/logging";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { WorkspaceRegion } from "@devpod/devpod-protocol/lib/workspace-cluster";
+import * as IdeServiceApi from "@devpod/ide-service-api/lib/ide.pb";
 import {
     BuildRegistryAuth,
     BuildRegistryAuthSelective,
@@ -81,15 +81,15 @@ import {
     BuildStatus,
     ImageBuilderClientProvider,
     ResolveBaseImageRequest,
-} from "@khulnasoft/image-builder/lib";
+} from "@devpod/image-builder/lib";
 import {
     IDEImage,
     PromisifiedWorkspaceManagerClient,
     StartWorkspaceResponse,
     StartWorkspaceSpec,
     WorkspaceFeatureFlag,
-} from "@khulnasoft/ws-manager/lib";
-import { WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
+} from "@devpod/ws-manager/lib";
+import { WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
 import {
     AdmissionLevel,
     EnvironmentVariable,
@@ -103,7 +103,7 @@ import {
     StopWorkspacePolicy,
     StopWorkspaceRequest,
     DescribeWorkspaceRequest,
-} from "@khulnasoft/ws-manager/lib/core_pb";
+} from "@devpod/ws-manager/lib/core_pb";
 import * as grpc from "@grpc/grpc-js";
 import * as crypto from "crypto";
 import { inject, injectable } from "inversify";
@@ -132,12 +132,12 @@ import { SYSTEM_USER, SYSTEM_USER_ID } from "../authorization/authorizer";
 import { EnvVarService, ResolvedEnvVars } from "../user/env-var-service";
 import { RedlockAbortSignal } from "redlock";
 import { ConfigProvider } from "./config-provider";
-import { isGrpcError } from "@khulnasoft/devpod-protocol/lib/util/grpc";
-import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { isGrpcError } from "@devpod/devpod-protocol/lib/util/grpc";
+import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
 import { ctxIsAborted, runWithRequestContext, runWithSubjectId } from "../util/request-context";
 import { SubjectId } from "../auth/subject-id";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { IDESettingsVersion } from "@khulnasoft/devpod-protocol/lib/ide-protocol";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { IDESettingsVersion } from "@devpod/devpod-protocol/lib/ide-protocol";
 import { getFeatureFlagEnableExperimentalJBTB } from "../util/featureflags";
 import { OrganizationService } from "../orgs/organization-service";
 import { ProjectsService } from "../projects/projects-service";

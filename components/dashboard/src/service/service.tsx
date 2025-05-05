@@ -12,22 +12,22 @@ import {
     DevpodService,
     DevpodServiceImpl,
     Disposable,
-} from "@khulnasoft/devpod-protocol";
-import { WebSocketConnectionProvider } from "@khulnasoft/devpod-protocol/lib/messaging/browser/connection";
-import { DevpodHostUrl } from "@khulnasoft/devpod-protocol/lib/util/devpod-host-url";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { IDEFrontendDashboardService } from "@khulnasoft/devpod-protocol/lib/frontend-dashboard-service";
-import { RemoteTrackMessage } from "@khulnasoft/devpod-protocol/lib/analytics";
+} from "@devpod/devpod-protocol";
+import { WebSocketConnectionProvider } from "@devpod/devpod-protocol/lib/messaging/browser/connection";
+import { DevpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { IDEFrontendDashboardService } from "@devpod/devpod-protocol/lib/frontend-dashboard-service";
+import { RemoteTrackMessage } from "@devpod/devpod-protocol/lib/analytics";
 import { converter, helloService, stream, userClient, workspaceClient } from "./public-api";
 import { getExperimentsClient } from "../experiments/client";
 import { instrumentWebSocket } from "./metrics";
-import { LotsOfRepliesResponse } from "@khulnasoft/public-api/lib/devpod/experimental/v1/dummy_pb";
-import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
+import { LotsOfRepliesResponse } from "@devpod/public-api/lib/devpod/experimental/v1/dummy_pb";
+import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
 import {
     WatchWorkspaceStatusPriority,
     watchWorkspaceStatusInOrder,
 } from "../data/workspaces/listen-to-workspace-ws-messages2";
-import { Workspace, WorkspaceSpec_WorkspaceType, WorkspaceStatus } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { Workspace, WorkspaceSpec_WorkspaceType, WorkspaceStatus } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { sendTrackEvent } from "../Analytics";
 
 export const devpodHostUrl = new DevpodHostUrl(window.location.toString());

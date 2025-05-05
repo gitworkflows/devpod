@@ -9,7 +9,7 @@ on:
 
 jobs:
   create-runner:
-    uses: gitpod-io/gce-github-runner/.github/workflows/create-vm.yml@main
+    uses: khulnasoft/gce-github-runner/.github/workflows/create-vm.yml@main
     secrets:
       runner_token: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_TOKEN }}
       gcp_credentials: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_GCP_CREDENTIALS }}
@@ -18,7 +18,7 @@ jobs:
     runs-on: ${{ needs.create-runner.outputs.label }}
     needs: [create-runner]
     container:
-      image: docker.io/khulnasoft/devpod-environment:latest
+      image: khulnasoft/devpod-environment:main-gha.30393
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-environment
@@ -35,9 +35,9 @@ jobs:
         run: |
           export BLAZEDOCK_WORKSPACE_ROOT=$GITHUB_WORKSPACE
 
-          codeHeadCommit=$(curl -H 'Accept: application/vnd.github.VERSION.sha' https://api.github.com/repos/gitpod-io/openvscode-server/commits/gp-code/main)
-          codeVersion=$(curl https://raw.githubusercontent.com/gitpod-io/openvscode-server/$codeHeadCommit/package.json | jq .version)
-          imageRepoBase=${{ github.ref == 'refs/heads/main' && 'ghcr.io/devpod-core-dev/build' || 'ghcr.io/devpod-dev-artifact/build' }}
+          codeHeadCommit=$(curl -H 'Accept: application/vnd.github.VERSION.sha' https://api.github.com/repos/khulnasoft/openvscode-server/commits/gp-code/main)
+          codeVersion=$(curl https://raw.githubusercontent.com/khulnasoft/openvscode-server/$codeHeadCommit/package.json | jq .version)
+          imageRepoBase=${{ github.ref == 'refs/heads/main' && 'khulnasoft/devpod-environment/build' || 'eu.gcr.io/devpod-dev-artifact/build' }}
           cd components/ide/code
           blazedock build \
             -Dversion=nightly \
@@ -62,7 +62,7 @@ jobs:
     needs:
       - create-runner
       - build
-    uses: gitpod-io/gce-github-runner/.github/workflows/delete-vm.yml@main
+    uses: khulnasoft/gce-github-runner/.github/workflows/delete-vm.yml@main
     secrets:
       gcp_credentials: ${{ secrets.SELF_HOSTED_GITHUB_RUNNER_GCP_CREDENTIALS }}
     with:

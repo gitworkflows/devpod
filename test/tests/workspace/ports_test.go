@@ -61,7 +61,7 @@ func TestRegularWorkspacePorts(t *testing.T) {
 			err = server.SetEnvVar(ctx, &devpod.UserEnvVarValue{
 				Name:              "SUPERVISOR_ADDR",
 				Value:             `10.0.5.2:22999`,
-				RepositoryPattern: "gitpod-io/" + testRepoName,
+				RepositoryPattern: "khulnasoft/" + testRepoName,
 			})
 			if err != nil {
 				t.Fatal(err)
@@ -69,7 +69,7 @@ func TestRegularWorkspacePorts(t *testing.T) {
 			defer func() {
 				err := server.DeleteEnvVar(ctx, &devpod.UserEnvVarValue{
 					Name:              "SUPERVISOR_ADDR",
-					RepositoryPattern: "gitpod-io/" + testRepoName,
+					RepositoryPattern: "khulnasoft/" + testRepoName,
 				})
 				if err != nil {
 					t.Fatal(err)

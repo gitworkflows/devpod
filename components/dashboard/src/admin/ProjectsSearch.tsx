@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 
 import ProjectDetail from "./ProjectDetail";
 import { getDevpodService } from "../service/service";
-import { AdminGetListResult, Project } from "@khulnasoft/devpod-protocol";
+import { AdminGetListResult, Project } from "@devpod/devpod-protocol";
 import { AdminPageHeader } from "./AdminPageHeader";
 import Pagination from "../Pagination/Pagination";
 import { SpinnerLoader } from "../components/Loader";

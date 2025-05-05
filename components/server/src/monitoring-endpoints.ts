@@ -7,7 +7,7 @@
 import express from "express";
 import { injectable } from "inversify";
 import * as prometheusClient from "prom-client";
-import { redisMetricsRegistry, registerDBMetrics } from "@khulnasoft/devpod-db/lib";
+import { redisMetricsRegistry, registerDBMetrics } from "@devpod/devpod-db/lib";
 import { registerServerMetrics } from "./prometheus-metrics";
 
 @injectable()

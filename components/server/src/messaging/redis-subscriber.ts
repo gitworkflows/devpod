@@ -19,15 +19,15 @@ import {
     RedisPrebuildUpdate,
     RedisWorkspaceInstanceUpdate,
     WorkspaceInstanceUpdatesChannel,
-} from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+} from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import {
     reportRedisUpdateCompleted,
     reportRedisUpdateReceived,
     updateSubscribersRegistered,
 } from "../prometheus-metrics";
 import { Redis } from "ioredis";
-import { WorkspaceDB } from "@khulnasoft/devpod-db/lib";
+import { WorkspaceDB } from "@devpod/devpod-db/lib";
 import { runWithRequestContext } from "../util/request-context";
 import { SYSTEM_USER } from "../authorization/authorizer";
 

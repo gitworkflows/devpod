@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { UserEnvVar, UserEnvVarValue } from "@khulnasoft/devpod-protocol";
+import { UserEnvVar, UserEnvVarValue } from "@devpod/devpod-protocol";
 import { useCallback, useEffect, useRef, useState } from "react";
 import ConfirmationModal from "../components/ConfirmationModal";
 import { Item, ItemField, ItemsList } from "../components/ItemsList";
@@ -13,7 +13,7 @@ import { PageWithSettingsSubMenu } from "./PageWithSettingsSubMenu";
 import { EnvironmentVariableEntry } from "./EnvironmentVariableEntry";
 import { Heading2, Subheading } from "../components/typography/headings";
 import { envVarClient } from "../service/public-api";
-import { UserEnvironmentVariable } from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
+import { UserEnvironmentVariable } from "@devpod/public-api/lib/devpod/v1/envvar_pb";
 import { Button } from "@podkit/buttons/Button";
 import { TextInputField } from "../components/forms/TextInputField";
 

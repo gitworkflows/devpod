@@ -72,7 +72,7 @@ var benchmarkCommand = &cobra.Command{
 				},
 				Admission: api.AdmissionLevel_ADMIT_OWNER_ONLY,
 				Git: &api.GitSpec{
-					Email:    "test@khulnasoft.com",
+					Email:    "test@devpod.khulnasoft.com",
 					Username: "foobar",
 				},
 				FeatureFlags:   scenario.FeatureFlags,

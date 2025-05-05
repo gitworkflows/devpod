@@ -10,11 +10,11 @@ import {
     SubscribeResponse,
     GetWorkspacesRequest,
     PromisifiedWorkspaceManagerClient,
-} from "@khulnasoft/ws-manager/lib";
-import { Disposable } from "@khulnasoft/devpod-protocol";
+} from "@devpod/ws-manager/lib";
+import { Disposable } from "@devpod/devpod-protocol";
 import { ClientReadableStream } from "@grpc/grpc-js";
-import { log, LogPayload } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { log, LogPayload } from "@devpod/devpod-protocol/lib/util/logging";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import * as opentracing from "opentracing";
 
 export type ClientProvider = () => Promise<PromisifiedWorkspaceManagerClient>;

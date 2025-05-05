@@ -4,4 +4,4 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-/// <reference types='@khulnasoft/devpod-protocol/lib/typings/globals'/>
+/// <reference types='@devpod/devpod-protocol/lib/typings/globals'/>

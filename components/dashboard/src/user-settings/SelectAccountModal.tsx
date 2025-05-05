@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { SelectAccountPayload } from "@khulnasoft/devpod-protocol/lib/auth";
+import { SelectAccountPayload } from "@devpod/devpod-protocol/lib/auth";
 import { useEffect, useState } from "react";
 import { devpodHostUrl } from "../service/service";
 import InfoBox from "../components/InfoBox";

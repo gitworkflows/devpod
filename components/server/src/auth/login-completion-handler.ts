@@ -7,13 +7,13 @@
 import { inject, injectable } from "inversify";
 import express from "express";
 import * as crypto from "crypto";
-import { User } from "@khulnasoft/devpod-protocol";
-import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { User } from "@devpod/devpod-protocol";
+import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
 import { Config } from "../config";
 import { HostContextProvider } from "./host-context-provider";
 import { AuthProviderService } from "./auth-provider-service";
 import { reportJWTCookieIssued, reportLoginCompleted } from "../prometheus-metrics";
-import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
+import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
 import { trackLogin } from "../analytics";
 import { SessionHandler } from "../session-handler";
 import { AuthJWT } from "./jwt";

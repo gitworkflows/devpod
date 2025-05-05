@@ -78,19 +78,19 @@ func TestMinioBackupObject(t *testing.T) {
 			Name:                 "no dedicated bucket",
 			BucketNameConfig:     "",
 			Username:             "test-user",
-			Workspace:            "khulnasoft-devpod-2cx8z8e643x",
+			Workspace:            "devpodio-devpod-2cx8z8e643x",
 			InstanceID:           "fa9aa2af-b6de-45fc-8b48-534bb440429f",
 			ObjectName:           "backup.tar",
-			ExpectedBackupObject: "workspaces/khulnasoft-devpod-2cx8z8e643x/backup.tar",
+			ExpectedBackupObject: "workspaces/devpodio-devpod-2cx8z8e643x/backup.tar",
 		},
 		{
 			Name:                 "with dedicated bucket",
 			BucketNameConfig:     "root-bucket",
 			Username:             "test-user",
-			Workspace:            "khulnasoft-devpod-2cx8z8e643x",
+			Workspace:            "devpodio-devpod-2cx8z8e643x",
 			InstanceID:           "fa9aa2af-b6de-45fc-8b48-534bb440429f",
 			ObjectName:           "backup.tar",
-			ExpectedBackupObject: "test-user/workspaces/khulnasoft-devpod-2cx8z8e643x/backup.tar",
+			ExpectedBackupObject: "test-user/workspaces/devpodio-devpod-2cx8z8e643x/backup.tar",
 		},
 	}
 

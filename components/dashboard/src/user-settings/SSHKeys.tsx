@@ -9,14 +9,14 @@ import Modal, { ModalBody, ModalFooter, ModalHeader } from "../components/Modal"
 import Alert from "../components/Alert";
 import { Item, ItemField, ItemFieldContextMenu } from "../components/ItemsList";
 import ConfirmationModal from "../components/ConfirmationModal";
-import { SSHPublicKeyValue } from "@khulnasoft/devpod-protocol";
+import { SSHPublicKeyValue } from "@devpod/devpod-protocol";
 import dayjs from "dayjs";
 import { PageWithSettingsSubMenu } from "./PageWithSettingsSubMenu";
 import { Heading2, Subheading } from "../components/typography/headings";
 import { EmptyMessage } from "../components/EmptyMessage";
 import { Button } from "@podkit/buttons/Button";
 import { sshClient } from "../service/public-api";
-import { SSHPublicKey } from "@khulnasoft/public-api/lib/devpod/v1/ssh_pb";
+import { SSHPublicKey } from "@devpod/public-api/lib/devpod/v1/ssh_pb";
 import { InputField } from "../components/forms/InputField";
 import { TextInputField } from "../components/forms/TextInputField";
 

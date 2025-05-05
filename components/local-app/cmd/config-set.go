@@ -9,7 +9,7 @@ import (
 	"log/slog"
 	"net/url"
 
-	"github.com/gitpod-io/local-app/pkg/config"
+	"github.com/khulnasoft/local-app/pkg/config"
 	"github.com/spf13/cobra"
 )
 

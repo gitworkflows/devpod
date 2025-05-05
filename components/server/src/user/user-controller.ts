@@ -6,19 +6,19 @@
 
 import * as crypto from "crypto";
 import { inject, injectable } from "inversify";
-import { OneTimeSecretDB, TeamDB, UserDB, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID } from "@khulnasoft/devpod-db/lib/user-db";
+import { OneTimeSecretDB, TeamDB, UserDB, WorkspaceDB } from "@devpod/devpod-db/lib";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID } from "@devpod/devpod-db/lib/user-db";
 import express from "express";
 import { Authenticator } from "../auth/authenticator";
 import { Config } from "../config";
-import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
 import { AuthorizationService } from "./authorization-service";
-import { Permission } from "@khulnasoft/devpod-protocol/lib/permission";
-import { parseWorkspaceIdFromHostname } from "@khulnasoft/devpod-protocol/lib/util/parse-workspace-id";
+import { Permission } from "@devpod/devpod-protocol/lib/permission";
+import { parseWorkspaceIdFromHostname } from "@devpod/devpod-protocol/lib/util/parse-workspace-id";
 import { SessionHandler } from "../session-handler";
 import { URL } from "url";
 import { getRequestingClientInfo } from "../express-util";
-import { DevpodToken, DevpodTokenType, User } from "@khulnasoft/devpod-protocol";
+import { DevpodToken, DevpodTokenType, User } from "@devpod/devpod-protocol";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { reportJWTCookieIssued } from "../prometheus-metrics";
 import {
@@ -30,14 +30,14 @@ import {
 import { OneTimeSecretServer } from "../one-time-secret-server";
 import { ClientMetadata } from "../websocket/websocket-connection-manager";
 import * as fs from "fs/promises";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { DevpodServerImpl } from "../workspace/devpod-server-impl";
-import { StopWorkspacePolicy } from "@khulnasoft/ws-manager/lib";
+import { StopWorkspacePolicy } from "@devpod/ws-manager/lib";
 import { UserService } from "./user-service";
 import { WorkspaceService } from "../workspace/workspace-service";
 import { runWithSubjectId } from "../util/request-context";
 import { SubjectId } from "../auth/subject-id";
-import { TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
+import { TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
 
 export const ServerFactory = Symbol("ServerFactory");
 export type ServerFactory = () => DevpodServerImpl;

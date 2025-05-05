@@ -9,8 +9,8 @@ import {
     WorkspaceCluster,
     WorkspaceClusterDB,
     WorkspaceClusterWoTLS,
-} from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+} from "@devpod/devpod-protocol/lib/workspace-cluster";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 
 export const WorkspaceManagerClientProviderSource = Symbol("WorkspaceManagerClientProviderSource");
 

@@ -6,8 +6,8 @@
 
 import { Entity, Column, PrimaryColumn } from "typeorm";
 import { TypeORM } from "../typeorm";
-import { AuditLog } from "@khulnasoft/devpod-protocol/lib/audit-log";
-import { BigIntToJson } from "@khulnasoft/devpod-protocol/lib/util/stringify";
+import { AuditLog } from "@devpod/devpod-protocol/lib/audit-log";
+import { BigIntToJson } from "@devpod/devpod-protocol/lib/util/stringify";
 import { Transformer } from "../transformer";
 
 @Entity()

@@ -24,7 +24,7 @@ import {
     PrebuiltWorkspaceWithWorkspace,
     PrebuildWithStatus,
     WorkspaceInstanceMetrics,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 
 export type MaybeWorkspace = Workspace | undefined;
 export type MaybeWorkspaceInstance = WorkspaceInstance | undefined;

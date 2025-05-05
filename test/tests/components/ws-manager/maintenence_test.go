@@ -27,7 +27,7 @@ import (
 )
 
 func TestMaintenance(t *testing.T) {
-	testRepo := "https://github.com/gitpod-io/empty"
+	testRepo := "https://github.com/khulnasoft/empty"
 	testRepoName := "empty"
 
 	f1 := features.New("maintenance").

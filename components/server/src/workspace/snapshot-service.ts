@@ -6,10 +6,10 @@
 
 import { inject, injectable } from "inversify";
 import { v4 as uuidv4 } from "uuid";
-import { WorkspaceDB } from "@khulnasoft/devpod-db/lib";
-import { DevpodServer, Snapshot } from "@khulnasoft/devpod-protocol";
+import { WorkspaceDB } from "@devpod/devpod-db/lib";
+import { DevpodServer, Snapshot } from "@devpod/devpod-protocol";
 import { StorageClient } from "../storage/storage-client";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 
 export interface WaitForSnapshotOptions {
     workspaceOwner: string;

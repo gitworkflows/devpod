@@ -11,10 +11,10 @@ import SelectIDEComponent, { isJetbrains } from "../components/SelectIDEComponen
 import PillLabel from "../components/PillLabel";
 import { useUpdateCurrentUserMutation } from "../data/current-user/update-mutation";
 import { converter } from "../service/public-api";
-import { isOrganizationOwned } from "@khulnasoft/public-api-common/lib/user-utils";
+import { isOrganizationOwned } from "@devpod/public-api-common/lib/user-utils";
 import Alert from "../components/Alert";
 import { useFeatureFlag } from "../data/featureflag-query";
-import { IDESettingsVersion } from "@khulnasoft/devpod-protocol/lib/ide-protocol";
+import { IDESettingsVersion } from "@devpod/devpod-protocol/lib/ide-protocol";
 
 export type IDEChangedTrackLocation = "workspace_list" | "workspace_start" | "preferences";
 interface SelectIDEProps {

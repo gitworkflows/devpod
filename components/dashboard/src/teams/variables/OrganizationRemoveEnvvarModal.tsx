@@ -7,7 +7,7 @@
 import { FunctionComponent, useCallback } from "react";
 import { useToast } from "../../components/toasts/Toasts";
 import ConfirmationModal from "../../components/ConfirmationModal";
-import type { OrganizationEnvironmentVariable } from "@khulnasoft/public-api/lib/devpod/v1/envvar_pb";
+import type { OrganizationEnvironmentVariable } from "@devpod/public-api/lib/devpod/v1/envvar_pb";
 import { useDeleteOrganizationEnvironmentVariable } from "../../data/organizations/org-envvar-queries";
 
 type Props = {

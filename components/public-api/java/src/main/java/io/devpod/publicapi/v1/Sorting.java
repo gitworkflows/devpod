@@ -825,7 +825,7 @@ public final class Sorting {
       "\0162\024.devpod.v1.SortOrderR\005order*P\n\tSortOr" +
       "der\022\032\n\026SORT_ORDER_UNSPECIFIED\020\000\022\022\n\016SORT_" +
       "ORDER_ASC\020\001\022\023\n\017SORT_ORDER_DESC\020\002BQ\n\026io.g" +
-      "itpod.publicapi.v1Z7github.com/gitpod-io" +
+      "itpod.publicapi.v1Z7github.com/khulnasoft" +
       "/devpod/components/public-api/go/v1b\006pro" +
       "to3"
     };

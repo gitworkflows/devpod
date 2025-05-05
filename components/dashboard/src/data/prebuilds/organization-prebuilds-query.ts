@@ -6,11 +6,11 @@
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { prebuildClient } from "../../service/public-api";
-import { ListOrganizationPrebuildsRequest_Filter } from "@khulnasoft/public-api/lib/devpod/v1/prebuild_pb";
+import { ListOrganizationPrebuildsRequest_Filter } from "@devpod/public-api/lib/devpod/v1/prebuild_pb";
 import { useCurrentOrg } from "../organizations/orgs-query";
 import { PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import type { DeepPartial } from "@khulnasoft/devpod-protocol/lib/util/deep-partial";
-import { Sort } from "@khulnasoft/public-api/lib/devpod/v1/sorting_pb";
+import type { DeepPartial } from "@devpod/devpod-protocol/lib/util/deep-partial";
+import { Sort } from "@devpod/public-api/lib/devpod/v1/sorting_pb";
 
 type Args = {
     filter: DeepPartial<PlainMessage<ListOrganizationPrebuildsRequest_Filter>>;

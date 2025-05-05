@@ -6,9 +6,9 @@
 
 import express from "express";
 import websocket from "ws";
-import { Disposable, DisposableCollection } from "@khulnasoft/devpod-protocol";
-import { repeat } from "@khulnasoft/devpod-protocol/lib/util/repeat";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { Disposable, DisposableCollection } from "@devpod/devpod-protocol";
+import { repeat } from "@devpod/devpod-protocol/lib/util/repeat";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { WsNextFunction, WsRequestHandler } from "./ws-handler";
 import { ClientMetadata } from "../websocket/websocket-connection-manager";
 

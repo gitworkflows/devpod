@@ -4,10 +4,10 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@khulnasoft/devpod-protocol";
+import { User } from "@devpod/devpod-protocol";
 import * as chai from "chai";
 import { IDEService } from "./ide-service";
-import { IDESettingsVersion } from "@khulnasoft/devpod-protocol/lib/ide-protocol";
+import { IDESettingsVersion } from "@devpod/devpod-protocol/lib/ide-protocol";
 const expect = chai.expect;
 
 describe("ide-service", function () {

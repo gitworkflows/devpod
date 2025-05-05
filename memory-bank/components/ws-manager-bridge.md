@@ -85,11 +85,11 @@ The bridge processes workspace status updates from the workspace manager and map
 ## Dependencies
 
 ### Internal Dependencies
-- `@khulnasoft/devpod-db`: Database access
-- `@khulnasoft/devpod-protocol`: Shared protocol definitions
-- `@khulnasoft/ws-manager`: Workspace manager client
-- `@khulnasoft/ws-manager-bridge-api`: Bridge API definitions
-- `@khulnasoft/ws-daemon`: Workspace daemon client
+- `@devpod/devpod-db`: Database access
+- `@devpod/devpod-protocol`: Shared protocol definitions
+- `@devpod/ws-manager`: Workspace manager client
+- `@devpod/ws-manager-bridge-api`: Bridge API definitions
+- `@devpod/ws-daemon`: Workspace daemon client
 
 ### External Dependencies
 - Express for metrics endpoint

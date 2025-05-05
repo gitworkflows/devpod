@@ -32,7 +32,6 @@
 </div>
 
 
-
 ## Features
 
 - **Dev environments as code** - Devpod is like infrastructure-as-code, but for your development environment. Devpod defines your editor extensions and requires dependencies in a declarative [`.devpod.yml` configuration](https://www.devpod.khulnasoft.com/docs/introduction/devpod-tutorial/2-configure-your-devpod-yml). Spinning up dev environments is easily repeatable and reproducible empowering you to automate, version-control, and share dev environments across your team.
@@ -49,7 +48,7 @@
 
 - **Browser**: 
     - Using Devpod dashboard [devpod.khulnasoft.com/new](https://devpod.khulnasoft.com/new).
-    - Add `devpod.khulnasoft.com/# `as a prefix to any of your GitHub/ GitLab/ Bitbucket repository, like [this](https://devpod.khulnasoft.com/#https://github.com/gitpod-io/template-typescript-react)
+    - Add `devpod.khulnasoft.com/# `as a prefix to any of your GitHub/ GitLab/ Bitbucket repository, like [this](https://devpod.khulnasoft.com/#https://github.com/khulnasoft/template-typescript-react)
 - **CLI**: You can also [install the Devpod CLI](https://www.devpod.khulnasoft.com/docs/references/devpod-cli#installation) and create your first workspace directly from your terminal :)
 
 
@@ -71,6 +70,7 @@ You can also follow [@devpod](https://twitter.com/devpod) for announcements and 
 
 For enterprise deployment and customized solutions, please explore our [**Enterprise offerings**](https://www.devpod.khulnasoft.com/contact/enterprise-self-serve) to get started with a setup that meets your organization's needs.
 
+
 ## Issues
 
 The issue tracker is used for tracking bug reports and feature requests for the Devpod open source project as well as planning current and future development efforts. 🗺️
@@ -81,9 +81,9 @@ You can upvote popular feature requests or create a new one.
 ## Related Projects
 
 During the development of Devpod, we also developed some of our infrastructure toolings to make development easier and more efficient. To this end, we've developed many open-source projects including:
-- [Workspace images](https://github.com/gitpod-io/workspace-images): Ready to use docker images for Devpod workspaces
-- [OpenVSCode Server](https://github.com/gitpod-io/openvscode-server): Run the latest VS Code on a remote machine accessed through a browser
-- [Devpod browser extension](https://github.com/gitpod-io/browser-extension): It adds a Devpod button to the configured GitLab, GitHub, Bitbucket and Azure DevOps installations
+- [Workspace images](https://github.com/khulnasoft/workspace-images): Ready to use docker images for Devpod workspaces
+- [OpenVSCode Server](https://github.com/khulnasoft/openvscode-server): Run the latest VS Code on a remote machine accessed through a browser
+- [Devpod browser extension](https://github.com/khulnasoft/browser-extension): It adds a Devpod button to the configured GitLab, GitHub, Bitbucket and Azure DevOps installations
 - [Blazedock](https://github.com/khulnasoft/blazedock) - A heavily caching build system
 - [Dazzle](https://github.com/khulnasoft/dazzle) - An experimental Docker image builder
 - [Werft](https://github.com/csweichel/werft) - A Kubernetes native CI system

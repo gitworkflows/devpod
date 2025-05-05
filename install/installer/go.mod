@@ -1,6 +1,8 @@
 module github.com/khulnasoft/devpod/installer
 
-go 1.22.2
+go 1.23.0
+
+toolchain go1.23.3
 
 require (
 	github.com/Masterminds/semver v1.5.0
@@ -33,7 +35,7 @@ require (
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
-	golang.org/x/crypto v0.31.0
+	golang.org/x/crypto v0.36.0
 	golang.org/x/xerrors v0.0.0-20231012003039-104605ab7028
 	gopkg.in/op/go-logging.v1 v1.0.0-20160211212156-b2cb9fa56473
 	helm.sh/helm/v3 v3.16.0
@@ -132,7 +134,6 @@ require (
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/fvbommel/sortorder v1.1.0 // indirect
-	github.com/gitpod-io/golang-crypto v0.0.0-20250106140126-78f5e04b38b9 // indirect
 	github.com/go-errors/errors v1.4.2 // indirect
 	github.com/go-gorp/gorp/v3 v3.1.0 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
@@ -192,6 +193,7 @@ require (
 	github.com/khulnasoft/devpod/devpod-protocol v0.0.0-00010101000000-000000000000 // indirect
 	github.com/khulnasoft/devpod/supervisor/api v0.0.0-00010101000000-000000000000 // indirect
 	github.com/khulnasoft/devpod/usage-api v0.0.0-00010101000000-000000000000 // indirect
+	github.com/khulnasoft/golang-crypto v0.0.0-00010101000000-000000000000 // indirect
 	github.com/klauspost/compress v1.17.6 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.7 // indirect
 	github.com/klauspost/pgzip v1.2.5 // indirect
@@ -277,10 +279,10 @@ require (
 	golang.org/x/mod v0.17.0 // indirect
 	golang.org/x/net v0.26.0 // indirect
 	golang.org/x/oauth2 v0.21.0 // indirect
-	golang.org/x/sync v0.10.0 // indirect
-	golang.org/x/sys v0.28.0 // indirect
-	golang.org/x/term v0.27.0 // indirect
-	golang.org/x/text v0.21.0 // indirect
+	golang.org/x/sync v0.12.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/term v0.30.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d // indirect
 	gomodules.xyz/jsonpatch/v2 v2.4.0 // indirect
@@ -424,3 +426,5 @@ replace k8s.io/kubectl => k8s.io/kubectl v0.30.9 // blazedock indirect from comp
 replace k8s.io/mount-utils => k8s.io/mount-utils v0.30.9 // blazedock indirect from components/common-go:lib
 
 replace k8s.io/pod-security-admission => k8s.io/pod-security-admission v0.30.9 // blazedock indirect from components/common-go:lib
+
+replace github.com/khulnasoft/golang-crypto => github.com/forkwork/golang-crypto v0.0.0-20250423010739-5f5888ad5e2a

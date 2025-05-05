@@ -17,7 +17,7 @@
             },
             'for': '10m',
             annotations: {
-              runbook_url: 'https://github.com/gitpod-io/runbooks/blob/main/runbooks/DevpodNodeRunningOutOfEphemeralStorage.md',
+              runbook_url: 'https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodNodeRunningOutOfEphemeralStorage.md',
               summary: 'Node almost out of ephemeral storage',
               description: 'Node {{ $labels.node }} is reporting {{ printf "%.2f" $value }}% ephemeral storage left under {{ $labels.mountpoint }}.',
             },
@@ -37,7 +37,7 @@
             },
             'for': '5m',
             annotations: {
-              runbook_url: 'https://github.com/gitpod-io/runbooks/blob/main/runbooks/DevpodNodeConntrackTableIsFull.md',
+              runbook_url: 'https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodNodeConntrackTableIsFull.md',
               summary: 'Node conntrack table is almost full',
               description: 'Node {{ $labels.node }} conntrack table is almost full. If it gets full, packets will be getting dropped.',
             },
@@ -53,7 +53,7 @@
             },
             'for': '10m',
             annotations: {
-              runbook_url: 'https://github.com/gitpod-io/runbooks/blob/main/runbooks/DevpodNodeConntrackTableIsFull.md',
+              runbook_url: 'https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodNodeConntrackTableIsFull.md',
               summary: 'Node conntrack table is getting full',
               description: 'Node {{ $labels.node }} conntrack table is getting full. If it gets full, packets will be getting dropped.',
             },

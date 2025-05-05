@@ -4,9 +4,9 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TypeORM, resetDB } from "@khulnasoft/devpod-db/lib";
-import { User } from "@khulnasoft/devpod-protocol";
-import { Deferred } from "@khulnasoft/devpod-protocol/lib/util/deferred";
+import { TypeORM, resetDB } from "@devpod/devpod-db/lib";
+import { User } from "@devpod/devpod-protocol";
+import { Deferred } from "@devpod/devpod-protocol/lib/util/deferred";
 import { expect } from "chai";
 import * as express from "express";
 import { Container } from "inversify";

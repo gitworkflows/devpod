@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TypeORM, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
-import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
+import { TypeORM, WorkspaceDB } from "@devpod/devpod-db/lib";
+import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
 import {
     CommitContext,
     Organization,
@@ -24,7 +24,7 @@ import {
     WorkspaceConfig,
     PrebuiltWorkspaceState,
     PrebuiltWorkspace,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";
@@ -36,12 +36,12 @@ import { UserService } from "../user/user-service";
 import { SnapshotService } from "./snapshot-service";
 import { ContextService } from "./context-service";
 import { ContextParser } from "./context-parser-service";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import { ConfigProvider } from "./config-provider";
 import { PrebuildManager } from "../prebuilds/prebuild-manager";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { AuthProvider } from "../auth/auth-provider";
-import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
 import { SYSTEM_USER } from "../authorization/authorizer";
 import { RepositoryProvider } from "../repohost";
 
@@ -57,13 +57,13 @@ const devpodEmptyContext = {
         host: "github.com",
         owner: "khulnasoft",
         name: "empty",
-        cloneUrl: "https://github.com/gitpod-io/empty.git",
+        cloneUrl: "https://github.com/khulnasoft/empty.git",
         defaultBranch: "main",
         private: false,
     },
-    normalizedContextURL: "https://github.com/gitpod-io/empty",
+    normalizedContextURL: "https://github.com/khulnasoft/empty",
     revision: "123456",
-    title: "gitpod-io/empty - main",
+    title: "khulnasoft/empty - main",
 };
 
 // MockRepositoryProvider is a class implementing the RepositoryProvider interface, which allows to pass in commitHistory and commitInfo as needed
@@ -112,7 +112,7 @@ class MockRepositoryProvider implements RepositoryProvider {
             host: "github.com",
             owner: "khulnasoft",
             name: "empty",
-            cloneUrl: "https://github.com/gitpod-io/empty.git",
+            cloneUrl: "https://github.com/khulnasoft/empty.git",
             defaultBranch: "main",
         };
     }
@@ -212,13 +212,13 @@ describe("ContextService", async () => {
                     const url = contextURL.replace("normalizeContextURL", "");
 
                     const cases = new Map<string, () => WorkspaceContext>();
-                    cases.set("https://github.com/gitpod-io/empty", () => {
+                    cases.set("https://github.com/khulnasoft/empty", () => {
                         return devpodEmptyContext as any;
                     });
 
                     if (prebuild) {
                         cases.set(
-                            `open-prebuild/${prebuild.prebuildId}/https://github.com/gitpod-io/empty/tree/main`,
+                            `open-prebuild/${prebuild.prebuildId}/https://github.com/khulnasoft/empty/tree/main`,
                             () => {
                                 return {
                                     ...devpodEmptyContext,
@@ -271,7 +271,7 @@ describe("ContextService", async () => {
                     }
                     for (const [_, b] of mockRepositoryProvider.branches) {
                         for (const commit of b.commits) {
-                            const commitContextUrl = `https://github.com/gitpod-io/empty/commit/${commit.sha}`;
+                            const commitContextUrl = `https://github.com/khulnasoft/empty/commit/${commit.sha}`;
                             if (commitContextUrl === url) {
                                 const r: CommitContext = {
                                     title: commit.commitMessage,
@@ -293,7 +293,7 @@ describe("ContextService", async () => {
         bindContextParser();
 
         mockRepositoryProvider = new MockRepositoryProvider();
-        mockRepositoryProvider.addBranch({ name: "main", htmlUrl: "https://github.com/gitpod-io/empty/tree/main" }, [
+        mockRepositoryProvider.addBranch({ name: "main", htmlUrl: "https://github.com/khulnasoft/empty/tree/main" }, [
             {
                 sha: devpodEmptyContext.revision,
                 author: "some-dude",
@@ -351,7 +351,7 @@ describe("ContextService", async () => {
                 {
                     name: "my-project",
                     teamId: org.id,
-                    cloneUrl: "https://github.com/gitpod-io/empty",
+                    cloneUrl: "https://github.com/khulnasoft/empty",
                     appInstallationId: "noid",
                 },
                 owner,
@@ -408,7 +408,7 @@ describe("ContextService", async () => {
     it("should parse normal context", async () => {
         const svc = container.get(ContextService);
 
-        const ctx = await svc.parseContext(owner, "https://github.com/gitpod-io/empty", {
+        const ctx = await svc.parseContext(owner, "https://github.com/khulnasoft/empty", {
             projectId: project.id,
             organizationId: org.id,
             forceDefaultConfig: false,
@@ -424,7 +424,7 @@ describe("ContextService", async () => {
         const svc = container.get(ContextService);
         const ctx = await svc.parseContext(
             owner,
-            `open-prebuild/${prebuild.prebuildId}/https://github.com/gitpod-io/empty/tree/main`,
+            `open-prebuild/${prebuild.prebuildId}/https://github.com/khulnasoft/empty/tree/main`,
             {
                 projectId: project.id,
                 organizationId: org.id,
@@ -439,7 +439,7 @@ describe("ContextService", async () => {
         // prepare test scenario: two prebuilds
         const revision1 = "000000";
         mockRepositoryProvider.addBranch(
-            { name: "branch-with-history", htmlUrl: "https://github.com/gitpod-io/empty/tree/branch-with-history" },
+            { name: "branch-with-history", htmlUrl: "https://github.com/khulnasoft/empty/tree/branch-with-history" },
             [
                 {
                     sha: revision1,
@@ -476,7 +476,7 @@ describe("ContextService", async () => {
 
         // request a context for the branch (effectively 2nd commit)
         const svc = container.get(ContextService);
-        const ctx = await svc.parseContext(owner, `https://github.com/gitpod-io/empty/tree/branch-with-history`, {
+        const ctx = await svc.parseContext(owner, `https://github.com/khulnasoft/empty/tree/branch-with-history`, {
             projectId: project.id,
             organizationId: org.id,
             forceDefaultConfig: false,
@@ -493,7 +493,7 @@ describe("ContextService", async () => {
         // prepare test scenario: two prebuilds
         const revision1 = "000000";
         mockRepositoryProvider.addBranch(
-            { name: "branch-with-history", htmlUrl: "https://github.com/gitpod-io/empty/tree/branch-with-history" },
+            { name: "branch-with-history", htmlUrl: "https://github.com/khulnasoft/empty/tree/branch-with-history" },
             [
                 {
                     sha: revision1,
@@ -531,7 +531,7 @@ describe("ContextService", async () => {
 
         // request context for the _first_ commit
         const svc = container.get(ContextService);
-        const ctx = await svc.parseContext(owner, `https://github.com/gitpod-io/empty/commit/000000`, {
+        const ctx = await svc.parseContext(owner, `https://github.com/khulnasoft/empty/commit/000000`, {
             projectId: project.id,
             organizationId: org.id,
             forceDefaultConfig: false,
@@ -562,7 +562,7 @@ describe("ContextService", async () => {
         };
         const branchName = "branch-2";
         mockRepositoryProvider.addBranch(
-            { name: branchName, htmlUrl: `https://github.com/gitpod-io/empty/tree/${branchName}` },
+            { name: branchName, htmlUrl: `https://github.com/khulnasoft/empty/tree/${branchName}` },
             [commit1],
         );
         mockRepositoryProvider.pushCommit(branchName, commit2);
@@ -570,17 +570,17 @@ describe("ContextService", async () => {
 
         // request context for both commits separately
         const svc = container.get(ContextService);
-        let ctx1 = await svc.parseContext(owner, `https://github.com/gitpod-io/empty/commit/${commit1.sha}`, {
+        let ctx1 = await svc.parseContext(owner, `https://github.com/khulnasoft/empty/commit/${commit1.sha}`, {
             projectId: project.id,
             organizationId: org.id,
             forceDefaultConfig: false,
         });
-        const ctx2 = await svc.parseContext(owner, `https://github.com/gitpod-io/empty/commit/${commit2.sha}`, {
+        const ctx2 = await svc.parseContext(owner, `https://github.com/khulnasoft/empty/commit/${commit2.sha}`, {
             projectId: project.id,
             organizationId: org.id,
             forceDefaultConfig: false,
         });
-        let ctx3 = await svc.parseContext(owner, `https://github.com/gitpod-io/empty/commit/${commit3.sha}`, {
+        let ctx3 = await svc.parseContext(owner, `https://github.com/khulnasoft/empty/commit/${commit3.sha}`, {
             projectId: project.id,
             organizationId: org.id,
             forceDefaultConfig: false,
@@ -614,17 +614,17 @@ describe("ContextService", async () => {
         const prebuild1 = await runPrebuild(commit1, ctx1.context as CommitContext, "available");
         await runPrebuild(commit2, ctx2.context as CommitContext, "available");
 
-        ctx1 = await svc.parseContext(owner, `https://github.com/gitpod-io/empty/commit/${commit1.sha}`, {
+        ctx1 = await svc.parseContext(owner, `https://github.com/khulnasoft/empty/commit/${commit1.sha}`, {
             projectId: project.id,
             organizationId: org.id,
             forceDefaultConfig: false,
         });
-        ctx3 = await svc.parseContext(owner, `https://github.com/gitpod-io/empty/commit/${commit3.sha}`, {
+        ctx3 = await svc.parseContext(owner, `https://github.com/khulnasoft/empty/commit/${commit3.sha}`, {
             projectId: project.id,
             organizationId: org.id,
             forceDefaultConfig: false,
         });
-        const ctxBranch = await svc.parseContext(owner, `https://github.com/gitpod-io/empty/tree/branch-2`, {
+        const ctxBranch = await svc.parseContext(owner, `https://github.com/khulnasoft/empty/tree/branch-2`, {
             projectId: project.id,
             organizationId: org.id,
             forceDefaultConfig: false,
@@ -685,7 +685,7 @@ async function createTestWorkspace(svc: WorkspaceService, org: Organization, own
         org.id,
         project,
         devpodEmptyContext as any as CommitContext,
-        "github.com/gitpod-io/empty",
+        "github.com/khulnasoft/empty",
         undefined,
     );
     return ws;

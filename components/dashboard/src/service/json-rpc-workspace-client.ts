@@ -6,7 +6,7 @@
 
 import { CallOptions, PromiseClient } from "@connectrpc/connect";
 import { PartialMessage } from "@bufbuild/protobuf";
-import { WorkspaceService } from "@khulnasoft/public-api/lib/devpod/v1/workspace_connect";
+import { WorkspaceService } from "@devpod/public-api/lib/devpod/v1/workspace_connect";
 import {
     CreateAndStartWorkspaceRequest,
     CreateAndStartWorkspaceResponse,
@@ -48,15 +48,15 @@ import {
     WorkspacePort_Protocol,
     ListWorkspaceSessionsRequest,
     ListWorkspaceSessionsResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+} from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { converter } from "./public-api";
 import { getDevpodService } from "./service";
-import { PaginationResponse } from "@khulnasoft/public-api/lib/devpod/v1/pagination_pb";
-import { generateAsyncGenerator } from "@khulnasoft/devpod-protocol/lib/generate-async-generator";
-import { WorkspaceInstance } from "@khulnasoft/devpod-protocol";
-import { parsePagination } from "@khulnasoft/public-api-common/lib/public-api-pagination";
+import { PaginationResponse } from "@devpod/public-api/lib/devpod/v1/pagination_pb";
+import { generateAsyncGenerator } from "@devpod/devpod-protocol/lib/generate-async-generator";
+import { WorkspaceInstance } from "@devpod/devpod-protocol";
+import { parsePagination } from "@devpod/public-api-common/lib/public-api-pagination";
 import { validate as uuidValidate } from "uuid";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 
 export class JsonRpcWorkspaceClient implements PromiseClient<typeof WorkspaceService> {
     async listWorkspaceSessions(

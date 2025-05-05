@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
-import { User as UserProtocol } from "@khulnasoft/devpod-protocol/lib/protocol";
+import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
+import { User as UserProtocol } from "@devpod/devpod-protocol/lib/protocol";
 import { Timestamp } from "@bufbuild/protobuf";
 
 /**

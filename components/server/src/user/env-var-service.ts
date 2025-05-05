@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ProjectDB, TeamDB, UserDB } from "@khulnasoft/devpod-db/lib";
+import { ProjectDB, TeamDB, UserDB } from "@devpod/devpod-db/lib";
 import {
     CommitContext,
     EnvVar,
@@ -20,11 +20,11 @@ import {
     WorkspaceConfig,
     WorkspaceContext,
     WorkspaceType,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { Authorizer } from "../authorization/authorizer";
-import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { Config } from "../config";
 
 export interface ResolvedEnvVars {

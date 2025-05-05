@@ -1,5 +1,5 @@
 {
-  "supervisorImage": "ghcr.io/devpod-core-dev/build/supervisor:commit-ff38b98b7dde4929159bcaeec68d178898dc2139",
+  "supervisorImage": "khulnasoft/devpod-environment/build/supervisor:commit-ff38b98b7dde4929159bcaeec68d178898dc2139",
   "ideOptions": {
     "options": {
       "code": {
@@ -11,16 +11,16 @@
         "label": "Browser",
         "resolveImageDigest": true,
         "imageVersion": "1.90.1",
-        "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9",
+        "image": "khulnasoft/devpod-environment/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9",
         "imageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
+          "khulnasoft/devpod-environment/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
+          "khulnasoft/devpod-environment/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
         ],
         "versions": [
           {
             "version": "1.90.1",
-            "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
+            "image": "khulnasoft/devpod-environment/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
             "imageLayers": []
           }
         ]
@@ -32,11 +32,11 @@
         "type": "desktop",
         "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/vscode.svg",
         "imageVersion": "1.89.1",
-        "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-cbfb5757ed873b574b20f13c3edac3b9a2caf731",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/code-desktop-insiders:commit-c2b7421628ed5a5fb618817a4fd1549684659c2d",
+        "image": "khulnasoft/devpod-environment/build/ide/code:commit-cbfb5757ed873b574b20f13c3edac3b9a2caf731",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/code-desktop-insiders:commit-c2b7421628ed5a5fb618817a4fd1549684659c2d",
         "imageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-cbfb5757ed873b574b20f13c3edac3b9a2caf731",
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
+          "khulnasoft/devpod-environment/build/ide/code:commit-cbfb5757ed873b574b20f13c3edac3b9a2caf731",
+          "khulnasoft/devpod-environment/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
         ]
       },
       "goland": {
@@ -47,19 +47,19 @@
         "resolveImageDigest": true,
         "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/golandLogo.svg",
         "imageVersion": "1.90.1",
-        "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/goland:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "image": "khulnasoft/devpod-environment/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/goland:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
         "imageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
+          "khulnasoft/devpod-environment/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
+          "khulnasoft/devpod-environment/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
         ],
         "versions": [
           {
             "version": "1.89.1",
-            "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-cbfb5757ed873b574b20f13c3edac3b9a2caf731",
+            "image": "khulnasoft/devpod-environment/build/ide/code:commit-cbfb5757ed873b574b20f13c3edac3b9a2caf731",
             "imageLayers": [
-              "ghcr.io/devpod-core-dev/build/ide/code:commit-cbfb5757ed873b574b20f13c3edac3b9a2caf731",
-              "ghcr.io/devpod-core-dev/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
+              "khulnasoft/devpod-environment/build/ide/code:commit-cbfb5757ed873b574b20f13c3edac3b9a2caf731",
+              "khulnasoft/devpod-environment/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
             ]
           }
         ]
@@ -71,11 +71,11 @@
         "type": "desktop",
         "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/intellijIdeaLogo.svg",
         "imageVersion": "1.90.1",
-        "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/intellij:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "image": "khulnasoft/devpod-environment/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/intellij:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
         "imageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
+          "khulnasoft/devpod-environment/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
+          "khulnasoft/devpod-environment/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
         ]
       },
       "phpstorm": {
@@ -85,11 +85,11 @@
         "type": "desktop",
         "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/phpstormLogo.svg",
         "imageVersion": "1.90.1",
-        "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/phpstorm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "image": "khulnasoft/devpod-environment/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/phpstorm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
         "imageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
+          "khulnasoft/devpod-environment/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
+          "khulnasoft/devpod-environment/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
         ]
       },
       "pycharm": {
@@ -99,11 +99,11 @@
         "type": "desktop",
         "logo": "https://ide.devpod.khulnasoft.com/image/ide-logo/pycharmLogo.svg",
         "imageVersion": "1.90.1",
-        "image": "ghcr.io/devpod-core-dev/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
-        "latestImage": "ghcr.io/devpod-core-dev/build/ide/pycharm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
+        "image": "khulnasoft/devpod-environment/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
+        "latestImage": "khulnasoft/devpod-environment/build/ide/pycharm:commit-9a6c79a91b2b1f583d5bcb7f9f1ef54ee977e0df",
         "imageLayers": [
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
-          "ghcr.io/devpod-core-dev/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
+          "khulnasoft/devpod-environment/build/ide/code:commit-518f23b3b895cd544bd6b3dd383af95c350718cc",
+          "khulnasoft/devpod-environment/build/ide/code:commit-d6329814c2aa34c414574fd0d1301447d6fe82c9"
         ]
       }
     },

@@ -4,15 +4,15 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TypeORM, resetDB } from "@khulnasoft/devpod-db/lib";
+import { TypeORM, resetDB } from "@devpod/devpod-db/lib";
 import { BearerAuth, PersonalAccessToken } from "./bearer-authenticator";
 import { expect } from "chai";
 import { describe } from "mocha";
 import { Container } from "inversify";
 import { createTestContainer } from "../test/service-testing-container-module";
-import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
 import { UserService } from "../user/user-service";
-import { User } from "@khulnasoft/devpod-protocol";
+import { User } from "@devpod/devpod-protocol";
 import { Config } from "../config";
 import { Request } from "express";
 import { WithResourceAccessGuard } from "./resource-access";

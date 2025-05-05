@@ -6,12 +6,12 @@
 
 import { injectable, inject } from "inversify";
 
-import { User, Repository, Branch, CommitInfo, RepositoryInfo } from "@khulnasoft/devpod-protocol";
+import { User, Repository, Branch, CommitInfo, RepositoryInfo } from "@devpod/devpod-protocol";
 import { GitLabApi, GitLab } from "./api";
 import { RepositoryProvider } from "../repohost/repository-provider";
 import { RepoURL } from "../repohost/repo-url";
 
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 
 @injectable()
 export class GitlabRepositoryProvider implements RepositoryProvider {

@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { LogContext } from "@devpod/devpod-protocol/lib/util/logging";
 import { performance } from "node:perf_hooks";
 import { RequestContext, ctxTryGet } from "./request-context";
 

@@ -4,12 +4,12 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { IssueContext, User, PullRequestContext, Repository, Token } from "@khulnasoft/devpod-protocol";
+import { IssueContext, User, PullRequestContext, Repository, Token } from "@devpod/devpod-protocol";
 import {
     GitHubOAuthScopes,
     GitLabOAuthScopes,
     AzureDevOpsOAuthScopes,
-} from "@khulnasoft/public-api-common/lib/auth-providers";
+} from "@devpod/public-api-common/lib/auth-providers";
 import { AzureDevOpsContextParser } from "../azure-devops/azure-context-parser";
 import { AzureDevOpsApi } from "../azure-devops/azure-api";
 import { AuthProviderParams } from "../auth/auth-provider";
@@ -33,13 +33,13 @@ export namespace DevData {
                     authId: "33891423",
                     authName: "somefox",
                     authProviderId: "Public-GitHub",
-                    primaryEmail: "somefox@khulnasoft.com",
+                    primaryEmail: "somefox@devpod.khulnasoft.com",
                 },
                 {
                     authId: "3171928",
                     authName: "somefox",
                     authProviderId: "Public-GitLab",
-                    primaryEmail: "somefox@khulnasoft.com",
+                    primaryEmail: "somefox@devpod.khulnasoft.com",
                 },
             ],
             additionalData: {

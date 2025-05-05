@@ -9,14 +9,14 @@ import { suite, test } from "@testdeck/mocha";
 import * as chai from "chai";
 import { ConfigProvider } from "./config-provider";
 import { Container, ContainerModule } from "inversify";
-import { DevpodFileParser } from "@khulnasoft/devpod-protocol/lib/devpod-file-parser";
+import { DevpodFileParser } from "@devpod/devpod-protocol/lib/devpod-file-parser";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { ConfigurationService } from "../config/configuration-service";
-import { TeamDB } from "@khulnasoft/devpod-db/lib";
+import { TeamDB } from "@devpod/devpod-db/lib";
 import { Config } from "../config";
 import { AuthorizationService } from "../user/authorization-service";
 import { EntitlementService } from "../billing/entitlement-service";
-import { User } from "@khulnasoft/devpod-protocol";
+import { User } from "@devpod/devpod-protocol";
 const expect = chai.expect;
 const baseUserInfo: User = {
     id: "1",

@@ -389,7 +389,7 @@ message WorkspaceSpec {
 
   // subassembly_references is a list of workspace IDs that this workspace
   // depends on. For example:
-  //   index.docker.io/gitpod-io/subassmeblies/code:latest
+  //   index.docker.io/khulnasoft/subassmeblies/code:latest
   repeated string subassembly_references = 10;
 
   // last_user_activity is the time when the user last interacted with the

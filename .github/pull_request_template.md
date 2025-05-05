@@ -12,7 +12,7 @@ Fixes #
 <!--
 Does this PR require updates to the documentation at www.devpod.khulnasoft.com/docs?
 * Yes
-  * 1. Please create a docs issue: https://github.com/gitpod-io/website/issues/new?labels=documentation&template=DOCS-NEW-FEATURE.yml&title=%5BDocs+-+New+Feature%5D%3A+%3Cyour+feature+name+here%3E
+  * 1. Please create a docs issue: https://github.com/khulnasoft/website/issues/new?labels=documentation&template=DOCS-NEW-FEATURE.yml&title=%5BDocs+-+New+Feature%5D%3A+%3Cyour+feature+name+here%3E
   * 2. Paste the link to the docs issue below this comment
 * No
   * Are you sure? If so, nothing to do here.

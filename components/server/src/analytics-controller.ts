@@ -11,7 +11,7 @@ import {
     RemoteIdentifyMessage,
     RemotePageMessage,
     RemoteTrackMessage,
-} from "@khulnasoft/devpod-protocol/lib/analytics";
+} from "@devpod/devpod-protocol/lib/analytics";
 import { createCookielessId, maskIp } from "./analytics";
 import { ClientHeaderFields, toClientHeaderFields } from "./express-util";
 import { Config } from "./config";

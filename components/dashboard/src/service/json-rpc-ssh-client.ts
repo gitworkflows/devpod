@@ -6,7 +6,7 @@
 
 import { PromiseClient } from "@connectrpc/connect";
 import { PartialMessage } from "@bufbuild/protobuf";
-import { SSHService } from "@khulnasoft/public-api/lib/devpod/v1/ssh_connect";
+import { SSHService } from "@devpod/public-api/lib/devpod/v1/ssh_connect";
 import {
     CreateSSHPublicKeyRequest,
     CreateSSHPublicKeyResponse,
@@ -14,10 +14,10 @@ import {
     DeleteSSHPublicKeyResponse,
     ListSSHPublicKeysRequest,
     ListSSHPublicKeysResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/ssh_pb";
+} from "@devpod/public-api/lib/devpod/v1/ssh_pb";
 import { converter } from "./public-api";
 import { getDevpodService } from "./service";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 
 export class JsonRpcSSHClient implements PromiseClient<typeof SSHService> {
     async listSSHPublicKeys(req: PartialMessage<ListSSHPublicKeysRequest>): Promise<ListSSHPublicKeysResponse> {

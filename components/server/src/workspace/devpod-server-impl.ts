@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { UserDB, WorkspaceDB, DBWithTracing, TracedWorkspaceDB, TeamDB, DBDevpodToken } from "@khulnasoft/devpod-db/lib";
+import { UserDB, WorkspaceDB, DBWithTracing, TracedWorkspaceDB, TeamDB, DBDevpodToken } from "@devpod/devpod-db/lib";
 import {
     AuthProviderEntry,
     AuthProviderInfo,
@@ -53,8 +53,8 @@ import {
     GetDefaultWorkspaceImageParams,
     GetDefaultWorkspaceImageResult,
     SearchRepositoriesParams,
-} from "@khulnasoft/devpod-protocol";
-import { BlockedRepository } from "@khulnasoft/devpod-protocol/lib/blocked-repositories-protocol";
+} from "@devpod/devpod-protocol";
+import { BlockedRepository } from "@devpod/devpod-protocol/lib/blocked-repositories-protocol";
 import {
     AdminBlockUserRequest,
     AdminGetListRequest,
@@ -63,17 +63,17 @@ import {
     AdminModifyPermanentWorkspaceFeatureFlagRequest,
     AdminModifyRoleOrPermissionRequest,
     WorkspaceAndInstance,
-} from "@khulnasoft/devpod-protocol/lib/admin-protocol";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
+} from "@devpod/devpod-protocol/lib/admin-protocol";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
 import {
     InterfaceWithTraceContext,
     TraceContext,
     TraceContextWithSpan,
-} from "@khulnasoft/devpod-protocol/lib/util/tracing";
-import { RemoteIdentifyMessage, RemotePageMessage, RemoteTrackMessage } from "@khulnasoft/devpod-protocol/lib/analytics";
-import { SupportedWorkspaceClass } from "@khulnasoft/devpod-protocol/lib/workspace-class";
-import { StopWorkspacePolicy } from "@khulnasoft/ws-manager/lib/core_pb";
+} from "@devpod/devpod-protocol/lib/util/tracing";
+import { RemoteIdentifyMessage, RemotePageMessage, RemoteTrackMessage } from "@devpod/devpod-protocol/lib/analytics";
+import { SupportedWorkspaceClass } from "@devpod/devpod-protocol/lib/workspace-class";
+import { StopWorkspacePolicy } from "@devpod/ws-manager/lib/core_pb";
 import { inject, injectable } from "inversify";
 import { v4 as uuidv4, validate as uuidValidate } from "uuid";
 import { Disposable, CancellationToken } from "vscode-jsonrpc";
@@ -84,14 +84,14 @@ import { AuthorizationService } from "../user/authorization-service";
 import { UserAuthentication } from "../user/user-authentication";
 import { ContextParser } from "./context-parser-service";
 import { isClusterMaintenanceError } from "./workspace-starter";
-import { HeadlessLogUrls } from "@khulnasoft/devpod-protocol/lib/headless-workspace-log";
+import { HeadlessLogUrls } from "@devpod/devpod-protocol/lib/headless-workspace-log";
 import { ProjectsService } from "../projects/projects-service";
-import { IDEOption, IDEOptions } from "@khulnasoft/devpod-protocol/lib/ide-protocol";
+import { IDEOption, IDEOptions } from "@devpod/devpod-protocol/lib/ide-protocol";
 import {
     PartialProject,
     OrganizationSettings,
     Organization,
-} from "@khulnasoft/devpod-protocol/lib/teams-projects-protocol";
+} from "@devpod/devpod-protocol/lib/teams-projects-protocol";
 import { ClientMetadata, traceClientMetadata } from "../websocket/websocket-connection-manager";
 import {
     EmailDomainFilterEntry,
@@ -102,16 +102,16 @@ import {
     UserFeatureSettings,
     WorkspaceImageBuild,
     WorkspaceTimeoutSetting,
-} from "@khulnasoft/devpod-protocol/lib/protocol";
-import { ListUsageRequest, ListUsageResponse } from "@khulnasoft/devpod-protocol/lib/usage";
+} from "@devpod/devpod-protocol/lib/protocol";
+import { ListUsageRequest, ListUsageResponse } from "@devpod/devpod-protocol/lib/usage";
 import { VerificationService } from "../auth/verification-service";
 import { InstallationService } from "../auth/installation-service";
-import { BillingMode } from "@khulnasoft/devpod-protocol/lib/billing-mode";
+import { BillingMode } from "@devpod/devpod-protocol/lib/billing-mode";
 import { formatPhoneNumber } from "../user/phone-numbers";
 import { IDEService } from "../ide-service";
-import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
-import { CostCenterJSON } from "@khulnasoft/devpod-protocol/lib/usage";
-import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
+import { CostCenterJSON } from "@devpod/devpod-protocol/lib/usage";
+import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
 import { LinkedInService } from "../linkedin-service";
 import { PrebuildManager } from "../prebuilds/prebuild-manager";
 import { StripeService } from "../billing/stripe-service";
@@ -119,7 +119,7 @@ import {
     BillingServiceClient,
     BillingServiceDefinition,
     StripeCustomer,
-} from "@khulnasoft/usage-api/lib/usage/v1/billing.pb";
+} from "@devpod/usage-api/lib/usage/v1/billing.pb";
 import { ClientError } from "nice-grpc-common";
 import { BillingModes } from "../billing/billing-mode";
 import { Authorizer, SYSTEM_USER, SYSTEM_USER_ID } from "../authorization/authorizer";
@@ -135,7 +135,7 @@ import { ScmService } from "../scm/scm-service";
 import { ContextService } from "./context-service";
 import { runWithRequestContext, runWithSubjectId } from "../util/request-context";
 import { SubjectId } from "../auth/subject-id";
-import { getPrimaryEmail } from "@khulnasoft/public-api-common/lib/user-utils";
+import { getPrimaryEmail } from "@devpod/public-api-common/lib/user-utils";
 import { AnalyticsController } from "../analytics-controller";
 import { ClientHeaderFields } from "../express-util";
 import { filter } from "../util/objects";

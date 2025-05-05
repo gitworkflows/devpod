@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/gitpod-io/local-app/pkg/prettyprint"
+	"github.com/khulnasoft/local-app/pkg/prettyprint"
 	"gopkg.in/yaml.v3"
 )
 

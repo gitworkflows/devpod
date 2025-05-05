@@ -4,12 +4,12 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Token, User } from "@khulnasoft/devpod-protocol";
+import { Token, User } from "@devpod/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { AuthProviderParams } from "../auth/auth-provider";
 import { UnauthorizedError } from "../errors";
 import { TokenProvider } from "../user/token-provider";
-import { BitbucketServerOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
+import { BitbucketServerOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
 
 @injectable()
 export class BitbucketServerTokenHelper {

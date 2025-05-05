@@ -11,9 +11,9 @@ import (
 	"testing"
 
 	"github.com/bufbuild/connect-go"
-	"github.com/gitpod-io/local-app/pkg/config"
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
 	devpod_experimental_v1connect "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1/v1connect"
+	"github.com/khulnasoft/local-app/pkg/config"
 )
 
 func TestLoginCmd(t *testing.T) {

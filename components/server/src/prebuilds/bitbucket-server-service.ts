@@ -5,7 +5,7 @@
  */
 
 import { RepositoryService } from "../repohost/repo-service";
-import { User } from "@khulnasoft/devpod-protocol";
+import { User } from "@devpod/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { BitbucketServerApi } from "../bitbucket-server/bitbucket-server-api";
 import { BitbucketServerContextParser } from "../bitbucket-server/bitbucket-server-context-parser";

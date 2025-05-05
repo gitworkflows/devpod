@@ -12,7 +12,7 @@ export namespace RepoURL {
         const u = new URL(repoUrl);
         const host = u.host || "";
         const path = u.pathname || "";
-        const segments = path.split("/").filter((s) => !!s); // e.g. [ 'gitpod-io', 'devpod.git' ]
+        const segments = path.split("/").filter((s) => !!s); // e.g. [ 'khulnasoft', 'devpod.git' ]
         if (segments.length === 2) {
             const owner = segments[0];
             const repo = segments[1].endsWith(".git") ? segments[1].slice(0, -4) : segments[1];

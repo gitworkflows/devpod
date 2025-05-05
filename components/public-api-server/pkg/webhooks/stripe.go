@@ -9,7 +9,7 @@ import (
 	"net/http"
 
 	"github.com/khulnasoft/devpod/common-go/log"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/billingservice"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/billingservice"
 	"github.com/sirupsen/logrus"
 	"github.com/stripe/stripe-go/v72/webhook"
 )

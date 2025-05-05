@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { hoursBefore, isDateSmallerOrEqual } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
-import { Workspace, WorkspacePhase_Phase } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { hoursBefore, isDateSmallerOrEqual } from "@devpod/devpod-protocol/lib/util/timeutil";
+import { Workspace, WorkspacePhase_Phase } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { Button } from "@podkit/buttons/Button";
 import { cn } from "@podkit/lib/cn";
 import { Subheading } from "@podkit/typography/Headings";

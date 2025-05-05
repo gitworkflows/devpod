@@ -12,8 +12,8 @@ import {
     PortVisibility,
     DisposableCollection,
     PortProtocol,
-} from "@khulnasoft/devpod-protocol";
-import * as protocol from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
+import * as protocol from "@devpod/devpod-protocol";
 import {
     WorkspaceStatus,
     WorkspacePhase,
@@ -24,22 +24,22 @@ import {
     WorkspaceType,
     InitializerMetrics,
     InitializerMetric,
-} from "@khulnasoft/ws-manager/lib";
-import { scrubber, TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
-import { WorkspaceDB } from "@khulnasoft/devpod-db/lib/workspace-db";
-import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
-import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
-import { TracedWorkspaceDB, DBWithTracing } from "@khulnasoft/devpod-db/lib/traced-db";
+} from "@devpod/ws-manager/lib";
+import { scrubber, TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
+import { WorkspaceDB } from "@devpod/devpod-db/lib/workspace-db";
+import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
+import { TracedWorkspaceDB, DBWithTracing } from "@devpod/devpod-db/lib/traced-db";
 import { Metrics } from "./metrics";
 import { ClientProvider, WsmanSubscriber } from "./wsman-subscriber";
 import { Timestamp } from "google-protobuf/google/protobuf/timestamp_pb";
 import { Configuration } from "./config";
-import { WorkspaceClass, WorkspaceCluster, WorkspaceClusterDB } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+import { WorkspaceClass, WorkspaceCluster, WorkspaceClusterDB } from "@devpod/devpod-protocol/lib/workspace-cluster";
 import { performance } from "perf_hooks";
 import { WorkspaceInstanceController } from "./workspace-instance-controller";
 import { PrebuildUpdater } from "./prebuild-updater";
-import { RedisPublisher } from "@khulnasoft/devpod-db/lib";
+import { RedisPublisher } from "@devpod/devpod-db/lib";
 import { merge } from "ts-deepmerge";
 
 export const WorkspaceManagerBridgeFactory = Symbol("WorkspaceManagerBridgeFactory");

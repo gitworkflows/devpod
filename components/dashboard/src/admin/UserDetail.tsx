@@ -11,7 +11,7 @@ import {
     Roles,
     User,
     WorkspaceFeatureFlags,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import dayjs from "dayjs";
 import { useEffect, useRef, useState } from "react";
 import Modal from "../components/Modal";

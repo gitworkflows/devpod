@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TeamDB, testContainer } from "@khulnasoft/devpod-db/lib";
+import { TeamDB, testContainer } from "@devpod/devpod-db/lib";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";
@@ -12,7 +12,7 @@ import { OrganizationService } from "./organization-service";
 import { InstallationService } from "../auth/installation-service";
 import { ProjectsService } from "../projects/projects-service";
 import { Authorizer } from "../authorization/authorizer";
-import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
+import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
 import { DefaultWorkspaceImageValidator } from "./default-workspace-image-validator";
 import { UserService } from "../user/user-service";
 import { Config } from "../config";

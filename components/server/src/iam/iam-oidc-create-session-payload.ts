@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ErrorCodes, ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ErrorCodes, ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
 
 export namespace OIDCCreateSessionPayload {
     export function validate(payload: any): OIDCCreateSessionPayload {

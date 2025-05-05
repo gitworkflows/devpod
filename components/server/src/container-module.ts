@@ -6,32 +6,32 @@
 
 import { ContainerModule } from "inversify";
 
-import { RedisPublisher, newRedisClient } from "@khulnasoft/devpod-db/lib";
-import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
-import { DevpodFileParser } from "@khulnasoft/devpod-protocol/lib/devpod-file-parser";
-import { PrometheusClientCallMetrics } from "@khulnasoft/devpod-protocol/lib/messaging/client-call-metrics";
-import { newAnalyticsWriterFromEnv } from "@khulnasoft/devpod-protocol/lib/util/analytics";
-import { DebugApp } from "@khulnasoft/devpod-protocol/lib/util/debug-app";
+import { RedisPublisher, newRedisClient } from "@devpod/devpod-db/lib";
+import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
+import { DevpodFileParser } from "@devpod/devpod-protocol/lib/devpod-file-parser";
+import { PrometheusClientCallMetrics } from "@devpod/devpod-protocol/lib/messaging/client-call-metrics";
+import { newAnalyticsWriterFromEnv } from "@devpod/devpod-protocol/lib/util/analytics";
+import { DebugApp } from "@devpod/devpod-protocol/lib/util/debug-app";
 import {
     IClientCallMetrics,
     createClientCallMetricsInterceptor,
     defaultGRPCOptions,
-} from "@khulnasoft/devpod-protocol/lib/util/grpc";
-import { prometheusClientMiddleware } from "@khulnasoft/devpod-protocol/lib/util/nice-grpc";
-import { IDEServiceClient, IDEServiceDefinition } from "@khulnasoft/ide-service-api/lib/ide.pb";
-import { ImageBuilderClientCallMetrics, ImageBuilderClientProvider } from "@khulnasoft/image-builder/lib";
-import { BillingServiceClient, BillingServiceDefinition } from "@khulnasoft/usage-api/lib/usage/v1/billing.pb";
-import { UsageServiceClient, UsageServiceDefinition } from "@khulnasoft/usage-api/lib/usage/v1/usage.pb";
+} from "@devpod/devpod-protocol/lib/util/grpc";
+import { prometheusClientMiddleware } from "@devpod/devpod-protocol/lib/util/nice-grpc";
+import { IDEServiceClient, IDEServiceDefinition } from "@devpod/ide-service-api/lib/ide.pb";
+import { ImageBuilderClientCallMetrics, ImageBuilderClientProvider } from "@devpod/image-builder/lib";
+import { BillingServiceClient, BillingServiceDefinition } from "@devpod/usage-api/lib/usage/v1/billing.pb";
+import { UsageServiceClient, UsageServiceDefinition } from "@devpod/usage-api/lib/usage/v1/usage.pb";
 import {
     IWorkspaceManagerClientCallMetrics,
     WorkspaceManagerClientProvider,
-} from "@khulnasoft/ws-manager/lib/client-provider";
+} from "@devpod/ws-manager/lib/client-provider";
 import {
     WorkspaceManagerClientProviderCompositeSource,
     WorkspaceManagerClientProviderDBSource,
     WorkspaceManagerClientProviderEnvSource,
     WorkspaceManagerClientProviderSource,
-} from "@khulnasoft/ws-manager/lib/client-provider-source";
+} from "@devpod/ws-manager/lib/client-provider-source";
 import * as grpc from "@grpc/grpc-js";
 import { Redis } from "ioredis";
 import { createChannel, createClient, createClientFactory } from "nice-grpc";

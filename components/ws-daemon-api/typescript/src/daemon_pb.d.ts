@@ -11,7 +11,7 @@
 /* eslint-disable */
 
 import * as jspb from "google-protobuf";
-import * as content_service_api_initializer_pb from "@khulnasoft/content-service/lib";
+import * as content_service_api_initializer_pb from "@devpod/content-service/lib";
 
 export class InitWorkspaceRequest extends jspb.Message {
     getId(): string;

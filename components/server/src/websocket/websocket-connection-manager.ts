@@ -10,15 +10,15 @@ import {
     DevpodServerPath,
     RateLimiterError,
     User,
-} from "@khulnasoft/devpod-protocol";
-import { ApplicationError, ErrorCode, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { ConnectionHandler } from "@khulnasoft/devpod-protocol/lib/messaging/handler";
+} from "@devpod/devpod-protocol";
+import { ApplicationError, ErrorCode, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ConnectionHandler } from "@devpod/devpod-protocol/lib/messaging/handler";
 import {
     JsonRpcConnectionHandler,
     JsonRpcProxy,
     JsonRpcProxyFactory,
-} from "@khulnasoft/devpod-protocol/lib/messaging/proxy-factory";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+} from "@devpod/devpod-protocol/lib/messaging/proxy-factory";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { EventEmitter } from "events";
 import express from "express";
 import { ErrorCodes as RPCErrorCodes, MessageConnection, ResponseError, CancellationToken } from "vscode-jsonrpc";
@@ -45,8 +45,8 @@ import {
 } from "../prometheus-metrics";
 import { DevpodServerImpl } from "../workspace/devpod-server-impl";
 import * as opentracing from "opentracing";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
-import { DevpodHostUrl } from "@khulnasoft/devpod-protocol/lib/util/devpod-host-url";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
+import { DevpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
 import { maskIp } from "../analytics";
 import { runWithRequestContext } from "../util/request-context";
 import { SubjectId } from "../auth/subject-id";

@@ -2891,7 +2891,7 @@ public final class IdeClient {
       "\022..devpod.experimental.v1.UpdateGitStatu" +
       "sRequest\032/.devpod.experimental.v1.Update" +
       "GitStatusResponse\"\000Bk\n#io.devpod.publica" +
-      "pi.experimental.v1ZDgithub.com/gitpod-io" +
+      "pi.experimental.v1ZDgithub.com/khulnasoft" +
       "/devpod/components/public-api/go/experim" +
       "ental/v1b\006proto3"
     };

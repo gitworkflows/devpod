@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { DevpodHostUrl } from "@khulnasoft/devpod-protocol/lib/util/devpod-host-url";
+import { DevpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
 
 export const workspaceUrl = new DevpodHostUrl(window.location.href);
 

@@ -9,7 +9,7 @@ import (
 	"crypto/rsa"
 	"testing"
 
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/jws"
 	"github.com/stretchr/testify/require"
 )
 

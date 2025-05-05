@@ -22,7 +22,7 @@ import (
 )
 
 func TestRegularWorkspaceTasks(t *testing.T) {
-	testRepo := "https://github.com/gitpod-io/empty"
+	testRepo := "https://github.com/khulnasoft/empty"
 	testRepoName := "empty"
 	wsLoc := fmt.Sprintf("/workspace/%s", testRepoName)
 	tests := []struct {

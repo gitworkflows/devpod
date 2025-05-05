@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { QueryErrorResetBoundary, useQueryClient } from "@tanstack/react-query";
 import { FC } from "react";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";

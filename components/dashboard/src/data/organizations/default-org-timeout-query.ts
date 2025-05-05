@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { WORKSPACE_TIMEOUT_DEFAULT_LONG, WORKSPACE_TIMEOUT_DEFAULT_SHORT } from "@khulnasoft/devpod-protocol";
+import { WORKSPACE_TIMEOUT_DEFAULT_LONG, WORKSPACE_TIMEOUT_DEFAULT_SHORT } from "@devpod/devpod-protocol";
 import { useOrgBillingMode } from "../billing-mode/org-billing-mode-query";
 
 /**

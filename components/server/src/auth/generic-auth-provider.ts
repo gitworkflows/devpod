@@ -9,9 +9,9 @@ import { injectable, inject, postConstruct } from "inversify";
 import express from "express";
 import passport from "passport";
 import OAuth2Strategy from "passport-oauth2";
-import { UserDB } from "@khulnasoft/devpod-db/lib";
-import { AuthProviderInfo, Identity, Token, User } from "@khulnasoft/devpod-protocol";
-import { log, LogContext } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { UserDB } from "@devpod/devpod-db/lib";
+import { AuthProviderInfo, Identity, Token, User } from "@devpod/devpod-protocol";
+import { log, LogContext } from "@devpod/devpod-protocol/lib/util/logging";
 import { oauth2tokenCallback, OAuth2 } from "oauth";
 import { URL } from "url";
 import { AuthProvider, AuthUser } from "../auth/auth-provider";
@@ -30,13 +30,13 @@ import { AuthProviderService } from "./auth-provider-service";
 import { LoginCompletionHandler } from "./login-completion-handler";
 import { OutgoingHttpHeaders } from "http2";
 import { trackSignup } from "../analytics";
-import { daysBefore, isDateSmaller } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
-import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
+import { daysBefore, isDateSmaller } from "@devpod/devpod-protocol/lib/util/timeutil";
+import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
 import { VerificationService } from "../auth/verification-service";
 import { SignInJWT } from "./jwt";
 import { UserService } from "../user/user-service";
 import { reportLoginCompleted } from "../prometheus-metrics";
-import { TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
+import { TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
 
 /**
  * This is a generic implementation of OAuth2-based AuthProvider.

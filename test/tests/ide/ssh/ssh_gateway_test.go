@@ -65,7 +65,7 @@ func TestSSHGatewayConnection(t *testing.T) {
 World`,
 			})
 
-			nfo, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "github.com/gitpod-io/empty", username, api)
+			nfo, stopWs, err := integration.LaunchWorkspaceFromContextURL(t, ctx, "github.com/khulnasoft/empty", username, api)
 			if err != nil {
 				t.Fatal(err)
 			}

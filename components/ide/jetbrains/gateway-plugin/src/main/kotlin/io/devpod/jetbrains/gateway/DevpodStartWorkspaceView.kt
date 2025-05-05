@@ -87,7 +87,7 @@ class DevpodStartWorkspaceView(
                                 "RubyMine" -> "https://github.com/devpod-samples/template-ruby-on-rails-postgres"
                                 "PhpStorm" -> "https://github.com/devpod-samples/template-php-laravel-mysql"
                                 "RustRover" -> "https://github.com/devpod-samples/template-rust-cli"
-                                else -> "https://github.com/gitpod-io/empty"
+                                else -> "https://github.com/khulnasoft/empty"
                             }
                         }
                     }

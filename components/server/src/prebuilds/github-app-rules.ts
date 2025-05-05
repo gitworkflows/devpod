@@ -5,9 +5,9 @@
  */
 
 import { injectable } from "inversify";
-import { WorkspaceConfig, GithubAppConfig } from "@khulnasoft/devpod-protocol";
+import { WorkspaceConfig, GithubAppConfig } from "@devpod/devpod-protocol";
 import deepmerge from "deepmerge";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 
 const defaultConfig: GithubAppConfig = {
     prebuilds: {

@@ -5,7 +5,7 @@
  */
 
 import { FC, useCallback, useState } from "react";
-import { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
+import { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
 import { ConfigurationSettingsField } from "./ConfigurationSettingsField";
 import { Heading3, Subheading } from "@podkit/typography/Headings";
 import { SwitchInputField } from "@podkit/switch/Switch";

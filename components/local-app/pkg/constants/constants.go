@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"github.com/Masterminds/semver/v3"
-	version "github.com/gitpod-io/local-app"
+	version "github.com/khulnasoft/local-app"
 )
 
 var (

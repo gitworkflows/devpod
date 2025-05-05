@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { TypeORM } from "@khulnasoft/devpod-db/lib";
+import { TypeORM } from "@devpod/devpod-db/lib";
 import {
     CommitContext,
     EnvVarWithValue,
@@ -15,17 +15,17 @@ import {
     UserEnvVarValue,
     WithEnvvarsContext,
     WorkspaceConfig,
-} from "@khulnasoft/devpod-protocol";
-import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
+} from "@devpod/devpod-protocol";
+import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";
 import { createTestContainer } from "../test/service-testing-container-module";
-import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
+import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
 import { OrganizationService } from "../orgs/organization-service";
 import { UserService } from "./user-service";
 import { expectError } from "../test/expect-utils";
-import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { EnvVarService, ResolvedEnvVars } from "./env-var-service";
 import { ProjectsService } from "../projects/projects-service";
 
@@ -49,7 +49,7 @@ const fooAnyUserEnvVar = {
 const barUserCommitEnvVar = {
     name: "bar",
     value: "commit",
-    repositoryPattern: "devpod/gitpod-io",
+    repositoryPattern: "devpod/khulnasoft",
 } as const;
 
 const barUserAnotherCommitEnvVar = {
@@ -541,7 +541,7 @@ describe("EnvVarService", async () => {
             {
                 name: "MULTIPLE_VARS_WITH_SAME_NAME",
                 value: "true",
-                repositoryPattern: "devpod/gitpod-io",
+                repositoryPattern: "devpod/khulnasoft",
             },
             {
                 name: "MULTIPLE_VARS_WITH_SAME_NAME",
@@ -551,7 +551,7 @@ describe("EnvVarService", async () => {
             {
                 name: "MULTIPLE_VARS_WITH_SAME_NAME",
                 value: "true",
-                repositoryPattern: "*/gitpod-io",
+                repositoryPattern: "*/khulnasoft",
             },
             {
                 name: "MULTIPLE_VARS_WITH_SAME_NAME",

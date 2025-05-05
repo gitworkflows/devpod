@@ -11,9 +11,9 @@ import (
 	"testing"
 
 	"github.com/Masterminds/semver/v3"
-	"github.com/gitpod-io/local-app/pkg/config"
-	"github.com/gitpod-io/local-app/pkg/constants"
-	"github.com/gitpod-io/local-app/pkg/selfupdate"
+	"github.com/khulnasoft/local-app/pkg/config"
+	"github.com/khulnasoft/local-app/pkg/constants"
+	"github.com/khulnasoft/local-app/pkg/selfupdate"
 	"github.com/opencontainers/go-digest"
 )
 

@@ -29,7 +29,7 @@ func TestWorkspaceInstrumentation(t *testing.T) {
 	}{
 		{
 			Name:          "example",
-			ContextURL:    "https://github.com/gitpod-io/empty",
+			ContextURL:    "https://github.com/khulnasoft/empty",
 			WorkspaceRoot: "/workspace/empty",
 		},
 	}

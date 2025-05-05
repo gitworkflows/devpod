@@ -8,7 +8,7 @@ import {
     BranchMatchingStrategy,
     Configuration,
     PrebuildTriggerStrategy,
-} from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
+} from "@devpod/public-api/lib/devpod/v1/configuration_pb";
 import { FC, FormEvent, useCallback, useMemo, useState } from "react";
 import { ConfigurationSettingsField } from "../ConfigurationSettingsField";
 import { Heading3, Subheading } from "@podkit/typography/Headings";

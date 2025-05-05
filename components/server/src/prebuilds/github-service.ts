@@ -9,11 +9,11 @@ import { inject, injectable } from "inversify";
 import { GitHubApiError, GitHubRestApi } from "../github/api";
 import { GitHubEnterpriseApp } from "./github-enterprise-app";
 import { GithubContextParser } from "../github/github-context-parser";
-import { User } from "@khulnasoft/devpod-protocol";
+import { User } from "@devpod/devpod-protocol";
 import { Config } from "../config";
 import { RepoURL } from "../repohost";
 import { UnauthorizedError } from "../errors";
-import { GitHubOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
+import { GitHubOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
 
 @injectable()
 export class GitHubService extends RepositoryService {

@@ -38,7 +38,7 @@ func TestPrebuildWorkspaceTaskSuccess(t *testing.T) {
 			}{
 				{
 					Name:             "classic",
-					ContextURL:       "https://github.com/gitpod-io/empty",
+					ContextURL:       "https://github.com/khulnasoft/empty",
 					CheckoutLocation: "empty",
 					WorkspaceRoot:    "/workspace/empty",
 					Task: []devpod.TasksItems{
@@ -200,7 +200,7 @@ func TestOpenWorkspaceFromPrebuild(t *testing.T) {
 			}{
 				{
 					Name:             "classic",
-					ContextURL:       "https://github.com/gitpod-io/empty",
+					ContextURL:       "https://github.com/khulnasoft/empty",
 					CheckoutLocation: "empty",
 					WorkspaceRoot:    "/workspace/empty",
 				},
@@ -416,7 +416,7 @@ func TestOpenWorkspaceFromPrebuild(t *testing.T) {
 // TestOpenWorkspaceFromOutdatedPrebuild
 // - create a prebuild on older commit
 // - open a workspace from a later commit with a prebuild initializer
-// - make sure the workspace's init task ran (the init task will create a file `incremental.txt` see https://github.com/gitpod-io/test-incremental-workspace/blob/main/.devpod.yml)
+// - make sure the workspace's init task ran (the init task will create a file `incremental.txt` see https://github.com/khulnasoft/test-incremental-workspace/blob/main/.devpod.yml)
 func TestOpenWorkspaceFromOutdatedPrebuild(t *testing.T) {
 
 	f := features.New("prebuild").
@@ -433,7 +433,7 @@ func TestOpenWorkspaceFromOutdatedPrebuild(t *testing.T) {
 			}{
 				{
 					Name:                    "classic",
-					RemoteUri:               "https://github.com/gitpod-io/test-incremental-workspace",
+					RemoteUri:               "https://github.com/khulnasoft/test-incremental-workspace",
 					CloneTargetForPrebuild:  "prebuild",
 					CloneTargetForWorkspace: "main",
 					CheckoutLocation:        "test-incremental-workspace",

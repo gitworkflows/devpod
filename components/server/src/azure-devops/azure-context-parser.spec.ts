@@ -9,9 +9,9 @@ import * as chai from "chai";
 const expect = chai.expect;
 
 import { AzureDevOpsContextParser } from "./azure-context-parser";
-import { User } from "@khulnasoft/devpod-protocol";
+import { User } from "@devpod/devpod-protocol";
 import { DevData, DevTestHelper } from "../dev/dev-data";
-import { ifEnvVarNotSet } from "@khulnasoft/devpod-protocol/lib/util/skip-if";
+import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
 
 DevTestHelper.echoAzureTestTips();
 

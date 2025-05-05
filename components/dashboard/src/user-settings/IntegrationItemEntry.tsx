@@ -6,7 +6,7 @@
 
 import { ContextMenuEntry } from "../components/ContextMenu";
 import { Item, ItemFieldIcon, ItemField, ItemFieldContextMenu } from "../components/ItemsList";
-import { AuthProvider } from "@khulnasoft/public-api/lib/devpod/v1/authprovider_pb";
+import { AuthProvider } from "@devpod/public-api/lib/devpod/v1/authprovider_pb";
 import { toAuthProviderLabel } from "../provider-utils";
 
 export const IntegrationEntryItem = (props: {

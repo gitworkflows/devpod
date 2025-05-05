@@ -5,7 +5,7 @@
  */
 
 import { FC } from "react";
-import { Configuration } from "@khulnasoft/public-api/lib/devpod/v1/configuration_pb";
+import { Configuration } from "@devpod/public-api/lib/devpod/v1/configuration_pb";
 import { ConfigurationWorkspaceEditorsOptions } from "./editors/ConfigurationWorkspaceEditorsOptions";
 
 interface Props {

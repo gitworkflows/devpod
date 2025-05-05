@@ -4,13 +4,13 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Disposable } from "@khulnasoft/devpod-protocol";
+import { Disposable } from "@devpod/devpod-protocol";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { getListWorkspacesQueryKey, ListWorkspacesQueryResult } from "./list-workspaces-query";
 import { useCurrentOrg } from "../organizations/orgs-query";
 import { stream, workspaceClient } from "../../service/public-api";
-import { WatchWorkspaceStatusResponse, Workspace } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { WatchWorkspaceStatusResponse, Workspace } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 
 export const useListenToWorkspacesWSMessages = () => {
     const queryClient = useQueryClient();

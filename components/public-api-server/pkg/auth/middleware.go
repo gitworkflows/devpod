@@ -11,7 +11,7 @@ import (
 
 	"github.com/bufbuild/connect-go"
 	"github.com/khulnasoft/devpod/components/public-api/go/config"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/jws"
 )
 
 type Interceptor struct {

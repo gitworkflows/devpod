@@ -5,10 +5,10 @@
  */
 
 import { injectable, inject } from "inversify";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { Job } from "../jobs/runner";
 import { RelationshipUpdater } from "./relationship-updater";
-import { UserDB } from "@khulnasoft/devpod-db/lib";
+import { UserDB } from "@devpod/devpod-db/lib";
 
 @injectable()
 export class RelationshipUpdateJob implements Job {

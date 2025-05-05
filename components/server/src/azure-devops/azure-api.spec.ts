@@ -4,14 +4,14 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@khulnasoft/devpod-protocol";
-import { ifEnvVarNotSet } from "@khulnasoft/devpod-protocol/lib/util/skip-if";
+import { User } from "@devpod/devpod-protocol";
+import { ifEnvVarNotSet } from "@devpod/devpod-protocol/lib/util/skip-if";
 import { expect } from "chai";
 import { Container } from "inversify";
 import { suite, test, timeout, skip } from "@testdeck/mocha";
 import { DevData, DevTestHelper } from "../dev/dev-data";
 import { AzureDevOpsApi } from "./azure-api";
-import { RepositoryNotFoundError } from "@khulnasoft/public-api-common/lib/public-api-errors";
+import { RepositoryNotFoundError } from "@devpod/public-api-common/lib/public-api-errors";
 
 DevTestHelper.echoAzureTestTips();
 

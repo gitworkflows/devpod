@@ -4,10 +4,10 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { AuthCodeRepositoryDB } from "@khulnasoft/devpod-db/lib/typeorm/auth-code-repository-db";
-import { UserDB } from "@khulnasoft/devpod-db/lib/user-db";
-import { User } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { AuthCodeRepositoryDB } from "@devpod/devpod-db/lib/typeorm/auth-code-repository-db";
+import { UserDB } from "@devpod/devpod-db/lib/user-db";
+import { User } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { OAuthRequest, OAuthResponse } from "@jmondi/oauth2-server";
 import { handleExpressResponse, handleExpressError } from "@jmondi/oauth2-server/dist/adapters/express";
 import express from "express";

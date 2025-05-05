@@ -10,7 +10,7 @@ import (
 
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/google/uuid"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/jws"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/jws"
 )
 
 type SessionClaims struct {

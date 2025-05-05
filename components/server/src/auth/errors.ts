@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { SelectAccountPayload } from "@khulnasoft/devpod-protocol/lib/auth";
+import { SelectAccountPayload } from "@devpod/devpod-protocol/lib/auth";
 
 export interface AuthException extends Error {
     readonly payload: any;

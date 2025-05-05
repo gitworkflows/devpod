@@ -5,7 +5,7 @@
  */
 
 import fetch from "node-fetch";
-import { User } from "@khulnasoft/devpod-protocol";
+import { User } from "@devpod/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { AuthProviderParams } from "../auth/auth-provider";
 import { BitbucketServerTokenHelper } from "./bitbucket-server-token-handler";

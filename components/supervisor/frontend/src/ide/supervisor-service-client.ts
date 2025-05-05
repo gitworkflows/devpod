@@ -8,11 +8,11 @@ import {
     SupervisorStatusResponse,
     IDEStatusResponse,
     ContentStatusResponse,
-} from "@khulnasoft/supervisor-api-grpc/lib/status_pb";
-import { WorkspaceInfoResponse } from "@khulnasoft/supervisor-api-grpc/lib/info_pb";
+} from "@devpod/supervisor-api-grpc/lib/status_pb";
+import { WorkspaceInfoResponse } from "@devpod/supervisor-api-grpc/lib/info_pb";
 import { workspaceUrl } from "../shared/urls";
 import { FrontendDashboardServiceClient } from "../shared/frontend-dashboard-service";
-import { Timeout } from "@khulnasoft/devpod-protocol/lib/util/timeout";
+import { Timeout } from "@devpod/devpod-protocol/lib/util/timeout";
 
 export class SupervisorServiceClient {
     readonly supervisorReady = this.checkReady("supervisor");

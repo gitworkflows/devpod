@@ -4,18 +4,18 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TypeORM } from "@khulnasoft/devpod-db/lib";
-import { Organization, User } from "@khulnasoft/devpod-protocol";
-import { AttributionId } from "@khulnasoft/devpod-protocol/lib/attribution";
-import { Experiments } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
-import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { ListUsageRequest, Ordering } from "@khulnasoft/devpod-protocol/lib/usage";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TypeORM } from "@devpod/devpod-db/lib";
+import { Organization, User } from "@devpod/devpod-protocol";
+import { AttributionId } from "@devpod/devpod-protocol/lib/attribution";
+import { Experiments } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
+import { ListUsageRequest, Ordering } from "@devpod/devpod-protocol/lib/usage";
 import {
     CostCenter_BillingStrategy,
     GetCostCenterRequest,
     UsageServiceClient,
     UsageServiceDefinition,
-} from "@khulnasoft/usage-api/lib/usage/v1/usage.pb";
+} from "@devpod/usage-api/lib/usage/v1/usage.pb";
 import * as chai from "chai";
 import { Container } from "inversify";
 import "mocha";
@@ -23,7 +23,7 @@ import { Mock } from "../test/mocks/mock";
 import { createTestContainer, withTestCtx } from "../test/service-testing-container-module";
 import { OrganizationService } from "./organization-service";
 import { UsageService } from "./usage-service";
-import { resetDB } from "@khulnasoft/devpod-db/lib/test/reset-db";
+import { resetDB } from "@devpod/devpod-db/lib/test/reset-db";
 import { expectError } from "../test/expect-utils";
 import { UserService } from "../user/user-service";
 import { SYSTEM_USER } from "../authorization/authorizer";

@@ -59,12 +59,12 @@
     "phasePersisted": "stopped",
     "deleted": false,
     "configuration": {
-      "ideImage": "ghcr.io/devpod-core-dev/build/ide/code:commit-e77f3a07ea76bbb404d3f6bf4af36269afc45df1",
+      "ideImage": "khulnasoft/devpod-environment/build/ide/code:commit-e77f3a07ea76bbb404d3f6bf4af36269afc45df1",
       "ideImageLayers": [
-        "ghcr.io/devpod-core-dev/build/ide/devpod-code-web:commit-49bb715b599dce2356dd02a6ede7ae8cf10d8d12",
-        "ghcr.io/devpod-core-dev/build/ide/code-codehelper:commit-18a48e2ccb779a268355d2b58a167c73de023547"
+        "khulnasoft/devpod-environment/build/ide/devpod-code-web:commit-49bb715b599dce2356dd02a6ede7ae8cf10d8d12",
+        "khulnasoft/devpod-environment/build/ide/code-codehelper:commit-18a48e2ccb779a268355d2b58a167c73de023547"
       ],
-      "supervisorImage": "ghcr.io/devpod-core-dev/build/supervisor:commit-cda78d5706672b9a41e15d84a128cdb24357ad87",
+      "supervisorImage": "khulnasoft/devpod-environment/build/supervisor:commit-cda78d5706672b9a41e15d84a128cdb24357ad87",
       "ideConfig": {
         "useLatest": false,
         "ide": "code"

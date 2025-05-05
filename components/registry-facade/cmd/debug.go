@@ -44,6 +44,6 @@ func init() {
 	debugCmd.AddCommand(debugCreateSpecCmd)
 
 	debugCmd.Flags().StringVar(&debugSpec.BaseRef, "base-ref", "docker.io/library/ubuntu:latest", "sets the base ref")
-	debugCmd.Flags().StringVar(&debugSpec.IdeRef, "ide-ref", "ghcr.io/devpod-core-dev/build/ide/code:commit-8dd2ddd844f30a4ff66d2704f4714e9da875c7d5", "sets the IDE ref")
-	debugCmd.Flags().StringVar(&debugSpec.SupervisorRef, "supervisor-ref", "ghcr.io/devpod-core-dev/build/supervisor:main.2733", "sets the supervisor ref")
+	debugCmd.Flags().StringVar(&debugSpec.IdeRef, "ide-ref", "khulnasoft/devpod-environment/build/ide/code:commit-8dd2ddd844f30a4ff66d2704f4714e9da875c7d5", "sets the IDE ref")
+	debugCmd.Flags().StringVar(&debugSpec.SupervisorRef, "supervisor-ref", "khulnasoft/devpod-environment/build/supervisor:main.2733", "sets the supervisor ref")
 }

@@ -26,7 +26,7 @@ GH_APP_KEY=${TMP2//RSA_PRIVATE/ RSA PRIVATE }
 
 
 echo 'patching configmap server-config'
-LINE="\"githubApp\": \{\"appId\":${GH_APP_ID},\"authProviderId\":\"Public-GitHub\",\"certPath\":\"\/github-app-cert\/cert\",\"certSecretName\":\"server-github-app-cert\",\"enabled\":true,\"marketplaceName\":\"gitpod-io\",\"webhookSecret\":\"omgsecret\"}"
+LINE="\"githubApp\": \{\"appId\":${GH_APP_ID},\"authProviderId\":\"Public-GitHub\",\"certPath\":\"\/github-app-cert\/cert\",\"certSecretName\":\"server-github-app-cert\",\"enabled\":true,\"marketplaceName\":\"khulnasoft\",\"webhookSecret\":\"omgsecret\"}"
 kubectl get cm server-config -o yaml > server-config.yml
 perl -0777 -i.original -pe "s/\"githubApp\":.+?\}/$LINE/igs" server-config.yml
 kubectl apply -f server-config.yml

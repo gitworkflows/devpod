@@ -12,8 +12,8 @@ import (
 	"github.com/golang/mock/gomock"
 	lru "github.com/hashicorp/golang-lru"
 	devpod "github.com/khulnasoft/devpod/devpod-protocol"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/auth"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/origin"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/auth"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/origin"
 	"github.com/stretchr/testify/require"
 )
 

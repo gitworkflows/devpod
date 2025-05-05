@@ -15,17 +15,17 @@ import { SessionHandler } from "./session-handler";
 import { Authenticator } from "./auth/authenticator";
 import { UserController } from "./user/user-controller";
 import { EventEmitter } from "events";
-import { createWebSocketConnection, toIWebSocket } from "@khulnasoft/devpod-protocol/lib/messaging/node/connection";
+import { createWebSocketConnection, toIWebSocket } from "@devpod/devpod-protocol/lib/messaging/node/connection";
 import { WsExpressHandler, WsRequestHandler } from "./express/ws-handler";
 import { isAllowedWebsocketDomain, bottomErrorHandler, unhandledToError, toHeaders } from "./express-util";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { AddressInfo } from "net";
 import { WorkspaceDownloadService } from "./workspace/workspace-download-service";
 import { MonitoringEndpointsApp } from "./monitoring-endpoints";
 import { WebsocketConnectionManager } from "./websocket/websocket-connection-manager";
-import { TypeORM } from "@khulnasoft/devpod-db/lib";
+import { TypeORM } from "@devpod/devpod-db/lib";
 import { OneTimeSecretServer } from "./one-time-secret-server";
-import { Disposable, DisposableCollection } from "@khulnasoft/devpod-protocol";
+import { Disposable, DisposableCollection } from "@devpod/devpod-protocol";
 import { BearerAuth, isBearerAuthError } from "./auth/bearer-authenticator";
 import { HostContextProvider } from "./auth/host-context-provider";
 import { CodeSyncService } from "./code-sync/code-sync-service";
@@ -34,7 +34,7 @@ import { OAuthController } from "./oauth-server/oauth-controller";
 import { HeadlessLogController } from "./workspace/headless-log-controller";
 import { NewsletterSubscriptionController } from "./user/newsletter-subscription-controller";
 import { Config } from "./config";
-import { DebugApp } from "@khulnasoft/devpod-protocol/lib/util/debug-app";
+import { DebugApp } from "@devpod/devpod-protocol/lib/util/debug-app";
 import { WsConnectionHandler } from "./express/ws-connection-handler";
 import { IamSessionApp } from "./iam/iam-session-app";
 import { API } from "./api/server";
@@ -365,7 +365,7 @@ export class Server {
         this.httpServer = httpServer;
 
         if (this.monitoringApp) {
-            this.monitoringHttpServer = this.monitoringApp.listen(MONITORING_PORT, "localhost", () => {
+            this.monitoringHttpServer = this.monitoringApp.listen(MONITORING_PORT, "127.0.0.1", () => {
                 log.info(
                     `monitoring app listening on port: ${(<AddressInfo>this.monitoringHttpServer!.address()).port}`,
                 );

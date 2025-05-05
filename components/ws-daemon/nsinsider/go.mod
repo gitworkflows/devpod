@@ -4,7 +4,7 @@ go 1.22.0
 
 toolchain go1.23.3
 
-replace github.com/seccomp/libseccomp-golang => github.com/gitpod-io/libseccomp-golang v0.9.2-0.20220203100026-45179215fdb1 // blazedock indirect from components/workspacekit:lib
+replace github.com/seccomp/libseccomp-golang => github.com/khulnasoft/libseccomp-golang v0.9.2-0.20220203100026-45179215fdb1 // blazedock indirect from components/workspacekit:lib
 
 require (
 	github.com/khulnasoft/devpod/common-go v0.0.0-00010101000000-000000000000

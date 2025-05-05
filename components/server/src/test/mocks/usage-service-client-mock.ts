@@ -13,7 +13,7 @@ import {
     ListUsageRequest,
     SetCostCenterResponse,
     UsageServiceClient,
-} from "@khulnasoft/usage-api/lib/usage/v1/usage.pb";
+} from "@devpod/usage-api/lib/usage/v1/usage.pb";
 import { injectable } from "inversify";
 
 @injectable()

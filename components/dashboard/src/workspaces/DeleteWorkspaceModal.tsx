@@ -8,7 +8,7 @@ import { FunctionComponent, useCallback } from "react";
 import ConfirmationModal from "../components/ConfirmationModal";
 import { useDeleteWorkspaceMutation } from "../data/workspaces/delete-workspace-mutation";
 import { useToast } from "../components/toasts/Toasts";
-import { Workspace } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { Workspace } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { fromWorkspaceName } from "./RenameWorkspaceModal";
 
 type Props = {

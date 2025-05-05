@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { DevpodHostUrl } from "@khulnasoft/devpod-protocol/lib/util/devpod-host-url";
+import { DevpodHostUrl } from "@devpod/devpod-protocol/lib/util/devpod-host-url";
 import { FunctionComponent, useCallback, useMemo, useState } from "react";
 import { ContextMenuEntry } from "../components/ContextMenu";
 import { ItemFieldContextMenu } from "../components/ItemsList";
@@ -13,7 +13,7 @@ import ConnectToSSHModal from "./ConnectToSSHModal";
 import { DeleteWorkspaceModal } from "./DeleteWorkspaceModal";
 import { useToast } from "../components/toasts/Toasts";
 import { RenameWorkspaceModal } from "./RenameWorkspaceModal";
-import { AdmissionLevel, Workspace, WorkspacePhase_Phase } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { AdmissionLevel, Workspace, WorkspacePhase_Phase } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { workspaceClient } from "../service/public-api";
 import { useOrgSettingsQuery } from "../data/organizations/org-settings-query";
 import { useUpdateWorkspaceMutation } from "../data/workspaces/update-workspace-mutation";

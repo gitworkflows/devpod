@@ -4,12 +4,12 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
+import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
 import { useQueryClient } from "@tanstack/react-query";
 import React, { createContext, useState, useContext, useMemo, useCallback } from "react";
 import { updateCommonErrorDetails } from "./service/metrics";
 import { updateUserForExperiments } from "./service/public-api";
-import { getPrimaryEmail } from "@khulnasoft/public-api-common/lib/user-utils";
+import { getPrimaryEmail } from "@devpod/public-api-common/lib/user-utils";
 
 const UserContext = createContext<{
     user?: User;

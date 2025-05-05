@@ -4,9 +4,9 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TeamDB } from "@khulnasoft/devpod-db/lib";
-import { User } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID, TeamDB } from "@devpod/devpod-db/lib";
+import { User } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import express from "express";
 import { inject, injectable, postConstruct } from "inversify";
 import passport from "passport";
@@ -99,7 +99,7 @@ export class Authenticator {
     private async parseState(state: string): Promise<AuthFlow> {
         // In preview environments, we prepend the current development branch to the state, to allow
         // our preview proxy to route the Auth callback appropriately.
-        // See https://github.com/gitpod-io/ops/pull/9398/files
+        // See https://github.com/khulnasoft/ops/pull/9398/files
         //
         // We need to strip the branch out of the state, if it's present
         if (state.indexOf(",") >= 0) {
@@ -113,7 +113,7 @@ export class Authenticator {
     private deriveAuthState(state: string): string {
         // In preview environments, we prepend the current development branch to the state, to allow
         // our preview proxy to route the Auth callback appropriately.
-        // See https://github.com/gitpod-io/ops/pull/9398/files
+        // See https://github.com/khulnasoft/ops/pull/9398/files
         if (this.config.devBranch) {
             return `${this.config.devBranch},${state}`;
         }

@@ -8,7 +8,7 @@ import { injectable, inject } from "inversify";
 import express from "express";
 import * as prom from "prom-client";
 import { Config } from "../config";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 
 @injectable()
 export class LivenessController {

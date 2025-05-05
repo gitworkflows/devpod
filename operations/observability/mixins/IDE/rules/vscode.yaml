@@ -20,7 +20,7 @@ spec:
         dedicated: included
       for: 20m
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/VSCodeExtensionInstallFailuresRatioTooHigh.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/VSCodeExtensionInstallFailuresRatioTooHigh.md
         summary: Open-VSX registry is possibly down
         description: Open-VSX registry or our openvsx-mirror is possibly down. Some user cannot install VSCode extensions.
         dashboard_url: https://grafana.devpod.khulnasoft.com/d/oLzOteZ4z/vs-code-browser-overview

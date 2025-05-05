@@ -5,7 +5,7 @@
  */
 
 import { injectable, inject, postConstruct } from "inversify";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import * as opentracing from "opentracing";
 import {
     TracedWorkspaceDB,
@@ -13,8 +13,8 @@ import {
     WorkspaceDB,
     WorkspaceAndOwner,
     WorkspaceOwnerAndSoftDeleted,
-} from "@khulnasoft/devpod-db/lib";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+} from "@devpod/devpod-db/lib";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import { Config } from "../config";
 import { Job } from "./runner";
 import { WorkspaceService } from "../workspace/workspace-service";

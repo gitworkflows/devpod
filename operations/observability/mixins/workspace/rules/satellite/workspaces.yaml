@@ -24,7 +24,7 @@ spec:
         severity: critical
       for: 10m
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/DevpodWorkspaceRegularNotActive.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodWorkspaceRegularNotActive.md
         summary: too many running but inactive workspaces
         description: too many running but inactive workspaces. lower bound is 20 "regular not active" workspaces to reduce the false-positive rate.
       # bumped from 20 to 40 temporarily
@@ -38,7 +38,7 @@ spec:
         severity: critical
       for: 10m
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/DevpodWorkspaceRegularNotActive.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/DevpodWorkspaceRegularNotActive.md
         summary: workspaces are not starting.
         description: inactive regular workspaces exists but workspaces are not being started.
       expr: |
@@ -50,7 +50,7 @@ spec:
         severity: error
         team: engine
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/WorkspaceBackupFailures.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/WorkspaceBackupFailures.md
         summary: Workspace backups failed recently in cluster {{ $labels.cluster }}
         description: This can happen when a single node has failed in the cloud provider
       expr: |
@@ -62,7 +62,7 @@ spec:
         severity: critical
         team: engine
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/WorkspaceBackupFailures.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/WorkspaceBackupFailures.md
         summary: Workspace backups failed recently in cluster {{ $labels.cluster }}
         description: This can be an indicator of two or more nodes failing in a cloud provider
       expr: |

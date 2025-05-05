@@ -7,7 +7,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useCurrentOrg, useOrganizationsInvalidator } from "./orgs-query";
 import { organizationClient } from "../../service/public-api";
-import { Organization } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import { Organization } from "@devpod/public-api/lib/devpod/v1/organization_pb";
 
 type UpdateOrgArgs = Pick<Organization, "name">;
 

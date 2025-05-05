@@ -9,32 +9,32 @@ export class ExampleRepositories1612448906950 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<any> {
         const oldEntries = [
             {
-                url: "https://github.com/gitpod-io/django-locallibrary-tutorial",
+                url: "https://github.com/khulnasoft/django-locallibrary-tutorial",
                 description: '**Python** - Tutorial "Local Library" website written in Django',
                 priority: 10,
             },
             {
-                url: "https://github.com/gitpod-io/gs-spring-boot.git",
+                url: "https://github.com/khulnasoft/gs-spring-boot.git",
                 description: "**Java** - Building an Application with Spring Boot",
                 priority: 9,
             },
             {
-                url: "https://github.com/gitpod-io/NextSimpleStarter.git",
+                url: "https://github.com/khulnasoft/NextSimpleStarter.git",
                 description: "**JavaScript** - Simple PWA boilerplate with Next.js and Redux",
                 priority: 8,
             },
             {
-                url: "https://github.com/gitpod-io/go-gin-app.git",
+                url: "https://github.com/khulnasoft/go-gin-app.git",
                 description: "**Go** - A simple web app implemented in Go and Gin",
                 priority: 7,
             },
             {
-                url: "https://github.com/gitpod-io/rails_sample_app",
+                url: "https://github.com/khulnasoft/rails_sample_app",
                 description: "**Ruby on Rails** - Tutorial sample application",
                 priority: 6,
             },
             {
-                url: "https://github.com/gitpod-io/symfony-demo.git",
+                url: "https://github.com/khulnasoft/symfony-demo.git",
                 description: "**PHP** - Symfony Demo Application",
                 priority: 5,
             },
@@ -46,7 +46,7 @@ export class ExampleRepositories1612448906950 implements MigrationInterface {
         ];
         const newEntries = [
             {
-                url: "https://github.com/gitpod-io/sveltejs-template",
+                url: "https://github.com/khulnasoft/sveltejs-template",
                 description: "**JavaScript** – A project template for Svelte applications",
                 priority: 90,
             },
@@ -71,17 +71,17 @@ export class ExampleRepositories1612448906950 implements MigrationInterface {
                 priority: 50,
             },
             {
-                url: "https://github.com/gitpod-io/spring-petclinic",
+                url: "https://github.com/khulnasoft/spring-petclinic",
                 description: "**Java** – A Spring sample web application",
                 priority: 40,
             },
             {
-                url: "https://github.com/gitpod-io/ruby-on-rails",
+                url: "https://github.com/khulnasoft/ruby-on-rails",
                 description: "**Ruby** – A Rails example with PostgreSQL database",
                 priority: 30,
             },
             {
-                url: "https://github.com/gitpod-io/dotnetcore",
+                url: "https://github.com/khulnasoft/dotnetcore",
                 description: "**C#** – A simple .NET Core application example",
                 priority: 20,
             },

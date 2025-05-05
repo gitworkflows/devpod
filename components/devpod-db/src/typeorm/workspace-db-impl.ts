@@ -23,9 +23,9 @@ import {
     WorkspaceInstanceUser,
     WorkspaceSession,
     WorkspaceType,
-} from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { daysBefore } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
+} from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { daysBefore } from "@devpod/devpod-protocol/lib/util/timeutil";
 import * as crypto from "crypto";
 import { inject, injectable, optional } from "inversify";
 import { Brackets, DeepPartial, EntityManager, Repository } from "typeorm";
@@ -60,9 +60,9 @@ import {
 } from "./metrics";
 import { TransactionalDBImpl } from "./transactional-db-impl";
 import { TypeORM } from "./typeorm";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { DBProject } from "./entity/db-project";
-import { PrebuiltWorkspaceWithWorkspace } from "@khulnasoft/devpod-protocol/src/protocol";
+import { PrebuiltWorkspaceWithWorkspace } from "@devpod/devpod-protocol/src/protocol";
 import { DBWorkspaceInstanceMetrics } from "./entity/db-workspace-instance-metrics";
 
 type RawTo<T> = (instance: WorkspaceInstance, ws: Workspace) => T;

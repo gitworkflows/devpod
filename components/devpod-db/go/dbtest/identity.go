@@ -21,7 +21,7 @@ func NewIdentity(t *testing.T, idnt db.Identity) db.Identity {
 		AuthID:         uuid.NewString(),
 		AuthName:       "unittest",
 		UserID:         uuid.New(),
-		PrimaryEmail:   "test-identity@khulnasoft.com",
+		PrimaryEmail:   "test-identity@devpod.khulnasoft.com",
 	}
 
 	if idnt.AuthProviderID != "" {

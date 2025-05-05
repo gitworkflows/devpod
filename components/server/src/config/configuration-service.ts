@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { CommitContext, User, WorkspaceConfig } from "@khulnasoft/devpod-protocol";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { CommitContext, User, WorkspaceConfig } from "@devpod/devpod-protocol";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import { inject, injectable } from "inversify";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { FileProvider } from "../repohost";

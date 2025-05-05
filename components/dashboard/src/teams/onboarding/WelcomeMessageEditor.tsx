@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import type { OnboardingSettings_WelcomeMessage } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import type { OnboardingSettings_WelcomeMessage } from "@devpod/public-api/lib/devpod/v1/organization_pb";
 import { Button } from "@podkit/buttons/Button";
 import { LoadingButton } from "@podkit/buttons/LoadingButton";
 import { Textarea } from "@podkit/forms/TextArea";

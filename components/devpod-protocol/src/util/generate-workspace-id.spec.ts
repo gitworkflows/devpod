@@ -31,7 +31,7 @@ class TestGenerateWorkspaceId {
         const data = [
             ["foo", "bar", "foo-bar-"],
             ["f", "bar", ".{2,16}-bar-"],
-            ["khulnasoft", "devpod", "khulnasoft-devpod-"],
+            ["khulnasoft", "devpod", "devpodio-devpod-"],
             ["breatheco-de", "python-flask-api-tutorial", "breathecode-pythonflask-"],
             ["short", "muchlongerthaneleven", "short-muchlongerthanel-"],
             ["muchlongerthaneleven", "short", "muchlongerthanel-short-"],

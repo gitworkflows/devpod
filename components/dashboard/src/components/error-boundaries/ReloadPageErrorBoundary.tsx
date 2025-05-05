@@ -43,7 +43,7 @@ export const ReloadPageErrorFallback: FC<Pick<FallbackProps, "error">> = ({ erro
             <Heading1>Oh, no! Something went wrong!</Heading1>
             <Subheading>
                 Please try reloading the page. If the issue continues, please{" "}
-                <a className="gp-link" href={`mailto:support@khulnasoft.com?Subject=${emailSubject}&Body=${emailBody}`}>
+                <a className="gp-link" href={`mailto:support@devpod.khulnasoft.com?Subject=${emailSubject}&Body=${emailBody}`}>
                     get in touch
                 </a>
                 .

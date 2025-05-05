@@ -6,7 +6,7 @@
 
 import { Entity, Column, PrimaryColumn, ManyToOne, Index } from "typeorm";
 
-import { Identity } from "@khulnasoft/devpod-protocol";
+import { Identity } from "@devpod/devpod-protocol";
 import { DBUser } from "./db-user";
 import { Transformer } from "../transformer";
 

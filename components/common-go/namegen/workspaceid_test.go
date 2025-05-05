@@ -28,7 +28,7 @@ func TestGenerateWorkspaceID(t *testing.T) {
 
 func TestValidateWorkspaceID(t *testing.T) {
 	valid := []string{
-		"khulnasoft-devpod-65k8jqq6up4",
+		"devpodio-devpod-65k8jqq6up4",
 		"testeraccountwit-empty-g6024jgir2j",
 		"largetextlargete-largetextlargete-g6024jgir2j",
 	}

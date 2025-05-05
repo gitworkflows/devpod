@@ -53,21 +53,21 @@ func Test_MatchAndRewriteRootRequest(t *testing.T) {
 				},
 				Body: ioutil.NopCloser(strings.NewReader(index_html)),
 			},
-			newBaseUrl: "https://3000-khulnasoft-devpod-hk3453q4csi.ws-eu108.devpod.khulnasoft.com",
+			newBaseUrl: "https://3000-devpodio-devpod-hk3453q4csi.ws-eu108.devpod.khulnasoft.com",
 			expectedBody: `<!doctype html>
 <html lang="en">
 
 <head>
 <meta charset="utf-8" />
-<link rel="icon" href="https://3000-khulnasoft-devpod-hk3453q4csi.ws-eu108.devpod.khulnasoft.com/favicon256.png" />
+<link rel="icon" href="https://3000-devpodio-devpod-hk3453q4csi.ws-eu108.devpod.khulnasoft.com/favicon256.png" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="theme-color" content="#000000" />
 <meta name="robots" content="noindex">
 <meta name="Devpod" content="Always Ready-to-Code" />
-<link rel="apple-touch-icon" href="https://3000-khulnasoft-devpod-hk3453q4csi.ws-eu108.devpod.khulnasoft.com/favicon192.png" />
-<link rel="manifest" href="https://3000-khulnasoft-devpod-hk3453q4csi.ws-eu108.devpod.khulnasoft.com/manifest.json" />
+<link rel="apple-touch-icon" href="https://3000-devpodio-devpod-hk3453q4csi.ws-eu108.devpod.khulnasoft.com/favicon192.png" />
+<link rel="manifest" href="https://3000-devpodio-devpod-hk3453q4csi.ws-eu108.devpod.khulnasoft.com/manifest.json" />
 <title>Dashboard</title>
-<script defer="defer" src="https://3000-khulnasoft-devpod-hk3453q4csi.ws-eu108.devpod.khulnasoft.com/static/js/main.js"></script>
+<script defer="defer" src="https://3000-devpodio-devpod-hk3453q4csi.ws-eu108.devpod.khulnasoft.com/static/js/main.js"></script>
 
 </head>
 

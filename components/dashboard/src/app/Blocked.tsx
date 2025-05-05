@@ -21,7 +21,7 @@ export const Blocked: FunctionComponent = () => {
                 </a>
                 .
             </Subheading>
-            <a className="mx-auto" href="mailto:support@khulnasoft.com?Subject=Blocked">
+            <a className="mx-auto" href="mailto:support@devpod.khulnasoft.com?Subject=Blocked">
                 <Button variant="secondary">Contact Support</Button>
             </a>
         </div>

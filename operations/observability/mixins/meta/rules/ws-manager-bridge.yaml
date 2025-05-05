@@ -16,7 +16,7 @@ spec:
         severity: warning
         team: webapp
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/WebAppServicesHighCPUUsage.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/WebAppServicesHighCPUUsage.md
         summary: WS Manager Bridge has excessive CPU usage.
         description: WS Manager Bridge is consumming too much CPU. Please investigate.
         dashboard_url: https://grafana.devpod.khulnasoft.com/d/AJKH-pJ4k/kubernetes-applications?var-cluster={{ $labels.cluster }}&var-job=ws-manager-bridge&var-pod=All
@@ -28,7 +28,7 @@ spec:
         team: webapp
         dedicated: included
       annotations:
-        runbook_url: https://github.com/gitpod-io/runbooks/blob/main/runbooks/WsManagerBridgeHighEventsReceived.md
+        runbook_url: https://github.com/khulnasoft/runbooks/blob/main/runbooks/WsManagerBridgeHighEventsReceived.md
         summary: WS Manager Bridge events received from ws-manager-mk2 is abnormally high
         description: If it becomes too high, it'll prevent workspaces from starting. Please investigate.
         dashboard_url: https://grafana.devpod.khulnasoft.com/d/AJKH-pJ4k/kubernetes-applications?var-cluster={{ $labels.cluster }}&var-job=ws-manager-bridge&var-pod=All

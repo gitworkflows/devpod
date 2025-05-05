@@ -6,7 +6,7 @@
 
 import { injectable } from "inversify";
 import express from "express";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 
 /**
  * ReadinessController is mimicking the behavior server had in the past: Behave as there is not ready probe - except during shutdown.

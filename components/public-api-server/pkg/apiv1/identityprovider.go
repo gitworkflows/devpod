@@ -15,7 +15,7 @@ import (
 	v1 "github.com/khulnasoft/devpod/components/public-api/go/experimental/v1"
 	"github.com/khulnasoft/devpod/components/public-api/go/experimental/v1/v1connect"
 	protocol "github.com/khulnasoft/devpod/devpod-protocol"
-	"github.com/khulnasoft/khulnasoft/public-api-server/pkg/proxy"
+	"github.com/khulnasoft/devpod/public-api-server/pkg/proxy"
 	"github.com/zitadel/oidc/pkg/oidc"
 )
 

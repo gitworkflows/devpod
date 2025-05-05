@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import Alert from "../components/Alert";
 import { UsageLimitReachedModal } from "../components/UsageLimitReachedModal";
 import { Heading2 } from "../components/typography/headings";
@@ -12,8 +12,9 @@ import { useDocumentTitle } from "../hooks/use-document-title";
 import { devpodHostUrl } from "../service/service";
 import { VerifyModal } from "./VerifyModal";
 import { useWorkspaceDefaultImageQuery } from "../data/workspaces/default-workspace-image-query";
-import { GetWorkspaceDefaultImageResponse_Source } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { GetWorkspaceDefaultImageResponse_Source } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { ProductLogo } from "../components/ProductLogo";
+import { useIsDataOps } from "../data/featureflag-query";
 
 export enum StartPhase {
     Checking = 0,
@@ -96,6 +97,8 @@ export function StartPage(props: StartPageProps) {
     const { phase, error, workspaceId } = props;
     let title = props.title || getPhaseTitle(phase, error);
     useDocumentTitle("Starting");
+    const isDataOps = useIsDataOps();
+
     return (
         <div className="w-screen h-screen align-middle">
             <div className="flex flex-col mx-auto items-center text-center h-screen">
@@ -105,6 +108,7 @@ export function StartPage(props: StartPageProps) {
                         error || phase === StartPhase.Stopped || phase === StartPhase.IdeReady ? "" : "animate-bounce"
                     }`}
                 />
+                {!isDataOps && <span className="block mt-2 text-pk-content-secondary">Devpod Classic</span>}
                 <Heading2 className="mt-8">{title}</Heading2>
                 {typeof phase === "number" && phase < StartPhase.IdeReady && (
                     <ProgressBar phase={phase} error={!!error} />

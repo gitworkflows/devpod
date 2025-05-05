@@ -3,7 +3,7 @@
  * Licensed under the GNU Affero General Public License (AGPL).
  * See License.AGPL.txt in the project root for license information.
  */
-import { WorkspaceSession } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { WorkspaceSession } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { workspaceClient } from "../../service/public-api";
 import { useCurrentOrg } from "../organizations/orgs-query";

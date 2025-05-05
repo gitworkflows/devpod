@@ -5,7 +5,7 @@
  */
 
 import { inject, injectable } from "inversify";
-import { DBWithTracing, ProjectDB, TracedWorkspaceDB, WebhookEventDB, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
+import { DBWithTracing, ProjectDB, TracedWorkspaceDB, WebhookEventDB, WorkspaceDB } from "@devpod/devpod-db/lib";
 import {
     Branch,
     PrebuildWithStatus,
@@ -15,28 +15,28 @@ import {
     User,
     CommitContext,
     WebhookEvent,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { RepoURL } from "../repohost";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import {
     PartialProject,
     PrebuildSettings,
     ProjectSettings,
     ProjectUsage,
-} from "@khulnasoft/devpod-protocol/lib/teams-projects-protocol";
-import { IAnalyticsWriter } from "@khulnasoft/devpod-protocol/lib/analytics";
-import { ErrorCodes, ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+} from "@devpod/devpod-protocol/lib/teams-projects-protocol";
+import { IAnalyticsWriter } from "@devpod/devpod-protocol/lib/analytics";
+import { ErrorCodes, ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
 import { URL } from "url";
 import { Authorizer, SYSTEM_USER, SYSTEM_USER_ID } from "../authorization/authorizer";
-import { TransactionalContext } from "@khulnasoft/devpod-db/lib/typeorm/transactional-db-impl";
-import { daysBefore, isDateSmaller } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
+import { TransactionalContext } from "@devpod/devpod-db/lib/typeorm/transactional-db-impl";
+import { daysBefore, isDateSmaller } from "@devpod/devpod-protocol/lib/util/timeutil";
 import deepmerge from "deepmerge";
 import { runWithSubjectId } from "../util/request-context";
 import { InstallationService } from "../auth/installation-service";
 import { IDEService } from "../ide-service";
 import type { PrebuildManager } from "../prebuilds/prebuild-manager";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import { ContextParser } from "../workspace/context-parser-service";
 import { UnauthorizedError } from "../errors";
 import { LazyOrganizationService } from "../billing/entitlement-service-ubp";

@@ -1,7 +1,7 @@
 {
   "organizationId": "organizationId",
   "ownerId": "ownerId",
-  "contextURL": "https://github.com/gitpod-io/contextURL",
+  "contextURL": "https://github.com/khulnasoft/contextURL",
   "description": "description",
   "context": {
     "isFile": false,
@@ -11,16 +11,16 @@
     "refType": "branch",
     "revision": "revision",
     "repository": {
-      "cloneUrl": "https://github.com/gitpod-io/contextURL.git",
+      "cloneUrl": "https://github.com/khulnasoft/contextURL.git",
       "host": "github.com",
       "name": "contextURL",
       "owner": "khulnasoft",
       "private": true
     },
-    "normalizedContextURL": "https://github.com/gitpod-io/contextURL",
+    "normalizedContextURL": "https://github.com/khulnasoft/contextURL",
     "checkoutLocation": "contextUrl"
   },
-  "cloneUrl": "https://github.com/gitpod-io/contextURL.git",
+  "cloneUrl": "https://github.com/khulnasoft/contextURL.git",
   "config": {
     "image": "mach4/devpod-wordpress:delta",
     "ports": [
@@ -47,7 +47,7 @@
   "imageSource": {
     "baseImageResolved": "mach4/devpod-wordpress:delta"
   },
-  "imageNameResolved": "ghcr.io/devpod-dev/workspace-images:e4ac1036c2a8779f05f6707d3d716d7759f0d9d199d4810b9fd2abffdae92355",
+  "imageNameResolved": "eu.gcr.io/devpod-dev/workspace-images:e4ac1036c2a8779f05f6707d3d716d7759f0d9d199d4810b9fd2abffdae92355",
   "baseImageNameResolved": "docker.io/mach4/devpod-wordpress@sha256:995aff430a51e6183874bc76c46bfc662c711a8cd21be1f0797e6296fc05231d",
   "shareable": true,
   "type": "regular",
@@ -60,7 +60,7 @@
   "stoppingTime": "2023-12-03T06:52:09.819Z",
   "stoppedTime": "2023-12-03T06:54:49.619Z",
   "ideUrl": "https://balabala-ws-id.ws-us106.devpod.khulnasoft.com",
-  "workspaceImage": "ghcr.io/devpod-dev/workspace-images:e4ac1036c2a8779f05f6707d3d716d7759f0d9d199d4810b9fd2abffdae92355",
+  "workspaceImage": "eu.gcr.io/devpod-dev/workspace-images:e4ac1036c2a8779f05f6707d3d716d7759f0d9d199d4810b9fd2abffdae92355",
   "status": {
     "phase": "stopped",
     "nodeIp": "10.10.0.158",
@@ -108,12 +108,12 @@
   },
   "phasePersisted": "stopped",
   "configuration": {
-    "ideImage": "ghcr.io/devpod-core-dev/build/ide/code:commit-3bb09152fc5248f5b99b33b4d8a7f101aa082441",
+    "ideImage": "khulnasoft/devpod-environment/build/ide/code:commit-3bb09152fc5248f5b99b33b4d8a7f101aa082441",
     "ideImageLayers": [
-      "ghcr.io/devpod-core-dev/build/ide/devpod-code-web:commit-49bb715b599dce2356dd02a6ede7ae8cf10d8d12",
-      "ghcr.io/devpod-core-dev/build/ide/code-codehelper:commit-a96456ae29513e367719ff1c720adb2c59a0bd49"
+      "khulnasoft/devpod-environment/build/ide/devpod-code-web:commit-49bb715b599dce2356dd02a6ede7ae8cf10d8d12",
+      "khulnasoft/devpod-environment/build/ide/code-codehelper:commit-a96456ae29513e367719ff1c720adb2c59a0bd49"
     ],
-    "supervisorImage": "ghcr.io/devpod-core-dev/build/supervisor:commit-be35ce16a80342b0e57d85d486544e9608044d9a",
+    "supervisorImage": "khulnasoft/devpod-environment/build/supervisor:commit-be35ce16a80342b0e57d85d486544e9608044d9a",
     "ideConfig": {
       "useLatest": false,
       "ide": "code"

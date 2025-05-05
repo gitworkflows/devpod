@@ -5,19 +5,19 @@
  */
 
 import { injectable, inject } from "inversify";
-import { User, Identity, Token, IdentityLookup } from "@khulnasoft/devpod-protocol";
-import { BUILTIN_INSTLLATION_ADMIN_USER_ID, EmailDomainFilterDB, MaybeUser, UserDB } from "@khulnasoft/devpod-db/lib";
+import { User, Identity, Token, IdentityLookup } from "@devpod/devpod-protocol";
+import { BUILTIN_INSTLLATION_ADMIN_USER_ID, EmailDomainFilterDB, MaybeUser, UserDB } from "@devpod/devpod-db/lib";
 import { HostContextProvider } from "../auth/host-context-provider";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { Config } from "../config";
 import { AuthUser } from "../auth/auth-provider";
 import { TokenService } from "./token-service";
 import { EmailAddressAlreadyTakenException, SelectAccountException } from "../auth/errors";
-import { SelectAccountPayload } from "@khulnasoft/devpod-protocol/lib/auth";
+import { SelectAccountPayload } from "@devpod/devpod-protocol/lib/auth";
 import { UserService } from "./user-service";
 import { Authorizer } from "../authorization/authorizer";
-import { getExperimentsClientForBackend } from "@khulnasoft/devpod-protocol/lib/experiments/configcat-server";
-import { isOrganizationOwned, isAllowedToCreateOrganization } from "@khulnasoft/public-api-common/lib/user-utils";
+import { getExperimentsClientForBackend } from "@devpod/devpod-protocol/lib/experiments/configcat-server";
+import { isOrganizationOwned, isAllowedToCreateOrganization } from "@devpod/public-api-common/lib/user-utils";
 
 export interface CreateUserParams {
     organizationId?: string;

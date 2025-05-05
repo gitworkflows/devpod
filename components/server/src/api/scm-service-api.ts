@@ -5,9 +5,9 @@
  */
 
 import { HandlerContext, ServiceImpl } from "@connectrpc/connect";
-import { SCMService as ScmServiceInterface } from "@khulnasoft/public-api/lib/devpod/v1/scm_connect";
+import { SCMService as ScmServiceInterface } from "@devpod/public-api/lib/devpod/v1/scm_connect";
 import { inject, injectable } from "inversify";
-import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
+import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
 import { ScmService } from "../scm/scm-service";
 import {
     GuessTokenScopesRequest,
@@ -18,14 +18,14 @@ import {
     ListSuggestedRepositoriesResponse,
     SearchSCMTokensRequest,
     SearchSCMTokensResponse,
-} from "@khulnasoft/public-api/lib/devpod/v1/scm_pb";
+} from "@devpod/public-api/lib/devpod/v1/scm_pb";
 import { ctxUserId } from "../util/request-context";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { validate as uuidValidate } from "uuid";
 import { ProjectsService } from "../projects/projects-service";
 import { WorkspaceService } from "../workspace/workspace-service";
-import { PaginationResponse } from "@khulnasoft/public-api/lib/devpod/v1/pagination_pb";
-import { Project } from "@khulnasoft/devpod-protocol";
+import { PaginationResponse } from "@devpod/public-api/lib/devpod/v1/pagination_pb";
+import { Project } from "@devpod/devpod-protocol";
 
 @injectable()
 export class ScmServiceAPI implements ServiceImpl<typeof ScmServiceInterface> {

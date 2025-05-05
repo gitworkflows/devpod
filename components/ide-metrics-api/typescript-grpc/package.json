@@ -1,5 +1,5 @@
 {
-  "name": "@khulnasoft/ide-metrics-api-grpc",
+  "name": "@devpod/ide-metrics-api-grpc",
   "version": "0.0.1",
   "license": "UNLICENSED",
   "scripts": {

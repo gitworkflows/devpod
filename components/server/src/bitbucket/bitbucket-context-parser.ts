@@ -11,9 +11,9 @@ import {
     Repository,
     User,
     WorkspaceContext,
-} from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+} from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import { Schema } from "bitbucket";
 import { inject, injectable } from "inversify";
 import { NotFoundError } from "../errors";

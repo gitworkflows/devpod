@@ -11,7 +11,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/gitpod-io/local-app/pkg/telemetry"
+	"github.com/khulnasoft/local-app/pkg/telemetry"
 	"gopkg.in/yaml.v3"
 )
 

@@ -16,7 +16,7 @@ import {
     UserEnvVar,
     UserEnvVarValue,
     UserSSHPublicKey,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import { OAuthTokenRepository, OAuthUserRepository } from "@jmondi/oauth2-server";
 import { Repository } from "typeorm";
 import { DBUser } from "./typeorm/entity/db-user";

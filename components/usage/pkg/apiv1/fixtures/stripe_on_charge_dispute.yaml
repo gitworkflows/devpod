@@ -26,7 +26,7 @@ interactions:
             User-Agent:
                 - Stripe/v1 GoBindings/72.114.0
             X-Stripe-Client-User-Agent:
-                - '{"application":null,"bindings_version":"72.114.0","lang":"go","lang_version":"go1.19.5","publisher":"stripe","uname":"Linux khulnasoft-devpod-tojg8kfndm8 6.1.20-060120-generic #202303171032-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar 17 11:30:51 UTC x86_64 x86_64 x86_64 GNU/Linux\n"}'
+                - '{"application":null,"bindings_version":"72.114.0","lang":"go","lang_version":"go1.19.5","publisher":"stripe","uname":"Linux devpodio-devpod-tojg8kfndm8 6.1.20-060120-generic #202303171032-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar 17 11:30:51 UTC x86_64 x86_64 x86_64 GNU/Linux\n"}'
         url: https://api.stripe.com/v1/disputes/dp_1MrLJpAyBDPbWrhawbWHEIDL?expand[0]=payment_intent.customer
         method: GET
       response:
@@ -80,7 +80,7 @@ interactions:
                 "cancellation_policy_disclosure": null,
                 "cancellation_rebuttal": null,
                 "customer_communication": null,
-                "customer_email_address": "milan+stripe-dispute@khulnasoft.com",
+                "customer_email_address": "milan+stripe-dispute@devpod.khulnasoft.com",
                 "customer_name": "Milan Test Dispute",
                 "customer_purchase_ip": null,
                 "customer_signature": null,
@@ -203,7 +203,7 @@ interactions:
                         },
                         "type": "card"
                       },
-                      "receipt_email": "milan+stripe-dispute@khulnasoft.com",
+                      "receipt_email": "milan+stripe-dispute@devpod.khulnasoft.com",
                       "receipt_number": null,
                       "receipt_url": "https://pay.stripe.com/receipts/payment/CAcaFwoVYWNjdF8xTEZGcHVBeUJEUGJXcmhhKKSdlqEGMgZvJWSZi6U6LBYd0Eabq05S6pQL_NkuA_kGSaSdM7zqvEKt79RhBL6zW1pIdIHm9O38-2Ly",
                       "refunded": false,
@@ -297,7 +297,7 @@ interactions:
                   "delinquent": false,
                   "description": null,
                   "discount": null,
-                  "email": "milan+stripe-dispute@khulnasoft.com",
+                  "email": "milan+stripe-dispute@devpod.khulnasoft.com",
                   "invoice_prefix": "9B6F1202",
                   "invoice_settings": {
                     "custom_fields": null,
@@ -337,7 +337,7 @@ interactions:
                   "card"
                 ],
                 "processing": null,
-                "receipt_email": "milan+stripe-dispute@khulnasoft.com",
+                "receipt_email": "milan+stripe-dispute@devpod.khulnasoft.com",
                 "review": null,
                 "setup_future_usage": "off_session",
                 "shipping": null,

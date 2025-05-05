@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-# inspired by https://github.com/gitpod-io/ops/blob/main/deploy/workspace/templates/bootstrap.sh
+# inspired by https://github.com/khulnasoft/ops/blob/main/deploy/workspace/templates/bootstrap.sh
 
 # Install k3s
 export INSTALL_K3S_SKIP_DOWNLOAD=true

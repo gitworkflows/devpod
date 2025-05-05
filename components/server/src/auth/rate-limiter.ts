@@ -4,8 +4,8 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { DevpodServer } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { DevpodServer } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { RateLimiterMemory, RateLimiterRes } from "rate-limiter-flexible";
 
 export const accessCodeSyncStorage = "accessCodeSyncStorage";

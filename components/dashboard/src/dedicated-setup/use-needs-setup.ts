@@ -7,7 +7,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { noPersistence } from "../data/setup";
 import { installationClient } from "../service/public-api";
-import { GetOnboardingStateRequest } from "@khulnasoft/public-api/lib/devpod/v1/installation_pb";
+import { GetOnboardingStateRequest } from "@devpod/public-api/lib/devpod/v1/installation_pb";
 import { useInstallationConfiguration } from "../data/installation/installation-config-query";
 
 /**

@@ -6,7 +6,7 @@
 
 import { inject, injectable } from "inversify";
 import * as grpc from "@grpc/grpc-js";
-import { ProjectDB, RedisPublisher, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
+import { ProjectDB, RedisPublisher, WorkspaceDB } from "@devpod/devpod-db/lib";
 import {
     CommitContext,
     GetWorkspaceTimeoutResult,
@@ -30,11 +30,11 @@ import {
     WorkspaceSession,
     WorkspaceSoftDeletion,
     WorkspaceTimeoutDuration,
-} from "@khulnasoft/devpod-protocol";
-import { ErrorCodes, ApplicationError } from "@khulnasoft/devpod-protocol/lib/messaging/error";
-import { generateAsyncGenerator } from "@khulnasoft/devpod-protocol/lib/generate-async-generator";
+} from "@devpod/devpod-protocol";
+import { ErrorCodes, ApplicationError } from "@devpod/devpod-protocol/lib/messaging/error";
+import { generateAsyncGenerator } from "@devpod/devpod-protocol/lib/generate-async-generator";
 import { Authorizer } from "../authorization/authorizer";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import { WorkspaceFactory } from "./workspace-factory";
 import {
     DescribeWorkspaceRequest,
@@ -48,34 +48,34 @@ import {
     AdmissionLevel,
     ControlAdmissionRequest,
     TakeSnapshotRequest,
-} from "@khulnasoft/ws-manager/lib";
+} from "@devpod/ws-manager/lib";
 import {
     WorkspaceStarter,
     StartWorkspaceOptions as StarterStartWorkspaceOptions,
     isClusterMaintenanceError,
     getWorkspaceClassForInstance,
 } from "./workspace-starter";
-import { LogContext, log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { LogContext, log } from "@devpod/devpod-protocol/lib/util/logging";
 import { EntitlementService, MayStartWorkspaceResult } from "../billing/entitlement-service";
 import * as crypto from "crypto";
-import { WorkspaceRegion, isWorkspaceRegion } from "@khulnasoft/devpod-protocol/lib/workspace-cluster";
+import { WorkspaceRegion, isWorkspaceRegion } from "@devpod/devpod-protocol/lib/workspace-cluster";
 import { RegionService } from "./region-service";
 import { LazyPrebuildManager, ProjectsService } from "../projects/projects-service";
-import { WorkspaceManagerClientProvider } from "@khulnasoft/ws-manager/lib/client-provider";
-import { SupportedWorkspaceClass } from "@khulnasoft/devpod-protocol/lib/workspace-class";
+import { WorkspaceManagerClientProvider } from "@devpod/ws-manager/lib/client-provider";
+import { SupportedWorkspaceClass } from "@devpod/devpod-protocol/lib/workspace-class";
 import { Config } from "../config";
-import { goDurationToHumanReadable } from "@khulnasoft/devpod-protocol/lib/util/timeutil";
+import { goDurationToHumanReadable } from "@devpod/devpod-protocol/lib/util/timeutil";
 import { HeadlessLogEndpoint, HeadlessLogService } from "./headless-log-service";
-import { Deferred } from "@khulnasoft/devpod-protocol/lib/util/deferred";
+import { Deferred } from "@devpod/devpod-protocol/lib/util/deferred";
 import { OrganizationService } from "../orgs/organization-service";
-import { isGrpcError } from "@khulnasoft/devpod-protocol/lib/util/grpc";
+import { isGrpcError } from "@devpod/devpod-protocol/lib/util/grpc";
 import { RedisSubscriber } from "../messaging/redis-subscriber";
 import { SnapshotService } from "./snapshot-service";
 import { InstallationService } from "../auth/installation-service";
-import { PublicAPIConverter } from "@khulnasoft/public-api-common/lib/public-api-converter";
-import { WatchWorkspaceStatusResponse } from "@khulnasoft/public-api/lib/devpod/v1/workspace_pb";
+import { PublicAPIConverter } from "@devpod/public-api-common/lib/public-api-converter";
+import { WatchWorkspaceStatusResponse } from "@devpod/public-api/lib/devpod/v1/workspace_pb";
 import { ContextParser } from "./context-parser-service";
-import { scrubber, TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
+import { scrubber, TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
 
 export const GIT_STATUS_LENGTH_CAP_BYTES = 4096;
 

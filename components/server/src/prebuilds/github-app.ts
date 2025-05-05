@@ -18,9 +18,9 @@ import {
     ProjectDB,
     TeamDB,
     WebhookEventDB,
-} from "@khulnasoft/devpod-db/lib";
+} from "@devpod/devpod-db/lib";
 import express from "express";
-import { log, LogContext, LogrusLogLevel } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log, LogContext, LogrusLogLevel } from "@devpod/devpod-protocol/lib/util/logging";
 import {
     WorkspaceConfig,
     User,
@@ -28,9 +28,9 @@ import {
     StartPrebuildResult,
     CommitContext,
     CommitInfo,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import { GithubAppRules } from "./github-app-rules";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import { PrebuildManager } from "./prebuild-manager";
 import { PrebuildStatusMaintainer } from "./prebuilt-status-maintainer";
 import { Options, ApplicationFunctionOptions } from "probot/lib/types";
@@ -38,7 +38,7 @@ import { asyncHandler } from "../express-util";
 import { ContextParser } from "../workspace/context-parser-service";
 import { HostContextProvider } from "../auth/host-context-provider";
 import { RepoURL } from "../repohost";
-import { ApplicationError, ErrorCode } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCode } from "@devpod/devpod-protocol/lib/messaging/error";
 import { UserService } from "../user/user-service";
 import { ProjectsService } from "../projects/projects-service";
 import { SYSTEM_USER, SYSTEM_USER_ID } from "../authorization/authorizer";

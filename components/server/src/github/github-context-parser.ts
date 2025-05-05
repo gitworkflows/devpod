@@ -14,17 +14,17 @@ import {
     User,
     CommitContext,
     RefType,
-} from "@khulnasoft/devpod-protocol";
+} from "@devpod/devpod-protocol";
 import { GitHubGraphQlEndpoint, QueryResult } from "./api";
 import { NotFoundError, UnauthorizedError } from "../errors";
-import { log, LogContext, LogPayload } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { log, LogContext, LogPayload } from "@devpod/devpod-protocol/lib/util/logging";
 import { IContextParser, IssueContexts, AbstractContextParser } from "../workspace/context-parser";
 import { GitHubTokenHelper } from "./github-token-helper";
-import { TraceContext } from "@khulnasoft/devpod-protocol/lib/util/tracing";
+import { TraceContext } from "@devpod/devpod-protocol/lib/util/tracing";
 import { RepoURL } from "../repohost";
 import { containsScopes } from "../prebuilds/token-scopes-inclusion";
-import { TrustedValue } from "@khulnasoft/devpod-protocol/lib/util/scrubbing";
-import { GitHubOAuthScopes } from "@khulnasoft/public-api-common/lib/auth-providers";
+import { TrustedValue } from "@devpod/devpod-protocol/lib/util/scrubbing";
+import { GitHubOAuthScopes } from "@devpod/public-api-common/lib/auth-providers";
 
 @injectable()
 export class GithubContextParser extends AbstractContextParser implements IContextParser {

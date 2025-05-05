@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { User, Repository, Commit } from "@khulnasoft/devpod-protocol";
+import { User, Repository, Commit } from "@devpod/devpod-protocol";
 
 export type MaybeContent = string | undefined;
 

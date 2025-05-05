@@ -5,7 +5,7 @@
  */
 
 import { Entity, Column, PrimaryColumn } from "typeorm";
-import { WorkspaceInstanceMetrics } from "@khulnasoft/devpod-protocol";
+import { WorkspaceInstanceMetrics } from "@devpod/devpod-protocol";
 
 @Entity()
 export class DBWorkspaceInstanceMetrics {

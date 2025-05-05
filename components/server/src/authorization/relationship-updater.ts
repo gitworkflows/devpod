@@ -4,12 +4,12 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { ProjectDB, TeamDB, UserDB, WorkspaceDB } from "@khulnasoft/devpod-db/lib";
-import { Organization, User } from "@khulnasoft/devpod-protocol";
-import { log } from "@khulnasoft/devpod-protocol/lib/util/logging";
+import { ProjectDB, TeamDB, UserDB, WorkspaceDB } from "@devpod/devpod-db/lib";
+import { Organization, User } from "@devpod/devpod-protocol";
+import { log } from "@devpod/devpod-protocol/lib/util/logging";
 import { inject, injectable } from "inversify";
 import { Authorizer } from "./authorizer";
-import { ApplicationError, ErrorCodes } from "@khulnasoft/devpod-protocol/lib/messaging/error";
+import { ApplicationError, ErrorCodes } from "@devpod/devpod-protocol/lib/messaging/error";
 import { v1 } from "@authzed/authzed-node";
 import { fgaRelationsUpdateClientLatency } from "../prometheus-metrics";
 import { RedisMutex } from "../redis/mutex";

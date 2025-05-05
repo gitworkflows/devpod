@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { Disposable } from "@khulnasoft/devpod-protocol";
+import { Disposable } from "@devpod/devpod-protocol";
 import { WatchWorkspaceStatusCallback, watchWorkspaceStatus } from "./listen-to-workspace-ws-messages";
 
 const cachedCallbackInfoMap = new Map<string, { complete: WatchWorkspaceStatusCallback; priority: number }[]>();

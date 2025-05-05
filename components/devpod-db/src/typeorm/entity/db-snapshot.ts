@@ -6,7 +6,7 @@
 
 import { PrimaryColumn, Column, Entity, Index } from "typeorm";
 
-import { Snapshot, SnapshotState } from "@khulnasoft/devpod-protocol";
+import { Snapshot, SnapshotState } from "@devpod/devpod-protocol";
 import { TypeORM } from "../typeorm";
 import { Transformer } from "../transformer";
 

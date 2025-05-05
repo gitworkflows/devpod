@@ -4,13 +4,13 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { OnboardingSettings_WelcomeMessage } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import { OnboardingSettings_WelcomeMessage } from "@devpod/public-api/lib/devpod/v1/organization_pb";
 import { Button } from "@podkit/buttons/Button";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "../../components/Modal";
 import { storageAvailable } from "../../utils";
 import { WelcomeMessagePreview } from "./WelcomeMessagePreview";
-import { User } from "@khulnasoft/public-api/lib/devpod/v1/user_pb";
+import { User } from "@devpod/public-api/lib/devpod/v1/user_pb";
 
 type Props = {
     user: User;

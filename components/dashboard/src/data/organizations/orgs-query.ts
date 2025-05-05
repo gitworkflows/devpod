@@ -10,7 +10,7 @@ import { useLocation } from "react-router";
 import { organizationClient } from "../../service/public-api";
 import { useCurrentUser } from "../../user-context";
 import { noPersistence } from "../setup";
-import { Organization } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import { Organization } from "@devpod/public-api/lib/devpod/v1/organization_pb";
 
 export function useOrganizationsInvalidator() {
     const user = useCurrentUser();

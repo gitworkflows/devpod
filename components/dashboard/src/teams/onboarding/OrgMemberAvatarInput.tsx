@@ -6,7 +6,7 @@
 
 import { FC, useCallback, useMemo, useState } from "react";
 import { useListOrganizationMembers } from "../../data/organizations/members-query";
-import type { OnboardingSettings_WelcomeMessage } from "@khulnasoft/public-api/lib/devpod/v1/organization_pb";
+import type { OnboardingSettings_WelcomeMessage } from "@devpod/public-api/lib/devpod/v1/organization_pb";
 import { Combobox } from "../../prebuilds/configuration-input/Combobox";
 import { ComboboxSelectedItem } from "../../prebuilds/configuration-input/ComboboxSelectedItem";
 

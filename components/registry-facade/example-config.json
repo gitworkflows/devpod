@@ -23,9 +23,9 @@
     "port": 8081,
     "timeout": "5s",
     "repos": {
-      "ghcr.io/devpod-core-dev/build/theia-ide": {
+      "khulnasoft/devpod-environment/build/theia-ide": {
         "prePull": ["master.28"],
-        "workdir": "/theia/node_modules/@khulnasoft/devpod-ide/lib"
+        "workdir": "/theia/node_modules/@devpod/devpod-ide/lib"
       }
     },
     "blobSpace": {

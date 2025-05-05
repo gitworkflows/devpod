@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { LinkedInProfile } from "@khulnasoft/devpod-protocol";
+import { LinkedInProfile } from "@devpod/devpod-protocol";
 import { inject, injectable } from "inversify";
 import { Repository } from "typeorm";
 import { v4 as uuidv4 } from "uuid";

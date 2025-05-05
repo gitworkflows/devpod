@@ -2,7 +2,7 @@
 # Licensed under the GNU Affero General Public License (AGPL).
 # See License.AGPL.txt in the project root for license information.
 
-FROM ghcr.io/khulnasoft/devpod/build/buildkit:v0.12.5-devpod.0
+FROM ghcr.io/khulnasoft/buildkit:v0.20.1-devpod.2
 
 USER root
 RUN apk --no-cache add sudo bash \

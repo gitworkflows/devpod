@@ -4,7 +4,7 @@
  * See License.AGPL.txt in the project root for license information.
  */
 
-import { BlockedRepository } from "@khulnasoft/devpod-protocol/lib/blocked-repositories-protocol";
+import { BlockedRepository } from "@devpod/devpod-protocol/lib/blocked-repositories-protocol";
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 import { Transformer } from "../transformer";
 

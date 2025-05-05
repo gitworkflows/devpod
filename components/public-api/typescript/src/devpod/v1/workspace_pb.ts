@@ -1375,7 +1375,7 @@ export class WorkspaceSpec extends Message<WorkspaceSpec> {
   /**
    * subassembly_references is a list of workspace IDs that this workspace
    * depends on. For example:
-   *   index.docker.io/gitpod-io/subassmeblies/code:latest
+   *   index.docker.io/khulnasoft/subassmeblies/code:latest
    *
    * @generated from field: repeated string subassembly_references = 10;
    */

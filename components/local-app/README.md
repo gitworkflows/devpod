@@ -53,7 +53,7 @@ To create a new version that existing clients will consume increment the number 
 ### How to install
 
 ```
-docker run --rm -it -v /tmp/dest:/out ghcr.io/khulnasoft/devpod/build/local-app:<version>
+docker run --rm -it -v /tmp/dest:/out khulnasoft/devpod-environment/build/local-app:<version>
 ```
 
 ### How to run

@@ -12,7 +12,7 @@
 
 import * as grpc from "@grpc/grpc-js";
 import * as daemon_pb from "./daemon_pb";
-import * as content_service_api_initializer_pb from "@khulnasoft/content-service/lib";
+import * as content_service_api_initializer_pb from "@devpod/content-service/lib";
 
 interface IWorkspaceContentServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     initWorkspace: IWorkspaceContentServiceService_IInitWorkspace;

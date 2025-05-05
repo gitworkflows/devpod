@@ -26,7 +26,7 @@ func TestDevpodConfig(t *testing.T) {
 		{
 			Desc: "parsing",
 			Content: `
-image: ghcr.io/khulnasoft/devpod/dev/dev-environment:clu-yq4.1
+image: khulnasoft/devpod-environment/dev/dev-environment:clu-yq4.1
 workspaceLocation: devpod/devpod-ws.code-workspace
 checkoutLocation: devpod
 ports:
@@ -45,7 +45,7 @@ vscode:
     - hangxingliu.vscode-nginx-conf-hint@0.1.0:UATTe2sTFfCYWQ3jw4IRsw==
     - zxh404.vscode-proto3@0.4.2:ZnPmyF/Pb8AIWeCqc83gPw==`,
 			Expectation: &devpod.DevpodConfig{
-				Image:             "ghcr.io/devpod-core-dev/dev/dev-environment:clu-yq4.1",
+				Image:             "khulnasoft/devpod-environment/dev/dev-environment:clu-yq4.1",
 				WorkspaceLocation: "devpod/devpod-ws.code-workspace",
 				CheckoutLocation:  "devpod",
 				Ports: []*devpod.PortsItems{
